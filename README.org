@@ -1,0 +1,212 @@
+#+STARTUP: showall indent
+#+OPTIONS: tex:t toc:nil
+#+ODT_STYLES_FILE: "/Users/gilgamesh/Google Drive/Templates/styles.xml"
+
+#+TITLE: Programming in Python
+#+AUTHOR: Derek Devnich
+
+* Week 1: Fundamentals
+#+BEGIN_SRC python
+#+END_SRC
+** Orientation
+*** What programming language should I use?
+*** Literate programming and notebooks
+
+** Jupyter commands
+*** Execute cell with CTRL-Enter
+#+BEGIN_SRC python
+3 + 7
+#+END_SRC
+*** Execute cell and move to new cell with Shift-Enter
+#+BEGIN_SRC python
+5 / 23
+#+END_SRC
+*** Drag notebook to move in file system
+*** Rename notebook
+
+** Variables and Assignment
+*** Use variables to store values
+Variables are names for values.
+#+BEGIN_SRC python
+age = 42
+first_name = 'Ahmed'
+#+END_SRC
+- can only contain letters, digits, and underscore _ (typically used to separate words in long variable names)
+- cannot start with a digit
+- are case sensitive (age, Age and AGE are three different variables)
+
+*** Use print to display values
+#+BEGIN_SRC python
+print(first_name, 'is', age, 'years old')
+#+END_SRC
+- Functions are verbs; recognizable by ()
+- Functions take arguments (i.e. do stuff with the arguments)
+- print() useful for tracking progress, debugging
+
+*** Variables must be created before they are used
+#+BEGIN_SRC python
+print(last_name)
+#+END_SRC
+
+*** Variables can be used in calculations
+#+BEGIN_SRC python
+age = age + 3
+print('Age in three years:', age)
+#+END_SRC
+
+*** Use meaningful names
+
+** Data Types and Type Conversion
+*** Every value has a type
+- Integers: whole numbers (counting)
+- Floats: real numbers (math)
+- Strings: text
+- ...and many others
+
+*** Use the built-in function type to find the type of a value
+#+BEGIN_SRC python
+type(53)
+#+END_SRC
+
+#+BEGIN_SRC python
+type(3.12)
+#+END_SRC
+
+#+BEGIN_SRC python
+  fitness = 'average'             # also works with ""
+  type(fitness)
+#+END_SRC
+
+*** Numbers
+**** Common math operations can combine integers and floats
+#+BEGIN_SRC python
+print('half is', 1 / 2.0)
+print('three squared is', 3.0 ** 2)
+#+END_SRC
+
+**** Counting operations require integers
+#+BEGIN_SRC python
+# "Modulus", or remainder
+10 % 3
+#+END_SRC
+
+*** Strings
+**** Use an index to get a single character from a string
+Count from 0
+#+BEGIN_SRC python
+atom_name = 'helium'
+atom_name[0]
+#+END_SRC
+
+**** Use a slice to get a substring
+Up to, but not including 3:
+#+BEGIN_SRC python
+  # [start:stop]
+  atom_name[0:3]
+#+END_SRC
+
+**** Use the built-in function len to find the length of a string
+#+BEGIN_SRC python
+len('helium')
+#+END_SRC
+
+**** Numbers don't have len()
+#+BEGIN_SRC python
+len(52)
+#+END_SRC
+
+*** Must convert numbers to strings or vice versa when operating on them
+#+BEGIN_SRC python
+1 + '2'
+#+END_SRC
+
+#+BEGIN_SRC python
+1 + float('2')
+#+END_SRC
+
+*** Variables only change value when something is assigned to them
+#+BEGIN_SRC python
+#+END_SRC
+
+** Built-in Functions and Help
+
+*** Stack Overflow
+*** python.org
+
+** Libraries
+
+** Lists
+
+** For Loops
+
+** Other containers
+Dictionaries
+Tuples
+Sets
+
+* Week 2: Building programs
+** Conditionals
+
+** Files
+*** Generic file handling
+**** string operators - split CSV line on comma
+**** Editorial comment: Some files will require this kind of hand-crafted coding
+
+*** File handling with Pandas
+
+** Looping Over Data Sets
+
+** Writing Functions
+
+** Optional
+Checking performance
+Dictionaries
+List comprehensions
+Exceptions
+Paths as an example of increasing abstraction
+Variable Scope
+Programming Style
+
+* Week 3: Data manipulation with Pandas, stats with Statsmodels, ML with Scikit-Learn
+
+** Reading Tabular Data into DataFrames
+
+** Pandas DataFrames
+shape , head, tail, info, describe
+methods ("." means "belongs to")
+
+** Statsmodels
+https://www.statsmodels.org/stable/index.html
+** Scikit-Learn
+*** Which estimator?
+https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html
+https://scikit-learn.org/stable/_static/ml_map.png
+
+** Editorial comments about ML
+1. We already have statistics, so do the reading
+2. Talk to a domain expert
+3. Beware parameter mining
+4. All software is beta software (at best)
+
+* Week 4: Visualization with Pandas, Seaborn, and/or Matplotlib
+** What does it mean to be Pythonic?
+
+
+
+
+
+* COMMENT How to export this document to other formats
+** Export to Open Office using Emacs Org mode (preferred)
+#+BEGIN_EXAMPLE
+M-x org-odt-export-to-odt
+#+END_EXAMPLE
+** Export to Markdown using Pandoc
+#+BEGIN_SRC bash
+pandoc README.org -o README.md
+#+END_SRC
+** Export to Microsoft Word using Pandoc
+#+BEGIN_SRC bash
+# The --reference-doc flag is optional; it provides fine-grained control
+# over the appearance of the output document
+pandoc README.org -t markdown | pandoc --no-highlight --reference-doc=/home/gilgamesh/Dropbox/custom-reference.docx -o README.docx
+#+END_SRC
