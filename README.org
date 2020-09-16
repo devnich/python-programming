@@ -10,17 +10,37 @@
 #+END_SRC
 ** Orientation
 *** What programming language should I use?
+1. Use the language that your friends use (you can ask people!)
+2. Use a language that has a community of practice for your desired use case (you can find documentation, bug reports, sample code, etc.)
+3. Use a language that is "best" by some very technical definition
+*** Python is pretty good at lots of things
 *** Literate programming and notebooks
+- Blend code, documentation, and visualization
+- Good for trying things, demos
+- Bad for massive or long-running processes
 
 ** Jupyter commands
+*** Starting
+**** Method 1
+1. Open Anaconda Navigator
+2. Run Jupyter Lab
+**** Method 2
+Open Terminal (MacOS/Linux) or Anaconda Prompt (Windows)
+#+BEGIN_SRC bash
+cd Desktop/data
+jupyter lab
+#+END_SRC
+
 *** Execute cell with CTRL-Enter
 #+BEGIN_SRC python
 3 + 7
 #+END_SRC
+
 *** Execute cell and move to new cell with Shift-Enter
 #+BEGIN_SRC python
 5 / 23
 #+END_SRC
+
 *** Drag notebook to move in file system
 *** Rename notebook
 
@@ -40,12 +60,14 @@ first_name = 'Ahmed'
 print(first_name, 'is', age, 'years old')
 #+END_SRC
 - Functions are verbs; recognizable by ()
-- Functions take arguments (i.e. do stuff with the arguments)
+- Functions take arguments (i.e. do stuff with the values that you give them)
 - print() useful for tracking progress, debugging
+- NB: Jupyter Lab will always print the *last* thing that happens in a cell, so we won't need print() a lot of the time
 
 *** Variables must be created before they are used
 #+BEGIN_SRC python
-print(last_name)
+  # Prints an informative error message; more about this later
+  print(last_name)
 #+END_SRC
 
 *** Variables can be used in calculations
@@ -54,16 +76,25 @@ age = age + 3
 print('Age in three years:', age)
 #+END_SRC
 
-*** Use meaningful names
+*** Variables only change value when something is assigned to them
+#+BEGIN_SRC python
+first = 1
+second = 5 * first
+first = 2
+print('first is', first, 'and second is', second)
+#+END_SRC
+
+*** Use meaningful names!
 
 ** Data Types and Type Conversion
 *** Every value has a type
+Most data is text and numbers:
 - Integers: whole numbers (counting)
 - Floats: real numbers (math)
 - Strings: text
 - ...and many others
 
-*** Use the built-in function type to find the type of a value
+*** Use the built-in function type() to find the type of a value
 #+BEGIN_SRC python
 type(53)
 #+END_SRC
@@ -73,8 +104,8 @@ type(3.12)
 #+END_SRC
 
 #+BEGIN_SRC python
-  fitness = 'average'             # also works with ""
-  type(fitness)
+first_name = 'Ahmed'             # also works with ""
+type(first_name)
 #+END_SRC
 
 *** Numbers
@@ -86,63 +117,298 @@ print('three squared is', 3.0 ** 2)
 
 **** Counting operations require integers
 #+BEGIN_SRC python
-# "Modulus", or remainder
-10 % 3
+print(10 % 3)                   # "Modulus", or remainder
 #+END_SRC
 
-*** Strings
-**** Use an index to get a single character from a string
-Count from 0
+*** Must convert strings to numbers or vice versa when operating on them
 #+BEGIN_SRC python
-atom_name = 'helium'
-atom_name[0]
-#+END_SRC
-
-**** Use a slice to get a substring
-Up to, but not including 3:
-#+BEGIN_SRC python
-  # [start:stop]
-  atom_name[0:3]
-#+END_SRC
-
-**** Use the built-in function len to find the length of a string
-#+BEGIN_SRC python
-len('helium')
-#+END_SRC
-
-**** Numbers don't have len()
-#+BEGIN_SRC python
-len(52)
-#+END_SRC
-
-*** Must convert numbers to strings or vice versa when operating on them
-#+BEGIN_SRC python
-1 + '2'
+1 + '2'                         # Produces an error
 #+END_SRC
 
 #+BEGIN_SRC python
 1 + float('2')
 #+END_SRC
 
-*** Variables only change value when something is assigned to them
 #+BEGIN_SRC python
+# Conversion functions
+str(43)
+int('3')
+float('3')
 #+END_SRC
 
 ** Built-in Functions and Help
+*** Online resources
+- https://libguides.ucmerced.edu/software-carpentry/python/references
+- Stack Overflow
 
-*** Stack Overflow
-*** python.org
+*** Use comments to add documentation to programs
+#+BEGIN_SRC python
+# This sentence isn't executed by Python.
+adjustment = 0.5   # Neither is this - anything after '#' is ignored.
+#+END_SRC
+
+*** A function may take zero or more arguments
+#+BEGIN_SRC python
+print('before')
+print()
+print('after')
+#+END_SRC
+
+*** Commonly-used built-in functions include max, min, and round
+#+BEGIN_SRC python
+print(max(1, 2, 3))
+print(min('a', 'A', '0'))       # 0-9, A-Z, a-z; However, notice they are all strings!
+#+END_SRC
+
+*** Functions may only work for certain (combinations of) arguments
+#+BEGIN_SRC python
+print(max(1, 'a'))              # Not a meaningful comparision
+#+END_SRC
+
+*** Functions may have default values for some arguments
+#+BEGIN_SRC python
+round(3.712)
+#+END_SRC
+
+#+BEGIN_SRC python
+round(3.712, 1)
+#+END_SRC
+
+*** Use the built-in function help to get help for a function
+#+BEGIN_SRC python
+help(round)
+#+END_SRC
+- 1 mandatory argument
+- 1 optional argument with a default value (ndigits=None)
+
+*** Python reports a syntax error when it can’t understand the source of a program
+#+BEGIN_SRC python
+name = 'Bob
+age = = 54
+print("Hello world"
+#+END_SRC
+
+*** Python reports a runtime error when something goes wrong while a program is executing
+We have seen some of these already.
 
 ** Libraries
+*** Most of the power of a programming language is in its libraries
+https://docs.python.org/3/library/index.html
+*** A program must import a library module before using it
+#+BEGIN_SRC python
+import math
+
+print('pi is', math.pi)
+print('cos(pi) is', math.cos(math.pi))
+#+END_SRC
+- Then refer to things from the module as module_name.thing_name.
+- Python uses "." to mean “part of” or "belongs to"
+
+*** Use help to learn about the contents of a library module
+#+BEGIN_SRC python
+help(math)                      # user friendly
+#+END_SRC
+
+#+BEGIN_SRC python
+dir(math)                       # brief reminder, not user friendly
+#+END_SRC
+
+*** Import specific items from a library module to shorten programs.
+You want to be careful with this. It's safer to keep the namespace.
+#+BEGIN_SRC python
+from math import cos, pi
+
+print('cos(pi) is', cos(pi))
+#+END_SRC
+
+*** Create an alias for a library module when importing it to shorten programs
+#+BEGIN_SRC python
+import math as m
+
+print('cos(pi) is', m.cos(m.pi))
+#+END_SRC
 
 ** Lists
+*** A list stores many values in a single structure
+#+BEGIN_SRC python
+pressures = [0.273, 0.275, 0.277, 0.275, 0.276]
+print('pressures:', pressures)
+print('length:', len(pressures))
+#+END_SRC
+
+*** Use an item’s index to fetch it from a list
+#+BEGIN_SRC python
+print('zeroth item of pressures:', pressures[0])
+print('fourth item of pressures:', pressures[4])
+#+END_SRC
+
+*** Count backwards from the end with negative integers
+#+BEGIN_SRC python
+print('last item of pressures:', pressures[-1])
+#+END_SRC
+
+*** Use a slice to get a subset of the list
+[start:stop]
+#+BEGIN_SRC python
+# Up to, but not including 3
+print('first 3 items of pressures:', pressures[0:3])
+#+END_SRC
+
+*** Indexing beyond the end of the collection is an error
+#+BEGIN_SRC python
+pressures[20]
+#+END_SRC
+
+*** Lists’ values can be replaced by assigning to them
+#+BEGIN_SRC python
+pressures[0] = 0.265
+print('pressures is now:', pressures)
+#+END_SRC
+
+*** Appending items to a list lengthens it
+#+BEGIN_SRC python
+primes = [2, 3, 5]
+print('primes is initially:', primes)
+primes.append(7)
+print('primes has become:', primes)
+#+END_SRC
+- "append" is a /method/ of lists: Like a function, but tied to a particular object
+- Use object_name.method_name to call methods
+- Deliberately resembles the way we refer to things in a library
+- We will meet other methods of lists as we go along.
+- Use help(list) for a preview.
+
+*** Extend is similar to append, but allows you to merge two lists
+#+BEGIN_SRC python
+teen_primes = [11, 13, 17, 19]
+middle_aged_primes = [37, 41, 43, 47]
+print('primes is currently:', primes)
+primes.extend(teen_primes)
+print('primes has now become:', primes)
+primes.append(middle_aged_primes)
+print('primes has finally become:', primes)
+#+END_SRC
+
+*** Use del to remove items from a list entirely
+#+BEGIN_SRC python
+primes = [2, 3, 5, 7, 9]
+print('primes before removing last item:', primes)
+del primes[4]
+print('primes after removing last item:', primes)
+#+END_SRC
+
+*** The empty list contains no values
+Helpful for collecting values
+
+*** Lists may contain values of different types
+#+BEGIN_SRC python
+location = ['latitude', 37.28306, 'N', 'longitude', 120.50778, 'W']
+#+END_SRC
+
+*** Strings can be indexed like lists
+**** Use an index to get a single character from a string
+Count from 0
+#+BEGIN_SRC python
+element = 'carbon'
+element[0]
+#+END_SRC
+
+**** Use a slice to get a substring
+#+BEGIN_SRC python
+# Up to, but not including 3
+sample = element[0:3]
+print(sample)
+#+END_SRC
+
+**** Counting backwards
+#+BEGIN_SRC python
+element[-1]
+#+END_SRC
+
+**** Use the built-in function len to find the length of a string
+#+BEGIN_SRC python
+len('carbon')                   # length is an integer
+#+END_SRC
+
+*** But! Character strings are immutable
+#+BEGIN_SRC python
+element[0] = 'C'
+#+END_SRC
+
+*** Python is full of analogies
+- lists and strings
+- lists and files
 
 ** For Loops
+*** A for loop executes commands once for each value in a collection
+"For each thing in this group, do these operations"
+#+BEGIN_SRC python
+for number in [2, 3, 5]:
+    print(number)
+#+END_SRC
+- A for loop is made up of a collection, a loop variable, and a body
+- The collection, *[2, 3, 5]*, is what the loop is being run on.
+- The body, *print(number)*, specifies what to do for each value in the collection.
+- The loop variable, *number*, is what changes for each iteration of the loop (i.e. the “current thing”)
+
+*** The first line of the for loop must end with a colon, and the body must be indented
+#+BEGIN_SRC python
+# This produces an error
+for number in [2, 3, 5]:
+print(number)
+#+END_SRC
+
+#+BEGIN_SRC python
+# So does this
+firstName = "Jon"
+  lastName = "Smith"
+#+END_SRC
+
+*** Loop variables can be called anything
+#+BEGIN_SRC python
+for kitten in [2, 3, 5]:
+    print(kitten)
+#+END_SRC
+- It's just a placeholder
+
+*** The body of a loop can contain many statements
+#+BEGIN_SRC python
+primes = [2, 3, 5]
+for p in primes:
+    squared = p ** 2
+    cubed = p ** 3
+    print(p, squared, cubed)
+#+END_SRC
+
+*** Use range to iterate over a sequence of numbers
+#+BEGIN_SRC python
+for number in range(0, 3):
+    print(number)
+#+END_SRC
+- range() produces numbers on demand (a "generator" function)
+- useful for tracking progress
+
+*** The Accumulator pattern turns many values into one
+#+BEGIN_SRC python
+# Sum the first 10 integers.
+total = 0
+for number in range(1, 11):
+   total = total + number
+print(total)
+#+END_SRC
 
 ** Other containers
 Dictionaries
 Tuples
 Sets
+
+** Homework
+*** Read the following help files:
+#+BEGIN_SRC python
+help('')
+help([])
+#+END_SRC
+*** Try to find 2 ways to capitalize 'carbon'
 
 * Week 2: Building programs
 ** Conditionals
@@ -175,6 +441,8 @@ Programming Style
 shape , head, tail, info, describe
 methods ("." means "belongs to")
 
+** Batch processing, .py files, and editors
+
 ** Statsmodels
 https://www.statsmodels.org/stable/index.html
 ** Scikit-Learn
@@ -190,6 +458,7 @@ https://scikit-learn.org/stable/_static/ml_map.png
 
 * Week 4: Visualization with Pandas, Seaborn, and/or Matplotlib
 ** What does it mean to be Pythonic?
+The seamy history of Python plotting
 
 
 
