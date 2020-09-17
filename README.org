@@ -6,8 +6,7 @@
 #+AUTHOR: Derek Devnich
 
 * Week 1: Fundamentals
-#+BEGIN_SRC python
-#+END_SRC
+
 ** Orientation
 *** What programming language should I use?
 1. Use the language that your friends use (you can ask people!)
@@ -20,7 +19,7 @@
 - Bad for massive or long-running processes
 
 ** Jupyter commands
-*** Starting
+*** How to start Jupyter Lab
 **** Method 1
 1. Open Anaconda Navigator
 2. Run Jupyter Lab
@@ -41,8 +40,8 @@ jupyter lab
 5 / 23
 #+END_SRC
 
-*** Drag notebook to move in file system
-*** Rename notebook
+*** Use drag-and-drop interface to move .ipynb file to new location
+*** Rename notebook to something informative
 
 ** Variables and Assignment
 *** Use variables to store values
@@ -411,6 +410,8 @@ help([])
 *** Try to find 2 ways to capitalize 'carbon'
 
 * Week 2: Building programs
+#+BEGIN_SRC python
+#+END_SRC
 ** Conditionals
 
 ** Files
