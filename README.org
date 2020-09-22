@@ -1,17 +1,16 @@
 #+STARTUP: showall indent
-#+OPTIONS: tex:t toc:nil
+#+OPTIONS: tex:t toc:nil H:6 ^:{}
 #+ODT_STYLES_FILE: "/Users/gilgamesh/Google Drive/Templates/styles.xml"
 
 #+TITLE: Programming in Python
 #+AUTHOR: Derek Devnich
 
 * Week 1: Fundamentals
-
 ** Orientation
 *** What programming language should I use?
-1. Use the language that your friends use (you can ask people!)
+1. Use the language that your friends use (so you can ask them for help)
 2. Use a language that has a community of practice for your desired use case (you can find documentation, bug reports, sample code, etc.)
-3. Use a language that is "best" by some very technical definition
+3. Use a language that is "best" by some technical definition
 *** Python is pretty good at lots of things
 *** Literate programming and notebooks
 - Blend code, documentation, and visualization
@@ -30,25 +29,75 @@ cd Desktop/data
 jupyter lab
 #+END_SRC
 
-*** Execute cell with CTRL-Enter
+*** Execute cell with CTRL-Enter; execute cell and move to new cell with Shift-Enter
 #+BEGIN_SRC python
 3 + 7
 #+END_SRC
 
-*** Execute cell and move to new cell with Shift-Enter
+*** Navigation
+- Use drag-and-drop interface to move .ipynb file to new location
+- Rename your notebook to something informative
+
+** Data Types and Type Conversion
+*** Every value has a type
+Most data is text and numbers:
+- Integers: whole numbers (counting)
+- Floats: real numbers (math)
+- Strings: text
+- ...and many others
+
+*** Numbers
+**** Common math operations can combine integers and floats
 #+BEGIN_SRC python
-5 / 23
+1 / 2.0
 #+END_SRC
 
-*** Use drag-and-drop interface to move .ipynb file to new location
-*** Rename notebook to something informative
+**** We can display more interesting output with the print() function
+#+BEGIN_SRC python
+print('half is', 1 / 2.0)
+print('three squared is', 3.0 ** 2)
+#+END_SRC
+
+**** Counting operations require integers
+#+BEGIN_SRC python
+print(10 % 3)                   # "Modulus", or remainder
+#+END_SRC
+
+*** Use the built-in function type() to find the type of a value
+#+BEGIN_SRC python
+type(53)
+#+END_SRC
+
+#+BEGIN_SRC python
+type(3.12)
+#+END_SRC
+
+#+BEGIN_SRC python
+type('Derek')
+#+END_SRC
+
+*** Must convert strings to numbers or vice versa when operating on them
+#+BEGIN_SRC python
+1 + '2'                         # Produces an error
+#+END_SRC
+
+#+BEGIN_SRC python
+1 + float('2')
+#+END_SRC
+
+#+BEGIN_SRC python
+# You can embed functions inside other functions
+print(str(43))
+print(int('3'))
+print(float('3'))
+#+END_SRC
 
 ** Variables and Assignment
 *** Use variables to store values
 Variables are names for values.
 #+BEGIN_SRC python
+first_name = 'Derek'
 age = 42
-first_name = 'Ahmed'
 #+END_SRC
 - can only contain letters, digits, and underscore _ (typically used to separate words in long variable names)
 - cannot start with a digit
@@ -65,8 +114,8 @@ print(first_name, 'is', age, 'years old')
 
 *** Variables must be created before they are used
 #+BEGIN_SRC python
-  # Prints an informative error message; more about this later
-  print(last_name)
+# Prints an informative error message; more about this later
+print(last_name)
 #+END_SRC
 
 *** Variables can be used in calculations
@@ -84,56 +133,6 @@ print('first is', first, 'and second is', second)
 #+END_SRC
 
 *** Use meaningful names!
-
-** Data Types and Type Conversion
-*** Every value has a type
-Most data is text and numbers:
-- Integers: whole numbers (counting)
-- Floats: real numbers (math)
-- Strings: text
-- ...and many others
-
-*** Use the built-in function type() to find the type of a value
-#+BEGIN_SRC python
-type(53)
-#+END_SRC
-
-#+BEGIN_SRC python
-type(3.12)
-#+END_SRC
-
-#+BEGIN_SRC python
-first_name = 'Ahmed'             # also works with ""
-type(first_name)
-#+END_SRC
-
-*** Numbers
-**** Common math operations can combine integers and floats
-#+BEGIN_SRC python
-print('half is', 1 / 2.0)
-print('three squared is', 3.0 ** 2)
-#+END_SRC
-
-**** Counting operations require integers
-#+BEGIN_SRC python
-print(10 % 3)                   # "Modulus", or remainder
-#+END_SRC
-
-*** Must convert strings to numbers or vice versa when operating on them
-#+BEGIN_SRC python
-1 + '2'                         # Produces an error
-#+END_SRC
-
-#+BEGIN_SRC python
-1 + float('2')
-#+END_SRC
-
-#+BEGIN_SRC python
-# Conversion functions
-str(43)
-int('3')
-float('3')
-#+END_SRC
 
 ** Built-in Functions and Help
 *** Online resources
@@ -155,21 +154,26 @@ print('after')
 
 *** Commonly-used built-in functions include max, min, and round
 #+BEGIN_SRC python
-print(max(1, 2, 3))
-print(min('a', 'A', '0'))       # 0-9, A-Z, a-z; However, notice they are all strings!
+max(1, 2, 3)
+#+END_SRC
+
+#+BEGIN_SRC python
+min('a', 'A', '0')       # 0-9, A-Z, a-z; However, notice they are all strings!
 #+END_SRC
 
 *** Functions may only work for certain (combinations of) arguments
 #+BEGIN_SRC python
-print(max(1, 'a'))              # Not a meaningful comparision
+max(1, 'a')              # Not a meaningful comparision
 #+END_SRC
 
 *** Functions may have default values for some arguments
 #+BEGIN_SRC python
+# By defualt, we round to the nearest integer
 round(3.712)
 #+END_SRC
 
 #+BEGIN_SRC python
+# You can optionally specify the number of significant digits
 round(3.712, 1)
 #+END_SRC
 
@@ -200,7 +204,7 @@ import math
 print('pi is', math.pi)
 print('cos(pi) is', math.cos(math.pi))
 #+END_SRC
-- Then refer to things from the module as module_name.thing_name.
+- Then refer to things from the module as modulename.thingname
 - Python uses "." to mean “part of” or "belongs to"
 
 *** Use help to learn about the contents of a library module
