@@ -251,7 +251,7 @@ print('last item of pressures:', pressures[-1])
 #+END_SRC
 
 *** Use a slice to get a subset of the list
-The subset syntax is ~[start:stop]~
+The slicing syntax is ~my_list[inclusive_start_position:exclusive_stop_position:optional_step_amount]~
 #+BEGIN_SRC python
 # Up to, but not including 3
 print('first 3 items of pressures:', pressures[0:3])
@@ -400,9 +400,9 @@ print(total)
 #+END_SRC
 
 ** Other containers
-Dictionaries
-Tuples
-Sets
+- Dictionaries
+- Tuples
+- Sets
 
 ** Homework
 *** Read the following help files:
@@ -412,7 +412,7 @@ help([])
 #+END_SRC
 *** Try to find 2 ways to capitalize 'carbon'
 
-* Week 2: Building programs
+* Week 2: Building Programs
 #+BEGIN_SRC python
 #+END_SRC
 ** Conditionals
@@ -514,14 +514,130 @@ for i in range(5):
 - Aside: For a more natural way of working with many lists, look at ~zip()~
 
 ** Files
-*** Generic file handling
-**** string operators - split CSV line on comma
-**** Editorial comment: Some files will require this kind of hand-crafted coding
-*** "Processing small files" exercise from Conditionals
-glob operator
-*** File handling with Pandas
+*** Open the file with a context handler
+#+BEGIN_SRC python
+with open('pettigrew_letters_ORIGINAL.txt', 'r') as file_in:
+    text = file_in.read()
+
+print(len(text))
+#+END_SRC
+
+*** Strings contain formatting marks
+Compare the following:
+#+BEGIN_SRC python
+# This displays the nicely-formatted document
+print(text[:50])
+#+END_SRC
+
+#+BEGIN_SRC python
+# This shows the true nature of the string; you can see newlines (/n),
+# tabs (/t), and other hidden characters
+text[:50]
+#+END_SRC
+
+*** Many ways of handling a file
+**** ~.read()~ produces the file contents as one string
+#+BEGIN_SRC python
+type(text)
+#+END_SRC
+
+**** ~.readlines()~ produces the file contents as a list of lines; each line is a string
+#+BEGIN_SRC python
+with open('pettigrew_letters_ORIGINAL.txt', 'r') as file_in:
+    text = file_in.readlines()
+
+print(len(text))
+print(type(text))
+#+END_SRC
+
+**** Inspect parts of the file using list syntax
+#+BEGIN_SRC python
+# View the first 10 lines
+text[:10]
+#+END_SRC
+
+*** Working with unstructured file data
+**** Contents of pettigrew_letters_ORIGINAL.txt
+1. Intro material
+2. Manifest of letters
+3. Individual letters
+
+**** Query: Are all the letters in the manifest actually there?
+1. check if all the letters reported in the manifest appear in the actual file
+2. check if all the letters in the file are reported in the manifest
+3. Therefore, construct two variables: (1) A list of every location line from the manifest, and (2) a list of every location line within the file proper
+
+**** Get the manifest by visual inspection
+#+BEGIN_SRC python
+manifest_list = text[15:160]
+#+END_SRC
+
+**** Use string functions to clean up and inspect text
+#+BEGIN_SRC python
+# Raw text
+for location in manifest_list[:10]:
+    print(location)
+#+END_SRC
+
+#+BEGIN_SRC python
+# Remove extra whitespace
+for location in manifest_list[:10]:
+    print(location.strip())
+#+END_SRC
+
+#+BEGIN_SRC python
+# Test whether the cleaned line starts with 'Box '
+for location in manifest_list[:10]:
+    stripped_line = location.strip()
+    print(stripped_line.startswith('Box '))
+#+END_SRC
+
+#+BEGIN_SRC python
+# Test whether the cleaned line starts with 'box '
+for location in manifest_list[:10]:
+    stripped_line = location.strip()
+    print(stripped_line.startswith('box '))
+#+END_SRC
+
+**** Gather all the locations in the full document
+#+BEGIN_SRC python
+letters = text[159:]
+
+for line in letters[:25]:
+    # Create a variables to hold current line and truth value of is_box
+    stripped_line = line.strip()
+    is_box = stripped_line.startswith('Box ')
+    if is_box == True:
+        print(stripped_line)
+    # If the line is empty, don't print anything
+    elif stripped_line == '\n':
+        continue
+    # Indent non-Box lines
+    else:
+        print('---', stripped_line)
+#+END_SRC
+- Before automate everything, we run the code with lots of ~print()~ statements so that we can see what's happening
+
+**** Collect the positive results
+#+BEGIN_SRC python
+letter_locations = []
+
+for line in letters:
+    stripped_line = line.strip()
+    is_box = stripped_line.startswith("Box ")
+    if is_box == True:
+        letter_locations.append(stripped_line)
+#+END_SRC
+
+**** Compare the manifest and the letters
+#+BEGIN_SRC python
+print('Items in manifest:', len(manifest_list))
+print('Letters:', len(letter_locations))
+#+END_SRC
 
 ** Looping Over Data Sets
+*** "Processing small files" exercise from Conditionals
+glob operator
 
 ** Writing Functions
 *** Break programs down into functions to make them easier to understand
@@ -597,19 +713,40 @@ print('average of empty list:', average([]))
 #+BEGIN_SRC python
 # Every function returns something
 result = print_date(1871, 3, 19)
-print('result of call is:', result
+print('result of call is:', result)
+#+END_SRC
+
+** Dictionaries
+- Dictionaries are sets of key/value pairs
+- Instead of being indexed by position, they are indexed by key
+#+BEGIN_SRC python
+ages = {'Derek': 42,
+        'Bill': 24,
+        'Susan': 37}
+
+print(ages['Derek'])
+#+END_SRC
+
+#+BEGIN_SRC python
+location = {'latitude': [37.28306, 'N'],
+            'longitude': [120.50778, 'W']}
+
+for key, val in location.items():
+    print(key, 'is', val[0], val[1])
 #+END_SRC
 
 ** Optional
-Checking performance
-Dictionaries
-List comprehensions
-Exceptions
-Paths as an example of increasing abstraction
-Variable Scope
-Programming Style
+- Checking performance
+- Dictionaries
+- List comprehensions
+- Exceptions
+- Paths as an example of increasing abstraction
+- Variable Scope
+- Programming Style
 
 ** Homework
+*** Revisit the ~str~ documentation with an eye towards using the string processing methods for cleaning up data
+*** How would you determine which letters and/or manifest items are missing?
 
 * Week 3: Data manipulation with Pandas, stats with Statsmodels, ML with Scikit-Learn
 
