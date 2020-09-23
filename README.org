@@ -413,8 +413,6 @@ help([])
 *** Try to find 2 ways to capitalize 'carbon'
 
 * Week 2: Building Programs
-#+BEGIN_SRC python
-#+END_SRC
 ** Conditionals
 *** Use ~if~ statements to control whether or not a block of code is executed
 An ~if~ statement (more properly called a conditional statement) controls whether some block of code is executed or not.
@@ -635,19 +633,14 @@ print('Items in manifest:', len(manifest_list))
 print('Letters:', len(letter_locations))
 #+END_SRC
 
-** Looping Over Data Sets
-*** "Processing small files" exercise from Conditionals
-glob operator
-
 ** Writing Functions
 *** Break programs down into functions to make them easier to understand
 - Human beings can only keep a few items in working memory at a time.
-- Understand larger/more complicated ideas by understanding and combining pieces, e.g.:
-  - Components in a machine.
-  - Lemmas when proving theorems.
-Functions serve the same purpose in programs:
-  1. Encapsulate complexity so that we can treat it as a single “thing”.
-  2. Enables re-use: Write one time, use many times.
+- Understand larger/more complicated ideas by understanding and combining pieces
+- Functions serve the same purpose in programs:
+  1. Encapsulate complexity so that we can treat it as a single “thing”
+  2. Removes complexity from remaining code, making it easier to test
+  3. Enables re-use: Write one time, use many times
 
 *** Define a function using ~def~ with a name, parameters, and a block of code
 #+BEGIN_SRC python
@@ -735,14 +728,44 @@ for key, val in location.items():
     print(key, 'is', val[0], val[1])
 #+END_SRC
 
+** Exception handling
+Explicitly handle common errors, rather than waiting for your code to blow up.
+#+BEGIN_SRC python
+def average(values):
+    "Return average of values, or None if no values are supplied."
+
+    if len(values) == 0:
+        return None
+    return sum(values) / len(values)
+
+print(average([3, 4, 5]))       # Prints expected output
+print(average([]))              # Explicitly handles possible divide-by-zero error
+print(average(4))               # Unhandled exception
+#+END_SRC
+
+#+BEGIN_SRC python
+def average(values):
+    "Return average of values, or None if no values are supplied."
+
+    try:
+        return sum(values) / len(values)
+    except ZeroDivisionError as e:
+        return e
+    except TypeError as e:
+        return e
+
+print(average([3, 4, 5]))
+print(average(4))
+print(average([]))
+#+END_SRC
+- Use judiciously, and be as specific as possible. When in doubt, allow your code to blow up rather than silently commit errors.
+
 ** Optional
 - Checking performance
-- Dictionaries
 - List comprehensions
-- Exceptions
-- Paths as an example of increasing abstraction
 - Variable Scope
 - Programming Style
+- Defensive programming
 
 ** Homework
 *** Revisit the ~str~ documentation with an eye towards using the string processing methods for cleaning up data
@@ -750,11 +773,20 @@ for key, val in location.items():
 
 * Week 3: Data manipulation with Pandas, stats with Statsmodels, ML with Scikit-Learn
 
+** Also look at https://swcarpentry.github.io/python-novice-inflammation/index.html
+
 ** Reading Tabular Data into DataFrames
 
 ** Pandas DataFrames
 shape , head, tail, info, describe
 methods ("." means "belongs to")
+
+** Looping Over Data Sets
+*** "Processing small files" exercise from Conditionals
+glob operator
+path operator
+Paths as an example of increasing abstraction
+** "Making Choices" from programming python / inflammation
 
 ** Batch processing, .py files, and editors
 
@@ -779,8 +811,6 @@ The seamy history of Python plotting
 - Plotting and Programming in Python: http://swcarpentry.github.io/python-novice-gapminder/
 - Humanities Python Tour: https://github.com/elliewix/humanities-python-tour/blob/master/Two-Hour-Beginner-Tour.ipynb
 - Programming with Python: https://swcarpentry.github.io/python-novice-inflammation/index.html
-
-
 
 * COMMENT How to export this document to other formats
 ** Export to Open Office using Emacs Org mode (preferred)
