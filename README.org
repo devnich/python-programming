@@ -745,14 +745,14 @@ print(average(4))               # Unhandled exception
 
 #+BEGIN_SRC python
 def average(values):
-    "Return average of values, or None if no values are supplied."
+    "Return average of values, or an informative error if bad values are supplied."
 
     try:
         return sum(values) / len(values)
-    except ZeroDivisionError as e:
-        return e
-    except TypeError as e:
-        return e
+    except ZeroDivisionError as err:
+        return err
+    except TypeError as err:
+        return err
 
 print(average([3, 4, 5]))
 print(average(4))
