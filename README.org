@@ -168,7 +168,7 @@ max(1, 'a')              # Not a meaningful comparision
 
 *** Functions may have default values for some arguments
 #+BEGIN_SRC python
-# By defualt, we round to the nearest integer
+# By default, we round to the nearest integer
 round(3.712)
 #+END_SRC
 
@@ -399,8 +399,26 @@ for number in range(1, 11):
 print(total)
 #+END_SRC
 
-** Other containers
-- Dictionaries
+** Dictionaries (optional)
+- Dictionaries are sets of key/value pairs
+- Instead of being indexed by position, they are indexed by key
+#+BEGIN_SRC python
+ages = {'Derek': 42,
+        'Bill': 24,
+        'Susan': 37}
+
+print(ages['Derek'])
+#+END_SRC
+
+#+BEGIN_SRC python
+location = {'latitude': [37.28306, 'N'],
+            'longitude': [120.50778, 'W']}
+
+for key, val in location.items():
+    print(key, 'is', val[0], val[1])
+#+END_SRC
+
+** Other containers (optional)
 - Tuples
 - Sets
 
@@ -466,7 +484,7 @@ for m in masses:
 
 *** Conditions are tested once, in order
 Python steps through the branches of the conditional in order, testing each in turn.
-Order matters!
+Order matters! The following is wrong:
 #+BEGIN_SRC python
 grade = 85
 if grade >= 70:
@@ -524,13 +542,13 @@ print(len(text))
 Compare the following:
 #+BEGIN_SRC python
 # This displays the nicely-formatted document
-print(text[:50])
+print(text[:300])
 #+END_SRC
 
 #+BEGIN_SRC python
 # This shows the true nature of the string; you can see newlines (/n),
 # tabs (/t), and other hidden characters
-text[:50]
+text[:300]
 #+END_SRC
 
 *** Many ways of handling a file
@@ -567,10 +585,11 @@ text[:10]
 
 **** Get the manifest by visual inspection
 #+BEGIN_SRC python
-manifest_list = text[15:160]
+manifest_list = text[14:159]
 #+END_SRC
 
 **** Use string functions to clean up and inspect text
+Demonstrate string tests with manifest_list:
 #+BEGIN_SRC python
 # Raw text
 for location in manifest_list[:10]:
@@ -599,7 +618,7 @@ for location in manifest_list[:10]:
 
 **** Gather all the locations in the full document
 #+BEGIN_SRC python
-letters = text[159:]
+letters = text[162:]
 
 for line in letters[:25]:
     # Create a variables to hold current line and truth value of is_box
@@ -632,6 +651,10 @@ for line in letters:
 print('Items in manifest:', len(manifest_list))
 print('Letters:', len(letter_locations))
 #+END_SRC
+
+**** Follow-up questions
+1. Which items are in one list but not the other?
+2. Are there other structural regularities you could use to parse the data? (Note that in the letters, sometimes there are multiple letters under a single box header)
 
 ** Writing Functions
 *** Break programs down into functions to make them easier to understand
@@ -709,26 +732,7 @@ result = print_date(1871, 3, 19)
 print('result of call is:', result)
 #+END_SRC
 
-** Dictionaries
-- Dictionaries are sets of key/value pairs
-- Instead of being indexed by position, they are indexed by key
-#+BEGIN_SRC python
-ages = {'Derek': 42,
-        'Bill': 24,
-        'Susan': 37}
-
-print(ages['Derek'])
-#+END_SRC
-
-#+BEGIN_SRC python
-location = {'latitude': [37.28306, 'N'],
-            'longitude': [120.50778, 'W']}
-
-for key, val in location.items():
-    print(key, 'is', val[0], val[1])
-#+END_SRC
-
-** Exception handling
+** Exception handling (optional)
 Explicitly handle common errors, rather than waiting for your code to blow up.
 #+BEGIN_SRC python
 def average(values):
@@ -760,9 +764,11 @@ print(average([]))
 #+END_SRC
 - Use judiciously, and be as specific as possible. When in doubt, allow your code to blow up rather than silently commit errors.
 
-** Optional
+** Other optional topics
 - Checking performance
 - List comprehensions
+- File writing
+- File iteration
 - Variable Scope
 - Programming Style
 - Defensive programming
