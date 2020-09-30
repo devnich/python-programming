@@ -764,11 +764,31 @@ print(average([]))
 #+END_SRC
 - Use judiciously, and be as specific as possible. When in doubt, allow your code to blow up rather than silently commit errors.
 
+** Reducing memory usage 1: Read a file one line at a time (optional)
+#+BEGIN_SRC python
+with open('pettigrew_letters_ORIGINAL.txt', 'r') as file_in:
+    for line in file_in:
+        # Do stuff to current line
+        pass
+#+END_SRC
+
+** Reducing memory usage 2: Use an SQLite database (optional)
+#+BEGIN_SRC python
+import sqlite3
+
+conn = sqlite3.connect('my_database_name.db')
+with conn:
+    c = conn.execute("SELECT column_name FROM table_name WHERE criterion")
+    results = c.fetchall()
+    c.close
+
+# Do stuff with `results`
+#+END_SRC
+
 ** Other optional topics
 - Checking performance
 - List comprehensions
 - File writing
-- File iteration
 - Variable Scope
 - Programming Style
 - Defensive programming
@@ -778,26 +798,250 @@ print(average([]))
 *** How would you determine which letters and/or manifest items are missing?
 
 * Week 3: Data manipulation with Pandas, stats with Statsmodels, ML with Scikit-Learn
+#+BEGIN_SRC python
+#+END_SRC
+** Standard library vs. outside modules
+1. Install with conda package manager
+2. Install with pip
 
-** Also look at https://swcarpentry.github.io/python-novice-inflammation/index.html
+** SciPy project
+1. NumPy: matrix algebra
+2. Pandas: data filtering and transformation; factors
+3. Matplotlib: graphs
+4. Scipy.stats: probability distributions, basic tests
+   https://docs.scipy.org/doc/scipy/reference/stats.html
+
+** Downstream libraries
+1. Seaborn: Pythonic graphs built on Matplotlib
+2. Statsmodels: Statistical models and formulae built on Scipy.stats
+   https://www.statsmodels.org/stable/index.html
+3. Scikit-Learn: Machine learning tools built on NumPy, SciPy, and Matplotlib
+   https://scikit-learn.org/stable/
 
 ** Reading Tabular Data into DataFrames
+*** Use the Pandas library to do statistics on tabular data
+#+BEGIN_SRC python
+import pandas as pd
+
+data = pd.read_csv('gapminder_gdp_europe.csv')
+print(data)
+#+END_SRC
+
+*** Use ~index_col~ to specify that a column’s values should be used as row headings
+Row headings are indexed by number by default (0, 1, 2,....). For convenience, we want to index by country:
+#+BEGIN_SRC python
+#data = pd.read_csv('/Users/gilgamesh/Desktop/data/gapminder_gdp_oceania.csv', index_col='country')
+data = pd.read_csv('gapminder_gdp_europe.csv', index_col='country')
+print(data)
+#+END_SRC
+
+*** Use ~DataFrame.info~ to find out more about a dataframe
+#+BEGIN_SRC python
+data.info()
+#+END_SRC
+
+*** The ~DataFrame.columns~ variable stores information about the dataframe’s columns
+Note that this is an attribute, not a method:
+#+BEGIN_SRC python
+data.columns
+#+END_SRC
+
+*** Use ~DataFrame.T~ to transpose a dataframe
+Does not copy or modify the data, just changes caller's view of it:
+#+BEGIN_SRC python
+data.T
+#+END_SRC
+
+In Jupyter Lab, compare this output to:
+#+BEGIN_SRC python
+print(data.T)
+#+END_SRC
+
+*** Use ~DataFrame.describe~ to get summary statistics about data
+#+BEGIN_SRC python
+data.describe()
+#+END_SRC
+
+*** Pandas help files are dense; prefer the online documentation
+https://pandas.pydata.org/docs/user_guide/index.html
+
+*** Other useful attributes and methods (optional)
+#+BEGIN_SRC python
+# rows, columns
+data.shape
+#+END_SRC
+
+#+BEGIN_SRC python
+# Returns first 5 items by default
+data.head()
+#+END_SRC
+
+#+BEGIN_SRC python
+# Returns last 2 items
+data.tail(2)
+#+END_SRC
+
+*** A brief aside about list comprehensions and viewing data structures (optional)
+#+BEGIN_SRC python
+print(dir(data))
+#+END_SRC
+
+#+BEGIN_SRC python
+# Create a new list that filters out internal attributes, functions, and methods
+df_public = [item for item in dir(data) if not item.startswith('_')]
+print(df_public)
+#+END_SRC
+
+#+BEGIN_SRC python
+# Pretty-print the new list; extremely optional
+import pprint
+
+pp = pprint.PrettyPrinter(width=100, compact=True, indent=2)
+pp.pprint(df_public)
+#+END_SRC
+
+#+BEGIN_SRC python
+# Create a new list that only contains methods or attributes
+# NB: Because Python allows you to override any method or attribute at runtime,
+# testing with `callable` may not always work correctly.
+df_methods = [item for item in dir(data) if not item.startswith('_') and callable(getattr(data, item))]
+df_attr = [item for item in dir(data) if not item.startswith('_') and not callable(getattr(data, item))]
+
+pp.pprint(df_methods)
+pp.pprint(df_attr)
+#+END_SRC
 
 ** Pandas DataFrames
-shape , head, tail, info, describe
-methods ("." means "belongs to")
+*** Note about Pandas DataFrames/Series
+- A DataFrame is a collection of Series
+- Each Series (column) is a 1-dimensional NumPy array
+- Therefore, each series inherits the abilities (linear algebra) and limitations (single data type) of NumPy
+
+*** Selecting values
+Rows have positions [i, j, ..] and labels. This gives us two ways to access data:
+1. Treat the DataFrame as a matrix and select values using linear algebra operators
+2. Treat the DataFrame as a table and select values using labels
+
+**** Use ~DataFrame.iloc[..., ...]~ to select values by their (entry) position
+The ~i~ in ~iloc~ stands for "index".
+#+BEGIN_SRC python
+data.iloc[0, 0]
+#+END_SRC
+
+**** Use ~DataFrame.loc[..., ...]~ to select values by their (entry) label
+#+BEGIN_SRC python
+data.loc["Albania", "gdpPercap_1952"]
+#+END_SRC
+
+**** Use : on its own to mean all columns or all rows
+Just like Python’s usual slicing notation. You can treat DataFrames as multi-dimensional lists!
+#+BEGIN_SRC python
+data.loc["Albania", :]
+#+END_SRC
+
+**** Select multiple columns or rows using ~DataFrame.loc~ and a named slice
+Generalizing the concept of slice to include labeled indexes:
+#+BEGIN_SRC python
+data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
+#+END_SRC
+
+*** Result of slicing can be used in further operations
+Any operation that you can use on the whole data frame can be used on a slice
+#+BEGIN_SRC python
+print(data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972'].max())
+print(data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972'].min())
+#+END_SRC
+
+#+BEGIN_SRC python
+data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972'].describe()
+#+END_SRC
+
+*** Use comparisons to select data based on value
+Compares element-by-element and returns a similarly-shaped dataframe of ~True~ and ~False~
+#+BEGIN_SRC python
+subset = data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
+#+END_SRC
+
+#+BEGIN_SRC python
+subset
+#+END_SRC
+
+#+BEGIN_SRC python
+# Which GDPs are greater than 10,000?
+subset > 10000
+#+END_SRC
+
+*** Select values or NaN using a Boolean mask
+Mask the matrix values that fail to meet a criterion.
+#+BEGIN_SRC python
+mask = subset > 10000
+subset[mask]
+#+END_SRC
+
+NaNs are ignored by numerical operations like max, min, average, etc.
+#+BEGIN_SRC python
+subset[mask].describe()
+#+END_SRC
+
+For more elaborate comparisons, see https://pandas.pydata.org/docs/user_guide/basics.html#basics-compare
+
+*** TODO Add comparison functions
+
+*** Group By: split-apply-combine
+#+BEGIN_SRC python
+#+END_SRC
+*** Exercises
+#+BEGIN_SRC python
+#+END_SRC
+
+*** Write new file with ~DataFrame.to_csv~
+Capture the results of your filter in a new file, rather than overwriting your original data.
+#+BEGIN_SRC python
+#+END_SRC
 
 ** Looping Over Data Sets
-*** "Processing small files" exercise from Conditionals
-glob operator
-path operator
-Paths as an example of increasing abstraction
-** "Making Choices" from programming python / inflammation
+*** File paths as an example of increasing abstraction in program development
+1. File paths as strings
+2. File paths as string patterns
+3. File paths as abstract Path objects
 
-** Batch processing, .py files, and editors
+*** Use a for loop to process files given a list of their names
+#+BEGIN_SRC python
+#+END_SRC
+[show absolute string]
+*** Use glob.glob to find sets of files whose names match a pattern
+#+BEGIN_SRC python
+#+END_SRC
+*** Use glob and for to process batches of files
+#+BEGIN_SRC python
+#+END_SRC
+*** Use pathlib to write code that works across operating systems
+Where are we?
+#+BEGIN_SRC python
+import os
+os.getcwd()
+#+END_SRC
+
+#+BEGIN_SRC python
+from pathlib import Path
+directory_path = Path("/Users/gilgamesh/Desktop/data")
+
+for file_path in directory_path.glob():
+    if file_path.is_file():
+        with open(file_path, 'r') as file_in:
+            pass
+#+END_SRC
+
+** Command-Line Programs
+Batch processing from command line, .py files, and editors
+#+BEGIN_SRC bash
+#+END_SRC
 
 ** Statsmodels
-https://www.statsmodels.org/stable/index.html
+#+BEGIN_SRC python
+#+END_SRC
+Curriculum: https://scipy-lectures.org/packages/statistics/
+
 ** Scikit-Learn
 *** Which estimator?
 https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html
@@ -817,6 +1061,7 @@ The seamy history of Python plotting
 - Plotting and Programming in Python: http://swcarpentry.github.io/python-novice-gapminder/
 - Humanities Python Tour: https://github.com/elliewix/humanities-python-tour/blob/master/Two-Hour-Beginner-Tour.ipynb
 - Programming with Python: https://swcarpentry.github.io/python-novice-inflammation/index.html
+- Statistics in Python: https://scipy-lectures.org/packages/statistics/
 
 * COMMENT How to export this document to other formats
 ** Export to Open Office using Emacs Org mode (preferred)
