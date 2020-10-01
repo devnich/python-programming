@@ -798,6 +798,10 @@ with conn:
 *** How would you determine which letters and/or manifest items are missing?
 
 * Week 3: Data manipulation with Pandas, stats with Statsmodels, ML with Scikit-Learn
+
+* TODO Rewrite as dplyr/SQL-style query/filter/subset lesson
+In general, the lesson spends too much time in the weeds. We want to take a high-level, declarative view of our data, and only invoke fiddly methods as necessary.
+
 ** Standard library vs. outside modules
 1. Install with conda package manager
 2. Install with pip
