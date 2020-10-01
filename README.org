@@ -1143,6 +1143,11 @@ The seamy history of Python plotting
 - Pandas User Guide: https://pandas.pydata.org/docs/user_guide/index.html
 - Statistics in Python: https://scipy-lectures.org/packages/statistics/
 
+* Example Data
+- Gapminder data: https://swcarpentry.github.io/python-novice-gapminder/files/python-novice-gapminder-data.zip
+- Pettigrew letters: https://raw.githubusercontent.com/devnich/python-programming/master/pettigrew_letters_ORIGINAL.txt
+- Ecology survey data: https://ndownloader.figshare.com/files/10717177 (from https://figshare.com/articles/Portal_Project_Teaching_Database/1314459 )
+
 * COMMENT How to export this document to other formats
 ** Export to Open Office using Emacs Org mode (preferred)
 #+BEGIN_EXAMPLE
