@@ -862,7 +862,7 @@ print(data.T)
 data.describe()
 #+END_SRC
 
-*** Pandas help files are dense; prefer the online documentation
+*** Pandas help files are dense; you should prefer the online documentation
 https://pandas.pydata.org/docs/user_guide/index.html
 
 *** Other useful attributes and methods (optional)
@@ -900,10 +900,11 @@ pp = pprint.PrettyPrinter(width=100, compact=True, indent=2)
 pp.pprint(df_public)
 #+END_SRC
 
+Objects have attributes (i.e. data, fields, properties) and methods (i.e. procedures). The difference between a method and a function is that methods are attached to objects, whereas functions are free-floating ("first-class citizens").
 #+BEGIN_SRC python
-# Create a new list that only contains methods or attributes
+# Create two new lists, one with the public methods and one with the public attributes.
 # NB: Because Python allows you to override any method or attribute at runtime,
-# testing with `callable` may not always work correctly.
+# testing with `callable` is not always reliable.
 df_methods = [item for item in dir(data) if not item.startswith('_') and callable(getattr(data, item))]
 df_attr = [item for item in dir(data) if not item.startswith('_') and not callable(getattr(data, item))]
 
@@ -913,9 +914,9 @@ pp.pprint(df_attr)
 
 ** Pandas DataFrames
 *** Note about Pandas DataFrames/Series
-- A DataFrame is a collection of Series
-- Each Series (column) is a 1-dimensional NumPy array
-- Therefore, each series inherits the abilities (linear algebra) and limitations (single data type) of NumPy
+- A DataFrame is a collection of Series columns
+- Each Series is a dict-like 1-dimensional NumPy array
+- Therefore, each series inherits many of the abilities (linear algebra) and limitations (single data type) of NumPy
 
 *** Selecting values
 Rows have positions [i, j, ..] and labels. This gives us two ways to access data:
@@ -983,21 +984,49 @@ NaNs are ignored by numerical operations like max, min, average, etc.
 subset[mask].describe()
 #+END_SRC
 
-For more elaborate comparisons, see https://pandas.pydata.org/docs/user_guide/basics.html#basics-compare
-
-*** TODO Add comparison functions
+*** Generic comparisons between matrices (optional)
+- Series and DataFrame have the binary comparison methods ~eq~, ~ne~, ~lt~, ~gt~, ~le~, and ~ge~
+- You can apply the reductions: ~empty~, ~any()~, ~all()~, and ~bool()~ to provide a way to summarize a boolean result
+- You can find many more options for comparison and sub-setting here: https://pandas.pydata.org/docs/user_guide/basics.html
 
 *** Group By: split-apply-combine
+Split data according to criterion, do numeric transformations, then recombine.
 #+BEGIN_SRC python
-#+END_SRC
-*** Exercises
-#+BEGIN_SRC python
+# Get all GDPs greater than the mean
+mask_higher = data > data.mean()
+
+# Count the number of time periods in which each country exceeds the mean
+higher_count = mask_higher.aggregate('sum', axis=1)
+
+# Create a normalized wealth-over-time score
+wealth_score = higher_count / len(data.columns)
+wealth_score
 #+END_SRC
 
-*** Write new file with ~DataFrame.to_csv~
+*** Add to DataFrame
+DataFrames are dictionary-like objects
+#+BEGIN_SRC python
+# Wealth Score is a series
+type(wealth_score)
+
+data['normalized_wealth'] = wealth_score
+#+END_SRC
+
+*** Write new file with ~DataFrame.to_csv
 Capture the results of your filter in a new file, rather than overwriting your original data.
 #+BEGIN_SRC python
+# Save to a new CSV, preserving your original data
+data.to_csv('gapminder_gdp_europe_normed.csv')
 #+END_SRC
+
+*** Relationship between data structures (optional)
+https://pandas.pydata.org/docs/user_guide/dsintro.html#column-selection-addition-deletion
+- You can convert data between NumPy arrays, Series, and DataFrames
+- You can read data into any of the data structures from files or from standard Python containers
+- NumPy arrays are list-like; Series and DataFrames are dict-like
+
+*** Methods for extending DataFrames (optional)
+- Merge, join, concatenate and compare: https://pandas.pydata.org/docs/user_guide/merging.html
 
 ** Looping Over Data Sets
 *** File paths as an example of increasing abstraction in program development
@@ -1005,16 +1034,29 @@ Capture the results of your filter in a new file, rather than overwriting your o
 2. File paths as string patterns
 3. File paths as abstract Path objects
 
-*** Use a for loop to process files given a list of their names
+*** Use a ~for~ loop to process files given a list of their names
 #+BEGIN_SRC python
+for filename in ['gapminder_gdp_africa.csv', 'gapminder_gdp_asia.csv']:
+    data = pd.read_csv(filename, index_col='country')
+    print(filename, data.min())
 #+END_SRC
-[show absolute string]
+
 *** Use glob.glob to find sets of files whose names match a pattern
+In Unix, the term “globbing” means “matching a set of files with a pattern”. The most common patterns are:
+- `*` meaning “match zero or more characters”
+- `?` meaning “match exactly one character”
 #+BEGIN_SRC python
+import glob
+print('all csv files in data directory:', glob.glob('*.csv'))
 #+END_SRC
+
 *** Use glob and for to process batches of files
 #+BEGIN_SRC python
+for filename in glob.glob('gapminder_*.csv'):
+    data = pd.read_csv(filename)
+    print(filename, data['gdpPercap_1952'].min())
 #+END_SRC
+
 *** Use pathlib to write code that works across operating systems
 Where are we?
 #+BEGIN_SRC python
@@ -1026,41 +1068,80 @@ os.getcwd()
 from pathlib import Path
 directory_path = Path("/Users/gilgamesh/Desktop/data")
 
-for file_path in directory_path.glob():
-    if file_path.is_file():
-        with open(file_path, 'r') as file_in:
-            pass
+for filename in directory_path.glob('gapminder_*.csv'):
+    if filename.is_file():
+        data = pd.read_csv(filename)
+        print(filename, data['gdpPercap_1952'].min())
 #+END_SRC
 
 ** Command-Line Programs
 Batch processing from command line, .py files, and editors
 #+BEGIN_SRC bash
+python my_program.py
 #+END_SRC
 
-** Statsmodels
+** Statistics
+*** Libraries
+1. statistics
+   Basic summary statistics. Part of the Python standard library.
+2. scipy.stats
+   Descriptive statistics and distributions: https://docs.scipy.org/doc/scipy/reference/stats.html
+3. statsmodels
+   Statistical models and tests. Incorporates scipy.stats. https://www.statsmodels.org/stable/index.html
+
+*** Regression example
+**** Sample file
+Download "surveys.csv" from https://figshare.com/articles/Portal_Project_Teaching_Database/1314459
+Direct download link: https://ndownloader.figshare.com/files/10717177
+
+**** Import data
+#+Begin_SRC python
+data = pd.read_csv('surveys.csv')
+
+# Check for NaN
+print("Valid weights:", data['weight'].count())
+print("NaN weights:", data['weight'].isna().sum())
+print("Valid lengths:", data['hindfoot_length'].count())
+print("NaN lengths:", data['hindfoot_length'].isna().sum())
+#+END_SRC
+
+**** Fit OLS regression model
 #+BEGIN_SRC python
-#+END_SRC
-Curriculum: https://scipy-lectures.org/packages/statistics/
+from statsmodels.formula.api import ols
 
-** Scikit-Learn
+model = ols("weight ~ hindfoot_length", data, missing='drop').fit()
+print(model.summary())
+#+END_SRC
+
+**** Generic parameters for all models
+#+BEGIN_SRC python
+import statsmodels
+
+help(statsmodels.base.model.Model)
+#+END_SRC
+
+** Machine learning with Scikit-Learn
+https://scikit-learn.org/stable/
+
 *** Which estimator?
 https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html
 https://scikit-learn.org/stable/_static/ml_map.png
 
-** Editorial comments about ML
+*** Editorial comments about ML
 1. We already have statistics, so do the reading
 2. Talk to a domain expert
 3. Beware parameter mining
-4. All software is beta software (at best)
+4. Treat all software as beta software
 
 * Week 4: Visualization with Pandas, Seaborn, and/or Matplotlib
 ** What does it mean to be Pythonic?
 The seamy history of Python plotting
 
 * Credits
-- Plotting and Programming in Python: http://swcarpentry.github.io/python-novice-gapminder/
-- Humanities Python Tour: https://github.com/elliewix/humanities-python-tour/blob/master/Two-Hour-Beginner-Tour.ipynb
-- Programming with Python: https://swcarpentry.github.io/python-novice-inflammation/index.html
+- Plotting and Programming in Python (Pandas-oriented): http://swcarpentry.github.io/python-novice-gapminder/
+- Programming with Python (NumPy-oriented): https://swcarpentry.github.io/python-novice-inflammation/index.html
+- Humanities Python Tour (file and text processing): https://github.com/elliewix/humanities-python-tour/blob/master/Two-Hour-Beginner-Tour.ipynb
+- Pandas User Guide: https://pandas.pydata.org/docs/user_guide/index.html
 - Statistics in Python: https://scipy-lectures.org/packages/statistics/
 
 * COMMENT How to export this document to other formats
