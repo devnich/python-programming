@@ -798,8 +798,6 @@ with conn:
 *** How would you determine which letters and/or manifest items are missing?
 
 * Week 3: Data manipulation with Pandas, stats with Statsmodels, ML with Scikit-Learn
-#+BEGIN_SRC python
-#+END_SRC
 ** Standard library vs. outside modules
 1. Install with conda package manager
 2. Install with pip
@@ -817,6 +815,7 @@ with conn:
    https://www.statsmodels.org/stable/index.html
 3. Scikit-Learn: Machine learning tools built on NumPy, SciPy, and Matplotlib
    https://scikit-learn.org/stable/
+4. ...and many more: https://www.scipy.org/topical-software.html
 
 ** Reading Tabular Data into DataFrames
 *** Use the Pandas library to do statistics on tabular data
