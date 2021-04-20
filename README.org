@@ -1,5 +1,5 @@
 #+STARTUP: showall indent
-#+OPTIONS: tex:t toc:nil H:6 ^:{}
+#+OPTIONS: tex:t toc:2 H:6 ^:{}
 #+ODT_STYLES_FILE: "/Users/gilgamesh/Google Drive/Templates/styles.xml"
 
 #+TITLE: Programming in Python
@@ -799,8 +799,11 @@ with conn:
 
 * Week 3: Data manipulation with Pandas, stats with Statsmodels, ML with Scikit-Learn
 
+* TODO Explicitly talk about linear algebra with NumPy
+* TODO draw out matrix/list vs dataframe/dict
 * TODO Rewrite as dplyr/SQL-style query/filter/subset lesson
 In general, the lesson spends too much time in the weeds. We want to take a high-level, declarative view of our data, and only invoke fiddly methods as necessary.
+- concat/merge https://pandas.pydata.org/docs/reference/api/pandas.concat.html
 
 ** Standard library vs. outside modules
 1. Install with conda package manager
@@ -1136,9 +1139,123 @@ https://scikit-learn.org/stable/_static/ml_map.png
 3. Beware parameter mining
 4. Treat all software as beta software
 
-* Week 4: Visualization with Pandas, Seaborn, and/or Matplotlib
+* Week 4: Visualization with Matplotlib, Pandas, and Seaborn
+#+BEGIN_SRC python
+#+END_SRC
 ** What does it mean to be Pythonic?
 The seamy history of Python plotting
+
+** Seaborn 0.11 new features: https://seaborn.pydata.org/whatsnew.html
+** Workshop Objectives
+1. Make a plot with python's base library matplotlib.pyplot
+2. Generate plots from dataframes using pandas and seaborn
+3. Modify graph aesthetics and themes
+4. Save plots to an image file
+
+** Big 5 graphs
+Fundamentally, graphs communicate two types of information: 1) Relationships/trends among data and 2) the distribution of data.
+1. Line plot
+2. Scatter plot
+3. Bar plot
+4. Histogram
+5. Box plot
+
+
+
+** Matplotlib
+*** Basic line plot (time series example)
+#+BEGIN_SRC python
+import matplotlib.pyplot as plt
+#+END_SRC
+
+#+BEGIN_SRC python
+# make up data
+import numpy as np
+
+y = np.random.random(10) # outputs an array of 10 random numbers between 0 and 1
+x = np.arange(1980,1990,1) # generates an ordered array of numbers from 1980 to 1989
+#+END_SRC
+
+#+BEGIN_SRC python
+print(x)
+print(y)
+
+#check that x and y contain the same number of values
+len(x) == len(y)
+#+END_SRC
+
+#+BEGIN_SRC python
+#turn y into a percentage
+y = y*100
+print(y)
+#+END_SRC
+
+#+BEGIN_SRC python
+## simple line plot example of stock price changes
+
+#3 basic commands to create a basic figure
+plt.figure()
+plt.plot(x,y)
+plt.show()
+#+END_SRC
+
+*** Customizing Graph Aesthetics
+In principle, nearly every element on a matplotlib figure is independently modifiable.
+
+#+BEGIN_SRC python
+#change theme style
+plt.style.available
+#+END_SRC
+
+#+BEGIN_SRC python
+plt.style.use('dark_background')  #changes theme of all plots
+#+END_SRC
+
+#+BEGIN_SRC python
+## modify figure size,  axes and fonts
+plt.figure(figsize=(8,6)) #(width, height) inches
+plt.plot(x,y,color='darkorange', linewidth=2, marker='o')
+
+#add title and axes label, adjust font size and style
+
+plt.title("Percent Change in Stock X", fontsize=22, fontweight='bold')
+plt.xlabel(" Years ",fontsize=20, fontweight='bold')
+plt.ylabel(" % change ",fontsize=20, fontweight='bold')
+
+#adjust tick labels
+plt.xticks(fontsize=18)
+plt.yticks(fontsize=18)
+
+#add a grid
+plt.grid(True)
+# save figure
+plt.savefig("mygraph_dark.png",dpi=300, bbox_inches='tight')
+plt.show()
+#+END_SRC
+
+#+BEGIN_SRC python
+# Saving datasets with new-style string formatting
+#for i in datasets_list:
+#    plt.savefig(f'{i}.png',....)
+#+END_SRC
+
+*** Plotting from dataframes with Gapminder dataset
+#+BEGIN_SRC python
+import pandas as pd
+
+#load gapminder data
+gapminder = pd.read_csv("gapminder_gdp_europe.csv", index_col='country')
+#+END_SRC
+
+#+BEGIN_SRC python
+
+#+END_SRC
+
+#+BEGIN_SRC python
+#+END_SRC
+
+#+BEGIN_SRC python
+#+END_SRC
 
 * Credits
 - Plotting and Programming in Python (Pandas-oriented): http://swcarpentry.github.io/python-novice-gapminder/
@@ -1146,6 +1263,7 @@ The seamy history of Python plotting
 - Humanities Python Tour (file and text processing): https://github.com/elliewix/humanities-python-tour/blob/master/Two-Hour-Beginner-Tour.ipynb
 - Pandas User Guide: https://pandas.pydata.org/docs/user_guide/index.html
 - Statistics in Python: https://scipy-lectures.org/packages/statistics/
+- Rhondene Wint: Matplotlib and Seaborn notes
 
 * Example Data
 - Gapminder data: https://swcarpentry.github.io/python-novice-gapminder/files/python-novice-gapminder-data.zip
@@ -1165,5 +1283,5 @@ pandoc README.org -o README.md
 #+BEGIN_SRC bash
 # The --reference-doc flag is optional; it provides fine-grained control
 # over the appearance of the output document
-pandoc README.org -t markdown | pandoc --no-highlight --reference-doc=/home/gilgamesh/Dropbox/custom-reference.docx -o README.docx
+pandoc README.org -t markdown | pandoc --no-highlight --reference-doc=/Users/gilgamesh/Google Drive/Templates/custom-reference.docx -o README.docx
 #+END_SRC
