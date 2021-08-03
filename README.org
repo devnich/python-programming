@@ -194,6 +194,13 @@ print("Hello world"
 *** Python reports a runtime error when something goes wrong while a program is executing
 We have seen some of these already.
 
+*** Challenge: Why not?
+Why is it that ~max~ and ~min~ do not return ~None~ when they are called with no arguments?
+
+Solution:
+
+~max~ and ~min~ return TypeErrors in this case because the correct number of parameters was not supplied. If it just returned None, the error would be much harder to trace as it would likely be stored into a variable and used later in the program, only to likely throw a runtime error.
+
 ** Libraries
 *** Most of the power of a programming language is in its libraries
 https://docs.python.org/3/library/index.html
@@ -230,6 +237,48 @@ import math as m
 
 print('cos(pi) is', m.cos(m.pi))
 #+END_SRC
+
+*** Challenge: Locating the Right Module
+You want to select a random character from a string:
+#+BEGIN_SRC python
+bases = 'ACTTGCTTGAC'
+#+END_SRC
+
+1. Which standard library module could help you? https://docs.python.org/3/library/
+2. Which function would you select from that module? Are there alternatives?
+3. Try to write a program that uses the function.
+
+Solution:
+
+You could try the ~random~ module.
+
+The string has 11 characters, each having a positional index from 0 to 10. You could use either ~random.randrange~ or ~random.randint~ functions to get a random integer between 0 and 10, and then pick out the character at that position:
+
+#+BEGIN_SRC python
+from random import randrange
+
+random_index = randrange(len(bases))
+print(bases[random_index])
+#+END_SRC
+
+or more compactly:
+
+#+BEGIN_SRC python
+from random import randrange
+
+print(bases[randrange(len(bases))])
+#+END_SRC
+
+Perhaps you found the random.sample function? It allows for slightly less typing:
+
+#+BEGIN_SRC python
+from random import sample
+
+print(sample(bases, 1)[0])
+#+END_SRC
+
+Note that this function returns a list of values. We will learn about lists in episode 11.
+There’s also other functions you could use, but with more convoluted code as a result.
 
 ** Lists
 *** A list stores many values in a single structure
