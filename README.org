@@ -5,7 +5,7 @@
 #+TITLE: Programming in Python
 #+AUTHOR: Derek Devnich
 
-* Week 1: Fundamentals
+* Fundamentals
 ** Orientation
 *** What programming language should I use?
 1. Use the language that your friends use (so you can ask them for help)
@@ -194,7 +194,7 @@ print("Hello world"
 *** Python reports a runtime error when something goes wrong while a program is executing
 We have seen some of these already.
 
-*** Challenge: Why not?
+*** CHALLENGE: Why not?
 Why is it that ~max~ and ~min~ do not return ~None~ when they are called with no arguments?
 
 Solution:
@@ -238,7 +238,7 @@ import math as m
 print('cos(pi) is', m.cos(m.pi))
 #+END_SRC
 
-*** Challenge: Locating the Right Module
+*** CHALLENGE: Locating the Right Module
 You want to select a random character from a string:
 #+BEGIN_SRC python
 bases = 'ACTTGCTTGAC'
@@ -390,6 +390,9 @@ element[0] = 'C'
 - lists and strings
 - lists and files
 
+** GOTO Reading Tabular Data into DataFrames (1-day workshop order)
+** GOTO Pandas DataFrames (1-day workshop order)
+** GOTO Plotting (1-day workshop order)
 ** For Loops
 *** A ~for~ loop executes commands once for each value in a collection
 "For each thing in this group, do these operations"
@@ -412,7 +415,7 @@ print(number)
 #+BEGIN_SRC python
 # So does this
 firstName = "Jon"
-  lastName = "Smith"
+lastName = "Smith"
 #+END_SRC
 
 *** Loop variables can be called anything
@@ -479,7 +482,7 @@ help([])
 #+END_SRC
 *** Try to find 2 ways to capitalize 'carbon'
 
-* Week 2: Building Programs
+* Building Programs
 ** Conditionals
 *** Use ~if~ statements to control whether or not a block of code is executed
 An ~if~ statement (more properly called a conditional statement) controls whether some block of code is executed or not.
@@ -578,7 +581,97 @@ for i in range(5):
 - Use () to group subsets of conditions
 - Aside: For a more natural way of working with many lists, look at ~zip()~
 
-** Files
+** GOTO Looping over data sets (1-day workshop order)
+** Writing Functions
+*** Break programs down into functions to make them easier to understand
+- Human beings can only keep a few items in working memory at a time.
+- Understand larger/more complicated ideas by understanding and combining pieces
+- Functions serve the same purpose in programs:
+  1. Encapsulate complexity so that we can treat it as a single “thing”
+  2. Removes complexity from remaining code, making it easier to test
+  3. Enables re-use: Write one time, use many times
+
+*** Define a function using ~def~ with a name, parameters, and a block of code
+#+BEGIN_SRC python
+def print_greeting():
+    print('Hello!')
+#+END_SRC
+- Begin the definition of a new function with ~def~, followed by the name of the function.
+- Must obey the same rules as variable names.
+- Parameters in parentheses; empty parentheses if the function doesn’t take any inputs.
+- Colon, then an indented block of code
+
+*** Defining a function does not run it
+- Like assigning a value to a variable
+- Must call the function to execute the code it contains.
+#+BEGIN_SRC python
+print_greeting()
+#+END_SRC
+
+*** Arguments in call are matched to parameters in definition
+- Specify parameters when defining a function; these become variables when the function is executed
+- By default (if you don’t name the arguments when calling the function) the arguments will be matched to parameters in the order the parameters are defined in the function.
+#+BEGIN_SRC python
+def print_date(year, month, day):
+    joined = '/'.join([year, month, day])
+    print(joined)
+
+print_date(1871, 3, 19)
+#+END_SRC
+
+#+BEGIN_SRC python
+# If you name the arguments you can specify any order
+print_date(month=3, day=19, year=1871)
+#+END_SRC
+
+*** Functions may return a result to their caller using ~return~
+- Use ~return ...~ to give a value back to the caller
+- May occur anywhere in the function, but functions are easier to understand if return occurs:
+  - At the start to handle special cases
+  - At the very end, with a final result
+- ~return~ ends the function's execution and /returns/ you to the code that originally called the function
+#+BEGIN_SRC python
+def average(values):
+    "Return average of values, or None if no values are supplied."
+
+    if len(values) == 0:
+        return None
+    return sum(values) / len(values)
+#+END_SRC
+- Docstring provides function help
+- Use triple quotes if you need the docstring to span multiple lines: ~"""Like this"""~
+- Here, the ~if~ statement "falls through" to the second ~return~ when ~values != 0~
+- For maximum clarity, you could add ~else~ before the outer ~return~
+
+#+BEGIN_SRC python
+a = average([1, 3, 4])
+print('average of actual values:', a)
+#+END_SRC
+
+#+BEGIN_SRC python
+print('average of empty list:', average([]))
+#+END_SRC
+
+#+BEGIN_SRC python
+# Every function returns something
+result = print_date(1871, 3, 19)
+print('result of call is:', result)
+#+END_SRC
+
+*** Using functions with conditionals in Pandas (optional)
+#+BEGIN_SRC python
+# Apply a function to every row of the selected column
+def my_fun(val):
+    pass
+
+data = pd.read_csv('data/gapminder_all.csv')
+data['new_col'] = data['lifeExp_1952'].apply(my_fun)
+#+END_SRC
+
+** TODO Variable Scope
+
+** TODO Programming Style
+** Working with unstructured files
 *** Open the file with a context handler
 #+BEGIN_SRC python
 with open('pettigrew_letters_ORIGINAL.txt', 'r') as file_in:
@@ -705,82 +798,6 @@ print('Letters:', len(letter_locations))
 1. Which items are in one list but not the other?
 2. Are there other structural regularities you could use to parse the data? (Note that in the letters, sometimes there are multiple letters under a single box header)
 
-** Writing Functions
-*** Break programs down into functions to make them easier to understand
-- Human beings can only keep a few items in working memory at a time.
-- Understand larger/more complicated ideas by understanding and combining pieces
-- Functions serve the same purpose in programs:
-  1. Encapsulate complexity so that we can treat it as a single “thing”
-  2. Removes complexity from remaining code, making it easier to test
-  3. Enables re-use: Write one time, use many times
-
-*** Define a function using ~def~ with a name, parameters, and a block of code
-#+BEGIN_SRC python
-def print_greeting():
-    print('Hello!')
-#+END_SRC
-- Begin the definition of a new function with ~def~, followed by the name of the function.
-- Must obey the same rules as variable names.
-- Parameters in parentheses; empty parentheses if the function doesn’t take any inputs.
-- Colon, then an indented block of code
-
-*** Defining a function does not run it
-- Like assigning a value to a variable
-- Must call the function to execute the code it contains.
-#+BEGIN_SRC python
-print_greeting()
-#+END_SRC
-
-*** Arguments in call are matched to parameters in definition
-- Specify parameters when defining a function; these become variables when the function is executed
-- By default (if you don’t name the arguments when calling the function) the arguments will be matched to parameters in the order the parameters are defined in the function.
-#+BEGIN_SRC python
-def print_date(year, month, day):
-    joined = '/'.join([year, month, day])
-    print(joined)
-
-print_date(1871, 3, 19)
-#+END_SRC
-
-#+BEGIN_SRC python
-# If you name the arguments you can specify any order
-print_date(month=3, day=19, year=1871)
-#+END_SRC
-
-*** Functions may return a result to their caller using ~return~
-- Use ~return ...~ to give a value back to the caller
-- May occur anywhere in the function, but functions are easier to understand if return occurs:
-  - At the start to handle special cases
-  - At the very end, with a final result
-- ~return~ ends the function's execution and /returns/ you to the code that originally called the function
-#+BEGIN_SRC python
-def average(values):
-    "Return average of values, or None if no values are supplied."
-
-    if len(values) == 0:
-        return None
-    return sum(values) / len(values)
-#+END_SRC
-- Docstring provides function help
-- Use triple quotes if you need the docstring to span multiple lines: ~"""Like this"""~
-- Here, the ~if~ statement "falls through" to the second ~return~ when ~values != 0~
-- For maximum clarity, you could add ~else~ before the outer ~return~
-
-#+BEGIN_SRC python
-a = average([1, 3, 4])
-print('average of actual values:', a)
-#+END_SRC
-
-#+BEGIN_SRC python
-print('average of empty list:', average([]))
-#+END_SRC
-
-#+BEGIN_SRC python
-# Every function returns something
-result = print_date(1871, 3, 19)
-print('result of call is:', result)
-#+END_SRC
-
 ** Exception handling (optional)
 Explicitly handle common errors, rather than waiting for your code to blow up.
 #+BEGIN_SRC python
@@ -848,11 +865,12 @@ with conn:
 
 * Week 3: Data manipulation with Pandas, stats with Statsmodels, ML with Scikit-Learn
 
-* TODO Explicitly talk about linear algebra with NumPy
-* TODO draw out matrix/list vs dataframe/dict
-* TODO Rewrite as dplyr/SQL-style query/filter/subset lesson
+** TODO Explicitly talk about linear algebra with NumPy
+** TODO draw out matrix/list vs dataframe/dict
+** TODO Rewrite as dplyr/SQL-style query/filter/subset lesson
 In general, the lesson spends too much time in the weeds. We want to take a high-level, declarative view of our data, and only invoke fiddly methods as necessary.
 - concat/merge https://pandas.pydata.org/docs/reference/api/pandas.concat.html
+- filter/group/subset: https://pandas.pydata.org/docs/user_guide/groupby.html
 
 ** Standard library vs. outside modules
 1. Install with conda package manager
@@ -920,6 +938,7 @@ data.describe()
 *** Pandas help files are dense; you should prefer the online documentation
 https://pandas.pydata.org/docs/user_guide/index.html
 
+*** CHALLENGE: (all)
 *** Other useful attributes and methods (optional)
 #+BEGIN_SRC python
 # rows, columns
@@ -1128,6 +1147,27 @@ for filename in directory_path.glob('gapminder_*.csv'):
         data = pd.read_csv(filename)
         print(filename, data['gdpPercap_1952'].min())
 #+END_SRC
+*** CHALLENGE: Comparing data
+Write a program that reads in the regional data sets and plots the average GDP per capita for each region over time in a single chart.
+
+Solution:
+
+#+BEGIN_SRC python
+import glob
+import pandas as pd
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots(1,1)
+for filename in glob.glob('data/gapminder_gdp*.csv'):
+    dataframe = pd.read_csv(filename)
+    # extract <region> from the filename, expected to be in the format 'data/gapminder_gdp_<region>.csv'.
+    # we will split the string using the split method and `_` as our separator,
+    # retrieve the last string in the list that split returns (`<region>.csv`),
+    # and then remove the `.csv` extension from that string.
+    region = filename.split('_')[-1][:-4]
+    dataframe.mean().plot(ax=ax, label=region)
+plt.legend()
+plt.show()
+#+END_SRC
 
 ** Command-Line Programs
 Batch processing from command line, .py files, and editors
@@ -1189,6 +1229,12 @@ https://scikit-learn.org/stable/_static/ml_map.png
 4. Treat all software as beta software
 
 * Week 4: Visualization with Matplotlib, Pandas, and Seaborn
+1. Use object-oriented Matplotlib syntax, e.g.: ~fig, axes = plt.subplot()~
+   https://matplotlib.org/stable/tutorials/introductory/lifecycle.html
+2. Pandas > Seaborn > Matplotlib decoration approach
+   - https://datacarpentry.org/python-socialsci/13-matplotlib/index.html
+   - https://ryxcommar.com/2020/04/11/why-you-hate-matplotlib/
+
 #+BEGIN_SRC python
 #+END_SRC
 ** What does it mean to be Pythonic?
@@ -1208,7 +1254,6 @@ Fundamentally, graphs communicate two types of information: 1) Relationships/tre
 3. Bar plot
 4. Histogram
 5. Box plot
-
 
 
 ** Matplotlib
