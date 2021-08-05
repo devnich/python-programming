@@ -668,9 +668,9 @@ data = pd.read_csv('data/gapminder_all.csv')
 data['new_col'] = data['lifeExp_1952'].apply(my_fun)
 #+END_SRC
 
-** TODO Variable Scope
-
-** TODO Programming Style
+** TODO Variable Scope (optional)
+** TODO Programming Style (optional)
+** TODO What have we learned? (1-day workshop ends)
 ** Working with unstructured files
 *** Open the file with a context handler
 #+BEGIN_SRC python
@@ -863,8 +863,7 @@ with conn:
 *** Revisit the ~str~ documentation with an eye towards using the string processing methods for cleaning up data
 *** How would you determine which letters and/or manifest items are missing?
 
-* Week 3: Data manipulation with Pandas, stats with Statsmodels, ML with Scikit-Learn
-
+* Data manipulation with Pandas, stats with Statsmodels, ML with Scikit-Learn
 ** TODO Explicitly talk about linear algebra with NumPy
 ** TODO draw out matrix/list vs dataframe/dict
 ** TODO Rewrite as dplyr/SQL-style query/filter/subset lesson
@@ -1228,7 +1227,7 @@ https://scikit-learn.org/stable/_static/ml_map.png
 3. Beware parameter mining
 4. Treat all software as beta software
 
-* Week 4: Visualization with Matplotlib, Pandas, and Seaborn
+* Visualization with Matplotlib, Pandas, and Seaborn
 1. Use object-oriented Matplotlib syntax, e.g.: ~fig, axes = plt.subplot()~
    https://matplotlib.org/stable/tutorials/introductory/lifecycle.html
 2. Pandas > Seaborn > Matplotlib decoration approach
