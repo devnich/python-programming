@@ -49,18 +49,20 @@ Most data is text and numbers:
 *** Numbers
 **** Common math operations can combine integers and floats
 #+BEGIN_SRC python
+5 - 3
 1 / 2.0
+#+END_SRC
+
+**** Counting operations require integers
+#+BEGIN_SRC python
+# optional
+10 % 3                  # "Modulus", or remainder
 #+END_SRC
 
 **** We can display more interesting output with the ~print()~ function
 #+BEGIN_SRC python
 print('half is', 1 / 2.0)
 print('three squared is', 3.0 ** 2)
-#+END_SRC
-
-**** Counting operations require integers
-#+BEGIN_SRC python
-print(10 % 3)                   # "Modulus", or remainder
 #+END_SRC
 
 *** Use the built-in function ~type()~ to find the type of a value
@@ -77,6 +79,7 @@ type('Derek')
 #+END_SRC
 
 *** Must convert strings to numbers or vice versa when operating on them
+Types have different properties; more about this later.
 #+BEGIN_SRC python
 1 + '2'                         # Produces an error
 #+END_SRC
@@ -486,9 +489,7 @@ help([])
 ** Conditionals
 *** Use ~if~ statements to control whether or not a block of code is executed
 An ~if~ statement (more properly called a conditional statement) controls whether some block of code is executed or not.
-Structure is similar to a ~for~ statement:
-  - First line opens with ~if~ and ends with a colon
-  - Body containing one or more statements is indented (usually by 4 spaces)
+
 #+BEGIN_SRC python
 mass = 3.54
 if mass > 3.0:
@@ -498,6 +499,10 @@ mass = 2.07
 if mass > 3.0:
     print (mass, 'is large')
 #+END_SRC
+
+Structure is similar to a ~for~ statement:
+  - First line opens with ~if~ and ends with a colon
+  - Body containing one or more statements is indented (usually by 4 spaces)
 
 *** Conditionals are often used inside loops
 Not much point using a conditional when we know the value (as above), but useful when we have a collection to process.
@@ -609,8 +614,6 @@ print_greeting()
 #+END_SRC
 
 *** Arguments in call are matched to parameters in definition
-- Specify parameters when defining a function; these become variables when the function is executed
-- By default (if you don’t name the arguments when calling the function) the arguments will be matched to parameters in the order the parameters are defined in the function.
 #+BEGIN_SRC python
 def print_date(year, month, day):
     joined = '/'.join([year, month, day])
@@ -624,24 +627,21 @@ print_date(1871, 3, 19)
 print_date(month=3, day=19, year=1871)
 #+END_SRC
 
+- Specify parameters when defining a function; these become variables when the function is executed
+- By default (if you don’t name the arguments when calling the function) the arguments will be matched to parameters in the order the parameters are defined in the function.
+
 *** Functions may return a result to their caller using ~return~
-- Use ~return ...~ to give a value back to the caller
-- May occur anywhere in the function, but functions are easier to understand if return occurs:
-  - At the start to handle special cases
-  - At the very end, with a final result
-- ~return~ ends the function's execution and /returns/ you to the code that originally called the function
+Use ~return ...~ to give a value back to the caller. ~return~ ends the function's execution and /returns/ you to the code that originally called the function.
 #+BEGIN_SRC python
 def average(values):
-    "Return average of values, or None if no values are supplied."
+"Return average of values, or None if no values are supplied."
 
-    if len(values) == 0:
+    if (values) == 0:
         return None
     return sum(values) / len(values)
 #+END_SRC
-- Docstring provides function help
-- Use triple quotes if you need the docstring to span multiple lines: ~"""Like this"""~
-- Here, the ~if~ statement "falls through" to the second ~return~ when ~values != 0~
-- For maximum clarity, you could add ~else~ before the outer ~return~
+
+Here, the ~if~ statement "falls through" to the second ~return~ when ~values != 0~. For maximum clarity, you could add ~else~ before the outer ~return~.
 
 #+BEGIN_SRC python
 a = average([1, 3, 4])
@@ -657,6 +657,12 @@ print('average of empty list:', average([]))
 result = print_date(1871, 3, 19)
 print('result of call is:', result)
 #+END_SRC
+
+- ~return~ can occur anywhere in the function, but functions are easier to understand if return occurs:
+  - At the start to handle special cases
+  - At the very end, with a final result
+- Docstring provides function help
+- Use triple quotes if you need the docstring to span multiple lines: ~"""Like this"""~
 
 *** Using functions with conditionals in Pandas (optional)
 #+BEGIN_SRC python
@@ -1115,13 +1121,14 @@ for filename in ['gapminder_gdp_africa.csv', 'gapminder_gdp_asia.csv']:
 #+END_SRC
 
 *** Use glob.glob to find sets of files whose names match a pattern
-In Unix, the term “globbing” means “matching a set of files with a pattern”. The most common patterns are:
-- `*` meaning “match zero or more characters”
-- `?` meaning “match exactly one character”
 #+BEGIN_SRC python
 import glob
 print('all csv files in data directory:', glob.glob('*.csv'))
 #+END_SRC
+
+In Unix, the term “globbing” means “matching a set of files with a pattern”. The most common patterns are:
+- `*` meaning “match zero or more characters”
+- `?` meaning “match exactly one character”
 
 *** Use glob and for to process batches of files
 #+BEGIN_SRC python
@@ -1146,7 +1153,8 @@ for filename in directory_path.glob('gapminder_*.csv'):
         data = pd.read_csv(filename)
         print(filename, data['gdpPercap_1952'].min())
 #+END_SRC
-*** CHALLENGE: Comparing data
+
+*** CHALLENGE: Comparing data (optional)
 Write a program that reads in the regional data sets and plots the average GDP per capita for each region over time in a single chart.
 
 Solution:

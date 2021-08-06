@@ -1,64 +1,64 @@
 
 # Table of Contents
 
-1.  [Fundamentals](#orgf50ab23)
-    1.  [Orientation](#org76993de)
-    2.  [Jupyter commands](#org75d7e63)
-    3.  [Data Types and Type Conversion](#org9eed61c)
-    4.  [Variables and Assignment](#orga206b98)
-    5.  [Built-in Functions and Help](#orgc95665b)
-    6.  [Libraries](#org6331efb)
-    7.  [Lists](#org2a849ef)
-    8.  [GOTO Reading Tabular Data into DataFrames (1-day workshop order)](#orgd7e4278)
-    9.  [GOTO Pandas DataFrames (1-day workshop order)](#orgb5b5123)
-    10. [GOTO Plotting (1-day workshop order)](#orga20b04d)
-    11. [For Loops](#org90bd930)
-    12. [Dictionaries (optional)](#org3cdd441)
-    13. [Other containers (optional)](#org5f5a636)
-    14. [Homework](#org1294fb8)
-2.  [Building Programs](#orgaa72791)
-    1.  [Conditionals](#org42b77bd)
-    2.  [GOTO Looping over data sets (1-day workshop order)](#org542ac35)
-    3.  [Writing Functions](#org099030d)
-    4.  [Variable Scope (optional)](#org4052206)
-    5.  [Programming Style (optional)](#org435708f)
-    6.  [What have we learned? (1-day workshop ends)](#org4146b63)
-    7.  [Working with unstructured files](#org83f3dc4)
-    8.  [Exception handling (optional)](#org666b6e0)
-    9.  [Reducing memory usage 1: Read a file one line at a time (optional)](#org5fa1b1d)
-    10. [Reducing memory usage 2: Use an SQLite database (optional)](#org8ba89ef)
-    11. [Other optional topics](#org47485d7)
-    12. [Homework](#org103205b)
-3.  [Data manipulation with Pandas, stats with Statsmodels, ML with Scikit-Learn](#orgdacdecc)
-    1.  [Explicitly talk about linear algebra with NumPy](#org4b98c7a)
-    2.  [draw out matrix/list vs dataframe/dict](#org6121b7a)
-    3.  [Rewrite as dplyr/SQL-style query/filter/subset lesson](#org1cba3e5)
-    4.  [Standard library vs. outside modules](#orgd712403)
-    5.  [SciPy project](#org4d74005)
-    6.  [Downstream libraries](#orgeaa2762)
-    7.  [Reading Tabular Data into DataFrames](#orgde3feec)
-    8.  [Pandas DataFrames](#org121aa6d)
-    9.  [Looping Over Data Sets](#org0f3f07b)
-    10. [Command-Line Programs](#org760d705)
-    11. [Statistics](#orgedbe3ad)
-    12. [Machine learning with Scikit-Learn](#org71de577)
-4.  [Visualization with Matplotlib, Pandas, and Seaborn](#org5ac286a)
-    1.  [What does it mean to be Pythonic?](#org21069b3)
-    2.  [Seaborn 0.11 new features: https://seaborn.pydata.org/whatsnew.html](#orgb81da2c)
-    3.  [Workshop Objectives](#orgd9f1118)
-    4.  [Big 5 graphs](#org4332656)
-    5.  [Matplotlib](#orga012958)
-5.  [Credits](#org8e4403d)
-6.  [Example Data](#org44a52c5)
+1.  [Fundamentals](#org6fd3d08)
+    1.  [Orientation](#orgd4ad0cc)
+    2.  [Jupyter commands](#org0236508)
+    3.  [Data Types and Type Conversion](#orgc3c6782)
+    4.  [Variables and Assignment](#org9d30c37)
+    5.  [Built-in Functions and Help](#org754ebdc)
+    6.  [Libraries](#orgf067854)
+    7.  [Lists](#org51bdc39)
+    8.  [GOTO Reading Tabular Data into DataFrames (1-day workshop order)](#org9bcc21f)
+    9.  [GOTO Pandas DataFrames (1-day workshop order)](#org19525ef)
+    10. [GOTO Plotting (1-day workshop order)](#org8237166)
+    11. [For Loops](#org21561d5)
+    12. [Dictionaries (optional)](#orge3c82dd)
+    13. [Other containers (optional)](#org9b0a0bd)
+    14. [Homework](#org038dfc2)
+2.  [Building Programs](#orgcf6dc02)
+    1.  [Conditionals](#org5a6f48b)
+    2.  [GOTO Looping over data sets (1-day workshop order)](#org2a728bb)
+    3.  [Writing Functions](#org1dce740)
+    4.  [Variable Scope (optional)](#orgdb3a9b4)
+    5.  [Programming Style (optional)](#orgb8a23d3)
+    6.  [What have we learned? (1-day workshop ends)](#orgba44333)
+    7.  [Working with unstructured files](#org554b4d3)
+    8.  [Exception handling (optional)](#orgd4d2ed7)
+    9.  [Reducing memory usage 1: Read a file one line at a time (optional)](#org79ccbce)
+    10. [Reducing memory usage 2: Use an SQLite database (optional)](#orgacced09)
+    11. [Other optional topics](#orgb5f30ca)
+    12. [Homework](#orgaad88f4)
+3.  [Data manipulation with Pandas, stats with Statsmodels, ML with Scikit-Learn](#orgab1f806)
+    1.  [Explicitly talk about linear algebra with NumPy](#orgb357582)
+    2.  [draw out matrix/list vs dataframe/dict](#org0e403e3)
+    3.  [Rewrite as dplyr/SQL-style query/filter/subset lesson](#org7166c0a)
+    4.  [Standard library vs. outside modules](#org265b24e)
+    5.  [SciPy project](#org979859a)
+    6.  [Downstream libraries](#org8c8bfee)
+    7.  [Reading Tabular Data into DataFrames](#orge8c0c6a)
+    8.  [Pandas DataFrames](#org96e0665)
+    9.  [Looping Over Data Sets](#org45670a8)
+    10. [Command-Line Programs](#org344deae)
+    11. [Statistics](#orga1baeb9)
+    12. [Machine learning with Scikit-Learn](#org4f7aba2)
+4.  [Visualization with Matplotlib, Pandas, and Seaborn](#org4abe8ab)
+    1.  [What does it mean to be Pythonic?](#org9df00c9)
+    2.  [Seaborn 0.11 new features: https://seaborn.pydata.org/whatsnew.html](#org8f85e7f)
+    3.  [Workshop Objectives](#org058f8de)
+    4.  [Big 5 graphs](#org78a5702)
+    5.  [Matplotlib](#orgc593623)
+5.  [Credits](#org24330c9)
+6.  [Example Data](#org0abb530)
 
 
 
-<a id="orgf50ab23"></a>
+<a id="org6fd3d08"></a>
 
 # Fundamentals
 
 
-<a id="org76993de"></a>
+<a id="orgd4ad0cc"></a>
 
 ## Orientation
 
@@ -80,7 +80,7 @@
 -   Bad for massive or long-running processes
 
 
-<a id="org75d7e63"></a>
+<a id="org0236508"></a>
 
 ## Jupyter commands
 
@@ -113,7 +113,7 @@ Open Terminal (MacOS/Linux) or Anaconda Prompt (Windows)
 -   Rename your notebook to something informative
 
 
-<a id="org9eed61c"></a>
+<a id="orgc3c6782"></a>
 
 ## Data Types and Type Conversion
 
@@ -133,18 +133,20 @@ Most data is text and numbers:
 
 #### Common math operations can combine integers and floats
 
+    5 - 3
     1 / 2.0
+
+
+#### Counting operations require integers
+
+    # optional
+    10 % 3                  # "Modulus", or remainder
 
 
 #### We can display more interesting output with the `print()` function
 
     print('half is', 1 / 2.0)
     print('three squared is', 3.0 ** 2)
-
-
-#### Counting operations require integers
-
-    print(10 % 3)                   # "Modulus", or remainder
 
 
 ### Use the built-in function `type()` to find the type of a value
@@ -158,6 +160,8 @@ Most data is text and numbers:
 
 ### Must convert strings to numbers or vice versa when operating on them
 
+Types have different properties; more about this later.
+
     1 + '2'                         # Produces an error
 
     1 + float('2')
@@ -168,7 +172,7 @@ Most data is text and numbers:
     print(float('3'))
 
 
-<a id="orga206b98"></a>
+<a id="org9d30c37"></a>
 
 ## Variables and Assignment
 
@@ -218,7 +222,7 @@ Variables are names for values.
 ### Use meaningful names!
 
 
-<a id="orgc95665b"></a>
+<a id="org754ebdc"></a>
 
 ## Built-in Functions and Help
 
@@ -292,7 +296,7 @@ Solution:
 `max` and `min` return TypeErrors in this case because the correct number of parameters was not supplied. If it just returned None, the error would be much harder to trace as it would likely be stored into a variable and used later in the program, only to likely throw a runtime error.
 
 
-<a id="org6331efb"></a>
+<a id="orgf067854"></a>
 
 ## Libraries
 
@@ -373,7 +377,7 @@ Note that this function returns a list of values. We will learn about lists in e
 There’s also other functions you could use, but with more convoluted code as a result.
 
 
-<a id="org2a849ef"></a>
+<a id="org51bdc39"></a>
 
 ## Lists
 
@@ -496,22 +500,22 @@ Count from 0
 -   lists and files
 
 
-<a id="orgd7e4278"></a>
+<a id="org9bcc21f"></a>
 
 ## GOTO Reading Tabular Data into DataFrames (1-day workshop order)
 
 
-<a id="orgb5b5123"></a>
+<a id="org19525ef"></a>
 
 ## GOTO Pandas DataFrames (1-day workshop order)
 
 
-<a id="orga20b04d"></a>
+<a id="org8237166"></a>
 
 ## GOTO Plotting (1-day workshop order)
 
 
-<a id="org90bd930"></a>
+<a id="org21561d5"></a>
 
 ## For Loops
 
@@ -575,7 +579,7 @@ Count from 0
     print(total)
 
 
-<a id="org3cdd441"></a>
+<a id="orge3c82dd"></a>
 
 ## Dictionaries (optional)
 
@@ -595,7 +599,7 @@ Count from 0
         print(key, 'is', val[0], val[1])
 
 
-<a id="org5f5a636"></a>
+<a id="org9b0a0bd"></a>
 
 ## Other containers (optional)
 
@@ -603,7 +607,7 @@ Count from 0
 -   Sets
 
 
-<a id="org1294fb8"></a>
+<a id="org038dfc2"></a>
 
 ## Homework
 
@@ -617,12 +621,12 @@ Count from 0
 ### Try to find 2 ways to capitalize 'carbon'
 
 
-<a id="orgaa72791"></a>
+<a id="orgcf6dc02"></a>
 
 # Building Programs
 
 
-<a id="org42b77bd"></a>
+<a id="org5a6f48b"></a>
 
 ## Conditionals
 
@@ -630,10 +634,6 @@ Count from 0
 ### Use `if` statements to control whether or not a block of code is executed
 
 An `if` statement (more properly called a conditional statement) controls whether some block of code is executed or not.
-Structure is similar to a `for` statement:
-
--   First line opens with `if` and ends with a colon
--   Body containing one or more statements is indented (usually by 4 spaces)
 
     mass = 3.54
     if mass > 3.0:
@@ -642,6 +642,11 @@ Structure is similar to a `for` statement:
     mass = 2.07
     if mass > 3.0:
         print (mass, 'is large')
+
+Structure is similar to a `for` statement:
+
+-   First line opens with `if` and ends with a colon
+-   Body containing one or more statements is indented (usually by 4 spaces)
 
 
 ### Conditionals are often used inside loops
@@ -733,12 +738,12 @@ Often, you want some combination of things to be true. You can combine relations
 -   Aside: For a more natural way of working with many lists, look at `zip()`
 
 
-<a id="org542ac35"></a>
+<a id="org2a728bb"></a>
 
 ## GOTO Looping over data sets (1-day workshop order)
 
 
-<a id="org099030d"></a>
+<a id="org1dce740"></a>
 
 ## Writing Functions
 
@@ -774,9 +779,6 @@ Often, you want some combination of things to be true. You can combine relations
 
 ### Arguments in call are matched to parameters in definition
 
--   Specify parameters when defining a function; these become variables when the function is executed
--   By default (if you don’t name the arguments when calling the function) the arguments will be matched to parameters in the order the parameters are defined in the function.
-
     def print_date(year, month, day):
         joined = '/'.join([year, month, day])
         print(joined)
@@ -786,26 +788,22 @@ Often, you want some combination of things to be true. You can combine relations
     # If you name the arguments you can specify any order
     print_date(month=3, day=19, year=1871)
 
+-   Specify parameters when defining a function; these become variables when the function is executed
+-   By default (if you don’t name the arguments when calling the function) the arguments will be matched to parameters in the order the parameters are defined in the function.
+
 
 ### Functions may return a result to their caller using `return`
 
--   Use `return ...` to give a value back to the caller
--   May occur anywhere in the function, but functions are easier to understand if return occurs:
-    -   At the start to handle special cases
-    -   At the very end, with a final result
--   `return` ends the function's execution and *returns* you to the code that originally called the function
+Use `return ...` to give a value back to the caller. `return` ends the function's execution and *returns* you to the code that originally called the function.
 
     def average(values):
-        "Return average of values, or None if no values are supplied."
+    "Return average of values, or None if no values are supplied."
     
-        if len(values) == 0:
+        if (values) == 0:
             return None
         return sum(values) / len(values)
 
--   Docstring provides function help
--   Use triple quotes if you need the docstring to span multiple lines: `"""Like this"""`
--   Here, the `if` statement "falls through" to the second `return` when `values != 0`
--   For maximum clarity, you could add `else` before the outer `return`
+Here, the `if` statement "falls through" to the second `return` when `values != 0`. For maximum clarity, you could add `else` before the outer `return`.
 
     a = average([1, 3, 4])
     print('average of actual values:', a)
@@ -815,6 +813,12 @@ Often, you want some combination of things to be true. You can combine relations
     # Every function returns something
     result = print_date(1871, 3, 19)
     print('result of call is:', result)
+
+-   `return` can occur anywhere in the function, but functions are easier to understand if return occurs:
+    -   At the start to handle special cases
+    -   At the very end, with a final result
+-   Docstring provides function help
+-   Use triple quotes if you need the docstring to span multiple lines: `"""Like this"""`
 
 
 ### Using functions with conditionals in Pandas (optional)
@@ -827,22 +831,22 @@ Often, you want some combination of things to be true. You can combine relations
     data['new_col'] = data['lifeExp_1952'].apply(my_fun)
 
 
-<a id="org4052206"></a>
+<a id="orgdb3a9b4"></a>
 
 ## TODO Variable Scope (optional)
 
 
-<a id="org435708f"></a>
+<a id="orgb8a23d3"></a>
 
 ## TODO Programming Style (optional)
 
 
-<a id="org4146b63"></a>
+<a id="orgba44333"></a>
 
 ## TODO What have we learned? (1-day workshop ends)
 
 
-<a id="org83f3dc4"></a>
+<a id="org554b4d3"></a>
 
 ## Working with unstructured files
 
@@ -978,7 +982,7 @@ Demonstrate string tests with manifest\_list:
 2.  Are there other structural regularities you could use to parse the data? (Note that in the letters, sometimes there are multiple letters under a single box header)
 
 
-<a id="org666b6e0"></a>
+<a id="orgd4d2ed7"></a>
 
 ## Exception handling (optional)
 
@@ -1012,7 +1016,7 @@ Explicitly handle common errors, rather than waiting for your code to blow up.
 -   Use judiciously, and be as specific as possible. When in doubt, allow your code to blow up rather than silently commit errors.
 
 
-<a id="org5fa1b1d"></a>
+<a id="org79ccbce"></a>
 
 ## Reducing memory usage 1: Read a file one line at a time (optional)
 
@@ -1022,7 +1026,7 @@ Explicitly handle common errors, rather than waiting for your code to blow up.
             pass
 
 
-<a id="org8ba89ef"></a>
+<a id="orgacced09"></a>
 
 ## Reducing memory usage 2: Use an SQLite database (optional)
 
@@ -1037,7 +1041,7 @@ Explicitly handle common errors, rather than waiting for your code to blow up.
     # Do stuff with `results`
 
 
-<a id="org47485d7"></a>
+<a id="orgb5f30ca"></a>
 
 ## Other optional topics
 
@@ -1049,7 +1053,7 @@ Explicitly handle common errors, rather than waiting for your code to blow up.
 -   Defensive programming
 
 
-<a id="org103205b"></a>
+<a id="orgaad88f4"></a>
 
 ## Homework
 
@@ -1060,22 +1064,22 @@ Explicitly handle common errors, rather than waiting for your code to blow up.
 ### How would you determine which letters and/or manifest items are missing?
 
 
-<a id="orgdacdecc"></a>
+<a id="orgab1f806"></a>
 
 # Data manipulation with Pandas, stats with Statsmodels, ML with Scikit-Learn
 
 
-<a id="org4b98c7a"></a>
+<a id="orgb357582"></a>
 
 ## TODO Explicitly talk about linear algebra with NumPy
 
 
-<a id="org6121b7a"></a>
+<a id="org0e403e3"></a>
 
 ## TODO draw out matrix/list vs dataframe/dict
 
 
-<a id="org1cba3e5"></a>
+<a id="org7166c0a"></a>
 
 ## TODO Rewrite as dplyr/SQL-style query/filter/subset lesson
 
@@ -1085,7 +1089,7 @@ In general, the lesson spends too much time in the weeds. We want to take a high
 -   filter/group/subset: <https://pandas.pydata.org/docs/user_guide/groupby.html>
 
 
-<a id="orgd712403"></a>
+<a id="org265b24e"></a>
 
 ## Standard library vs. outside modules
 
@@ -1093,7 +1097,7 @@ In general, the lesson spends too much time in the weeds. We want to take a high
 2.  Install with pip
 
 
-<a id="org4d74005"></a>
+<a id="org979859a"></a>
 
 ## SciPy project
 
@@ -1104,7 +1108,7 @@ In general, the lesson spends too much time in the weeds. We want to take a high
     <https://docs.scipy.org/doc/scipy/reference/stats.html>
 
 
-<a id="orgeaa2762"></a>
+<a id="org8c8bfee"></a>
 
 ## Downstream libraries
 
@@ -1116,7 +1120,7 @@ In general, the lesson spends too much time in the weeds. We want to take a high
 4.  &#x2026;and many more: <https://www.scipy.org/topical-software.html>
 
 
-<a id="orgde3feec"></a>
+<a id="orge8c0c6a"></a>
 
 ## Reading Tabular Data into DataFrames
 
@@ -1212,7 +1216,7 @@ Objects have attributes (i.e. data, fields, properties) and methods (i.e. proced
     pp.pprint(df_attr)
 
 
-<a id="org121aa6d"></a>
+<a id="org96e0665"></a>
 
 ## Pandas DataFrames
 
@@ -1346,7 +1350,7 @@ Capture the results of your filter in a new file, rather than overwriting your o
 -   Merge, join, concatenate and compare: <https://pandas.pydata.org/docs/user_guide/merging.html>
 
 
-<a id="org0f3f07b"></a>
+<a id="org45670a8"></a>
 
 ## Looping Over Data Sets
 
@@ -1367,13 +1371,13 @@ Capture the results of your filter in a new file, rather than overwriting your o
 
 ### Use glob.glob to find sets of files whose names match a pattern
 
+    import glob
+    print('all csv files in data directory:', glob.glob('*.csv'))
+
 In Unix, the term “globbing” means “matching a set of files with a pattern”. The most common patterns are:
 
 -   \`\*\` meaning “match zero or more characters”
 -   \`?\` meaning “match exactly one character”
-
-    import glob
-    print('all csv files in data directory:', glob.glob('*.csv'))
 
 
 ### Use glob and for to process batches of files
@@ -1399,7 +1403,7 @@ Where are we?
             print(filename, data['gdpPercap_1952'].min())
 
 
-### CHALLENGE: Comparing data
+### CHALLENGE: Comparing data (optional)
 
 Write a program that reads in the regional data sets and plots the average GDP per capita for each region over time in a single chart.
 
@@ -1421,7 +1425,7 @@ Solution:
     plt.show()
 
 
-<a id="org760d705"></a>
+<a id="org344deae"></a>
 
 ## Command-Line Programs
 
@@ -1430,7 +1434,7 @@ Batch processing from command line, .py files, and editors
     python my_program.py
 
 
-<a id="orgedbe3ad"></a>
+<a id="orga1baeb9"></a>
 
 ## Statistics
 
@@ -1480,7 +1484,7 @@ Direct download link: <https://ndownloader.figshare.com/files/10717177>
     help(statsmodels.base.model.Model)
 
 
-<a id="org71de577"></a>
+<a id="org4f7aba2"></a>
 
 ## Machine learning with Scikit-Learn
 
@@ -1501,7 +1505,7 @@ Direct download link: <https://ndownloader.figshare.com/files/10717177>
 4.  Treat all software as beta software
 
 
-<a id="org5ac286a"></a>
+<a id="org4abe8ab"></a>
 
 # Visualization with Matplotlib, Pandas, and Seaborn
 
@@ -1512,19 +1516,19 @@ Direct download link: <https://ndownloader.figshare.com/files/10717177>
     -   <https://ryxcommar.com/2020/04/11/why-you-hate-matplotlib/>
 
 
-<a id="org21069b3"></a>
+<a id="org9df00c9"></a>
 
 ## What does it mean to be Pythonic?
 
 The seamy history of Python plotting
 
 
-<a id="orgb81da2c"></a>
+<a id="org8f85e7f"></a>
 
 ## Seaborn 0.11 new features: <https://seaborn.pydata.org/whatsnew.html>
 
 
-<a id="orgd9f1118"></a>
+<a id="org058f8de"></a>
 
 ## Workshop Objectives
 
@@ -1534,7 +1538,7 @@ The seamy history of Python plotting
 4.  Save plots to an image file
 
 
-<a id="org4332656"></a>
+<a id="org78a5702"></a>
 
 ## Big 5 graphs
 
@@ -1547,7 +1551,7 @@ Fundamentally, graphs communicate two types of information: 1) Relationships/tre
 5.  Box plot
 
 
-<a id="orga012958"></a>
+<a id="orgc593623"></a>
 
 ## Matplotlib
 
@@ -1622,7 +1626,7 @@ In principle, nearly every element on a matplotlib figure is independently modif
     gapminder = pd.read_csv("gapminder_gdp_europe.csv", index_col='country')
 
 
-<a id="org8e4403d"></a>
+<a id="org24330c9"></a>
 
 # Credits
 
@@ -1634,7 +1638,7 @@ In principle, nearly every element on a matplotlib figure is independently modif
 -   Rhondene Wint: Matplotlib and Seaborn notes
 
 
-<a id="org44a52c5"></a>
+<a id="org0abb530"></a>
 
 # Example Data
 
