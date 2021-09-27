@@ -1,64 +1,62 @@
 
 # Table of Contents
 
-1.  [Fundamentals](#org8fdc1e1)
-    1.  [Orientation](#orgc53de53)
-    2.  [Jupyter commands](#orgf0299ad)
-    3.  [Data Types and Type Conversion](#org15f0a4b)
-    4.  [Variables and Assignment](#org7030b37)
-    5.  [Built-in Functions and Help](#orgb40e72e)
-    6.  [Libraries](#org185d4db)
-    7.  [Lists](#org58267e4)
-    8.  [GOTO Reading Tabular Data into DataFrames (1-day workshop order)](#orgb731079)
-    9.  [GOTO Pandas DataFrames (1-day workshop order)](#org19913de)
-    10. [GOTO Plotting (1-day workshop order)](#org5dab920)
-    11. [For Loops](#orgb023cb1)
-    12. [Dictionaries (optional)](#org7da21af)
-    13. [Other containers (optional)](#org9b8b72a)
-    14. [Homework](#org2c6772b)
-2.  [Building Programs](#org4d5424c)
-    1.  [Conditionals](#org53147a4)
-    2.  [GOTO Looping over data sets (1-day workshop order)](#org9dba9ba)
-    3.  [Writing Functions](#orgcac4d61)
-    4.  [Variable Scope (optional)](#orgf3d7249)
-    5.  [Programming Style (optional)](#org680ba55)
-    6.  [What have we learned? (1-day workshop ends)](#org2fe0b70)
-    7.  [Working with unstructured files](#org4e78bd1)
-    8.  [Exception handling (optional)](#org3016ccb)
-    9.  [Reducing memory usage 1: Read a file one line at a time (optional)](#org4caa36c)
-    10. [Reducing memory usage 2: Use an SQLite database (optional)](#orgaadd779)
-    11. [Other optional topics](#org5f469e1)
-    12. [Homework](#org15622ec)
-3.  [Data manipulation with Pandas, stats with Statsmodels, ML with Scikit-Learn](#orgd51c3ee)
-    1.  [Explicitly talk about linear algebra with NumPy](#org7e8e3e3)
-    2.  [draw out matrix/list vs dataframe/dict](#org2fc40fc)
-    3.  [Rewrite as dplyr/SQL-style query/filter/subset lesson](#org41b7994)
-    4.  [Standard library vs. outside modules](#orgfb07750)
-    5.  [SciPy project](#org7f1ce88)
-    6.  [Downstream libraries](#orgcf2927f)
-    7.  [Reading Tabular Data into DataFrames](#org9496a4d)
-    8.  [Pandas DataFrames](#orga38016a)
-    9.  [Looping Over Data Sets](#org3d55dc9)
-    10. [Command-Line Programs](#org11f1b4e)
-    11. [Statistics](#orgdc223a1)
-    12. [Machine learning with Scikit-Learn](#org82b97bc)
-4.  [Visualization with Matplotlib, Pandas, and Seaborn](#org7b4e506)
-    1.  [What does it mean to be Pythonic?](#orgb1ba861)
-    2.  [Seaborn 0.11 new features: https://seaborn.pydata.org/whatsnew.html](#org408d98f)
-    3.  [Workshop Objectives](#org4c4a920)
-    4.  [Big 5 graphs](#org1efa770)
-    5.  [Matplotlib](#orgee55364)
-5.  [Credits](#org76c5dd5)
-6.  [Example Data](#orgde1583c)
+1.  [Fundamentals](#org546bd3e)
+    1.  [Orientation](#org3f82394)
+    2.  [Jupyter commands](#org355debf)
+    3.  [Variables and Assignment](#orgd3072ce)
+    4.  [Data Types and Type Conversion](#orgcdea3d2)
+    5.  [Built-in Functions and Help](#org5baeff6)
+    6.  [Libraries](#org986a9f0)
+    7.  [Lists](#orgcab3595)
+    8.  [Dictionaries](#orge2e80a7)
+    9.  [CHALLENGE: From Strings to Lists and Back](#orge27aac5)
+    10. [Solution](#org43d4381)
+    11. [CHALLENGE: Convert lists to dictionary (group)](#orgba205e2)
+    12. [Other containers (optional)](#org6969bd7)
+2.  [Data manipulation with Pandas, stats with Statsmodels, ML with Scikit-Learn](#orgbcf3303)
+    1.  [Reading Tabular Data into DataFrames](#org00f82ff)
+    2.  [Pandas DataFrames](#org0f29c7c)
+    3.  [Explicitly talk about linear algebra with NumPy](#orgfb820f7)
+    4.  [draw out matrix/list vs dataframe/dict](#orgd2b120c)
+    5.  [Rewrite as dplyr/SQL-style query/filter/subset lesson](#org9d39177)
+    6.  [Standard library vs. outside modules](#orgb67932c)
+    7.  [SciPy project](#org64ecaec)
+    8.  [Downstream libraries](#org8652b79)
+    9.  [Command-Line Programs](#org31b4ce0)
+    10. [Statistics](#orgbc51a0a)
+    11. [Machine learning with Scikit-Learn](#org09ba3c7)
+3.  [Visualization with Matplotlib, Pandas, and Seaborn](#org132e527)
+    1.  [What does it mean to be Pythonic?](#orgbbf24a1)
+    2.  [Seaborn 0.11 new features: https://seaborn.pydata.org/whatsnew.html](#org0498c49)
+    3.  [Workshop Objectives](#org49f843c)
+    4.  [Big 5 graphs](#org99dd319)
+    5.  [Matplotlib](#org65ce695)
+4.  [Building Programs](#org8a13ed8)
+    1.  [For Loops](#org791377c)
+    2.  [Conditionals](#orga32e33b)
+    3.  [Looping Over Data Sets](#org0131869)
+    4.  [Writing Functions](#org25fdc3a)
+    5.  [Variable Scope (optional)](#orgc47d1de)
+    6.  [Programming Style (optional)](#org5025c42)
+    7.  [Working with unstructured files (optional)](#orge3ffdd3)
+    8.  [Exception handling (optional)](#org4ef786c)
+    9.  [Reducing memory usage 1: Read a file one line at a time (optional)](#orgda93371)
+    10. [Reducing memory usage 2: Use an SQLite database (optional)](#org730d574)
+    11. [Other optional topics](#org4eaa384)
+    12. [Homework](#org812d082)
+5.  [Credits](#orgeba3eff)
+6.  [References](#orgba9f34b)
+7.  [Example Data](#org833b1fe)
 
 
 
-<a id="org8fdc1e1"></a>
+<a id="org546bd3e"></a>
 
 # Fundamentals
 
 
-<a id="orgc53de53"></a>
+<a id="org3f82394"></a>
 
 ## Orientation
 
@@ -72,6 +70,10 @@
 
 ### Python is pretty good at lots of things
 
+-   "Glue" language intended to replace shell and Perl
+-   Concise, readable, good for rapid prototyping
+-   Access to linear algebra libraries in FORTRAN/C → user-friendly numeric computing
+
 
 ### Literate programming and notebooks
 
@@ -80,7 +82,7 @@
 -   Bad for massive or long-running processes
 
 
-<a id="orgf0299ad"></a>
+<a id="org355debf"></a>
 
 ## Jupyter commands
 
@@ -113,66 +115,7 @@ Open Terminal (MacOS/Linux) or Anaconda Prompt (Windows)
 -   Rename your notebook to something informative
 
 
-<a id="org15f0a4b"></a>
-
-## Data Types and Type Conversion
-
-
-### Every value has a type
-
-Most data is text and numbers:
-
--   Integers: whole numbers (counting)
--   Floats: real numbers (math)
--   Strings: text
--   &#x2026;and many others
-
-
-### Numbers
-
-
-#### Common math operations can combine integers and floats
-
-    5 - 3
-    1 / 2.0
-
-
-#### Counting operations require integers
-
-    # optional
-    10 % 3                  # "Modulus", or remainder
-
-
-#### We can display more interesting output with the `print()` function
-
-    print('half is', 1 / 2.0)
-    print('three squared is', 3.0 ** 2)
-
-
-### Use the built-in function `type()` to find the type of a value
-
-    type(53)
-
-    type(3.12)
-
-    type('Derek')
-
-
-### Must convert strings to numbers or vice versa when operating on them
-
-Types have different properties; more about this later.
-
-    1 + '2'                         # Produces an error
-
-    1 + float('2')
-
-    # You can embed functions inside other functions
-    print(str(43))
-    print(int('3'))
-    print(float('3'))
-
-
-<a id="org7030b37"></a>
+<a id="orgd3072ce"></a>
 
 ## Variables and Assignment
 
@@ -222,7 +165,70 @@ Variables are names for values.
 ### Use meaningful names!
 
 
-<a id="orgb40e72e"></a>
+<a id="orgcdea3d2"></a>
+
+## Data Types and Type Conversion
+
+
+### Every value has a type
+
+Most data is text and numbers:
+
+-   Integers: whole numbers (counting)
+-   Floats: real numbers (math)
+-   Strings: text
+-   &#x2026;and many others
+
+
+### Use the built-in function `type()` to find the type of a value
+
+    type(53)
+
+    type(3.12)
+
+    fitness = 'average'
+    type(fitness)
+
+
+### Types control what operations can be performed on a given value
+
+    print(5 - 3)
+
+    # This will produce an error
+    print('hello' - 'h')
+
+    len('hello')
+
+    # This will produce an error
+    len(5)
+
+
+### Must convert strings to numbers or vice versa when operating on them
+
+Types have different properties; more about this later.
+
+    1 + '2'                         # Produces an error
+
+    1 + float('2')
+
+
+### Can mix integers and floats freely in operations
+
+    # This will "do the right thing" and convert everything to floats
+    1 / 2.0
+
+
+### CHALLENGE: Explain what each operator does
+
+    # Floor
+    print('5 // 3:', 5 // 3)
+    # Floating point
+    print('5 / 3:', 5 / 3)
+    # Modulus (remainder)
+    print('5 % 3:', 5 % 3)
+
+
+<a id="org5baeff6"></a>
 
 ## Built-in Functions and Help
 
@@ -244,6 +250,16 @@ Variables are names for values.
     print('before')
     print()
     print('after')
+
+
+### Every function returns *something*
+
+    result = len("hello")
+    print(result)
+
+    # printing to the screen is a "side effect" that doesn't produce a useable result
+      result = print("hello")
+      print(result)
 
 
 ### Commonly-used built-in functions include `max()`, `min()`, and `round()`
@@ -275,6 +291,40 @@ Variables are names for values.
 -   1 optional argument with a default value: `ndigits=None`
 
 
+### Functions attached to objects are called methods
+
+    my_string = 'Hello world!'
+    
+    # calling the swapcase method on the my_string object
+    print(my_string.swapcase())
+
+
+#### Methods can be chained together
+
+    print(my_string.isupper())          # Not all the letters are uppercase
+    print(my_string.upper())            # This capitalizes all the letters
+    
+    print(my_string.upper().isupper())  # Now all the letters are uppercase
+
+
+#### You can view an object's methods and attributes using `help()` or `dir()`
+
+    # The short, short version
+    dir(my_string)
+    
+    # More verbose help
+    help(str)
+
+
+#### Some methods and attributes are "private"; you're not supposed to use these directly
+
+    # the len function takes a string as an argument and returns the length of the string
+    print(len(my_string))
+    
+    # calling the internal __len__ method on the my_string object, used by len(my_string)
+    print(my_string.__len__())
+
+
 ### Python reports a syntax error when it can’t understand the source of a program
 
     name = 'Bob
@@ -287,16 +337,16 @@ Variables are names for values.
 We have seen some of these already.
 
 
-### CHALLENGE: Why not?
+### CHALLENGE: What happens when?
 
-Why is it that `max` and `min` do not return `None` when they are called with no arguments?
+Explain in simple terms the order of operations in the following program: when does the addition happen, when does the subtraction happen, when is each function called, etc.
+What is the final value of radiance?
 
-Solution:
+    radiance = 1.0
+    radiance = max(2.1, 2.0 + min(radiance, 1.1 * radiance - 0.5))
 
-`max` and `min` return TypeErrors in this case because the correct number of parameters was not supplied. If it just returned None, the error would be much harder to trace as it would likely be stored into a variable and used later in the program, only to likely throw a runtime error.
 
-
-<a id="org185d4db"></a>
+<a id="org986a9f0"></a>
 
 ## Libraries
 
@@ -340,7 +390,7 @@ You want to be careful with this. It's safer to keep the namespace.
     print('cos(pi) is', m.cos(m.pi))
 
 
-### CHALLENGE: Locating the Right Module
+### CHALLENGE: Locating the Right Module (optional)
 
 You want to select a random character from a string:
 
@@ -377,7 +427,7 @@ Note that this function returns a list of values. We will learn about lists in e
 There’s also other functions you could use, but with more convoluted code as a result.
 
 
-<a id="org58267e4"></a>
+<a id="orgcab3595"></a>
 
 ## Lists
 
@@ -395,8 +445,14 @@ There’s also other functions you could use, but with more convoluted code as a
     print('fourth item of pressures:', pressures[4])
 
 
+### Indexing beyond the end of the collection is an error
+
+    pressures[20]
+
+
 ### Count backwards from the end with negative integers
 
+    # Get the last item in the list
     print('last item of pressures:', pressures[-1])
 
 
@@ -404,13 +460,8 @@ There’s also other functions you could use, but with more convoluted code as a
 
 The slicing syntax is `my_list[inclusive_start_position:exclusive_stop_position:optional_step_amount]`
 
-    # Up to, but not including 3
+    # Up to, but not including index 3
     print('first 3 items of pressures:', pressures[0:3])
-
-
-### Indexing beyond the end of the collection is an error
-
-    pressures[20]
 
 
 ### Lists’ values can be replaced by assigning to them
@@ -458,7 +509,9 @@ Helpful for collecting values
 
 ### Lists may contain values of different types
 
-    location = ['latitude', 37.28306, 'N', 'longitude', 120.50778, 'W']
+    ages = ['Derek', 42, 'Bill', 24, 'Susan', 37]
+    print('First name/age pair', ages[0:2])
+    print("All the ages", ages[0::2])
 
 
 ### Strings can be indexed like lists
@@ -475,8 +528,7 @@ Count from 0
 #### Use a slice to get a substring
 
     # Up to, but not including 3
-    sample = element[0:3]
-    print(sample)
+    element[0:3]
 
 
 #### Counting backwards
@@ -500,91 +552,11 @@ Count from 0
 -   lists and files
 
 
-<a id="orgb731079"></a>
+<a id="orge2e80a7"></a>
 
-## GOTO Reading Tabular Data into DataFrames (1-day workshop order)
+## Dictionaries
 
-
-<a id="org19913de"></a>
-
-## GOTO Pandas DataFrames (1-day workshop order)
-
-
-<a id="org5dab920"></a>
-
-## GOTO Plotting (1-day workshop order)
-
-
-<a id="orgb023cb1"></a>
-
-## For Loops
-
-
-### A `for` loop executes commands once for each value in a collection
-
-"For each thing in this group, do these operations"
-
-    for number in [2, 3, 5]:
-        print(number)
-
--   A for loop is made up of a collection, a loop variable, and a body
--   The collection, **[2, 3, 5]**, is what the loop is being run on.
--   The body, **print(number)**, specifies what to do for each value in the collection.
--   The loop variable, **number**, is what changes for each iteration of the loop (i.e. the “current thing”)
-
-
-### The first line of the `for` loop must end with a colon, and the body must be indented
-
-    # This produces an error
-    for number in [2, 3, 5]:
-    print(number)
-
-    # So does this
-    firstName = "Jon"
-    lastName = "Smith"
-
-
-### Loop variables can be called anything
-
-    for kitten in [2, 3, 5]:
-        print(kitten)
-
--   It's just a placeholder
-
-
-### The body of a loop can contain many statements
-
-    primes = [2, 3, 5]
-    for p in primes:
-        squared = p ** 2
-        cubed = p ** 3
-        print(p, squared, cubed)
-
-
-### Use `range()` to iterate over a sequence of numbers
-
-    for number in range(0, 3):
-        print(number)
-
--   range() produces numbers on demand (a "generator" function)
--   useful for tracking progress
-
-
-### The Accumulator pattern turns many values into one
-
-    # Sum the first 10 integers.
-    total = 0
-    for number in range(1, 11):
-       total = total + number
-    print(total)
-
-
-<a id="org7da21af"></a>
-
-## Dictionaries (optional)
-
--   Dictionaries are sets of key/value pairs
--   Instead of being indexed by position, they are indexed by key
+Dictionaries are sets of key/value pairs. Instead of being indexed by position, they are indexed by key.
 
     ages = {'Derek': 42,
             'Bill': 24,
@@ -593,13 +565,63 @@ Count from 0
     print(ages['Derek'])
 
     location = {'latitude': [37.28306, 'N'],
-                'longitude': [120.50778, 'W']}
+                'longitude': [-120.50778, 'W']}
     
-    for key, val in location.items():
-        print(key, 'is', val[0], val[1])
+    print(location['longitude'][0])
+
+-   If you have tree-structured data, dictionaries are usually a better choice than lists.
 
 
-<a id="org9b8b72a"></a>
+<a id="orge27aac5"></a>
+
+## CHALLENGE: From Strings to Lists and Back
+
+Given this Python code:
+
+    print('string to list:', list('tin'))
+    print('list to string:', ''.join(['g', 'o', 'l', 'd']))
+
+And this output:
+
+    string to list: ['t', 'i', 'n']
+    list to string: gold
+
+1.  What does `list('some string')` do?
+2.  What does `'-'.join(['x', 'y', 'z'])` generate?
+3.  How can you change "carbon" to "Carbon"?
+
+
+<a id="org43d4381"></a>
+
+## Solution
+
+    # Strings are immutable, so you have to create a new string.
+    # Use the .join() method to join a list of strings into a new string.
+    new_element = ''.join(['C', element[1:]])
+    
+    # or
+    new_element = element.capitalize()
+
+
+<a id="orgba205e2"></a>
+
+## CHALLENGE: Convert lists to dictionary (group)
+
+How can we convert our list of names and ages into a dictionary? We will need to populate the dictionary with a list of keys and a list of values.
+
+    # Starting data
+    ages = ['Derek', 42, 'Bill', 24, 'Susan', 37]
+    
+    # Get dictionary help
+    help({})
+
+    names_list = ages[0::2]
+    ages_list = ages[1::2]
+    
+    ages_dict = dict(zip(names_list, ages_list))
+
+
+<a id="org6969bd7"></a>
 
 ## Other containers (optional)
 
@@ -607,523 +629,12 @@ Count from 0
 -   Sets
 
 
-<a id="org2c6772b"></a>
-
-## Homework
-
-
-### Read the following help files:
-
-    help('')
-    help([])
-
-
-### Try to find 2 ways to capitalize 'carbon'
-
-
-<a id="org4d5424c"></a>
-
-# Building Programs
-
-
-<a id="org53147a4"></a>
-
-## Conditionals
-
-
-### Use `if` statements to control whether or not a block of code is executed
-
-An `if` statement (more properly called a conditional statement) controls whether some block of code is executed or not.
-
-    mass = 3.54
-    if mass > 3.0:
-        print(mass, 'is large')
-    
-    mass = 2.07
-    if mass > 3.0:
-        print (mass, 'is large')
-
-Structure is similar to a `for` statement:
-
--   First line opens with `if` and ends with a colon
--   Body containing one or more statements is indented (usually by 4 spaces)
-
-
-### Conditionals are often used inside loops
-
-Not much point using a conditional when we know the value (as above), but useful when we have a collection to process.
-
-    masses = [3.54, 2.07, 9.22, 1.86, 1.71]
-    for m in masses:
-        if m > 3.0:
-            print(m, 'is large')
-
-
-### Use else to execute a block of code when an if condition is not true
-
-`else` can be used following an `if`. This allows us to specify an alternative to execute when the if branch isn’t taken.
-
-    masses = [3.54, 2.07, 9.22, 1.86, 1.71]
-    for m in masses:
-        if m > 3.0:
-            print(m, 'is large')
-        else:
-            print(m, 'is small')
-
-
-### Use `elif` to specify additional tests
-
-May want to provide several alternative choices, each with its own test; use `elif` (short for “else if”) and a condition to specify these.
-
-    masses = [3.54, 2.07, 9.22, 1.86, 1.71]
-    for m in masses:
-        if m > 9.0:
-            print(m, 'is HUGE')
-        elif m > 3.0:
-            print(m, 'is large')
-        else:
-            print(m, 'is small')
-
--   Always associated with an `if`.
--   Must come before the `else` (which is the “catch all”).
-
-
-### Conditions are tested once, in order
-
-Python steps through the branches of the conditional in order, testing each in turn.
-Order matters! The following is wrong:
-
-    grade = 85
-    if grade >= 70:
-        print('grade is C')
-    elif grade >= 80:
-        print('grade is B')
-    elif grade >= 90:
-        print('grade is A')
-
-
-### Use conditionals in a loop to “evolve” the values of variables
-
-    velocity = 10.0
-    for i in range(5): # execute the loop 5 times
-        print(i, ':', velocity)
-        if velocity > 20.0:
-            print('moving too fast')
-            velocity = velocity - 5.0
-        else:
-            print('moving too slow')
-            velocity = velocity + 10.0
-    print('final velocity:', velocity)
-
-
-### Compound Relations Using `and`, `or`, and Parentheses
-
-Often, you want some combination of things to be true. You can combine relations within a conditional using `and` and `or`. Continuing the example above, suppose you have:
-
-    mass     = [ 3.54,  2.07,  9.22,  1.86,  1.71]
-    velocity = [10.00, 20.00, 30.00, 25.00, 20.00]
-    
-    i = 0
-    for i in range(5):
-        if mass[i] > 5 and velocity[i] > 20:
-            print("Fast heavy object.  Duck!")
-        elif mass[i] > 2 and mass[i] <= 5 and velocity[i] <= 20:
-            print("Normal traffic")
-        elif mass[i] <= 2 and velocity[i] <= 20:
-            print("Slow light object.  Ignore it")
-        else:
-            print("Whoa!  Something is up with the data.  Check it")
-
--   Use () to group subsets of conditions
--   Aside: For a more natural way of working with many lists, look at `zip()`
-
-
-<a id="org9dba9ba"></a>
-
-## GOTO Looping over data sets (1-day workshop order)
-
-
-<a id="orgcac4d61"></a>
-
-## Writing Functions
-
-
-### Break programs down into functions to make them easier to understand
-
--   Human beings can only keep a few items in working memory at a time.
--   Understand larger/more complicated ideas by understanding and combining pieces
--   Functions serve the same purpose in programs:
-    1.  Encapsulate complexity so that we can treat it as a single “thing”
-    2.  Removes complexity from remaining code, making it easier to test
-    3.  Enables re-use: Write one time, use many times
-
-
-### Define a function using `def` with a name, parameters, and a block of code
-
-    def print_greeting():
-        print('Hello!')
-
--   Begin the definition of a new function with `def`, followed by the name of the function.
--   Must obey the same rules as variable names.
--   Parameters in parentheses; empty parentheses if the function doesn’t take any inputs.
--   Colon, then an indented block of code
-
-
-### Defining a function does not run it
-
--   Like assigning a value to a variable
--   Must call the function to execute the code it contains.
-
-    print_greeting()
-
-
-### Arguments in call are matched to parameters in definition
-
-    def print_date(year, month, day):
-        joined = '/'.join([year, month, day])
-        print(joined)
-    
-    print_date(1871, 3, 19)
-
-    # If you name the arguments you can specify any order
-    print_date(month=3, day=19, year=1871)
-
--   Specify parameters when defining a function; these become variables when the function is executed
--   By default (if you don’t name the arguments when calling the function) the arguments will be matched to parameters in the order the parameters are defined in the function.
-
-
-### Functions may return a result to their caller using `return`
-
-Use `return ...` to give a value back to the caller. `return` ends the function's execution and *returns* you to the code that originally called the function.
-
-    def average(values):
-    "Return average of values, or None if no values are supplied."
-    
-        if len(values) == 0:
-            return None
-        return sum(values) / len(values)
-
-Here, the `if` statement "falls through" to the second `return` when `values != 0`. For maximum clarity, you could add `else` before the outer `return`.
-
-    a = average([1, 3, 4])
-    print('average of actual values:', a)
-
-You should explicitly handle common problems.
-
-    print('average of empty list:', average([]))
-
-Every function returns something.
-
-    result = print_date(1871, 3, 19)
-    print('result of call is:', result)
-
--   `return` can occur anywhere in the function, but functions are easier to understand if return occurs:
-    -   At the start to handle special cases
-    -   At the very end, with a final result
--   Docstring provides function help
--   Use triple quotes if you need the docstring to span multiple lines: `"""Like this"""`
-
-
-### Using functions with conditionals in Pandas (optional)
-
-    # Apply a function to every row of the selected column
-    def my_fun(val):
-        pass
-    
-    data = pd.read_csv('data/gapminder_all.csv')
-    data['new_col'] = data['lifeExp_1952'].apply(my_fun)
-
-
-<a id="orgf3d7249"></a>
-
-## TODO Variable Scope (optional)
-
-
-<a id="org680ba55"></a>
-
-## TODO Programming Style (optional)
-
-
-<a id="org2fe0b70"></a>
-
-## TODO What have we learned? (1-day workshop ends)
-
-
-<a id="org4e78bd1"></a>
-
-## Working with unstructured files
-
-
-### Open the file with a context handler
-
-    with open('pettigrew_letters_ORIGINAL.txt', 'r') as file_in:
-        text = file_in.read()
-    
-    print(len(text))
-
-
-### Strings contain formatting marks
-
-Compare the following:
-
-    # This displays the nicely-formatted document
-    print(text[:300])
-
-    # This shows the true nature of the string; you can see newlines (/n),
-    # tabs (/t), and other hidden characters
-    text[:300]
-
-
-### Many ways of handling a file
-
-
-#### `.read()` produces the file contents as one string
-
-    type(text)
-
-
-#### `.readlines()` produces the file contents as a list of lines; each line is a string
-
-    with open('pettigrew_letters_ORIGINAL.txt', 'r') as file_in:
-        text = file_in.readlines()
-    
-    print(len(text))
-    print(type(text))
-
-
-#### Inspect parts of the file using list syntax
-
-    # View the first 10 lines
-    text[:10]
-
-
-### Working with unstructured file data
-
-
-#### Contents of pettigrew\_letters\_ORIGINAL.txt
-
-1.  Intro material
-2.  Manifest of letters
-3.  Individual letters
-
-
-#### Query: Are all the letters in the manifest actually there?
-
-1.  check if all the letters reported in the manifest appear in the actual file
-2.  check if all the letters in the file are reported in the manifest
-3.  Therefore, construct two variables: (1) A list of every location line from the manifest, and (2) a list of every location line within the file proper
-
-
-#### Get the manifest by visual inspection
-
-    manifest_list = text[14:159]
-
-
-#### Use string functions to clean up and inspect text
-
-Demonstrate string tests with manifest\_list:
-
-    # Raw text
-    for location in manifest_list[:10]:
-        print(location)
-
-    # Remove extra whitespace
-    for location in manifest_list[:10]:
-        print(location.strip())
-
-    # Test whether the cleaned line starts with 'Box '
-    for location in manifest_list[:10]:
-        stripped_line = location.strip()
-        print(stripped_line.startswith('Box '))
-
-    # Test whether the cleaned line starts with 'box '
-    for location in manifest_list[:10]:
-        stripped_line = location.strip()
-        print(stripped_line.startswith('box '))
-
-
-#### Gather all the locations in the full document
-
-    letters = text[162:]
-    
-    for line in letters[:25]:
-        # Create a variables to hold current line and truth value of is_box
-        stripped_line = line.strip()
-        is_box = stripped_line.startswith('Box ')
-        if is_box == True:
-            print(stripped_line)
-        # If the line is empty, don't print anything
-        elif stripped_line == '\n':
-            continue
-        # Indent non-Box lines
-        else:
-            print('---', stripped_line)
-
--   Before automate everything, we run the code with lots of `print()` statements so that we can see what's happening
-
-
-#### Collect the positive results
-
-    letter_locations = []
-    
-    for line in letters:
-        stripped_line = line.strip()
-        is_box = stripped_line.startswith("Box ")
-        if is_box == True:
-            letter_locations.append(stripped_line)
-
-
-#### Compare the manifest and the letters
-
-    print('Items in manifest:', len(manifest_list))
-    print('Letters:', len(letter_locations))
-
-
-#### Follow-up questions
-
-1.  Which items are in one list but not the other?
-2.  Are there other structural regularities you could use to parse the data? (Note that in the letters, sometimes there are multiple letters under a single box header)
-
-
-<a id="org3016ccb"></a>
-
-## Exception handling (optional)
-
-Explicitly handle common errors, rather than waiting for your code to blow up.
-
-    def average(values):
-        "Return average of values, or None if no values are supplied."
-    
-        if len(values) == 0:
-            return None
-        return sum(values) / len(values)
-    
-    print(average([3, 4, 5]))       # Prints expected output
-    print(average([]))              # Explicitly handles possible divide-by-zero error
-    print(average(4))               # Unhandled exception
-
-    def average(values):
-        "Return average of values, or an informative error if bad values are supplied."
-    
-        try:
-            return sum(values) / len(values)
-        except ZeroDivisionError as err:
-            return err
-        except TypeError as err:
-            return err
-    
-    print(average([3, 4, 5]))
-    print(average(4))
-    print(average([]))
-
--   Use judiciously, and be as specific as possible. When in doubt, allow your code to blow up rather than silently commit errors.
-
-
-<a id="org4caa36c"></a>
-
-## Reducing memory usage 1: Read a file one line at a time (optional)
-
-    with open('pettigrew_letters_ORIGINAL.txt', 'r') as file_in:
-        for line in file_in:
-            # Do stuff to current line
-            pass
-
-
-<a id="orgaadd779"></a>
-
-## Reducing memory usage 2: Use an SQLite database (optional)
-
-    import sqlite3
-    
-    conn = sqlite3.connect('my_database_name.db')
-    with conn:
-        c = conn.execute("SELECT column_name FROM table_name WHERE criterion")
-        results = c.fetchall()
-        c.close
-    
-    # Do stuff with `results`
-
-
-<a id="org5f469e1"></a>
-
-## Other optional topics
-
--   Checking performance
--   List comprehensions
--   File writing
--   Variable Scope
--   Programming Style
--   Defensive programming
-
-
-<a id="org15622ec"></a>
-
-## Homework
-
-
-### Revisit the `str` documentation with an eye towards using the string processing methods for cleaning up data
-
-
-### How would you determine which letters and/or manifest items are missing?
-
-
-<a id="orgd51c3ee"></a>
+<a id="orgbcf3303"></a>
 
 # Data manipulation with Pandas, stats with Statsmodels, ML with Scikit-Learn
 
 
-<a id="org7e8e3e3"></a>
-
-## TODO Explicitly talk about linear algebra with NumPy
-
-
-<a id="org2fc40fc"></a>
-
-## TODO draw out matrix/list vs dataframe/dict
-
-
-<a id="org41b7994"></a>
-
-## TODO Rewrite as dplyr/SQL-style query/filter/subset lesson
-
-In general, the lesson spends too much time in the weeds. We want to take a high-level, declarative view of our data, and only invoke fiddly methods as necessary.
-
--   concat/merge <https://pandas.pydata.org/docs/reference/api/pandas.concat.html>
--   filter/group/subset: <https://pandas.pydata.org/docs/user_guide/groupby.html>
-
-
-<a id="orgfb07750"></a>
-
-## Standard library vs. outside modules
-
-1.  Install with conda package manager
-2.  Install with pip
-
-
-<a id="org7f1ce88"></a>
-
-## SciPy project
-
-1.  NumPy: matrix algebra
-2.  Pandas: data filtering and transformation; factors
-3.  Matplotlib: graphs
-4.  Scipy.stats: probability distributions, basic tests
-    <https://docs.scipy.org/doc/scipy/reference/stats.html>
-
-
-<a id="orgcf2927f"></a>
-
-## Downstream libraries
-
-1.  Seaborn: Pythonic graphs built on Matplotlib
-2.  Statsmodels: Statistical models and formulae built on Scipy.stats
-    <https://www.statsmodels.org/stable/index.html>
-3.  Scikit-Learn: Machine learning tools built on NumPy, SciPy, and Matplotlib
-    <https://scikit-learn.org/stable/>
-4.  &#x2026;and many more: <https://www.scipy.org/topical-software.html>
-
-
-<a id="org9496a4d"></a>
+<a id="org00f82ff"></a>
 
 ## Reading Tabular Data into DataFrames
 
@@ -1219,7 +730,7 @@ Objects have attributes (i.e. data, fields, properties) and methods (i.e. proced
     pp.pprint(df_attr)
 
 
-<a id="orga38016a"></a>
+<a id="org0f29c7c"></a>
 
 ## Pandas DataFrames
 
@@ -1353,82 +864,58 @@ Capture the results of your filter in a new file, rather than overwriting your o
 -   Merge, join, concatenate and compare: <https://pandas.pydata.org/docs/user_guide/merging.html>
 
 
-<a id="org3d55dc9"></a>
+<a id="orgfb820f7"></a>
 
-## Looping Over Data Sets
-
-
-### File paths as an example of increasing abstraction in program development
-
-1.  File paths as strings
-2.  File paths as string patterns
-3.  File paths as abstract Path objects
+## TODO Explicitly talk about linear algebra with NumPy
 
 
-### Use a `for` loop to process files given a list of their names
+<a id="orgd2b120c"></a>
 
-    for filename in ['gapminder_gdp_africa.csv', 'gapminder_gdp_asia.csv']:
-        data = pd.read_csv(filename, index_col='country')
-        print(filename, data.min())
+## TODO draw out matrix/list vs dataframe/dict
 
 
-### Use glob.glob to find sets of files whose names match a pattern
+<a id="org9d39177"></a>
 
-    import glob
-    print('all csv files in data directory:', glob.glob('*.csv'))
+## TODO Rewrite as dplyr/SQL-style query/filter/subset lesson
 
-In Unix, the term “globbing” means “matching a set of files with a pattern”. The most common patterns are:
+In general, the lesson spends too much time in the weeds. We want to take a high-level, declarative view of our data, and only invoke fiddly methods as necessary.
 
--   \`\*\` meaning “match zero or more characters”
--   \`?\` meaning “match exactly one character”
-
-
-### Use glob and for to process batches of files
-
-    for filename in glob.glob('gapminder_*.csv'):
-        data = pd.read_csv(filename)
-        print(filename, data['gdpPercap_1952'].min())
+-   concat/merge <https://pandas.pydata.org/docs/reference/api/pandas.concat.html>
+-   filter/group/subset: <https://pandas.pydata.org/docs/user_guide/groupby.html>
 
 
-### Use pathlib to write code that works across operating systems
+<a id="orgb67932c"></a>
 
-Where are we?
+## Standard library vs. outside modules
 
-    import os
-    os.getcwd()
-
-    from pathlib import Path
-    directory_path = Path("/Users/gilgamesh/Desktop/data")
-    
-    for filename in directory_path.glob('gapminder_*.csv'):
-        if filename.is_file():
-            data = pd.read_csv(filename)
-            print(filename, data['gdpPercap_1952'].min())
+1.  Install with conda package manager
+2.  Install with pip
 
 
-### CHALLENGE: Comparing data (optional)
+<a id="org64ecaec"></a>
 
-Write a program that reads in the regional data sets and plots the average GDP per capita for each region over time in a single chart.
+## SciPy project
 
-Solution:
-
-    import glob
-    import pandas as pd
-    import matplotlib.pyplot as plt
-    fig, ax = plt.subplots(1,1)
-    for filename in glob.glob('data/gapminder_gdp*.csv'):
-        dataframe = pd.read_csv(filename)
-        # extract <region> from the filename, expected to be in the format 'data/gapminder_gdp_<region>.csv'.
-        # we will split the string using the split method and `_` as our separator,
-        # retrieve the last string in the list that split returns (`<region>.csv`),
-        # and then remove the `.csv` extension from that string.
-        region = filename.split('_')[-1][:-4]
-        dataframe.mean().plot(ax=ax, label=region)
-    plt.legend()
-    plt.show()
+1.  NumPy: matrix algebra
+2.  Pandas: data filtering and transformation; factors
+3.  Matplotlib: graphs
+4.  Scipy.stats: probability distributions, basic tests
+    <https://docs.scipy.org/doc/scipy/reference/stats.html>
 
 
-<a id="org11f1b4e"></a>
+<a id="org8652b79"></a>
+
+## Downstream libraries
+
+1.  Seaborn: Pythonic graphs built on Matplotlib
+2.  Statsmodels: Statistical models and formulae built on Scipy.stats
+    <https://www.statsmodels.org/stable/index.html>
+3.  Scikit-Learn: Machine learning tools built on NumPy, SciPy, and Matplotlib
+    <https://scikit-learn.org/stable/>
+4.  &#x2026;and many more: <https://www.scipy.org/topical-software.html>
+
+
+<a id="org31b4ce0"></a>
 
 ## Command-Line Programs
 
@@ -1437,7 +924,7 @@ Batch processing from command line, .py files, and editors
     python my_program.py
 
 
-<a id="orgdc223a1"></a>
+<a id="orgbc51a0a"></a>
 
 ## Statistics
 
@@ -1487,7 +974,7 @@ Direct download link: <https://ndownloader.figshare.com/files/10717177>
     help(statsmodels.base.model.Model)
 
 
-<a id="org82b97bc"></a>
+<a id="org09ba3c7"></a>
 
 ## Machine learning with Scikit-Learn
 
@@ -1508,7 +995,7 @@ Direct download link: <https://ndownloader.figshare.com/files/10717177>
 4.  Treat all software as beta software
 
 
-<a id="org7b4e506"></a>
+<a id="org132e527"></a>
 
 # Visualization with Matplotlib, Pandas, and Seaborn
 
@@ -1519,19 +1006,19 @@ Direct download link: <https://ndownloader.figshare.com/files/10717177>
     -   <https://ryxcommar.com/2020/04/11/why-you-hate-matplotlib/>
 
 
-<a id="orgb1ba861"></a>
+<a id="orgbbf24a1"></a>
 
 ## What does it mean to be Pythonic?
 
 The seamy history of Python plotting
 
 
-<a id="org408d98f"></a>
+<a id="org0498c49"></a>
 
 ## Seaborn 0.11 new features: <https://seaborn.pydata.org/whatsnew.html>
 
 
-<a id="org4c4a920"></a>
+<a id="org49f843c"></a>
 
 ## Workshop Objectives
 
@@ -1541,7 +1028,7 @@ The seamy history of Python plotting
 4.  Save plots to an image file
 
 
-<a id="org1efa770"></a>
+<a id="org99dd319"></a>
 
 ## Big 5 graphs
 
@@ -1554,7 +1041,7 @@ Fundamentally, graphs communicate two types of information: 1) Relationships/tre
 5.  Box plot
 
 
-<a id="orgee55364"></a>
+<a id="org65ce695"></a>
 
 ## Matplotlib
 
@@ -1629,19 +1116,632 @@ In principle, nearly every element on a matplotlib figure is independently modif
     gapminder = pd.read_csv("gapminder_gdp_europe.csv", index_col='country')
 
 
-<a id="org76c5dd5"></a>
+<a id="org8a13ed8"></a>
+
+# Building Programs
+
+
+<a id="org791377c"></a>
+
+## For Loops
+
+
+### A `for` loop executes commands once for each value in a collection
+
+"For each thing in this group, do these operations"
+
+    for number in [2, 3, 5]:
+        print(number)
+
+-   A for loop is made up of a collection, a loop variable, and a body
+-   The collection, **[2, 3, 5]**, is what the loop is being run on.
+-   The body, **print(number)**, specifies what to do for each value in the collection.
+-   The loop variable, **number**, is what changes for each iteration of the loop (i.e. the “current thing”)
+
+
+### The first line of the `for` loop must end with a colon, and the body must be indented
+
+    # This produces an error
+    for number in [2, 3, 5]:
+    print(number)
+
+    # So does this
+    firstName = "Jon"
+    lastName = "Smith"
+
+
+### Loop variables can be called anything
+
+    for kitten in [2, 3, 5]:
+        print(kitten)
+
+-   It's just a placeholder
+
+
+### The body of a loop can contain many statements
+
+    primes = [2, 3, 5]
+    for p in primes:
+        squared = p ** 2
+        cubed = p ** 3
+        print(p, squared, cubed)
+
+
+### Use `range()` to iterate over a sequence of numbers
+
+    for number in range(0, 3):
+        print(number)
+
+-   range() produces numbers on demand (a "generator" function)
+-   useful for tracking progress
+
+
+### The Accumulator pattern turns many values into one
+
+    # Sum the first 10 integers.
+    total = 0
+    for number in range(1, 11):
+       total = total + number
+    print(total)
+
+
+### Dictionary iteration
+
+    ages = {'Derek': 42,
+            'Bill': 24,
+            'Susan': 37}
+    
+    # Iterate over key: value pairs
+    for key, val in ages.items():
+        print(key, val)
+    
+    # Iterate over keys; you can also explicitly call keys()
+    for key in ages:
+        print(key)
+    
+    # Iterate over values
+    for val in ages.values():
+        print(val)
+
+    location = {'latitude': [37.28306, 'N'],
+                'longitude': [-120.50778, 'W']}
+    
+    for key, val in location.items():
+        print(key, 'is', val[0], val[1])
+
+
+<a id="orga32e33b"></a>
+
+## Conditionals
+
+
+### Use `if` statements to control whether or not a block of code is executed
+
+An `if` statement (more properly called a conditional statement) controls whether some block of code is executed or not.
+
+    mass = 3.54
+    if mass > 3.0:
+        print(mass, 'is large')
+    
+    mass = 2.07
+    if mass > 3.0:
+        print (mass, 'is large')
+
+Structure is similar to a `for` statement:
+
+-   First line opens with `if` and ends with a colon
+-   Body containing one or more statements is indented (usually by 4 spaces)
+
+
+### Conditionals are often used inside loops
+
+Not much point using a conditional when we know the value (as above), but useful when we have a collection to process.
+
+    masses = [3.54, 2.07, 9.22, 1.86, 1.71]
+    for m in masses:
+        if m > 3.0:
+            print(m, 'is large')
+
+
+### Use else to execute a block of code when an if condition is not true
+
+`else` can be used following an `if`. This allows us to specify an alternative to execute when the if branch isn’t taken.
+
+    masses = [3.54, 2.07, 9.22, 1.86, 1.71]
+    for m in masses:
+        if m > 3.0:
+            print(m, 'is large')
+        else:
+            print(m, 'is small')
+
+
+### Use `elif` to specify additional tests
+
+May want to provide several alternative choices, each with its own test; use `elif` (short for “else if”) and a condition to specify these.
+
+    masses = [3.54, 2.07, 9.22, 1.86, 1.71]
+    for m in masses:
+        if m > 9.0:
+            print(m, 'is HUGE')
+        elif m > 3.0:
+            print(m, 'is large')
+        else:
+            print(m, 'is small')
+
+-   Always associated with an `if`.
+-   Must come before the `else` (which is the “catch all”).
+
+
+### Conditions are tested once, in order
+
+Python steps through the branches of the conditional in order, testing each in turn.
+Order matters! The following is wrong:
+
+    grade = 85
+    if grade >= 70:
+        print('grade is C')
+    elif grade >= 80:
+        print('grade is B')
+    elif grade >= 90:
+        print('grade is A')
+
+
+### Use conditionals in a loop to “evolve” the values of variables
+
+    velocity = 10.0
+    for i in range(5): # execute the loop 5 times
+        print(i, ':', velocity)
+        if velocity > 20.0:
+            print('moving too fast')
+            velocity = velocity - 5.0
+        else:
+            print('moving too slow')
+            velocity = velocity + 10.0
+    print('final velocity:', velocity)
+
+
+### Compound Relations Using `and`, `or`, and Parentheses
+
+Often, you want some combination of things to be true. You can combine relations within a conditional using `and` and `or`. Continuing the example above, suppose you have:
+
+    mass     = [ 3.54,  2.07,  9.22,  1.86,  1.71]
+    velocity = [10.00, 20.00, 30.00, 25.00, 20.00]
+    
+    i = 0
+    for i in range(5):
+        if mass[i] > 5 and velocity[i] > 20:
+            print("Fast heavy object.  Duck!")
+        elif mass[i] > 2 and mass[i] <= 5 and velocity[i] <= 20:
+            print("Normal traffic")
+        elif mass[i] <= 2 and velocity[i] <= 20:
+            print("Slow light object.  Ignore it")
+        else:
+            print("Whoa!  Something is up with the data.  Check it")
+
+-   Use () to group subsets of conditions
+-   Aside: For a more natural way of working with many lists, look at `zip()`
+
+
+<a id="org0131869"></a>
+
+## Looping Over Data Sets
+
+
+### File paths as an example of increasing abstraction in program development
+
+1.  File paths as literal strings
+2.  File paths as string patterns
+3.  File paths as abstract Path objects
+
+
+### Use a `for` loop to process files given a list of their names
+
+    for filename in ['gapminder_gdp_africa.csv', 'gapminder_gdp_asia.csv']:
+        data = pd.read_csv(filename, index_col='country')
+        print(filename, data.min())
+
+
+### Use glob.glob to find sets of files whose names match a pattern
+
+    import glob
+    print('all csv files in data directory:', glob.glob('*.csv'))
+
+In Unix, the term “globbing” means “matching a set of files with a pattern”. The most common patterns are:
+
+-   \`\*\` meaning “match zero or more characters”
+-   \`?\` meaning “match exactly one character”
+
+
+### Use glob and for to process batches of files
+
+    for filename in glob.glob('gapminder_*.csv'):
+        data = pd.read_csv(filename)
+        print(filename, data['gdpPercap_1952'].min())
+
+
+### Use pathlib to write code that works across operating systems
+
+Where are we?
+
+    import os
+    os.getcwd()
+
+    from pathlib import Path
+    directory_path = Path("/Users/gilgamesh/Desktop/data")
+    
+    for filename in directory_path.glob('gapminder_*.csv'):
+        if filename.is_file():
+            data = pd.read_csv(filename)
+            print(filename, data['gdpPercap_1952'].min())
+
+
+### CHALLENGE: Comparing data (optional)
+
+Write a program that reads in the regional data sets and plots the average GDP per capita for each region over time in a single chart.
+
+Solution:
+
+    import glob
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    fig, ax = plt.subplots(1,1)
+    for filename in glob.glob('data/gapminder_gdp*.csv'):
+        dataframe = pd.read_csv(filename)
+        # extract <region> from the filename, expected to be in the format 'data/gapminder_gdp_<region>.csv'.
+        # we will split the string using the split method and `_` as our separator,
+        # retrieve the last string in the list that split returns (`<region>.csv`),
+        # and then remove the `.csv` extension from that string.
+        region = filename.split('_')[-1][:-4]
+        dataframe.mean().plot(ax=ax, label=region)
+    plt.legend()
+    plt.show()
+
+
+<a id="org25fdc3a"></a>
+
+## Writing Functions
+
+
+### Break programs down into functions to make them easier to understand
+
+-   Human beings can only keep a few items in working memory at a time.
+-   Understand larger/more complicated ideas by understanding and combining pieces
+-   Functions serve the same purpose in programs:
+    1.  Encapsulate complexity so that we can treat it as a single “thing”
+    2.  Removes complexity from remaining code, making it easier to test
+    3.  Enables re-use: Write one time, use many times
+
+
+### Define a function using `def` with a name, parameters, and a block of code
+
+    def print_greeting():
+        print('Hello!')
+
+-   Begin the definition of a new function with `def`, followed by the name of the function.
+-   Must obey the same rules as variable names.
+-   Parameters in parentheses; empty parentheses if the function doesn’t take any inputs.
+-   Colon, then an indented block of code
+
+
+### Defining a function does not run it
+
+-   Like assigning a value to a variable
+-   Must call the function to execute the code it contains.
+
+    print_greeting()
+
+
+### Arguments in call are matched to parameters in definition
+
+    def print_date(year, month, day):
+        joined = '/'.join([year, month, day])
+        print(joined)
+    
+    print_date(1871, 3, 19)
+
+    # If you name the arguments you can specify any order
+    print_date(month=3, day=19, year=1871)
+
+-   Specify parameters when defining a function; these become variables when the function is executed
+-   By default (if you don’t name the arguments when calling the function) the arguments will be matched to parameters in the order the parameters are defined in the function.
+
+
+### Functions may return a result to their caller using `return`
+
+Use `return ...` to give a value back to the caller. `return` ends the function's execution and *returns* you to the code that originally called the function.
+
+    def average(values):
+    "Return average of values, or None if no values are supplied."
+    
+        if len(values) == 0:
+            return None
+        return sum(values) / len(values)
+
+The `if` statement "falls through" to the second `return` when `values != 0`. For maximum clarity, you could add `else` before the outer `return`.
+
+    a = average([1, 3, 4])
+    print('average of actual values:', a)
+
+You should explicitly handle common problems:
+
+    print('average of empty list:', average([]))
+
+Every function returns something:
+
+    result = print_date(1871, 3, 19)
+    print('result of call is:', result)
+
+-   `return` can occur anywhere in the function, but functions are easier to understand if return occurs:
+    -   At the start to handle special cases
+    -   At the very end, with a final result
+-   Docstring provides function help
+-   Use triple quotes if you need the docstring to span multiple lines: `"""Like this"""`
+
+
+### Using functions with conditionals in Pandas (optional)
+
+    # Apply a function to every row of the selected column
+    def my_fun(val):
+        pass
+    
+    data = pd.read_csv('data/gapminder_all.csv')
+    data['new_col'] = data['lifeExp_1952'].apply(my_fun)
+
+
+<a id="orgc47d1de"></a>
+
+## TODO Variable Scope (optional)
+
+
+<a id="org5025c42"></a>
+
+## TODO Programming Style (optional)
+
+
+<a id="orge3ffdd3"></a>
+
+## Working with unstructured files (optional)
+
+
+### Open the file with a context handler
+
+    with open('pettigrew_letters_ORIGINAL.txt', 'r') as file_in:
+        text = file_in.read()
+    
+    print(len(text))
+
+
+### Strings contain formatting marks
+
+Compare the following:
+
+    # This displays the nicely-formatted document
+    print(text[:300])
+
+    # This shows the true nature of the string; you can see newlines (/n),
+    # tabs (/t), and other hidden characters
+    text[:300]
+
+
+### Many ways of handling a file
+
+
+#### `.read()` produces the file contents as one string
+
+    type(text)
+
+
+#### `.readlines()` produces the file contents as a list of lines; each line is a string
+
+    with open('pettigrew_letters_ORIGINAL.txt', 'r') as file_in:
+        text = file_in.readlines()
+    
+    print(len(text))
+    print(type(text))
+
+
+#### Inspect parts of the file using list syntax
+
+    # View the first 10 lines
+    text[:10]
+
+
+### Working with unstructured file data
+
+
+#### Contents of pettigrew\_letters\_ORIGINAL.txt
+
+1.  Intro material
+2.  Manifest of letters
+3.  Individual letters
+
+
+#### Query: Are all the letters in the manifest actually there?
+
+1.  check if all the letters reported in the manifest appear in the actual file
+2.  check if all the letters in the file are reported in the manifest
+3.  Therefore, construct two variables: (1) A list of every location line from the manifest, and (2) a list of every location line within the file proper
+
+
+#### Get the manifest by visual inspection
+
+    manifest_list = text[14:159]
+
+
+#### Use string functions to clean up and inspect text
+
+Demonstrate string tests with manifest\_list:
+
+    # Raw text
+    for location in manifest_list[:10]:
+        print(location)
+
+    # Remove extra whitespace
+    for location in manifest_list[:10]:
+        print(location.strip())
+
+    # Test whether the cleaned line starts with 'Box '
+    for location in manifest_list[:10]:
+        stripped_line = location.strip()
+        print(stripped_line.startswith('Box '))
+
+    # Test whether the cleaned line starts with 'box '
+    for location in manifest_list[:10]:
+        stripped_line = location.strip()
+        print(stripped_line.startswith('box '))
+
+
+#### Gather all the locations in the full document
+
+    letters = text[162:]
+    
+    for line in letters[:25]:
+        # Create a variables to hold current line and truth value of is_box
+        stripped_line = line.strip()
+        is_box = stripped_line.startswith('Box ')
+        if is_box == True:
+            print(stripped_line)
+        # If the line is empty, don't print anything
+        elif stripped_line == '\n':
+            continue
+        # Indent non-Box lines
+        else:
+            print('---', stripped_line)
+
+-   Before automate everything, we run the code with lots of `print()` statements so that we can see what's happening
+
+
+#### Collect the positive results
+
+    letter_locations = []
+    
+    for line in letters:
+        stripped_line = line.strip()
+        is_box = stripped_line.startswith("Box ")
+        if is_box == True:
+            letter_locations.append(stripped_line)
+
+
+#### Compare the manifest and the letters
+
+    print('Items in manifest:', len(manifest_list))
+    print('Letters:', len(letter_locations))
+
+
+#### Follow-up questions
+
+1.  Which items are in one list but not the other?
+2.  Are there other structural regularities you could use to parse the data? (Note that in the letters, sometimes there are multiple letters under a single box header)
+
+
+<a id="org4ef786c"></a>
+
+## Exception handling (optional)
+
+Explicitly handle common errors, rather than waiting for your code to blow up.
+
+    def average(values):
+        "Return average of values, or None if no values are supplied."
+    
+        if len(values) == 0:
+            return None
+        return sum(values) / len(values)
+    
+    print(average([3, 4, 5]))       # Prints expected output
+    print(average([]))              # Explicitly handles possible divide-by-zero error
+    print(average(4))               # Unhandled exception
+
+    def average(values):
+        "Return average of values, or an informative error if bad values are supplied."
+    
+        try:
+            return sum(values) / len(values)
+        except ZeroDivisionError as err:
+            return err
+        except TypeError as err:
+            return err
+    
+    print(average([3, 4, 5]))
+    print(average(4))
+    print(average([]))
+
+-   Use judiciously, and be as specific as possible. When in doubt, allow your code to blow up rather than silently commit errors.
+
+
+<a id="orgda93371"></a>
+
+## Reducing memory usage 1: Read a file one line at a time (optional)
+
+    with open('pettigrew_letters_ORIGINAL.txt', 'r') as file_in:
+        for line in file_in:
+            # Do stuff to current line
+            pass
+
+
+<a id="org730d574"></a>
+
+## Reducing memory usage 2: Use an SQLite database (optional)
+
+    import sqlite3
+    
+    conn = sqlite3.connect('my_database_name.db')
+    with conn:
+        c = conn.execute("SELECT column_name FROM table_name WHERE criterion")
+        results = c.fetchall()
+        c.close
+    
+    # Do stuff with `results`
+
+
+<a id="org4eaa384"></a>
+
+## Other optional topics
+
+-   Checking performance
+-   List comprehensions
+-   Generic file handling
+-   Defensive programming
+-   Testing
+
+
+<a id="org812d082"></a>
+
+## Homework
+
+
+### Revisit the `str` documentation with an eye towards using the string processing methods for cleaning up data
+
+
+### How would you determine which letters and/or manifest items are missing?
+
+
+<a id="orgeba3eff"></a>
 
 # Credits
 
 -   Plotting and Programming in Python (Pandas-oriented): <http://swcarpentry.github.io/python-novice-gapminder/>
 -   Programming with Python (NumPy-oriented): <https://swcarpentry.github.io/python-novice-inflammation/index.html>
 -   Humanities Python Tour (file and text processing): <https://github.com/elliewix/humanities-python-tour/blob/master/Two-Hour-Beginner-Tour.ipynb>
--   Pandas User Guide: <https://pandas.pydata.org/docs/user_guide/index.html>
--   Statistics in Python: <https://scipy-lectures.org/packages/statistics/>
+-   Introduction to Cultural Analytics & Python: <https://melaniewalsh.github.io/Intro-Cultural-Analytics/welcome.html>
 -   Rhondene Wint: Matplotlib and Seaborn notes
 
 
-<a id="orgde1583c"></a>
+<a id="orgba9f34b"></a>
+
+# References
+
+-   Complete tutorial: <https://docs.python.org/3/tutorial/index.html>
+-   String formatting: <https://pyformat.info/>
+-   Python standard library: <https://docs.python.org/3/library/>
+-   Pandas documentation: <https://pandas.pydata.org/pandas-docs/stable/>
+-   Pandas user guide: <https://pandas.pydata.org/docs/user_guide/index.html>
+-   Statistics in Python tutorial: <https://scipy-lectures.org/packages/statistics/>
+-   Statsmodels library: <https://www.statsmodels.org/stable/index.html>
+-   Seaborn gallery of examples: <https://seaborn.pydata.org/examples/index.html>
+-   Matplotlib gallery of examples: <https://matplotlib.org/gallery/index.html>
+
+
+<a id="org833b1fe"></a>
 
 # Example Data
 

@@ -421,6 +421,7 @@ Helpful for collecting values
 #+BEGIN_SRC python
   ages = ['Derek', 42, 'Bill', 24, 'Susan', 37]
   print('First name/age pair', ages[0:2])
+  print("All the ages", ages[0::2])
 #+END_SRC
 
 *** Strings can be indexed like lists
@@ -452,11 +453,6 @@ len('carbon')                   # length is an integer
 element[0] = 'C'
 #+END_SRC
 
-#+BEGIN_SRC python
-  # We will cover this in the Functions lesson
-  new_element = ''.join(['C', element[1:]])
-#+END_SRC
-
 *** Python is full of analogies
 - lists and strings
 - lists and files
@@ -479,9 +475,51 @@ print(location['longitude'][0])
 #+END_SRC
 - If you have tree-structured data, dictionaries are usually a better choice than lists.
 
-** CHALLENGE: Which collection?
+** CHALLENGE: From Strings to Lists and Back
+Given this Python code:
+#+BEGIN_SRC python
+  print('string to list:', list('tin'))
+  print('list to string:', ''.join(['g', 'o', 'l', 'd']))
+#+END_SRC
 
-** If time remains, go to Building Programs: For Loops
+And this output:
+#+BEGIN_EXAMPLE
+string to list: ['t', 'i', 'n']
+list to string: gold
+#+END_EXAMPLE
+
+1. What does ~list('some string')~ do?
+2. What does ~'-'.join(['x', 'y', 'z'])~ generate?
+3. How can you change "carbon" to "Carbon"?
+
+** Solution
+#+BEGIN_SRC python
+  # Strings are immutable, so you have to create a new string.
+  # Use the .join() method to join a list of strings into a new string.
+  new_element = ''.join(['C', element[1:]])
+
+  # or
+  new_element = element.capitalize()
+#+END_SRC
+
+** CHALLENGE: Convert lists to dictionary (group)
+How can we convert our list of names and ages into a dictionary? We will need to populate the dictionary with a list of keys and a list of values.
+
+#+BEGIN_SRC python
+  # Starting data
+  ages = ['Derek', 42, 'Bill', 24, 'Susan', 37]
+
+  # Get dictionary help
+  help({})
+#+END_SRC
+
+#+BEGIN_SRC python
+  names_list = ages[0::2]
+  ages_list = ages[1::2]
+
+  ages_dict = dict(zip(names_list, ages_list))
+#+END_SRC
+
 ** Other containers (optional)
 - Tuples
 - Sets
