@@ -1,62 +1,59 @@
 
 # Table of Contents
 
-1.  [Fundamentals](#org546bd3e)
-    1.  [Orientation](#org3f82394)
-    2.  [Jupyter commands](#org355debf)
-    3.  [Variables and Assignment](#orgd3072ce)
-    4.  [Data Types and Type Conversion](#orgcdea3d2)
-    5.  [Built-in Functions and Help](#org5baeff6)
-    6.  [Libraries](#org986a9f0)
-    7.  [Lists](#orgcab3595)
-    8.  [Dictionaries](#orge2e80a7)
-    9.  [CHALLENGE: From Strings to Lists and Back](#orge27aac5)
-    10. [Solution](#org43d4381)
-    11. [CHALLENGE: Convert lists to dictionary (group)](#orgba205e2)
-    12. [Other containers (optional)](#org6969bd7)
-2.  [Data manipulation with Pandas, stats with Statsmodels, ML with Scikit-Learn](#orgbcf3303)
-    1.  [Reading Tabular Data into DataFrames](#org00f82ff)
-    2.  [Pandas DataFrames](#org0f29c7c)
-    3.  [Explicitly talk about linear algebra with NumPy](#orgfb820f7)
-    4.  [draw out matrix/list vs dataframe/dict](#orgd2b120c)
-    5.  [Rewrite as dplyr/SQL-style query/filter/subset lesson](#org9d39177)
-    6.  [Standard library vs. outside modules](#orgb67932c)
-    7.  [SciPy project](#org64ecaec)
-    8.  [Downstream libraries](#org8652b79)
-    9.  [Command-Line Programs](#org31b4ce0)
-    10. [Statistics](#orgbc51a0a)
-    11. [Machine learning with Scikit-Learn](#org09ba3c7)
-3.  [Visualization with Matplotlib, Pandas, and Seaborn](#org132e527)
-    1.  [What does it mean to be Pythonic?](#orgbbf24a1)
-    2.  [Seaborn 0.11 new features: https://seaborn.pydata.org/whatsnew.html](#org0498c49)
-    3.  [Workshop Objectives](#org49f843c)
-    4.  [Big 5 graphs](#org99dd319)
-    5.  [Matplotlib](#org65ce695)
-4.  [Building Programs](#org8a13ed8)
-    1.  [For Loops](#org791377c)
-    2.  [Conditionals](#orga32e33b)
-    3.  [Looping Over Data Sets](#org0131869)
-    4.  [Writing Functions](#org25fdc3a)
-    5.  [Variable Scope (optional)](#orgc47d1de)
-    6.  [Programming Style (optional)](#org5025c42)
-    7.  [Working with unstructured files (optional)](#orge3ffdd3)
-    8.  [Exception handling (optional)](#org4ef786c)
-    9.  [Reducing memory usage 1: Read a file one line at a time (optional)](#orgda93371)
-    10. [Reducing memory usage 2: Use an SQLite database (optional)](#org730d574)
-    11. [Other optional topics](#org4eaa384)
-    12. [Homework](#org812d082)
-5.  [Credits](#orgeba3eff)
-6.  [References](#orgba9f34b)
-7.  [Example Data](#org833b1fe)
+1.  [Fundamentals](#org959e242)
+    1.  [Orientation](#org6b18ef0)
+    2.  [Jupyter commands](#orgc22279f)
+    3.  [Variables and Assignment](#org457b5a5)
+    4.  [Data Types and Type Conversion](#orgc5b42b8)
+    5.  [Built-in Functions and Help](#org5540724)
+    6.  [Libraries](#org53d446c)
+    7.  [Lists](#org7896140)
+    8.  [Dictionaries](#org859ac7c)
+    9.  [Other containers (optional)](#org838bf81)
+2.  [Data manipulation with Pandas, stats with Statsmodels, ML with Scikit-Learn](#orga602719)
+    1.  [Reading Tabular Data into DataFrames](#org53bfe92)
+    2.  [Pandas DataFrames](#org8878201)
+    3.  [Explicitly talk about linear algebra with NumPy](#org7ef0a7d)
+    4.  [draw out matrix/list vs dataframe/dict](#orgf03de7f)
+    5.  [Rewrite as dplyr/SQL-style query/filter/subset lesson](#org94f3a57)
+    6.  [Standard library vs. outside modules](#org5004b09)
+    7.  [SciPy project](#org175374c)
+    8.  [Downstream libraries](#orgd009601)
+    9.  [Command-Line Programs](#org9089ada)
+    10. [Statistics](#org2955d47)
+    11. [Machine learning with Scikit-Learn](#org133ddf5)
+3.  [Visualization with Matplotlib, Pandas, and Seaborn](#org02f516a)
+    1.  [What does it mean to be Pythonic?](#org8117651)
+    2.  [Seaborn 0.11 new features: https://seaborn.pydata.org/whatsnew.html](#org6e55de6)
+    3.  [Workshop Objectives](#orgfecd89c)
+    4.  [Big 5 graphs](#org32b502f)
+    5.  [Matplotlib](#org2f4b5a5)
+4.  [Building Programs](#org4df8c20)
+    1.  [For Loops](#orgd01e115)
+    2.  [Conditionals](#orgb91e98f)
+    3.  [Looping Over Data Sets](#org1d09d43)
+    4.  [Writing Functions](#org3017035)
+    5.  [Variable Scope (optional)](#orgebe1b33)
+    6.  [Programming Style (optional)](#org4c1e4c9)
+    7.  [Working with unstructured files (optional)](#orgd5a93c5)
+    8.  [Exception handling (optional)](#org77f19a6)
+    9.  [Reducing memory usage 1: Read a file one line at a time (optional)](#org3537917)
+    10. [Reducing memory usage 2: Use an SQLite database (optional)](#org1ace96f)
+    11. [Other optional topics](#org6c6fec0)
+    12. [Homework](#org7345235)
+5.  [Credits](#orgc5e2f6e)
+6.  [References](#org2c26c2d)
+7.  [Example Data](#org43d3b51)
 
 
 
-<a id="org546bd3e"></a>
+<a id="org959e242"></a>
 
 # Fundamentals
 
 
-<a id="org3f82394"></a>
+<a id="org6b18ef0"></a>
 
 ## Orientation
 
@@ -82,7 +79,7 @@
 -   Bad for massive or long-running processes
 
 
-<a id="org355debf"></a>
+<a id="orgc22279f"></a>
 
 ## Jupyter commands
 
@@ -115,7 +112,7 @@ Open Terminal (MacOS/Linux) or Anaconda Prompt (Windows)
 -   Rename your notebook to something informative
 
 
-<a id="orgd3072ce"></a>
+<a id="org457b5a5"></a>
 
 ## Variables and Assignment
 
@@ -165,7 +162,7 @@ Variables are names for values.
 ### Use meaningful names!
 
 
-<a id="orgcdea3d2"></a>
+<a id="orgc5b42b8"></a>
 
 ## Data Types and Type Conversion
 
@@ -228,7 +225,7 @@ Types have different properties; more about this later.
     print('5 % 3:', 5 % 3)
 
 
-<a id="org5baeff6"></a>
+<a id="org5540724"></a>
 
 ## Built-in Functions and Help
 
@@ -346,7 +343,7 @@ What is the final value of radiance?
     radiance = max(2.1, 2.0 + min(radiance, 1.1 * radiance - 0.5))
 
 
-<a id="org986a9f0"></a>
+<a id="org53d446c"></a>
 
 ## Libraries
 
@@ -427,7 +424,7 @@ Note that this function returns a list of values. We will learn about lists in e
 There’s also other functions you could use, but with more convoluted code as a result.
 
 
-<a id="orgcab3595"></a>
+<a id="org7896140"></a>
 
 ## Lists
 
@@ -552,7 +549,34 @@ Count from 0
 -   lists and files
 
 
-<a id="orge2e80a7"></a>
+### CHALLENGE: From Strings to Lists and Back
+
+Given this Python code:
+
+    print('string to list:', list('tin'))
+    print('list to string:', ''.join(['g', 'o', 'l', 'd']))
+
+And this output:
+
+    string to list: ['t', 'i', 'n']
+    list to string: gold
+
+1.  What does `list('some string')` do?
+2.  What does `'-'.join(['x', 'y', 'z'])` generate?
+3.  How can you change "carbon" to "Carbon"?
+
+
+### Solution
+
+    # Strings are immutable, so you have to create a new string.
+    # Use the .join() method to join a list of strings into a new string.
+    new_element = ''.join(['C', element[1:]])
+    
+    # or
+    new_element = element.capitalize()
+
+
+<a id="org859ac7c"></a>
 
 ## Dictionaries
 
@@ -572,40 +596,7 @@ Dictionaries are sets of key/value pairs. Instead of being indexed by position, 
 -   If you have tree-structured data, dictionaries are usually a better choice than lists.
 
 
-<a id="orge27aac5"></a>
-
-## CHALLENGE: From Strings to Lists and Back
-
-Given this Python code:
-
-    print('string to list:', list('tin'))
-    print('list to string:', ''.join(['g', 'o', 'l', 'd']))
-
-And this output:
-
-    string to list: ['t', 'i', 'n']
-    list to string: gold
-
-1.  What does `list('some string')` do?
-2.  What does `'-'.join(['x', 'y', 'z'])` generate?
-3.  How can you change "carbon" to "Carbon"?
-
-
-<a id="org43d4381"></a>
-
-## Solution
-
-    # Strings are immutable, so you have to create a new string.
-    # Use the .join() method to join a list of strings into a new string.
-    new_element = ''.join(['C', element[1:]])
-    
-    # or
-    new_element = element.capitalize()
-
-
-<a id="orgba205e2"></a>
-
-## CHALLENGE: Convert lists to dictionary (group)
+### CHALLENGE: Convert lists to dictionary (group)
 
 How can we convert our list of names and ages into a dictionary? We will need to populate the dictionary with a list of keys and a list of values.
 
@@ -621,7 +612,7 @@ How can we convert our list of names and ages into a dictionary? We will need to
     ages_dict = dict(zip(names_list, ages_list))
 
 
-<a id="org6969bd7"></a>
+<a id="org838bf81"></a>
 
 ## Other containers (optional)
 
@@ -629,12 +620,12 @@ How can we convert our list of names and ages into a dictionary? We will need to
 -   Sets
 
 
-<a id="orgbcf3303"></a>
+<a id="orga602719"></a>
 
 # Data manipulation with Pandas, stats with Statsmodels, ML with Scikit-Learn
 
 
-<a id="org00f82ff"></a>
+<a id="org53bfe92"></a>
 
 ## Reading Tabular Data into DataFrames
 
@@ -730,7 +721,7 @@ Objects have attributes (i.e. data, fields, properties) and methods (i.e. proced
     pp.pprint(df_attr)
 
 
-<a id="org0f29c7c"></a>
+<a id="org8878201"></a>
 
 ## Pandas DataFrames
 
@@ -864,17 +855,17 @@ Capture the results of your filter in a new file, rather than overwriting your o
 -   Merge, join, concatenate and compare: <https://pandas.pydata.org/docs/user_guide/merging.html>
 
 
-<a id="orgfb820f7"></a>
+<a id="org7ef0a7d"></a>
 
 ## TODO Explicitly talk about linear algebra with NumPy
 
 
-<a id="orgd2b120c"></a>
+<a id="orgf03de7f"></a>
 
 ## TODO draw out matrix/list vs dataframe/dict
 
 
-<a id="org9d39177"></a>
+<a id="org94f3a57"></a>
 
 ## TODO Rewrite as dplyr/SQL-style query/filter/subset lesson
 
@@ -884,7 +875,7 @@ In general, the lesson spends too much time in the weeds. We want to take a high
 -   filter/group/subset: <https://pandas.pydata.org/docs/user_guide/groupby.html>
 
 
-<a id="orgb67932c"></a>
+<a id="org5004b09"></a>
 
 ## Standard library vs. outside modules
 
@@ -892,7 +883,7 @@ In general, the lesson spends too much time in the weeds. We want to take a high
 2.  Install with pip
 
 
-<a id="org64ecaec"></a>
+<a id="org175374c"></a>
 
 ## SciPy project
 
@@ -903,7 +894,7 @@ In general, the lesson spends too much time in the weeds. We want to take a high
     <https://docs.scipy.org/doc/scipy/reference/stats.html>
 
 
-<a id="org8652b79"></a>
+<a id="orgd009601"></a>
 
 ## Downstream libraries
 
@@ -915,7 +906,7 @@ In general, the lesson spends too much time in the weeds. We want to take a high
 4.  &#x2026;and many more: <https://www.scipy.org/topical-software.html>
 
 
-<a id="org31b4ce0"></a>
+<a id="org9089ada"></a>
 
 ## Command-Line Programs
 
@@ -924,7 +915,7 @@ Batch processing from command line, .py files, and editors
     python my_program.py
 
 
-<a id="orgbc51a0a"></a>
+<a id="org2955d47"></a>
 
 ## Statistics
 
@@ -974,7 +965,7 @@ Direct download link: <https://ndownloader.figshare.com/files/10717177>
     help(statsmodels.base.model.Model)
 
 
-<a id="org09ba3c7"></a>
+<a id="org133ddf5"></a>
 
 ## Machine learning with Scikit-Learn
 
@@ -995,7 +986,7 @@ Direct download link: <https://ndownloader.figshare.com/files/10717177>
 4.  Treat all software as beta software
 
 
-<a id="org132e527"></a>
+<a id="org02f516a"></a>
 
 # Visualization with Matplotlib, Pandas, and Seaborn
 
@@ -1006,19 +997,19 @@ Direct download link: <https://ndownloader.figshare.com/files/10717177>
     -   <https://ryxcommar.com/2020/04/11/why-you-hate-matplotlib/>
 
 
-<a id="orgbbf24a1"></a>
+<a id="org8117651"></a>
 
 ## What does it mean to be Pythonic?
 
 The seamy history of Python plotting
 
 
-<a id="org0498c49"></a>
+<a id="org6e55de6"></a>
 
 ## Seaborn 0.11 new features: <https://seaborn.pydata.org/whatsnew.html>
 
 
-<a id="org49f843c"></a>
+<a id="orgfecd89c"></a>
 
 ## Workshop Objectives
 
@@ -1028,7 +1019,7 @@ The seamy history of Python plotting
 4.  Save plots to an image file
 
 
-<a id="org99dd319"></a>
+<a id="org32b502f"></a>
 
 ## Big 5 graphs
 
@@ -1041,7 +1032,7 @@ Fundamentally, graphs communicate two types of information: 1) Relationships/tre
 5.  Box plot
 
 
-<a id="org65ce695"></a>
+<a id="org2f4b5a5"></a>
 
 ## Matplotlib
 
@@ -1116,12 +1107,12 @@ In principle, nearly every element on a matplotlib figure is independently modif
     gapminder = pd.read_csv("gapminder_gdp_europe.csv", index_col='country')
 
 
-<a id="org8a13ed8"></a>
+<a id="org4df8c20"></a>
 
 # Building Programs
 
 
-<a id="org791377c"></a>
+<a id="orgd01e115"></a>
 
 ## For Loops
 
@@ -1210,7 +1201,7 @@ In principle, nearly every element on a matplotlib figure is independently modif
         print(key, 'is', val[0], val[1])
 
 
-<a id="orga32e33b"></a>
+<a id="orgb91e98f"></a>
 
 ## Conditionals
 
@@ -1322,7 +1313,7 @@ Often, you want some combination of things to be true. You can combine relations
 -   Aside: For a more natural way of working with many lists, look at `zip()`
 
 
-<a id="org0131869"></a>
+<a id="org1d09d43"></a>
 
 ## Looping Over Data Sets
 
@@ -1397,7 +1388,7 @@ Solution:
     plt.show()
 
 
-<a id="org25fdc3a"></a>
+<a id="org3017035"></a>
 
 ## Writing Functions
 
@@ -1488,17 +1479,17 @@ Every function returns something:
     data['new_col'] = data['lifeExp_1952'].apply(my_fun)
 
 
-<a id="orgc47d1de"></a>
+<a id="orgebe1b33"></a>
 
 ## TODO Variable Scope (optional)
 
 
-<a id="org5025c42"></a>
+<a id="org4c1e4c9"></a>
 
 ## TODO Programming Style (optional)
 
 
-<a id="orge3ffdd3"></a>
+<a id="orgd5a93c5"></a>
 
 ## Working with unstructured files (optional)
 
@@ -1634,7 +1625,7 @@ Demonstrate string tests with manifest\_list:
 2.  Are there other structural regularities you could use to parse the data? (Note that in the letters, sometimes there are multiple letters under a single box header)
 
 
-<a id="org4ef786c"></a>
+<a id="org77f19a6"></a>
 
 ## Exception handling (optional)
 
@@ -1668,7 +1659,7 @@ Explicitly handle common errors, rather than waiting for your code to blow up.
 -   Use judiciously, and be as specific as possible. When in doubt, allow your code to blow up rather than silently commit errors.
 
 
-<a id="orgda93371"></a>
+<a id="org3537917"></a>
 
 ## Reducing memory usage 1: Read a file one line at a time (optional)
 
@@ -1678,7 +1669,7 @@ Explicitly handle common errors, rather than waiting for your code to blow up.
             pass
 
 
-<a id="org730d574"></a>
+<a id="org1ace96f"></a>
 
 ## Reducing memory usage 2: Use an SQLite database (optional)
 
@@ -1693,7 +1684,7 @@ Explicitly handle common errors, rather than waiting for your code to blow up.
     # Do stuff with `results`
 
 
-<a id="org4eaa384"></a>
+<a id="org6c6fec0"></a>
 
 ## Other optional topics
 
@@ -1704,7 +1695,7 @@ Explicitly handle common errors, rather than waiting for your code to blow up.
 -   Testing
 
 
-<a id="org812d082"></a>
+<a id="org7345235"></a>
 
 ## Homework
 
@@ -1715,7 +1706,7 @@ Explicitly handle common errors, rather than waiting for your code to blow up.
 ### How would you determine which letters and/or manifest items are missing?
 
 
-<a id="orgeba3eff"></a>
+<a id="orgc5e2f6e"></a>
 
 # Credits
 
@@ -1726,7 +1717,7 @@ Explicitly handle common errors, rather than waiting for your code to blow up.
 -   Rhondene Wint: Matplotlib and Seaborn notes
 
 
-<a id="orgba9f34b"></a>
+<a id="org2c26c2d"></a>
 
 # References
 
@@ -1741,7 +1732,7 @@ Explicitly handle common errors, rather than waiting for your code to blow up.
 -   Matplotlib gallery of examples: <https://matplotlib.org/gallery/index.html>
 
 
-<a id="org833b1fe"></a>
+<a id="org43d3b51"></a>
 
 # Example Data
 

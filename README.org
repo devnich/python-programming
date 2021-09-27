@@ -457,6 +457,33 @@ element[0] = 'C'
 - lists and strings
 - lists and files
 
+*** CHALLENGE: From Strings to Lists and Back
+Given this Python code:
+#+BEGIN_SRC python
+  print('string to list:', list('tin'))
+  print('list to string:', ''.join(['g', 'o', 'l', 'd']))
+#+END_SRC
+
+And this output:
+#+BEGIN_EXAMPLE
+string to list: ['t', 'i', 'n']
+list to string: gold
+#+END_EXAMPLE
+
+1. What does ~list('some string')~ do?
+2. What does ~'-'.join(['x', 'y', 'z'])~ generate?
+3. How can you change "carbon" to "Carbon"?
+
+*** Solution
+#+BEGIN_SRC python
+  # Strings are immutable, so you have to create a new string.
+  # Use the .join() method to join a list of strings into a new string.
+  new_element = ''.join(['C', element[1:]])
+
+  # or
+  new_element = element.capitalize()
+#+END_SRC
+
 ** Dictionaries
 Dictionaries are sets of key/value pairs. Instead of being indexed by position, they are indexed by key.
 #+BEGIN_SRC python
@@ -475,34 +502,7 @@ print(location['longitude'][0])
 #+END_SRC
 - If you have tree-structured data, dictionaries are usually a better choice than lists.
 
-** CHALLENGE: From Strings to Lists and Back
-Given this Python code:
-#+BEGIN_SRC python
-  print('string to list:', list('tin'))
-  print('list to string:', ''.join(['g', 'o', 'l', 'd']))
-#+END_SRC
-
-And this output:
-#+BEGIN_EXAMPLE
-string to list: ['t', 'i', 'n']
-list to string: gold
-#+END_EXAMPLE
-
-1. What does ~list('some string')~ do?
-2. What does ~'-'.join(['x', 'y', 'z'])~ generate?
-3. How can you change "carbon" to "Carbon"?
-
-** Solution
-#+BEGIN_SRC python
-  # Strings are immutable, so you have to create a new string.
-  # Use the .join() method to join a list of strings into a new string.
-  new_element = ''.join(['C', element[1:]])
-
-  # or
-  new_element = element.capitalize()
-#+END_SRC
-
-** CHALLENGE: Convert lists to dictionary (group)
+*** CHALLENGE: Convert lists to dictionary (group)
 How can we convert our list of names and ages into a dictionary? We will need to populate the dictionary with a list of keys and a list of values.
 
 #+BEGIN_SRC python
