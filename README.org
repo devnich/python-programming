@@ -414,6 +414,14 @@ del primes[4]
 print('primes after removing last item:', primes)
 #+END_SRC
 
+*** Use pop() to remove the last item and assign it to a variable
+#+BEGIN_SRC python
+  p = primes.pop()
+
+  print('Last prime in list', p)
+  print('primes after removing last item:', primes)
+#+END_SRC
+
 *** The empty list contains no values
 Helpful for collecting values
 
@@ -485,7 +493,7 @@ list to string: gold
 #+END_SRC
 
 ** Dictionaries
-Dictionaries are sets of key/value pairs. Instead of being indexed by position, they are indexed by key.
+*** Dictionaries are sets of key/value pairs. Instead of being indexed by position, they are indexed by key.
 #+BEGIN_SRC python
 ages = {'Derek': 42,
         'Bill': 24,
@@ -494,16 +502,36 @@ ages = {'Derek': 42,
 print(ages['Derek'])
 #+END_SRC
 
+*** Update dictionaries by assigning a new key/value pair
+#+BEGIN_SRC python
+ages['Sam'] = 12
+
+print(ages)
+#+END_SRC
+
+*** Delete an item using del or pop()
+#+BEGIN_SRC python
+  print("Original dictionary", ages)
+  del ages['Derek']
+  print("Dictionary after 1st deletion", ages)
+
+  derek_age = ages.pop('Derek')
+  print("Dictionary after 2nd deletion", ages)
+  print("Returned value", derek_age)
+
+  print(ages)
+#+END_SRC
+
+*** Dictionaries are the natural way to store tree-structured data
 #+BEGIN_SRC python
 location = {'latitude': [37.28306, 'N'],
             'longitude': [-120.50778, 'W']}
 
 print(location['longitude'][0])
 #+END_SRC
-- If you have tree-structured data, dictionaries are usually a better choice than lists.
 
 *** CHALLENGE: Convert lists to dictionary (group)
-How can we convert our list of names and ages into a dictionary? We will need to populate the dictionary with a list of keys and a list of values.
+How can you convert our list of names and ages into a dictionary? Hint: You will need to populate the dictionary with a list of keys and a list of values.
 
 #+BEGIN_SRC python
   # Starting data
@@ -737,12 +765,14 @@ https://pandas.pydata.org/docs/user_guide/dsintro.html#column-selection-addition
 - Merge, join, concatenate and compare: https://pandas.pydata.org/docs/user_guide/merging.html
 
 ** TODO Explicitly talk about linear algebra with NumPy
-** TODO draw out matrix/list vs dataframe/dict
+1. FORTRAN -> NumPy and implications
+2. draw out matrix/list vs dataframe/dict
+3. row vs column addition idioms - explain performance bottlenecks
 ** TODO Rewrite as dplyr/SQL-style query/filter/subset lesson
 In general, the lesson spends too much time in the weeds. We want to take a high-level, declarative view of our data, and only invoke fiddly methods as necessary.
 - concat/merge https://pandas.pydata.org/docs/reference/api/pandas.concat.html
 - filter/group/subset: https://pandas.pydata.org/docs/user_guide/groupby.html
-
+- functional methods and database access methods
 ** Standard library vs. outside modules
 1. Install with conda package manager
 2. Install with pip
