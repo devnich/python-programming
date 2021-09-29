@@ -1,9 +1,3 @@
-```{=org}
-#+STARTUP: showall indent
-```
-```{=org}
-#+ODT_STYLES_FILE: "/Users/gilgamesh/Google Drive/Templates/styles.xml"
-```
 # Fundamentals
 
 ## Orientation
@@ -64,7 +58,7 @@ jupyter lab
 
 Variables are names for values.
 
-``` {.python}
+```python
 first_name = 'Derek'
 age = 42
 ```
@@ -77,7 +71,7 @@ age = 42
 
 ### Use `print()` to display values
 
-``` {.python}
+```python
 print(first_name, 'is', age, 'years old')
 ```
 
@@ -90,21 +84,21 @@ print(first_name, 'is', age, 'years old')
 
 ### Variables must be created before they are used
 
-``` {.python}
+```python
 # Prints an informative error message; more about this later
 print(last_name)
 ```
 
 ### Variables can be used in calculations
 
-``` {.python}
+```python
 age = age + 3
 print('Age in three years:', age)
 ```
 
 ### Variables only change value when something is assigned to them
 
-``` {.python}
+```python
 first = 1
 second = 5 * first
 first = 2
@@ -126,35 +120,35 @@ Most data is text and numbers:
 
 ### Use the built-in function `type()` to find the type of a value
 
-``` {.python}
+```python
 type(53)
 ```
 
-``` {.python}
+```python
 type(3.12)
 ```
 
-``` {.python}
+```python
 fitness = 'average'
 type(fitness)
 ```
 
 ### Types control what operations can be performed on a given value
 
-``` {.python}
+```python
 print(5 - 3)
 ```
 
-``` {.python}
+```python
 # This will produce an error
 print('hello' - 'h')
 ```
 
-``` {.python}
+```python
 len('hello')
 ```
 
-``` {.python}
+```python
 # This will produce an error
 len(5)
 ```
@@ -163,24 +157,24 @@ len(5)
 
 Types have different properties; more about this later.
 
-``` {.python}
+```python
 1 + '2'                         # Produces an error
 ```
 
-``` {.python}
+```python
 1 + float('2')
 ```
 
 ### Can mix integers and floats freely in operations
 
-``` {.python}
+```python
 # This will "do the right thing" and convert everything to floats
 1 / 2.0
 ```
 
 ### CHALLENGE: Explain what each operator does
 
-``` {.python}
+```python
 # Floor
 print('5 // 3:', 5 // 3)
 # Floating point
@@ -198,14 +192,14 @@ print('5 % 3:', 5 % 3)
 
 ### Use comments to add documentation to programs
 
-``` {.python}
+```python
 # This sentence isn't executed by Python.
 adjustment = 0.5   # Neither is this - anything after '#' is ignored.
 ```
 
 ### A function may take zero or more arguments
 
-``` {.python}
+```python
 print('before')
 print()
 print('after')
@@ -213,12 +207,12 @@ print('after')
 
 ### Every function returns *something*
 
-``` {.python}
+```python
 result = len("hello")
 print(result)
 ```
 
-``` {.python}
+```python
 # printing to the screen is a "side effect" that doesn't produce a useable result
   result = print("hello")
   print(result)
@@ -226,35 +220,35 @@ print(result)
 
 ### Commonly-used built-in functions include `max()`, `min()`, and `round()`
 
-``` {.python}
+```python
 max(1, 2, 3)
 ```
 
-``` {.python}
+```python
 min('a', 'A', '0')       # 0-9, A-Z, a-z; However, notice they are all strings!
 ```
 
 ### Functions may only work for certain (combinations of) arguments
 
-``` {.python}
+```python
 max(1, 'a')              # Not a meaningful comparision
 ```
 
 ### Functions may have default values for some arguments
 
-``` {.python}
+```python
 # By default, we round to the nearest integer
 round(3.712)
 ```
 
-``` {.python}
+```python
 # You can optionally specify the number of significant digits
 round(3.712, 1)
 ```
 
 ### Use the built-in function `help()` to get help for a function
 
-``` {.python}
+```python
 help(round)
 ```
 
@@ -263,7 +257,7 @@ help(round)
 
 ### Functions attached to objects are called methods
 
-``` {.python}
+```python
 my_string = 'Hello world!'
 
 # calling the swapcase method on the my_string object
@@ -272,7 +266,7 @@ print(my_string.swapcase())
 
 #### Methods can be chained together
 
-``` {.python}
+```python
 print(my_string.isupper())          # Not all the letters are uppercase
 print(my_string.upper())            # This capitalizes all the letters
 
@@ -281,7 +275,7 @@ print(my_string.upper().isupper())  # Now all the letters are uppercase
 
 #### You can view an object\'s methods and attributes using `help()` or `dir()`
 
-``` {.python}
+```python
 # The short, short version
 dir(my_string)
 
@@ -291,7 +285,7 @@ help(str)
 
 #### Some methods and attributes are \"private\"; you\'re not supposed to use these directly
 
-``` {.python}
+```python
 # the len function takes a string as an argument and returns the length of the string
 print(len(my_string))
 
@@ -301,7 +295,7 @@ print(my_string.__len__())
 
 ### Python reports a syntax error when it can't understand the source of a program
 
-``` {.python}
+```python
 name = 'Bob
 age = = 54
 print("Hello world"
@@ -318,7 +312,7 @@ program: when does the addition happen, when does the subtraction
 happen, when is each function called, etc. What is the final value of
 radiance?
 
-``` {.python}
+```python
 radiance = 1.0
 radiance = max(2.1, 2.0 + min(radiance, 1.1 * radiance - 0.5))
 ```
@@ -331,7 +325,7 @@ radiance = max(2.1, 2.0 + min(radiance, 1.1 * radiance - 0.5))
 
 ### A program must `import` a library module before using it
 
-``` {.python}
+```python
 import math
 
 print('pi is', math.pi)
@@ -343,11 +337,11 @@ print('cos(pi) is', math.cos(math.pi))
 
 ### Use `help()` to learn about the contents of a library module
 
-``` {.python}
+```python
 help(math)                      # user friendly
 ```
 
-``` {.python}
+```python
 dir(math)                       # brief reminder, not user friendly
 ```
 
@@ -355,7 +349,7 @@ dir(math)                       # brief reminder, not user friendly
 
 You want to be careful with this. It\'s safer to keep the namespace.
 
-``` {.python}
+```python
 from math import cos, pi
 
 print('cos(pi) is', cos(pi))
@@ -363,7 +357,7 @@ print('cos(pi) is', cos(pi))
 
 ### Create an alias for a library module when importing it to shorten programs
 
-``` {.python}
+```python
 import math as m
 
 print('cos(pi) is', m.cos(m.pi))
@@ -371,7 +365,7 @@ print('cos(pi) is', m.cos(m.pi))
 
 ### Python has opinions about how to write your programs
 
-``` {.python}
+```python
 import this
 ```
 
@@ -379,7 +373,7 @@ import this
 
 You want to select a random character from a string:
 
-``` {.python}
+```python
 bases = 'ACTTGCTTGAC'
 ```
 
@@ -398,7 +392,7 @@ The string has 11 characters, each having a positional index from 0 to
 functions to get a random integer between 0 and 10, and then pick out
 the character at that position:
 
-``` {.python}
+```python
 from random import randrange
 
 random_index = randrange(len(bases))
@@ -407,7 +401,7 @@ print(bases[random_index])
 
 or more compactly:
 
-``` {.python}
+```python
 from random import randrange
 
 print(bases[randrange(len(bases))])
@@ -416,7 +410,7 @@ print(bases[randrange(len(bases))])
 Perhaps you found the random.sample function? It allows for slightly
 less typing:
 
-``` {.python}
+```python
 from random import sample
 
 print(sample(bases, 1)[0])
@@ -430,7 +424,7 @@ with more convoluted code as a result.
 
 ### A list stores many values in a single structure
 
-``` {.python}
+```python
 pressures = [0.273, 0.275, 0.277, 0.275, 0.276]
 print('pressures:', pressures)
 print('length:', len(pressures))
@@ -438,20 +432,20 @@ print('length:', len(pressures))
 
 ### Use an item's index to fetch it from a list
 
-``` {.python}
+```python
 print('zeroth item of pressures:', pressures[0])
 print('fourth item of pressures:', pressures[4])
 ```
 
 ### Indexing beyond the end of the collection is an error
 
-``` {.python}
+```python
 pressures[20]
 ```
 
 ### Count backwards from the end with negative integers
 
-``` {.python}
+```python
 # Get the last item in the list
 print('last item of pressures:', pressures[-1])
 ```
@@ -461,21 +455,21 @@ print('last item of pressures:', pressures[-1])
 The slicing syntax is
 `my_list[inclusive_start_position:exclusive_stop_position:optional_step_amount]`
 
-``` {.python}
+```python
 # Up to, but not including index 3
 print('first 3 items of pressures:', pressures[0:3])
 ```
 
 ### Lists' values can be replaced by assigning to them
 
-``` {.python}
+```python
 pressures[0] = 0.265
 print('pressures is now:', pressures)
 ```
 
 ### Appending items to a list lengthens it
 
-``` {.python}
+```python
 primes = [2, 3, 5]
 print('primes is initially:', primes)
 primes.append(7)
@@ -491,7 +485,7 @@ print('primes has become:', primes)
 
 ### Extend is similar to append, but allows you to merge two lists
 
-``` {.python}
+```python
 teen_primes = [11, 13, 17, 19]
 middle_aged_primes = [37, 41, 43, 47]
 print('primes is currently:', primes)
@@ -505,7 +499,7 @@ print('primes has finally become:', primes)
 
 ### Use del to remove items from a list entirely
 
-``` {.python}
+```python
 primes = [2, 3, 5, 7, 9]
 print('primes before removing last item:', primes)
 del primes[4]
@@ -514,7 +508,7 @@ print('primes after removing last item:', primes)
 
 ### Use pop() to remove the last item and assign it to a variable
 
-``` {.python}
+```python
 p = primes.pop()
 
 print('Last prime in list', p)
@@ -527,7 +521,7 @@ Helpful for collecting values
 
 ### Lists may contain values of different types
 
-``` {.python}
+```python
 ages = ['Derek', 42, 'Bill', 24, 'Susan', 37]
 print('First name/age pair', ages[0:2])
 print("All the ages", ages[0::2])
@@ -539,33 +533,33 @@ print("All the ages", ages[0::2])
 
 Count from 0
 
-``` {.python}
+```python
 element = 'carbon'
 element[0]
 ```
 
 #### Use a slice to get a substring
 
-``` {.python}
+```python
 # Up to, but not including 3
 element[0:3]
 ```
 
 #### Counting backwards
 
-``` {.python}
+```python
 element[-1]
 ```
 
 #### Use the built-in function `len()` to find the length of a string
 
-``` {.python}
+```python
 len('carbon')                   # length is an integer
 ```
 
 ### But! Character strings are immutable
 
-``` {.python}
+```python
 element[0] = 'C'
 ```
 
@@ -578,7 +572,7 @@ element[0] = 'C'
 
 Given this Python code:
 
-``` {.python}
+```python
 print('string to list:', list('tin'))
 print('list to string:', ''.join(['g', 'o', 'l', 'd']))
 ```
@@ -596,7 +590,7 @@ list to string: gold
 
 #### Solution
 
-``` {.python}
+```python
 # Strings are immutable, so you have to create a new string.
 # Use the .join() method to join a list of strings into a new string.
 new_element = ''.join(['C', element[1:]])
@@ -609,7 +603,7 @@ new_element = element.capitalize()
 
 ### Dictionaries are sets of key/value pairs. Instead of being indexed by position, they are indexed by key.
 
-``` {.python}
+```python
 ages = {'Derek': 42,
         'Bill': 24,
         'Susan': 37}
@@ -619,7 +613,7 @@ print(ages['Derek'])
 
 ### Update dictionaries by assigning a new key/value pair
 
-``` {.python}
+```python
 ages['Sam'] = 12
 
 print(ages)
@@ -627,7 +621,7 @@ print(ages)
 
 ### Delete an item using del or pop()
 
-``` {.python}
+```python
 print("Original dictionary", ages)
 del ages['Derek']
 print("Dictionary after 1st deletion", ages)
@@ -641,7 +635,7 @@ print(ages)
 
 ### Dictionaries are the natural way to store tree-structured data
 
-``` {.python}
+```python
 location = {'latitude': [37.28306, 'N'],
             'longitude': [-120.50778, 'W']}
 
@@ -654,7 +648,7 @@ How can you convert our list of names and ages into a dictionary? Hint:
 You will need to populate the dictionary with a list of keys and a list
 of values.
 
-``` {.python}
+```python
 # Starting data
 ages = ['Derek', 42, 'Bill', 24, 'Susan', 37]
 
@@ -664,7 +658,7 @@ help({})
 
 #### Solution
 
-``` {.python}
+```python
 names_list = ages[0::2]
 ages_list = ages[1::2]
 
@@ -680,7 +674,7 @@ ages_dict = dict(zip(names_list, ages_list))
 
 ## Where are we?
 
-``` {.python}
+```python
 import os
 
 # print current directory
@@ -696,7 +690,7 @@ print("Just print the sub-directories:", sorted(next(os.walk('.'))[1]))
 
 ### Use the Pandas library to work on tabular data
 
-``` {.python}
+```python
 import pandas as pd
 
 data = pd.read_csv('data/gapminder_gdp_oceania.csv')
@@ -708,7 +702,7 @@ print(data)
 Rows are indexed by number by default (0, 1, 2,....). For convenience,
 we want to index by country:
 
-``` {.python}
+```python
 data = pd.read_csv('data/gapminder_gdp_oceania.csv', index_col='country')
 print(data)
 ```
@@ -720,7 +714,7 @@ print(data)
 
 ### Use `DataFrame.info` to find out more about a dataframe
 
-``` {.python}
+```python
 data.info()
 ```
 
@@ -728,7 +722,7 @@ data.info()
 
 Note that this is an attribute, not a method:
 
-``` {.python}
+```python
 data.columns
 ```
 
@@ -736,13 +730,13 @@ data.columns
 
 Does not copy or modify the data, just changes caller\'s view of it:
 
-``` {.python}
+```python
 data.T
 ```
 
 ### Use `DataFrame.describe` to get summary statistics about data
 
-``` {.python}
+```python
 data.describe()
 ```
 
@@ -768,43 +762,43 @@ data.describe()
 
 #### Solution 1
 
-``` {.python}
+```python
 americas = pd.read_csv('data/gapminder_gdp_americas.csv', index_col='country')
 americas.describe()
 ```
 
 #### Solution 2.1
 
-``` {.python}
+```python
 americas.head(3)
 ```
 
 #### Solution 2.2
 
-``` {.python}
+```python
 americas.T.tail(3)
 ```
 
 #### Solution 4
 
-``` {.python}
+```python
 americas.to_csv('processed.csv')
 ```
 
 ### Introspecting on the DataFrame object (extremely optional)
 
-``` {.python}
+```python
 # DataFrames have a huge number of attributes and methods, so dir() is not very useful
 print(dir(data))
 ```
 
-``` {.python}
+```python
 # Create a new list that filters out internal attributes, functions, and methods
 df_public = [item for item in dir(data) if not item.startswith('_')]
 print(df_public)
 ```
 
-``` {.python}
+```python
 # Pretty-print the new list; extremely optional
 import pprint
 
@@ -817,7 +811,7 @@ procedures). The difference between a method and a function is that
 methods are attached to objects, whereas functions are free-floating
 (\"first-class citizens\"). Methods and functions are \"callable\":
 
-``` {.python}
+```python
 # Generate a list of public methods and a list of public attributes. We do this
 # by testing each attribute to determine whether it is "callable".
 # NB: Because Python allows you to override any method or attribute at runtime,
@@ -851,7 +845,7 @@ pp.pprint(df_attr)
 
 ### Pandas introduces some new types
 
-``` {.python}
+```python
 print("DataFrame type", type(data))
 print("DataFrame type", type(data.T))
 print("Index type", type(data.columns))
@@ -874,13 +868,13 @@ access data:
 
 The `i` in `iloc` stands for \"index\".
 
-``` {.python}
+```python
 data.iloc[0, 0]
 ```
 
 #### Use `DataFrame.loc[..., ...]` to select values by their (entry) label
 
-``` {.python}
+```python
 data.loc["Albania", "gdpPercap_1952"]
 ```
 
@@ -889,7 +883,7 @@ data.loc["Albania", "gdpPercap_1952"]
 Just like Python's usual slicing notation. You can treat DataFrames as
 multi-dimensional lists!
 
-``` {.python}
+```python
 data.loc["Albania", :]
 ```
 
@@ -897,7 +891,7 @@ data.loc["Albania", :]
 
 Generalizing the concept of slice to include labeled indexes:
 
-``` {.python}
+```python
 data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
 ```
 
@@ -906,12 +900,12 @@ data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
 Any operation that you can use on the whole data frame can be used on a
 slice
 
-``` {.python}
+```python
 print(data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972'].max())
 print(data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972'].min())
 ```
 
-``` {.python}
+```python
 data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972'].describe()
 ```
 
@@ -920,15 +914,15 @@ data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972'].describe()
 Compares element-by-element and returns a similarly-shaped dataframe of
 `True` and `False`
 
-``` {.python}
+```python
 subset = data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
 ```
 
-``` {.python}
+```python
 subset
 ```
 
-``` {.python}
+```python
 # Which GDPs are greater than 10,000?
 subset > 10000
 ```
@@ -937,14 +931,14 @@ subset > 10000
 
 Mask the matrix values that fail to meet a criterion.
 
-``` {.python}
+```python
 mask = subset > 10000
 subset[mask]
 ```
 
 NaNs are ignored by numerical operations like max, min, average, etc.
 
-``` {.python}
+```python
 subset[mask].describe()
 ```
 
@@ -962,7 +956,7 @@ subset[mask].describe()
 Split data according to criterion, do numeric transformations, then
 recombine.
 
-``` {.python}
+```python
 # Get all GDPs greater than the mean
 mask_higher = data > data.mean()
 
@@ -978,7 +972,7 @@ wealth_score
 
 DataFrames are dictionary-like objects
 
-``` {.python}
+```python
 # Wealth Score is a series
 type(wealth_score)
 
@@ -990,7 +984,7 @@ data['normalized_wealth'] = wealth_score
 Capture the results of your filter in a new file, rather than
 overwriting your original data.
 
-``` {.python}
+```python
 # Save to a new CSV, preserving your original data
 data.to_csv('gapminder_gdp_europe_normed.csv')
 ```
@@ -1076,7 +1070,7 @@ Direct download link: <https://ndownloader.figshare.com/files/10717177>
 
 #### Import data
 
-``` {.python}
+```python
 data = pd.read_csv('surveys.csv')
 
 # Check for NaN
@@ -1088,7 +1082,7 @@ print("NaN lengths:", data['hindfoot_length'].isna().sum())
 
 #### Fit OLS regression model
 
-``` {.python}
+```python
 from statsmodels.formula.api import ols
 
 model = ols("weight ~ hindfoot_length", data, missing='drop').fit()
@@ -1097,7 +1091,7 @@ print(model.summary())
 
 #### Generic parameters for all models
 
-``` {.python}
+```python
 import statsmodels
 
 help(statsmodels.base.model.Model)
@@ -1128,7 +1122,7 @@ help(statsmodels.base.model.Model)
     -   <https://datacarpentry.org/python-socialsci/13-matplotlib/index.html>
     -   <https://ryxcommar.com/2020/04/11/why-you-hate-matplotlib/>
 
-``` {.python}
+```python
 ```
 
 ## What does it mean to be Pythonic?
@@ -1159,11 +1153,11 @@ Relationships/trends among data and 2) the distribution of data.
 
 ### Basic line plot (time series example)
 
-``` {.python}
+```python
 import matplotlib.pyplot as plt
 ```
 
-``` {.python}
+```python
 # make up data
 import numpy as np
 
@@ -1171,7 +1165,7 @@ y = np.random.random(10) # outputs an array of 10 random numbers between 0 and 1
 x = np.arange(1980,1990,1) # generates an ordered array of numbers from 1980 to 1989
 ```
 
-``` {.python}
+```python
 print(x)
 print(y)
 
@@ -1179,13 +1173,13 @@ print(y)
 len(x) == len(y)
 ```
 
-``` {.python}
+```python
 #turn y into a percentage
 y = y*100
 print(y)
 ```
 
-``` {.python}
+```python
 ## simple line plot example of stock price changes
 
 #3 basic commands to create a basic figure
@@ -1199,16 +1193,16 @@ plt.show()
 In principle, nearly every element on a matplotlib figure is
 independently modifiable.
 
-``` {.python}
+```python
 #change theme style
 plt.style.available
 ```
 
-``` {.python}
+```python
 plt.style.use('dark_background')  #changes theme of all plots
 ```
 
-``` {.python}
+```python
 ## modify figure size,  axes and fonts
 plt.figure(figsize=(8,6)) #(width, height) inches
 plt.plot(x,y,color='darkorange', linewidth=2, marker='o')
@@ -1230,7 +1224,7 @@ plt.savefig("mygraph_dark.png",dpi=300, bbox_inches='tight')
 plt.show()
 ```
 
-``` {.python}
+```python
 # Saving datasets with new-style string formatting
 #for i in datasets_list:
 #    plt.savefig(f'{i}.png',....)
@@ -1238,20 +1232,20 @@ plt.show()
 
 ### Plotting from dataframes with Gapminder dataset
 
-``` {.python}
+```python
 import pandas as pd
 
 #load gapminder data
 gapminder = pd.read_csv("gapminder_gdp_europe.csv", index_col='country')
 ```
 
-``` {.python}
+```python
 ```
 
-``` {.python}
+```python
 ```
 
-``` {.python}
+```python
 ```
 
 # Building Programs
@@ -1262,7 +1256,7 @@ gapminder = pd.read_csv("gapminder_gdp_europe.csv", index_col='country')
 
 \"For each thing in this group, do these operations\"
 
-``` {.python}
+```python
 for number in [2, 3, 5]:
     print(number)
 ```
@@ -1276,13 +1270,13 @@ for number in [2, 3, 5]:
 
 ### The first line of the `for` loop must end with a colon, and the body must be indented
 
-``` {.python}
+```python
 # This produces an error
 for number in [2, 3, 5]:
 print(number)
 ```
 
-``` {.python}
+```python
 # So does this
 firstName = "Jon"
 lastName = "Smith"
@@ -1290,7 +1284,7 @@ lastName = "Smith"
 
 ### Loop variables can be called anything
 
-``` {.python}
+```python
 for kitten in [2, 3, 5]:
     print(kitten)
 ```
@@ -1299,7 +1293,7 @@ for kitten in [2, 3, 5]:
 
 ### The body of a loop can contain many statements
 
-``` {.python}
+```python
 primes = [2, 3, 5]
 for p in primes:
     squared = p ** 2
@@ -1309,7 +1303,7 @@ for p in primes:
 
 ### Use `range()` to iterate over a sequence of numbers
 
-``` {.python}
+```python
 for number in range(0, 3):
     print(number)
 ```
@@ -1319,7 +1313,7 @@ for number in range(0, 3):
 
 ### The Accumulator pattern turns many values into one
 
-``` {.python}
+```python
 # Sum the first 10 integers.
 total = 0
 for number in range(1, 11):
@@ -1329,7 +1323,7 @@ print(total)
 
 ### Dictionary iteration
 
-``` {.python}
+```python
 ages = {'Derek': 42,
         'Bill': 24,
         'Susan': 37}
@@ -1347,7 +1341,7 @@ for val in ages.values():
     print(val)
 ```
 
-``` {.python}
+```python
 location = {'latitude': [37.28306, 'N'],
             'longitude': [-120.50778, 'W']}
 
@@ -1362,7 +1356,7 @@ for key, val in location.items():
 An `if` statement (more properly called a conditional statement)
 controls whether some block of code is executed or not.
 
-``` {.python}
+```python
 mass = 3.54
 if mass > 3.0:
     print(mass, 'is large')
@@ -1383,7 +1377,7 @@ Structure is similar to a `for` statement:
 Not much point using a conditional when we know the value (as above),
 but useful when we have a collection to process.
 
-``` {.python}
+```python
 masses = [3.54, 2.07, 9.22, 1.86, 1.71]
 for m in masses:
     if m > 3.0:
@@ -1395,7 +1389,7 @@ for m in masses:
 `else` can be used following an `if`. This allows us to specify an
 alternative to execute when the if branch isn't taken.
 
-``` {.python}
+```python
 masses = [3.54, 2.07, 9.22, 1.86, 1.71]
 for m in masses:
     if m > 3.0:
@@ -1409,7 +1403,7 @@ for m in masses:
 May want to provide several alternative choices, each with its own test;
 use `elif` (short for "else if") and a condition to specify these.
 
-``` {.python}
+```python
 masses = [3.54, 2.07, 9.22, 1.86, 1.71]
 for m in masses:
     if m > 9.0:
@@ -1428,7 +1422,7 @@ for m in masses:
 Python steps through the branches of the conditional in order, testing
 each in turn. Order matters! The following is wrong:
 
-``` {.python}
+```python
 grade = 85
 if grade >= 70:
     print('grade is C')
@@ -1440,7 +1434,7 @@ elif grade >= 90:
 
 ### Use conditionals in a loop to "evolve" the values of variables
 
-``` {.python}
+```python
 velocity = 10.0
 for i in range(5): # execute the loop 5 times
     print(i, ':', velocity)
@@ -1459,7 +1453,7 @@ Often, you want some combination of things to be true. You can combine
 relations within a conditional using `and` and `or`. Continuing the
 example above, suppose you have:
 
-``` {.python}
+```python
 mass     = [ 3.54,  2.07,  9.22,  1.86,  1.71]
 velocity = [10.00, 20.00, 30.00, 25.00, 20.00]
 
@@ -1489,7 +1483,7 @@ for i in range(5):
 
 ### Use a `for` loop to process files given a list of their names
 
-``` {.python}
+```python
 for filename in ['gapminder_gdp_africa.csv', 'gapminder_gdp_asia.csv']:
     data = pd.read_csv(filename, index_col='country')
     print(filename, data.min())
@@ -1497,7 +1491,7 @@ for filename in ['gapminder_gdp_africa.csv', 'gapminder_gdp_asia.csv']:
 
 ### Use glob.glob to find sets of files whose names match a pattern
 
-``` {.python}
+```python
 import glob
 print('all csv files in data directory:', glob.glob('*.csv'))
 ```
@@ -1510,7 +1504,7 @@ pattern". The most common patterns are:
 
 ### Use glob and for to process batches of files
 
-``` {.python}
+```python
 for filename in glob.glob('gapminder_*.csv'):
     data = pd.read_csv(filename)
     print(filename, data['gdpPercap_1952'].min())
@@ -1520,12 +1514,12 @@ for filename in glob.glob('gapminder_*.csv'):
 
 Where are we?
 
-``` {.python}
+```python
 import os
 os.getcwd()
 ```
 
-``` {.python}
+```python
 from pathlib import Path
 directory_path = Path("/Users/gilgamesh/Desktop/data")
 
@@ -1542,7 +1536,7 @@ average GDP per capita for each region over time in a single chart.
 
 Solution:
 
-``` {.python}
+```python
 import glob
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -1574,7 +1568,7 @@ plt.show()
 
 ### Define a function using `def` with a name, parameters, and a block of code
 
-``` {.python}
+```python
 def print_greeting():
     print('Hello!')
 ```
@@ -1591,13 +1585,13 @@ def print_greeting():
 -   Like assigning a value to a variable
 -   Must call the function to execute the code it contains.
 
-``` {.python}
+```python
 print_greeting()
 ```
 
 ### Arguments in call are matched to parameters in definition
 
-``` {.python}
+```python
 def print_date(year, month, day):
     joined = '/'.join([year, month, day])
     print(joined)
@@ -1605,7 +1599,7 @@ def print_date(year, month, day):
 print_date(1871, 3, 19)
 ```
 
-``` {.python}
+```python
 # If you name the arguments you can specify any order
 print_date(month=3, day=19, year=1871)
 ```
@@ -1622,7 +1616,7 @@ Use `return ...` to give a value back to the caller. `return` ends the
 function\'s execution and *returns* you to the code that originally
 called the function.
 
-``` {.python}
+```python
 def average(values):
 "Return average of values, or None if no values are supplied."
 
@@ -1635,20 +1629,20 @@ The `if` statement \"falls through\" to the second `return` when
 `values != 0`. For maximum clarity, you could add `else` before the
 outer `return`.
 
-``` {.python}
+```python
 a = average([1, 3, 4])
 print('average of actual values:', a)
 ```
 
 You should explicitly handle common problems:
 
-``` {.python}
+```python
 print('average of empty list:', average([]))
 ```
 
 Every function returns something:
 
-``` {.python}
+```python
 result = print_date(1871, 3, 19)
 print('result of call is:', result)
 ```
@@ -1663,7 +1657,7 @@ print('result of call is:', result)
 
 ### Using functions with conditionals in Pandas (optional)
 
-``` {.python}
+```python
 # Apply a function to every row of the selected column
 def my_fun(val):
     pass
@@ -1680,7 +1674,7 @@ data['new_col'] = data['lifeExp_1952'].apply(my_fun)
 
 ### Open the file with a context handler
 
-``` {.python}
+```python
 with open('pettigrew_letters_ORIGINAL.txt', 'r') as file_in:
     text = file_in.read()
 
@@ -1691,12 +1685,12 @@ print(len(text))
 
 Compare the following:
 
-``` {.python}
+```python
 # This displays the nicely-formatted document
 print(text[:300])
 ```
 
-``` {.python}
+```python
 # This shows the true nature of the string; you can see newlines (/n),
 # tabs (/t), and other hidden characters
 text[:300]
@@ -1706,13 +1700,13 @@ text[:300]
 
 #### `.read()` produces the file contents as one string
 
-``` {.python}
+```python
 type(text)
 ```
 
 #### `.readlines()` produces the file contents as a list of lines; each line is a string
 
-``` {.python}
+```python
 with open('pettigrew_letters_ORIGINAL.txt', 'r') as file_in:
     text = file_in.readlines()
 
@@ -1722,7 +1716,7 @@ print(type(text))
 
 #### Inspect parts of the file using list syntax
 
-``` {.python}
+```python
 # View the first 10 lines
 text[:10]
 ```
@@ -1746,7 +1740,7 @@ text[:10]
 
 #### Get the manifest by visual inspection
 
-``` {.python}
+```python
 manifest_list = text[14:159]
 ```
 
@@ -1754,26 +1748,26 @@ manifest_list = text[14:159]
 
 Demonstrate string tests with manifest_list:
 
-``` {.python}
+```python
 # Raw text
 for location in manifest_list[:10]:
     print(location)
 ```
 
-``` {.python}
+```python
 # Remove extra whitespace
 for location in manifest_list[:10]:
     print(location.strip())
 ```
 
-``` {.python}
+```python
 # Test whether the cleaned line starts with 'Box '
 for location in manifest_list[:10]:
     stripped_line = location.strip()
     print(stripped_line.startswith('Box '))
 ```
 
-``` {.python}
+```python
 # Test whether the cleaned line starts with 'box '
 for location in manifest_list[:10]:
     stripped_line = location.strip()
@@ -1782,7 +1776,7 @@ for location in manifest_list[:10]:
 
 #### Gather all the locations in the full document
 
-``` {.python}
+```python
 letters = text[162:]
 
 for line in letters[:25]:
@@ -1804,7 +1798,7 @@ for line in letters[:25]:
 
 #### Collect the positive results
 
-``` {.python}
+```python
 letter_locations = []
 
 for line in letters:
@@ -1816,7 +1810,7 @@ for line in letters:
 
 #### Compare the manifest and the letters
 
-``` {.python}
+```python
 print('Items in manifest:', len(manifest_list))
 print('Letters:', len(letter_locations))
 ```
@@ -1833,7 +1827,7 @@ print('Letters:', len(letter_locations))
 Explicitly handle common errors, rather than waiting for your code to
 blow up.
 
-``` {.python}
+```python
 def average(values):
     "Return average of values, or None if no values are supplied."
 
@@ -1846,7 +1840,7 @@ print(average([]))              # Explicitly handles possible divide-by-zero err
 print(average(4))               # Unhandled exception
 ```
 
-``` {.python}
+```python
 def average(values):
     "Return average of values, or an informative error if bad values are supplied."
 
@@ -1867,7 +1861,7 @@ print(average([]))
 
 ## Reducing memory usage 1: Read a file one line at a time (optional)
 
-``` {.python}
+```python
 with open('pettigrew_letters_ORIGINAL.txt', 'r') as file_in:
     for line in file_in:
         # Do stuff to current line
@@ -1876,7 +1870,7 @@ with open('pettigrew_letters_ORIGINAL.txt', 'r') as file_in:
 
 ## Reducing memory usage 2: Use an SQLite database (optional)
 
-``` {.python}
+```python
 import sqlite3
 
 conn = sqlite3.connect('my_database_name.db')
