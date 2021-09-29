@@ -587,7 +587,6 @@ print(data)
 *** Use ~index_col~ to specify that a column’s values should be used as row headings
 Rows are indexed by number by default (0, 1, 2,....). For convenience, we want to index by country:
 #+BEGIN_SRC python
-#data = pd.read_csv('/Users/gilgamesh/Desktop/data/gapminder_gdp_oceania.csv', index_col='country')
 data = pd.read_csv('data/gapminder_gdp_oceania.csv', index_col='country')
 print(data)
 #+END_SRC
