@@ -42,14 +42,14 @@
 
 Open Terminal (MacOS/Linux) or Anaconda Prompt (Windows)
 
-``` {.bash}
+```bash
 cd Desktop/data
 jupyter lab
 ```
 
 ### Execute cell with CTRL-Enter; execute cell and move to new cell with Shift-Enter
 
-``` {.python}
+```python
 3 + 7
 ```
 
