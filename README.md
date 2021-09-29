@@ -1,58 +1,59 @@
 
 # Table of Contents
 
-1.  [Fundamentals](#org8dd05d4)
-    1.  [Orientation](#org0e3211a)
-    2.  [Jupyter commands](#org947883d)
-    3.  [Variables and Assignment](#org816c36a)
-    4.  [Data Types and Type Conversion](#org051c782)
-    5.  [Built-in Functions and Help](#orgb83e138)
-    6.  [Libraries](#org3196500)
-    7.  [Lists](#orge66b6df)
-    8.  [Dictionaries](#org3c921a3)
-    9.  [Other containers (optional)](#orgf441bbd)
-2.  [Data manipulation with Pandas, stats with Statsmodels, ML with Scikit-Learn](#orgd6014ac)
-    1.  [Reading Tabular Data into DataFrames](#org2416299)
-    2.  [Pandas DataFrames](#org1da7f8d)
-    3.  [Explicitly talk about linear algebra with NumPy](#orgad8784e)
-    4.  [Rewrite as dplyr/SQL-style query/filter/subset lesson](#orgfeee7cd)
-    5.  [Standard library vs. outside modules](#org813528e)
-    6.  [SciPy project](#orga818cfa)
-    7.  [Downstream libraries](#orgf21a39f)
-    8.  [Command-Line Programs](#org491e38c)
-    9.  [Statistics](#org515dc43)
-    10. [Machine learning with Scikit-Learn](#org222a93c)
-3.  [Visualization with Matplotlib, Pandas, and Seaborn](#org20965df)
-    1.  [What does it mean to be Pythonic?](#org31376fa)
-    2.  [Seaborn 0.11 new features: https://seaborn.pydata.org/whatsnew.html](#org30f5188)
-    3.  [Workshop Objectives](#org507aa6b)
-    4.  [Big 5 graphs](#orgc4fb709)
-    5.  [Matplotlib](#org10978e5)
-4.  [Building Programs](#org3ec63f4)
-    1.  [For Loops](#orgb9796d1)
-    2.  [Conditionals](#org6b51fe2)
-    3.  [Looping Over Data Sets](#org6c9cadb)
-    4.  [Writing Functions](#org49f1d14)
-    5.  [Variable Scope (optional)](#orgad2d6af)
-    6.  [Programming Style (optional)](#org4b9de07)
-    7.  [Working with unstructured files (optional)](#orgdf37940)
-    8.  [Exception handling (optional)](#org3a0d752)
-    9.  [Reducing memory usage 1: Read a file one line at a time (optional)](#org1253197)
-    10. [Reducing memory usage 2: Use an SQLite database (optional)](#orgc6f5a18)
-    11. [Other optional topics](#orgf0ec963)
-    12. [Homework](#orgec86a29)
-5.  [Credits](#orgebc9f59)
-6.  [References](#org3959784)
-7.  [Example Data](#org789cd6a)
+1.  [Fundamentals](#org44e3f34)
+    1.  [Orientation](#orga5dcdaa)
+    2.  [Jupyter commands](#org1726af9)
+    3.  [Variables and Assignment](#orgf2d4757)
+    4.  [Data Types and Type Conversion](#org3e9e9a3)
+    5.  [Built-in Functions and Help](#org8604310)
+    6.  [Libraries](#orgfcd15ca)
+    7.  [Lists](#org01c8c40)
+    8.  [Dictionaries](#org744db7c)
+    9.  [Other containers (optional)](#org9c397e2)
+2.  [Data manipulation with Pandas](#org6d51ec9)
+    1.  [Where are we?](#org242571c)
+    2.  [Reading Tabular Data into DataFrames](#org8a37fde)
+    3.  [Pandas DataFrames](#org496f0a6)
+    4.  [Rewrite as dplyr/SQL-style query/filter/subset lesson](#orgb984b77)
+    5.  [Standard library vs. outside modules](#org1331068)
+    6.  [SciPy project](#org25e1fae)
+    7.  [If time allows, stats with Statsmodels, ML with Scikit-Learn](#orga584668)
+    8.  [Downstream libraries](#org64b60bf)
+    9.  [Command-Line Programs](#orgb389e48)
+    10. [Statistics](#org032594c)
+    11. [Machine learning with Scikit-Learn](#org3c15377)
+3.  [Visualization with Matplotlib, Pandas, and Seaborn](#org1077383)
+    1.  [What does it mean to be Pythonic?](#org2adb8b4)
+    2.  [Seaborn 0.11 new features: https://seaborn.pydata.org/whatsnew.html](#org2e7c7e1)
+    3.  [Workshop Objectives](#org20489bd)
+    4.  [Big 5 graphs](#orgb8a7bec)
+    5.  [Matplotlib](#org93f6dac)
+4.  [Building Programs](#orgbfffed3)
+    1.  [For Loops](#org9e57fa3)
+    2.  [Conditionals](#org3e5bd72)
+    3.  [Looping Over Data Sets](#org7d9d334)
+    4.  [Writing Functions](#org53fcfb9)
+    5.  [Variable Scope (optional)](#org7430c83)
+    6.  [Programming Style (optional)](#org1af2709)
+    7.  [Working with unstructured files (optional)](#orgf40e793)
+    8.  [Exception handling (optional)](#org355f321)
+    9.  [Reducing memory usage 1: Read a file one line at a time (optional)](#org2844cfa)
+    10. [Reducing memory usage 2: Use an SQLite database (optional)](#orgbdf4ca5)
+    11. [Other optional topics](#orgfa607ad)
+    12. [Homework](#org988fa82)
+5.  [Credits](#orgf59e199)
+6.  [References](#orge6f7288)
+7.  [Example Data](#org6c1dcfa)
 
 
 
-<a id="org8dd05d4"></a>
+<a id="org44e3f34"></a>
 
 # Fundamentals
 
 
-<a id="org0e3211a"></a>
+<a id="orga5dcdaa"></a>
 
 ## Orientation
 
@@ -78,7 +79,7 @@
 -   Bad for massive or long-running processes
 
 
-<a id="org947883d"></a>
+<a id="org1726af9"></a>
 
 ## Jupyter commands
 
@@ -111,7 +112,7 @@ Open Terminal (MacOS/Linux) or Anaconda Prompt (Windows)
 -   Rename your notebook to something informative
 
 
-<a id="org816c36a"></a>
+<a id="orgf2d4757"></a>
 
 ## Variables and Assignment
 
@@ -161,7 +162,7 @@ Variables are names for values.
 ### Use meaningful names!
 
 
-<a id="org051c782"></a>
+<a id="org3e9e9a3"></a>
 
 ## Data Types and Type Conversion
 
@@ -224,7 +225,7 @@ Types have different properties; more about this later.
     print('5 % 3:', 5 % 3)
 
 
-<a id="orgb83e138"></a>
+<a id="org8604310"></a>
 
 ## Built-in Functions and Help
 
@@ -333,7 +334,7 @@ Types have different properties; more about this later.
 We have seen some of these already.
 
 
-### CHALLENGE: What happens when?
+### CHALLENGE: What happens when? (optional)
 
 Explain in simple terms the order of operations in the following program: when does the addition happen, when does the subtraction happen, when is each function called, etc.
 What is the final value of radiance?
@@ -342,7 +343,7 @@ What is the final value of radiance?
     radiance = max(2.1, 2.0 + min(radiance, 1.1 * radiance - 0.5))
 
 
-<a id="org3196500"></a>
+<a id="orgfcd15ca"></a>
 
 ## Libraries
 
@@ -386,6 +387,11 @@ You want to be careful with this. It's safer to keep the namespace.
     print('cos(pi) is', m.cos(m.pi))
 
 
+### Python has opinions about how to write your programs
+
+    import this
+
+
 ### CHALLENGE: Locating the Right Module (optional)
 
 You want to select a random character from a string:
@@ -396,7 +402,8 @@ You want to select a random character from a string:
 2.  Which function would you select from that module? Are there alternatives?
 3.  Try to write a program that uses the function.
 
-Solution:
+
+#### Solution:
 
 You could try the `random` module.
 
@@ -423,7 +430,7 @@ Note that this function returns a list of values. We will learn about lists in e
 There’s also other functions you could use, but with more convoluted code as a result.
 
 
-<a id="orge66b6df"></a>
+<a id="org01c8c40"></a>
 
 ## Lists
 
@@ -484,8 +491,10 @@ The slicing syntax is `my_list[inclusive_start_position:exclusive_stop_position:
     teen_primes = [11, 13, 17, 19]
     middle_aged_primes = [37, 41, 43, 47]
     print('primes is currently:', primes)
+    
     primes.extend(teen_primes)
     print('primes has now become:', primes)
+    
     primes.append(middle_aged_primes)
     print('primes has finally become:', primes)
 
@@ -573,7 +582,7 @@ And this output:
 3.  How can you change "carbon" to "Carbon"?
 
 
-### Solution
+#### Solution
 
     # Strings are immutable, so you have to create a new string.
     # Use the .join() method to join a list of strings into a new string.
@@ -583,7 +592,7 @@ And this output:
     new_element = element.capitalize()
 
 
-<a id="org3c921a3"></a>
+<a id="org744db7c"></a>
 
 ## Dictionaries
 
@@ -635,13 +644,16 @@ How can you convert our list of names and ages into a dictionary? Hint: You will
     # Get dictionary help
     help({})
 
+
+#### Solution
+
     names_list = ages[0::2]
     ages_list = ages[1::2]
     
     ages_dict = dict(zip(names_list, ages_list))
 
 
-<a id="orgf441bbd"></a>
+<a id="org9c397e2"></a>
 
 ## Other containers (optional)
 
@@ -649,31 +661,49 @@ How can you convert our list of names and ages into a dictionary? Hint: You will
 -   Sets
 
 
-<a id="orgd6014ac"></a>
+<a id="org6d51ec9"></a>
 
-# Data manipulation with Pandas, stats with Statsmodels, ML with Scikit-Learn
+# Data manipulation with Pandas
 
 
-<a id="org2416299"></a>
+<a id="org242571c"></a>
+
+## Where are we?
+
+    import os
+    
+    # print current directory
+    print("Current working directory:", os.getcwd())
+    # print all of the files and directories
+    print("Working directory contents:", os.listdir())
+    
+    # just print the directories (optional)
+    print("Just print the sub-directories:", sorted(next(os.walk('.'))[1]))
+
+
+<a id="org8a37fde"></a>
 
 ## Reading Tabular Data into DataFrames
 
 
-### Use the Pandas library to do statistics on tabular data
+### Use the Pandas library to work on tabular data
 
     import pandas as pd
     
-    data = pd.read_csv('gapminder_gdp_europe.csv')
+    data = pd.read_csv('data/gapminder_gdp_oceania.csv')
     print(data)
 
 
 ### Use `index_col` to specify that a column’s values should be used as row headings
 
-Row headings are indexed by number by default (0, 1, 2,&#x2026;.). For convenience, we want to index by country:
+Rows are indexed by number by default (0, 1, 2,&#x2026;.). For convenience, we want to index by country:
 
     #data = pd.read_csv('/Users/gilgamesh/Desktop/data/gapminder_gdp_oceania.csv', index_col='country')
-    data = pd.read_csv('gapminder_gdp_europe.csv', index_col='country')
+    data = pd.read_csv('data/gapminder_gdp_oceania.csv', index_col='country')
     print(data)
+
+-   By default, rows are indexed by position, like lists.
+-   Setting the `index_col` parameter lets us index rows by label, like dictionaries. For this to work, the index column needs to have unique values for every row.
 
 
 ### Use `DataFrame.info` to find out more about a dataframe
@@ -694,10 +724,6 @@ Does not copy or modify the data, just changes caller's view of it:
 
     data.T
 
-In Jupyter Lab, compare this output to:
-
-    print(data.T)
-
 
 ### Use `DataFrame.describe` to get summary statistics about data
 
@@ -709,23 +735,39 @@ In Jupyter Lab, compare this output to:
 <https://pandas.pydata.org/docs/user_guide/index.html>
 
 
-### CHALLENGE: (all)
+### CHALLENGE
+
+1.  Read the data in `gapminder_gdp_americas.csv` into a variable called `americas` and display its summary statistics.
+2.  After reading the data for the Americas, use `help(americas.head)` and `help(americas.tail)` to find out what `DataFrame.head` and `DataFrame.tail` do.
+    1.  What method call will display the first three rows of this data?
+    2.  What method call will display the last three columns of this data? (Hint: You may need to change your view of the data).
+3.  As well as the `read_csv` function for reading data from a file, Pandas provides a `to_csv` function to write dataframes to files. Applying what you’ve learned about reading from files, write one of your dataframes to a file called `processed.csv`. You can use help to get information on how to use `to_csv`.
 
 
-### Other useful attributes and methods (optional)
+#### Solution 1
 
-    # rows, columns
-    data.shape
-
-    # Returns first 5 items by default
-    data.head()
-
-    # Returns last 2 items
-    data.tail(2)
+    americas = pd.read_csv('data/gapminder_gdp_americas.csv', index_col='country')
+    americas.describe()
 
 
-### A brief aside about list comprehensions and viewing data structures (optional)
+#### Solution 2.1
 
+    americas.head(3)
+
+
+#### Solution 2.2
+
+    americas.T.tail(3)
+
+
+#### Solution 4
+
+    americas.to_csv('processed.csv')
+
+
+### Introspecting on the DataFrame object (extremely optional)
+
+    # DataFrames have a huge number of attributes and methods, so dir() is not very useful
     print(dir(data))
 
     # Create a new list that filters out internal attributes, functions, and methods
@@ -738,21 +780,34 @@ In Jupyter Lab, compare this output to:
     pp = pprint.PrettyPrinter(width=100, compact=True, indent=2)
     pp.pprint(df_public)
 
-Objects have attributes (i.e. data, fields, properties) and methods (i.e. procedures). The difference between a method and a function is that methods are attached to objects, whereas functions are free-floating ("first-class citizens").
+Objects have attributes (i.e. data/fields/properties) and methods (i.e. procedures). The difference between a method and a function is that methods are attached to objects, whereas functions are free-floating ("first-class citizens"). Methods and functions are "callable":
 
-    # Create two new lists, one with the public methods and one with the public attributes.
+    # Generate a list of public methods and a list of public attributes. We do this
+    # by testing each attribute to determine whether it is "callable".
     # NB: Because Python allows you to override any method or attribute at runtime,
     # testing with `callable` is not always reliable.
-    df_methods = [item for item in dir(data) if not item.startswith('_') and callable(getattr(data, item))]
-    df_attr = [item for item in dir(data) if not item.startswith('_') and not callable(getattr(data, item))]
+    
+    # List of methods (callable attributes)
+    df_methods = [item for item in dir(data) if not item.startswith('_')
+                  and callable(getattr(data, item))]
+    # List of attributes (non-callable attributes)
+    df_attr = [item for item in dir(data) if not item.startswith('_')
+               and not callable(getattr(data, item))]
     
     pp.pprint(df_methods)
     pp.pprint(df_attr)
 
 
-<a id="org1da7f8d"></a>
+<a id="org496f0a6"></a>
 
 ## Pandas DataFrames
+
+
+### Linear algebra with NumPy
+
+1.  FORTRAN -> NumPy and implications
+2.  draw out matrix/list vs dataframe/dict
+3.  row vs column addition idioms - explain performance bottlenecks
 
 
 ### Note about Pandas DataFrames/Series
@@ -760,6 +815,16 @@ Objects have attributes (i.e. data, fields, properties) and methods (i.e. proced
 -   A DataFrame is a collection of Series columns
 -   Each Series is a dict-like 1-dimensional NumPy array
 -   Therefore, each series inherits many of the abilities (linear algebra) and limitations (single data type) of NumPy
+
+
+### Pandas introduces some new types
+
+    print("DataFrame type", type(data))
+    print("DataFrame type", type(data.T))
+    print("Index type", type(data.columns))
+    print("Series type", type(data['gdpPercap_1952']))
+
+-   A row is not a type! It is a view onto the *nth* item of each of the column Series. This is why adding 1 row to a DataFrame is weird.
 
 
 ### Selecting values
@@ -884,16 +949,7 @@ Capture the results of your filter in a new file, rather than overwriting your o
 -   Merge, join, concatenate and compare: <https://pandas.pydata.org/docs/user_guide/merging.html>
 
 
-<a id="orgad8784e"></a>
-
-## TODO Explicitly talk about linear algebra with NumPy
-
-1.  FORTRAN -> NumPy and implications
-2.  draw out matrix/list vs dataframe/dict
-3.  row vs column addition idioms - explain performance bottlenecks
-
-
-<a id="orgfeee7cd"></a>
+<a id="orgb984b77"></a>
 
 ## TODO Rewrite as dplyr/SQL-style query/filter/subset lesson
 
@@ -902,9 +958,11 @@ In general, the lesson spends too much time in the weeds. We want to take a high
 -   concat/merge <https://pandas.pydata.org/docs/reference/api/pandas.concat.html>
 -   filter/group/subset: <https://pandas.pydata.org/docs/user_guide/groupby.html>
 -   functional methods and database access methods
+-   Check R lesson for additional ideas
+-   Vectorized operations
 
 
-<a id="org813528e"></a>
+<a id="org1331068"></a>
 
 ## Standard library vs. outside modules
 
@@ -912,7 +970,7 @@ In general, the lesson spends too much time in the weeds. We want to take a high
 2.  Install with pip
 
 
-<a id="orga818cfa"></a>
+<a id="org25e1fae"></a>
 
 ## SciPy project
 
@@ -923,7 +981,12 @@ In general, the lesson spends too much time in the weeds. We want to take a high
     <https://docs.scipy.org/doc/scipy/reference/stats.html>
 
 
-<a id="orgf21a39f"></a>
+<a id="orga584668"></a>
+
+## If time allows, stats with Statsmodels, ML with Scikit-Learn
+
+
+<a id="org64b60bf"></a>
 
 ## Downstream libraries
 
@@ -935,7 +998,7 @@ In general, the lesson spends too much time in the weeds. We want to take a high
 4.  &#x2026;and many more: <https://www.scipy.org/topical-software.html>
 
 
-<a id="org491e38c"></a>
+<a id="orgb389e48"></a>
 
 ## Command-Line Programs
 
@@ -944,7 +1007,7 @@ Batch processing from command line, .py files, and editors
     python my_program.py
 
 
-<a id="org515dc43"></a>
+<a id="org032594c"></a>
 
 ## Statistics
 
@@ -994,7 +1057,7 @@ Direct download link: <https://ndownloader.figshare.com/files/10717177>
     help(statsmodels.base.model.Model)
 
 
-<a id="org222a93c"></a>
+<a id="org3c15377"></a>
 
 ## Machine learning with Scikit-Learn
 
@@ -1015,7 +1078,7 @@ Direct download link: <https://ndownloader.figshare.com/files/10717177>
 4.  Treat all software as beta software
 
 
-<a id="org20965df"></a>
+<a id="org1077383"></a>
 
 # Visualization with Matplotlib, Pandas, and Seaborn
 
@@ -1026,19 +1089,19 @@ Direct download link: <https://ndownloader.figshare.com/files/10717177>
     -   <https://ryxcommar.com/2020/04/11/why-you-hate-matplotlib/>
 
 
-<a id="org31376fa"></a>
+<a id="org2adb8b4"></a>
 
 ## What does it mean to be Pythonic?
 
 The seamy history of Python plotting
 
 
-<a id="org30f5188"></a>
+<a id="org2e7c7e1"></a>
 
 ## Seaborn 0.11 new features: <https://seaborn.pydata.org/whatsnew.html>
 
 
-<a id="org507aa6b"></a>
+<a id="org20489bd"></a>
 
 ## Workshop Objectives
 
@@ -1048,7 +1111,7 @@ The seamy history of Python plotting
 4.  Save plots to an image file
 
 
-<a id="orgc4fb709"></a>
+<a id="orgb8a7bec"></a>
 
 ## Big 5 graphs
 
@@ -1061,7 +1124,7 @@ Fundamentally, graphs communicate two types of information: 1) Relationships/tre
 5.  Box plot
 
 
-<a id="org10978e5"></a>
+<a id="org93f6dac"></a>
 
 ## Matplotlib
 
@@ -1136,12 +1199,12 @@ In principle, nearly every element on a matplotlib figure is independently modif
     gapminder = pd.read_csv("gapminder_gdp_europe.csv", index_col='country')
 
 
-<a id="org3ec63f4"></a>
+<a id="orgbfffed3"></a>
 
 # Building Programs
 
 
-<a id="orgb9796d1"></a>
+<a id="org9e57fa3"></a>
 
 ## For Loops
 
@@ -1230,7 +1293,7 @@ In principle, nearly every element on a matplotlib figure is independently modif
         print(key, 'is', val[0], val[1])
 
 
-<a id="org6b51fe2"></a>
+<a id="org3e5bd72"></a>
 
 ## Conditionals
 
@@ -1342,7 +1405,7 @@ Often, you want some combination of things to be true. You can combine relations
 -   Aside: For a more natural way of working with many lists, look at `zip()`
 
 
-<a id="org6c9cadb"></a>
+<a id="org7d9d334"></a>
 
 ## Looping Over Data Sets
 
@@ -1417,7 +1480,7 @@ Solution:
     plt.show()
 
 
-<a id="org49f1d14"></a>
+<a id="org53fcfb9"></a>
 
 ## Writing Functions
 
@@ -1508,17 +1571,17 @@ Every function returns something:
     data['new_col'] = data['lifeExp_1952'].apply(my_fun)
 
 
-<a id="orgad2d6af"></a>
+<a id="org7430c83"></a>
 
 ## TODO Variable Scope (optional)
 
 
-<a id="org4b9de07"></a>
+<a id="org1af2709"></a>
 
 ## TODO Programming Style (optional)
 
 
-<a id="orgdf37940"></a>
+<a id="orgf40e793"></a>
 
 ## Working with unstructured files (optional)
 
@@ -1654,7 +1717,7 @@ Demonstrate string tests with manifest\_list:
 2.  Are there other structural regularities you could use to parse the data? (Note that in the letters, sometimes there are multiple letters under a single box header)
 
 
-<a id="org3a0d752"></a>
+<a id="org355f321"></a>
 
 ## Exception handling (optional)
 
@@ -1688,7 +1751,7 @@ Explicitly handle common errors, rather than waiting for your code to blow up.
 -   Use judiciously, and be as specific as possible. When in doubt, allow your code to blow up rather than silently commit errors.
 
 
-<a id="org1253197"></a>
+<a id="org2844cfa"></a>
 
 ## Reducing memory usage 1: Read a file one line at a time (optional)
 
@@ -1698,7 +1761,7 @@ Explicitly handle common errors, rather than waiting for your code to blow up.
             pass
 
 
-<a id="orgc6f5a18"></a>
+<a id="orgbdf4ca5"></a>
 
 ## Reducing memory usage 2: Use an SQLite database (optional)
 
@@ -1713,7 +1776,7 @@ Explicitly handle common errors, rather than waiting for your code to blow up.
     # Do stuff with `results`
 
 
-<a id="orgf0ec963"></a>
+<a id="orgfa607ad"></a>
 
 ## Other optional topics
 
@@ -1724,7 +1787,7 @@ Explicitly handle common errors, rather than waiting for your code to blow up.
 -   Testing
 
 
-<a id="orgec86a29"></a>
+<a id="org988fa82"></a>
 
 ## Homework
 
@@ -1735,7 +1798,7 @@ Explicitly handle common errors, rather than waiting for your code to blow up.
 ### How would you determine which letters and/or manifest items are missing?
 
 
-<a id="orgebc9f59"></a>
+<a id="orgf59e199"></a>
 
 # Credits
 
@@ -1746,7 +1809,7 @@ Explicitly handle common errors, rather than waiting for your code to blow up.
 -   Rhondene Wint: Matplotlib and Seaborn notes
 
 
-<a id="org3959784"></a>
+<a id="orge6f7288"></a>
 
 # References
 
@@ -1761,7 +1824,7 @@ Explicitly handle common errors, rather than waiting for your code to blow up.
 -   Matplotlib gallery of examples: <https://matplotlib.org/gallery/index.html>
 
 
-<a id="org789cd6a"></a>
+<a id="org6c1dcfa"></a>
 
 # Example Data
 

@@ -562,27 +562,41 @@ How can you convert our list of names and ages into a dictionary? Hint: You will
 
 * Data manipulation with Pandas
 
-If time allows, stats with Statsmodels, ML with Scikit-Learn
+** Where are we?
+#+BEGIN_SRC python
+  import os
+
+  # print current directory
+  print("Current working directory:", os.getcwd())
+  # print all of the files and directories
+  print("Working directory contents:", os.listdir())
+
+  # just print the directories (optional)
+  print("Just print the sub-directories:", sorted(next(os.walk('.'))[1]))
+#+END_SRC
+
 ** Reading Tabular Data into DataFrames
-*** Use the Pandas library to do statistics on tabular data
+*** Use the Pandas library to work on tabular data
 #+BEGIN_SRC python
 import pandas as pd
 
-data = pd.read_csv('gapminder_gdp_europe.csv')
+data = pd.read_csv('data/gapminder_gdp_oceania.csv')
 print(data)
 #+END_SRC
 
 *** Use ~index_col~ to specify that a column’s values should be used as row headings
-Row headings are indexed by number by default (0, 1, 2,....). For convenience, we want to index by country:
+Rows are indexed by number by default (0, 1, 2,....). For convenience, we want to index by country:
 #+BEGIN_SRC python
 #data = pd.read_csv('/Users/gilgamesh/Desktop/data/gapminder_gdp_oceania.csv', index_col='country')
-data = pd.read_csv('gapminder_gdp_europe.csv', index_col='country')
+data = pd.read_csv('data/gapminder_gdp_oceania.csv', index_col='country')
 print(data)
 #+END_SRC
+- By default, rows are indexed by position, like lists.
+- Setting the ~index_col~ parameter lets us index rows by label, like dictionaries. For this to work, the index column needs to have unique values for every row.
 
 *** Use ~DataFrame.info~ to find out more about a dataframe
 #+BEGIN_SRC python
-data.info()
+  data.info()
 #+END_SRC
 
 *** The ~DataFrame.columns~ variable stores information about the dataframe’s columns
@@ -597,11 +611,6 @@ Does not copy or modify the data, just changes caller's view of it:
 data.T
 #+END_SRC
 
-In Jupyter Lab, compare this output to:
-#+BEGIN_SRC python
-print(data.T)
-#+END_SRC
-
 *** Use ~DataFrame.describe~ to get summary statistics about data
 #+BEGIN_SRC python
 data.describe()
@@ -610,26 +619,38 @@ data.describe()
 *** Pandas help files are dense; you should prefer the online documentation
 https://pandas.pydata.org/docs/user_guide/index.html
 
-*** CHALLENGE: (all)
-*** Other useful attributes and methods (optional)
+*** CHALLENGE
+1. Read the data in ~gapminder_gdp_americas.csv~ into a variable called ~americas~ and display its summary statistics.
+2. After reading the data for the Americas, use ~help(americas.head)~ and ~help(americas.tail)~ to find out what ~DataFrame.head~ and ~DataFrame.tail~ do.
+   1. What method call will display the first three rows of this data?
+   2. What method call will display the last three columns of this data? (Hint: You may need to change your view of the data).
+3. As well as the ~read_csv~ function for reading data from a file, Pandas provides a ~to_csv~ function to write dataframes to files. Applying what you’ve learned about reading from files, write one of your dataframes to a file called ~processed.csv~. You can use help to get information on how to use ~to_csv~.
+
+**** Solution 1
 #+BEGIN_SRC python
-# rows, columns
-data.shape
+americas = pd.read_csv('data/gapminder_gdp_americas.csv', index_col='country')
+americas.describe()
 #+END_SRC
 
+**** Solution 2.1
 #+BEGIN_SRC python
-# Returns first 5 items by default
-data.head()
+americas.head(3)
 #+END_SRC
 
+**** Solution 2.2
 #+BEGIN_SRC python
-# Returns last 2 items
-data.tail(2)
+americas.T.tail(3)
 #+END_SRC
 
-*** A brief aside about list comprehensions and viewing data structures (optional)
+**** Solution 4
 #+BEGIN_SRC python
-print(dir(data))
+americas.to_csv('processed.csv')
+#+END_SRC
+
+*** Introspecting on the DataFrame object (extremely optional)
+#+BEGIN_SRC python
+  # DataFrames have a huge number of attributes and methods, so dir() is not very useful
+  print(dir(data))
 #+END_SRC
 
 #+BEGIN_SRC python
@@ -646,27 +667,44 @@ pp = pprint.PrettyPrinter(width=100, compact=True, indent=2)
 pp.pprint(df_public)
 #+END_SRC
 
-Objects have attributes (i.e. data, fields, properties) and methods (i.e. procedures). The difference between a method and a function is that methods are attached to objects, whereas functions are free-floating ("first-class citizens").
+Objects have attributes (i.e. data/fields/properties) and methods (i.e. procedures). The difference between a method and a function is that methods are attached to objects, whereas functions are free-floating ("first-class citizens"). Methods and functions are "callable":
 #+BEGIN_SRC python
-# Create two new lists, one with the public methods and one with the public attributes.
-# NB: Because Python allows you to override any method or attribute at runtime,
-# testing with `callable` is not always reliable.
-df_methods = [item for item in dir(data) if not item.startswith('_') and callable(getattr(data, item))]
-df_attr = [item for item in dir(data) if not item.startswith('_') and not callable(getattr(data, item))]
+  # Generate a list of public methods and a list of public attributes. We do this
+  # by testing each attribute to determine whether it is "callable".
+  # NB: Because Python allows you to override any method or attribute at runtime,
+  # testing with `callable` is not always reliable.
 
-pp.pprint(df_methods)
-pp.pprint(df_attr)
+  # List of methods (callable attributes)
+  df_methods = [item for item in dir(data) if not item.startswith('_')
+                and callable(getattr(data, item))]
+  # List of attributes (non-callable attributes)
+  df_attr = [item for item in dir(data) if not item.startswith('_')
+             and not callable(getattr(data, item))]
+
+  pp.pprint(df_methods)
+  pp.pprint(df_attr)
 #+END_SRC
 
-** TODO Explicitly talk about linear algebra with NumPy
+
+** Pandas DataFrames
+*** Linear algebra with NumPy
 1. FORTRAN -> NumPy and implications
 2. draw out matrix/list vs dataframe/dict
 3. row vs column addition idioms - explain performance bottlenecks
-** Pandas DataFrames
+
 *** Note about Pandas DataFrames/Series
 - A DataFrame is a collection of Series columns
 - Each Series is a dict-like 1-dimensional NumPy array
 - Therefore, each series inherits many of the abilities (linear algebra) and limitations (single data type) of NumPy
+
+*** Pandas introduces some new types
+#+BEGIN_SRC python
+  print("DataFrame type", type(data))
+  print("DataFrame type", type(data.T))
+  print("Index type", type(data.columns))
+  print("Series type", type(data['gdpPercap_1952']))
+#+END_SRC
+- A row is not a type! It is a view onto the /nth/ item of each of the column Series. This is why adding 1 row to a DataFrame is weird.
 
 *** Selecting values
 Rows have positions [i, j, ..] and labels. This gives us two ways to access data:
@@ -784,6 +822,7 @@ In general, the lesson spends too much time in the weeds. We want to take a high
 - filter/group/subset: https://pandas.pydata.org/docs/user_guide/groupby.html
 - functional methods and database access methods
 - Check R lesson for additional ideas
+- Vectorized operations
 ** Standard library vs. outside modules
 1. Install with conda package manager
 2. Install with pip
@@ -795,6 +834,7 @@ In general, the lesson spends too much time in the weeds. We want to take a high
 4. Scipy.stats: probability distributions, basic tests
    https://docs.scipy.org/doc/scipy/reference/stats.html
 
+** If time allows, stats with Statsmodels, ML with Scikit-Learn
 ** Downstream libraries
 1. Seaborn: Pythonic graphs built on Matplotlib
 2. Statsmodels: Statistical models and formulae built on Scipy.stats
