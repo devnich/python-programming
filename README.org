@@ -256,7 +256,7 @@ print("Hello world"
 *** Python reports a runtime error when something goes wrong while a program is executing
 We have seen some of these already.
 
-*** CHALLENGE: What happens when?
+*** CHALLENGE: What happens when? (optional)
 Explain in simple terms the order of operations in the following program: when does the addition happen, when does the subtraction happen, when is each function called, etc.
 What is the final value of radiance?
 
@@ -303,6 +303,11 @@ import math as m
 print('cos(pi) is', m.cos(m.pi))
 #+END_SRC
 
+*** Python has opinions about how to write your programs
+#+BEGIN_SRC python
+import this
+#+END_SRC
+
 *** CHALLENGE: Locating the Right Module (optional)
 You want to select a random character from a string:
 #+BEGIN_SRC python
@@ -313,7 +318,7 @@ bases = 'ACTTGCTTGAC'
 2. Which function would you select from that module? Are there alternatives?
 3. Try to write a program that uses the function.
 
-Solution:
+**** Solution:
 
 You could try the ~random~ module.
 
@@ -397,13 +402,15 @@ print('primes has become:', primes)
 
 *** Extend is similar to append, but allows you to merge two lists
 #+BEGIN_SRC python
-teen_primes = [11, 13, 17, 19]
-middle_aged_primes = [37, 41, 43, 47]
-print('primes is currently:', primes)
-primes.extend(teen_primes)
-print('primes has now become:', primes)
-primes.append(middle_aged_primes)
-print('primes has finally become:', primes)
+  teen_primes = [11, 13, 17, 19]
+  middle_aged_primes = [37, 41, 43, 47]
+  print('primes is currently:', primes)
+
+  primes.extend(teen_primes)
+  print('primes has now become:', primes)
+
+  primes.append(middle_aged_primes)
+  print('primes has finally become:', primes)
 #+END_SRC
 
 *** Use del to remove items from a list entirely
@@ -482,7 +489,7 @@ list to string: gold
 2. What does ~'-'.join(['x', 'y', 'z'])~ generate?
 3. How can you change "carbon" to "Carbon"?
 
-*** Solution
+**** Solution
 #+BEGIN_SRC python
   # Strings are immutable, so you have to create a new string.
   # Use the .join() method to join a list of strings into a new string.
@@ -541,6 +548,7 @@ How can you convert our list of names and ages into a dictionary? Hint: You will
   help({})
 #+END_SRC
 
+**** Solution
 #+BEGIN_SRC python
   names_list = ages[0::2]
   ages_list = ages[1::2]
@@ -552,7 +560,9 @@ How can you convert our list of names and ages into a dictionary? Hint: You will
 - Tuples
 - Sets
 
-* Data manipulation with Pandas, stats with Statsmodels, ML with Scikit-Learn
+* Data manipulation with Pandas
+
+If time allows, stats with Statsmodels, ML with Scikit-Learn
 ** Reading Tabular Data into DataFrames
 *** Use the Pandas library to do statistics on tabular data
 #+BEGIN_SRC python
@@ -648,6 +658,10 @@ pp.pprint(df_methods)
 pp.pprint(df_attr)
 #+END_SRC
 
+** TODO Explicitly talk about linear algebra with NumPy
+1. FORTRAN -> NumPy and implications
+2. draw out matrix/list vs dataframe/dict
+3. row vs column addition idioms - explain performance bottlenecks
 ** Pandas DataFrames
 *** Note about Pandas DataFrames/Series
 - A DataFrame is a collection of Series columns
@@ -764,15 +778,12 @@ https://pandas.pydata.org/docs/user_guide/dsintro.html#column-selection-addition
 *** Methods for extending DataFrames (optional)
 - Merge, join, concatenate and compare: https://pandas.pydata.org/docs/user_guide/merging.html
 
-** TODO Explicitly talk about linear algebra with NumPy
-1. FORTRAN -> NumPy and implications
-2. draw out matrix/list vs dataframe/dict
-3. row vs column addition idioms - explain performance bottlenecks
 ** TODO Rewrite as dplyr/SQL-style query/filter/subset lesson
 In general, the lesson spends too much time in the weeds. We want to take a high-level, declarative view of our data, and only invoke fiddly methods as necessary.
 - concat/merge https://pandas.pydata.org/docs/reference/api/pandas.concat.html
 - filter/group/subset: https://pandas.pydata.org/docs/user_guide/groupby.html
 - functional methods and database access methods
+- Check R lesson for additional ideas
 ** Standard library vs. outside modules
 1. Install with conda package manager
 2. Install with pip
