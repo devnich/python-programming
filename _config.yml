@@ -1,1 +1,2 @@
-theme: jekyll-theme-minima
+remote_theme: jekyll/minima
+#theme: jekyll-theme-slate
