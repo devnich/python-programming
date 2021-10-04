@@ -5,10 +5,6 @@
 #+TITLE: Programming in Python
 #+AUTHOR: Derek Devnich
 
-* TODO Generate md readme with TOC
-* TODO Check theme options
-* TODO begin DataFrames with basic review of lists and dictionaries; nb. , we did not talk about list insertion last time
-
 * Fundamentals
 ** Orientation
 *** What programming language should I use?
@@ -565,6 +561,10 @@ How can you convert our list of names and ages into a dictionary? Hint: You will
 - Sets
 
 * Data manipulation with Pandas
+** Review lists and dictionaries
+1. Reference item by index/key
+2. Insert item by index/key
+3. Indices/keys must be unique
 
 ** Where are we?
 #+BEGIN_SRC python
@@ -1591,28 +1591,37 @@ with conn:
 - Ecology survey data: https://ndownloader.figshare.com/files/10717177 (from https://figshare.com/articles/Portal_Project_Teaching_Database/1314459 )
 
 * COMMENT How to export this document to other formats
-** Export to Open Office using Emacs Org mode
+** Export to Markdown using Emacs Org mode
+Do this if you want a table of contents on Github.
 #+BEGIN_EXAMPLE
-M-x org-odt-export-to-odt
+M-x org-md-export-to-markdown
 #+END_EXAMPLE
 
 ** Export to Markdown using Pandoc
+Do this if you want syntax highlighting of code blocks on Github.
 *** Generate generic Markdown file
 #+BEGIN_SRC bash
 pandoc README.org -o tmp.md
 #+END_SRC
 
 *** Edit generic Markdown file to remove illegal front matter
+1. Org directives
+2. Anything that isn't part of the document structure
 
 *** Generate Github Markdown with table of contents
 #+BEGIN_SRC bash
 pandoc -f gfm --toc --toc-depth=2 -s tmp.md -o README.md
 #+END_SRC
 
-*** Find and replace code block markers
+*** Find and replace code block markers in final document
 #+BEGIN_EXAMPLE
 M-x qrr " {.{.python}}" "python"
 M-x qrr " {.{.bash}}" "bash"
+#+END_EXAMPLE
+
+** Export to Open Office using Emacs Org mode
+#+BEGIN_EXAMPLE
+M-x org-odt-export-to-odt
 #+END_EXAMPLE
 
 ** Export to Microsoft Word using Pandoc
