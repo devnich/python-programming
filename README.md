@@ -1,3 +1,63 @@
+-   [Fundamentals](#fundamentals)
+    -   [Orientation](#orientation)
+    -   [Jupyter commands](#jupyter-commands)
+    -   [Variables and Assignment](#variables-and-assignment)
+    -   [Data Types and Type
+        Conversion](#data-types-and-type-conversion)
+    -   [Built-in Functions and Help](#built-in-functions-and-help)
+    -   [Libraries](#libraries)
+    -   [Lists](#lists)
+    -   [Dictionaries](#dictionaries)
+    -   [Other containers (optional)](#other-containers-optional)
+-   [Data manipulation with Pandas](#data-manipulation-with-pandas)
+    -   [Where are we?](#where-are-we)
+    -   [Reading Tabular Data into
+        DataFrames](#reading-tabular-data-into-dataframes)
+    -   [Pandas DataFrames](#pandas-dataframes)
+    -   [\[TODO\]{.todo .TODO} Rewrite as dplyr/SQL-style
+        query/filter/subset lesson
+        {\#rewrite-as-dplyrsql-style-queryfiltersubset-lesson}](#todotodo-todo-rewrite-as-dplyrsql-style-queryfiltersubset-lesson-rewrite-as-dplyrsql-style-queryfiltersubset-lesson)
+    -   [Standard library vs. outside
+        modules](#standard-library-vs-outside-modules)
+    -   [SciPy project](#scipy-project)
+    -   [If time allows, stats with Statsmodels, ML with
+        Scikit-Learn](#if-time-allows-stats-with-statsmodels-ml-with-scikit-learn)
+    -   [Downstream libraries](#downstream-libraries)
+    -   [Command-Line Programs](#command-line-programs)
+    -   [Statistics](#statistics)
+    -   [Machine learning with
+        Scikit-Learn](#machine-learning-with-scikit-learn)
+-   [Visualization with Matplotlib, Pandas, and
+    Seaborn](#visualization-with-matplotlib-pandas-and-seaborn)
+    -   [What does it mean to be
+        Pythonic?](#what-does-it-mean-to-be-pythonic)
+    -   [Seaborn 0.11 new features:
+        https://seaborn.pydata.org/whatsnew.html](#seaborn-011-new-features-httpsseabornpydataorgwhatsnewhtml)
+    -   [Workshop Objectives](#workshop-objectives)
+    -   [Big 5 graphs](#big-5-graphs)
+    -   [Matplotlib](#matplotlib)
+-   [Building Programs](#building-programs)
+    -   [For Loops](#for-loops)
+    -   [Conditionals](#conditionals)
+    -   [Looping Over Data Sets](#looping-over-data-sets)
+    -   [Writing Functions](#writing-functions)
+    -   [\[TODO\]{.todo .TODO} Variable Scope (optional)
+        {\#variable-scope-optional}](#todotodo-todo-variable-scope-optional-variable-scope-optional)
+    -   [\[TODO\]{.todo .TODO} Programming Style (optional)
+        {\#programming-style-optional}](#todotodo-todo-programming-style-optional-programming-style-optional)
+    -   [Working with unstructured files
+        (optional)](#working-with-unstructured-files-optional)
+    -   [Exception handling (optional)](#exception-handling-optional)
+    -   [Reducing memory usage 1: Read a file one line at a time
+        (optional)](#reducing-memory-usage-1-read-a-file-one-line-at-a-time-optional)
+    -   [Reducing memory usage 2: Use an SQLite database
+        (optional)](#reducing-memory-usage-2-use-an-sqlite-database-optional)
+    -   [Other optional topics](#other-optional-topics)
+    -   [Homework](#homework)
+-   [Credits](#credits)
+-   [References](#references)
+-   [Example Data](#example-data)
+
 # Fundamentals
 
 ## Orientation
@@ -116,7 +176,7 @@ Most data is text and numbers:
 -   Integers: whole numbers (counting)
 -   Floats: real numbers (math)
 -   Strings: text
--   ...and many others
+-   \...and many others
 
 ### Use the built-in function `type()` to find the type of a value
 
@@ -293,7 +353,7 @@ print(len(my_string))
 print(my_string.__len__())
 ```
 
-### Python reports a syntax error when it can't understand the source of a program
+### Python reports a syntax error when it can\'t understand the source of a program
 
 ```python
 name = 'Bob
@@ -345,7 +405,7 @@ help(math)                      # user friendly
 dir(math)                       # brief reminder, not user friendly
 ```
 
-### Import specific items from a library module to shorten programs.
+### Import specific items from a library module to shorten programs. {#import-specific-items-from-a-library-module-to-shorten-programs}
 
 You want to be careful with this. It\'s safer to keep the namespace.
 
@@ -417,7 +477,7 @@ print(sample(bases, 1)[0])
 ```
 
 Note that this function returns a list of values. We will learn about
-lists in episode 11. There's also other functions you could use, but
+lists in episode 11. There\'s also other functions you could use, but
 with more convoluted code as a result.
 
 ## Lists
@@ -430,7 +490,7 @@ print('pressures:', pressures)
 print('length:', len(pressures))
 ```
 
-### Use an item's index to fetch it from a list
+### Use an item\'s index to fetch it from a list
 
 ```python
 print('zeroth item of pressures:', pressures[0])
@@ -460,7 +520,7 @@ The slicing syntax is
 print('first 3 items of pressures:', pressures[0:3])
 ```
 
-### Lists' values can be replaced by assigning to them
+### Lists\' values can be replaced by assigning to them
 
 ```python
 pressures[0] = 0.265
@@ -579,7 +639,7 @@ print('list to string:', ''.join(['g', 'o', 'l', 'd']))
 
 And this output:
 
-``` {.example}
+``` {.{.example}}
 string to list: ['t', 'i', 'n']
 list to string: gold
 ```
@@ -601,7 +661,7 @@ new_element = element.capitalize()
 
 ## Dictionaries
 
-### Dictionaries are sets of key/value pairs. Instead of being indexed by position, they are indexed by key.
+### Dictionaries are sets of key/value pairs. Instead of being indexed by position, they are indexed by key. {#dictionaries-are-sets-of-keyvalue-pairs-instead-of-being-indexed-by-position-they-are-indexed-by-key}
 
 ```python
 ages = {'Derek': 42,
@@ -697,9 +757,9 @@ data = pd.read_csv('data/gapminder_gdp_oceania.csv')
 print(data)
 ```
 
-### Use `index_col` to specify that a column's values should be used as row headings
+### Use `index_col` to specify that a column\'s values should be used as row headings
 
-Rows are indexed by number by default (0, 1, 2,....). For convenience,
+Rows are indexed by number by default (0, 1, 2,\....). For convenience,
 we want to index by country:
 
 ```python
@@ -712,13 +772,13 @@ print(data)
     dictionaries. For this to work, the index column needs to have
     unique values for every row.
 
-### Use `DataFrame.info` to find out more about a dataframe
+### Use `DataFrame.info` to find out more about a dataframe {#use-dataframeinfo-to-find-out-more-about-a-dataframe}
 
 ```python
 data.info()
 ```
 
-### The `DataFrame.columns` variable stores information about the dataframe's columns
+### The `DataFrame.columns` variable stores information about the dataframe\'s columns {#the-dataframecolumns-variable-stores-information-about-the-dataframes-columns}
 
 Note that this is an attribute, not a method:
 
@@ -726,7 +786,7 @@ Note that this is an attribute, not a method:
 data.columns
 ```
 
-### Use `DataFrame.T` to transpose a dataframe
+### Use `DataFrame.T` to transpose a dataframe {#use-dataframet-to-transpose-a-dataframe}
 
 Does not copy or modify the data, just changes caller\'s view of it:
 
@@ -734,7 +794,7 @@ Does not copy or modify the data, just changes caller\'s view of it:
 data.T
 ```
 
-### Use `DataFrame.describe` to get summary statistics about data
+### Use `DataFrame.describe` to get summary statistics about data {#use-dataframedescribe-to-get-summary-statistics-about-data}
 
 ```python
 data.describe()
@@ -756,24 +816,24 @@ data.describe()
         data? (Hint: You may need to change your view of the data).
 3.  As well as the `read_csv` function for reading data from a file,
     Pandas provides a `to_csv` function to write dataframes to files.
-    Applying what you've learned about reading from files, write one of
+    Applying what you\'ve learned about reading from files, write one of
     your dataframes to a file called `processed.csv`. You can use help
     to get information on how to use `to_csv`.
 
-#### Solution 1
+#### Solution 1 {#solution-1}
 
 ```python
 americas = pd.read_csv('data/gapminder_gdp_americas.csv', index_col='country')
 americas.describe()
 ```
 
-#### Solution 2.1
+#### Solution 2.1 {#solution-21}
 
 ```python
 americas.head(3)
 ```
 
-#### Solution 2.2
+#### Solution 2.2 {#solution-22}
 
 ```python
 americas.T.tail(3)
@@ -864,7 +924,7 @@ access data:
     algebra operators
 2.  Treat the DataFrame as a table and select values using labels
 
-#### Use `DataFrame.iloc[..., ...]` to select values by their (entry) position
+#### Use `DataFrame.iloc[..., ...]` to select values by their (entry) position {#use-dataframeiloc--to-select-values-by-their-entry-position}
 
 The `i` in `iloc` stands for \"index\".
 
@@ -872,22 +932,22 @@ The `i` in `iloc` stands for \"index\".
 data.iloc[0, 0]
 ```
 
-#### Use `DataFrame.loc[..., ...]` to select values by their (entry) label
+#### Use `DataFrame.loc[..., ...]` to select values by their (entry) label {#use-dataframeloc--to-select-values-by-their-entry-label}
 
 ```python
 data.loc["Albania", "gdpPercap_1952"]
 ```
 
-#### Use : on its own to mean all columns or all rows
+#### Use : on its own to mean all columns or all rows {#use--on-its-own-to-mean-all-columns-or-all-rows}
 
-Just like Python's usual slicing notation. You can treat DataFrames as
+Just like Python\'s usual slicing notation. You can treat DataFrames as
 multi-dimensional lists!
 
 ```python
 data.loc["Albania", :]
 ```
 
-#### Select multiple columns or rows using `DataFrame.loc` and a named slice
+#### Select multiple columns or rows using `DataFrame.loc` and a named slice {#select-multiple-columns-or-rows-using-dataframeloc-and-a-named-slice}
 
 Generalizing the concept of slice to include labeled indexes:
 
@@ -979,7 +1039,7 @@ type(wealth_score)
 data['normalized_wealth'] = wealth_score
 ```
 
-### Write new file with \~DataFrame.to_csv
+### Write new file with \~DataFrame.to_csv {#write-new-file-with-dataframeto_csv}
 
 Capture the results of your filter in a new file, rather than
 overwriting your original data.
@@ -1003,7 +1063,7 @@ data.to_csv('gapminder_gdp_europe_normed.csv')
 -   Merge, join, concatenate and compare:
     <https://pandas.pydata.org/docs/user_guide/merging.html>
 
-## [TODO]{.todo .TODO} Rewrite as dplyr/SQL-style query/filter/subset lesson {#rewrite-as-dplyrsql-style-queryfiltersubset-lesson}
+## \[TODO\]{.todo .TODO} Rewrite as dplyr/SQL-style query/filter/subset lesson {\#rewrite-as-dplyrsql-style-queryfiltersubset-lesson} {#todotodo-todo-rewrite-as-dplyrsql-style-queryfiltersubset-lesson-rewrite-as-dplyrsql-style-queryfiltersubset-lesson}
 
 In general, the lesson spends too much time in the weeds. We want to
 take a high-level, declarative view of our data, and only invoke fiddly
@@ -1017,7 +1077,7 @@ methods as necessary.
 -   Check R lesson for additional ideas
 -   Vectorized operations
 
-## Standard library vs. outside modules
+## Standard library vs. outside modules {#standard-library-vs-outside-modules}
 
 1.  Install with conda package manager
 2.  Install with pip
@@ -1039,13 +1099,13 @@ methods as necessary.
     <https://www.statsmodels.org/stable/index.html>
 3.  Scikit-Learn: Machine learning tools built on NumPy, SciPy, and
     Matplotlib <https://scikit-learn.org/stable/>
-4.  ...and many more: <https://www.scipy.org/topical-software.html>
+4.  \...and many more: <https://www.scipy.org/topical-software.html>
 
 ## Command-Line Programs
 
 Batch processing from command line, .py files, and editors
 
-``` {.bash}
+```bash
 python my_program.py
 ```
 
@@ -1129,7 +1189,7 @@ help(statsmodels.base.model.Model)
 
 The seamy history of Python plotting
 
-## Seaborn 0.11 new features: <https://seaborn.pydata.org/whatsnew.html>
+## Seaborn 0.11 new features: <https://seaborn.pydata.org/whatsnew.html> {#seaborn-011-new-features-httpsseabornpydataorgwhatsnewhtml}
 
 ## Workshop Objectives
 
@@ -1266,7 +1326,7 @@ for number in [2, 3, 5]:
 -   The body, **print(number)**, specifies what to do for each value in
     the collection.
 -   The loop variable, **number**, is what changes for each iteration of
-    the loop (i.e. the "current thing")
+    the loop (i.e. the \"current thing\")
 
 ### The first line of the `for` loop must end with a colon, and the body must be indented
 
@@ -1387,7 +1447,7 @@ for m in masses:
 ### Use else to execute a block of code when an if condition is not true
 
 `else` can be used following an `if`. This allows us to specify an
-alternative to execute when the if branch isn't taken.
+alternative to execute when the if branch isn\'t taken.
 
 ```python
 masses = [3.54, 2.07, 9.22, 1.86, 1.71]
@@ -1401,7 +1461,7 @@ for m in masses:
 ### Use `elif` to specify additional tests
 
 May want to provide several alternative choices, each with its own test;
-use `elif` (short for "else if") and a condition to specify these.
+use `elif` (short for \"else if\") and a condition to specify these.
 
 ```python
 masses = [3.54, 2.07, 9.22, 1.86, 1.71]
@@ -1415,7 +1475,7 @@ for m in masses:
 ```
 
 -   Always associated with an `if`.
--   Must come before the `else` (which is the "catch all").
+-   Must come before the `else` (which is the \"catch all\").
 
 ### Conditions are tested once, in order
 
@@ -1432,7 +1492,7 @@ elif grade >= 90:
     print('grade is A')
 ```
 
-### Use conditionals in a loop to "evolve" the values of variables
+### Use conditionals in a loop to \"evolve\" the values of variables
 
 ```python
 velocity = 10.0
@@ -1489,18 +1549,18 @@ for filename in ['gapminder_gdp_africa.csv', 'gapminder_gdp_asia.csv']:
     print(filename, data.min())
 ```
 
-### Use glob.glob to find sets of files whose names match a pattern
+### Use glob.glob to find sets of files whose names match a pattern {#use-globglob-to-find-sets-of-files-whose-names-match-a-pattern}
 
 ```python
 import glob
 print('all csv files in data directory:', glob.glob('*.csv'))
 ```
 
-In Unix, the term "globbing" means "matching a set of files with a
-pattern". The most common patterns are:
+In Unix, the term \"globbing\" means \"matching a set of files with a
+pattern\". The most common patterns are:
 
--   \`\*\` meaning "match zero or more characters"
--   \`?\` meaning "match exactly one character"
+-   \`\*\` meaning \"match zero or more characters\"
+-   \`?\` meaning \"match exactly one character\"
 
 ### Use glob and for to process batches of files
 
@@ -1562,7 +1622,7 @@ plt.show()
     combining pieces
 -   Functions serve the same purpose in programs:
     1.  Encapsulate complexity so that we can treat it as a single
-        "thing"
+        \"thing\"
     2.  Removes complexity from remaining code, making it easier to test
     3.  Enables re-use: Write one time, use many times
 
@@ -1576,8 +1636,8 @@ def print_greeting():
 -   Begin the definition of a new function with `def`, followed by the
     name of the function.
 -   Must obey the same rules as variable names.
--   Parameters in parentheses; empty parentheses if the function doesn't
-    take any inputs.
+-   Parameters in parentheses; empty parentheses if the function
+    doesn\'t take any inputs.
 -   Colon, then an indented block of code
 
 ### Defining a function does not run it
@@ -1606,7 +1666,7 @@ print_date(month=3, day=19, year=1871)
 
 -   Specify parameters when defining a function; these become variables
     when the function is executed
--   By default (if you don't name the arguments when calling the
+-   By default (if you don\'t name the arguments when calling the
     function) the arguments will be matched to parameters in the order
     the parameters are defined in the function.
 
@@ -1666,9 +1726,9 @@ data = pd.read_csv('data/gapminder_all.csv')
 data['new_col'] = data['lifeExp_1952'].apply(my_fun)
 ```
 
-## [TODO]{.todo .TODO} Variable Scope (optional) {#variable-scope-optional}
+## \[TODO\]{.todo .TODO} Variable Scope (optional) {\#variable-scope-optional} {#todotodo-todo-variable-scope-optional-variable-scope-optional}
 
-## [TODO]{.todo .TODO} Programming Style (optional) {#programming-style-optional}
+## \[TODO\]{.todo .TODO} Programming Style (optional) {\#programming-style-optional} {#todotodo-todo-programming-style-optional-programming-style-optional}
 
 ## Working with unstructured files (optional)
 
@@ -1723,7 +1783,7 @@ text[:10]
 
 ### Working with unstructured file data
 
-#### Contents of pettigrew_letters_ORIGINAL.txt
+#### Contents of pettigrew_letters_ORIGINAL.txt {#contents-of-pettigrew_letters_originaltxt}
 
 1.  Intro material
 2.  Manifest of letters

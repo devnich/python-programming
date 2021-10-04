@@ -5,6 +5,10 @@
 #+TITLE: Programming in Python
 #+AUTHOR: Derek Devnich
 
+* TODO Generate md readme with TOC
+* TODO Check theme options
+* TODO begin DataFrames with basic review of lists and dictionaries; nb. , we did not talk about list insertion last time
+
 * Fundamentals
 ** Orientation
 *** What programming language should I use?
@@ -1587,14 +1591,30 @@ with conn:
 - Ecology survey data: https://ndownloader.figshare.com/files/10717177 (from https://figshare.com/articles/Portal_Project_Teaching_Database/1314459 )
 
 * COMMENT How to export this document to other formats
-** Export to Open Office using Emacs Org mode (preferred)
+** Export to Open Office using Emacs Org mode
 #+BEGIN_EXAMPLE
 M-x org-odt-export-to-odt
 #+END_EXAMPLE
+
 ** Export to Markdown using Pandoc
+*** Generate generic Markdown file
 #+BEGIN_SRC bash
-pandoc README.org -o README.md
+pandoc README.org -o tmp.md
 #+END_SRC
+
+*** Edit generic Markdown file to remove illegal front matter
+
+*** Generate Github Markdown with table of contents
+#+BEGIN_SRC bash
+pandoc -f gfm --toc --toc-depth=2 -s tmp.md -o README.md
+#+END_SRC
+
+*** Find and replace code block markers
+#+BEGIN_EXAMPLE
+M-x qrr " {.{.python}}" "python"
+M-x qrr " {.{.bash}}" "bash"
+#+END_EXAMPLE
+
 ** Export to Microsoft Word using Pandoc
 #+BEGIN_SRC bash
 # The --reference-doc flag is optional; it provides fine-grained control
