@@ -10,23 +10,12 @@
     -   [Dictionaries](#dictionaries)
     -   [Other containers (optional)](#other-containers-optional)
 -   [Data manipulation with Pandas](#data-manipulation-with-pandas)
+    -   [Review lists and dictionaries](#review-lists-and-dictionaries)
+    -   [Review strings](#review-strings)
     -   [Where are we?](#where-are-we)
     -   [Reading Tabular Data into
         DataFrames](#reading-tabular-data-into-dataframes)
     -   [Pandas DataFrames](#pandas-dataframes)
-    -   [\[TODO\]{.todo .TODO} Rewrite as dplyr/SQL-style
-        query/filter/subset lesson
-        {\#rewrite-as-dplyrsql-style-queryfiltersubset-lesson}](#todotodo-todo-rewrite-as-dplyrsql-style-queryfiltersubset-lesson-rewrite-as-dplyrsql-style-queryfiltersubset-lesson)
-    -   [Standard library vs. outside
-        modules](#standard-library-vs-outside-modules)
-    -   [SciPy project](#scipy-project)
-    -   [If time allows, stats with Statsmodels, ML with
-        Scikit-Learn](#if-time-allows-stats-with-statsmodels-ml-with-scikit-learn)
-    -   [Downstream libraries](#downstream-libraries)
-    -   [Command-Line Programs](#command-line-programs)
-    -   [Statistics](#statistics)
-    -   [Machine learning with
-        Scikit-Learn](#machine-learning-with-scikit-learn)
 -   [Visualization with Matplotlib, Pandas, and
     Seaborn](#visualization-with-matplotlib-pandas-and-seaborn)
     -   [What does it mean to be
@@ -54,6 +43,15 @@
         (optional)](#reducing-memory-usage-2-use-an-sqlite-database-optional)
     -   [Other optional topics](#other-optional-topics)
     -   [Homework](#homework)
+-   [Scientific Computing Libraries](#scientific-computing-libraries)
+    -   [Downstream libraries](#downstream-libraries)
+    -   [Standard library vs. outside
+        modules](#standard-library-vs-outside-modules)
+    -   [SciPy project](#scipy-project)
+    -   [Statistics](#statistics)
+    -   [Machine learning with
+        Scikit-Learn](#machine-learning-with-scikit-learn)
+    -   [Command-Line Programs](#command-line-programs)
 -   [Credits](#credits)
 -   [References](#references)
 -   [Example Data](#example-data)
@@ -333,7 +331,10 @@ print(my_string.upper())            # This capitalizes all the letters
 print(my_string.upper().isupper())  # Now all the letters are uppercase
 ```
 
-#### You can view an object\'s methods and attributes using `help()` or `dir()`
+#### You can view an object\'s attributes (i.e. methods and fields) using `help()` or `dir()` {#you-can-view-an-objects-attributes-ie-methods-and-fields-using-help-or-dir}
+
+Some attributes are \"private\"; you\'re not supposed to use these
+directly.
 
 ```python
 # The short, short version
@@ -341,16 +342,6 @@ dir(my_string)
 
 # More verbose help
 help(str)
-```
-
-#### Some methods and attributes are \"private\"; you\'re not supposed to use these directly
-
-```python
-# the len function takes a string as an argument and returns the length of the string
-print(len(my_string))
-
-# calling the internal __len__ method on the my_string object, used by len(my_string)
-print(my_string.__len__())
 ```
 
 ### Python reports a syntax error when it can\'t understand the source of a program
@@ -732,7 +723,21 @@ ages_dict = dict(zip(names_list, ages_list))
 
 # Data manipulation with Pandas
 
+## Review lists and dictionaries
+
+1.  Reference item by index/key
+2.  Insert item by index/key
+3.  Indices/keys must be unique
+
+## Review strings
+
+1.  Similar to lists: Reference item by index, have length
+2.  Immutable, so need to use string **methods**
+3.  `'/'.join()` is a very useful method
+
 ## Where are we?
+
+Python provides functions for working with the file system.
 
 ```python
 import os
@@ -757,6 +762,14 @@ data = pd.read_csv('data/gapminder_gdp_oceania.csv')
 print(data)
 ```
 
+```python
+# Jupyter Lab will give you nice formatting if you echo
+data
+```
+
+-   File and directory names are strings
+-   You can use relative or absolute file paths
+
 ### Use `index_col` to specify that a column\'s values should be used as row headings
 
 Rows are indexed by number by default (0, 1, 2,\....). For convenience,
@@ -771,33 +784,41 @@ print(data)
 -   Setting the `index_col` parameter lets us index rows by label, like
     dictionaries. For this to work, the index column needs to have
     unique values for every row.
+-   You can verify the contents of the CSV by double-clicking on the
+    file in Jupyter Lab
 
-### Use `DataFrame.info` to find out more about a dataframe {#use-dataframeinfo-to-find-out-more-about-a-dataframe}
+### Use `DataFrame.info()` to find out more about a data frame {#use-dataframeinfo-to-find-out-more-about-a-data-frame}
 
 ```python
 data.info()
 ```
 
-### The `DataFrame.columns` variable stores information about the dataframe\'s columns {#the-dataframecolumns-variable-stores-information-about-the-dataframes-columns}
+### Use `DataFrame.describe()` to get summary statistics about data {#use-dataframedescribe-to-get-summary-statistics-about-data}
 
-Note that this is an attribute, not a method:
+```python
+data.describe()
+```
+
+### The `DataFrame.columns` field stores information about the DataFrame\'s columns {#the-dataframecolumns-field-stores-information-about-the-dataframes-columns}
+
+A \"field\" is a variable that belongs to an object.
 
 ```python
 data.columns
 ```
 
-### Use `DataFrame.T` to transpose a dataframe {#use-dataframet-to-transpose-a-dataframe}
+### The `DataFrame.shape` variable stores the matrix shape {#the-dataframeshape-variable-stores-the-matrix-shape}
+
+```python
+data.shape
+```
+
+### Use `DataFrame.T` to transpose a DataFrame {#use-dataframet-to-transpose-a-dataframe}
 
 Does not copy or modify the data, just changes caller\'s view of it:
 
 ```python
 data.T
-```
-
-### Use `DataFrame.describe` to get summary statistics about data {#use-dataframedescribe-to-get-summary-statistics-about-data}
-
-```python
-data.describe()
 ```
 
 ### Pandas help files are dense; you should prefer the online documentation
@@ -811,13 +832,13 @@ data.describe()
 2.  After reading the data for the Americas, use `help(americas.head)`
     and `help(americas.tail)` to find out what `DataFrame.head` and
     `DataFrame.tail` do.
-    1.  What method call will display the first three rows of this data?
-    2.  What method call will display the last three columns of this
-        data? (Hint: You may need to change your view of the data).
+    1.  How can you display the first three rows of this data?
+    2.  How can you display the last three columns of this data? (Hint:
+        You may need to change your view of the data).
 3.  As well as the `read_csv` function for reading data from a file,
-    Pandas provides a `to_csv` function to write dataframes to files.
+    Pandas provides a `to_csv` function to write DataFrames to files.
     Applying what you\'ve learned about reading from files, write one of
-    your dataframes to a file called `processed.csv`. You can use help
+    your DataFrames to a file called `processed.csv`. You can use `help`
     to get information on how to use `to_csv`.
 
 #### Solution 1 {#solution-1}
@@ -848,12 +869,12 @@ americas.to_csv('processed.csv')
 ### Introspecting on the DataFrame object (extremely optional)
 
 ```python
-# DataFrames have a huge number of attributes and methods, so dir() is not very useful
+# DataFrames have a huge number of fields and methods, so dir() is not very useful
 print(dir(data))
 ```
 
 ```python
-# Create a new list that filters out internal attributes, functions, and methods
+# Create a new list that filters out internal attributes
 df_public = [item for item in dir(data) if not item.startswith('_')]
 print(df_public)
 ```
@@ -866,21 +887,22 @@ pp = pprint.PrettyPrinter(width=100, compact=True, indent=2)
 pp.pprint(df_public)
 ```
 
-Objects have attributes (i.e. data/fields/properties) and methods (i.e.
-procedures). The difference between a method and a function is that
-methods are attached to objects, whereas functions are free-floating
-(\"first-class citizens\"). Methods and functions are \"callable\":
+Objects have fields (i.e. data/variables) and methods (i.e.
+functions/procedures). The difference between a method and a function is
+that methods are attached to objects, whereas functions are
+free-floating (\"first-class citizens\"). Methods and functions are
+\"callable\":
 
 ```python
-# Generate a list of public methods and a list of public attributes. We do this
+# Generate a list of public methods and a list of public fields. We do this
 # by testing each attribute to determine whether it is "callable".
-# NB: Because Python allows you to override any method or attribute at runtime,
+# NB: Because Python allows you to override any attribute at runtime,
 # testing with `callable` is not always reliable.
 
 # List of methods (callable attributes)
 df_methods = [item for item in dir(data) if not item.startswith('_')
               and callable(getattr(data, item))]
-# List of attributes (non-callable attributes)
+# List of fields (non-callable attributes)
 df_attr = [item for item in dir(data) if not item.startswith('_')
            and not callable(getattr(data, item))]
 
@@ -890,25 +912,23 @@ pp.pprint(df_attr)
 
 ## Pandas DataFrames
 
-### Linear algebra with NumPy
+### Notes about Pandas DataFrames/Series
 
-1.  FORTRAN -\> NumPy and implications
-2.  draw out matrix/list vs dataframe/dict
-3.  row vs column addition idioms - explain performance bottlenecks
-
-### Note about Pandas DataFrames/Series
-
--   A DataFrame is a collection of Series columns
--   Each Series is a dict-like 1-dimensional NumPy array
--   Therefore, each series inherits many of the abilities (linear
+1.  Pandas is a library for working with spreadsheet-like data
+    (\"DataFrames\")
+2.  A DataFrame is a collection of Series columns
+3.  Each Series is a dict-like 1-dimensional NumPy array
+4.  Therefore, each series inherits many of the abilities (linear
     algebra) and limitations (single data type) of NumPy
 
-### Pandas introduces some new types
+#### Pandas introduces some new types
 
 ```python
 print("DataFrame type", type(data))
 print("DataFrame type", type(data.T))
 print("Index type", type(data.columns))
+
+# A series is a Numpy array with optional row labels. It's similar to an R vector.
 print("Series type", type(data['gdpPercap_1952']))
 ```
 
@@ -929,7 +949,10 @@ access data:
 The `i` in `iloc` stands for \"index\".
 
 ```python
-data.iloc[0, 0]
+import pandas as pd
+data = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
+
+data.iloc[0,0]
 ```
 
 #### Use `DataFrame.loc[..., ...]` to select values by their (entry) label {#use-dataframeloc--to-select-values-by-their-entry-label}
@@ -955,6 +978,26 @@ Generalizing the concept of slice to include labeled indexes:
 data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
 ```
 
+#### `DataFrame.iloc` follows list index conventions, but `DataFrame.loc` does the intuitive right thing {#dataframeiloc-follows-list-index-conventions-but-dataframeloc-does-the-intuitive-right-thing}
+
+List index is up to, but not including, the 2nd position:
+
+```python
+data.iloc[0:2, 0:2]
+```
+
+Label index includes the 2nd position:
+
+```python
+data.loc["Albania":"Belgium", "gdpPercap_1952":"gdpPercap_1962"]
+```
+
+#### A DataFrame is a spreadsheet, but it is also a dictionary of columns
+
+```python
+data['gdpPercap_1962']
+```
+
 ### Result of slicing can be used in further operations
 
 Any operation that you can use on the whole data frame can be used on a
@@ -971,72 +1014,143 @@ data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972'].describe()
 
 ### Use comparisons to select data based on value
 
-Compares element-by-element and returns a similarly-shaped dataframe of
-`True` and `False`
-
 ```python
 subset = data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
 ```
+
+Show all items in the DataFrame:
 
 ```python
 subset
 ```
 
+Compares element-by-element and returns a similarly-shaped DataFrame of
+elements that meet the criterion:
+
 ```python
-# Which GDPs are greater than 10,000?
-subset > 10000
+subset.where(subset > 10000)
 ```
 
-### Select values or NaN using a Boolean mask
+### Use method chaining to create final output without creating a lot of intermediate variables
 
-Mask the matrix values that fail to meet a criterion.
+These are equivalent:
 
 ```python
-mask = subset > 10000
-subset[mask]
+filtered_subset = subset.where(subset > 10000)
+filtered_subset.describe()
 ```
 
-NaNs are ignored by numerical operations like max, min, average, etc.
+```python
+subset.where(subset > 10000).describe()
+```
+
+### DataFrame methods have sensible defaults, but you can change them
 
 ```python
-subset[mask].describe()
+help(subset.min)
+```
+
+-   \"See Also\" has some helpful suggestions
+
+#### Operations run on columns (i.e. variables) by default {#operations-run-on-columns-ie-variables-by-default}
+
+The default is to evaluate down columns:
+
+```python
+subset.min()
+subset.min(axis=0)
+```
+
+To evaluate across rows, set axis=1
+
+```python
+subset.min(axis=1)
+```
+
+#### NaNs are ignored by numerical operations like max, min, average, etc. {#nans-are-ignored-by-numerical-operations-like-max-min-average-etc}
+
+```python
+subset.where(subset > 10000).mean()
+subset.where(subset > 10000).mean(1)
 ```
 
 ### Generic comparisons between matrices (optional)
+
+```python
+fs = subset.where(subset > 10000)
+
+# Show which items are NaN
+fs.isna()
+
+# Inspect each column: Are any values True?
+fs.isna().any()
+
+# Inspect each column: Are all of the values True?
+fs.isna().all()
+```
 
 -   Series and DataFrame have the binary comparison methods `eq`, `ne`,
     `lt`, `gt`, `le`, and `ge`
 -   You can apply the reductions: `empty`, `any()`, `all()`, and
     `bool()` to provide a way to summarize a boolean result
--   You can find many more options for comparison and sub-setting here:
-    <https://pandas.pydata.org/docs/user_guide/basics.html>
 
-### Group By: split-apply-combine
-
-Split data according to criterion, do numeric transformations, then
-recombine.
+### Functional methods
 
 ```python
-# Get all GDPs greater than the mean
-mask_higher = data > data.mean()
+import numpy as np
 
-# Count the number of time periods in which each country exceeds the mean
-higher_count = mask_higher.aggregate('sum', axis=1)
-
-# Create a normalized wealth-over-time score
-wealth_score = higher_count / len(data.columns)
-wealth_score
+subset.cumsum()
+subset.apply(np.cumsum)
 ```
 
-### Add to DataFrame
+### Group By
 
-DataFrames are dictionary-like objects
+#### Split-Apply-Combine
+
+By \"group by\" we are referring to a process involving one or more of
+the following steps:
+
+1.  Splitting the data into groups based on some criteria
+2.  Applying a function to each group independently
+3.  Combining the results into a data structure
+
+Examples include:
+
+1.  Aggregation (e.g., group counts)
+2.  Transformation (e.g., Z scores)
+3.  Filtration (e.g., discard outliers)
+
+#### Z score example
 
 ```python
-# Wealth Score is a series
-type(wealth_score)
+# Calculate z scores for all elements
+z = (data - data.mean())/data.std()
 
-data['normalized_wealth'] = wealth_score
+# Get the mean z score for each country
+mean_z = z.mean(axis=1)
+
+# Group countries into "wealthy" (z > 0) and "not wealthy" (z <= 0)
+z_bool = mean_z > 0
+
+# Append to DataFrame
+data["mean_z"] = mean_z
+data["wealthy"] = z_bool
+
+# Get descriptive statistics for the group
+data.groupby("wealthy").mean()
+```
+
+### Adding rows to DataFrames (optional)
+
+Appending rows is a performance bottleneck for large data sets. Where
+possible, concatenate DataFrames instead.
+
+```python
+# Concatenate multiple DataFrames
+pd.concat([df1, df2, df3])
+
+# Generic append
+df.append({'a': 3, 'b': 4}, ignore_index=True)
 ```
 
 ### Write new file with \~DataFrame.to_csv {#write-new-file-with-dataframeto_csv}
@@ -1056,122 +1170,79 @@ data.to_csv('gapminder_gdp_europe_normed.csv')
 -   You can convert data between NumPy arrays, Series, and DataFrames
 -   You can read data into any of the data structures from files or from
     standard Python containers
--   NumPy arrays are list-like; Series and DataFrames are dict-like
 
-### Methods for extending DataFrames (optional)
-
--   Merge, join, concatenate and compare:
-    <https://pandas.pydata.org/docs/user_guide/merging.html>
-
-## \[TODO\]{.todo .TODO} Rewrite as dplyr/SQL-style query/filter/subset lesson {\#rewrite-as-dplyrsql-style-queryfiltersubset-lesson} {#todotodo-todo-rewrite-as-dplyrsql-style-queryfiltersubset-lesson-rewrite-as-dplyrsql-style-queryfiltersubset-lesson}
-
-In general, the lesson spends too much time in the weeds. We want to
-take a high-level, declarative view of our data, and only invoke fiddly
-methods as necessary.
+### Functional and SQL-style query/filter/subset methods (optional)
 
 -   concat/merge
     <https://pandas.pydata.org/docs/reference/api/pandas.concat.html>
 -   filter/group/subset:
     <https://pandas.pydata.org/docs/user_guide/groupby.html>
--   functional methods and database access methods
--   Check R lesson for additional ideas
+-   Merge, join, concatenate and compare:
+    <https://pandas.pydata.org/docs/user_guide/merging.html>
+-   The generic `apply()` function
+-   functional methods and database access methods ()
 -   Vectorized operations
 
-## Standard library vs. outside modules {#standard-library-vs-outside-modules}
+### DEPRECATED: Use comparisons to select data based on value
 
-1.  Install with conda package manager
-2.  Install with pip
-
-## SciPy project
-
-1.  NumPy: matrix algebra
-2.  Pandas: data filtering and transformation; factors
-3.  Matplotlib: graphs
-4.  Scipy.stats: probability distributions, basic tests
-    <https://docs.scipy.org/doc/scipy/reference/stats.html>
-
-## If time allows, stats with Statsmodels, ML with Scikit-Learn
-
-## Downstream libraries
-
-1.  Seaborn: Pythonic graphs built on Matplotlib
-2.  Statsmodels: Statistical models and formulae built on Scipy.stats
-    <https://www.statsmodels.org/stable/index.html>
-3.  Scikit-Learn: Machine learning tools built on NumPy, SciPy, and
-    Matplotlib <https://scikit-learn.org/stable/>
-4.  \...and many more: <https://www.scipy.org/topical-software.html>
-
-## Command-Line Programs
-
-Batch processing from command line, .py files, and editors
-
-```bash
-python my_program.py
-```
-
-## Statistics
-
-### Libraries
-
-1.  statistics Basic summary statistics. Part of the Python standard
-    library.
-2.  scipy.stats Descriptive statistics and distributions:
-    <https://docs.scipy.org/doc/scipy/reference/stats.html>
-3.  statsmodels Statistical models and tests. Incorporates scipy.stats.
-    <https://www.statsmodels.org/stable/index.html>
-
-### Regression example
-
-#### Sample file
-
-Download \"surveys.csv\" from
-<https://figshare.com/articles/Portal_Project_Teaching_Database/1314459>
-Direct download link: <https://ndownloader.figshare.com/files/10717177>
-
-#### Import data
+Compares element-by-element and returns a similarly-shaped DataFrame of
+`True` and `False`
 
 ```python
-data = pd.read_csv('surveys.csv')
-
-# Check for NaN
-print("Valid weights:", data['weight'].count())
-print("NaN weights:", data['weight'].isna().sum())
-print("Valid lengths:", data['hindfoot_length'].count())
-print("NaN lengths:", data['hindfoot_length'].isna().sum())
+subset = data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
 ```
-
-#### Fit OLS regression model
 
 ```python
-from statsmodels.formula.api import ols
-
-model = ols("weight ~ hindfoot_length", data, missing='drop').fit()
-print(model.summary())
+subset
 ```
-
-#### Generic parameters for all models
 
 ```python
-import statsmodels
-
-help(statsmodels.base.model.Model)
+# Which GDPs are greater than 10,000?
+subset > 10000
 ```
 
-## Machine learning with Scikit-Learn
+### DEPRECATED: Select value or NaN using a Boolean mask
 
-<https://scikit-learn.org/stable/>
+Mask the matrix values that fail to meet a criterion.
 
-### Which estimator?
+```python
+mask = subset > 10000
+subset[mask]
+```
 
-<https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html>
-<https://scikit-learn.org/stable/_static/ml_map.png>
+NaNs are ignored by numerical operations like max, min, average, etc.
 
-### Editorial comments about ML
+```python
+subset[mask].describe()
+```
 
-1.  We already have statistics, so do the reading
-2.  Talk to a domain expert
-3.  Beware parameter mining
-4.  Treat all software as beta software
+### DEPRECATED: Group By: split-apply-combine
+
+Split data according to criterion, do numeric transformations, then
+recombine.
+
+```python
+# Get all GDPs greater than the mean
+mask_higher = data > data.mean()
+
+# Count the number of time periods in which each country exceeds the mean
+higher_count = mask_higher.aggregate('sum', axis=1)
+
+# Create a normalized wealth-over-time score
+wealth_score = higher_count / len(data.columns)
+wealth_score
+```
+
+### DEPRECATED: Adding columns to DataFrame
+
+DataFrames are dictionary-like objects
+
+```python
+# Wealth Score is a series
+type(wealth_score)
+
+data['normalized_wealth'] = wealth_score
+```
 
 # Visualization with Matplotlib, Pandas, and Seaborn
 
@@ -1194,7 +1265,7 @@ The seamy history of Python plotting
 ## Workshop Objectives
 
 1.  Make a plot with python\'s base library matplotlib.pyplot
-2.  Generate plots from dataframes using pandas and seaborn
+2.  Generate plots from DataFrames using pandas and seaborn
 3.  Modify graph aesthetics and themes
 4.  Save plots to an image file
 
@@ -1290,7 +1361,7 @@ plt.show()
 #    plt.savefig(f'{i}.png',....)
 ```
 
-### Plotting from dataframes with Gapminder dataset
+### Plotting from DataFrames with Gapminder dataset
 
 ```python
 import pandas as pd
@@ -1955,6 +2026,102 @@ with conn:
 ### Revisit the `str` documentation with an eye towards using the string processing methods for cleaning up data
 
 ### How would you determine which letters and/or manifest items are missing?
+
+# Scientific Computing Libraries
+
+## Downstream libraries
+
+1.  Seaborn: Pythonic graphs built on Matplotlib
+2.  Statsmodels: Statistical models and formulae built on Scipy.stats
+    <https://www.statsmodels.org/stable/index.html>
+3.  Scikit-Learn: Machine learning tools built on NumPy, SciPy, and
+    Matplotlib <https://scikit-learn.org/stable/>
+4.  \...and many more: <https://www.scipy.org/topical-software.html>
+
+## Standard library vs. outside modules {#standard-library-vs-outside-modules}
+
+1.  Install with conda package manager
+2.  Install with pip
+
+## SciPy project
+
+1.  NumPy: matrix algebra
+2.  Pandas: data filtering and transformation; factors
+3.  Matplotlib: graphs
+4.  Scipy.stats: probability distributions, basic tests
+    <https://docs.scipy.org/doc/scipy/reference/stats.html>
+
+## Statistics
+
+### Libraries
+
+1.  statistics Basic summary statistics. Part of the Python standard
+    library.
+2.  scipy.stats Descriptive statistics and distributions:
+    <https://docs.scipy.org/doc/scipy/reference/stats.html>
+3.  statsmodels Statistical models and tests. Incorporates scipy.stats.
+    <https://www.statsmodels.org/stable/index.html>
+
+### Regression example
+
+#### Sample file
+
+Download \"surveys.csv\" from
+<https://figshare.com/articles/Portal_Project_Teaching_Database/1314459>
+Direct download link: <https://ndownloader.figshare.com/files/10717177>
+
+#### Import data
+
+```python
+data = pd.read_csv('surveys.csv')
+
+# Check for NaN
+print("Valid weights:", data['weight'].count())
+print("NaN weights:", data['weight'].isna().sum())
+print("Valid lengths:", data['hindfoot_length'].count())
+print("NaN lengths:", data['hindfoot_length'].isna().sum())
+```
+
+#### Fit OLS regression model
+
+```python
+from statsmodels.formula.api import ols
+
+model = ols("weight ~ hindfoot_length", data, missing='drop').fit()
+print(model.summary())
+```
+
+#### Generic parameters for all models
+
+```python
+import statsmodels
+
+help(statsmodels.base.model.Model)
+```
+
+## Machine learning with Scikit-Learn
+
+<https://scikit-learn.org/stable/>
+
+### Which estimator?
+
+<https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html>
+<https://scikit-learn.org/stable/_static/ml_map.png>
+
+### Editorial comments about ML
+
+1.  We already have statistics, so do the reading
+2.  Talk to a domain expert
+3.  Beware parameter mining
+4.  Treat all software as beta software
+
+## Command-Line Programs
+
+Batch processing from command line, .py files, and editors
+
+```bash
+python my_program.py
+```
 
 # Credits
 
