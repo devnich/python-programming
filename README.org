@@ -1740,7 +1740,7 @@ pandoc README.org -o tmp.md
 
 *** Edit generic Markdown file to remove illegal front matter
 1. Org directives
-2. Anything that isn't part of the document structure
+2. Anything that isn't part of the document structure (e.g. TODO items)
 
 *** Generate Github Markdown with table of contents
 #+BEGIN_SRC bash

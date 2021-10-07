@@ -21,7 +21,7 @@
     -   [What does it mean to be
         Pythonic?](#what-does-it-mean-to-be-pythonic)
     -   [Seaborn 0.11 new features:
-        https://seaborn.pydata.org/whatsnew.html](#seaborn-011-new-features-httpsseabornpydataorgwhatsnewhtml)
+        https://seaborn.pydata.org/whatsnew.html](#seaborn-0.11-new-features-httpsseaborn.pydata.orgwhatsnew.html)
     -   [Workshop Objectives](#workshop-objectives)
     -   [Big 5 graphs](#big-5-graphs)
     -   [Matplotlib](#matplotlib)
@@ -30,10 +30,6 @@
     -   [Conditionals](#conditionals)
     -   [Looping Over Data Sets](#looping-over-data-sets)
     -   [Writing Functions](#writing-functions)
-    -   [\[TODO\]{.todo .TODO} Variable Scope (optional)
-        {\#variable-scope-optional}](#todotodo-todo-variable-scope-optional-variable-scope-optional)
-    -   [\[TODO\]{.todo .TODO} Programming Style (optional)
-        {\#programming-style-optional}](#todotodo-todo-programming-style-optional-programming-style-optional)
     -   [Working with unstructured files
         (optional)](#working-with-unstructured-files-optional)
     -   [Exception handling (optional)](#exception-handling-optional)
@@ -45,8 +41,8 @@
     -   [Homework](#homework)
 -   [Scientific Computing Libraries](#scientific-computing-libraries)
     -   [Downstream libraries](#downstream-libraries)
-    -   [Standard library vs. outside
-        modules](#standard-library-vs-outside-modules)
+    -   [Standard library vs. outside
+        modules](#standard-library-vs.-outside-modules)
     -   [SciPy project](#scipy-project)
     -   [Statistics](#statistics)
     -   [Machine learning with
@@ -134,7 +130,7 @@ print(first_name, 'is', age, 'years old')
 ```
 
 -   Functions are verbs; recognizable by ()
--   Functions take arguments (i.e. do stuff with the values that you
+-   Functions take arguments (i.e. do stuff with the values that you
     give them)
 -   `print()` useful for tracking progress, debugging
 -   NB: Jupyter Lab will always echo the **last** value in a cell, so we
@@ -174,7 +170,7 @@ Most data is text and numbers:
 -   Integers: whole numbers (counting)
 -   Floats: real numbers (math)
 -   Strings: text
--   \...and many others
+-   ...and many others
 
 ### Use the built-in function `type()` to find the type of a value
 
@@ -331,7 +327,7 @@ print(my_string.upper())            # This capitalizes all the letters
 print(my_string.upper().isupper())  # Now all the letters are uppercase
 ```
 
-#### You can view an object\'s attributes (i.e. methods and fields) using `help()` or `dir()` {#you-can-view-an-objects-attributes-ie-methods-and-fields-using-help-or-dir}
+#### You can view an object\'s attributes (i.e. methods and fields) using `help()` or `dir()`
 
 Some attributes are \"private\"; you\'re not supposed to use these
 directly.
@@ -344,7 +340,7 @@ dir(my_string)
 help(str)
 ```
 
-### Python reports a syntax error when it can\'t understand the source of a program
+### Python reports a syntax error when it can't understand the source of a program
 
 ```python
 name = 'Bob
@@ -396,7 +392,7 @@ help(math)                      # user friendly
 dir(math)                       # brief reminder, not user friendly
 ```
 
-### Import specific items from a library module to shorten programs. {#import-specific-items-from-a-library-module-to-shorten-programs}
+### Import specific items from a library module to shorten programs.
 
 You want to be careful with this. It\'s safer to keep the namespace.
 
@@ -468,7 +464,7 @@ print(sample(bases, 1)[0])
 ```
 
 Note that this function returns a list of values. We will learn about
-lists in episode 11. There\'s also other functions you could use, but
+lists in episode 11. There's also other functions you could use, but
 with more convoluted code as a result.
 
 ## Lists
@@ -481,7 +477,7 @@ print('pressures:', pressures)
 print('length:', len(pressures))
 ```
 
-### Use an item\'s index to fetch it from a list
+### Use an item's index to fetch it from a list
 
 ```python
 print('zeroth item of pressures:', pressures[0])
@@ -511,7 +507,7 @@ The slicing syntax is
 print('first 3 items of pressures:', pressures[0:3])
 ```
 
-### Lists\' values can be replaced by assigning to them
+### Lists' values can be replaced by assigning to them
 
 ```python
 pressures[0] = 0.265
@@ -630,7 +626,7 @@ print('list to string:', ''.join(['g', 'o', 'l', 'd']))
 
 And this output:
 
-``` {.{.example}}
+``` {.example}
 string to list: ['t', 'i', 'n']
 list to string: gold
 ```
@@ -652,7 +648,7 @@ new_element = element.capitalize()
 
 ## Dictionaries
 
-### Dictionaries are sets of key/value pairs. Instead of being indexed by position, they are indexed by key. {#dictionaries-are-sets-of-keyvalue-pairs-instead-of-being-indexed-by-position-they-are-indexed-by-key}
+### Dictionaries are sets of key/value pairs. Instead of being indexed by position, they are indexed by key.
 
 ```python
 ages = {'Derek': 42,
@@ -770,9 +766,9 @@ data
 -   File and directory names are strings
 -   You can use relative or absolute file paths
 
-### Use `index_col` to specify that a column\'s values should be used as row headings
+### Use `index_col` to specify that a column's values should be used as row headings
 
-Rows are indexed by number by default (0, 1, 2,\....). For convenience,
+Rows are indexed by number by default (0, 1, 2,....). For convenience,
 we want to index by country:
 
 ```python
@@ -787,19 +783,19 @@ print(data)
 -   You can verify the contents of the CSV by double-clicking on the
     file in Jupyter Lab
 
-### Use `DataFrame.info()` to find out more about a data frame {#use-dataframeinfo-to-find-out-more-about-a-data-frame}
+### Use `DataFrame.info()` to find out more about a data frame
 
 ```python
 data.info()
 ```
 
-### Use `DataFrame.describe()` to get summary statistics about data {#use-dataframedescribe-to-get-summary-statistics-about-data}
+### Use `DataFrame.describe()` to get summary statistics about data
 
 ```python
 data.describe()
 ```
 
-### The `DataFrame.columns` field stores information about the DataFrame\'s columns {#the-dataframecolumns-field-stores-information-about-the-dataframes-columns}
+### The `DataFrame.columns` field stores information about the DataFrame's columns
 
 A \"field\" is a variable that belongs to an object.
 
@@ -807,13 +803,13 @@ A \"field\" is a variable that belongs to an object.
 data.columns
 ```
 
-### The `DataFrame.shape` variable stores the matrix shape {#the-dataframeshape-variable-stores-the-matrix-shape}
+### The `DataFrame.shape` variable stores the matrix shape
 
 ```python
 data.shape
 ```
 
-### Use `DataFrame.T` to transpose a DataFrame {#use-dataframet-to-transpose-a-dataframe}
+### Use `DataFrame.T` to transpose a DataFrame
 
 Does not copy or modify the data, just changes caller\'s view of it:
 
@@ -837,24 +833,24 @@ data.T
         You may need to change your view of the data).
 3.  As well as the `read_csv` function for reading data from a file,
     Pandas provides a `to_csv` function to write DataFrames to files.
-    Applying what you\'ve learned about reading from files, write one of
+    Applying what you've learned about reading from files, write one of
     your DataFrames to a file called `processed.csv`. You can use `help`
     to get information on how to use `to_csv`.
 
-#### Solution 1 {#solution-1}
+#### Solution 1
 
 ```python
 americas = pd.read_csv('data/gapminder_gdp_americas.csv', index_col='country')
 americas.describe()
 ```
 
-#### Solution 2.1 {#solution-21}
+#### Solution 2.1
 
 ```python
 americas.head(3)
 ```
 
-#### Solution 2.2 {#solution-22}
+#### Solution 2.2
 
 ```python
 americas.T.tail(3)
@@ -887,7 +883,7 @@ pp = pprint.PrettyPrinter(width=100, compact=True, indent=2)
 pp.pprint(df_public)
 ```
 
-Objects have fields (i.e. data/variables) and methods (i.e.
+Objects have fields (i.e. data/variables) and methods (i.e.
 functions/procedures). The difference between a method and a function is
 that methods are attached to objects, whereas functions are
 free-floating (\"first-class citizens\"). Methods and functions are
@@ -944,7 +940,7 @@ access data:
     algebra operators
 2.  Treat the DataFrame as a table and select values using labels
 
-#### Use `DataFrame.iloc[..., ...]` to select values by their (entry) position {#use-dataframeiloc--to-select-values-by-their-entry-position}
+#### Use `DataFrame.iloc[..., ...]` to select values by their (entry) position
 
 The `i` in `iloc` stands for \"index\".
 
@@ -955,22 +951,22 @@ data = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
 data.iloc[0,0]
 ```
 
-#### Use `DataFrame.loc[..., ...]` to select values by their (entry) label {#use-dataframeloc--to-select-values-by-their-entry-label}
+#### Use `DataFrame.loc[..., ...]` to select values by their (entry) label
 
 ```python
 data.loc["Albania", "gdpPercap_1952"]
 ```
 
-#### Use : on its own to mean all columns or all rows {#use--on-its-own-to-mean-all-columns-or-all-rows}
+#### Use : on its own to mean all columns or all rows
 
-Just like Python\'s usual slicing notation. You can treat DataFrames as
+Just like Python's usual slicing notation. You can treat DataFrames as
 multi-dimensional lists!
 
 ```python
 data.loc["Albania", :]
 ```
 
-#### Select multiple columns or rows using `DataFrame.loc` and a named slice {#select-multiple-columns-or-rows-using-dataframeloc-and-a-named-slice}
+#### Select multiple columns or rows using `DataFrame.loc` and a named slice
 
 Generalizing the concept of slice to include labeled indexes:
 
@@ -978,7 +974,7 @@ Generalizing the concept of slice to include labeled indexes:
 data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
 ```
 
-#### `DataFrame.iloc` follows list index conventions, but `DataFrame.loc` does the intuitive right thing {#dataframeiloc-follows-list-index-conventions-but-dataframeloc-does-the-intuitive-right-thing}
+#### `DataFrame.iloc` follows list index conventions, but `DataFrame.loc` does the intuitive right thing
 
 List index is up to, but not including, the 2nd position:
 
@@ -1052,7 +1048,7 @@ help(subset.min)
 
 -   \"See Also\" has some helpful suggestions
 
-#### Operations run on columns (i.e. variables) by default {#operations-run-on-columns-ie-variables-by-default}
+#### Operations run on columns (i.e. variables) by default
 
 The default is to evaluate down columns:
 
@@ -1067,7 +1063,7 @@ To evaluate across rows, set axis=1
 subset.min(axis=1)
 ```
 
-#### NaNs are ignored by numerical operations like max, min, average, etc. {#nans-are-ignored-by-numerical-operations-like-max-min-average-etc}
+#### NaNs are ignored by numerical operations like max, min, average, etc.
 
 ```python
 subset.where(subset > 10000).mean()
@@ -1107,8 +1103,8 @@ subset.apply(np.cumsum)
 
 #### Split-Apply-Combine
 
-By \"group by\" we are referring to a process involving one or more of
-the following steps:
+By "group by" we are referring to a process involving one or more of the
+following steps:
 
 1.  Splitting the data into groups based on some criteria
 2.  Applying a function to each group independently
@@ -1153,7 +1149,7 @@ pd.concat([df1, df2, df3])
 df.append({'a': 3, 'b': 4}, ignore_index=True)
 ```
 
-### Write new file with \~DataFrame.to_csv {#write-new-file-with-dataframeto_csv}
+### Write new file with \~DataFrame.to_csv
 
 Capture the results of your filter in a new file, rather than
 overwriting your original data.
@@ -1260,7 +1256,7 @@ data['normalized_wealth'] = wealth_score
 
 The seamy history of Python plotting
 
-## Seaborn 0.11 new features: <https://seaborn.pydata.org/whatsnew.html> {#seaborn-011-new-features-httpsseabornpydataorgwhatsnewhtml}
+## Seaborn 0.11 new features: <https://seaborn.pydata.org/whatsnew.html>
 
 ## Workshop Objectives
 
@@ -1397,7 +1393,7 @@ for number in [2, 3, 5]:
 -   The body, **print(number)**, specifies what to do for each value in
     the collection.
 -   The loop variable, **number**, is what changes for each iteration of
-    the loop (i.e. the \"current thing\")
+    the loop (i.e. the "current thing")
 
 ### The first line of the `for` loop must end with a colon, and the body must be indented
 
@@ -1518,7 +1514,7 @@ for m in masses:
 ### Use else to execute a block of code when an if condition is not true
 
 `else` can be used following an `if`. This allows us to specify an
-alternative to execute when the if branch isn\'t taken.
+alternative to execute when the if branch isn't taken.
 
 ```python
 masses = [3.54, 2.07, 9.22, 1.86, 1.71]
@@ -1532,7 +1528,7 @@ for m in masses:
 ### Use `elif` to specify additional tests
 
 May want to provide several alternative choices, each with its own test;
-use `elif` (short for \"else if\") and a condition to specify these.
+use `elif` (short for "else if") and a condition to specify these.
 
 ```python
 masses = [3.54, 2.07, 9.22, 1.86, 1.71]
@@ -1546,7 +1542,7 @@ for m in masses:
 ```
 
 -   Always associated with an `if`.
--   Must come before the `else` (which is the \"catch all\").
+-   Must come before the `else` (which is the "catch all").
 
 ### Conditions are tested once, in order
 
@@ -1563,7 +1559,7 @@ elif grade >= 90:
     print('grade is A')
 ```
 
-### Use conditionals in a loop to \"evolve\" the values of variables
+### Use conditionals in a loop to "evolve" the values of variables
 
 ```python
 velocity = 10.0
@@ -1620,18 +1616,18 @@ for filename in ['gapminder_gdp_africa.csv', 'gapminder_gdp_asia.csv']:
     print(filename, data.min())
 ```
 
-### Use glob.glob to find sets of files whose names match a pattern {#use-globglob-to-find-sets-of-files-whose-names-match-a-pattern}
+### Use glob.glob to find sets of files whose names match a pattern
 
 ```python
 import glob
 print('all csv files in data directory:', glob.glob('*.csv'))
 ```
 
-In Unix, the term \"globbing\" means \"matching a set of files with a
-pattern\". The most common patterns are:
+In Unix, the term "globbing" means "matching a set of files with a
+pattern". The most common patterns are:
 
--   \`\*\` meaning \"match zero or more characters\"
--   \`?\` meaning \"match exactly one character\"
+-   \`\*\` meaning "match zero or more characters"
+-   \`?\` meaning "match exactly one character"
 
 ### Use glob and for to process batches of files
 
@@ -1693,7 +1689,7 @@ plt.show()
     combining pieces
 -   Functions serve the same purpose in programs:
     1.  Encapsulate complexity so that we can treat it as a single
-        \"thing\"
+        "thing"
     2.  Removes complexity from remaining code, making it easier to test
     3.  Enables re-use: Write one time, use many times
 
@@ -1707,8 +1703,8 @@ def print_greeting():
 -   Begin the definition of a new function with `def`, followed by the
     name of the function.
 -   Must obey the same rules as variable names.
--   Parameters in parentheses; empty parentheses if the function
-    doesn\'t take any inputs.
+-   Parameters in parentheses; empty parentheses if the function doesn't
+    take any inputs.
 -   Colon, then an indented block of code
 
 ### Defining a function does not run it
@@ -1737,7 +1733,7 @@ print_date(month=3, day=19, year=1871)
 
 -   Specify parameters when defining a function; these become variables
     when the function is executed
--   By default (if you don\'t name the arguments when calling the
+-   By default (if you don't name the arguments when calling the
     function) the arguments will be matched to parameters in the order
     the parameters are defined in the function.
 
@@ -1797,10 +1793,6 @@ data = pd.read_csv('data/gapminder_all.csv')
 data['new_col'] = data['lifeExp_1952'].apply(my_fun)
 ```
 
-## \[TODO\]{.todo .TODO} Variable Scope (optional) {\#variable-scope-optional} {#todotodo-todo-variable-scope-optional-variable-scope-optional}
-
-## \[TODO\]{.todo .TODO} Programming Style (optional) {\#programming-style-optional} {#todotodo-todo-programming-style-optional-programming-style-optional}
-
 ## Working with unstructured files (optional)
 
 ### Open the file with a context handler
@@ -1854,7 +1846,7 @@ text[:10]
 
 ### Working with unstructured file data
 
-#### Contents of pettigrew_letters_ORIGINAL.txt {#contents-of-pettigrew_letters_originaltxt}
+#### Contents of pettigrew_letters_ORIGINAL.txt
 
 1.  Intro material
 2.  Manifest of letters
@@ -2036,9 +2028,9 @@ with conn:
     <https://www.statsmodels.org/stable/index.html>
 3.  Scikit-Learn: Machine learning tools built on NumPy, SciPy, and
     Matplotlib <https://scikit-learn.org/stable/>
-4.  \...and many more: <https://www.scipy.org/topical-software.html>
+4.  ...and many more: <https://www.scipy.org/topical-software.html>
 
-## Standard library vs. outside modules {#standard-library-vs-outside-modules}
+## Standard library vs. outside modules
 
 1.  Install with conda package manager
 2.  Install with pip
