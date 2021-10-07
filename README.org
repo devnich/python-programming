@@ -1744,13 +1744,13 @@ pandoc README.org -o tmp.md
 
 *** Generate Github Markdown with table of contents
 #+BEGIN_SRC bash
-pandoc -f gfm --toc --toc-depth=2 -s tmp.md -o README.md
+pandoc -f markdown --toc --toc-depth=2 -s tmp.md -o README.md
 #+END_SRC
 
 *** Find and replace code block markers in final document
 #+BEGIN_EXAMPLE
-M-x qrr " {.{.python}}" "python"
-M-x qrr " {.{.bash}}" "bash"
+M-x qrr " {.python}" "python"
+M-x qrr " {.bash}" "bash"
 #+END_EXAMPLE
 
 ** Export to Open Office using Emacs Org mode
