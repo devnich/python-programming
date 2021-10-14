@@ -1269,13 +1269,13 @@ fig = ax.get_figure()
 fig.set_size_inches(8,6)
 #+END_SRC
 
-*** Prettify column names (optional)
+**** Prettify column names (optional)
 #+BEGIN_SRC python
 words = [' '.join(i) for i in iris.columns.str.split('_')]
 iris.columns = words
 #+END_SRC
 
-*** Bubble Plot
+**** Bubble Plot
 #+BEGIN_SRC python
 # Color by species, size by petal width
 ax = sns.scatterplot(data=iris, x='sepal_length', y='petal_length',
@@ -1289,7 +1289,7 @@ fig = ax.get_figure()
 fig.set_size_inches(8,6)
 #+END_SRC
 
-*** Regression Plot (optional)
+**** Regression Plot (optional)
 #+BEGIN_SRC python
 # Color by species, size by petal width
 ax = sns.regplot(data=iris, x='sepal_length', y='petal_length', scatter=True,
@@ -1297,12 +1297,70 @@ ax = sns.regplot(data=iris, x='sepal_length', y='petal_length', scatter=True,
 #+END_SRC
 
 *** Bar Charts
+**** Count Plot counts the records in each category
+#+BEGIN_SRC python
+ax = sns.countplot(data=iris, x='species', palette='colorblind')
+#+END_SRC
 
-*** Heat Map
+**** Bar Plot
+Default summary statistic is mean, and default error bars are 95% confidence interval.
+#+BEGIN_SRC python
+ax = sns.barplot(data=iris, x='species', y='sepal_width', palette='colorblind')
+#+END_SRC
+
+**** Bar Plot with custom parameters
+#+BEGIN_SRC python
+# Error bars show standard deviation
+ax = sns.barplot(data=iris, x='species', y='sepal_width', ci='sd', edgecolor='black')
+#+END_SRC
+
+#+BEGIN_SRC python
+# Estimator shows category sum
+ax = sns.barplot(data=iris, x='species', y='sepal_width', ci='sd', estimator=np.sum, edgecolor='black')
+#+END_SRC
 
 *** Histograms
+**** Histogram of overall data set
+#+BEGIN_SRC python
+ax = sns.histplot(data=iris, x='petal_length', kde=True)
+#+END_SRC
+- KDE: If True, compute a kernel density estimate to smooth the distribution and show on the plot as (one or more) line(s).
+- There seems a bimodal distribution of petal length. What factors underly this distribution?
+
+**** Histogram of data decomposed by category
+#+BEGIN_SRC python
+ax = sns.histplot(data=iris, x='petal_length', hue='species', palette='Set2')
+#+END_SRC
+
+**** Selecting number of bins
+#+BEGIN_SRC python
+# This generates 3 subplots (ncols=3) on the same figure
+fig, axes = plt.subplots(figsize=(12,4), nrows=1, ncols=3)
+sns.histplot(data=iris,x='petal_length', bins=5, ax=axes[0], color='#f5a142') #  #f5a142 is a hex color
+sns.histplot(data=iris,x='petal_length', bins=10, ax=axes[1], color='maroon')
+sns.histplot(data=iris,x='petal_length', bins=15, ax=axes[2], color='darkmagenta')
+#+END_SRC
 
 *** Box Plots and Swarm Plots
+**** Basic box plot
+#+BEGIN_SRC python
+ax = sns.boxplot(data=iris, x='species', y='petal_length')
+#+END_SRC
+
+**** Overlap swarm plot
+#+BEGIN_SRC python
+ax = sns.boxplot(data=iris, x='species', y='petal_length')
+sns.swarmplot(data=iris, x='species', y='petal_length', ax=ax, color='black')
+#+END_SRC
+
+**** Swarm plot only
+#+BEGIN_SRC python
+ax = sns.swarmplot(data=iris,x='species', y='petal_length', hue='species', palette='Set1')
+ax.legend(loc='upper left', fontsize=16)
+ax.tick_params(axis='x', labelrotation = 45)
+#+END_SRC
+
+*** Heat Map
 
 ** Seaborn 0.11 new features: https://seaborn.pydata.org/whatsnew.html
 
