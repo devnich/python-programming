@@ -18,13 +18,15 @@
     -   [Pandas DataFrames](#pandas-dataframes)
 -   [Visualization with Matplotlib, Pandas, and
     Seaborn](#visualization-with-matplotlib-pandas-and-seaborn)
-    -   [What does it mean to be
-        Pythonic?](#what-does-it-mean-to-be-pythonic)
+    -   [General approach](#general-approach)
+    -   [Graphing](#graphing)
+    -   [Additional data files](#additional-data-files)
+    -   [Plotting with Matplotlib](#plotting-with-matplotlib)
+    -   [Seaborn: Pythonic, high-level pre-sets for
+        Matplotlib](#seaborn-pythonic-high-level-pre-sets-for-matplotlib)
     -   [Seaborn 0.11 new features:
         https://seaborn.pydata.org/whatsnew.html](#seaborn-0.11-new-features-httpsseaborn.pydata.orgwhatsnew.html)
-    -   [Workshop Objectives](#workshop-objectives)
-    -   [Big 5 graphs](#big-5-graphs)
-    -   [Matplotlib](#matplotlib)
+    -   [Looping through datasets](#looping-through-datasets)
 -   [Building Programs](#building-programs)
     -   [For Loops](#for-loops)
     -   [Conditionals](#conditionals)
@@ -1242,6 +1244,8 @@ data['normalized_wealth'] = wealth_score
 
 # Visualization with Matplotlib, Pandas, and Seaborn
 
+## General approach
+
 1.  Use object-oriented Matplotlib syntax, e.g.:
     `fig, axes = plt.subplot()`
     <https://matplotlib.org/stable/tutorials/introductory/lifecycle.html>
@@ -1249,26 +1253,14 @@ data['normalized_wealth'] = wealth_score
     -   <https://datacarpentry.org/python-socialsci/13-matplotlib/index.html>
     -   <https://ryxcommar.com/2020/04/11/why-you-hate-matplotlib/>
 
-```python
-```
+## Graphing
 
-## What does it mean to be Pythonic?
+Fundamentally, graphs communicate two types of information:
 
-The seamy history of Python plotting
+1.  Relationships or trends among data
+2.  The distribution of data
 
-## Seaborn 0.11 new features: <https://seaborn.pydata.org/whatsnew.html>
-
-## Workshop Objectives
-
-1.  Make a plot with python\'s base library matplotlib.pyplot
-2.  Generate plots from DataFrames using pandas and seaborn
-3.  Modify graph aesthetics and themes
-4.  Save plots to an image file
-
-## Big 5 graphs
-
-Fundamentally, graphs communicate two types of information: 1)
-Relationships/trends among data and 2) the distribution of data.
+### Big 5 graphs
 
 1.  Line plot
 2.  Scatter plot
@@ -1276,103 +1268,468 @@ Relationships/trends among data and 2) the distribution of data.
 4.  Histogram
 5.  Box plot
 
-## Matplotlib
+## Additional data files
 
-### Basic line plot (time series example)
+1.  Iris:
+    <https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/0e7a9b0a5d22642a06d3d5b9bcbad9890c8ee534/iris.csv>
+2.  Field plots:
+    <https://datacarpentry.org/python-ecology-lesson/setup.html>
+3.  SAFI data: <https://datacarpentry.org/python-socialsci/setup.html>
+
+## Plotting with Matplotlib
+
+### Create a basic plot
 
 ```python
 import matplotlib.pyplot as plt
+fig, ax = plt.subplots()
+
+time = [0, 1, 2, 3]
+position = [0, 100, 200, 300]
+
+ax.plot(time, postion)
+
+fig
 ```
 
+### Two kinds of plotting objects
+
 ```python
-# make up data
+print(type(fig))
+print(type(ax))
+```
+
+-   Figure objects handle display, printing, saving, etc.
+-   Axes objects contain graph information
+
+### Two ways of showing a figure (optional)
+
+#### Show figure inline (Jupyter Lab default)
+
+```python
+fig
+```
+
+#### Show figure in a separate window (command line default)
+
+```python
+fig.show()
+```
+
+#### Show figure in a separate window from Jupyter Lab
+
+```python
+import matplotlib
+
+# The appropriate back-end differs depending on OS and setup
+# See https://matplotlib.org/stable/tutorials/introductory/usage.html#the-builtin-backends
+matplotlib.use('TkAgg')
+
+fig.show()
+```
+
+### Line Plots
+
+#### Create mock data
+
+```python
 import numpy as np
 
 y = np.random.random(10) # outputs an array of 10 random numbers between 0 and 1
 x = np.arange(1980,1990,1) # generates an ordered array of numbers from 1980 to 1989
-```
 
-```python
-print(x)
-print(y)
+# Check that x and y contain the same number of values
+assert len(x) == len(y)
 
-#check that x and y contain the same number of values
-len(x) == len(y)
-```
-
-```python
-#turn y into a percentage
+# Turn y into a percentage
 y = y*100
-print(y)
 ```
 
-```python
-## simple line plot example of stock price changes
+#### Create the basic plot
 
-#3 basic commands to create a basic figure
-plt.figure()
-plt.plot(x,y)
-plt.show()
+```python
+fig, ax = plt.subplots()
+ax.plot(x, y)
 ```
 
-### Customizing Graph Aesthetics
-
-In principle, nearly every element on a matplotlib figure is
-independently modifiable.
+#### Show available styles
 
 ```python
-#change theme style
+# What are the global styles?
 plt.style.available
 ```
 
 ```python
-plt.style.use('dark_background')  #changes theme of all plots
+# Set a global figure style
+plt.style.use("dark_background")
+
+# The style is only applied to new figures, not pre-existing figures
+fig
 ```
 
 ```python
-## modify figure size,  axes and fonts
-plt.figure(figsize=(8,6)) #(width, height) inches
-plt.plot(x,y,color='darkorange', linewidth=2, marker='o')
-
-#add title and axes label, adjust font size and style
-
-plt.title("Percent Change in Stock X", fontsize=22, fontweight='bold')
-plt.xlabel(" Years ",fontsize=20, fontweight='bold')
-plt.ylabel(" % change ",fontsize=20, fontweight='bold')
-
-#adjust tick labels
-plt.xticks(fontsize=18)
-plt.yticks(fontsize=18)
-
-#add a grid
-plt.grid(True)
-# save figure
-plt.savefig("mygraph_dark.png",dpi=300, bbox_inches='tight')
-plt.show()
+# Re-creating the figure applies the new style
+fig, ax = plt.subplots()
+ax.plot(x, y)
 ```
+
+#### Add figure information
+
+In principle, nearly every element on a Matplotlib figure is
+independently modifiable.
 
 ```python
-# Saving datasets with new-style string formatting
-#for i in datasets_list:
-#    plt.savefig(f'{i}.png',....)
+# modify figure size, axes and fonts
+fig, ax = plt.subplots(figsize=(8,6)) #(width, height) inches
+ax.plot(x, y, color='darkorange', linewidth=2, marker='o')
+
+# add title and axes label, adjust font size and style
+
+ax.set_title("Percent Change in Stock X", fontsize=22, fontweight='bold')
+ax.set_xlabel(" Years ", fontsize=20, fontweight='bold')
+ax.set_ylabel(" % change ", fontsize=20, fontweight='bold')
+
+# adjust tick labels
+ax.tick_params(axis='both', which='major', labelsize=18)
+
+# add a grid
+ax.grid(True)
 ```
 
-### Plotting from DataFrames with Gapminder dataset
+#### What is an object?
+
+-   Objects encapsulate behaviors
+    -   Lists, dictionaries, and DataFrames are collections of data
+    -   Objects are collections of data and functions
+
+#### Matplotlib object syntax
+
+-   The `object.set_field(value)` usage is taken from Java, which was
+    popular in 2003 when Matplotlib was developing its object-oriented
+    syntax
+-   You get values back out with `object.get_field(value)`
+-   The Pythonic way to set a value would be `object.field = value`.
+    However, the Matplotlib getters and setters do a lot of internal
+    bookkeeping, so if you try to set field values directly you will get
+    errors. For example, compare `ax.get_ylabel()` with
+    `ax.yaxis.label`.
+-   Read \"The Lifecycle of a Plot\":
+    <https://matplotlib.org/stable/tutorials/introductory/lifecycle.html>
+
+#### Save your figure
+
+```python
+fig.savefig("mygraph_dark.png", dpi=300, bbox_inches='tight')
+```
+
+### Explore your data with Pandas
+
+#### Import data
 
 ```python
 import pandas as pd
 
-#load gapminder data
-gapminder = pd.read_csv("gapminder_gdp_europe.csv", index_col='country')
+data = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
+```
+
+#### Transform column headers into an ordinal scale
+
+Original column names are object (i.e. string) data
+
+```python
+data.columns
+```
+
+Pull out integer portion of strings
+
+```python
+years = data.columns.str.strip('gdpPercap_')
+years
+```
+
+Convert the years columns into integer years and replace DataFrame
+column headers
+
+```python
+data.columns = years.astype(int)
+data.columns
+```
+
+#### Plot directly with Pandas
+
+```python
+data.loc['Austria'].plot()
+```
+
+### From Pandas to Matplotlib
+
+#### The basic plot syntax
+
+```python
+ax = data.loc['Austria'].plot()
+fig = ax.get_figure()
+fig
+```
+
+#### Decorate your Pandas plot
+
+```python
+ax = data.loc['Austria'].plot(figsize=(8,6), color='darkgreen', linewidth=2, marker='*')
+ax.set_title("GDP of Austria", fontsize=22, fontweight='bold')
+ax.set_xlabel("Years",fontsize=20, fontweight='bold' )
+ax.set_ylabel("GDP",fontsize=20, fontweight='bold' )
+
+fig = ax.get_figure()
+fig
+```
+
+#### The equivalent Matplotlib plot (optional)
+
+```python
+# extract the x and y values from dataframe
+x_years = data.columns
+y_gdp = data.loc['Austria']
+
+# Create the plot
+fig, ax = plt.subplots(figsize=(8,6))
+ax.plot(x_years, y_gdp, color='darkgreen', linewidth=2, marker='x')
+# etc.
+```
+
+### Plotting multiple data sets
+
+#### Extract values from the DataFrame
+
+```python
+x_years = data.columns
+y_austria = data.loc['Austria']
+y_bulgaria = data.loc['Bulgaria']
+```
+
+#### Create the plot object
+
+```python
+# Create the plot
+fig, ax = plt.subplots(figsize=(8,6))
+ax.plot(x_years, y_austria, label='Austria', color='darkgreen', linewidth=2, marker='x')
+ax.plot(x_years, y_bulgaria, label='Bulgaria', color='maroon', linewidth=2, marker='o')
+
+# Decorate the plot
+ax.legend(fontsize=16, loc='upper center') # Uses labels
+ax.set_title("GDP of Austria vs Bulgaria", fontsize=22, fontweight='bold')
+ax.set_xlabel("Years",fontsize=20, fontweight='bold' )
+ax.set_ylabel("GDP",fontsize=20, fontweight='bold' )
+```
+
+#### There are many kinds of plots
+
+```python
+plt.style.use('ggplot')
+
+# Create a scatter plot
+fig, ax = plt.subplots(figsize=(8,6))
+ax.scatter(y_austria, y_bulgaria, color='blue', linewidth=2, marker='o')
+
+# Decorate the plot
+ax.set_title("GDP of Austria vs Bulgaria", fontsize=22, fontweight='bold')
+ax.set_xlabel("GDP of Austria",fontsize=20, fontweight='bold' )
+ax.set_ylabel("GDP of Bulgaria",fontsize=20, fontweight='bold' )
+```
+
+#### Overlaying multiple plots on the same figure with Pandas (optional)
+
+This is super unintuitive.
+
+```python
+# Create an Axes object with the Austria data
+ax = data.loc['Austria'].plot(figsize=(8,6), color='darkgreen', linewidth=2, marker='*')
+print("Austria graph", id(ax))
+
+# Overlay the Bulgaria data on the same Axes object
+ax = data.loc['Bulgaria'].plot(color='maroon', linewidth=2, marker='o')
+print("Bulgaria graph", id(ax))
+```
+
+## Seaborn: Pythonic, high-level pre-sets for Matplotlib
+
+### A simple plot
+
+```python
+# Import the Seaborn library
+import seaborn as sns
+ax = sns.lineplot(data=data.T, legend=False)
+```
+
+-   Doing more with this data set requires transforming the data from
+    wide form to long form; see
+    <https://seaborn.pydata.org/tutorial/data_structure.html>
+
+### Import the Iris data set
+
+<https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/0e7a9b0a5d22642a06d3d5b9bcbad9890c8ee534/iris.csv>
+
+```python
+iris = pd.read_csv("data/iris.csv")
+iris.head()
+```
+
+### Scatter Plot
+
+```python
+# Reset the style
+plt.style.use("dark_background")
+plt.rcParams["axes.grid"] = False
+
+# Create the plot
+ax = sns.scatterplot(data=iris, x='sepal_length',y='petal_length')
+```
+
+#### Change plotting theme
+
+```python
+# Make everything visible at a distance
+sns.set_context('poster')
+
+# Color by species
+ax = sns.scatterplot(data=iris, x='sepal_length', y='petal_length', hue='species', palette='colorblind')
+
+# Set the figure size
+fig = ax.get_figure()
+fig.set_size_inches(8,6)
+```
+
+#### Add styling to data points
+
+```python
+# Color by species
+ax = sns.scatterplot(data=iris, x='sepal_length', y='petal_length', hue='species', palette='colorblind', style='species')
+
+# Set the figure size
+fig = ax.get_figure()
+fig.set_size_inches(8,6)
+```
+
+#### Prettify column names (optional)
+
+```python
+words = [' '.join(i) for i in iris.columns.str.split('_')]
+iris.columns = words
+```
+
+#### Bubble Plot
+
+```python
+# Color by species, size by petal width
+ax = sns.scatterplot(data=iris, x='sepal_length', y='petal_length',
+                     hue='species', palette='colorblind', size='petal_width')
+
+# (horizontal direction, vertical alignment) of legend
+ax.legend(bbox_to_anchor=(1, 1))
+
+# Set the figure size
+fig = ax.get_figure()
+fig.set_size_inches(8,6)
+```
+
+#### Regression Plot (optional)
+
+```python
+# Color by species, size by petal width
+ax = sns.regplot(data=iris, x='sepal_length', y='petal_length', scatter=True,
+                 scatter_kws={'color':'white'})
+```
+
+### Bar Charts
+
+#### Count Plot counts the records in each category
+
+```python
+ax = sns.countplot(data=iris, x='species', palette='colorblind')
+```
+
+#### Bar Plot
+
+Default summary statistic is mean, and default error bars are 95%
+confidence interval.
+
+```python
+ax = sns.barplot(data=iris, x='species', y='sepal_width', palette='colorblind')
+```
+
+#### Bar Plot with custom parameters
+
+```python
+# Error bars show standard deviation
+ax = sns.barplot(data=iris, x='species', y='sepal_width', ci='sd', edgecolor='black')
 ```
 
 ```python
+# Estimator shows category sum
+ax = sns.barplot(data=iris, x='species', y='sepal_width', ci='sd', estimator=np.sum, edgecolor='black')
 ```
 
-```python
-```
+### Histograms
+
+#### Histogram of overall data set
 
 ```python
+ax = sns.histplot(data=iris, x='petal_length', kde=True)
+```
+
+-   KDE: If True, compute a kernel density estimate to smooth the
+    distribution and show on the plot as (one or more) line(s).
+-   There seems a bimodal distribution of petal length. What factors
+    underly this distribution?
+
+#### Histogram of data decomposed by category
+
+```python
+ax = sns.histplot(data=iris, x='petal_length', hue='species', palette='Set2')
+```
+
+#### Selecting number of bins
+
+```python
+# This generates 3 subplots (ncols=3) on the same figure
+fig, axes = plt.subplots(figsize=(12,4), nrows=1, ncols=3)
+sns.histplot(data=iris,x='petal_length', bins=5, ax=axes[0], color='#f5a142') #  #f5a142 is a hex color
+sns.histplot(data=iris,x='petal_length', bins=10, ax=axes[1], color='maroon')
+sns.histplot(data=iris,x='petal_length', bins=15, ax=axes[2], color='darkmagenta')
+```
+
+### Box Plots and Swarm Plots
+
+#### Basic box plot
+
+```python
+ax = sns.boxplot(data=iris, x='species', y='petal_length')
+```
+
+#### Overlap swarm plot
+
+```python
+ax = sns.boxplot(data=iris, x='species', y='petal_length')
+sns.swarmplot(data=iris, x='species', y='petal_length', ax=ax, color='black')
+```
+
+#### Swarm plot only
+
+```python
+ax = sns.swarmplot(data=iris,x='species', y='petal_length', hue='species', palette='Set1')
+ax.legend(loc='upper left', fontsize=16)
+ax.tick_params(axis='x', labelrotation = 45)
+```
+
+### Heat Map
+
+## Seaborn 0.11 new features: <https://seaborn.pydata.org/whatsnew.html>
+
+## Looping through datasets
+
+```python
+# Saving datasets with new-style string formatting
+for i in datasets_list:
+   plt.savefig(f'{i}.png',....)
 ```
 
 # Building Programs
