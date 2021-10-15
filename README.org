@@ -962,15 +962,8 @@ type(wealth_score)
 data['normalized_wealth'] = wealth_score
 #+END_SRC
 
-* Visualization with Matplotlib, Pandas, and Seaborn
-** General approach
-1. Use object-oriented Matplotlib syntax, e.g.: ~fig, axes = plt.subplot()~
-   https://matplotlib.org/stable/tutorials/introductory/lifecycle.html
-2. Pandas > Seaborn > Matplotlib decoration approach
-   - https://datacarpentry.org/python-socialsci/13-matplotlib/index.html
-   - https://ryxcommar.com/2020/04/11/why-you-hate-matplotlib/
-
-** Graphing
+* Visualization with Matplotlib and Seaborn
+** Graphs
 Fundamentally, graphs communicate two types of information:
 1. Relationships or trends among data
 2. The distribution of data
@@ -981,11 +974,6 @@ Fundamentally, graphs communicate two types of information:
 3. Bar plot
 4. Histogram
 5. Box plot
-
-** Additional data files
-1. Iris: https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/0e7a9b0a5d22642a06d3d5b9bcbad9890c8ee534/iris.csv
-2. Field plots: https://datacarpentry.org/python-ecology-lesson/setup.html
-3. SAFI data: https://datacarpentry.org/python-socialsci/setup.html
 
 ** Plotting with Matplotlib
 *** Create a basic plot
@@ -1009,23 +997,21 @@ print(type(ax))
 - Figure objects handle display, printing, saving, etc.
 - Axes objects contain graph information
 
-*** Two ways of showing a figure (optional)
-**** Show figure inline (Jupyter Lab default)
+*** Three ways of showing a figure (optional)
+Show figure inline (Jupyter Lab default)
 #+BEGIN_SRC python
 fig
 #+END_SRC
 
-**** Show figure in a separate window (command line default)
+Show figure in a separate window (command line default)
 #+BEGIN_SRC python
 fig.show()
 #+END_SRC
 
-**** Show figure in a separate window from Jupyter Lab
+Show figure in a separate window from Jupyter Lab. You may need to specify a different "backend" parameter for ~matplotlib.use()~ depending on your exact setup: https://matplotlib.org/stable/tutorials/introductory/usage.html#the-builtin-backends
 #+BEGIN_SRC python
 import matplotlib
 
-# The appropriate back-end differs depending on OS and setup
-# See https://matplotlib.org/stable/tutorials/introductory/usage.html#the-builtin-backends
 matplotlib.use('TkAgg')
 
 fig.show()
@@ -1103,6 +1089,7 @@ ax.grid(True)
 - You get values back out with ~object.get_field(value)~
 - The Pythonic way to set a value would be ~object.field = value~. However, the Matplotlib getters and setters do a lot of internal bookkeeping, so if you try to set field values directly you will get errors. For example, compare ~ax.get_ylabel()~ with ~ax.yaxis.label~.
 - Read "The Lifecycle of a Plot": https://matplotlib.org/stable/tutorials/introductory/lifecycle.html
+- Read "Why you hate Matplotlib": https://ryxcommar.com/2020/04/11/why-you-hate-matplotlib/
 
 **** Save your figure
 #+BEGIN_SRC python
@@ -2006,10 +1993,12 @@ python my_program.py
 - Seaborn gallery of examples: https://seaborn.pydata.org/examples/index.html
 - Matplotlib gallery of examples: https://matplotlib.org/gallery/index.html
 
-* Example Data
-- Gapminder data: https://swcarpentry.github.io/python-novice-gapminder/files/python-novice-gapminder-data.zip
-- Pettigrew letters: https://raw.githubusercontent.com/devnich/python-programming/master/pettigrew_letters_ORIGINAL.txt
-- Ecology survey data: https://ndownloader.figshare.com/files/10717177 (from https://figshare.com/articles/Portal_Project_Teaching_Database/1314459 )
+* Data Sources
+** Additional data files
+1. Gapminder data: http://swcarpentry.github.io/python-novice-gapminder/files/python-novice-gapminder-data.zip
+2. Ecology data (field surveys): https://datacarpentry.org/python-ecology-lesson/data/portal-teachingdb-master.zip
+3. Social Science data (SAFI): https://datacarpentry.org/socialsci-workshop/data/
+4. Humanities data (Pettigrew letters): http://dx.doi.org/10.5334/data.1335350291
 
 * COMMENT How to export this document to other formats
 ** Export to Markdown using Emacs Org mode

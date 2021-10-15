@@ -16,11 +16,9 @@
     -   [Reading Tabular Data into
         DataFrames](#reading-tabular-data-into-dataframes)
     -   [Pandas DataFrames](#pandas-dataframes)
--   [Visualization with Matplotlib, Pandas, and
-    Seaborn](#visualization-with-matplotlib-pandas-and-seaborn)
-    -   [General approach](#general-approach)
-    -   [Graphing](#graphing)
-    -   [Additional data files](#additional-data-files)
+-   [Visualization with Matplotlib and
+    Seaborn](#visualization-with-matplotlib-and-seaborn)
+    -   [Graphs](#graphs)
     -   [Plotting with Matplotlib](#plotting-with-matplotlib)
     -   [Seaborn: Pythonic, high-level pre-sets for
         Matplotlib](#seaborn-pythonic-high-level-pre-sets-for-matplotlib)
@@ -52,7 +50,8 @@
     -   [Command-Line Programs](#command-line-programs)
 -   [Credits](#credits)
 -   [References](#references)
--   [Example Data](#example-data)
+-   [Data Sources](#data-sources)
+    -   [Additional data files](#additional-data-files)
 
 # Fundamentals
 
@@ -1242,18 +1241,9 @@ type(wealth_score)
 data['normalized_wealth'] = wealth_score
 ```
 
-# Visualization with Matplotlib, Pandas, and Seaborn
+# Visualization with Matplotlib and Seaborn
 
-## General approach
-
-1.  Use object-oriented Matplotlib syntax, e.g.:
-    `fig, axes = plt.subplot()`
-    <https://matplotlib.org/stable/tutorials/introductory/lifecycle.html>
-2.  Pandas \> Seaborn \> Matplotlib decoration approach
-    -   <https://datacarpentry.org/python-socialsci/13-matplotlib/index.html>
-    -   <https://ryxcommar.com/2020/04/11/why-you-hate-matplotlib/>
-
-## Graphing
+## Graphs
 
 Fundamentally, graphs communicate two types of information:
 
@@ -1267,14 +1257,6 @@ Fundamentally, graphs communicate two types of information:
 3.  Bar plot
 4.  Histogram
 5.  Box plot
-
-## Additional data files
-
-1.  Iris:
-    <https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/0e7a9b0a5d22642a06d3d5b9bcbad9890c8ee534/iris.csv>
-2.  Field plots:
-    <https://datacarpentry.org/python-ecology-lesson/setup.html>
-3.  SAFI data: <https://datacarpentry.org/python-socialsci/setup.html>
 
 ## Plotting with Matplotlib
 
@@ -1302,27 +1284,28 @@ print(type(ax))
 -   Figure objects handle display, printing, saving, etc.
 -   Axes objects contain graph information
 
-### Two ways of showing a figure (optional)
+### Three ways of showing a figure (optional)
 
-#### Show figure inline (Jupyter Lab default)
+Show figure inline (Jupyter Lab default)
 
 ```python
 fig
 ```
 
-#### Show figure in a separate window (command line default)
+Show figure in a separate window (command line default)
 
 ```python
 fig.show()
 ```
 
-#### Show figure in a separate window from Jupyter Lab
+Show figure in a separate window from Jupyter Lab. You may need to
+specify a different \"backend\" parameter for `matplotlib.use()`
+depending on your exact setup:
+<https://matplotlib.org/stable/tutorials/introductory/usage.html#the-builtin-backends>
 
 ```python
 import matplotlib
 
-# The appropriate back-end differs depending on OS and setup
-# See https://matplotlib.org/stable/tutorials/introductory/usage.html#the-builtin-backends
 matplotlib.use('TkAgg')
 
 fig.show()
@@ -1415,6 +1398,8 @@ ax.grid(True)
     `ax.yaxis.label`.
 -   Read \"The Lifecycle of a Plot\":
     <https://matplotlib.org/stable/tutorials/introductory/lifecycle.html>
+-   Read \"Why you hate Matplotlib\":
+    <https://ryxcommar.com/2020/04/11/why-you-hate-matplotlib/>
 
 #### Save your figure
 
@@ -2501,13 +2486,15 @@ python my_program.py
 -   Matplotlib gallery of examples:
     <https://matplotlib.org/gallery/index.html>
 
-# Example Data
+# Data Sources
 
--   Gapminder data:
-    <https://swcarpentry.github.io/python-novice-gapminder/files/python-novice-gapminder-data.zip>
--   Pettigrew letters:
-    <https://raw.githubusercontent.com/devnich/python-programming/master/pettigrew_letters_ORIGINAL.txt>
--   Ecology survey data:
-    <https://ndownloader.figshare.com/files/10717177> (from
-    <https://figshare.com/articles/Portal_Project_Teaching_Database/1314459>
-    )
+## Additional data files
+
+1.  Gapminder data:
+    <http://swcarpentry.github.io/python-novice-gapminder/files/python-novice-gapminder-data.zip>
+2.  Ecology data (field surveys):
+    <https://datacarpentry.org/python-ecology-lesson/data/portal-teachingdb-master.zip>
+3.  Social Science data (SAFI):
+    <https://datacarpentry.org/socialsci-workshop/data/>
+4.  Humanities data (Pettigrew letters):
+    <http://dx.doi.org/10.5334/data.1335350291>
