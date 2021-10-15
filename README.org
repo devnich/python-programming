@@ -998,24 +998,24 @@ print(type(ax))
 - Axes objects contain graph information
 
 *** Three ways of showing a figure (optional)
-Show figure inline (Jupyter Lab default)
-#+BEGIN_SRC python
-fig
-#+END_SRC
+1. Show figure inline (Jupyter Lab default)
+   #+BEGIN_SRC python
+   fig
+   #+END_SRC
 
-Show figure in a separate window (command line default)
-#+BEGIN_SRC python
-fig.show()
-#+END_SRC
+2. Show figure in a separate window (command line default)
+   #+BEGIN_SRC python
+   fig.show()
+   #+END_SRC
 
-Show figure in a separate window from Jupyter Lab. You may need to specify a different "backend" parameter for ~matplotlib.use()~ depending on your exact setup: https://matplotlib.org/stable/tutorials/introductory/usage.html#the-builtin-backends
-#+BEGIN_SRC python
-import matplotlib
+3. Show figure in a separate window from Jupyter Lab. You may need to specify a different "backend" parameter for ~matplotlib.use()~ depending on your exact setup: https://matplotlib.org/stable/tutorials/introductory/usage.html#the-builtin-backends
+   #+BEGIN_SRC python
+   import matplotlib
 
-matplotlib.use('TkAgg')
+   matplotlib.use('TkAgg')
 
-fig.show()
-#+END_SRC
+   fig.show()
+   #+END_SRC
 
 *** Line Plots
 **** Create mock data

@@ -1286,30 +1286,30 @@ print(type(ax))
 
 ### Three ways of showing a figure (optional)
 
-Show figure inline (Jupyter Lab default)
+1.  Show figure inline (Jupyter Lab default)
 
-```python
-fig
-```
+    ```python
+    fig
+    ```
 
-Show figure in a separate window (command line default)
+2.  Show figure in a separate window (command line default)
 
-```python
-fig.show()
-```
+    ```python
+    fig.show()
+    ```
 
-Show figure in a separate window from Jupyter Lab. You may need to
-specify a different \"backend\" parameter for `matplotlib.use()`
-depending on your exact setup:
-<https://matplotlib.org/stable/tutorials/introductory/usage.html#the-builtin-backends>
+3.  Show figure in a separate window from Jupyter Lab. You may need to
+    specify a different \"backend\" parameter for `matplotlib.use()`
+    depending on your exact setup:
+    <https://matplotlib.org/stable/tutorials/introductory/usage.html#the-builtin-backends>
 
-```python
-import matplotlib
+    ```python
+    import matplotlib
 
-matplotlib.use('TkAgg')
+    matplotlib.use('TkAgg')
 
-fig.show()
-```
+    fig.show()
+    ```
 
 ### Line Plots
 
