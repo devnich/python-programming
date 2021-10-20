@@ -30,15 +30,19 @@
     -   [Conditionals](#conditionals)
     -   [Looping Over Data Sets](#looping-over-data-sets)
     -   [Writing Functions](#writing-functions)
+    -   [Software Logistics](#software-logistics)
+    -   [Variable Scope (optional)](#variable-scope-optional)
+    -   [Programming Style (optional)](#programming-style-optional)
     -   [Working with unstructured files
         (optional)](#working-with-unstructured-files-optional)
     -   [Exception handling (optional)](#exception-handling-optional)
+    -   [Performance and profiling
+        (optional)](#performance-and-profiling-optional)
     -   [Reducing memory usage 1: Read a file one line at a time
         (optional)](#reducing-memory-usage-1-read-a-file-one-line-at-a-time-optional)
     -   [Reducing memory usage 2: Use an SQLite database
         (optional)](#reducing-memory-usage-2-use-an-sqlite-database-optional)
     -   [Other optional topics](#other-optional-topics)
-    -   [Homework](#homework)
 -   [Scientific Computing Libraries](#scientific-computing-libraries)
     -   [Downstream libraries](#downstream-libraries)
     -   [Standard library vs. outside
@@ -1313,173 +1317,171 @@ print(type(ax))
 
 ### Line Plots
 
-#### Create mock data
+1.  Create mock data
 
-```python
-import numpy as np
+    ```python
+    import numpy as np
 
-y = np.random.random(10) # outputs an array of 10 random numbers between 0 and 1
-x = np.arange(1980,1990,1) # generates an ordered array of numbers from 1980 to 1989
+    y = np.random.random(10) # outputs an array of 10 random numbers between 0 and 1
+    x = np.arange(1980,1990,1) # generates an ordered array of numbers from 1980 to 1989
 
-# Check that x and y contain the same number of values
-assert len(x) == len(y)
+    # Check that x and y contain the same number of values
+    assert len(x) == len(y)
 
-# Turn y into a percentage
-y = y*100
-```
+    # Turn y into a percentage
+    y = y*100
+    ```
 
-#### Create the basic plot
+2.  Create the basic plot
 
-```python
-fig, ax = plt.subplots()
-ax.plot(x, y)
-```
+    ```python
+    fig, ax = plt.subplots()
+    ax.plot(x, y)
+    ```
 
-#### Show available styles
+3.  Show available styles (What is the local equivalent of this global
+    command?)
 
-```python
-# What are the global styles?
-plt.style.available
-```
+    ```python
+    # What are the global styles?
+    plt.style.available
+    ```
 
-```python
-# Set a global figure style
-plt.style.use("dark_background")
+    ```python
+    # Set a global figure style
+    plt.style.use("dark_background")
 
-# The style is only applied to new figures, not pre-existing figures
-fig
-```
+    # The style is only applied to new figures, not pre-existing figures
+    fig
+    ```
 
-```python
-# Re-creating the figure applies the new style
-fig, ax = plt.subplots()
-ax.plot(x, y)
-```
+    ```python
+    # Re-creating the figure applies the new style
+    fig, ax = plt.subplots()
+    ax.plot(x, y)
+    ```
 
-#### Add figure information
+4.  Add figure information In principle, nearly every element on a
+    Matplotlib figure is independently modifiable.
 
-In principle, nearly every element on a Matplotlib figure is
-independently modifiable.
+    ```python
+    # modify figure size, axes and fonts
+    fig, ax = plt.subplots(figsize=(8,6)) #(width, height) inches
+    ax.plot(x, y, color='darkorange', linewidth=2, marker='o')
 
-```python
-# modify figure size, axes and fonts
-fig, ax = plt.subplots(figsize=(8,6)) #(width, height) inches
-ax.plot(x, y, color='darkorange', linewidth=2, marker='o')
+    # add title and axes label, adjust font size and style
 
-# add title and axes label, adjust font size and style
+    ax.set_title("Percent Change in Stock X", fontsize=22, fontweight='bold')
+    ax.set_xlabel(" Years ", fontsize=20, fontweight='bold')
+    ax.set_ylabel(" % change ", fontsize=20, fontweight='bold')
 
-ax.set_title("Percent Change in Stock X", fontsize=22, fontweight='bold')
-ax.set_xlabel(" Years ", fontsize=20, fontweight='bold')
-ax.set_ylabel(" % change ", fontsize=20, fontweight='bold')
+    # adjust tick labels
+    ax.tick_params(axis='both', which='major', labelsize=18)
 
-# adjust tick labels
-ax.tick_params(axis='both', which='major', labelsize=18)
+    # add a grid
+    ax.grid(True)
+    ```
 
-# add a grid
-ax.grid(True)
-```
+5.  What is an object? Objects encapsulate behaviors
 
-#### What is an object?
-
--   Objects encapsulate behaviors
     -   Lists, dictionaries, and DataFrames are collections of data
     -   Objects are collections of data and functions
 
-#### Matplotlib object syntax
+6.  Matplotlib object syntax
 
--   The `object.set_field(value)` usage is taken from Java, which was
-    popular in 2003 when Matplotlib was developing its object-oriented
-    syntax
--   You get values back out with `object.get_field(value)`
--   The Pythonic way to set a value would be `object.field = value`.
-    However, the Matplotlib getters and setters do a lot of internal
-    bookkeeping, so if you try to set field values directly you will get
-    errors. For example, compare `ax.get_ylabel()` with
-    `ax.yaxis.label`.
--   Read \"The Lifecycle of a Plot\":
-    <https://matplotlib.org/stable/tutorials/introductory/lifecycle.html>
--   Read \"Why you hate Matplotlib\":
-    <https://ryxcommar.com/2020/04/11/why-you-hate-matplotlib/>
+    -   The `object.set_field(value)` usage is taken from Java, which
+        was popular in 2003 when Matplotlib was developing its
+        object-oriented syntax
+    -   You get values back out with `object.get_field(value)`
+    -   The Pythonic way to set a value would be `object.field = value`.
+        However, the Matplotlib getters and setters do a lot of internal
+        bookkeeping, so if you try to set field values directly you will
+        get errors. For example, compare `ax.get_ylabel()` with
+        `ax.yaxis.label`.
+    -   Read \"The Lifecycle of a Plot\":
+        <https://matplotlib.org/stable/tutorials/introductory/lifecycle.html>
+    -   Read \"Why you hate Matplotlib\":
+        <https://ryxcommar.com/2020/04/11/why-you-hate-matplotlib/>
 
-#### Save your figure
+7.  Save your figure
 
-```python
-fig.savefig("mygraph_dark.png", dpi=300, bbox_inches='tight')
-```
+    ```python
+    fig.savefig("mygraph_dark.png", dpi=300, bbox_inches='tight')
+    ```
 
 ### Explore your data with Pandas
 
-#### Import data
+1.  Import data
 
-```python
-import pandas as pd
+    ```python
+    import pandas as pd
 
-data = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
-```
+    data = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
+    ```
 
-#### Transform column headers into an ordinal scale
+2.  Transform column headers into an ordinal scale
 
-Original column names are object (i.e. string) data
+    1.  Original column names are object (i.e. string) data
 
-```python
-data.columns
-```
+        ```python
+        data.columns
+        ```
 
-Pull out integer portion of strings
+    2.  Pull out integer portion of strings
 
-```python
-years = data.columns.str.strip('gdpPercap_')
-years
-```
+        ```python
+        years = data.columns.str.strip('gdpPercap_')
+        years
+        ```
 
-Convert the years columns into integer years and replace DataFrame
-column headers
+    3.  Convert the years columns into integer years and replace
+        DataFrame column headers
 
-```python
-data.columns = years.astype(int)
-data.columns
-```
+        ```python
+        data.columns = years.astype(int)
+        data.columns
+        ```
 
-#### Plot directly with Pandas
+3.  Plot directly with Pandas
 
-```python
-data.loc['Austria'].plot()
-```
+    ```python
+    data.loc['Austria'].plot()
+    ```
 
-### From Pandas to Matplotlib
+### Plot directly from Pandas (optional)
 
-#### The basic plot syntax
+1.  The basic plot syntax
 
-```python
-ax = data.loc['Austria'].plot()
-fig = ax.get_figure()
-fig
-```
+    ```python
+    ax = data.loc['Austria'].plot()
+    fig = ax.get_figure()
+    fig
+    ```
 
-#### Decorate your Pandas plot
+2.  Decorate your Pandas plot
 
-```python
-ax = data.loc['Austria'].plot(figsize=(8,6), color='darkgreen', linewidth=2, marker='*')
-ax.set_title("GDP of Austria", fontsize=22, fontweight='bold')
-ax.set_xlabel("Years",fontsize=20, fontweight='bold' )
-ax.set_ylabel("GDP",fontsize=20, fontweight='bold' )
+    ```python
+    ax = data.loc['Austria'].plot(figsize=(8,6), color='darkgreen', linewidth=2, marker='*')
+    ax.set_title("GDP of Austria", fontsize=22, fontweight='bold')
+    ax.set_xlabel("Years",fontsize=20, fontweight='bold' )
+    ax.set_ylabel("GDP",fontsize=20, fontweight='bold' )
 
-fig = ax.get_figure()
-fig
-```
+    fig = ax.get_figure()
+    fig
+    ```
 
-#### The equivalent Matplotlib plot (optional)
+3.  The equivalent Matplotlib plot (optional)
 
-```python
-# extract the x and y values from dataframe
-x_years = data.columns
-y_gdp = data.loc['Austria']
+    ```python
+    # extract the x and y values from dataframe
+    x_years = data.columns
+    y_gdp = data.loc['Austria']
 
-# Create the plot
-fig, ax = plt.subplots(figsize=(8,6))
-ax.plot(x_years, y_gdp, color='darkgreen', linewidth=2, marker='x')
-# etc.
-```
+    # Create the plot
+    fig, ax = plt.subplots(figsize=(8,6))
+    ax.plot(x_years, y_gdp, color='darkgreen', linewidth=2, marker='x')
+    # etc.
+    ```
 
 ### Plotting multiple data sets
 
@@ -1739,17 +1741,19 @@ for number in [2, 3, 5]:
 
 ### The first line of the `for` loop must end with a colon, and the body must be indented
 
-```python
-# This produces an error
-for number in [2, 3, 5]:
-print(number)
-```
+1.  This produces an error
 
-```python
-# So does this
-firstName = "Jon"
-lastName = "Smith"
-```
+    ```python
+    for number in [2, 3, 5]:
+    print(number)
+    ```
+
+2.  So does this
+
+    ```python
+    firstName = "Jon"
+        lastName = "Smith"
+    ```
 
 ### Loop variables can be called anything
 
@@ -1780,15 +1784,41 @@ for number in range(0, 3):
 -   range() produces numbers on demand (a \"generator\" function)
 -   useful for tracking progress
 
-### The Accumulator pattern turns many values into one
+### Use `enumerate()` to iterate over a sequence of items and their positions
 
 ```python
-# Sum the first 10 integers.
-total = 0
-for number in range(1, 11):
-   total = total + number
-print(total)
+for number, p in enumerate(primes):
+    print("Item number:", number)
+    print("Prime:", p)
 ```
+
+### The Accumulator pattern turns many values into one
+
+1.  General approach
+
+    1.  Initialize an accumulator variable to zero, the empty string, or
+        the empty list.
+    2.  Update the variable with values from a collection.
+
+2.  Reduce a collection to single value
+
+    ```python
+    # Sum the first 10 integers.
+    total = 0
+    for number in range(1, 11):
+       total = total + number
+    print(total)
+    ```
+
+3.  Create a new collection from an existing collection
+
+    ```python
+    # Sum the first 10 integers.
+    prime_exponents = []
+    for p in primes:
+       prime_exponents.append(p**2)
+    print(prime_exponents)
+    ```
 
 ### Dictionary iteration
 
@@ -1817,6 +1847,25 @@ location = {'latitude': [37.28306, 'N'],
 for key, val in location.items():
     print(key, 'is', val[0], val[1])
 ```
+
+### How do you know if an object is iterable? (optional)
+
+1.  Lists, dictionaries, and strings are iterable
+
+    ```python
+    hasattr(location, "__iter__")
+    ```
+
+2.  Integers are not iterable
+
+    ```python
+    hasattr(5, "__iter__")
+    ```
+
+### Don\'t use `for` loops with DataFrames or Numpy matrices
+
+There is almost always a faster, more idiomatic one-line function that
+does what you want
 
 ## Conditionals
 
@@ -1908,15 +1957,15 @@ velocity = 10.0
 for i in range(5): # execute the loop 5 times
     print(i, ':', velocity)
     if velocity > 20.0:
-        print('moving too fast')
         velocity = velocity - 5.0
     else:
-        print('moving too slow')
         velocity = velocity + 10.0
 print('final velocity:', velocity)
 ```
 
-### Compound Relations Using `and`, `or`, and Parentheses
+-   This is how dynamical systems simulations work
+
+### Compound Relations Using `and`, `or`, and Parentheses (optional)
 
 Often, you want some combination of things to be true. You can combine
 relations within a conditional using `and` and `or`. Continuing the
@@ -1953,7 +2002,8 @@ for i in range(5):
 ### Use a `for` loop to process files given a list of their names
 
 ```python
-for filename in ['gapminder_gdp_africa.csv', 'gapminder_gdp_asia.csv']:
+file_list = ['data/gapminder_gdp_africa.csv', 'data/gapminder_gdp_asia.csv']
+for filename in file_list:
     data = pd.read_csv(filename, index_col='country')
     print(filename, data.min())
 ```
@@ -1962,7 +2012,7 @@ for filename in ['gapminder_gdp_africa.csv', 'gapminder_gdp_asia.csv']:
 
 ```python
 import glob
-print('all csv files in data directory:', glob.glob('*.csv'))
+print('all csv files in data directory:', glob.glob('data/*.csv'))
 ```
 
 In Unix, the term "globbing" means "matching a set of files with a
@@ -1974,31 +2024,29 @@ pattern". The most common patterns are:
 ### Use glob and for to process batches of files
 
 ```python
-for filename in glob.glob('gapminder_*.csv'):
+for filename in glob.glob('data/gapminder_*.csv'):
     data = pd.read_csv(filename)
     print(filename, data['gdpPercap_1952'].min())
 ```
 
-### Use pathlib to write code that works across operating systems
-
-Where are we?
-
-```python
-import os
-os.getcwd()
-```
+### Use pathlib to write code that works across operating systems (optional)
 
 ```python
 from pathlib import Path
-directory_path = Path("/Users/gilgamesh/Desktop/data")
 
-for filename in directory_path.glob('gapminder_*.csv'):
-    if filename.is_file():
-        data = pd.read_csv(filename)
-        print(filename, data['gdpPercap_1952'].min())
+relative_path = Path("data")
+print("Absolute path:", relative_path.absolute()) # This is autogenerated, even if "data" doesn't exist
+
+if relative_path.exists():
+    for filename in relative_path.glob('gapminder_*.csv'):
+        if filename.is_file():
+            data = pd.read_csv(filename)
+            print(filename, data['gdpPercap_1952'].min())
 ```
 
-### CHALLENGE: Comparing data (optional)
+-   Note the careful testing at each level of the code
+
+### CHALLENGE: Comparing data (optional) (rewrite)
 
 Write a program that reads in the regional data sets and plots the
 average GDP per capita for each region over time in a single chart.
@@ -2047,82 +2095,119 @@ def print_greeting():
 -   Must obey the same rules as variable names.
 -   Parameters in parentheses; empty parentheses if the function doesn't
     take any inputs.
--   Colon, then an indented block of code
+-   Indent function body
 
 ### Defining a function does not run it
-
--   Like assigning a value to a variable
--   Must call the function to execute the code it contains.
 
 ```python
 print_greeting()
 ```
 
+-   Like assigning a value to a variable
+-   Must call the function to execute the code it contains.
+
 ### Arguments in call are matched to parameters in definition
 
-```python
-def print_date(year, month, day):
-    joined = '/'.join([year, month, day])
-    print(joined)
+1.  Positional arguments
 
-print_date(1871, 3, 19)
-```
+    ```python
+    def print_date(year, month, day):
+        joined = '/'.join([year, month, day])
+        print(joined)
 
-```python
-# If you name the arguments you can specify any order
-print_date(month=3, day=19, year=1871)
-```
+    print_date(1871, 3, 19)
+    ```
 
--   Specify parameters when defining a function; these become variables
-    when the function is executed
--   By default (if you don't name the arguments when calling the
-    function) the arguments will be matched to parameters in the order
-    the parameters are defined in the function.
+2.  Keyword arguments
+
+    ```python
+    print_date(month=3, day=19, year=1871)
+    ```
 
 ### Functions may return a result to their caller using `return`
 
-Use `return ...` to give a value back to the caller. `return` ends the
-function\'s execution and *returns* you to the code that originally
-called the function.
+1.  Use `return ...` to give a value back to the caller. `return` ends
+    the function\'s execution and *returns* you to the code that
+    originally called the function.
+
+    ```python
+    def average(values):
+        """Return average of values, or None if no values are supplied."""
+
+        if len(values) == 0:
+            return None
+
+        # The if statement "falls through" to the second return when values != 0.
+        # For maximum clarity, you could add else before the outer return.
+        return sum(values) / len(values)
+    ```
+
+    ```python
+    a = average([1, 3, 4])
+    print('average of actual values:', a)
+    ```
+
+2.  You should explicitly handle common problems:
+
+    ```python
+    print('average of empty list:', average([]))
+    ```
+
+3.  Every function returns something:
+
+    ```python
+    result = print_date(1871, 3, 19)
+    print('result of call is:', result)
+    ```
+
+4.  Notes:
+
+    1.  `return` can occur anywhere in the function, but functions are
+        easier to understand if return occurs:
+        1.  At the start to handle special cases
+        2.  At the very end, with a final result
+    2.  Docstring provides function help. Use triple quotes if you need
+        the docstring to span multiple lines.
+
+### A worked example: The Lorenz attractor
+
+<https://matplotlib.org/stable/gallery/mplot3d/lorenz_attractor.html>
+
+### Use functions to encapsulate large code blocks (optional)
 
 ```python
-def average(values):
-"Return average of values, or None if no values are supplied."
+import pandas as pd
+import glob
 
-    if len(values) == 0:
-        return None
-    return sum(values) / len(values)
+def norm_data(data):
+    """Add a Z score column to each data set."""
+
+    # Calculate z scores for all elements
+    z = (data - data.mean())/data.std()
+
+    # Get the mean z score for each country
+    mean_z = z.mean(axis=1)
+
+    # Group countries into "wealthy" (z > 0) and "not wealthy" (z <= 0)
+    z_bool = mean_z > 0
+
+    # Append to DataFrame
+    data["mean_z"] = mean_z
+    data["wealthy"] = z_bool
+
+for filename in glob.glob('data/gapminder_*.csv'):
+    # Print a status message
+    print("Current file:", filename)
+
+    # Read the data into a DataFrame and modify it
+    data = pd.read_csv(filename)
+    norm_data(data)
+
+    # Generate an output file name
+    parts = filename.split(".csv")
+    newfile = ''.join([parts[0], "_normed.csv"])
+    data.to_csv(newfile)
 ```
-
-The `if` statement \"falls through\" to the second `return` when
-`values != 0`. For maximum clarity, you could add `else` before the
-outer `return`.
-
-```python
-a = average([1, 3, 4])
-print('average of actual values:', a)
-```
-
-You should explicitly handle common problems:
-
-```python
-print('average of empty list:', average([]))
-```
-
-Every function returns something:
-
-```python
-result = print_date(1871, 3, 19)
-print('result of call is:', result)
-```
-
--   `return` can occur anywhere in the function, but functions are
-    easier to understand if return occurs:
-    -   At the start to handle special cases
-    -   At the very end, with a final result
--   Docstring provides function help
--   Use triple quotes if you need the docstring to span multiple lines:
-    `"""Like this"""`
 
 ### Using functions with conditionals in Pandas (optional)
 
@@ -2134,6 +2219,20 @@ def my_fun(val):
 data = pd.read_csv('data/gapminder_all.csv')
 data['new_col'] = data['lifeExp_1952'].apply(my_fun)
 ```
+
+## Software Logistics
+
+### Python files vs. Notebook files
+
+### Python from the command line
+
+### Updating your Python installation
+
+### Version control
+
+## Variable Scope (optional)
+
+## Programming Style (optional)
 
 ## Working with unstructured files (optional)
 
@@ -2324,6 +2423,28 @@ print(average([]))
 -   Use judiciously, and be as specific as possible. When in doubt,
     allow your code to blow up rather than silently commit errors.
 
+## Performance and profiling (optional)
+
+```python
+from timeit import time
+import cProfile
+import pstats
+
+def my_fun(val):
+    # Get 1st timestamp
+    t1 = time.time()
+
+    # do work
+
+    # Get 2nd timestamp
+    t2 = time.time()
+    print(round(t2 - t1, 3))
+
+# Run the function with the profiler and collect stats
+cProfile.run('my_fun(val)', 'dumpstats')
+s = pstats.Stats('dumpstats')
+```
+
 ## Reducing memory usage 1: Read a file one line at a time (optional)
 
 ```python
@@ -2351,15 +2472,8 @@ with conn:
 
 -   Checking performance
 -   List comprehensions
--   Generic file handling
 -   Defensive programming
--   Testing
-
-## Homework
-
-### Revisit the `str` documentation with an eye towards using the string processing methods for cleaning up data
-
-### How would you determine which letters and/or manifest items are missing?
+-   Debugging and Testing
 
 # Scientific Computing Libraries
 
