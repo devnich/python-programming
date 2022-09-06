@@ -1,6 +1,12 @@
+# Generated documentation
 *.odt
 *.docx
 *.~lock.*
 *.orig
 tmp.md
+
+# System files
 .DS_Store
+
+# Jupyter environmental variables
+.ipynb_checkpoints/

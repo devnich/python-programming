@@ -1,48 +1,298 @@
--   [Fundamentals](#fundamentals)
-    -   [Orientation](#orientation)
-    -   [Jupyter commands](#jupyter-commands)
-    -   [Variables and Assignment](#variables-and-assignment)
-    -   [Data Types and Type
-        Conversion](#data-types-and-type-conversion)
-    -   [Built-in Functions and Help](#built-in-functions-and-help)
-    -   [Libraries](#libraries)
-    -   [Lists](#lists)
-    -   [Dictionaries](#dictionaries)
-    -   [Other containers (optional)](#other-containers-optional)
--   [Data manipulation with Pandas](#data-manipulation-with-pandas)
-    -   [Review lists and dictionaries](#review-lists-and-dictionaries)
-    -   [Review strings](#review-strings)
-    -   [Where are we?](#where-are-we)
-    -   [Reading Tabular Data into
-        DataFrames](#reading-tabular-data-into-dataframes)
-    -   [Pandas DataFrames](#pandas-dataframes)
--   [Visualization with Matplotlib and
-    Seaborn](#visualization-with-matplotlib-and-seaborn)
-    -   [Graphs](#graphs)
-    -   [Plotting with Matplotlib](#plotting-with-matplotlib)
-    -   [Seaborn: Pythonic, high-level pre-sets for
-        Matplotlib](#seaborn-pythonic-high-level-pre-sets-for-matplotlib)
-    -   [Seaborn 0.11 new features:
-        https://seaborn.pydata.org/whatsnew.html](#seaborn-0.11-new-features-httpsseaborn.pydata.orgwhatsnew.html)
-    -   [Looping through datasets](#looping-through-datasets)
--   [Building Programs](#building-programs)
-    -   [For Loops](#for-loops)
-    -   [Conditionals](#conditionals)
-    -   [Looping Over Data Sets](#looping-over-data-sets)
-    -   [Writing Functions](#writing-functions)
-    -   [Software Logistics](#software-logistics)
-    -   [Variable Scope (optional)](#variable-scope-optional)
-    -   [Programming Style (optional)](#programming-style-optional)
-    -   [Working with unstructured files
-        (optional)](#working-with-unstructured-files-optional)
-    -   [Exception handling (optional)](#exception-handling-optional)
-    -   [Performance and profiling
-        (optional)](#performance-and-profiling-optional)
-    -   [Reducing memory usage 1: Read a file one line at a time
-        (optional)](#reducing-memory-usage-1-read-a-file-one-line-at-a-time-optional)
-    -   [Reducing memory usage 2: Use an SQLite database
-        (optional)](#reducing-memory-usage-2-use-an-sqlite-database-optional)
-    -   [Other optional topics](#other-optional-topics)
+-   [**WEEK 1: Fundamentals**](#week-1-fundamentals)
+-   [Orientation](#orientation)
+    -   [What programming language should I
+        use?](#what-programming-language-should-i-use)
+    -   [Python is pretty good at lots of
+        things](#python-is-pretty-good-at-lots-of-things)
+    -   [Literate programming and
+        notebooks](#literate-programming-and-notebooks)
+-   [Jupyter commands](#jupyter-commands)
+    -   [How to start Jupyter Lab](#how-to-start-jupyter-lab)
+    -   [Execute cell with CTRL-Enter; execute cell and move to new cell
+        with
+        Shift-Enter](#execute-cell-with-ctrl-enter-execute-cell-and-move-to-new-cell-with-shift-enter)
+    -   [Navigation](#navigation)
+-   [Variables and Assignment](#variables-and-assignment)
+    -   [Use variables to store values](#use-variables-to-store-values)
+    -   [Use `print()` to display values](#use-print-to-display-values)
+    -   [Variables must be created before they are
+        used](#variables-must-be-created-before-they-are-used)
+    -   [Variables can be used in
+        calculations](#variables-can-be-used-in-calculations)
+    -   [Variables only change value when something is assigned to
+        them](#variables-only-change-value-when-something-is-assigned-to-them)
+    -   [Use meaningful names!](#use-meaningful-names)
+-   [Data Types and Type Conversion](#data-types-and-type-conversion)
+    -   [Every value has a type](#every-value-has-a-type)
+    -   [Use the built-in function `type()` to find the type of a
+        value](#use-the-built-in-function-type-to-find-the-type-of-a-value)
+    -   [Types control what operations can be performed on a given
+        value](#types-control-what-operations-can-be-performed-on-a-given-value)
+    -   [Must convert strings to numbers or vice versa when operating on
+        them](#must-convert-strings-to-numbers-or-vice-versa-when-operating-on-them)
+    -   [Can mix integers and floats freely in
+        operations](#can-mix-integers-and-floats-freely-in-operations)
+    -   [CHALLENGE: Explain what each operator
+        does](#challenge-explain-what-each-operator-does)
+-   [Built-in Functions and Help](#built-in-functions-and-help)
+    -   [Online resources](#online-resources)
+    -   [Use comments to add documentation to
+        programs](#use-comments-to-add-documentation-to-programs)
+    -   [A function may take zero or more
+        arguments](#a-function-may-take-zero-or-more-arguments)
+    -   [Every function returns
+        *something*](#every-function-returns-something)
+    -   [Commonly-used built-in functions include `max()`, `min()`, and
+        `round()`](#commonly-used-built-in-functions-include-max-min-and-round)
+    -   [Functions may only work for certain (combinations of)
+        arguments](#functions-may-only-work-for-certain-combinations-of-arguments)
+    -   [Functions may have default values for some
+        arguments](#functions-may-have-default-values-for-some-arguments)
+    -   [Use the built-in function `help()` to get help for a
+        function](#use-the-built-in-function-help-to-get-help-for-a-function)
+    -   [Functions attached to objects are called
+        methods](#functions-attached-to-objects-are-called-methods)
+    -   [Python reports a syntax error when it can't understand the
+        source of a
+        program](#python-reports-a-syntax-error-when-it-cant-understand-the-source-of-a-program)
+    -   [Python reports a runtime error when something goes wrong while
+        a program is
+        executing](#python-reports-a-runtime-error-when-something-goes-wrong-while-a-program-is-executing)
+    -   [CHALLENGE: What happens when?
+        (optional)](#challenge-what-happens-when-optional)
+-   [Libraries](#libraries)
+    -   [Most of the power of a programming language is in its
+        libraries](#most-of-the-power-of-a-programming-language-is-in-its-libraries)
+    -   [A program must `import` a library module before using
+        it](#a-program-must-import-a-library-module-before-using-it)
+    -   [Use `help()` to learn about the contents of a library
+        module](#use-help-to-learn-about-the-contents-of-a-library-module)
+    -   [Import specific items from a library module to shorten
+        programs.](#import-specific-items-from-a-library-module-to-shorten-programs.)
+    -   [Create an alias for a library module when importing it to
+        shorten
+        programs](#create-an-alias-for-a-library-module-when-importing-it-to-shorten-programs)
+    -   [Python has opinions about how to write your
+        programs](#python-has-opinions-about-how-to-write-your-programs)
+    -   [CHALLENGE: Locating the Right Module
+        (optional)](#challenge-locating-the-right-module-optional)
+-   [Lists](#lists)
+    -   [A list stores many values in a single
+        structure](#a-list-stores-many-values-in-a-single-structure)
+    -   [Use an item's index to fetch it from a
+        list](#use-an-items-index-to-fetch-it-from-a-list)
+    -   [Indexing beyond the end of the collection is an
+        error](#indexing-beyond-the-end-of-the-collection-is-an-error)
+    -   [Count backwards from the end with negative
+        integers](#count-backwards-from-the-end-with-negative-integers)
+    -   [Use a slice to get a subset of the
+        list](#use-a-slice-to-get-a-subset-of-the-list)
+    -   [Lists' values can be replaced by assigning to
+        them](#lists-values-can-be-replaced-by-assigning-to-them)
+    -   [Appending items to a list lengthens
+        it](#appending-items-to-a-list-lengthens-it)
+    -   [Extend is similar to append, but allows you to merge two
+        lists](#extend-is-similar-to-append-but-allows-you-to-merge-two-lists)
+    -   [Use del to remove items from a list
+        entirely](#use-del-to-remove-items-from-a-list-entirely)
+    -   [Use pop() to remove the last item and assign it to a
+        variable](#use-pop-to-remove-the-last-item-and-assign-it-to-a-variable)
+    -   [The empty list contains no
+        values](#the-empty-list-contains-no-values)
+    -   [Lists may contain values of different
+        types](#lists-may-contain-values-of-different-types)
+    -   [Strings can be indexed like
+        lists](#strings-can-be-indexed-like-lists)
+    -   [But! Character strings are
+        immutable](#but-character-strings-are-immutable)
+    -   [Python is full of analogies](#python-is-full-of-analogies)
+    -   [CHALLENGE: From Strings to Lists and
+        Back](#challenge-from-strings-to-lists-and-back)
+-   [Dictionaries](#dictionaries)
+    -   [Dictionaries are sets of key/value pairs. Instead of being
+        indexed by position, they are indexed by
+        key.](#dictionaries-are-sets-of-keyvalue-pairs.-instead-of-being-indexed-by-position-they-are-indexed-by-key.)
+    -   [Update dictionaries by assigning a new key/value
+        pair](#update-dictionaries-by-assigning-a-new-keyvalue-pair)
+    -   [Delete an item using del or
+        pop()](#delete-an-item-using-del-or-pop)
+    -   [Dictionaries are the natural way to store tree-structured
+        data](#dictionaries-are-the-natural-way-to-store-tree-structured-data)
+    -   [CHALLENGE: Convert lists to dictionary
+        (group)](#challenge-convert-lists-to-dictionary-group)
+-   [Other containers (optional)](#other-containers-optional)
+-   [**WEEK 2: Data manipulation with
+    Pandas**](#week-2-data-manipulation-with-pandas)
+-   [(Optional) Review lists and
+    dictionaries](#optional-review-lists-and-dictionaries)
+-   [(Optional) Review strings](#optional-review-strings)
+-   [Where are we?](#where-are-we)
+    -   [Python provides functions for working with the file
+        system.](#python-provides-functions-for-working-with-the-file-system.)
+    -   [(Optional) These provide a rich Python alternative to shell
+        functions](#optional-these-provide-a-rich-python-alternative-to-shell-functions)
+-   [Reading Tabular Data into
+    DataFrames](#reading-tabular-data-into-dataframes)
+    -   [Use the Pandas library to work on tabular
+        data](#use-the-pandas-library-to-work-on-tabular-data)
+    -   [Use `index_col` to specify that a column's values should be
+        used as row
+        headings](#use-index_col-to-specify-that-a-columns-values-should-be-used-as-row-headings)
+    -   [Data frames have methods (i.e. functions) that perform
+        operations using the data frame\'s contents as
+        input](#data-frames-have-methods-i.e.-functions-that-perform-operations-using-the-data-frames-contents-as-input)
+    -   [Data frames have fields (i.e. variables) that hold additional
+        information](#data-frames-have-fields-i.e.-variables-that-hold-additional-information)
+    -   [Pandas help files are dense; you should prefer the online
+        documentation](#pandas-help-files-are-dense-you-should-prefer-the-online-documentation)
+    -   [Challenge](#challenge)
+    -   [(Optional) Introspecting on the DataFrame
+        object](#optional-introspecting-on-the-dataframe-object)
+-   [Pandas DataFrames](#pandas-dataframes)
+    -   [Notes about Pandas
+        DataFrames/Series](#notes-about-pandas-dataframesseries)
+    -   [(Optional) Pandas introduces some new
+        types](#optional-pandas-introduces-some-new-types)
+    -   [Selecting values](#selecting-values)
+    -   [Result of slicing can be used in further
+        operations](#result-of-slicing-can-be-used-in-further-operations)
+    -   [Use comparisons to select data based on
+        value](#use-comparisons-to-select-data-based-on-value)
+    -   [Use method chaining to create final output without creating
+        intermediate
+        variables](#use-method-chaining-to-create-final-output-without-creating-intermediate-variables)
+    -   [(Optional) DataFrame methods have sensible defaults that you
+        can
+        change](#optional-dataframe-methods-have-sensible-defaults-that-you-can-change)
+    -   [(Optional) Truth value of whole data
+        frames](#optional-truth-value-of-whole-data-frames)
+    -   [(Carpentries version) Group By:
+        split-apply-combine](#carpentries-version-group-by-split-apply-combine)
+    -   [Group By: split-apply-combine](#group-by-split-apply-combine)
+    -   [(Optional) Adding rows to
+        DataFrames](#optional-adding-rows-to-dataframes)
+    -   [(Carpentries) Challenge](#carpentries-challenge)
+-   [**WEEK 3: Visualization with Matplotlib and
+    Seaborn**](#week-3-visualization-with-matplotlib-and-seaborn)
+-   [Graphs](#graphs)
+    -   [Big 5 graphs](#big-5-graphs)
+-   [Plotting with Matplotlib](#plotting-with-matplotlib)
+    -   [Create a basic plot](#create-a-basic-plot)
+    -   [Two kinds of plotting objects](#two-kinds-of-plotting-objects)
+    -   [Three ways of showing a figure
+        (optional)](#three-ways-of-showing-a-figure-optional)
+    -   [Line Plots](#line-plots)
+    -   [Explore your data with Pandas](#explore-your-data-with-pandas)
+    -   [Plot directly from Pandas
+        (optional)](#plot-directly-from-pandas-optional)
+    -   [Plotting multiple data sets](#plotting-multiple-data-sets)
+-   [Seaborn: Pythonic, high-level pre-sets for
+    Matplotlib](#seaborn-pythonic-high-level-pre-sets-for-matplotlib)
+    -   [A simple plot](#a-simple-plot)
+    -   [Import the Iris data set](#import-the-iris-data-set)
+    -   [Scatter Plot](#scatter-plot)
+    -   [Bar Charts](#bar-charts)
+    -   [Histograms](#histograms)
+    -   [Box Plots and Swarm Plots](#box-plots-and-swarm-plots)
+    -   [Heat Map](#heat-map)
+-   [Seaborn 0.11 new features:
+    https://seaborn.pydata.org/whatsnew.html](#seaborn-0.11-new-features-httpsseaborn.pydata.orgwhatsnew.html)
+-   [Looping through datasets](#looping-through-datasets)
+-   [**WEEK 4: Building Programs**](#week-4-building-programs)
+-   [For Loops](#for-loops)
+    -   [A `for` loop executes commands once for each value in a
+        collection](#a-for-loop-executes-commands-once-for-each-value-in-a-collection)
+    -   [The first line of the `for` loop must end with a colon, and the
+        body must be
+        indented](#the-first-line-of-the-for-loop-must-end-with-a-colon-and-the-body-must-be-indented)
+    -   [Loop variables can be called
+        anything](#loop-variables-can-be-called-anything)
+    -   [The body of a loop can contain many
+        statements](#the-body-of-a-loop-can-contain-many-statements)
+    -   [Use `range()` to iterate over a sequence of
+        numbers](#use-range-to-iterate-over-a-sequence-of-numbers)
+    -   [Use `enumerate()` to iterate over a sequence of items and their
+        positions](#use-enumerate-to-iterate-over-a-sequence-of-items-and-their-positions)
+    -   [The Accumulator pattern turns many values into
+        one](#the-accumulator-pattern-turns-many-values-into-one)
+    -   [Dictionary iteration](#dictionary-iteration)
+    -   [How do you know if an object is iterable?
+        (optional)](#how-do-you-know-if-an-object-is-iterable-optional)
+    -   [Don\'t use `for` loops with DataFrames or Numpy
+        matrices](#dont-use-for-loops-with-dataframes-or-numpy-matrices)
+-   [Conditionals](#conditionals)
+    -   [Use `if` statements to control whether or not a block of code
+        is
+        executed](#use-if-statements-to-control-whether-or-not-a-block-of-code-is-executed)
+    -   [Conditionals are often used inside
+        loops](#conditionals-are-often-used-inside-loops)
+    -   [Use else to execute a block of code when an if condition is not
+        true](#use-else-to-execute-a-block-of-code-when-an-if-condition-is-not-true)
+    -   [Use `elif` to specify additional
+        tests](#use-elif-to-specify-additional-tests)
+    -   [Conditions are tested once, in
+        order](#conditions-are-tested-once-in-order)
+    -   [Use conditionals in a loop to "evolve" the values of
+        variables](#use-conditionals-in-a-loop-to-evolve-the-values-of-variables)
+    -   [Compound Relations Using `and`, `or`, and Parentheses
+        (optional)](#compound-relations-using-and-or-and-parentheses-optional)
+-   [Looping Over Data Sets](#looping-over-data-sets)
+    -   [File paths as an example of increasing abstraction in program
+        development](#file-paths-as-an-example-of-increasing-abstraction-in-program-development)
+    -   [Use a `for` loop to process files given a list of their
+        names](#use-a-for-loop-to-process-files-given-a-list-of-their-names)
+    -   [Use glob.glob to find sets of files whose names match a
+        pattern](#use-glob.glob-to-find-sets-of-files-whose-names-match-a-pattern)
+    -   [Use glob and for to process batches of
+        files](#use-glob-and-for-to-process-batches-of-files)
+    -   [Use pathlib to write code that works across operating systems
+        (optional)](#use-pathlib-to-write-code-that-works-across-operating-systems-optional)
+    -   [CHALLENGE: Comparing data (optional)
+        (rewrite)](#challenge-comparing-data-optional-rewrite)
+-   [Writing Functions](#writing-functions)
+    -   [Break programs down into functions to make them easier to
+        understand](#break-programs-down-into-functions-to-make-them-easier-to-understand)
+    -   [Define a function using `def` with a name, parameters, and a
+        block of
+        code](#define-a-function-using-def-with-a-name-parameters-and-a-block-of-code)
+    -   [Defining a function does not run
+        it](#defining-a-function-does-not-run-it)
+    -   [Arguments in call are matched to parameters in
+        definition](#arguments-in-call-are-matched-to-parameters-in-definition)
+    -   [Functions may return a result to their caller using
+        `return`](#functions-may-return-a-result-to-their-caller-using-return)
+    -   [A worked example: The Lorenz
+        attractor](#a-worked-example-the-lorenz-attractor)
+    -   [Use functions to encapsulate large code blocks
+        (optional)](#use-functions-to-encapsulate-large-code-blocks-optional)
+    -   [Using functions with conditionals in Pandas
+        (optional)](#using-functions-with-conditionals-in-pandas-optional)
+-   [Software Logistics](#software-logistics)
+    -   [Python files vs. Notebook
+        files](#python-files-vs.-notebook-files)
+    -   [Python from the command line](#python-from-the-command-line)
+    -   [Updating your Python
+        installation](#updating-your-python-installation)
+    -   [Version control](#version-control)
+-   [Variable Scope (optional)](#variable-scope-optional)
+-   [Programming Style (optional)](#programming-style-optional)
+-   [Working with unstructured files
+    (optional)](#working-with-unstructured-files-optional)
+    -   [Open the file with a context
+        handler](#open-the-file-with-a-context-handler)
+    -   [Strings contain formatting
+        marks](#strings-contain-formatting-marks)
+    -   [Many ways of handling a file](#many-ways-of-handling-a-file)
+    -   [Working with unstructured file
+        data](#working-with-unstructured-file-data)
+-   [Exception handling (optional)](#exception-handling-optional)
+-   [Performance and profiling
+    (optional)](#performance-and-profiling-optional)
+-   [Reducing memory usage 1: Read a file one line at a time
+    (optional)](#reducing-memory-usage-1-read-a-file-one-line-at-a-time-optional)
+-   [Reducing memory usage 2: Use an SQLite database
+    (optional)](#reducing-memory-usage-2-use-an-sqlite-database-optional)
+-   [Other optional topics](#other-optional-topics)
 -   [Scientific Computing Libraries](#scientific-computing-libraries)
     -   [Downstream libraries](#downstream-libraries)
     -   [Standard library vs. outside
@@ -57,11 +307,11 @@
 -   [Data Sources](#data-sources)
     -   [Additional data files](#additional-data-files)
 
-# Fundamentals
+# **WEEK 1: Fundamentals**
 
-## Orientation
+# Orientation
 
-### What programming language should I use?
+## What programming language should I use?
 
 1.  Use the language that your friends use (so you can ask them for
     help)
@@ -69,55 +319,55 @@
     case (you can find documentation, bug reports, sample code, etc.)
 3.  Use a language that is \"best\" by some technical definition
 
-### Python is pretty good at lots of things
+## Python is pretty good at lots of things
 
 -   \"Glue\" language intended to replace shell and Perl
 -   Concise, readable, good for rapid prototyping
 -   Access to linear algebra libraries in FORTRAN/C → user-friendly
     numeric computing
 
-### Literate programming and notebooks
+## Literate programming and notebooks
 
 -   Blend code, documentation, and visualization
 -   Good for trying things, demos
 -   Bad for massive or long-running processes
 
-## Jupyter commands
+# Jupyter commands
 
-### How to start Jupyter Lab
+## How to start Jupyter Lab
 
-#### Method 1
+### Method 1
 
 1.  Open Anaconda Navigator
 2.  Run Jupyter Lab
 
-#### Method 2
+### Method 2
 
 Open Terminal (MacOS/Linux) or Anaconda Prompt (Windows)
 
-```bash
+``` bash
 cd Desktop/data
 jupyter lab
 ```
 
-### Execute cell with CTRL-Enter; execute cell and move to new cell with Shift-Enter
+## Execute cell with CTRL-Enter; execute cell and move to new cell with Shift-Enter
 
-```python
+``` python
 3 + 7
 ```
 
-### Navigation
+## Navigation
 
 -   Use drag-and-drop interface to move .ipynb file to new location
 -   Rename your notebook to something informative
 
-## Variables and Assignment
+# Variables and Assignment
 
-### Use variables to store values
+## Use variables to store values
 
 Variables are names for values.
 
-```python
+``` python
 first_name = 'Derek'
 age = 42
 ```
@@ -128,9 +378,9 @@ age = 42
 -   are case sensitive (`age`, `Age` and `AGE` are three different
     variables)
 
-### Use `print()` to display values
+## Use `print()` to display values
 
-```python
+``` python
 print(first_name, 'is', age, 'years old')
 ```
 
@@ -141,34 +391,34 @@ print(first_name, 'is', age, 'years old')
 -   NB: Jupyter Lab will always echo the **last** value in a cell, so we
     won\'t need `print()` a lot of the time
 
-### Variables must be created before they are used
+## Variables must be created before they are used
 
-```python
+``` python
 # Prints an informative error message; more about this later
 print(last_name)
 ```
 
-### Variables can be used in calculations
+## Variables can be used in calculations
 
-```python
+``` python
 age = age + 3
 print('Age in three years:', age)
 ```
 
-### Variables only change value when something is assigned to them
+## Variables only change value when something is assigned to them
 
-```python
+``` python
 first = 1
 second = 5 * first
 first = 2
 print('first is', first, 'and second is', second)
 ```
 
-### Use meaningful names!
+## Use meaningful names!
 
-## Data Types and Type Conversion
+# Data Types and Type Conversion
 
-### Every value has a type
+## Every value has a type
 
 Most data is text and numbers:
 
@@ -177,63 +427,63 @@ Most data is text and numbers:
 -   Strings: text
 -   ...and many others
 
-### Use the built-in function `type()` to find the type of a value
+## Use the built-in function `type()` to find the type of a value
 
-```python
+``` python
 type(53)
 ```
 
-```python
+``` python
 type(3.12)
 ```
 
-```python
+``` python
 fitness = 'average'
 type(fitness)
 ```
 
-### Types control what operations can be performed on a given value
+## Types control what operations can be performed on a given value
 
-```python
+``` python
 print(5 - 3)
 ```
 
-```python
+``` python
 # This will produce an error
 print('hello' - 'h')
 ```
 
-```python
+``` python
 len('hello')
 ```
 
-```python
+``` python
 # This will produce an error
 len(5)
 ```
 
-### Must convert strings to numbers or vice versa when operating on them
+## Must convert strings to numbers or vice versa when operating on them
 
 Types have different properties; more about this later.
 
-```python
+``` python
 1 + '2'                         # Produces an error
 ```
 
-```python
+``` python
 1 + float('2')
 ```
 
-### Can mix integers and floats freely in operations
+## Can mix integers and floats freely in operations
 
-```python
+``` python
 # This will "do the right thing" and convert everything to floats
 1 / 2.0
 ```
 
-### CHALLENGE: Explain what each operator does
+## CHALLENGE: Explain what each operator does
 
-```python
+``` python
 # Floor
 print('5 // 3:', 5 // 3)
 # Floating point
@@ -242,102 +492,102 @@ print('5 / 3:', 5 / 3)
 print('5 % 3:', 5 % 3)
 ```
 
-## Built-in Functions and Help
+# Built-in Functions and Help
 
-### Online resources
+## Online resources
 
 -   <https://libguides.ucmerced.edu/software-carpentry/python/references>
 -   Stack Overflow
 
-### Use comments to add documentation to programs
+## Use comments to add documentation to programs
 
-```python
+``` python
 # This sentence isn't executed by Python.
 adjustment = 0.5   # Neither is this - anything after '#' is ignored.
 ```
 
-### A function may take zero or more arguments
+## A function may take zero or more arguments
 
-```python
+``` python
 print('before')
 print()
 print('after')
 ```
 
-### Every function returns *something*
+## Every function returns *something*
 
-```python
+``` python
 result = len("hello")
 print(result)
 ```
 
-```python
+``` python
 # printing to the screen is a "side effect" that doesn't produce a useable result
   result = print("hello")
   print(result)
 ```
 
-### Commonly-used built-in functions include `max()`, `min()`, and `round()`
+## Commonly-used built-in functions include `max()`, `min()`, and `round()`
 
-```python
+``` python
 max(1, 2, 3)
 ```
 
-```python
+``` python
 min('a', 'A', '0')       # 0-9, A-Z, a-z; However, notice they are all strings!
 ```
 
-### Functions may only work for certain (combinations of) arguments
+## Functions may only work for certain (combinations of) arguments
 
-```python
+``` python
 max(1, 'a')              # Not a meaningful comparision
 ```
 
-### Functions may have default values for some arguments
+## Functions may have default values for some arguments
 
-```python
+``` python
 # By default, we round to the nearest integer
 round(3.712)
 ```
 
-```python
+``` python
 # You can optionally specify the number of significant digits
 round(3.712, 1)
 ```
 
-### Use the built-in function `help()` to get help for a function
+## Use the built-in function `help()` to get help for a function
 
-```python
+``` python
 help(round)
 ```
 
 -   1 mandatory argument
 -   1 optional argument with a default value: `ndigits=None`
 
-### Functions attached to objects are called methods
+## Functions attached to objects are called methods
 
-```python
+``` python
 my_string = 'Hello world!'
 
 # calling the swapcase method on the my_string object
 print(my_string.swapcase())
 ```
 
-#### Methods can be chained together
+### Methods can be chained together
 
-```python
+``` python
 print(my_string.isupper())          # Not all the letters are uppercase
 print(my_string.upper())            # This capitalizes all the letters
 
 print(my_string.upper().isupper())  # Now all the letters are uppercase
 ```
 
-#### You can view an object\'s attributes (i.e. methods and fields) using `help()` or `dir()`
+### You can view an object\'s attributes (i.e. methods and fields) using `help()` or `dir()`
 
 Some attributes are \"private\"; you\'re not supposed to use these
 directly.
 
-```python
+``` python
 # The short, short version
 dir(my_string)
 
@@ -345,39 +595,39 @@ dir(my_string)
 help(str)
 ```
 
-### Python reports a syntax error when it can't understand the source of a program
+## Python reports a syntax error when it can't understand the source of a program
 
-```python
+``` python
 name = 'Bob
 age = = 54
 print("Hello world"
 ```
 
-### Python reports a runtime error when something goes wrong while a program is executing
+## Python reports a runtime error when something goes wrong while a program is executing
 
 We have seen some of these already.
 
-### CHALLENGE: What happens when? (optional)
+## CHALLENGE: What happens when? (optional)
 
 Explain in simple terms the order of operations in the following
 program: when does the addition happen, when does the subtraction
 happen, when is each function called, etc. What is the final value of
 radiance?
 
-```python
+``` python
 radiance = 1.0
 radiance = max(2.1, 2.0 + min(radiance, 1.1 * radiance - 0.5))
 ```
 
-## Libraries
+# Libraries
 
-### Most of the power of a programming language is in its libraries
+## Most of the power of a programming language is in its libraries
 
 <https://docs.python.org/3/library/index.html>
 
-### A program must `import` a library module before using it
+## A program must `import` a library module before using it
 
-```python
+``` python
 import math
 
 print('pi is', math.pi)
@@ -387,45 +637,45 @@ print('cos(pi) is', math.cos(math.pi))
 -   Refer to things from the module as `module-name.thing-name`
 -   Python uses \".\" to mean \"part of\" or \"belongs to\".
 
-### Use `help()` to learn about the contents of a library module
+## Use `help()` to learn about the contents of a library module
 
-```python
+``` python
 help(math)                      # user friendly
 ```
 
-```python
+``` python
 dir(math)                       # brief reminder, not user friendly
 ```
 
-### Import specific items from a library module to shorten programs.
+## Import specific items from a library module to shorten programs.
 
 You want to be careful with this. It\'s safer to keep the namespace.
 
-```python
+``` python
 from math import cos, pi
 
 print('cos(pi) is', cos(pi))
 ```
 
-### Create an alias for a library module when importing it to shorten programs
+## Create an alias for a library module when importing it to shorten programs
 
-```python
+``` python
 import math as m
 
 print('cos(pi) is', m.cos(m.pi))
 ```
 
-### Python has opinions about how to write your programs
+## Python has opinions about how to write your programs
 
-```python
+``` python
 import this
 ```
 
-### CHALLENGE: Locating the Right Module (optional)
+## CHALLENGE: Locating the Right Module (optional)
 
 You want to select a random character from a string:
 
-```python
+``` python
 bases = 'ACTTGCTTGAC'
 ```
 
@@ -435,7 +685,7 @@ bases = 'ACTTGCTTGAC'
     alternatives?
 3.  Try to write a program that uses the function.
 
-#### Solution:
+### Solution:
 
 You could try the `random` module.
 
@@ -444,7 +694,7 @@ The string has 11 characters, each having a positional index from 0 to
 functions to get a random integer between 0 and 10, and then pick out
 the character at that position:
 
-```python
+``` python
 from random import randrange
 
 random_index = randrange(len(bases))
@@ -453,7 +703,7 @@ print(bases[random_index])
 
 or more compactly:
 
-```python
+``` python
 from random import randrange
 
 print(bases[randrange(len(bases))])
@@ -462,7 +712,7 @@ print(bases[randrange(len(bases))])
 Perhaps you found the random.sample function? It allows for slightly
 less typing:
 
-```python
+``` python
 from random import sample
 
 print(sample(bases, 1)[0])
@@ -472,56 +722,56 @@ Note that this function returns a list of values. We will learn about
 lists in episode 11. There's also other functions you could use, but
 with more convoluted code as a result.
 
-## Lists
+# Lists
 
-### A list stores many values in a single structure
+## A list stores many values in a single structure
 
-```python
+``` python
 pressures = [0.273, 0.275, 0.277, 0.275, 0.276]
 print('pressures:', pressures)
 print('length:', len(pressures))
 ```
 
-### Use an item's index to fetch it from a list
+## Use an item's index to fetch it from a list
 
-```python
+``` python
 print('zeroth item of pressures:', pressures[0])
 print('fourth item of pressures:', pressures[4])
 ```
 
-### Indexing beyond the end of the collection is an error
+## Indexing beyond the end of the collection is an error
 
-```python
+``` python
 pressures[20]
 ```
 
-### Count backwards from the end with negative integers
+## Count backwards from the end with negative integers
 
-```python
+``` python
 # Get the last item in the list
 print('last item of pressures:', pressures[-1])
 ```
 
-### Use a slice to get a subset of the list
+## Use a slice to get a subset of the list
 
 The slicing syntax is
 `my_list[inclusive_start_position:exclusive_stop_position:optional_step_amount]`
 
-```python
+``` python
 # Up to, but not including index 3
 print('first 3 items of pressures:', pressures[0:3])
 ```
 
-### Lists' values can be replaced by assigning to them
+## Lists' values can be replaced by assigning to them
 
-```python
+``` python
 pressures[0] = 0.265
 print('pressures is now:', pressures)
 ```
 
-### Appending items to a list lengthens it
+## Appending items to a list lengthens it
 
-```python
+``` python
 primes = [2, 3, 5]
 print('primes is initially:', primes)
 primes.append(7)
@@ -535,9 +785,9 @@ print('primes has become:', primes)
 -   We will meet other methods of lists as we go along; use `help(list)`
     for a preview.
 
-### Extend is similar to append, but allows you to merge two lists
+## Extend is similar to append, but allows you to merge two lists
 
-```python
+``` python
 teen_primes = [11, 13, 17, 19]
 middle_aged_primes = [37, 41, 43, 47]
 print('primes is currently:', primes)
@@ -549,89 +799,89 @@ primes.append(middle_aged_primes)
 print('primes has finally become:', primes)
 ```
 
-### Use del to remove items from a list entirely
+## Use del to remove items from a list entirely
 
-```python
+``` python
 primes = [2, 3, 5, 7, 9]
 print('primes before removing last item:', primes)
 del primes[4]
 print('primes after removing last item:', primes)
 ```
 
-### Use pop() to remove the last item and assign it to a variable
+## Use pop() to remove the last item and assign it to a variable
 
-```python
+``` python
 p = primes.pop()
 
 print('Last prime in list', p)
 print('primes after removing last item:', primes)
 ```
 
-### The empty list contains no values
+## The empty list contains no values
 
 Helpful for collecting values
 
-### Lists may contain values of different types
+## Lists may contain values of different types
 
-```python
+``` python
 ages = ['Derek', 42, 'Bill', 24, 'Susan', 37]
 print('First name/age pair', ages[0:2])
 print("All the ages", ages[0::2])
 ```
 
-### Strings can be indexed like lists
+## Strings can be indexed like lists
 
-#### Use an index to get a single character from a string
+### Use an index to get a single character from a string
 
 Count from 0
 
-```python
+``` python
 element = 'carbon'
 element[0]
 ```
 
-#### Use a slice to get a substring
+### Use a slice to get a substring
 
-```python
+``` python
 # Up to, but not including 3
 element[0:3]
 ```
 
-#### Counting backwards
+### Counting backwards
 
-```python
+``` python
 element[-1]
 ```
 
-#### Use the built-in function `len()` to find the length of a string
+### Use the built-in function `len()` to find the length of a string
 
-```python
+``` python
 len('carbon')                   # length is an integer
 ```
 
-### But! Character strings are immutable
+## But! Character strings are immutable
 
-```python
+``` python
 element[0] = 'C'
 ```
 
-### Python is full of analogies
+## Python is full of analogies
 
 -   lists and strings
 -   lists and files
 
-### CHALLENGE: From Strings to Lists and Back
+## CHALLENGE: From Strings to Lists and Back
 
 Given this Python code:
 
-```python
+``` python
 print('string to list:', list('tin'))
 print('list to string:', ''.join(['g', 'o', 'l', 'd']))
 ```
 
 And this output:
 
-``` {.example}
+``` example
 string to list: ['t', 'i', 'n']
 list to string: gold
 ```
@@ -640,9 +890,9 @@ list to string: gold
 2.  What does `'-'.join(['x', 'y', 'z'])` generate?
 3.  How can you change \"carbon\" to \"Carbon\"?
 
-#### Solution
+### Solution
 
-```python
+``` python
 # Strings are immutable, so you have to create a new string.
 # Use the .join() method to join a list of strings into a new string.
 new_element = ''.join(['C', element[1:]])
@@ -651,11 +901,11 @@ new_element = ''.join(['C', element[1:]])
 new_element = element.capitalize()
 ```
 
-## Dictionaries
+# Dictionaries
 
-### Dictionaries are sets of key/value pairs. Instead of being indexed by position, they are indexed by key.
+## Dictionaries are sets of key/value pairs. Instead of being indexed by position, they are indexed by key.
 
-```python
+``` python
 ages = {'Derek': 42,
         'Bill': 24,
         'Susan': 37}
@@ -663,17 +913,17 @@ ages = {'Derek': 42,
 print(ages['Derek'])
 ```
 
-### Update dictionaries by assigning a new key/value pair
+## Update dictionaries by assigning a new key/value pair
 
-```python
+``` python
 ages['Sam'] = 12
 
 print(ages)
 ```
 
-### Delete an item using del or pop()
+## Delete an item using del or pop()
 
-```python
+``` python
 print("Original dictionary", ages)
 del ages['Derek']
 print("Dictionary after 1st deletion", ages)
@@ -685,22 +935,22 @@ print("Returned value", derek_age)
 print(ages)
 ```
 
-### Dictionaries are the natural way to store tree-structured data
+## Dictionaries are the natural way to store tree-structured data
 
-```python
+``` python
 location = {'latitude': [37.28306, 'N'],
             'longitude': [-120.50778, 'W']}
 
 print(location['longitude'][0])
 ```
 
-### CHALLENGE: Convert lists to dictionary (group)
+## CHALLENGE: Convert lists to dictionary (group)
 
 How can you convert our list of names and ages into a dictionary? Hint:
 You will need to populate the dictionary with a list of keys and a list
 of values.
 
-```python
+``` python
 # Starting data
 ages = ['Derek', 42, 'Bill', 24, 'Susan', 37]
 
@@ -708,62 +958,66 @@ ages = ['Derek', 42, 'Bill', 24, 'Susan', 37]
 help({})
 ```
 
-#### Solution
+### Solution
 
-```python
+``` python
 names_list = ages[0::2]
 ages_list = ages[1::2]
 
 ages_dict = dict(zip(names_list, ages_list))
 ```
 
-## Other containers (optional)
+# Other containers (optional)
 
 -   Tuples
 -   Sets
 
-# Data manipulation with Pandas
+# **WEEK 2: Data manipulation with Pandas**
 
-## Review lists and dictionaries
+# (Optional) Review lists and dictionaries
 
 1.  Reference item by index/key
 2.  Insert item by index/key
 3.  Indices/keys must be unique
 
-## Review strings
+# (Optional) Review strings
 
 1.  Similar to lists: Reference item by index, have length
 2.  Immutable, so need to use string **methods**
 3.  `'/'.join()` is a very useful method
 
-## Where are we?
+# Where are we?
 
-Python provides functions for working with the file system.
+## Python provides functions for working with the file system.
 
-```python
+``` python
 import os
 
 # print current directory
 print("Current working directory:", os.getcwd())
 # print all of the files and directories
 print("Working directory contents:", os.listdir())
+```
 
-# just print the directories (optional)
+## (Optional) These provide a rich Python alternative to shell functions
+
+``` python
+# Just print the directories
 print("Just print the sub-directories:", sorted(next(os.walk('.'))[1]))
 ```
 
-## Reading Tabular Data into DataFrames
+# Reading Tabular Data into DataFrames
 
-### Use the Pandas library to work on tabular data
+## Use the Pandas library to work on tabular data
 
-```python
+``` python
 import pandas as pd
 
 data = pd.read_csv('data/gapminder_gdp_oceania.csv')
 print(data)
 ```
 
-```python
+``` python
 # Jupyter Lab will give you nice formatting if you echo
 data
 ```
@@ -771,12 +1025,12 @@ data
 -   File and directory names are strings
 -   You can use relative or absolute file paths
 
-### Use `index_col` to specify that a column's values should be used as row headings
+## Use `index_col` to specify that a column's values should be used as row headings
 
 Rows are indexed by number by default (0, 1, 2,....). For convenience,
 we want to index by country:
 
-```python
+``` python
 data = pd.read_csv('data/gapminder_gdp_oceania.csv', index_col='country')
 print(data)
 ```
@@ -788,45 +1042,49 @@ print(data)
 -   You can verify the contents of the CSV by double-clicking on the
     file in Jupyter Lab
 
-### Use `DataFrame.info()` to find out more about a data frame
+## Data frames have methods (i.e. functions) that perform operations using the data frame\'s contents as input
 
-```python
-data.info()
-```
+1.  Use `DataFrame.info()` to find out more about a data frame
 
-### Use `DataFrame.describe()` to get summary statistics about data
+    ``` python
+    data.info()
+    ```
 
-```python
-data.describe()
-```
+2.  Use `DataFrame.describe()` to get summary statistics about data
 
-### The `DataFrame.columns` field stores information about the DataFrame's columns
+    ``` python
+    data.describe()
+    ```
+
+## Data frames have fields (i.e. variables) that hold additional information
 
 A \"field\" is a variable that belongs to an object.
 
-```python
-data.columns
-```
+1.  The `DataFrame.columns` field stores information about the
+    DataFrame's columns
 
-### The `DataFrame.shape` variable stores the matrix shape
+    ``` python
+    data.columns
+    ```
 
-```python
-data.shape
-```
+2.  The `DataFrame.shape` variable stores the matrix shape
 
-### Use `DataFrame.T` to transpose a DataFrame
+    ``` python
+    data.shape
+    ```
 
-Does not copy or modify the data, just changes caller\'s view of it:
+3.  Use `DataFrame.T` to transpose a DataFrame Does not copy or modify
+    the data, just changes the caller\'s view of it.
 
-```python
-data.T
-```
+    ``` python
+    data.T
+    ```
 
-### Pandas help files are dense; you should prefer the online documentation
+## Pandas help files are dense; you should prefer the online documentation
 
 <https://pandas.pydata.org/docs/user_guide/index.html>
 
-### CHALLENGE
+## Challenge
 
 1.  Read the data in `gapminder_gdp_americas.csv` into a variable called
     `americas` and display its summary statistics.
@@ -842,45 +1100,45 @@ data.T
     your DataFrames to a file called `processed.csv`. You can use `help`
     to get information on how to use `to_csv`.
 
-#### Solution 1
+### Solution 1
 
-```python
+``` python
 americas = pd.read_csv('data/gapminder_gdp_americas.csv', index_col='country')
 americas.describe()
 ```
 
-#### Solution 2.1
+### Solution 2.1
 
-```python
+``` python
 americas.head(3)
 ```
 
-#### Solution 2.2
+### Solution 2.2
 
-```python
+``` python
 americas.T.tail(3)
 ```
 
-#### Solution 4
+### Solution 4
 
-```python
+``` python
 americas.to_csv('processed.csv')
 ```
 
-### Introspecting on the DataFrame object (extremely optional)
+## (Optional) Introspecting on the DataFrame object
 
-```python
+``` python
 # DataFrames have a huge number of fields and methods, so dir() is not very useful
 print(dir(data))
 ```
 
-```python
+``` python
 # Create a new list that filters out internal attributes
 df_public = [item for item in dir(data) if not item.startswith('_')]
 print(df_public)
 ```
 
-```python
+``` python
 # Pretty-print the new list; extremely optional
 import pprint
 
@@ -894,7 +1152,7 @@ that methods are attached to objects, whereas functions are
 free-floating (\"first-class citizens\"). Methods and functions are
 \"callable\":
 
-```python
+``` python
 # Generate a list of public methods and a list of public fields. We do this
 # by testing each attribute to determine whether it is "callable".
 # NB: Because Python allows you to override any attribute at runtime,
@@ -911,173 +1169,209 @@ pp.pprint(df_methods)
 pp.pprint(df_attr)
 ```
 
-## Pandas DataFrames
+# Pandas DataFrames
 
-### Notes about Pandas DataFrames/Series
+## Notes about Pandas DataFrames/Series
 
 1.  Pandas is a library for working with spreadsheet-like data
     (\"DataFrames\")
-2.  A DataFrame is a collection of Series columns
-3.  Each Series is a dict-like 1-dimensional NumPy array
+2.  A DataFrame is a collection (dict) of Series columns
+3.  Each Series is a 1-dimensional NumPy array with optional row labels
+    (dict-like, similar to R vectors)
 4.  Therefore, each series inherits many of the abilities (linear
     algebra) and limitations (single data type) of NumPy
 
-#### Pandas introduces some new types
+## (Optional) Pandas introduces some new types
 
-```python
-print("DataFrame type", type(data))
-print("DataFrame type", type(data.T))
-print("Index type", type(data.columns))
+``` python
+# DataFrame type
+type(data)
+type(data.T)
 
-# A series is a Numpy array with optional row labels. It's similar to an R vector.
-print("Series type", type(data['gdpPercap_1952']))
+# Index type
+type(data.columns)
+
+# Series type
+type(data['gdpPercap_1952'])
 ```
 
--   A row is not a type! It is a view onto the *nth* item of each of the
-    column Series. This is why adding 1 row to a DataFrame is weird.
+-   You can convert data between NumPy arrays, Series, and DataFrames
+-   You can read data into any of the data structures from files or from
+    standard Python containers
 
-### Selecting values
+## Selecting values
 
-Rows have positions \[i, j, ..\] and labels. This gives us two ways to
-access data:
+1.  Rows have positions \[i, j, ..\] and labels. This gives us two ways
+    to access data:
 
-1.  Treat the DataFrame as a matrix and select values using linear
-    algebra operators
-2.  Treat the DataFrame as a table and select values using labels
+    1.  Treat the DataFrame as a matrix and select values using linear
+        algebra operators
+    2.  Treat the DataFrame as a table and select values using labels
 
-#### Use `DataFrame.iloc[..., ...]` to select values by their (entry) position
+2.  Use `DataFrame.iloc[..., ...]` to select values by their (entry)
+    position. The `i` in `iloc` stands for \"index\".
 
-The `i` in `iloc` stands for \"index\".
+    ``` python
+    import pandas as pd
+    data = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
 
-```python
-import pandas as pd
-data = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
+    data.iloc[0,0]
+    ```
 
-data.iloc[0,0]
-```
+3.  Use `DataFrame.loc[..., ...]` to select values by their label
 
-#### Use `DataFrame.loc[..., ...]` to select values by their (entry) label
+    ``` python
+    data.loc["Albania", "gdpPercap_1952"]
+    ```
 
-```python
-data.loc["Albania", "gdpPercap_1952"]
-```
+4.  Use `:` on its own to mean all columns or all rows. This is Python's
+    usual slicing notation, which allows you to treat DataFrames as
+    multi-dimensional lists (unlike R, Python requires you to explicitly
+    ask for all rows or columns).
 
-#### Use : on its own to mean all columns or all rows
+    ``` python
+    data.loc["Albania", :]
+    ```
 
-Just like Python's usual slicing notation. You can treat DataFrames as
-multi-dimensional lists!
+5.  Select multiple columns or rows using `DataFrame.loc` and a named
+    slice. This generalizes the concept of a slice to include labeled
+    indexes:
 
-```python
-data.loc["Albania", :]
-```
+    ``` python
+    data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
+    ```
 
-#### Select multiple columns or rows using `DataFrame.loc` and a named slice
+6.  `DataFrame.iloc` follows list index conventions (\"up to, but not
+    including)\", but `DataFrame.loc` does the intuitive right thing
+    (\"A through B\"):
 
-Generalizing the concept of slice to include labeled indexes:
+    1.  List index is up to, but not including, the 2nd position:
 
-```python
-data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
-```
+        ``` python
+        data.iloc[0:2, 0:2]
+        ```
 
-#### `DataFrame.iloc` follows list index conventions, but `DataFrame.loc` does the intuitive right thing
+    2.  Label index includes the 2nd position:
 
-List index is up to, but not including, the 2nd position:
+        ``` python
+        data.loc["Albania":"Belgium", "gdpPercap_1952":"gdpPercap_1962"]
+        ```
 
-```python
-data.iloc[0:2, 0:2]
-```
+7.  A DataFrame is a spreadsheet, but it is also a dictionary of
+    columns.
 
-Label index includes the 2nd position:
+    ``` python
+    data['gdpPercap_1962']
+    ```
 
-```python
-data.loc["Albania":"Belgium", "gdpPercap_1952":"gdpPercap_1962"]
-```
-
-#### A DataFrame is a spreadsheet, but it is also a dictionary of columns
-
-```python
-data['gdpPercap_1962']
-```
-
-### Result of slicing can be used in further operations
+## Result of slicing can be used in further operations
 
 Any operation that you can use on the whole data frame can be used on a
-slice
+slice (because a slice is also a data frame):
 
-```python
+``` python
 print(data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972'].max())
-print(data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972'].min())
-```
 
-```python
+print(data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972'].min())
+
 data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972'].describe()
 ```
 
-### Use comparisons to select data based on value
+## Use comparisons to select data based on value
 
-```python
+``` python
 subset = data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
 ```
 
-Show all items in the DataFrame:
+1.  Show which data frame elements match a criterion
 
-```python
-subset
-```
+    ``` python
+    # Which GDPs are greater than 10,000?
+    subset > 10000
+    ```
 
-Compares element-by-element and returns a similarly-shaped DataFrame of
-elements that meet the criterion:
+2.  Use the criterion match to filter the data frame\'s contents. This
+    uses index notation:
 
-```python
-subset.where(subset > 10000)
-```
+    ``` python
+    subset[subset > 10000]
+    ```
 
-### Use method chaining to create final output without creating a lot of intermediate variables
+3.  Alternatively, use the data frame\'s `where()` method to find
+    elements that match the criterion:
 
-These are equivalent:
+    ``` python
+    subset.where(subset > 10000)
+    ```
 
-```python
-filtered_subset = subset.where(subset > 10000)
-filtered_subset.describe()
-```
+## Use method chaining to create final output without creating intermediate variables
 
-```python
-subset.where(subset > 10000).describe()
-```
+1.  Verbose code with intermediate variables
 
-### DataFrame methods have sensible defaults, but you can change them
+    ``` python
+    filtered_subset = subset.where(subset > 10000)
+    filtered_subset.describe()
+    ```
 
-```python
+2.  Method chaining is the idiomatic Python equivalent of R Tidyverse
+    pipes
+
+    ``` python
+    subset.where(subset > 10000).describe()
+    ```
+
+3.  (Optional) An example of a longer processing pipeline
+
+    ``` python
+    # The rank() method turns numerical scores into ranks, e.g.:
+    subset.rank()
+
+    # Are ranks correlated across time?
+    data.rank().corr("kendall")
+
+    # Are ranks correlated across time for higher-income countries?
+    data.where(data > data.median()).rank().corr("kendall")
+    ```
+
+## (Optional) DataFrame methods have sensible defaults that you can change
+
+``` python
 help(subset.min)
 ```
 
--   \"See Also\" has some helpful suggestions
+The \"See Also\" section has some helpful suggestions for related
+methods
 
-#### Operations run on columns (i.e. variables) by default
+1.  Operations run on columns (Series) by default
 
-The default is to evaluate down columns:
+    ``` python
+    subset.min()
+    subset.min(axis=0)
+    ```
 
-```python
-subset.min()
-subset.min(axis=0)
-```
+2.  To evaluate across rows, set axis=1
 
-To evaluate across rows, set axis=1
+    ``` python
+    subset.min(axis=1)
+    ```
 
-```python
-subset.min(axis=1)
-```
+3.  NaNs are ignored by numerical operations like max, min, average,
+    etc.
 
-#### NaNs are ignored by numerical operations like max, min, average, etc.
+    ``` python
+    # Column means
+    subset.where(subset > 10000).mean()
 
-```python
-subset.where(subset > 10000).mean()
-subset.where(subset > 10000).mean(1)
-```
+    # Row means
+    subset.where(subset > 10000).mean(1)
 
-### Generic comparisons between matrices (optional)
+    # Row means, if no missing data
+    subset.where(subset > 10000).mean(1, skipna=False)
+    ```
 
-```python
+## (Optional) Truth value of whole data frames
+
+``` python
 fs = subset.where(subset > 10000)
 
 # Show which items are NaN
@@ -1095,35 +1389,47 @@ fs.isna().all()
 -   You can apply the reductions: `empty`, `any()`, `all()`, and
     `bool()` to provide a way to summarize a boolean result
 
-### Functional methods
+## (Carpentries version) Group By: split-apply-combine
 
-```python
-import numpy as np
+1.  Split data according to criterion, do numeric transformations, then
+    recombine.
 
-subset.cumsum()
-subset.apply(np.cumsum)
-```
+    ``` python
+    # Get all GDPs greater than the mean
+    mask_higher = data > data.mean()
 
-### Group By
+    # Count the number of time periods in which each country exceeds the mean
+    higher_count = mask_higher.aggregate('sum', axis=1)
 
-#### Split-Apply-Combine
+    # Create a normalized wealth-over-time score
+    wealth_score = higher_count / len(data.columns)
+    wealth_score
+    ```
 
-By "group by" we are referring to a process involving one or more of the
-following steps:
+2.  Add column to data frame
 
-1.  Splitting the data into groups based on some criteria
-2.  Applying a function to each group independently
-3.  Combining the results into a data structure
+    ``` python
+    # Warningealth Score is a series
+    type(wealth_score)
 
-Examples include:
+    data['normalized_wealth'] = wealth_score
+    ```
 
-1.  Aggregation (e.g., group counts)
-2.  Transformation (e.g., Z scores)
-3.  Filtration (e.g., discard outliers)
+## Group By: split-apply-combine
 
-#### Z score example
+-   By "group by" we are referring to a process involving one or more of
+    the following steps:
+    1.  Splitting the data into groups based on some criteria
+    2.  Applying a function to each group independently
+    3.  Combining the results into a data structure
+-   Examples include:
+    1.  Aggregation (e.g., group counts)
+    2.  Transformation (e.g., Z scores)
+    3.  Filtration (e.g., discard outliers)
 
-```python
+### Z score example
+
+``` python
 # Calculate z scores for all elements
 z = (data - data.mean())/data.std()
 
@@ -1133,7 +1439,7 @@ mean_z = z.mean(axis=1)
 # Group countries into "wealthy" (z > 0) and "not wealthy" (z <= 0)
 z_bool = mean_z > 0
 
-# Append to DataFrame
+# Append new columns to DataFrame
 data["mean_z"] = mean_z
 data["wealthy"] = z_bool
 
@@ -1141,120 +1447,48 @@ data["wealthy"] = z_bool
 data.groupby("wealthy").mean()
 ```
 
-### Adding rows to DataFrames (optional)
-
-Appending rows is a performance bottleneck for large data sets. Where
-possible, concatenate DataFrames instead.
-
-```python
-# Concatenate multiple DataFrames
-pd.concat([df1, df2, df3])
-
-# Generic append
-df.append({'a': 3, 'b': 4}, ignore_index=True)
-```
-
-### Write new file with \~DataFrame.to_csv
+### Write new file with `to_csv()`
 
 Capture the results of your filter in a new file, rather than
 overwriting your original data.
 
-```python
+``` python
 # Save to a new CSV, preserving your original data
 data.to_csv('gapminder_gdp_europe_normed.csv')
 ```
 
-### Relationship between data structures (optional)
+## (Optional) Adding rows to DataFrames
 
-<https://pandas.pydata.org/docs/user_guide/dsintro.html#column-selection-addition-deletion>
+A row is a view onto the *nth* item of each of the column Series.
+Appending rows is a performance bottleneck because it requires a
+separate append operation for each Series. Where possible, concatenate
+DataFrames instead.( cf.
+<https://twitter.com/ryxcommar/status/1339752918648545281>)
 
--   You can convert data between NumPy arrays, Series, and DataFrames
--   You can read data into any of the data structures from files or from
-    standard Python containers
+``` python
+# Concatenate multiple DataFrames vertically
+pd.concat([df1, df2, df3])
 
-### Functional and SQL-style query/filter/subset methods (optional)
-
--   concat/merge
-    <https://pandas.pydata.org/docs/reference/api/pandas.concat.html>
--   filter/group/subset:
-    <https://pandas.pydata.org/docs/user_guide/groupby.html>
--   Merge, join, concatenate and compare:
-    <https://pandas.pydata.org/docs/user_guide/merging.html>
--   The generic `apply()` function
--   functional methods and database access methods ()
--   Vectorized operations
-
-### DEPRECATED: Use comparisons to select data based on value
-
-Compares element-by-element and returns a similarly-shaped DataFrame of
-`True` and `False`
-
-```python
-subset = data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
+# Generic append requires labels to get data into correct rows
+df.append({'a': 3, 'b': 4}, ignore_index=True)
 ```
 
-```python
-subset
-```
+## (Carpentries) Challenge
 
-```python
-# Which GDPs are greater than 10,000?
-subset > 10000
-```
+1.  Calculate Z score for each data point
+2.  Calculate the mean Z score for each country
+3.  Add it as a new column
 
-### DEPRECATED: Select value or NaN using a Boolean mask
+# **WEEK 3: Visualization with Matplotlib and Seaborn**
 
-Mask the matrix values that fail to meet a criterion.
-
-```python
-mask = subset > 10000
-subset[mask]
-```
-
-NaNs are ignored by numerical operations like max, min, average, etc.
-
-```python
-subset[mask].describe()
-```
-
-### DEPRECATED: Group By: split-apply-combine
-
-Split data according to criterion, do numeric transformations, then
-recombine.
-
-```python
-# Get all GDPs greater than the mean
-mask_higher = data > data.mean()
-
-# Count the number of time periods in which each country exceeds the mean
-higher_count = mask_higher.aggregate('sum', axis=1)
-
-# Create a normalized wealth-over-time score
-wealth_score = higher_count / len(data.columns)
-wealth_score
-```
-
-### DEPRECATED: Adding columns to DataFrame
-
-DataFrames are dictionary-like objects
-
-```python
-# Wealth Score is a series
-type(wealth_score)
-
-data['normalized_wealth'] = wealth_score
-```
-
-# Visualization with Matplotlib and Seaborn
-
-## Graphs
+# Graphs
 
 Fundamentally, graphs communicate two types of information:
 
 1.  Relationships or trends among data
 2.  The distribution of data
 
-### Big 5 graphs
+## Big 5 graphs
 
 1.  Line plot
 2.  Scatter plot
@@ -1262,11 +1496,11 @@ Fundamentally, graphs communicate two types of information:
 4.  Histogram
 5.  Box plot
 
-## Plotting with Matplotlib
+# Plotting with Matplotlib
 
-### Create a basic plot
+## Create a basic plot
 
-```python
+``` python
 import matplotlib.pyplot as plt
 fig, ax = plt.subplots()
 
@@ -1278,9 +1512,9 @@ ax.plot(time, postion)
 fig
 ```
 
-### Two kinds of plotting objects
+## Two kinds of plotting objects
 
-```python
+``` python
 print(type(fig))
 print(type(ax))
 ```
@@ -1288,17 +1522,17 @@ print(type(ax))
 -   Figure objects handle display, printing, saving, etc.
 -   Axes objects contain graph information
 
-### Three ways of showing a figure (optional)
+## Three ways of showing a figure (optional)
 
 1.  Show figure inline (Jupyter Lab default)
 
-    ```python
+    ``` python
     fig
     ```
 
 2.  Show figure in a separate window (command line default)
 
-    ```python
+    ``` python
     fig.show()
     ```
 
@@ -1307,7 +1541,7 @@ print(type(ax))
     depending on your exact setup:
     <https://matplotlib.org/stable/tutorials/introductory/usage.html#the-builtin-backends>
 
-    ```python
+    ``` python
     import matplotlib
 
     matplotlib.use('TkAgg')
@@ -1315,11 +1549,11 @@ print(type(ax))
     fig.show()
     ```
 
-### Line Plots
+## Line Plots
 
 1.  Create mock data
 
-    ```python
+    ``` python
     import numpy as np
 
     y = np.random.random(10) # outputs an array of 10 random numbers between 0 and 1
@@ -1334,7 +1568,7 @@ print(type(ax))
 
 2.  Create the basic plot
 
-    ```python
+    ``` python
     fig, ax = plt.subplots()
     ax.plot(x, y)
     ```
@@ -1342,12 +1576,12 @@ print(type(ax))
 3.  Show available styles (What is the local equivalent of this global
     command?)
 
-    ```python
+    ``` python
     # What are the global styles?
     plt.style.available
     ```
 
-    ```python
+    ``` python
     # Set a global figure style
     plt.style.use("dark_background")
 
@@ -1355,7 +1589,7 @@ print(type(ax))
     fig
     ```
 
-    ```python
+    ``` python
     # Re-creating the figure applies the new style
     fig, ax = plt.subplots()
     ax.plot(x, y)
@@ -1364,7 +1598,7 @@ print(type(ax))
 4.  Add figure information In principle, nearly every element on a
     Matplotlib figure is independently modifiable.
 
-    ```python
+    ``` python
     # modify figure size, axes and fonts
     fig, ax = plt.subplots(figsize=(8,6)) #(width, height) inches
     ax.plot(x, y, color='darkorange', linewidth=2, marker='o')
@@ -1405,15 +1639,15 @@ print(type(ax))
 
 7.  Save your figure
 
-    ```python
+    ``` python
     fig.savefig("mygraph_dark.png", dpi=300, bbox_inches='tight')
     ```
 
-### Explore your data with Pandas
+## Explore your data with Pandas
 
 1.  Import data
 
-    ```python
+    ``` python
     import pandas as pd
 
     data = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
@@ -1423,13 +1657,13 @@ print(type(ax))
 
     1.  Original column names are object (i.e. string) data
 
-        ```python
+        ``` python
         data.columns
         ```
 
     2.  Pull out integer portion of strings
 
-        ```python
+        ``` python
         years = data.columns.str.strip('gdpPercap_')
         years
         ```
@@ -1437,22 +1671,22 @@ print(type(ax))
     3.  Convert the years columns into integer years and replace
         DataFrame column headers
 
-        ```python
+        ``` python
         data.columns = years.astype(int)
         data.columns
         ```
 
 3.  Plot directly with Pandas
 
-    ```python
+    ``` python
     data.loc['Austria'].plot()
     ```
 
-### Plot directly from Pandas (optional)
+## Plot directly from Pandas (optional)
 
 1.  The basic plot syntax
 
-    ```python
+    ``` python
     ax = data.loc['Austria'].plot()
     fig = ax.get_figure()
     fig
@@ -1460,7 +1694,7 @@ print(type(ax))
 
 2.  Decorate your Pandas plot
 
-    ```python
+    ``` python
     ax = data.loc['Austria'].plot(figsize=(8,6), color='darkgreen', linewidth=2, marker='*')
     ax.set_title("GDP of Austria", fontsize=22, fontweight='bold')
     ax.set_xlabel("Years",fontsize=20, fontweight='bold' )
@@ -1472,7 +1706,7 @@ print(type(ax))
 
 3.  The equivalent Matplotlib plot (optional)
 
-    ```python
+    ``` python
     # extract the x and y values from dataframe
     x_years = data.columns
     y_gdp = data.loc['Austria']
@@ -1483,19 +1717,19 @@ print(type(ax))
     # etc.
     ```
 
-### Plotting multiple data sets
+## Plotting multiple data sets
 
-#### Extract values from the DataFrame
+### Extract values from the DataFrame
 
-```python
+``` python
 x_years = data.columns
 y_austria = data.loc['Austria']
 y_bulgaria = data.loc['Bulgaria']
 ```
 
-#### Create the plot object
+### Create the plot object
 
-```python
+``` python
 # Create the plot
 fig, ax = plt.subplots(figsize=(8,6))
 ax.plot(x_years, y_austria, label='Austria', color='darkgreen', linewidth=2, marker='x')
@@ -1508,9 +1742,9 @@ ax.set_xlabel("Years",fontsize=20, fontweight='bold' )
 ax.set_ylabel("GDP",fontsize=20, fontweight='bold' )
 ```
 
-#### There are many kinds of plots
+### There are many kinds of plots
 
-```python
+``` python
 plt.style.use('ggplot')
 
 # Create a scatter plot
@@ -1523,11 +1757,11 @@ ax.set_xlabel("GDP of Austria",fontsize=20, fontweight='bold' )
 ax.set_ylabel("GDP of Bulgaria",fontsize=20, fontweight='bold' )
 ```
 
-#### Overlaying multiple plots on the same figure with Pandas (optional)
+### Overlaying multiple plots on the same figure with Pandas (optional)
 
 This is super unintuitive.
 
-```python
+``` python
 # Create an Axes object with the Austria data
 ax = data.loc['Austria'].plot(figsize=(8,6), color='darkgreen', linewidth=2, marker='*')
 print("Austria graph", id(ax))
@@ -1537,11 +1771,11 @@ ax = data.loc['Bulgaria'].plot(color='maroon', linewidth=2, marker='o')
 print("Bulgaria graph", id(ax))
 ```
 
-## Seaborn: Pythonic, high-level pre-sets for Matplotlib
+# Seaborn: Pythonic, high-level pre-sets for Matplotlib
 
-### A simple plot
+## A simple plot
 
-```python
+``` python
 # Import the Seaborn library
 import seaborn as sns
 ax = sns.lineplot(data=data.T, legend=False)
@@ -1551,18 +1785,18 @@ ax = sns.lineplot(data=data.T, legend=False)
     wide form to long form; see
     <https://seaborn.pydata.org/tutorial/data_structure.html>
 
-### Import the Iris data set
+## Import the Iris data set
 
 <https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/0e7a9b0a5d22642a06d3d5b9bcbad9890c8ee534/iris.csv>
 
-```python
+``` python
 iris = pd.read_csv("data/iris.csv")
 iris.head()
 ```
 
-### Scatter Plot
+## Scatter Plot
 
-```python
+``` python
 # Reset the style
 plt.style.use("dark_background")
 plt.rcParams["axes.grid"] = False
@@ -1571,9 +1805,9 @@ plt.rcParams["axes.grid"] = False
 ax = sns.scatterplot(data=iris, x='sepal_length',y='petal_length')
 ```
 
-#### Change plotting theme
+### Change plotting theme
 
-```python
+``` python
 # Make everything visible at a distance
 sns.set_context('poster')
 
@@ -1585,9 +1819,9 @@ fig = ax.get_figure()
 fig.set_size_inches(8,6)
 ```
 
-#### Add styling to data points
+### Add styling to data points
 
-```python
+``` python
 # Color by species
 ax = sns.scatterplot(data=iris, x='sepal_length', y='petal_length', hue='species', palette='colorblind', style='species')
 
@@ -1596,16 +1830,16 @@ fig = ax.get_figure()
 fig.set_size_inches(8,6)
 ```
 
-#### Prettify column names (optional)
+### Prettify column names (optional)
 
-```python
+``` python
 words = [' '.join(i) for i in iris.columns.str.split('_')]
 iris.columns = words
 ```
 
-#### Bubble Plot
+### Bubble Plot
 
-```python
+``` python
 # Color by species, size by petal width
 ax = sns.scatterplot(data=iris, x='sepal_length', y='petal_length',
                      hue='species', palette='colorblind', size='petal_width')
@@ -1618,48 +1852,48 @@ fig = ax.get_figure()
 fig.set_size_inches(8,6)
 ```
 
-#### Regression Plot (optional)
+### Regression Plot (optional)
 
-```python
+``` python
 # Color by species, size by petal width
 ax = sns.regplot(data=iris, x='sepal_length', y='petal_length', scatter=True,
                  scatter_kws={'color':'white'})
 ```
 
-### Bar Charts
+## Bar Charts
 
-#### Count Plot counts the records in each category
+### Count Plot counts the records in each category
 
-```python
+``` python
 ax = sns.countplot(data=iris, x='species', palette='colorblind')
 ```
 
-#### Bar Plot
+### Bar Plot
 
 Default summary statistic is mean, and default error bars are 95%
 confidence interval.
 
-```python
+``` python
 ax = sns.barplot(data=iris, x='species', y='sepal_width', palette='colorblind')
 ```
 
-#### Bar Plot with custom parameters
+### Bar Plot with custom parameters
 
-```python
+``` python
 # Error bars show standard deviation
 ax = sns.barplot(data=iris, x='species', y='sepal_width', ci='sd', edgecolor='black')
 ```
 
-```python
+``` python
 # Estimator shows category sum
 ax = sns.barplot(data=iris, x='species', y='sepal_width', ci='sd', estimator=np.sum, edgecolor='black')
 ```
 
-### Histograms
+## Histograms
 
-#### Histogram of overall data set
+### Histogram of overall data set
 
-```python
+``` python
 ax = sns.histplot(data=iris, x='petal_length', kde=True)
 ```
 
@@ -1668,15 +1902,15 @@ ax = sns.histplot(data=iris, x='petal_length', kde=True)
 -   There seems a bimodal distribution of petal length. What factors
     underly this distribution?
 
-#### Histogram of data decomposed by category
+### Histogram of data decomposed by category
 
-```python
+``` python
 ax = sns.histplot(data=iris, x='petal_length', hue='species', palette='Set2')
 ```
 
-#### Selecting number of bins
+### Selecting number of bins
 
-```python
+``` python
 # This generates 3 subplots (ncols=3) on the same figure
 fig, axes = plt.subplots(figsize=(12,4), nrows=1, ncols=3)
 sns.histplot(data=iris,x='petal_length', bins=5, ax=axes[0], color='#f5a142') #  #f5a142 is a hex color
@@ -1684,50 +1918,50 @@ sns.histplot(data=iris,x='petal_length', bins=10, ax=axes[1], color='maroon')
 sns.histplot(data=iris,x='petal_length', bins=15, ax=axes[2], color='darkmagenta')
 ```
 
-### Box Plots and Swarm Plots
+## Box Plots and Swarm Plots
 
-#### Basic box plot
+### Basic box plot
 
-```python
+``` python
 ax = sns.boxplot(data=iris, x='species', y='petal_length')
 ```
 
-#### Overlap swarm plot
+### Overlap swarm plot
 
-```python
+``` python
 ax = sns.boxplot(data=iris, x='species', y='petal_length')
 sns.swarmplot(data=iris, x='species', y='petal_length', ax=ax, color='black')
 ```
 
-#### Swarm plot only
+### Swarm plot only
 
-```python
+``` python
 ax = sns.swarmplot(data=iris,x='species', y='petal_length', hue='species', palette='Set1')
 ax.legend(loc='upper left', fontsize=16)
 ax.tick_params(axis='x', labelrotation = 45)
 ```
 
-### Heat Map
+## Heat Map
 
-## Seaborn 0.11 new features: <https://seaborn.pydata.org/whatsnew.html>
+# Seaborn 0.11 new features: <https://seaborn.pydata.org/whatsnew.html>
 
-## Looping through datasets
+# Looping through datasets
 
-```python
+``` python
 # Saving datasets with new-style string formatting
 for i in datasets_list:
    plt.savefig(f'{i}.png',....)
 ```
 
-# Building Programs
+# **WEEK 4: Building Programs**
 
-## For Loops
+# For Loops
 
-### A `for` loop executes commands once for each value in a collection
+## A `for` loop executes commands once for each value in a collection
 
 \"For each thing in this group, do these operations\"
 
-```python
+``` python
 for number in [2, 3, 5]:
     print(number)
 ```
@@ -1739,34 +1973,34 @@ for number in [2, 3, 5]:
 -   The loop variable, **number**, is what changes for each iteration of
     the loop (i.e. the "current thing")
 
-### The first line of the `for` loop must end with a colon, and the body must be indented
+## The first line of the `for` loop must end with a colon, and the body must be indented
 
 1.  This produces an error
 
-    ```python
+    ``` python
     for number in [2, 3, 5]:
     print(number)
     ```
 
 2.  So does this
 
-    ```python
+    ``` python
     firstName = "Jon"
         lastName = "Smith"
     ```
 
-### Loop variables can be called anything
+## Loop variables can be called anything
 
-```python
+``` python
 for kitten in [2, 3, 5]:
     print(kitten)
 ```
 
 -   It\'s just a placeholder
 
-### The body of a loop can contain many statements
+## The body of a loop can contain many statements
 
-```python
+``` python
 primes = [2, 3, 5]
 for p in primes:
     squared = p ** 2
@@ -1774,9 +2008,9 @@ for p in primes:
     print(p, squared, cubed)
 ```
 
-### Use `range()` to iterate over a sequence of numbers
+## Use `range()` to iterate over a sequence of numbers
 
-```python
+``` python
 for number in range(0, 3):
     print(number)
 ```
@@ -1784,15 +2018,15 @@ for number in range(0, 3):
 -   range() produces numbers on demand (a \"generator\" function)
 -   useful for tracking progress
 
-### Use `enumerate()` to iterate over a sequence of items and their positions
+## Use `enumerate()` to iterate over a sequence of items and their positions
 
-```python
+``` python
 for number, p in enumerate(primes):
     print("Item number:", number)
     print("Prime:", p)
 ```
 
-### The Accumulator pattern turns many values into one
+## The Accumulator pattern turns many values into one
 
 1.  General approach
 
@@ -1802,7 +2036,7 @@ for number, p in enumerate(primes):
 
 2.  Reduce a collection to single value
 
-    ```python
+    ``` python
     # Sum the first 10 integers.
     total = 0
     for number in range(1, 11):
@@ -1812,7 +2046,7 @@ for number, p in enumerate(primes):
 
 3.  Create a new collection from an existing collection
 
-    ```python
+    ``` python
     # Sum the first 10 integers.
     prime_exponents = []
     for p in primes:
@@ -1820,9 +2054,9 @@ for number, p in enumerate(primes):
     print(prime_exponents)
     ```
 
-### Dictionary iteration
+## Dictionary iteration
 
-```python
+``` python
 ages = {'Derek': 42,
         'Bill': 24,
         'Susan': 37}
@@ -1840,7 +2074,7 @@ for val in ages.values():
     print(val)
 ```
 
-```python
+``` python
 location = {'latitude': [37.28306, 'N'],
             'longitude': [-120.50778, 'W']}
 
@@ -1848,33 +2082,33 @@ for key, val in location.items():
     print(key, 'is', val[0], val[1])
 ```
 
-### How do you know if an object is iterable? (optional)
+## How do you know if an object is iterable? (optional)
 
 1.  Lists, dictionaries, and strings are iterable
 
-    ```python
+    ``` python
     hasattr(location, "__iter__")
     ```
 
 2.  Integers are not iterable
 
-    ```python
+    ``` python
     hasattr(5, "__iter__")
     ```
 
-### Don\'t use `for` loops with DataFrames or Numpy matrices
+## Don\'t use `for` loops with DataFrames or Numpy matrices
 
 There is almost always a faster, more idiomatic one-line function that
 does what you want
 
-## Conditionals
+# Conditionals
 
-### Use `if` statements to control whether or not a block of code is executed
+## Use `if` statements to control whether or not a block of code is executed
 
 An `if` statement (more properly called a conditional statement)
 controls whether some block of code is executed or not.
 
-```python
+``` python
 mass = 3.54
 if mass > 3.0:
     print(mass, 'is large')
@@ -1890,24 +2124,24 @@ Structure is similar to a `for` statement:
 -   Body containing one or more statements is indented (usually by 4
     spaces)
 
-### Conditionals are often used inside loops
+## Conditionals are often used inside loops
 
 Not much point using a conditional when we know the value (as above),
 but useful when we have a collection to process.
 
-```python
+``` python
 masses = [3.54, 2.07, 9.22, 1.86, 1.71]
 for m in masses:
     if m > 3.0:
         print(m, 'is large')
 ```
 
-### Use else to execute a block of code when an if condition is not true
+## Use else to execute a block of code when an if condition is not true
 
 `else` can be used following an `if`. This allows us to specify an
 alternative to execute when the if branch isn't taken.
 
-```python
+``` python
 masses = [3.54, 2.07, 9.22, 1.86, 1.71]
 for m in masses:
     if m > 3.0:
@@ -1916,12 +2150,12 @@ for m in masses:
         print(m, 'is small')
 ```
 
-### Use `elif` to specify additional tests
+## Use `elif` to specify additional tests
 
 May want to provide several alternative choices, each with its own test;
 use `elif` (short for "else if") and a condition to specify these.
 
-```python
+``` python
 masses = [3.54, 2.07, 9.22, 1.86, 1.71]
 for m in masses:
     if m > 9.0:
@@ -1935,12 +2169,12 @@ for m in masses:
 -   Always associated with an `if`.
 -   Must come before the `else` (which is the "catch all").
 
-### Conditions are tested once, in order
+## Conditions are tested once, in order
 
 Python steps through the branches of the conditional in order, testing
 each in turn. Order matters! The following is wrong:
 
-```python
+``` python
 grade = 85
 if grade >= 70:
     print('grade is C')
@@ -1950,9 +2184,9 @@ elif grade >= 90:
     print('grade is A')
 ```
 
-### Use conditionals in a loop to "evolve" the values of variables
+## Use conditionals in a loop to "evolve" the values of variables
 
-```python
+``` python
 velocity = 10.0
 for i in range(5): # execute the loop 5 times
     print(i, ':', velocity)
@@ -1965,13 +2199,13 @@ print('final velocity:', velocity)
 
 -   This is how dynamical systems simulations work
 
-### Compound Relations Using `and`, `or`, and Parentheses (optional)
+## Compound Relations Using `and`, `or`, and Parentheses (optional)
 
 Often, you want some combination of things to be true. You can combine
 relations within a conditional using `and` and `or`. Continuing the
 example above, suppose you have:
 
-```python
+``` python
 mass     = [ 3.54,  2.07,  9.22,  1.86,  1.71]
 velocity = [10.00, 20.00, 30.00, 25.00, 20.00]
 
@@ -1991,26 +2225,26 @@ for i in range(5):
 -   Aside: For a more natural way of working with many lists, look at
     `zip()`
 
-## Looping Over Data Sets
+# Looping Over Data Sets
 
-### File paths as an example of increasing abstraction in program development
+## File paths as an example of increasing abstraction in program development
 
 1.  File paths as literal strings
 2.  File paths as string patterns
 3.  File paths as abstract Path objects
 
-### Use a `for` loop to process files given a list of their names
+## Use a `for` loop to process files given a list of their names
 
-```python
+``` python
 file_list = ['data/gapminder_gdp_africa.csv', 'data/gapminder_gdp_asia.csv']
 for filename in file_list:
     data = pd.read_csv(filename, index_col='country')
     print(filename, data.min())
 ```
 
-### Use glob.glob to find sets of files whose names match a pattern
+## Use glob.glob to find sets of files whose names match a pattern
 
-```python
+``` python
 import glob
 print('all csv files in data directory:', glob.glob('data/*.csv'))
 ```
@@ -2021,17 +2255,17 @@ pattern". The most common patterns are:
 -   \`\*\` meaning "match zero or more characters"
 -   \`?\` meaning "match exactly one character"
 
-### Use glob and for to process batches of files
+## Use glob and for to process batches of files
 
-```python
+``` python
 for filename in glob.glob('data/gapminder_*.csv'):
     data = pd.read_csv(filename)
     print(filename, data['gdpPercap_1952'].min())
 ```
 
-### Use pathlib to write code that works across operating systems (optional)
+## Use pathlib to write code that works across operating systems (optional)
 
-```python
+``` python
 from pathlib import Path
 
 relative_path = Path("data")
@@ -2046,14 +2280,14 @@ if relative_path.exists():
 
 -   Note the careful testing at each level of the code
 
-### CHALLENGE: Comparing data (optional) (rewrite)
+## CHALLENGE: Comparing data (optional) (rewrite)
 
 Write a program that reads in the regional data sets and plots the
 average GDP per capita for each region over time in a single chart.
 
 Solution:
 
-```python
+``` python
 import glob
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -2070,9 +2304,9 @@ plt.legend()
 plt.show()
 ```
 
-## Writing Functions
+# Writing Functions
 
-### Break programs down into functions to make them easier to understand
+## Break programs down into functions to make them easier to understand
 
 -   Human beings can only keep a few items in working memory at a time.
 -   Understand larger/more complicated ideas by understanding and
@@ -2083,9 +2317,9 @@ plt.show()
     2.  Removes complexity from remaining code, making it easier to test
     3.  Enables re-use: Write one time, use many times
 
-### Define a function using `def` with a name, parameters, and a block of code
+## Define a function using `def` with a name, parameters, and a block of code
 
-```python
+``` python
 def print_greeting():
     print('Hello!')
 ```
@@ -2097,20 +2331,20 @@ def print_greeting():
     take any inputs.
 -   Indent function body
 
-### Defining a function does not run it
+## Defining a function does not run it
 
-```python
+``` python
 print_greeting()
 ```
 
 -   Like assigning a value to a variable
 -   Must call the function to execute the code it contains.
 
-### Arguments in call are matched to parameters in definition
+## Arguments in call are matched to parameters in definition
 
 1.  Positional arguments
 
-    ```python
+    ``` python
     def print_date(year, month, day):
         joined = '/'.join([year, month, day])
         print(joined)
@@ -2120,17 +2354,17 @@ print_greeting()
 
 2.  Keyword arguments
 
-    ```python
+    ``` python
     print_date(month=3, day=19, year=1871)
     ```
 
-### Functions may return a result to their caller using `return`
+## Functions may return a result to their caller using `return`
 
 1.  Use `return ...` to give a value back to the caller. `return` ends
     the function\'s execution and *returns* you to the code that
     originally called the function.
 
-    ```python
+    ``` python
     def average(values):
         """Return average of values, or None if no values are supplied."""
 
@@ -2142,20 +2376,20 @@ print_greeting()
         return sum(values) / len(values)
     ```
 
-    ```python
+    ``` python
     a = average([1, 3, 4])
     print('average of actual values:', a)
     ```
 
 2.  You should explicitly handle common problems:
 
-    ```python
+    ``` python
     print('average of empty list:', average([]))
     ```
 
 3.  Every function returns something:
 
-    ```python
+    ``` python
     result = print_date(1871, 3, 19)
     print('result of call is:', result)
     ```
@@ -2169,13 +2403,13 @@ print_greeting()
     2.  Docstring provides function help. Use triple quotes if you need
         the docstring to span multiple lines.
 
-### A worked example: The Lorenz attractor
+## A worked example: The Lorenz attractor
 
 <https://matplotlib.org/stable/gallery/mplot3d/lorenz_attractor.html>
 
-### Use functions to encapsulate large code blocks (optional)
+## Use functions to encapsulate large code blocks (optional)
 
-```python
+``` python
 import pandas as pd
 import glob
 
@@ -2209,9 +2443,9 @@ for filename in glob.glob('data/gapminder_*.csv'):
     data.to_csv(newfile)
 ```
 
-### Using functions with conditionals in Pandas (optional)
+## Using functions with conditionals in Pandas (optional)
 
-```python
+``` python
 # Apply a function to every row of the selected column
 def my_fun(val):
     pass
@@ -2220,57 +2454,57 @@ data = pd.read_csv('data/gapminder_all.csv')
 data['new_col'] = data['lifeExp_1952'].apply(my_fun)
 ```
 
-## Software Logistics
+# Software Logistics
 
-### Python files vs. Notebook files
+## Python files vs. Notebook files
 
-### Python from the command line
+## Python from the command line
 
-### Updating your Python installation
+## Updating your Python installation
 
-### Version control
+## Version control
 
-## Variable Scope (optional)
+# Variable Scope (optional)
 
-## Programming Style (optional)
+# Programming Style (optional)
 
-## Working with unstructured files (optional)
+# Working with unstructured files (optional)
 
-### Open the file with a context handler
+## Open the file with a context handler
 
-```python
+``` python
 with open('pettigrew_letters_ORIGINAL.txt', 'r') as file_in:
     text = file_in.read()
 
 print(len(text))
 ```
 
-### Strings contain formatting marks
+## Strings contain formatting marks
 
 Compare the following:
 
-```python
+``` python
 # This displays the nicely-formatted document
 print(text[:300])
 ```
 
-```python
+``` python
 # This shows the true nature of the string; you can see newlines (/n),
 # tabs (/t), and other hidden characters
 text[:300]
 ```
 
-### Many ways of handling a file
+## Many ways of handling a file
 
-#### `.read()` produces the file contents as one string
+### `.read()` produces the file contents as one string
 
-```python
+``` python
 type(text)
 ```
 
-#### `.readlines()` produces the file contents as a list of lines; each line is a string
+### `.readlines()` produces the file contents as a list of lines; each line is a string
 
-```python
+``` python
 with open('pettigrew_letters_ORIGINAL.txt', 'r') as file_in:
     text = file_in.readlines()
 
@@ -2278,22 +2512,22 @@ print(len(text))
 print(type(text))
 ```
 
-#### Inspect parts of the file using list syntax
+### Inspect parts of the file using list syntax
 
-```python
+``` python
 # View the first 10 lines
 text[:10]
 ```
 
-### Working with unstructured file data
+## Working with unstructured file data
 
-#### Contents of pettigrew_letters_ORIGINAL.txt
+### Contents of pettigrew_letters_ORIGINAL.txt
 
 1.  Intro material
 2.  Manifest of letters
 3.  Individual letters
 
-#### Query: Are all the letters in the manifest actually there?
+### Query: Are all the letters in the manifest actually there?
 
 1.  check if all the letters reported in the manifest appear in the
     actual file
@@ -2302,45 +2536,45 @@ text[:10]
     line from the manifest, and (2) a list of every location line within
     the file proper
 
-#### Get the manifest by visual inspection
+### Get the manifest by visual inspection
 
-```python
+``` python
 manifest_list = text[14:159]
 ```
 
-#### Use string functions to clean up and inspect text
+### Use string functions to clean up and inspect text
 
 Demonstrate string tests with manifest_list:
 
-```python
+``` python
 # Raw text
 for location in manifest_list[:10]:
     print(location)
 ```
 
-```python
+``` python
 # Remove extra whitespace
 for location in manifest_list[:10]:
     print(location.strip())
 ```
 
-```python
+``` python
 # Test whether the cleaned line starts with 'Box '
 for location in manifest_list[:10]:
     stripped_line = location.strip()
     print(stripped_line.startswith('Box '))
 ```
 
-```python
+``` python
 # Test whether the cleaned line starts with 'box '
 for location in manifest_list[:10]:
     stripped_line = location.strip()
     print(stripped_line.startswith('box '))
 ```
 
-#### Gather all the locations in the full document
+### Gather all the locations in the full document
 
-```python
+``` python
 letters = text[162:]
 
 for line in letters[:25]:
@@ -2360,9 +2594,9 @@ for line in letters[:25]:
 -   Before automate everything, we run the code with lots of `print()`
     statements so that we can see what\'s happening
 
-#### Collect the positive results
+### Collect the positive results
 
-```python
+``` python
 letter_locations = []
 
 for line in letters:
@@ -2372,26 +2606,26 @@ for line in letters:
         letter_locations.append(stripped_line)
 ```
 
-#### Compare the manifest and the letters
+### Compare the manifest and the letters
 
-```python
+``` python
 print('Items in manifest:', len(manifest_list))
 print('Letters:', len(letter_locations))
 ```
 
-#### Follow-up questions
+### Follow-up questions
 
 1.  Which items are in one list but not the other?
 2.  Are there other structural regularities you could use to parse the
     data? (Note that in the letters, sometimes there are multiple
     letters under a single box header)
 
-## Exception handling (optional)
+# Exception handling (optional)
 
 Explicitly handle common errors, rather than waiting for your code to
 blow up.
 
-```python
+``` python
 def average(values):
     "Return average of values, or None if no values are supplied."
 
@@ -2404,7 +2638,7 @@ print(average([]))              # Explicitly handles possible divide-by-zero err
 print(average(4))               # Unhandled exception
 ```
 
-```python
+``` python
 def average(values):
     "Return average of values, or an informative error if bad values are supplied."
 
@@ -2423,9 +2657,9 @@ print(average([]))
 -   Use judiciously, and be as specific as possible. When in doubt,
     allow your code to blow up rather than silently commit errors.
 
-## Performance and profiling (optional)
+# Performance and profiling (optional)
 
-```python
+``` python
 from timeit import time
 import cProfile
 import pstats
@@ -2445,18 +2679,18 @@ cProfile.run('my_fun(val)', 'dumpstats')
 s = pstats.Stats('dumpstats')
 ```
 
-## Reducing memory usage 1: Read a file one line at a time (optional)
+# Reducing memory usage 1: Read a file one line at a time (optional)
 
-```python
+``` python
 with open('pettigrew_letters_ORIGINAL.txt', 'r') as file_in:
     for line in file_in:
         # Do stuff to current line
         pass
 ```
 
-## Reducing memory usage 2: Use an SQLite database (optional)
+# Reducing memory usage 2: Use an SQLite database (optional)
 
-```python
+``` python
 import sqlite3
 
 conn = sqlite3.connect('my_database_name.db')
@@ -2468,7 +2702,7 @@ with conn:
 # Do stuff with `results`
 ```
 
-## Other optional topics
+# Other optional topics
 
 -   Checking performance
 -   List comprehensions
@@ -2520,7 +2754,7 @@ Direct download link: <https://ndownloader.figshare.com/files/10717177>
 
 #### Import data
 
-```python
+``` python
 data = pd.read_csv('surveys.csv')
 
 # Check for NaN
@@ -2532,7 +2766,7 @@ print("NaN lengths:", data['hindfoot_length'].isna().sum())
 
 #### Fit OLS regression model
 
-```python
+``` python
 from statsmodels.formula.api import ols
 
 model = ols("weight ~ hindfoot_length", data, missing='drop').fit()
@@ -2541,7 +2775,7 @@ print(model.summary())
 
 #### Generic parameters for all models
 
-```python
+``` python
 import statsmodels
 
 help(statsmodels.base.model.Model)
@@ -2567,7 +2801,7 @@ help(statsmodels.base.model.Model)
 
 Batch processing from command line, .py files, and editors
 
-```bash
+``` bash
 python my_program.py
 ```
 
