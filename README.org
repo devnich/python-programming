@@ -11,36 +11,68 @@
 1. Use the language that your friends use (so you can ask them for help)
 2. Use a language that has a community of practice for your desired use case (you can find documentation, bug reports, sample code, etc.)
 3. Use a language that is "best" by some technical definition
+
 ** Python is pretty good at lots of things
 - "Glue" language intended to replace shell and Perl
 - Concise, readable, good for rapid prototyping
 - Access to linear algebra libraries in FORTRAN/C → user-friendly numeric computing
+
 ** Literate programming and notebooks
 - Blend code, documentation, and visualization
 - Good for trying things, demos
 - Bad for massive or long-running processes
+- You can export notebooks as .py files when they outgrow the notebook format
 
 * Jupyter commands
 ** How to start Jupyter Lab
-*** Method 1
-1. Open Anaconda Navigator
-2. Run Jupyter Lab
+1. Method 1
+   1. Open Anaconda Navigator
+   2. Run Jupyter Lab
 
-*** Method 2
-Open Terminal (MacOS/Linux) or Anaconda Prompt (Windows)
-#+BEGIN_SRC bash
-cd Desktop/data
-jupyter lab
-#+END_SRC
-
-** Execute cell with CTRL-Enter; execute cell and move to new cell with Shift-Enter
-#+BEGIN_SRC python
-3 + 7
-#+END_SRC
+2. Method 2
+   Open Terminal (MacOS/Linux) or Anaconda Prompt (Windows)
+   #+BEGIN_SRC bash
+   cd Desktop/data
+   jupyter lab
+   #+END_SRC
 
 ** Navigation
-- Use drag-and-drop interface to move .ipynb file to new location
+- Navigate to where you want to be before creating new notebook
 - Rename your notebook to something informative
+- Use drag-and-drop interface to move .ipynb file to new location
+
+** Writing code
+1. Execute cell with CTRL-Enter
+   #+BEGIN_SRC python
+   3 + 7
+   #+END_SRC
+
+2. Execute cell and move to new cell with Shift-Enter
+   #+BEGIN_SRC python
+   # This is a comment
+   print("hello")
+   #+END_SRC
+
+3. Cells can be formatted as Code or Markdown
+
+4. Many keyboard shortcuts are available; see https://gist.github.com/discdiver/9e00618756d120a8c9fa344ac1c375ac
+
+5. Jupyter Lab undestands (some) terminal commands
+   #+BEGIN_SRC bash
+   ls
+   #+END_SRC
+
+6. Jupyter Lab (IPython, actually) has "magic" commands that start with ~%~
+   #+BEGIN_SRC python
+   # Print current items in memory
+   %dirs
+
+   # Get environment variables
+   %env
+
+   # Cell magic: Run bash in a subprocess
+   %%bash
+   #+END_SRC
 
 * Variables and Assignment
 ** Use variables to store values
@@ -49,20 +81,36 @@ Variables are names for values.
 first_name = 'Derek'
 age = 42
 #+END_SRC
-- can only contain letters, digits, and underscore _ (typically used to separate words in long variable names)
-- cannot start with a digit
-- are case sensitive (~age~, ~Age~ and ~AGE~ are three different variables)
+
+** Rules for naming things
+1. Can only contain letters, digits, and underscore
+2. Cannot start with a digit
+3. Are case sensitive: ~age~, ~Age~ and ~AGE~
 
 ** Use ~print()~ to display values
 #+BEGIN_SRC python
 print(first_name, 'is', age, 'years old')
 #+END_SRC
-- Functions are verbs; recognizable by ()
-- Functions take arguments (i.e. do stuff with the values that you give them)
-- ~print()~ useful for tracking progress, debugging
-- NB: Jupyter Lab will always echo the *last* value in a cell, so we won't need ~print()~ a lot of the time
 
-** Variables must be created before they are used
+- Functions are verbs
+- Functions end in ~()~
+- Functions take arguments (i.e. they do stuff with the values that you give them)
+- ~print()~ useful for tracking progress, debugging
+
+** Jupyter Lab will always echo the last value in a cell
+1. Python will evaluate and echo the last item
+   #+BEGIN_SRC python
+   first_name
+   age
+   #+END_SRC
+
+2. If you want to see multiple items, you should explicitly print them
+   #+BEGIN_SRC python
+   print(first_name)
+   print(age)
+   #+END_SRC
+
+** (Optional) Variables must be created before they are used
 #+BEGIN_SRC python
 # Prints an informative error message; more about this later
 print(last_name)
@@ -70,11 +118,13 @@ print(last_name)
 
 ** Variables can be used in calculations
 #+BEGIN_SRC python
+print(age)
 age = age + 3
-print('Age in three years:', age)
+print(age)
 #+END_SRC
 
 ** Variables only change value when something is assigned to them
+Order of operations matters!
 #+BEGIN_SRC python
 first = 1
 second = 5 * first
@@ -82,84 +132,98 @@ first = 2
 print('first is', first, 'and second is', second)
 #+END_SRC
 
-** Use meaningful names!
-
 * Data Types and Type Conversion
 ** Every value has a type
-Most data is text and numbers:
-- Integers: whole numbers (counting)
-- Floats: real numbers (math)
-- Strings: text
-- ...and many others
+Most data is text and numbers, but there are many other types.
+1. Integers: whole numbers (counting)
+2. Floats: real numbers (math)
+3. Strings: text
+4. Files
+5. Various collections (lists, sets, dictionaries, data frames, arrays)
+6. More abstract stuff (e.g., database connection)
+
+** The type determine what operations you can perform with a given value
+1. Example 1: Subtraction makes sense for some kinds of data but not others
+   #+BEGIN_SRC python
+   print(5 - 3)
+   print('hello' - 'h')
+   #+END_SRC
+
+3. Example 2: Some things have length and some don't
+   Note that we can put functions inside other functions!
+   #+BEGIN_SRC python
+   print(len('hello'))
+   print(len(5))
+   #+END_SRC
 
 ** Use the built-in function ~type()~ to find the type of a value
-#+BEGIN_SRC python
-type(53)
-#+END_SRC
+1. Two types of number
+   #+BEGIN_SRC python
+   print(type(53))
+   print(type(3.12))
+   #+END_SRC
 
-#+BEGIN_SRC python
-type(3.12)
-#+END_SRC
+2. You can check the type of a variable
+   #+BEGIN_SRC python
+   fitness = 'average'
+   type(fitness)
+   #+END_SRC
 
-#+BEGIN_SRC python
-fitness = 'average'
-type(fitness)
-#+END_SRC
+3. Python is strongly-typed: It will (mostly) refuse to convert things automatically. The exception is mathematical operations with integers and floats.
+   #+BEGIN_SRC python
+   int_sum = 3 + 4
+   mixed_sum = 3 + 4.0
 
-** Types control what operations can be performed on a given value
-#+BEGIN_SRC python
-print(5 - 3)
-#+END_SRC
+   print(type(int_sum))
+   print(type(mixed_sum))
+   #+END_SRC
 
-#+BEGIN_SRC python
-# This will produce an error
-print('hello' - 'h')
-#+END_SRC
+** You can explicitly convert data to a different type
+1. Can't do math with text
+   #+BEGIN_SRC python
+   1 + '2'
+   #+END_SRC
 
-#+BEGIN_SRC python
-len('hello')
-#+END_SRC
+2. If you have string data, you can explicitly convert it to numeric data...
+   #+BEGIN_SRC python
+   print(1 + float('2'))
+   print(1 + int('2'))
+   #+END_SRC
 
-#+BEGIN_SRC python
-# This will produce an error
-len(5)
-#+END_SRC
+3. ...and vice-versa
+   #+BEGIN_SRC python
+   text = str(3)
 
-** Must convert strings to numbers or vice versa when operating on them
-Types have different properties; more about this later.
-#+BEGIN_SRC python
-1 + '2'                         # Produces an error
-#+END_SRC
+   print(text)
+   print(type(text))
+   #+END_SRC
 
-#+BEGIN_SRC python
-1 + float('2')
-#+END_SRC
+4. This can work for more complex data types as well, e.g. Pandas data frames and Numpy arrays.
 
-** Can mix integers and floats freely in operations
+** Challenge: Explain what each operator does
 #+BEGIN_SRC python
-# This will "do the right thing" and convert everything to floats
-1 / 2.0
-#+END_SRC
+# Floor
+print('5 // 3:', 5 // 3)
 
-** CHALLENGE: Explain what each operator does
-#+BEGIN_SRC python
-  # Floor
-  print('5 // 3:', 5 // 3)
-  # Floating point
-  print('5 / 3:', 5 / 3)
-  # Modulus (remainder)
-  print('5 % 3:', 5 % 3)
+# Floating point
+print('5 / 3:', 5 / 3)
+
+# Modulus (remainder)
+print('5 % 3:', 5 % 3)
 #+END_SRC
 
 * Built-in Functions and Help
-** Online resources
-- https://libguides.ucmerced.edu/software-carpentry/python/references
+** How do we find out what's possible?
+- Python.org tutorial
+- Standard library reference (we will discuss libraries in the next section)
+- References section of this document
 - Stack Overflow
 
-** Use comments to add documentation to programs
+** (Optional) Use comments to add documentation to programs
+Leave notes for Future You about what you've learned and how your code works.
 #+BEGIN_SRC python
-# This sentence isn't executed by Python.
-adjustment = 0.5   # Neither is this - anything after '#' is ignored.
+# This line isn't executed by Python
+print("This cell has many comments")   # The rest of this line isn't executed either
 #+END_SRC
 
 ** A function may take zero or more arguments
@@ -169,33 +233,21 @@ print()
 print('after')
 #+END_SRC
 
-** Every function returns /something/
-#+BEGIN_SRC python
-  result = len("hello")
-  print(result)
-#+END_SRC
+** Every function returns something
+1. Collect the results of a function in a new variable. This is one of the ways we build complex programs.
+   #+BEGIN_SRC python
+   result = len("hello")
+   print(result)
+   #+END_SRC
 
-#+BEGIN_SRC python
-# printing to the screen is a "side effect" that doesn't produce a useable result
-  result = print("hello")
-  print(result)
-#+END_SRC
+2. (Optional) Some function only have "side effects"; they return ~None~
+   #+BEGIN_SRC python
+   result = print("hello")
+   print(result)
+   print(type(result))
+   #+END_SRC
 
-** Commonly-used built-in functions include ~max()~, ~min()~, and ~round()~
-#+BEGIN_SRC python
-max(1, 2, 3)
-#+END_SRC
-
-#+BEGIN_SRC python
-min('a', 'A', '0')       # 0-9, A-Z, a-z; However, notice they are all strings!
-#+END_SRC
-
-** Functions may only work for certain (combinations of) arguments
-#+BEGIN_SRC python
-max(1, 'a')              # Not a meaningful comparision
-#+END_SRC
-
-** Functions may have default values for some arguments
+** Functions can have optional parameters
 #+BEGIN_SRC python
 # By default, we round to the nearest integer
 round(3.712)
@@ -207,51 +259,83 @@ round(3.712, 1)
 #+END_SRC
 
 ** Use the built-in function ~help()~ to get help for a function
-#+BEGIN_SRC python
-help(round)
-#+END_SRC
-- 1 mandatory argument
-- 1 optional argument with a default value: ~ndigits=None~
+1. View the documentation for ~round()~
+   #+BEGIN_SRC python
+   help(round)
+   #+END_SRC
+   - 1 mandatory argument
+   - 1 optional argument with a default value: ~ndigits=None~
 
-** Functions attached to objects are called methods
-#+BEGIN_SRC python
-my_string = 'Hello world!'
+2. You can proved arguments implicitly by order, or explicitly in any order
+   #+BEGIN_SRC python
+   # You can optionally specify the number of significant digits
+   round(4.712823, ndigits=2)
+   #+END_SRC
 
-# calling the swapcase method on the my_string object
-print(my_string.swapcase())
-#+END_SRC
+** (Optional) Functions will typically generalize in sensible ways
+1. ~max()~ and ~min()~ do the intuitively correct thing with numerical and text data
+   #+BEGIN_SRC python
+   print(max(1, 2, 3))
+   print(min('a', 'A', '0'))       # sort order is 0-9, A-Z, a-z
+   #+END_SRC
 
-*** Methods can be chained together
-#+BEGIN_SRC python
-print(my_string.isupper())          # Not all the letters are uppercase
-print(my_string.upper())            # This capitalizes all the letters
+2. Mixed numbers and text aren't meaningfully comparable
+   #+BEGIN_SRC python
+   max(1, 'a')
+   #+END_SRC
 
-print(my_string.upper().isupper())  # Now all the letters are uppercase
-#+END_SRC
+** /Methods/ are functions that belong to objects
+1. An object packages data together with functions that operate on that data. This is a very common organizational strategy in Python.
+   #+BEGIN_SRC python
+   my_string = 'Hello world!'
 
-*** You can view an object's attributes (i.e. methods and fields) using ~help()~ or ~dir()~
-Some attributes are "private"; you're not supposed to use these directly.
-#+BEGIN_SRC python
-# The short, short version
-dir(my_string)
+   # Call the swapcase method on the my_string object
+   print(my_string.swapcase())
+   #+END_SRC
 
-# More verbose help
-help(str)
-#+END_SRC
+2. You can chain methods into processing pipelines
+   #+BEGIN_SRC python
+   print(my_string.isupper())          # Check whether all letters are uppercase
+   print(my_string.upper())            # Capitalize all the letters
+   #+END_SRC
 
-** Python reports a syntax error when it can’t understand the source of a program
-#+BEGIN_SRC python
-name = 'Bob
-age = = 54
-print("Hello world"
-#+END_SRC
+   #+BEGIN_SRC python
+   # The output of upper() is as string; you can use more string methods on it
+   my_string.upper().isupper()
+   #+END_SRC
 
-** Python reports a runtime error when something goes wrong while a program is executing
-We have seen some of these already.
+3. You can view an object's attributes (i.e. methods and fields) using ~help()~ or ~dir()~. Some attributes are "private"; you're not supposed to use these directly.
+   #+BEGIN_SRC python
+   # More verbose help
+   help(str)
+   #+END_SRC
 
-** CHALLENGE: What happens when? (optional)
-Explain in simple terms the order of operations in the following program: when does the addition happen, when does the subtraction happen, when is each function called, etc.
-What is the final value of radiance?
+   #+BEGIN_SRC python
+   # The short, short version
+   dir(my_string)
+   #+END_SRC
+
+4. The built-in string methods can be very useful for cleaning up data
+   #+BEGIN_SRC python
+   bad_string_1 = "  Hello world!   "
+   bad_string_2 = "|...goodbye cruel world|"
+
+   print(bad_string_1.strip(),
+         bad_string_2.strip("|"))
+   #+END_SRC
+
+** (Optional) Python produces informative error messages
+1. Python reports a syntax error when it can’t understand the source of a program
+   #+BEGIN_SRC python
+   name = 'Bob
+   age = = 54
+   print("Hello world"
+   #+END_SRC
+
+2. Python reports a runtime error when something goes wrong while a program is executing
+
+** (Optional) Challenge: What happens when?
+Explain in simple terms the order of operations in the following program: when does the addition happen, when does the subtraction happen, when is each function called, etc. What is the final value of radiance?
 
 #+BEGIN_SRC python
 radiance = 1.0
@@ -266,8 +350,8 @@ https://docs.python.org/3/library/index.html
 #+BEGIN_SRC python
 import math
 
-print('pi is', math.pi)
-print('cos(pi) is', math.cos(math.pi))
+print(math.pi)
+print(math.cos(math.pi))
 #+END_SRC
 - Refer to things from the module as ~module-name.thing-name~
 - Python uses "." to mean "part of" or "belongs to".
@@ -281,27 +365,240 @@ help(math)                      # user friendly
 dir(math)                       # brief reminder, not user friendly
 #+END_SRC
 
-** Import specific items from a library module to shorten programs.
-You want to be careful with this. It's safer to keep the namespace.
-#+BEGIN_SRC python
-from math import cos, pi
+** Import shortcuts
+1. Import specific items from a library module. You want to be careful with this. It's safer to keep the namespace.
+   #+BEGIN_SRC python
+   from math import cos, pi
 
-print('cos(pi) is', cos(pi))
-#+END_SRC
+   cos(pi)
+   #+END_SRC
 
-** Create an alias for a library module when importing it to shorten programs
-#+BEGIN_SRC python
-import math as m
+2. Create an alias for a library module when importing it
+   #+BEGIN_SRC python
+   import math as m
 
-print('cos(pi) is', m.cos(m.pi))
-#+END_SRC
+   print(m.cos(m.pi))
+   #+END_SRC
 
 ** Python has opinions about how to write your programs
 #+BEGIN_SRC python
 import this
 #+END_SRC
 
-** CHALLENGE: Locating the Right Module (optional)
+* Lists
+Lists are the central data structure in Python; we will explain many things by making analogies to lists.
+** A list stores many values in a single structure
+#+BEGIN_SRC python
+pressure = [0.17, 0.23, 0.54, 0.38, 0.76, 0.43]
+print(pressure)
+print(len(pressure))
+#+END_SRC
+
+** Lists are indexed by position, counting from 0
+#+BEGIN_SRC python
+print("First item:", pressure[0])
+print("Fifth item:" , pressure[4])
+#+END_SRC
+
+** You can get a subset of the list by slicing it
+1. You slice a list from the start position up to, but not including, the stop position
+   #+BEGIN_SRC python
+   print("First 3 items:", pressure[0:3])
+   print("3rd through 5th:", pressure[2:5])
+   #+END_SRC
+
+2. You can omit the start position if you're starting at the beginning...
+   #+BEGIN_SRC python
+   print("First 5 items:", pressure[0:5])
+   print("First 5 items, but shorter:", pressure[:5])
+   #+END_SRC
+
+3. ...and you can omit the end position if you're going to the end
+   #+BEGIN_SRC python
+   # This is useful if you don't know how long the list is
+   print("Everything but the first 3 items:", pressure[3:])
+   #+END_SRC
+
+4. You can add an optional step interval (every 2nd item, every 3rd item, etc.)
+   #+BEGIN_SRC python
+   print("First 5 items, every other item:", pressure[0:5:2])
+   print("Every third item:", pressure[::3])
+   #+END_SRC
+
+** Why are lists indexed from 0?
+cf. https://stackoverflow.com/a/11364711
+1. Slice endpoints are compliments
+   In both cases, the number you see represents what you want to do.
+   #+BEGIN_SRC python
+   # Get the first two items
+   pressure[:2]
+   #+END_SRC
+
+   #+BEGIN_SRC python
+   # Get everything except the first two items
+   pressure[2:]
+   #+END_SRC
+
+2. For non-negative indices, the length of a slice is the difference of the indices
+   #+BEGIN_SRC python
+   len(pressure[1:3]) == 2
+   #+END_SRC
+
+** Some other properties of indexes
+1. Indexing beyond the end of the collection is an error
+   #+BEGIN_SRC python
+   pressure[20]
+   #+END_SRC
+
+2. You can count backwards from the end with negative integers
+   #+BEGIN_SRC python
+    print("Last item:", pressure[-1])
+   #+END_SRC
+
+** Lists are mutable
+1. You can replace a value at a specific index location
+   #+BEGIN_SRC python
+   pressuressure[0] = 0.999
+   print(pressure)
+   #+END_SRC
+
+2. Add an item to list with ~append()~. This is a /method/ of the list.
+   #+BEGIN_SRC python
+   primes = [2, 3, 5]
+   print(primes)
+   primes.append(7)
+   print(primes)
+   #+END_SRC
+
+3. Add the items from one list to another with ~extend()~
+   #+BEGIN_SRC python
+   teen_primes = [11, 13, 17, 19]
+
+   # Add all of the elements of teen_primes to primes
+   primes.extend(teen_primes)
+   print(primes)
+   #+END_SRC
+
+4. (Optional) Slice endpoints are compliments, take 2
+   #+BEGIN_SRC python
+   new_pressure = pressure[:2]
+   new_pressure.extend(pressure[2:])
+
+   print(new_pressure == pressure)
+   #+END_SRC
+
+** Many functions take collections as arguments
+#+BEGIN_SRC python
+mean_p = sum(pressure)/len(pressure)
+print(mean_p)
+#+END_SRC
+
+** (Optional) Removing items from a list
+1. Use ~del~ to remove an item at an index location
+   #+BEGIN_SRC python
+   printmes = [2, 3, 5, 7, 9]
+   print(primes)
+   del primes[4]
+   print(primes)
+   #+END_SRC
+
+2. Use ~pop()~ to remove the last item and assign it to a variable. This is useful for destructive iteration.
+   #+BEGIN_SRC python
+   p = primes.pop()
+
+   print('Last prime in list', p)
+   print(primes)
+   #+END_SRC
+
+** Lists can contain anything
+1. You can mix data types
+   #+BEGIN_SRC python
+   ages = ['Derek', 42, 'Bill', 24, 'Susan', 37]
+   print(ages[0:2])
+   print(ages[::2])
+   #+END_SRC
+
+2. You can put lists inside other lists
+   #+BEGIN_SRC python
+   ages.append(primes)
+
+   # List in our list
+   print(ages)
+
+   # The last item is a list
+   print(ages[-1])
+
+   # Get an item from that list
+   print(ages[-1][2])
+   #+END_SRC
+
+* Strings are (kind of) like lists
+** Strings are indexed like lists
+1. Use an index to get a single character from a string
+   #+BEGIN_SRC python
+   element = 'carbon'
+   element[0]
+   #+END_SRC
+
+2. Use a slice to get a substring
+   #+BEGIN_SRC python
+   element[0:3]
+   #+END_SRC
+
+3. Counting backwards
+   #+BEGIN_SRC python
+   element[-1]
+   #+END_SRC
+
+4. Et cetera
+
+** (Optional) Strings have a length
+#+BEGIN_SRC python
+len('carbon')
+#+END_SRC
+
+** Strings are immutable
+1. Can't change a string in place
+   #+BEGIN_SRC python
+   element[0] = 'C'
+   #+END_SRC
+
+2. String methods create a new string
+   #+BEGIN_SRC python
+   print(element.capitalize())
+   print(element)
+   #+END_SRC
+
+   #+BEGIN_SRC python
+   carbon_title = element.capitalize()
+   print(carbon_title)
+   #+END_SRC
+
+** Building strings with ~.join()~
+#+BEGIN_SRC python
+date_list = ["3", "17", "2007"]
+date = "/".join(date_list)
+print(date)
+#+END_SRC
+
+** TODO (Optional) Challenge: From Strings to Lists and Back
+1. Given this Python code...
+   #+BEGIN_SRC python
+   print('string to list:', list('tin'))
+   print('list to string:', ''.join(['g', 'o', 'l', 'd']))
+   #+END_SRC
+
+2. ...and this output:
+   #+BEGIN_EXAMPLE
+   string to list: ['t', 'i', 'n']
+   list to string: gold
+   #+END_EXAMPLE
+
+3. What does ~list('some string')~ do?
+4. What does ~'-'.join(['x', 'y', 'z'])~ generate?
+5. How can you change "carbon" to "Carbon"?
+
+** TODO (Optional) Challenge: Locating the right module
 You want to select a random character from a string:
 #+BEGIN_SRC python
 bases = 'ACTTGCTTGAC'
@@ -311,188 +608,34 @@ bases = 'ACTTGCTTGAC'
 2. Which function would you select from that module? Are there alternatives?
 3. Try to write a program that uses the function.
 
-*** Solution:
+*** Solutions:
+1. You could try the ~random~ module.
 
-You could try the ~random~ module.
+   The string has 11 characters, each having a positional index from 0 to 10. You could use either ~random.randrange~ or ~random.randint~ functions to get a random integer between 0 and 10, and then pick out the character at that position:
 
-The string has 11 characters, each having a positional index from 0 to 10. You could use either ~random.randrange~ or ~random.randint~ functions to get a random integer between 0 and 10, and then pick out the character at that position:
+   #+BEGIN_SRC python
+   from random import randrange
 
-#+BEGIN_SRC python
-from random import randrange
+   random_index = randrange(len(bases))
+   print(bases[random_index])
+   #+END_SRC
 
-random_index = randrange(len(bases))
-print(bases[random_index])
-#+END_SRC
+   or more compactly:
 
-or more compactly:
+   #+BEGIN_SRC python
+   from random import randrange
 
-#+BEGIN_SRC python
-from random import randrange
+   print(bases[randrange(len(bases))])
+   #+END_SRC
 
-print(bases[randrange(len(bases))])
-#+END_SRC
+2. Perhaps you found the random.sample function? It allows for slightly less typing:
+   #+BEGIN_SRC python
+   from random import sample
 
-Perhaps you found the random.sample function? It allows for slightly less typing:
+   print(sample(bases, 1)[0])
+   #+END_SRC
 
-#+BEGIN_SRC python
-from random import sample
-
-print(sample(bases, 1)[0])
-#+END_SRC
-
-Note that this function returns a list of values. We will learn about lists in episode 11.
-There’s also other functions you could use, but with more convoluted code as a result.
-
-* Lists
-** A list stores many values in a single structure
-#+BEGIN_SRC python
-pressures = [0.273, 0.275, 0.277, 0.275, 0.276]
-print('pressures:', pressures)
-print('length:', len(pressures))
-#+END_SRC
-
-** Use an item’s index to fetch it from a list
-#+BEGIN_SRC python
-print('zeroth item of pressures:', pressures[0])
-print('fourth item of pressures:', pressures[4])
-#+END_SRC
-
-** Indexing beyond the end of the collection is an error
-#+BEGIN_SRC python
-pressures[20]
-#+END_SRC
-
-** Count backwards from the end with negative integers
-#+BEGIN_SRC python
-  # Get the last item in the list
-  print('last item of pressures:', pressures[-1])
-#+END_SRC
-
-** Use a slice to get a subset of the list
-The slicing syntax is ~my_list[inclusive_start_position:exclusive_stop_position:optional_step_amount]~
-#+BEGIN_SRC python
-  # Up to, but not including index 3
-  print('first 3 items of pressures:', pressures[0:3])
-#+END_SRC
-
-** Lists’ values can be replaced by assigning to them
-#+BEGIN_SRC python
-pressures[0] = 0.265
-print('pressures is now:', pressures)
-#+END_SRC
-
-** Appending items to a list lengthens it
-#+BEGIN_SRC python
-primes = [2, 3, 5]
-print('primes is initially:', primes)
-primes.append(7)
-print('primes has become:', primes)
-#+END_SRC
-- ~append()~ is a /method/ of lists. Methods are like functions, but they are tied to particular objects.
-- Use ~object-name.method-name()~ to call methods
-- Deliberately resembles the way we refer to things in a library
-- We will meet other methods of lists as we go along; use ~help(list)~ for a preview.
-
-** Extend is similar to append, but allows you to merge two lists
-#+BEGIN_SRC python
-  teen_primes = [11, 13, 17, 19]
-  middle_aged_primes = [37, 41, 43, 47]
-  print('primes is currently:', primes)
-
-  primes.extend(teen_primes)
-  print('primes has now become:', primes)
-
-  primes.append(middle_aged_primes)
-  print('primes has finally become:', primes)
-#+END_SRC
-
-** Use del to remove items from a list entirely
-#+BEGIN_SRC python
-primes = [2, 3, 5, 7, 9]
-print('primes before removing last item:', primes)
-del primes[4]
-print('primes after removing last item:', primes)
-#+END_SRC
-
-** Use pop() to remove the last item and assign it to a variable
-#+BEGIN_SRC python
-  p = primes.pop()
-
-  print('Last prime in list', p)
-  print('primes after removing last item:', primes)
-#+END_SRC
-
-** The empty list contains no values
-Helpful for collecting values
-
-** Lists may contain values of different types
-#+BEGIN_SRC python
-  ages = ['Derek', 42, 'Bill', 24, 'Susan', 37]
-  print('First name/age pair', ages[0:2])
-  print("All the ages", ages[0::2])
-#+END_SRC
-
-** Strings can be indexed like lists
-*** Use an index to get a single character from a string
-Count from 0
-#+BEGIN_SRC python
-element = 'carbon'
-element[0]
-#+END_SRC
-
-*** Use a slice to get a substring
-#+BEGIN_SRC python
-# Up to, but not including 3
-element[0:3]
-#+END_SRC
-
-*** Counting backwards
-#+BEGIN_SRC python
-element[-1]
-#+END_SRC
-
-*** Use the built-in function ~len()~ to find the length of a string
-#+BEGIN_SRC python
-len('carbon')                   # length is an integer
-#+END_SRC
-
-** But! Character strings are immutable
-#+BEGIN_SRC python
-element[0] = 'C'
-#+END_SRC
-
-** Python is full of analogies
-- lists and strings
-- lists and files
-
-** CHALLENGE: From Strings to Lists and Back
-Given this Python code:
-#+BEGIN_SRC python
-  print('string to list:', list('tin'))
-  print('list to string:', ''.join(['g', 'o', 'l', 'd']))
-#+END_SRC
-
-And this output:
-#+BEGIN_EXAMPLE
-string to list: ['t', 'i', 'n']
-list to string: gold
-#+END_EXAMPLE
-
-1. What does ~list('some string')~ do?
-2. What does ~'-'.join(['x', 'y', 'z'])~ generate?
-3. How can you change "carbon" to "Carbon"?
-
-*** Solution
-#+BEGIN_SRC python
-  # Strings are immutable, so you have to create a new string.
-  # Use the .join() method to join a list of strings into a new string.
-  new_element = ''.join(['C', element[1:]])
-
-  # or
-  new_element = element.capitalize()
-#+END_SRC
-
-* Dictionaries
+* TODO Dictionaries - Wave FC numbers
 ** Dictionaries are sets of key/value pairs. Instead of being indexed by position, they are indexed by key.
 #+BEGIN_SRC python
 ages = {'Derek': 42,
@@ -549,9 +692,9 @@ How can you convert our list of names and ages into a dictionary? Hint: You will
   ages_dict = dict(zip(names_list, ages_list))
 #+END_SRC
 
-* Other containers (optional)
-- Tuples
-- Sets
+* (Optional) Other containers
+1. Tuples
+2. Sets
 
 * *WEEK 2: Data manipulation with Pandas*
 * (Optional) Review lists and dictionaries
@@ -728,7 +871,7 @@ type(data['gdpPercap_1952'])
 - You can read data into any of the data structures from files or from standard Python containers
 
 ** Selecting values
-1. Rows have positions [i, j, ..] and labels. This gives us two ways to access data:
+1. Items have positions [i, j, ..] and labels. This gives us two ways to access data:
    1. Treat the DataFrame as a matrix and select values using linear algebra operators
    2. Treat the DataFrame as a table and select values using labels
 
@@ -742,20 +885,28 @@ type(data['gdpPercap_1952'])
 
 3. Use ~DataFrame.loc[..., ...]~ to select values by their label
    #+BEGIN_SRC python
+   # This returns a value
    data.loc["Albania", "gdpPercap_1952"]
    #+END_SRC
 
-4. Use ~:~ on its own to mean all columns or all rows. This is Python’s usual slicing notation, which allows you to treat DataFrames as multi-dimensional lists (unlike R, Python requires you to explicitly ask for all rows or columns).
+4. Select multiple columns or rows using ~DataFrame.loc~ and a named slice. This generalizes the concept of a slice to include labeled indexes:
    #+BEGIN_SRC python
-   data.loc["Albania", :]
-   #+END_SRC
-
-5. Select multiple columns or rows using ~DataFrame.loc~ and a named slice. This generalizes the concept of a slice to include labeled indexes:
-   #+BEGIN_SRC python
+   # This returns a DataFrame
    data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
    #+END_SRC
 
-6. ~DataFrame.iloc~ follows list index conventions ("up to, but not including)", but ~DataFrame.loc~ does the intuitive right thing ("A through B"):
+5. Use ~:~ on its own to mean all columns or all rows. This is Python’s usual slicing notation, which allows you to treat DataFrames as multi-dimensional lists (unlike R, Python requires you to explicitly ask for all rows or columns).
+   #+BEGIN_SRC python
+   # This returns a Series
+   data.loc["Albania", :]
+   #+END_SRC
+
+6. If you want specific rows or columns, pass in a list:
+   #+BEGIN_SRC python
+   data.loc[['Italy','Poland'], :]
+   #+END_SRC
+
+7. ~DataFrame.iloc~ follows list index conventions ("up to, but not including)", but ~DataFrame.loc~ does the intuitive right thing ("A through B"):
    1. List index is up to, but not including, the 2nd position:
       #+BEGIN_SRC python
       data.iloc[0:2, 0:2]
@@ -766,9 +917,20 @@ type(data['gdpPercap_1952'])
       data.loc["Albania":"Belgium", "gdpPercap_1952":"gdpPercap_1962"]
       #+END_SRC
 
-7. A DataFrame is a spreadsheet, but it is also a dictionary of columns.
+8. A DataFrame is a spreadsheet, but it is also a dictionary of columns.
    #+BEGIN_SRC python
    data['gdpPercap_1962']
+   #+END_SRC
+
+9. (Optional) You can extract individual rows as Series, then concatenate them into a new DataFrame
+   #+BEGIN_SRC python
+   # Get each row as a Series
+   italy = data.loc["Italy", :]
+   poland = data.loc["Poland", :]
+
+   # `axis=1` concatenates as a 2xN DataFrame (rather than a 1x2N Series)
+   # Transpose to recover original orientation
+   pd.concat([italy, poland], axis=1).T
    #+END_SRC
 
 ** Result of slicing can be used in further operations
@@ -992,7 +1154,7 @@ ax.plot(time, postion)
 
 fig
 #+END_SRC
-
+** TODO Oceania basic plot
 ** Two kinds of plotting objects
 #+BEGIN_SRC python
 print(type(fig))
@@ -1483,7 +1645,8 @@ for key, val in location.items():
 ** Don't use ~for~ loops with DataFrames or Numpy matrices
 There is almost always a faster, more idiomatic one-line function that does what you want
 
-* Conditionals
+* TODO Conditionals - motivate with data frame processing
+e.g. generate a data set with missing data, then check for it using any()/all()
 ** Use ~if~ statements to control whether or not a block of code is executed
 An ~if~ statement (more properly called a conditional statement) controls whether some block of code is executed or not.
 
@@ -1774,7 +1937,9 @@ data['new_col'] = data['lifeExp_1952'].apply(my_fun)
 #+END_SRC
 
 * Software Logistics
-** Python files vs. Notebook files
+** Export to .py
+run in e.g. Spyder
+
 ** Python from the command line
 ** Updating your Python installation
 ** Version control
@@ -2084,6 +2249,7 @@ python my_program.py
 - Statsmodels library: https://www.statsmodels.org/stable/index.html
 - Seaborn gallery of examples: https://seaborn.pydata.org/examples/index.html
 - Matplotlib gallery of examples: https://matplotlib.org/gallery/index.html
+- IPython magic commands: https://ipython.readthedocs.io/en/stable/interactive/magics.html
 
 * Data Sources
 ** Additional data files
