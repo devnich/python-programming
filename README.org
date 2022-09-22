@@ -514,8 +514,23 @@ print(mean_p)
 1. You can mix data types
    #+BEGIN_SRC python
    ages = ['Derek', 42, 'Bill', 24, 'Susan', 37]
+
+   # Get first pair
    print(ages[0:2])
+
+   # Get all the names
    print(ages[::2])
+
+   # Explicit version
+   print(ages[0:-1:2])
+   #+END_SRC
+
+   #+BEGIN_SRC python
+   # Get all the ages
+   print(ages[1::2])
+
+   # Explicit version
+   print(ages[1:-1:2])
    #+END_SRC
 
 2. You can put lists inside other lists
@@ -557,7 +572,7 @@ print(mean_p)
 len('carbon')
 #+END_SRC
 
-** Strings are immutable
+** But! Strings are immutable
 1. Can't change a string in place
    #+BEGIN_SRC python
    element[0] = 'C'
@@ -581,7 +596,7 @@ date = "/".join(date_list)
 print(date)
 #+END_SRC
 
-** TODO (Optional) Challenge: From Strings to Lists and Back
+** (Optional) Challenge: From Strings to Lists and Back
 1. Given this Python code...
    #+BEGIN_SRC python
    print('string to list:', list('tin'))
@@ -596,9 +611,8 @@ print(date)
 
 3. What does ~list('some string')~ do?
 4. What does ~'-'.join(['x', 'y', 'z'])~ generate?
-5. How can you change "carbon" to "Carbon"?
 
-** TODO (Optional) Challenge: Locating the right module
+** (Optional) Challenge: Locating the right module
 You want to select a random character from a string:
 #+BEGIN_SRC python
 bases = 'ACTTGCTTGAC'
@@ -609,9 +623,7 @@ bases = 'ACTTGCTTGAC'
 3. Try to write a program that uses the function.
 
 *** Solutions:
-1. You could try the ~random~ module.
-
-   The string has 11 characters, each having a positional index from 0 to 10. You could use either ~random.randrange~ or ~random.randint~ functions to get a random integer between 0 and 10, and then pick out the character at that position:
+1. You could try the ~random~ module. The string has 11 characters, each having a positional index from 0 to 10. You could use either ~random.randrange~ or ~random.randint~ functions to get a random integer between 0 and 10, and then pick out the character at that position:
 
    #+BEGIN_SRC python
    from random import randrange
@@ -620,7 +632,7 @@ bases = 'ACTTGCTTGAC'
    print(bases[random_index])
    #+END_SRC
 
-   or more compactly:
+   ...or more compactly:
 
    #+BEGIN_SRC python
    from random import randrange
@@ -628,44 +640,62 @@ bases = 'ACTTGCTTGAC'
    print(bases[randrange(len(bases))])
    #+END_SRC
 
-2. Perhaps you found the random.sample function? It allows for slightly less typing:
+2. Perhaps you found the ~random.sample()~ function. It allows for slightly less typing:
    #+BEGIN_SRC python
    from random import sample
 
    print(sample(bases, 1)[0])
    #+END_SRC
 
-* TODO Dictionaries - Wave FC numbers
+* Dictionaries
 ** Dictionaries are sets of key/value pairs. Instead of being indexed by position, they are indexed by key.
 #+BEGIN_SRC python
-ages = {'Derek': 42,
-        'Bill': 24,
-        'Susan': 37}
+wave_fc = {"Girma": 4,
+           "Sheridan": 3,
+           "Morgan": 13,
+           "Jakobsson": 10}
 
-print(ages['Derek'])
+# Returns 4
+wave_fc["Girma"]
 #+END_SRC
 
-** Update dictionaries by assigning a new key/value pair
+** Update dictionaries by assigning a key/value pair
+1. Add a new key/value pair
+   #+BEGIN_SRC python
+   wave_fc["Shaw"] = 11
+   #+END_SRC
+
+2. Update a pre-existing key with a new value
+   #+BEGIN_SRC python
+   wave_fc["Sheridan"] = 1
+
+   print(wave_fc)
+   #+END_SRC
+
+** (Optional) Check whether the dictionary contains an item
+1. Does a key already exist?
+   #+BEGIN_SRC python
+   "Girma" in wave_fc
+   #+END_SRC
+
+2. Does a value already exist (you generally don't want to do this; keys are unique but values are not)?
+   #+BEGIN_SRC python
+   4 in wave_fc.values()
+   #+END_SRC
+
+** (Optional) Delete an item using ~del~ or ~pop()~
 #+BEGIN_SRC python
-ages['Sam'] = 12
+print("Original dictionary", wave_fc)
+del wave_fc["Morgan"]
+print("1st deletion", wave_fc)
 
-print(ages)
-#+END_SRC
-
-** Delete an item using del or pop()
-#+BEGIN_SRC python
-  print("Original dictionary", ages)
-  del ages['Derek']
-  print("Dictionary after 1st deletion", ages)
-
-  derek_age = ages.pop('Derek')
-  print("Dictionary after 2nd deletion", ages)
-  print("Returned value", derek_age)
-
-  print(ages)
+girma_num = wave_fc.pop("Girma")
+print("2nd deletion", wave_fc)
+print("Returned value", girma_num)
 #+END_SRC
 
 ** Dictionaries are the natural way to store tree-structured data
+As with lists, you can put anything in a dictionary.
 #+BEGIN_SRC python
 location = {'latitude': [37.28306, 'N'],
             'longitude': [-120.50778, 'W']}
@@ -673,23 +703,20 @@ location = {'latitude': [37.28306, 'N'],
 print(location['longitude'][0])
 #+END_SRC
 
-** CHALLENGE: Convert lists to dictionary (group)
+** Challenge: Convert a list to a dictionary
 How can you convert our list of names and ages into a dictionary? Hint: You will need to populate the dictionary with a list of keys and a list of values.
 
 #+BEGIN_SRC python
-  # Starting data
-  ages = ['Derek', 42, 'Bill', 24, 'Susan', 37]
+# Starting data
+ages = ['Derek', 42, 'Bill', 24, 'Susan', 37]
 
-  # Get dictionary help
-  help({})
+# Get dictionary help
+help({})
 #+END_SRC
 
 *** Solution
 #+BEGIN_SRC python
-  names_list = ages[0::2]
-  ages_list = ages[1::2]
-
-  ages_dict = dict(zip(names_list, ages_list))
+ages_dict = dict(zip(ages[::2], ages[1::2]))
 #+END_SRC
 
 * (Optional) Other containers
@@ -1109,7 +1136,7 @@ df.append({'a': 3, 'b': 4}, ignore_index=True)
 2. Calculate the mean Z score for each country
 3. Add it as a new column
 
-** TODO (Optional) Generic higher-order functions
+* TODO (Optional) Generic higher-order functions
 Higher-order functions take other functions as arguments and apply them across whole collections. Examples include mapy, apply, fold, reduce, etc.
 #+BEGIN_SRC python
 import numpy as np
@@ -1120,7 +1147,7 @@ subset.cumsum()
 subset.apply(np.cumsum)
 #+END_SRC
 
-** TODO Functional and SQL-style query/filter/subset methods
+* TODO Functional and SQL-style query/filter/subset methods
 - concat/merge https://pandas.pydata.org/docs/reference/api/pandas.concat.html
 - filter/group/subset: https://pandas.pydata.org/docs/user_guide/groupby.html
 - Merge, join, concatenate and compare: https://pandas.pydata.org/docs/user_guide/merging.html
@@ -2250,6 +2277,7 @@ python my_program.py
 - Seaborn gallery of examples: https://seaborn.pydata.org/examples/index.html
 - Matplotlib gallery of examples: https://matplotlib.org/gallery/index.html
 - IPython magic commands: https://ipython.readthedocs.io/en/stable/interactive/magics.html
+- A somewhat-biased comparison of tools for integrating Python with C/C++: http://blog.behnel.de/posts/cython-pybind11-cffi-which-tool-to-choose.html
 
 * Data Sources
 ** Additional data files
@@ -2259,12 +2287,6 @@ python my_program.py
 4. Humanities data (Pettigrew letters): http://dx.doi.org/10.5334/data.1335350291
 
 * COMMENT How to export this document to other formats
-** Export to Markdown using Emacs Org mode
-Do this if you want a table of contents on Github.
-#+BEGIN_EXAMPLE
-M-x org-md-export-to-markdown
-#+END_EXAMPLE
-
 ** Export to Markdown using Pandoc
 Do this if you want code syntax highlighting and a table of contents on Github.
 *** Generate generic Markdown file
@@ -2285,6 +2307,13 @@ pandoc -f markdown --toc --toc-depth=2 -s tmp.md -o README.md
 #+BEGIN_EXAMPLE
 M-x qrr " {.python}" "python"
 M-x qrr " {.bash}" "bash"
+M-x qrr " example " fundamental
+#+END_EXAMPLE
+
+** Export to Markdown using Emacs Org mode
+Do this if you want a table of contents on Github.
+#+BEGIN_EXAMPLE
+M-x org-md-export-to-markdown
 #+END_EXAMPLE
 
 ** Export to Open Office using Emacs Org mode

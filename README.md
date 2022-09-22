@@ -8,58 +8,51 @@
         notebooks](#literate-programming-and-notebooks)
 -   [Jupyter commands](#jupyter-commands)
     -   [How to start Jupyter Lab](#how-to-start-jupyter-lab)
-    -   [Execute cell with CTRL-Enter; execute cell and move to new cell
-        with
-        Shift-Enter](#execute-cell-with-ctrl-enter-execute-cell-and-move-to-new-cell-with-shift-enter)
     -   [Navigation](#navigation)
+    -   [Writing code](#writing-code)
 -   [Variables and Assignment](#variables-and-assignment)
     -   [Use variables to store values](#use-variables-to-store-values)
+    -   [Rules for naming things](#rules-for-naming-things)
     -   [Use `print()` to display values](#use-print-to-display-values)
-    -   [Variables must be created before they are
-        used](#variables-must-be-created-before-they-are-used)
+    -   [Jupyter Lab will always echo the last value in a
+        cell](#jupyter-lab-will-always-echo-the-last-value-in-a-cell)
+    -   [(Optional) Variables must be created before they are
+        used](#optional-variables-must-be-created-before-they-are-used)
     -   [Variables can be used in
         calculations](#variables-can-be-used-in-calculations)
     -   [Variables only change value when something is assigned to
         them](#variables-only-change-value-when-something-is-assigned-to-them)
-    -   [Use meaningful names!](#use-meaningful-names)
 -   [Data Types and Type Conversion](#data-types-and-type-conversion)
     -   [Every value has a type](#every-value-has-a-type)
+    -   [The type determine what operations you can perform with a given
+        value](#the-type-determine-what-operations-you-can-perform-with-a-given-value)
     -   [Use the built-in function `type()` to find the type of a
         value](#use-the-built-in-function-type-to-find-the-type-of-a-value)
-    -   [Types control what operations can be performed on a given
-        value](#types-control-what-operations-can-be-performed-on-a-given-value)
-    -   [Must convert strings to numbers or vice versa when operating on
-        them](#must-convert-strings-to-numbers-or-vice-versa-when-operating-on-them)
-    -   [Can mix integers and floats freely in
-        operations](#can-mix-integers-and-floats-freely-in-operations)
-    -   [CHALLENGE: Explain what each operator
+    -   [You can explicitly convert data to a different
+        type](#you-can-explicitly-convert-data-to-a-different-type)
+    -   [Challenge: Explain what each operator
         does](#challenge-explain-what-each-operator-does)
 -   [Built-in Functions and Help](#built-in-functions-and-help)
-    -   [Online resources](#online-resources)
-    -   [Use comments to add documentation to
-        programs](#use-comments-to-add-documentation-to-programs)
+    -   [How do we find out what\'s
+        possible?](#how-do-we-find-out-whats-possible)
+    -   [(Optional) Use comments to add documentation to
+        programs](#optional-use-comments-to-add-documentation-to-programs)
     -   [A function may take zero or more
         arguments](#a-function-may-take-zero-or-more-arguments)
     -   [Every function returns
-        *something*](#every-function-returns-something)
-    -   [Commonly-used built-in functions include `max()`, `min()`, and
-        `round()`](#commonly-used-built-in-functions-include-max-min-and-round)
-    -   [Functions may only work for certain (combinations of)
-        arguments](#functions-may-only-work-for-certain-combinations-of-arguments)
-    -   [Functions may have default values for some
-        arguments](#functions-may-have-default-values-for-some-arguments)
+        something](#every-function-returns-something)
+    -   [Functions can have optional
+        parameters](#functions-can-have-optional-parameters)
     -   [Use the built-in function `help()` to get help for a
         function](#use-the-built-in-function-help-to-get-help-for-a-function)
-    -   [Functions attached to objects are called
-        methods](#functions-attached-to-objects-are-called-methods)
-    -   [Python reports a syntax error when it can't understand the
-        source of a
-        program](#python-reports-a-syntax-error-when-it-cant-understand-the-source-of-a-program)
-    -   [Python reports a runtime error when something goes wrong while
-        a program is
-        executing](#python-reports-a-runtime-error-when-something-goes-wrong-while-a-program-is-executing)
-    -   [CHALLENGE: What happens when?
-        (optional)](#challenge-what-happens-when-optional)
+    -   [(Optional) Functions will typically generalize in sensible
+        ways](#optional-functions-will-typically-generalize-in-sensible-ways)
+    -   [*Methods* are functions that belong to
+        objects](#methods-are-functions-that-belong-to-objects)
+    -   [(Optional) Python produces informative error
+        messages](#optional-python-produces-informative-error-messages)
+    -   [(Optional) Challenge: What happens
+        when?](#optional-challenge-what-happens-when)
 -   [Libraries](#libraries)
     -   [Most of the power of a programming language is in its
         libraries](#most-of-the-power-of-a-programming-language-is-in-its-libraries)
@@ -67,60 +60,51 @@
         it](#a-program-must-import-a-library-module-before-using-it)
     -   [Use `help()` to learn about the contents of a library
         module](#use-help-to-learn-about-the-contents-of-a-library-module)
-    -   [Import specific items from a library module to shorten
-        programs.](#import-specific-items-from-a-library-module-to-shorten-programs.)
-    -   [Create an alias for a library module when importing it to
-        shorten
-        programs](#create-an-alias-for-a-library-module-when-importing-it-to-shorten-programs)
+    -   [Import shortcuts](#import-shortcuts)
     -   [Python has opinions about how to write your
         programs](#python-has-opinions-about-how-to-write-your-programs)
-    -   [CHALLENGE: Locating the Right Module
-        (optional)](#challenge-locating-the-right-module-optional)
 -   [Lists](#lists)
     -   [A list stores many values in a single
         structure](#a-list-stores-many-values-in-a-single-structure)
-    -   [Use an item's index to fetch it from a
-        list](#use-an-items-index-to-fetch-it-from-a-list)
-    -   [Indexing beyond the end of the collection is an
-        error](#indexing-beyond-the-end-of-the-collection-is-an-error)
-    -   [Count backwards from the end with negative
-        integers](#count-backwards-from-the-end-with-negative-integers)
-    -   [Use a slice to get a subset of the
-        list](#use-a-slice-to-get-a-subset-of-the-list)
-    -   [Lists' values can be replaced by assigning to
-        them](#lists-values-can-be-replaced-by-assigning-to-them)
-    -   [Appending items to a list lengthens
-        it](#appending-items-to-a-list-lengthens-it)
-    -   [Extend is similar to append, but allows you to merge two
-        lists](#extend-is-similar-to-append-but-allows-you-to-merge-two-lists)
-    -   [Use del to remove items from a list
-        entirely](#use-del-to-remove-items-from-a-list-entirely)
-    -   [Use pop() to remove the last item and assign it to a
-        variable](#use-pop-to-remove-the-last-item-and-assign-it-to-a-variable)
-    -   [The empty list contains no
-        values](#the-empty-list-contains-no-values)
-    -   [Lists may contain values of different
-        types](#lists-may-contain-values-of-different-types)
-    -   [Strings can be indexed like
-        lists](#strings-can-be-indexed-like-lists)
-    -   [But! Character strings are
-        immutable](#but-character-strings-are-immutable)
-    -   [Python is full of analogies](#python-is-full-of-analogies)
-    -   [CHALLENGE: From Strings to Lists and
-        Back](#challenge-from-strings-to-lists-and-back)
+    -   [Lists are indexed by position, counting from
+        0](#lists-are-indexed-by-position-counting-from-0)
+    -   [You can get a subset of the list by slicing
+        it](#you-can-get-a-subset-of-the-list-by-slicing-it)
+    -   [Why are lists indexed from 0?](#why-are-lists-indexed-from-0)
+    -   [Some other properties of
+        indexes](#some-other-properties-of-indexes)
+    -   [Lists are mutable](#lists-are-mutable)
+    -   [Many functions take collections as
+        arguments](#many-functions-take-collections-as-arguments)
+    -   [(Optional) Removing items from a
+        list](#optional-removing-items-from-a-list)
+    -   [Lists can contain anything](#lists-can-contain-anything)
+-   [Strings are (kind of) like lists](#strings-are-kind-of-like-lists)
+    -   [Strings are indexed like
+        lists](#strings-are-indexed-like-lists)
+    -   [(Optional) Strings have a
+        length](#optional-strings-have-a-length)
+    -   [But! Strings are immutable](#but-strings-are-immutable)
+    -   [Building strings with `.join()`](#building-strings-with-.join)
+    -   [(Optional) Challenge: From Strings to Lists and
+        Back](#optional-challenge-from-strings-to-lists-and-back)
+    -   [(Optional) Challenge: Locating the right
+        module](#optional-challenge-locating-the-right-module)
 -   [Dictionaries](#dictionaries)
     -   [Dictionaries are sets of key/value pairs. Instead of being
         indexed by position, they are indexed by
         key.](#dictionaries-are-sets-of-keyvalue-pairs.-instead-of-being-indexed-by-position-they-are-indexed-by-key.)
-    -   [Update dictionaries by assigning a new key/value
-        pair](#update-dictionaries-by-assigning-a-new-keyvalue-pair)
-    -   [Delete an item using del or
-        pop()](#delete-an-item-using-del-or-pop)
+    -   [Update dictionaries by assigning a key/value
+        pair](#update-dictionaries-by-assigning-a-keyvalue-pair)
+    -   [(Optional) Check whether the dictionary contains an
+        item](#optional-check-whether-the-dictionary-contains-an-item)
+    -   [(Optional) Delete an item using `del` or
+        `pop()`](#optional-delete-an-item-using-del-or-pop)
     -   [Dictionaries are the natural way to store tree-structured
         data](#dictionaries-are-the-natural-way-to-store-tree-structured-data)
-    -   [CHALLENGE: Convert lists to dictionary
-        (group)](#challenge-convert-lists-to-dictionary-group)
--   [Other containers (optional)](#other-containers-optional)
+    -   [Challenge: Convert a list to a
+        dictionary](#challenge-convert-a-list-to-a-dictionary)
+-   [(Optional) Other containers](#optional-other-containers)
 -   [**WEEK 2: Data manipulation with
     Pandas**](#week-2-data-manipulation-with-pandas)
 -   [(Optional) Review lists and
@@ -172,12 +156,17 @@
     -   [(Optional) Adding rows to
         DataFrames](#optional-adding-rows-to-dataframes)
     -   [(Carpentries) Challenge](#carpentries-challenge)
+-   [(Optional) Generic higher-order
+    functions](#optional-generic-higher-order-functions)
+-   [Functional and SQL-style query/filter/subset
+    methods](#functional-and-sql-style-queryfiltersubset-methods)
 -   [**WEEK 3: Visualization with Matplotlib and
     Seaborn**](#week-3-visualization-with-matplotlib-and-seaborn)
 -   [Graphs](#graphs)
     -   [Big 5 graphs](#big-5-graphs)
 -   [Plotting with Matplotlib](#plotting-with-matplotlib)
     -   [Create a basic plot](#create-a-basic-plot)
+    -   [Oceania basic plot](#oceania-basic-plot)
     -   [Two kinds of plotting objects](#two-kinds-of-plotting-objects)
     -   [Three ways of showing a figure
         (optional)](#three-ways-of-showing-a-figure-optional)
@@ -268,8 +257,7 @@
     -   [Using functions with conditionals in Pandas
         (optional)](#using-functions-with-conditionals-in-pandas-optional)
 -   [Software Logistics](#software-logistics)
-    -   [Python files vs. Notebook
-        files](#python-files-vs.-notebook-files)
+    -   [Export to .py](#export-to-.py)
     -   [Python from the command line](#python-from-the-command-line)
     -   [Updating your Python
         installation](#updating-your-python-installation)
@@ -331,35 +319,70 @@
 -   Blend code, documentation, and visualization
 -   Good for trying things, demos
 -   Bad for massive or long-running processes
+-   You can export notebooks as .py files when they outgrow the notebook
+    format
 
 # Jupyter commands
 
 ## How to start Jupyter Lab
 
-### Method 1
+1.  Method 1
 
-1.  Open Anaconda Navigator
-2.  Run Jupyter Lab
+    1.  Open Anaconda Navigator
+    2.  Run Jupyter Lab
 
-### Method 2
+2.  Method 2 Open Terminal (MacOS/Linux) or Anaconda Prompt (Windows)
 
-Open Terminal (MacOS/Linux) or Anaconda Prompt (Windows)
-
-``` bash
-cd Desktop/data
-jupyter lab
-```
-
-## Execute cell with CTRL-Enter; execute cell and move to new cell with Shift-Enter
-
-``` python
-3 + 7
-```
+    ``` bash
+    cd Desktop/data
+    jupyter lab
+    ```
 
 ## Navigation
 
--   Use drag-and-drop interface to move .ipynb file to new location
+-   Navigate to where you want to be before creating new notebook
 -   Rename your notebook to something informative
+-   Use drag-and-drop interface to move .ipynb file to new location
+
+## Writing code
+
+1.  Execute cell with CTRL-Enter
+
+    ``` python
+    3 + 7
+    ```
+
+2.  Execute cell and move to new cell with Shift-Enter
+
+    ``` python
+    # This is a comment
+    print("hello")
+    ```
+
+3.  Cells can be formatted as Code or Markdown
+
+4.  Many keyboard shortcuts are available; see
+    <https://gist.github.com/discdiver/9e00618756d120a8c9fa344ac1c375ac>
+
+5.  Jupyter Lab undestands (some) terminal commands
+
+    ``` bash
+    ls
+    ```
+
+6.  Jupyter Lab (IPython, actually) has \"magic\" commands that start
+    with `%`
+
+    ``` python
+    # Print current items in memory
+    %dirs
+
+    # Get environment variables
+    %env
+
+    # Cell magic: Run bash in a subprocess
+    %%bash
+    ```
 
 # Variables and Assignment
 
@@ -372,11 +395,11 @@ first_name = 'Derek'
 age = 42
 ```
 
--   can only contain letters, digits, and underscore \_ (typically used
-    to separate words in long variable names)
--   cannot start with a digit
--   are case sensitive (`age`, `Age` and `AGE` are three different
-    variables)
+## Rules for naming things
+
+1.  Can only contain letters, digits, and underscore
+2.  Cannot start with a digit
+3.  Are case sensitive: `age`, `Age` and `AGE`
 
 ## Use `print()` to display values
 
@@ -384,14 +407,29 @@ age = 42
 print(first_name, 'is', age, 'years old')
 ```
 
--   Functions are verbs; recognizable by ()
--   Functions take arguments (i.e. do stuff with the values that you
-    give them)
+-   Functions are verbs
+-   Functions end in `()`
+-   Functions take arguments (i.e. they do stuff with the values that
+    you give them)
 -   `print()` useful for tracking progress, debugging
--   NB: Jupyter Lab will always echo the **last** value in a cell, so we
-    won\'t need `print()` a lot of the time
 
-## Variables must be created before they are used
+## Jupyter Lab will always echo the last value in a cell
+
+1.  Python will evaluate and echo the last item
+
+    ``` python
+    first_name
+    age
+    ```
+
+2.  If you want to see multiple items, you should explicitly print them
+
+    ``` python
+    print(first_name)
+    print(age)
+    ```
+
+## (Optional) Variables must be created before they are used
 
 ``` python
 # Prints an informative error message; more about this later
@@ -401,11 +439,14 @@ print(last_name)
 ## Variables can be used in calculations
 
 ``` python
+print(age)
 age = age + 3
-print('Age in three years:', age)
+print(age)
 ```
 
 ## Variables only change value when something is assigned to them
+
+Order of operations matters!
 
 ``` python
 first = 1
@@ -414,96 +455,124 @@ first = 2
 print('first is', first, 'and second is', second)
 ```
 
-## Use meaningful names!
-
 # Data Types and Type Conversion
 
 ## Every value has a type
 
-Most data is text and numbers:
+Most data is text and numbers, but there are many other types.
 
--   Integers: whole numbers (counting)
--   Floats: real numbers (math)
--   Strings: text
--   ...and many others
+1.  Integers: whole numbers (counting)
+2.  Floats: real numbers (math)
+3.  Strings: text
+4.  Files
+5.  Various collections (lists, sets, dictionaries, data frames, arrays)
+6.  More abstract stuff (e.g., database connection)
+
+## The type determine what operations you can perform with a given value
+
+1.  Example 1: Subtraction makes sense for some kinds of data but not
+    others
+
+    ``` python
+    print(5 - 3)
+    print('hello' - 'h')
+    ```
+
+2.  Example 2: Some things have length and some don\'t Note that we can
+    put functions inside other functions!
+
+    ``` python
+    print(len('hello'))
+    print(len(5))
+    ```
 
 ## Use the built-in function `type()` to find the type of a value
 
-``` python
-type(53)
-```
+1.  Two types of number
 
-``` python
-type(3.12)
-```
+    ``` python
+    print(type(53))
+    print(type(3.12))
+    ```
 
-``` python
-fitness = 'average'
-type(fitness)
-```
+2.  You can check the type of a variable
 
-## Types control what operations can be performed on a given value
+    ``` python
+    fitness = 'average'
+    type(fitness)
+    ```
 
-``` python
-print(5 - 3)
-```
+3.  Python is strongly-typed: It will (mostly) refuse to convert things
+    automatically. The exception is mathematical operations with
+    integers and floats.
 
-``` python
-# This will produce an error
-print('hello' - 'h')
-```
+    ``` python
+    int_sum = 3 + 4
+    mixed_sum = 3 + 4.0
 
-``` python
-len('hello')
-```
+    print(type(int_sum))
+    print(type(mixed_sum))
+    ```
 
-``` python
-# This will produce an error
-len(5)
-```
+## You can explicitly convert data to a different type
 
-## Must convert strings to numbers or vice versa when operating on them
+1.  Can\'t do math with text
 
-Types have different properties; more about this later.
+    ``` python
+    1 + '2'
+    ```
 
-``` python
-1 + '2'                         # Produces an error
-```
+2.  If you have string data, you can explicitly convert it to numeric
+    data...
 
-``` python
-1 + float('2')
-```
+    ``` python
+    print(1 + float('2'))
+    print(1 + int('2'))
+    ```
 
-## Can mix integers and floats freely in operations
+3.  ...and vice-versa
 
-``` python
-# This will "do the right thing" and convert everything to floats
-1 / 2.0
-```
+    ``` python
+    text = str(3)
 
-## CHALLENGE: Explain what each operator does
+    print(text)
+    print(type(text))
+    ```
+
+4.  This can work for more complex data types as well, e.g. Pandas data
+    frames and Numpy arrays.
+
+## Challenge: Explain what each operator does
 
 ``` python
 # Floor
 print('5 // 3:', 5 // 3)
+
 # Floating point
 print('5 / 3:', 5 / 3)
+
 # Modulus (remainder)
 print('5 % 3:', 5 % 3)
 ```
 
 # Built-in Functions and Help
 
-## Online resources
+## How do we find out what\'s possible?
 
--   <https://libguides.ucmerced.edu/software-carpentry/python/references>
+-   Python.org tutorial
+-   Standard library reference (we will discuss libraries in the next
+    section)
+-   References section of this document
 -   Stack Overflow
 
-## Use comments to add documentation to programs
+## (Optional) Use comments to add documentation to programs
+
+Leave notes for Future You about what you\'ve learned and how your code
+works.
 
 ``` python
-# This sentence isn't executed by Python.
-adjustment = 0.5   # Neither is this - anything after '#' is ignored.
+# This line isn't executed by Python
+print("This cell has many comments")   # The rest of this line isn't executed either
 ```
 
 ## A function may take zero or more arguments
@@ -514,36 +583,26 @@ print()
 print('after')
 ```
 
-## Every function returns *something*
+## Every function returns something
 
-``` python
-result = len("hello")
-print(result)
-```
+1.  Collect the results of a function in a new variable. This is one of
+    the ways we build complex programs.
 
-``` python
-# printing to the screen is a "side effect" that doesn't produce a useable result
-  result = print("hello")
-  print(result)
-```
+    ``` python
+    result = len("hello")
+    print(result)
+    ```
 
-## Commonly-used built-in functions include `max()`, `min()`, and `round()`
+2.  (Optional) Some function only have \"side effects\"; they return
+    `None`
 
-``` python
-max(1, 2, 3)
-```
+    ``` python
+    result = print("hello")
+    print(result)
+    print(type(result))
+    ```
 
-``` python
-min('a', 'A', '0')       # 0-9, A-Z, a-z; However, notice they are all strings!
-```
-
-## Functions may only work for certain (combinations of) arguments
-
-``` python
-max(1, 'a')              # Not a meaningful comparision
-```
-
-## Functions may have default values for some arguments
+## Functions can have optional parameters
 
 ``` python
 # By default, we round to the nearest integer
@@ -557,57 +616,102 @@ round(3.712, 1)
 
 ## Use the built-in function `help()` to get help for a function
 
-``` python
-help(round)
-```
+1.  View the documentation for `round()`
 
--   1 mandatory argument
--   1 optional argument with a default value: `ndigits=None`
+    ``` python
+    help(round)
+    ```
 
-## Functions attached to objects are called methods
+    -   1 mandatory argument
+    -   1 optional argument with a default value: `ndigits=None`
 
-``` python
-my_string = 'Hello world!'
+2.  You can proved arguments implicitly by order, or explicitly in any
+    order
 
-# calling the swapcase method on the my_string object
-print(my_string.swapcase())
-```
+    ``` python
+    # You can optionally specify the number of significant digits
+    round(4.712823, ndigits=2)
+    ```
 
-### Methods can be chained together
+## (Optional) Functions will typically generalize in sensible ways
 
-``` python
-print(my_string.isupper())          # Not all the letters are uppercase
-print(my_string.upper())            # This capitalizes all the letters
+1.  `max()` and `min()` do the intuitively correct thing with numerical
+    and text data
 
-print(my_string.upper().isupper())  # Now all the letters are uppercase
-```
+    ``` python
+    print(max(1, 2, 3))
+    print(min('a', 'A', '0'))       # sort order is 0-9, A-Z, a-z
+    ```
 
-### You can view an object\'s attributes (i.e. methods and fields) using `help()` or `dir()`
+2.  Mixed numbers and text aren\'t meaningfully comparable
 
-Some attributes are \"private\"; you\'re not supposed to use these
-directly.
+    ``` python
+    max(1, 'a')
+    ```
 
-``` python
-# The short, short version
-dir(my_string)
+## *Methods* are functions that belong to objects
 
-# More verbose help
-help(str)
-```
+1.  An object packages data together with functions that operate on that
+    data. This is a very common organizational strategy in Python.
 
-## Python reports a syntax error when it can't understand the source of a program
+    ``` python
+    my_string = 'Hello world!'
 
-``` python
-name = 'Bob
-age = = 54
-print("Hello world"
-```
+    # Call the swapcase method on the my_string object
+    print(my_string.swapcase())
+    ```
 
-## Python reports a runtime error when something goes wrong while a program is executing
+2.  You can chain methods into processing pipelines
 
-We have seen some of these already.
+    ``` python
+    print(my_string.isupper())          # Check whether all letters are uppercase
+    print(my_string.upper())            # Capitalize all the letters
+    ```
 
-## CHALLENGE: What happens when? (optional)
+    ``` python
+    # The output of upper() is as string; you can use more string methods on it
+    my_string.upper().isupper()
+    ```
+
+3.  You can view an object\'s attributes (i.e. methods and fields) using
+    `help()` or `dir()`. Some attributes are \"private\"; you\'re not
+    supposed to use these directly.
+
+    ``` python
+    # More verbose help
+    help(str)
+    ```
+
+    ``` python
+    # The short, short version
+    dir(my_string)
+    ```
+
+4.  The built-in string methods can be very useful for cleaning up data
+
+    ``` python
+    bad_string_1 = "  Hello world!   "
+    bad_string_2 = "|...goodbye cruel world|"
+
+    print(bad_string_1.strip(),
+          bad_string_2.strip("|"))
+    ```
+
+## (Optional) Python produces informative error messages
+
+1.  Python reports a syntax error when it can't understand the source of
+    a program
+
+    ``` python
+    name = 'Bob
+    age = = 54
+    print("Hello world"
+    ```
+
+2.  Python reports a runtime error when something goes wrong while a
+    program is executing
+
+## (Optional) Challenge: What happens when?
 
 Explain in simple terms the order of operations in the following
 program: when does the addition happen, when does the subtraction
@@ -630,8 +734,8 @@ radiance = max(2.1, 2.0 + min(radiance, 1.1 * radiance - 0.5))
 ``` python
 import math
 
-print('pi is', math.pi)
-print('cos(pi) is', math.cos(math.pi))
+print(math.pi)
+print(math.cos(math.pi))
 ```
 
 -   Refer to things from the module as `module-name.thing-name`
@@ -647,23 +751,24 @@ help(math)                      # user friendly
 dir(math)                       # brief reminder, not user friendly
 ```
 
-## Import specific items from a library module to shorten programs.
+## Import shortcuts
 
-You want to be careful with this. It\'s safer to keep the namespace.
+1.  Import specific items from a library module. You want to be careful
+    with this. It\'s safer to keep the namespace.
 
-``` python
-from math import cos, pi
+    ``` python
+    from math import cos, pi
 
-print('cos(pi) is', cos(pi))
-```
+    cos(pi)
+    ```
 
-## Create an alias for a library module when importing it to shorten programs
+2.  Create an alias for a library module when importing it
 
-``` python
-import math as m
+    ``` python
+    import math as m
 
-print('cos(pi) is', m.cos(m.pi))
-```
+    print(m.cos(m.pi))
+    ```
 
 ## Python has opinions about how to write your programs
 
@@ -671,7 +776,282 @@ print('cos(pi) is', m.cos(m.pi))
 import this
 ```
 
-## CHALLENGE: Locating the Right Module (optional)
+# Lists
+
+Lists are the central data structure in Python; we will explain many
+things by making analogies to lists.
+
+## A list stores many values in a single structure
+
+``` python
+pressure = [0.17, 0.23, 0.54, 0.38, 0.76, 0.43]
+print(pressure)
+print(len(pressure))
+```
+
+## Lists are indexed by position, counting from 0
+
+``` python
+print("First item:", pressure[0])
+print("Fifth item:" , pressure[4])
+```
+
+## You can get a subset of the list by slicing it
+
+1.  You slice a list from the start position up to, but not including,
+    the stop position
+
+    ``` python
+    print("First 3 items:", pressure[0:3])
+    print("3rd through 5th:", pressure[2:5])
+    ```
+
+2.  You can omit the start position if you\'re starting at the
+    beginning...
+
+    ``` python
+    print("First 5 items:", pressure[0:5])
+    print("First 5 items, but shorter:", pressure[:5])
+    ```
+
+3.  ...and you can omit the end position if you\'re going to the end
+
+    ``` python
+    # This is useful if you don't know how long the list is
+    print("Everything but the first 3 items:", pressure[3:])
+    ```
+
+4.  You can add an optional step interval (every 2nd item, every 3rd
+    item, etc.)
+
+    ``` python
+    print("First 5 items, every other item:", pressure[0:5:2])
+    print("Every third item:", pressure[::3])
+    ```
+
+## Why are lists indexed from 0?
+
+cf. <https://stackoverflow.com/a/11364711>
+
+1.  Slice endpoints are compliments In both cases, the number you see
+    represents what you want to do.
+
+    ``` python
+    # Get the first two items
+    pressure[:2]
+    ```
+
+    ``` python
+    # Get everything except the first two items
+    pressure[2:]
+    ```
+
+2.  For non-negative indices, the length of a slice is the difference of
+    the indices
+
+    ``` python
+    len(pressure[1:3]) == 2
+    ```
+
+## Some other properties of indexes
+
+1.  Indexing beyond the end of the collection is an error
+
+    ``` python
+    pressure[20]
+    ```
+
+2.  You can count backwards from the end with negative integers
+
+    ``` python
+    print("Last item:", pressure[-1])
+    ```
+
+## Lists are mutable
+
+1.  You can replace a value at a specific index location
+
+    ``` python
+    pressuressure[0] = 0.999
+    print(pressure)
+    ```
+
+2.  Add an item to list with `append()`. This is a *method* of the list.
+
+    ``` python
+    primes = [2, 3, 5]
+    print(primes)
+    primes.append(7)
+    print(primes)
+    ```
+
+3.  Add the items from one list to another with `extend()`
+
+    ``` python
+    teen_primes = [11, 13, 17, 19]
+
+    # Add all of the elements of teen_primes to primes
+    primes.extend(teen_primes)
+    print(primes)
+    ```
+
+4.  (Optional) Slice endpoints are compliments, take 2
+
+    ``` python
+    new_pressure = pressure[:2]
+    new_pressure.extend(pressure[2:])
+
+    print(new_pressure == pressure)
+    ```
+
+## Many functions take collections as arguments
+
+``` python
+mean_p = sum(pressure)/len(pressure)
+print(mean_p)
+```
+
+## (Optional) Removing items from a list
+
+1.  Use `del` to remove an item at an index location
+
+    ``` python
+    printmes = [2, 3, 5, 7, 9]
+    print(primes)
+    del primes[4]
+    print(primes)
+    ```
+
+2.  Use `pop()` to remove the last item and assign it to a variable.
+    This is useful for destructive iteration.
+
+    ``` python
+    p = primes.pop()
+
+    print('Last prime in list', p)
+    print(primes)
+    ```
+
+## Lists can contain anything
+
+1.  You can mix data types
+
+    ``` python
+    ages = ['Derek', 42, 'Bill', 24, 'Susan', 37]
+
+    # Get first pair
+    print(ages[0:2])
+
+    # Get all the names
+    print(ages[::2])
+
+    # Explicit version
+    print(ages[0:-1:2])
+    ```
+
+    ``` python
+    # Get all the ages
+    print(ages[1::2])
+
+    # Explicit version
+    print(ages[1:-1:2])
+    ```
+
+2.  You can put lists inside other lists
+
+    ``` python
+    ages.append(primes)
+
+    # List in our list
+    print(ages)
+
+    # The last item is a list
+    print(ages[-1])
+
+    # Get an item from that list
+    print(ages[-1][2])
+    ```
+
+# Strings are (kind of) like lists
+
+## Strings are indexed like lists
+
+1.  Use an index to get a single character from a string
+
+    ``` python
+    element = 'carbon'
+    element[0]
+    ```
+
+2.  Use a slice to get a substring
+
+    ``` python
+    element[0:3]
+    ```
+
+3.  Counting backwards
+
+    ``` python
+    element[-1]
+    ```
+
+4.  Et cetera
+
+## (Optional) Strings have a length
+
+``` python
+len('carbon')
+```
+
+## But! Strings are immutable
+
+1.  Can\'t change a string in place
+
+    ``` python
+    element[0] = 'C'
+    ```
+
+2.  String methods create a new string
+
+    ``` python
+    print(element.capitalize())
+    print(element)
+    ```
+
+    ``` python
+    carbon_title = element.capitalize()
+    print(carbon_title)
+    ```
+
+## Building strings with `.join()`
+
+``` python
+date_list = ["3", "17", "2007"]
+date = "/".join(date_list)
+print(date)
+```
+
+## (Optional) Challenge: From Strings to Lists and Back
+
+1.  Given this Python code...
+
+    ``` python
+    print('string to list:', list('tin'))
+    print('list to string:', ''.join(['g', 'o', 'l', 'd']))
+    ```
+
+2.  ...and this output:
+
+    ``` fundamental
+    string to list: ['t', 'i', 'n']
+    list to string: gold
+    ```
+
+3.  What does `list('some string')` do?
+
+4.  What does `'-'.join(['x', 'y', 'z'])` generate?
+
+## (Optional) Challenge: Locating the right module
 
 You want to select a random character from a string:
 
@@ -685,257 +1065,98 @@ bases = 'ACTTGCTTGAC'
     alternatives?
 3.  Try to write a program that uses the function.
 
-### Solution:
+### Solutions:
 
-You could try the `random` module.
+1.  You could try the `random` module. The string has 11 characters,
+    each having a positional index from 0 to 10. You could use either
+    `random.randrange` or `random.randint` functions to get a random
+    integer between 0 and 10, and then pick out the character at that
+    position:
 
-The string has 11 characters, each having a positional index from 0 to
-10. You could use either `random.randrange` or `random.randint`
-functions to get a random integer between 0 and 10, and then pick out
-the character at that position:
+    ``` python
+    from random import randrange
 
-``` python
-from random import randrange
+    random_index = randrange(len(bases))
+    print(bases[random_index])
+    ```
 
-random_index = randrange(len(bases))
-print(bases[random_index])
-```
+    ...or more compactly:
 
-or more compactly:
+    ``` python
+    from random import randrange
 
-``` python
-from random import randrange
+    print(bases[randrange(len(bases))])
+    ```
 
-print(bases[randrange(len(bases))])
-```
+2.  Perhaps you found the `random.sample()` function. It allows for
+    slightly less typing:
 
-Perhaps you found the random.sample function? It allows for slightly
-less typing:
+    ``` python
+    from random import sample
 
-``` python
-from random import sample
-
-print(sample(bases, 1)[0])
-```
-
-Note that this function returns a list of values. We will learn about
-lists in episode 11. There's also other functions you could use, but
-with more convoluted code as a result.
-
-# Lists
-
-## A list stores many values in a single structure
-
-``` python
-pressures = [0.273, 0.275, 0.277, 0.275, 0.276]
-print('pressures:', pressures)
-print('length:', len(pressures))
-```
-
-## Use an item's index to fetch it from a list
-
-``` python
-print('zeroth item of pressures:', pressures[0])
-print('fourth item of pressures:', pressures[4])
-```
-
-## Indexing beyond the end of the collection is an error
-
-``` python
-pressures[20]
-```
-
-## Count backwards from the end with negative integers
-
-``` python
-# Get the last item in the list
-print('last item of pressures:', pressures[-1])
-```
-
-## Use a slice to get a subset of the list
-
-The slicing syntax is
-`my_list[inclusive_start_position:exclusive_stop_position:optional_step_amount]`
-
-``` python
-# Up to, but not including index 3
-print('first 3 items of pressures:', pressures[0:3])
-```
-
-## Lists' values can be replaced by assigning to them
-
-``` python
-pressures[0] = 0.265
-print('pressures is now:', pressures)
-```
-
-## Appending items to a list lengthens it
-
-``` python
-primes = [2, 3, 5]
-print('primes is initially:', primes)
-primes.append(7)
-print('primes has become:', primes)
-```
-
--   `append()` is a *method* of lists. Methods are like functions, but
-    they are tied to particular objects.
--   Use `object-name.method-name()` to call methods
--   Deliberately resembles the way we refer to things in a library
--   We will meet other methods of lists as we go along; use `help(list)`
-    for a preview.
-
-## Extend is similar to append, but allows you to merge two lists
-
-``` python
-teen_primes = [11, 13, 17, 19]
-middle_aged_primes = [37, 41, 43, 47]
-print('primes is currently:', primes)
-
-primes.extend(teen_primes)
-print('primes has now become:', primes)
-
-primes.append(middle_aged_primes)
-print('primes has finally become:', primes)
-```
-
-## Use del to remove items from a list entirely
-
-``` python
-primes = [2, 3, 5, 7, 9]
-print('primes before removing last item:', primes)
-del primes[4]
-print('primes after removing last item:', primes)
-```
-
-## Use pop() to remove the last item and assign it to a variable
-
-``` python
-p = primes.pop()
-
-print('Last prime in list', p)
-print('primes after removing last item:', primes)
-```
-
-## The empty list contains no values
-
-Helpful for collecting values
-
-## Lists may contain values of different types
-
-``` python
-ages = ['Derek', 42, 'Bill', 24, 'Susan', 37]
-print('First name/age pair', ages[0:2])
-print("All the ages", ages[0::2])
-```
-
-## Strings can be indexed like lists
-
-### Use an index to get a single character from a string
-
-Count from 0
-
-``` python
-element = 'carbon'
-element[0]
-```
-
-### Use a slice to get a substring
-
-``` python
-# Up to, but not including 3
-element[0:3]
-```
-
-### Counting backwards
-
-``` python
-element[-1]
-```
-
-### Use the built-in function `len()` to find the length of a string
-
-``` python
-len('carbon')                   # length is an integer
-```
-
-## But! Character strings are immutable
-
-``` python
-element[0] = 'C'
-```
-
-## Python is full of analogies
-
--   lists and strings
--   lists and files
-
-## CHALLENGE: From Strings to Lists and Back
-
-Given this Python code:
-
-``` python
-print('string to list:', list('tin'))
-print('list to string:', ''.join(['g', 'o', 'l', 'd']))
-```
-
-And this output:
-
-``` example
-string to list: ['t', 'i', 'n']
-list to string: gold
-```
-
-1.  What does `list('some string')` do?
-2.  What does `'-'.join(['x', 'y', 'z'])` generate?
-3.  How can you change \"carbon\" to \"Carbon\"?
-
-### Solution
-
-``` python
-# Strings are immutable, so you have to create a new string.
-# Use the .join() method to join a list of strings into a new string.
-new_element = ''.join(['C', element[1:]])
-
-# or
-new_element = element.capitalize()
-```
+    print(sample(bases, 1)[0])
+    ```
 
 # Dictionaries
 
 ## Dictionaries are sets of key/value pairs. Instead of being indexed by position, they are indexed by key.
 
 ``` python
-ages = {'Derek': 42,
-        'Bill': 24,
-        'Susan': 37}
+wave_fc = {"Girma": 4,
+           "Sheridan": 3,
+           "Morgan": 13,
+           "Jakobsson": 10}
 
-print(ages['Derek'])
+# Returns 4
+wave_fc["Girma"]
 ```
 
-## Update dictionaries by assigning a new key/value pair
+## Update dictionaries by assigning a key/value pair
+
+1.  Add a new key/value pair
+
+    ``` python
+    wave_fc["Shaw"] = 11
+    ```
+
+2.  Update a pre-existing key with a new value
+
+    ``` python
+    wave_fc["Sheridan"] = 1
+
+    print(wave_fc)
+    ```
+
+## (Optional) Check whether the dictionary contains an item
+
+1.  Does a key already exist?
+
+    ``` python
+    "Girma" in wave_fc
+    ```
+
+2.  Does a value already exist (you generally don\'t want to do this;
+    keys are unique but values are not)?
+
+    ``` python
+    4 in wave_fc.values()
+    ```
+
+## (Optional) Delete an item using `del` or `pop()`
 
 ``` python
-ages['Sam'] = 12
+print("Original dictionary", wave_fc)
+del wave_fc["Morgan"]
+print("1st deletion", wave_fc)
 
-print(ages)
-```
-
-## Delete an item using del or pop()
-
-``` python
-print("Original dictionary", ages)
-del ages['Derek']
-print("Dictionary after 1st deletion", ages)
-
-derek_age = ages.pop('Derek')
-print("Dictionary after 2nd deletion", ages)
-print("Returned value", derek_age)
-
-print(ages)
+girma_num = wave_fc.pop("Girma")
+print("2nd deletion", wave_fc)
+print("Returned value", girma_num)
 ```
 
 ## Dictionaries are the natural way to store tree-structured data
+
+As with lists, you can put anything in a dictionary.
 
 ``` python
 location = {'latitude': [37.28306, 'N'],
@@ -944,7 +1165,7 @@ location = {'latitude': [37.28306, 'N'],
 print(location['longitude'][0])
 ```
 
-## CHALLENGE: Convert lists to dictionary (group)
+## Challenge: Convert a list to a dictionary
 
 How can you convert our list of names and ages into a dictionary? Hint:
 You will need to populate the dictionary with a list of keys and a list
@@ -961,16 +1182,13 @@ help({})
 ### Solution
 
 ``` python
-names_list = ages[0::2]
-ages_list = ages[1::2]
-
-ages_dict = dict(zip(names_list, ages_list))
+ages_dict = dict(zip(ages[::2], ages[1::2]))
 ```
 
-# Other containers (optional)
+# (Optional) Other containers
 
--   Tuples
--   Sets
+1.  Tuples
+2.  Sets
 
 # **WEEK 2: Data manipulation with Pandas**
 
@@ -1201,7 +1419,7 @@ type(data['gdpPercap_1952'])
 
 ## Selecting values
 
-1.  Rows have positions \[i, j, ..\] and labels. This gives us two ways
+1.  Items have positions \[i, j, ..\] and labels. This gives us two ways
     to access data:
 
     1.  Treat the DataFrame as a matrix and select values using linear
@@ -1221,27 +1439,36 @@ type(data['gdpPercap_1952'])
 3.  Use `DataFrame.loc[..., ...]` to select values by their label
 
     ``` python
+    # This returns a value
     data.loc["Albania", "gdpPercap_1952"]
     ```
 
-4.  Use `:` on its own to mean all columns or all rows. This is Python's
+4.  Select multiple columns or rows using `DataFrame.loc` and a named
+    slice. This generalizes the concept of a slice to include labeled
+    indexes:
+
+    ``` python
+    # This returns a DataFrame
+    data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
+    ```
+
+5.  Use `:` on its own to mean all columns or all rows. This is Python's
     usual slicing notation, which allows you to treat DataFrames as
     multi-dimensional lists (unlike R, Python requires you to explicitly
     ask for all rows or columns).
 
     ``` python
+    # This returns a Series
     data.loc["Albania", :]
     ```
 
-5.  Select multiple columns or rows using `DataFrame.loc` and a named
-    slice. This generalizes the concept of a slice to include labeled
-    indexes:
+6.  If you want specific rows or columns, pass in a list:
 
     ``` python
-    data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
+    data.loc[['Italy','Poland'], :]
     ```
 
-6.  `DataFrame.iloc` follows list index conventions (\"up to, but not
+7.  `DataFrame.iloc` follows list index conventions (\"up to, but not
     including)\", but `DataFrame.loc` does the intuitive right thing
     (\"A through B\"):
 
@@ -1257,11 +1484,24 @@ type(data['gdpPercap_1952'])
         data.loc["Albania":"Belgium", "gdpPercap_1952":"gdpPercap_1962"]
         ```
 
-7.  A DataFrame is a spreadsheet, but it is also a dictionary of
+8.  A DataFrame is a spreadsheet, but it is also a dictionary of
     columns.
 
     ``` python
     data['gdpPercap_1962']
+    ```
+
+9.  (Optional) You can extract individual rows as Series, then
+    concatenate them into a new DataFrame
+
+    ``` python
+    # Get each row as a Series
+    italy = data.loc["Italy", :]
+    poland = data.loc["Poland", :]
+
+    # `axis=1` concatenates as a 2xN DataFrame (rather than a 1x2N Series)
+    # Transpose to recover original orientation
+    pd.concat([italy, poland], axis=1).T
     ```
 
 ## Result of slicing can be used in further operations
@@ -1479,6 +1719,33 @@ df.append({'a': 3, 'b': 4}, ignore_index=True)
 2.  Calculate the mean Z score for each country
 3.  Add it as a new column
 
+# (Optional) Generic higher-order functions
+
+Higher-order functions take other functions as arguments and apply them
+across whole collections. Examples include mapy, apply, fold, reduce,
+etc.
+
+``` python
+import numpy as np
+
+subset.cumsum()
+
+# Higher-order function
+subset.apply(np.cumsum)
+```
+
+# Functional and SQL-style query/filter/subset methods
+
+-   concat/merge
+    <https://pandas.pydata.org/docs/reference/api/pandas.concat.html>
+-   filter/group/subset:
+    <https://pandas.pydata.org/docs/user_guide/groupby.html>
+-   Merge, join, concatenate and compare:
+    <https://pandas.pydata.org/docs/user_guide/merging.html>
+-   The generic `apply()` function
+-   functional methods and database access methods ()
+-   Vectorized operations
+
 # **WEEK 3: Visualization with Matplotlib and Seaborn**
 
 # Graphs
@@ -1511,6 +1778,8 @@ ax.plot(time, postion)
 
 fig
 ```
+
+## Oceania basic plot
 
 ## Two kinds of plotting objects
 
@@ -2103,6 +2372,9 @@ does what you want
 
 # Conditionals
 
+e.g. generate a data set with missing data, then check for it using
+any()/all()
+
 ## Use `if` statements to control whether or not a block of code is executed
 
 An `if` statement (more properly called a conditional statement)
@@ -2456,7 +2728,9 @@ data['new_col'] = data['lifeExp_1952'].apply(my_fun)
 
 # Software Logistics
 
-## Python files vs. Notebook files
+## Export to .py
+
+run in e.g. Spyder
 
 ## Python from the command line
 
@@ -2833,6 +3107,11 @@ python my_program.py
     <https://seaborn.pydata.org/examples/index.html>
 -   Matplotlib gallery of examples:
     <https://matplotlib.org/gallery/index.html>
+-   IPython magic commands:
+    <https://ipython.readthedocs.io/en/stable/interactive/magics.html>
+-   A somewhat-biased comparison of tools for integrating Python with
+    C/C++:
+    <http://blog.behnel.de/posts/cython-pybind11-cffi-which-tool-to-choose.html>
 
 # Data Sources
 
