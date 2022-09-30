@@ -107,59 +107,88 @@
 -   [(Optional) Other containers](#optional-other-containers)
 -   [**WEEK 2: Data manipulation with
     Pandas**](#week-2-data-manipulation-with-pandas)
--   [(Optional) Review lists and
-    dictionaries](#optional-review-lists-and-dictionaries)
--   [(Optional) Review strings](#optional-review-strings)
--   [Where are we?](#where-are-we)
+-   [(Optional) Review collections](#optional-review-collections)
+    -   [Lists and dictionaries](#lists-and-dictionaries)
+    -   [Strings](#strings)
+-   [A very brief introduction to
+    NumPy](#a-very-brief-introduction-to-numpy)
+-   [A very brief introduction to
+    Pandas](#a-very-brief-introduction-to-pandas)
+-   [(Optional) Where are we?](#optional-where-are-we)
     -   [Python provides functions for working with the file
         system.](#python-provides-functions-for-working-with-the-file-system.)
-    -   [(Optional) These provide a rich Python alternative to shell
-        functions](#optional-these-provide-a-rich-python-alternative-to-shell-functions)
--   [Reading Tabular Data into
-    DataFrames](#reading-tabular-data-into-dataframes)
-    -   [Use the Pandas library to work on tabular
-        data](#use-the-pandas-library-to-work-on-tabular-data)
-    -   [Use `index_col` to specify that a column's values should be
-        used as row
-        headings](#use-index_col-to-specify-that-a-columns-values-should-be-used-as-row-headings)
+    -   [These provide a rich Python alternative to shell
+        functions](#these-provide-a-rich-python-alternative-to-shell-functions)
+-   [Reading tabular data into data
+    frames](#reading-tabular-data-into-data-frames)
+    -   [Import tabular data using the Pandas
+        library](#import-tabular-data-using-the-pandas-library)
+    -   [Use `index_col` to use a column's values as row
+        indices](#use-index_col-to-use-a-columns-values-as-row-indices)
+    -   [Pandas help files are dense; you should prefer the online
+        documentation](#pandas-help-files-are-dense-you-should-prefer-the-online-documentation)
+-   [Data frames are objects that can tell you about their
+    contents](#data-frames-are-objects-that-can-tell-you-about-their-contents)
     -   [Data frames have methods (i.e. functions) that perform
         operations using the data frame\'s contents as
         input](#data-frames-have-methods-i.e.-functions-that-perform-operations-using-the-data-frames-contents-as-input)
     -   [Data frames have fields (i.e. variables) that hold additional
         information](#data-frames-have-fields-i.e.-variables-that-hold-additional-information)
-    -   [Pandas help files are dense; you should prefer the online
-        documentation](#pandas-help-files-are-dense-you-should-prefer-the-online-documentation)
-    -   [Challenge](#challenge)
-    -   [(Optional) Introspecting on the DataFrame
-        object](#optional-introspecting-on-the-dataframe-object)
--   [Pandas DataFrames](#pandas-dataframes)
-    -   [Notes about Pandas
-        DataFrames/Series](#notes-about-pandas-dataframesseries)
     -   [(Optional) Pandas introduces some new
         types](#optional-pandas-introduces-some-new-types)
-    -   [Selecting values](#selecting-values)
-    -   [Result of slicing can be used in further
-        operations](#result-of-slicing-can-be-used-in-further-operations)
+    -   [(Optional) Challenge](#optional-challenge)
+-   [Subsetting Data](#subsetting-data)
+    -   [Treat the data frame as a matrix and select values by
+        position](#treat-the-data-frame-as-a-matrix-and-select-values-by-position)
+    -   [Treat the data frame as a table and select values by
+        label](#treat-the-data-frame-as-a-table-and-select-values-by-label)
+    -   [Shorten the column names using vectorized string
+        methods](#shorten-the-column-names-using-vectorized-string-methods)
+    -   [Use list slicing notation to get subsets of the data
+        frame](#use-list-slicing-notation-to-get-subsets-of-the-data-frame)
+    -   [Treat the data frame as an object and select values using
+        flexible
+        methods](#treat-the-data-frame-as-an-object-and-select-values-using-flexible-methods)
+-   [Filtering data](#filtering-data)
     -   [Use comparisons to select data based on
         value](#use-comparisons-to-select-data-based-on-value)
     -   [Use method chaining to create final output without creating
         intermediate
         variables](#use-method-chaining-to-create-final-output-without-creating-intermediate-variables)
-    -   [(Optional) DataFrame methods have sensible defaults that you
-        can
-        change](#optional-dataframe-methods-have-sensible-defaults-that-you-can-change)
-    -   [(Optional) Truth value of whole data
-        frames](#optional-truth-value-of-whole-data-frames)
-    -   [(Carpentries version) Group By:
-        split-apply-combine](#carpentries-version-group-by-split-apply-combine)
-    -   [Group By: split-apply-combine](#group-by-split-apply-combine)
-    -   [(Optional) Adding rows to
-        DataFrames](#optional-adding-rows-to-dataframes)
-    -   [(Carpentries) Challenge](#carpentries-challenge)
--   [(Optional) Generic higher-order
-    functions](#optional-generic-higher-order-functions)
--   [Functional and SQL-style query/filter/subset
-    methods](#functional-and-sql-style-queryfiltersubset-methods)
+    -   [Methods we\'re not going to
+        cover](#methods-were-not-going-to-cover)
+-   [Working with missing data](#working-with-missing-data)
+    -   [By default, most numerical operations ignore missing
+        data](#by-default-most-numerical-operations-ignore-missing-data)
+    -   [Check for missing values](#check-for-missing-values)
+    -   [Replace missing values](#replace-missing-values)
+    -   [Drop missing values](#drop-missing-values)
+-   [Sorting and grouping](#sorting-and-grouping)
+    -   [Motivating example: Calculate the wealth Z-score for each
+        country](#motivating-example-calculate-the-wealth-z-score-for-each-country)
+    -   [Append new columns to the data frame containing our summary
+        statistics](#append-new-columns-to-the-data-frame-containing-our-summary-statistics)
+    -   [Sort and group by new columns](#sort-and-group-by-new-columns)
+-   [Write output](#write-output)
+-   [Working with multiple tables (in an SQL-like
+    manner)](#working-with-multiple-tables-in-an-sql-like-manner)
+    -   [Concatenating data frames](#concatenating-data-frames)
+    -   [Joining data frames](#joining-data-frames)
+-   [Scientific Computing Libraries](#scientific-computing-libraries)
+    -   [(Optional) Statsmodels regression
+        example](#optional-statsmodels-regression-example)
+    -   [(Optional) Getting started with machine learning
+        estimators](#optional-getting-started-with-machine-learning-estimators)
+-   [(Optional) Things we didn\'t talk
+    about](#optional-things-we-didnt-talk-about)
+-   [(Optional) Adding rows to
+    DataFrames](#optional-adding-rows-to-dataframes)
+-   [(Optional) Pandas method chaining in the
+    wild](#optional-pandas-method-chaining-in-the-wild)
+-   [(Optional) Introspecting on the DataFrame
+    object](#optional-introspecting-on-the-dataframe-object)
+-   [(Carpentries version) Group By:
+    split-apply-combine](#carpentries-version-group-by-split-apply-combine)
 -   [**WEEK 3: Visualization with Matplotlib and
     Seaborn**](#week-3-visualization-with-matplotlib-and-seaborn)
 -   [Graphs](#graphs)
@@ -188,6 +217,15 @@
     https://seaborn.pydata.org/whatsnew.html](#seaborn-0.11-new-features-httpsseaborn.pydata.orgwhatsnew.html)
 -   [Looping through datasets](#looping-through-datasets)
 -   [**WEEK 4: Building Programs**](#week-4-building-programs)
+-   [Notebooks vs Python](#notebooks-vs-python)
+    -   [File contents](#file-contents)
+    -   [Editors](#editors)
+    -   [Workflow](#workflow)
+    -   [When should I do this?](#when-should-i-do-this)
+-   [Python from the terminal](#python-from-the-terminal)
+-   [Use text processing and data frame processing as motivating
+    examples for each
+    section](#use-text-processing-and-data-frame-processing-as-motivating-examples-for-each-section)
 -   [For Loops](#for-loops)
     -   [A `for` loop executes commands once for each value in a
         collection](#a-for-loop-executes-commands-once-for-each-value-in-a-collection)
@@ -198,10 +236,11 @@
         anything](#loop-variables-can-be-called-anything)
     -   [The body of a loop can contain many
         statements](#the-body-of-a-loop-can-contain-many-statements)
-    -   [Use `range()` to iterate over a sequence of
-        numbers](#use-range-to-iterate-over-a-sequence-of-numbers)
-    -   [Use `enumerate()` to iterate over a sequence of items and their
-        positions](#use-enumerate-to-iterate-over-a-sequence-of-items-and-their-positions)
+    -   [(Optional) Use `range()` to iterate over a sequence of
+        numbers](#optional-use-range-to-iterate-over-a-sequence-of-numbers)
+    -   [(Optional) Use `enumerate()` to iterate over a sequence of
+        items and their
+        positions](#optional-use-enumerate-to-iterate-over-a-sequence-of-items-and-their-positions)
     -   [The Accumulator pattern turns many values into
         one](#the-accumulator-pattern-turns-many-values-into-one)
     -   [Dictionary iteration](#dictionary-iteration)
@@ -209,12 +248,28 @@
         (optional)](#how-do-you-know-if-an-object-is-iterable-optional)
     -   [Don\'t use `for` loops with DataFrames or Numpy
         matrices](#dont-use-for-loops-with-dataframes-or-numpy-matrices)
--   [Conditionals](#conditionals)
+-   [(move this up and incorporate) Looping Over Data
+    Sets](#move-this-up-and-incorporate-looping-over-data-sets)
+    -   [File paths as an example of increasing abstraction in program
+        development](#file-paths-as-an-example-of-increasing-abstraction-in-program-development)
+    -   [Use a `for` loop to process files given a list of their
+        names](#use-a-for-loop-to-process-files-given-a-list-of-their-names)
+    -   [Use glob.glob to find sets of files whose names match a
+        pattern](#use-glob.glob-to-find-sets-of-files-whose-names-match-a-pattern)
+    -   [Use glob and for to process batches of
+        files](#use-glob-and-for-to-process-batches-of-files)
+    -   [CHALLENGE: Comparing data (optional)
+        (rewrite)](#challenge-comparing-data-optional-rewrite)
+-   [Conditionals - motivate with data frame
+    processing](#conditionals---motivate-with-data-frame-processing)
     -   [Use `if` statements to control whether or not a block of code
         is
         executed](#use-if-statements-to-control-whether-or-not-a-block-of-code-is-executed)
     -   [Conditionals are often used inside
         loops](#conditionals-are-often-used-inside-loops)
+    -   [(Optional) Use pathlib to write code that works across
+        operating
+        systems](#optional-use-pathlib-to-write-code-that-works-across-operating-systems)
     -   [Use else to execute a block of code when an if condition is not
         true](#use-else-to-execute-a-block-of-code-when-an-if-condition-is-not-true)
     -   [Use `elif` to specify additional
@@ -225,20 +280,8 @@
         variables](#use-conditionals-in-a-loop-to-evolve-the-values-of-variables)
     -   [Compound Relations Using `and`, `or`, and Parentheses
         (optional)](#compound-relations-using-and-or-and-parentheses-optional)
--   [Looping Over Data Sets](#looping-over-data-sets)
-    -   [File paths as an example of increasing abstraction in program
-        development](#file-paths-as-an-example-of-increasing-abstraction-in-program-development)
-    -   [Use a `for` loop to process files given a list of their
-        names](#use-a-for-loop-to-process-files-given-a-list-of-their-names)
-    -   [Use glob.glob to find sets of files whose names match a
-        pattern](#use-glob.glob-to-find-sets-of-files-whose-names-match-a-pattern)
-    -   [Use glob and for to process batches of
-        files](#use-glob-and-for-to-process-batches-of-files)
-    -   [Use pathlib to write code that works across operating systems
-        (optional)](#use-pathlib-to-write-code-that-works-across-operating-systems-optional)
-    -   [CHALLENGE: Comparing data (optional)
-        (rewrite)](#challenge-comparing-data-optional-rewrite)
--   [Writing Functions](#writing-functions)
+-   [(encapsulate cleaning functions) Writing
+    Functions](#encapsulate-cleaning-functions-writing-functions)
     -   [Break programs down into functions to make them easier to
         understand](#break-programs-down-into-functions-to-make-them-easier-to-understand)
     -   [Define a function using `def` with a name, parameters, and a
@@ -281,19 +324,9 @@
 -   [Reducing memory usage 2: Use an SQLite database
     (optional)](#reducing-memory-usage-2-use-an-sqlite-database-optional)
 -   [Other optional topics](#other-optional-topics)
--   [Scientific Computing Libraries](#scientific-computing-libraries)
-    -   [Downstream libraries](#downstream-libraries)
-    -   [Standard library vs. outside
-        modules](#standard-library-vs.-outside-modules)
-    -   [SciPy project](#scipy-project)
-    -   [Statistics](#statistics)
-    -   [Machine learning with
-        Scikit-Learn](#machine-learning-with-scikit-learn)
-    -   [Command-Line Programs](#command-line-programs)
 -   [Credits](#credits)
 -   [References](#references)
 -   [Data Sources](#data-sources)
-    -   [Additional data files](#additional-data-files)
 
 # **WEEK 1: Fundamentals**
 
@@ -371,7 +404,7 @@
     ```
 
 6.  Jupyter Lab (IPython, actually) has \"magic\" commands that start
-    with `%`
+    with `%` (line) or `%%` (cell)
 
     ``` python
     # Print current items in memory
@@ -382,6 +415,9 @@
 
     # Cell magic: Run bash in a subprocess
     %%bash
+
+    # Cell magic: Time cell execution
+    %%time
     ```
 
 # Variables and Assignment
@@ -838,12 +874,10 @@ cf. <https://stackoverflow.com/a/11364711>
 
     ``` python
     # Get the first two items
-    pressure[:2]
-    ```
+    print(pressure[:2])
 
-    ``` python
     # Get everything except the first two items
-    pressure[2:]
+    print(pressure[2:])
     ```
 
 2.  For non-negative indices, the length of a slice is the difference of
@@ -916,7 +950,7 @@ print(mean_p)
 1.  Use `del` to remove an item at an index location
 
     ``` python
-    printmes = [2, 3, 5, 7, 9]
+    primes = [2, 3, 5, 7, 9]
     print(primes)
     del primes[4]
     print(primes)
@@ -945,16 +979,8 @@ print(mean_p)
     # Get all the names
     print(ages[::2])
 
-    # Explicit version
-    print(ages[0:-1:2])
-    ```
-
-    ``` python
     # Get all the ages
     print(ages[1::2])
-
-    # Explicit version
-    print(ages[1:-1:2])
     ```
 
 2.  You can put lists inside other lists
@@ -1104,8 +1130,7 @@ bases = 'ACTTGCTTGAC'
 ``` python
 wave_fc = {"Girma": 4,
            "Sheridan": 3,
-           "Morgan": 13,
-           "Jakobsson": 10}
+           "Morgan": 13}
 
 # Returns 4
 wave_fc["Girma"]
@@ -1113,18 +1138,18 @@ wave_fc["Girma"]
 
 ## Update dictionaries by assigning a key/value pair
 
-1.  Add a new key/value pair
-
-    ``` python
-    wave_fc["Shaw"] = 11
-    ```
-
-2.  Update a pre-existing key with a new value
+1.  Update a pre-existing key with a new value
 
     ``` python
     wave_fc["Sheridan"] = 1
 
     print(wave_fc)
+    ```
+
+2.  Add a new key/value pair
+
+    ``` python
+    wave_fc["Shaw"] = 11
     ```
 
 ## (Optional) Check whether the dictionary contains an item
@@ -1192,19 +1217,48 @@ ages_dict = dict(zip(ages[::2], ages[1::2]))
 
 # **WEEK 2: Data manipulation with Pandas**
 
-# (Optional) Review lists and dictionaries
+# (Optional) Review collections
+
+## Lists and dictionaries
 
 1.  Reference item by index/key
 2.  Insert item by index/key
 3.  Indices/keys must be unique
 
-# (Optional) Review strings
+## Strings
 
 1.  Similar to lists: Reference item by index, have length
 2.  Immutable, so need to use string **methods**
 3.  `'/'.join()` is a very useful method
 
-# Where are we?
+# A very brief introduction to NumPy
+
+1.  NumPy is the linear algebra library for Python
+
+    ``` python
+    import numpy as np
+
+    # Create an array of random numbers
+    rand = np.random.rand(3, 4)
+
+    print(rand)
+    print(rand[0,0])
+    ```
+
+2.  Arrays are fast but inflexible - the entire array must be of a
+    single type.
+
+# A very brief introduction to Pandas
+
+1.  Pandas is a library for working with spreadsheet-like data
+    (\"DataFrames\")
+2.  A DataFrame is a collection (dict) of Series columns
+3.  Each Series is a 1-dimensional NumPy array with optional row labels
+    (dict-like, similar to R vectors)
+4.  Therefore, each series inherits many of the abilities (linear
+    algebra) and limitations (single data type) of NumPy
+
+# (Optional) Where are we?
 
 ## Python provides functions for working with the file system.
 
@@ -1217,16 +1271,24 @@ print("Current working directory:", os.getcwd())
 print("Working directory contents:", os.listdir())
 ```
 
-## (Optional) These provide a rich Python alternative to shell functions
+## These provide a rich Python alternative to shell functions
 
 ``` python
-# Just print the directories
+# Get 1 level of subdirectories
 print("Just print the sub-directories:", sorted(next(os.walk('.'))[1]))
+
+# Move down one directory
+os.chdir("data")
+print(os.getcwd())
+
+# Move up one directory
+os.chdir("..")
+print(os.getcwd())
 ```
 
-# Reading Tabular Data into DataFrames
+# Reading tabular data into data frames
 
-## Use the Pandas library to work on tabular data
+## Import tabular data using the Pandas library
 
 ``` python
 import pandas as pd
@@ -1243,7 +1305,7 @@ data
 -   File and directory names are strings
 -   You can use relative or absolute file paths
 
-## Use `index_col` to specify that a column's values should be used as row headings
+## Use `index_col` to use a column's values as row indices
 
 Rows are indexed by number by default (0, 1, 2,....). For convenience,
 we want to index by country:
@@ -1260,49 +1322,83 @@ print(data)
 -   You can verify the contents of the CSV by double-clicking on the
     file in Jupyter Lab
 
+## Pandas help files are dense; you should prefer the online documentation
+
+1.  Main documentation link:
+    <https://pandas.pydata.org/docs/user_guide/index.html>
+2.  Pandas can read many different data formats:
+    <https://pandas.pydata.org/docs/user_guide/io.html>
+
+# Data frames are objects that can tell you about their contents
+
 ## Data frames have methods (i.e. functions) that perform operations using the data frame\'s contents as input
 
-1.  Use `DataFrame.info()` to find out more about a data frame
+1.  Use `.info()` to find out more about a data frame
 
     ``` python
     data.info()
     ```
 
-2.  Use `DataFrame.describe()` to get summary statistics about data
+2.  Use `.describe()` to get summary statistics about data
 
     ``` python
     data.describe()
+    ```
+
+3.  Look at the first few rows
+
+    ``` python
+    data.head(1)
     ```
 
 ## Data frames have fields (i.e. variables) that hold additional information
 
 A \"field\" is a variable that belongs to an object.
 
-1.  The `DataFrame.columns` field stores information about the
-    DataFrame's columns
+1.  The `.index` field stores the row Index (list of row labels)
 
     ``` python
-    data.columns
+    print(data.index)
     ```
 
-2.  The `DataFrame.shape` variable stores the matrix shape
+2.  The `.columns` field stores the column Index (list of column labels)
 
     ``` python
-    data.shape
+    print(data.columns)
     ```
 
-3.  Use `DataFrame.T` to transpose a DataFrame Does not copy or modify
-    the data, just changes the caller\'s view of it.
+3.  The `.shape` variable stores the matrix shape
+
+    ``` python
+    print(data.shape)
+    ```
+
+4.  Use `DataFrame.T` to transpose a DataFrame. This doesn\'t copy or
+    modify the data, it just changes the caller\'s view of it.
 
     ``` python
     data.T
     ```
 
-## Pandas help files are dense; you should prefer the online documentation
+## (Optional) Pandas introduces some new types
 
-<https://pandas.pydata.org/docs/user_guide/index.html>
+``` python
+# DataFrame type
+type(data)
+type(data.T)
 
-## Challenge
+# Series type
+type(data['gdpPercap_1952'])
+
+# Index type
+type(data.columns)
+```
+
+-   You can convert data between NumPy arrays, Series, and DataFrames
+-   You can read data into any of the data structures from files or from
+    standard Python containers
+
+## (Optional) Challenge
 
 1.  Read the data in `gapminder_gdp_americas.csv` into a variable called
     `americas` and display its summary statistics.
@@ -1343,7 +1439,420 @@ americas.T.tail(3)
 americas.to_csv('processed.csv')
 ```
 
-## (Optional) Introspecting on the DataFrame object
+# Subsetting Data
+
+## Treat the data frame as a matrix and select values by position
+
+Use `DataFrame.iloc[..., ...]` to select values by their (entry)
+position. The `i` in `iloc` stands for \"index\".
+
+``` python
+import pandas as pd
+data = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
+
+data.iloc[0,0]
+```
+
+## Treat the data frame as a table and select values by label
+
+This is most common way to get data
+
+1.  Use `DataFrame.loc[..., ...]` to select values by their label
+
+    ``` python
+    # This returns a value
+    data.loc["Albania", "gdpPercap_1952"]
+    ```
+
+## Shorten the column names using vectorized string methods
+
+``` python
+print(data.columns)
+
+# The columns index can update all of its values in a single operation
+data.columns = data.columns.str.strip("gdpPercap_")
+print(data.columns)
+```
+
+## Use list slicing notation to get subsets of the data frame
+
+1.  Select multiple columns or rows using `.loc` and a named slice. This
+    generalizes the concept of a slice to include labeled indexes:
+
+    ``` python
+    # This returns a DataFrame
+    data.loc['Italy':'Poland', '1962':'1972']
+    ```
+
+2.  Use `:` on its own to mean all columns or all rows. This is Python's
+    usual slicing notation, which allows you to treat DataFrames as
+    multi-dimensional lists. Note that Pandas automatically converts the
+    1-dimensional row into a Series; we will discuss how to get around
+    this in the next section.
+
+    ``` python
+    # This returns a Series
+    data.loc["Albania", :]
+    ```
+
+3.  If you want specific rows or columns, pass in a list:
+
+    ``` python
+    data.loc[['Italy','Poland'], :]
+    ```
+
+4.  `.iloc` follows list index conventions (\"up to, but not
+    including)\", but `.loc` does the intuitive right thing (\"A through
+    B\"):
+
+    ``` python
+    index_subset = data.iloc[0:2, 0:2]
+    label_subset = data.loc["Albania":"Belgium", "1952":"1962"]
+
+    print(index_subset)
+    print(label_subset)
+    ```
+
+5.  Result of slicing can be used in further operations
+
+    ``` python
+    subset = data.loc['Italy':'Poland', '1962':'1972']
+
+    print(subset.describe)
+    print(subset.max())
+    ```
+
+6.  (Optional) You can extract individual rows as Series, then
+    concatenate them into a new DataFrame
+
+    ``` python
+    # Get each row as a Series
+    italy = data.loc["Italy", :]
+    poland = data.loc["Poland", :]
+
+    # Omitting axis argument (or axis=0) concatenates the 2 series end-to-end
+    # axis=1 creates a 2D data frame
+    # Transpose recovers original orientation
+    # Column labels come from Series index
+    # Row labels come from Series name
+    pd.concat([italy, poland], axis=1).T
+    ```
+
+## Treat the data frame as an object and select values using flexible methods
+
+1.  `.filter()` is a general-purpose, flexible method
+
+    ``` python
+    help(data.filter)
+    data.filter(like="20)", axis="columns")
+    ```
+
+2.  `.filter()` always returns the same type as the original item,
+    whereas `.loc` and `.iloc` might return a data frame or a series.
+
+    ``` python
+    italy = data.filter(like="200", axis="columns").filter(items=["Italy"], axis="index")
+    print(italy)
+    print(type(italy))
+    ```
+
+# Filtering data
+
+## Use comparisons to select data based on value
+
+1.  Show which data frame elements match a criterion
+
+    ``` python
+    # Which GDPs are greater than 10,000?
+    subset > 10000
+    ```
+
+2.  Use `.where()` method to find elements that match the criterion:
+
+    ``` python
+    fs = subset.where(subset > 10000)
+    print(fs)
+    ```
+
+3.  (Optional) Use the criterion match to filter the data frame\'s
+    contents. This uses index notation:
+
+    ``` python
+    subset[subset > 10000]
+    ```
+
+## Use method chaining to create final output without creating intermediate variables
+
+``` python
+# The rank() method turns numerical scores into ranks, e.g.:
+subset.rank()
+
+# Do this for countries above the median
+data.where(data > data.median()).rank()
+```
+
+## Methods we\'re not going to cover
+
+`.query()`
+
+# Working with missing data
+
+## By default, most numerical operations ignore missing data
+
+Examples include min, max, mean, std, etc.
+
+1.  Missing values ignored by default
+
+    ``` python
+    # Column means
+    print(fs.mean())
+
+    # Row means
+    print(fs.mean(axis=1))
+    ```
+
+2.  Force inclusions with the `skipna` argument
+
+    ``` python
+    print(fs.mean(skipna=False))
+    print(fs.mean(axis=1, skipna=False))
+    ```
+
+## Check for missing values
+
+1.  Show which items are missing
+
+    ``` python
+    # Show which items are NaN
+    fs.isna()
+    ```
+
+2.  Count missing values
+
+    ``` python
+    # Missing by row
+    print(fs.isna().sum())
+
+    # Missing by column
+    print(fs.isna().sum(axis=1))
+
+    # Aggregate sum
+    fs.isna().sum().sum()
+    ```
+
+3.  Are any values missing?
+
+    ``` python
+    fs.isna().any(None)
+    ```
+
+4.  (Optional) Are all of the values missing?
+
+    ``` python
+    fs.isna().all(None)
+    ```
+
+## Replace missing values
+
+1.  Replace with a fixed value
+
+    ``` python
+    fs_fixed = fs.fillna(0)
+    ```
+
+2.  (Optional) Interpolate missing values
+
+    ``` python
+    fs_inferred = fs.interpolate()
+    ```
+
+## Drop missing values
+
+``` python
+fs_drop = fs.dropna()
+```
+
+# Sorting and grouping
+
+## Motivating example: Calculate the wealth Z-score for each country
+
+``` python
+# Calculate z scores for all elements
+z = (data - data.mean())/data.std()
+
+# Get the mean z score for each country (i.e. across all columns)
+mean_z = z.mean(axis=1)
+
+# Group countries into "wealthy" (z > 0) and "not wealthy" (z <= 0)
+z_bool = mean_z > 0
+
+print(mean_z)
+print(z_bool)
+```
+
+## Append new columns to the data frame containing our summary statistics
+
+Data frames are dictionaries of Series:
+
+``` python
+data["mean_z"] = mean_z
+data["wealthy"] = z_bool
+```
+
+## Sort and group by new columns
+
+``` python
+data.sort_values(by="mean_z")
+```
+
+``` python
+# Get descriptive statistics for the group
+data.groupby("wealthy").mean()
+data.groupby("wealthy").describe()
+```
+
+# Write output
+
+Capture the results of your filter in a new file, rather than
+overwriting your original data.
+
+``` python
+# Save to a new CSV, preserving your original data
+data.to_csv('gapminder_gdp_europe_normed.csv')
+
+# If you don't want to preserve row names:
+#data.to_csv('gapminder_gdp_europe_normed.csv', index=False)
+```
+
+# Working with multiple tables (in an SQL-like manner)
+
+## Concatenating data frames
+
+``` python
+surveys = pd.read_csv('data/surveys.csv', index_col="record_id")
+print(surveys.shape)
+```
+
+``` python
+df1 = surveys.head(10)
+df2 = surveys.tail(10)
+
+df3 = pd.concat([df1, df2])
+print(df3.shape)
+```
+
+## Joining data frames
+
+1.  Import species data
+
+    ``` python
+    species = pd.read_csv('data/species.csv', index_col="species_id")
+    print(species.shape)
+    ```
+
+2.  Join tables on common column. The inner join only includes rows
+    where both tables match on the key column.
+
+    ``` python
+    df_join = surveys.merge(species, on="species_id")
+    print(df_join.head())
+    print(df_join.shape)
+    ```
+
+3.  Get the subset of species that match a criterion, and join on that
+    subset.
+
+    ``` python
+    # Get the taxa column, masking the rows based on which values match "Bird"
+    birds = species[species["taxa"] == "Bird"]
+    df_birds = surveys.join(birds, on="species_id")
+
+    print(joined_birds.head())
+    print(joined_birds.shape)
+    ```
+
+# Scientific Computing Libraries
+
+1.  SciPy projects
+    1.  Numpy: Linear algebra
+    2.  Pandas
+    3.  Scipy.stats: Probability distributions and basic tests
+2.  Statsmodels: Statistical models and formulae built on Scipy.stats
+3.  Scikit-Learn: Machine learning tools built on NumPy
+4.  Tensorflow/PyTorch: Deep learning and other voodoo
+
+## (Optional) Statsmodels regression example
+
+1.  Import data
+
+    ``` python
+    dataa = pd.read_csv('surveys.csv')
+
+    # Check for NaN
+    print("Valid weights:", data['weight'].count())
+    print("NaN weights:", data['weight'].isna().sum())
+    print("Valid lengths:", data['hindfoot_length'].count())
+    print("NaN lengths:", data['hindfoot_length'].isna().sum())
+    ```
+
+2.  Fit OLS regression model
+
+    ``` python
+    from statsmodels.formula.api import ols
+
+    model = ols("weight ~ hindfoot_length", data, missing='drop').fit()
+    print(model.summary())
+    ```
+
+3.  Generic parameters for all models
+
+    ``` python
+    importort statsmodels
+
+    help(statsmodels.base.model.Model)
+    ```
+
+## (Optional) Getting started with machine learning estimators
+
+<https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html>
+<https://scikit-learn.org/stable/_static/ml_map.png>
+
+# (Optional) Things we didn\'t talk about
+
+1.  pipe
+2.  map/applymap/apply (in general you should prefer vectorized
+    functions)
+
+# (Optional) Adding rows to DataFrames
+
+A row is a view onto the *nth* item of each of the column Series.
+Appending rows is a performance bottleneck because it requires a
+separate append operation for each Series. Where possible, concatenate
+DataFrames instead.( cf.
+<https://twitter.com/ryxcommar/status/1339752918648545281>)
+
+``` python
+# Concatenate multiple DataFrames vertically
+pd.concat([df1, df2, df3])
+
+# Generic append requires labels to get data into correct rows
+df.append({'a': 3, 'b': 4}, ignore_index=True)
+```
+
+# (Optional) Pandas method chaining in the wild
+
+<https://gist.githubusercontent.com/adiamaan92/d8ebee8937d271452def2a7314993b2f/raw/ce9fbb5013d94accf0779a25e182c4be77678bd0/wine_mc_example.py>
+
+``` python
+wine.rename(columns={"color_intensity": "ci"})
+.assign(color_filter=lambda x: np.where((x.hue > 1) & (x.ci > 7), 1, 0))
+.query("alcohol > 14 and color_filter == 1")
+.sort_values("alcohol", ascending=False)
+.reset_index(drop=True)
+.loc[:, ["alcohol", "ci", "hue"]]
+```
+
+# (Optional) Introspecting on the DataFrame object
 
 ``` python
 # DataFrames have a huge number of fields and methods, so dir() is not very useful
@@ -1387,249 +1896,7 @@ pp.pprint(df_methods)
 pp.pprint(df_attr)
 ```
 
-# Pandas DataFrames
-
-## Notes about Pandas DataFrames/Series
-
-1.  Pandas is a library for working with spreadsheet-like data
-    (\"DataFrames\")
-2.  A DataFrame is a collection (dict) of Series columns
-3.  Each Series is a 1-dimensional NumPy array with optional row labels
-    (dict-like, similar to R vectors)
-4.  Therefore, each series inherits many of the abilities (linear
-    algebra) and limitations (single data type) of NumPy
-
-## (Optional) Pandas introduces some new types
-
-``` python
-# DataFrame type
-type(data)
-type(data.T)
-
-# Index type
-type(data.columns)
-
-# Series type
-type(data['gdpPercap_1952'])
-```
-
--   You can convert data between NumPy arrays, Series, and DataFrames
--   You can read data into any of the data structures from files or from
-    standard Python containers
-
-## Selecting values
-
-1.  Items have positions \[i, j, ..\] and labels. This gives us two ways
-    to access data:
-
-    1.  Treat the DataFrame as a matrix and select values using linear
-        algebra operators
-    2.  Treat the DataFrame as a table and select values using labels
-
-2.  Use `DataFrame.iloc[..., ...]` to select values by their (entry)
-    position. The `i` in `iloc` stands for \"index\".
-
-    ``` python
-    import pandas as pd
-    data = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
-
-    data.iloc[0,0]
-    ```
-
-3.  Use `DataFrame.loc[..., ...]` to select values by their label
-
-    ``` python
-    # This returns a value
-    data.loc["Albania", "gdpPercap_1952"]
-    ```
-
-4.  Select multiple columns or rows using `DataFrame.loc` and a named
-    slice. This generalizes the concept of a slice to include labeled
-    indexes:
-
-    ``` python
-    # This returns a DataFrame
-    data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
-    ```
-
-5.  Use `:` on its own to mean all columns or all rows. This is Python's
-    usual slicing notation, which allows you to treat DataFrames as
-    multi-dimensional lists (unlike R, Python requires you to explicitly
-    ask for all rows or columns).
-
-    ``` python
-    # This returns a Series
-    data.loc["Albania", :]
-    ```
-
-6.  If you want specific rows or columns, pass in a list:
-
-    ``` python
-    data.loc[['Italy','Poland'], :]
-    ```
-
-7.  `DataFrame.iloc` follows list index conventions (\"up to, but not
-    including)\", but `DataFrame.loc` does the intuitive right thing
-    (\"A through B\"):
-
-    1.  List index is up to, but not including, the 2nd position:
-
-        ``` python
-        data.iloc[0:2, 0:2]
-        ```
-
-    2.  Label index includes the 2nd position:
-
-        ``` python
-        data.loc["Albania":"Belgium", "gdpPercap_1952":"gdpPercap_1962"]
-        ```
-
-8.  A DataFrame is a spreadsheet, but it is also a dictionary of
-    columns.
-
-    ``` python
-    data['gdpPercap_1962']
-    ```
-
-9.  (Optional) You can extract individual rows as Series, then
-    concatenate them into a new DataFrame
-
-    ``` python
-    # Get each row as a Series
-    italy = data.loc["Italy", :]
-    poland = data.loc["Poland", :]
-
-    # `axis=1` concatenates as a 2xN DataFrame (rather than a 1x2N Series)
-    # Transpose to recover original orientation
-    pd.concat([italy, poland], axis=1).T
-    ```
-
-## Result of slicing can be used in further operations
-
-Any operation that you can use on the whole data frame can be used on a
-slice (because a slice is also a data frame):
-
-``` python
-print(data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972'].max())
-
-print(data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972'].min())
-
-data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972'].describe()
-```
-
-## Use comparisons to select data based on value
-
-``` python
-subset = data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
-```
-
-1.  Show which data frame elements match a criterion
-
-    ``` python
-    # Which GDPs are greater than 10,000?
-    subset > 10000
-    ```
-
-2.  Use the criterion match to filter the data frame\'s contents. This
-    uses index notation:
-
-    ``` python
-    subset[subset > 10000]
-    ```
-
-3.  Alternatively, use the data frame\'s `where()` method to find
-    elements that match the criterion:
-
-    ``` python
-    subset.where(subset > 10000)
-    ```
-
-## Use method chaining to create final output without creating intermediate variables
-
-1.  Verbose code with intermediate variables
-
-    ``` python
-    filtered_subset = subset.where(subset > 10000)
-    filtered_subset.describe()
-    ```
-
-2.  Method chaining is the idiomatic Python equivalent of R Tidyverse
-    pipes
-
-    ``` python
-    subset.where(subset > 10000).describe()
-    ```
-
-3.  (Optional) An example of a longer processing pipeline
-
-    ``` python
-    # The rank() method turns numerical scores into ranks, e.g.:
-    subset.rank()
-
-    # Are ranks correlated across time?
-    data.rank().corr("kendall")
-
-    # Are ranks correlated across time for higher-income countries?
-    data.where(data > data.median()).rank().corr("kendall")
-    ```
-
-## (Optional) DataFrame methods have sensible defaults that you can change
-
-``` python
-help(subset.min)
-```
-
-The \"See Also\" section has some helpful suggestions for related
-methods
-
-1.  Operations run on columns (Series) by default
-
-    ``` python
-    subset.min()
-    subset.min(axis=0)
-    ```
-
-2.  To evaluate across rows, set axis=1
-
-    ``` python
-    subset.min(axis=1)
-    ```
-
-3.  NaNs are ignored by numerical operations like max, min, average,
-    etc.
-
-    ``` python
-    # Column means
-    subset.where(subset > 10000).mean()
-
-    # Row means
-    subset.where(subset > 10000).mean(1)
-
-    # Row means, if no missing data
-    subset.where(subset > 10000).mean(1, skipna=False)
-    ```
-
-## (Optional) Truth value of whole data frames
-
-``` python
-fs = subset.where(subset > 10000)
-
-# Show which items are NaN
-fs.isna()
-
-# Inspect each column: Are any values True?
-fs.isna().any()
-
-# Inspect each column: Are all of the values True?
-fs.isna().all()
-```
-
--   Series and DataFrame have the binary comparison methods `eq`, `ne`,
-    `lt`, `gt`, `le`, and `ge`
--   You can apply the reductions: `empty`, `any()`, `all()`, and
-    `bool()` to provide a way to summarize a boolean result
-
-## (Carpentries version) Group By: split-apply-combine
+# (Carpentries version) Group By: split-apply-combine
 
 1.  Split data according to criterion, do numeric transformations, then
     recombine.
@@ -1646,7 +1913,14 @@ fs.isna().all()
     wealth_score
     ```
 
-2.  Add column to data frame
+2.  A DataFrame is a spreadsheet, but it is also a dictionary of
+    columns.
+
+    ``` python
+    data['gdpPercap_1962']
+    ```
+
+3.  Add column to data frame
 
     ``` python
     # Warningealth Score is a series
@@ -1654,97 +1928,6 @@ fs.isna().all()
 
     data['normalized_wealth'] = wealth_score
     ```
-
-## Group By: split-apply-combine
-
--   By "group by" we are referring to a process involving one or more of
-    the following steps:
-    1.  Splitting the data into groups based on some criteria
-    2.  Applying a function to each group independently
-    3.  Combining the results into a data structure
--   Examples include:
-    1.  Aggregation (e.g., group counts)
-    2.  Transformation (e.g., Z scores)
-    3.  Filtration (e.g., discard outliers)
-
-### Z score example
-
-``` python
-# Calculate z scores for all elements
-z = (data - data.mean())/data.std()
-
-# Get the mean z score for each country
-mean_z = z.mean(axis=1)
-
-# Group countries into "wealthy" (z > 0) and "not wealthy" (z <= 0)
-z_bool = mean_z > 0
-
-# Append new columns to DataFrame
-data["mean_z"] = mean_z
-data["wealthy"] = z_bool
-
-# Get descriptive statistics for the group
-data.groupby("wealthy").mean()
-```
-
-### Write new file with `to_csv()`
-
-Capture the results of your filter in a new file, rather than
-overwriting your original data.
-
-``` python
-# Save to a new CSV, preserving your original data
-data.to_csv('gapminder_gdp_europe_normed.csv')
-```
-
-## (Optional) Adding rows to DataFrames
-
-A row is a view onto the *nth* item of each of the column Series.
-Appending rows is a performance bottleneck because it requires a
-separate append operation for each Series. Where possible, concatenate
-DataFrames instead.( cf.
-<https://twitter.com/ryxcommar/status/1339752918648545281>)
-
-``` python
-# Concatenate multiple DataFrames vertically
-pd.concat([df1, df2, df3])
-
-# Generic append requires labels to get data into correct rows
-df.append({'a': 3, 'b': 4}, ignore_index=True)
-```
-
-## (Carpentries) Challenge
-
-1.  Calculate Z score for each data point
-2.  Calculate the mean Z score for each country
-3.  Add it as a new column
-
-# (Optional) Generic higher-order functions
-
-Higher-order functions take other functions as arguments and apply them
-across whole collections. Examples include mapy, apply, fold, reduce,
-etc.
-
-``` python
-import numpy as np
-
-subset.cumsum()
-
-# Higher-order function
-subset.apply(np.cumsum)
-```
-
-# Functional and SQL-style query/filter/subset methods
-
--   concat/merge
-    <https://pandas.pydata.org/docs/reference/api/pandas.concat.html>
--   filter/group/subset:
-    <https://pandas.pydata.org/docs/user_guide/groupby.html>
--   Merge, join, concatenate and compare:
-    <https://pandas.pydata.org/docs/user_guide/merging.html>
--   The generic `apply()` function
--   functional methods and database access methods ()
--   Vectorized operations
 
 # **WEEK 3: Visualization with Matplotlib and Seaborn**
 
@@ -2224,6 +2407,56 @@ for i in datasets_list:
 
 # **WEEK 4: Building Programs**
 
+# Notebooks vs Python
+
+## File contents
+
+1.  Export notebook to .py file
+2.  .ipynb vs. .py structure (demo in Spyder)
+
+## Editors
+
+## Workflow
+
+1.  Version control
+2.  Interactive debugging
+3.  Graphics
+4.  Output files in general
+
+## When should I do this?
+
+# Python from the terminal
+
+1.  Python is an interactive interpreter (REPL)
+
+    ``` bash
+    python
+    ```
+
+2.  Python is a command line program
+
+    ``` python
+    # hello.py
+    print("Hello!")
+    ```
+
+    ``` bash
+    python hello.py
+    ```
+
+3.  (Optional) Python programs can accept command line arguments as
+    inputs
+
+    1.  List of command line inputs: `sys.argv`
+        (<https://docs.python.org/3/library/sys.html#sys.argv>)
+    2.  Utility for working with arguments: `argparse`
+        (<https://docs.python.org/3/library/argparse.html>)
+
+# Use text processing and data frame processing as motivating examples for each section
+
+1.  Clean text data
+2.  Clean data frame data
+
 # For Loops
 
 ## A `for` loop executes commands once for each value in a collection
@@ -2277,7 +2510,7 @@ for p in primes:
     print(p, squared, cubed)
 ```
 
-## Use `range()` to iterate over a sequence of numbers
+## (Optional) Use `range()` to iterate over a sequence of numbers
 
 ``` python
 for number in range(0, 3):
@@ -2287,7 +2520,7 @@ for number in range(0, 3):
 -   range() produces numbers on demand (a \"generator\" function)
 -   useful for tracking progress
 
-## Use `enumerate()` to iterate over a sequence of items and their positions
+## (Optional) Use `enumerate()` to iterate over a sequence of items and their positions
 
 ``` python
 for number, p in enumerate(primes):
@@ -2370,7 +2603,69 @@ for key, val in location.items():
 There is almost always a faster, more idiomatic one-line function that
 does what you want
 
-# Conditionals
+# (move this up and incorporate) Looping Over Data Sets
+
+## File paths as an example of increasing abstraction in program development
+
+1.  File paths as literal strings
+2.  File paths as string patterns
+3.  File paths as abstract Path objects
+
+## Use a `for` loop to process files given a list of their names
+
+``` python
+file_list = ['data/gapminder_gdp_africa.csv', 'data/gapminder_gdp_asia.csv']
+for filename in file_list:
+    data = pd.read_csv(filename, index_col='country')
+    print(filename, data.min())
+```
+
+## Use glob.glob to find sets of files whose names match a pattern
+
+``` python
+import glob
+print('all csv files in data directory:', glob.glob('data/*.csv'))
+```
+
+In Unix, the term "globbing" means "matching a set of files with a
+pattern". The most common patterns are:
+
+-   \`\*\` meaning "match zero or more characters"
+-   \`?\` meaning "match exactly one character"
+
+## Use glob and for to process batches of files
+
+``` python
+for filename in glob.glob('data/gapminder_*.csv'):
+    data = pd.read_csv(filename)
+    print(filename, data['gdpPercap_1952'].min())
+```
+
+## CHALLENGE: Comparing data (optional) (rewrite)
+
+Write a program that reads in the regional data sets and plots the
+average GDP per capita for each region over time in a single chart.
+
+Solution:
+
+``` python
+import glob
+import pandas as pd
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots(1,1)
+for filename in glob.glob('data/gapminder_gdp*.csv'):
+    dataframe = pd.read_csv(filename)
+    # extract <region> from the filename, expected to be in the format 'data/gapminder_gdp_<region>.csv'.
+    # we will split the string using the split method and `_` as our separator,
+    # retrieve the last string in the list that split returns (`<region>.csv`),
+    # and then remove the `.csv` extension from that string.
+    region = filename.split('_')[-1][:-4]
+    dataframe.mean().plot(ax=ax, label=region)
+plt.legend()
+plt.show()
+```
+
+# Conditionals - motivate with data frame processing
 
 e.g. generate a data set with missing data, then check for it using
 any()/all()
@@ -2406,6 +2701,27 @@ masses = [3.54, 2.07, 9.22, 1.86, 1.71]
 for m in masses:
     if m > 3.0:
         print(m, 'is large')
+```
+
+## (Optional) Use pathlib to write code that works across operating systems
+
+Note the careful testing at each level of the code.
+
+``` python
+from pathlib import Path
+
+relative_path = Path("data")   # data subdirectory
+# relative_path = Path()       # current directory
+print("Relative path:", relative_path)
+print("Absolute path:", relative_path.absolute())
+```
+
+``` python
+if relative_path.exists():
+    for filename in relative_path.glob('gapminder_*.csv'):
+        if filename.is_file():
+            data = pd.read_csv(filename)
+            print(filename, data['gdpPercap_1952'].min())
 ```
 
 ## Use else to execute a block of code when an if condition is not true
@@ -2497,86 +2813,7 @@ for i in range(5):
 -   Aside: For a more natural way of working with many lists, look at
     `zip()`
 
-# Looping Over Data Sets
-
-## File paths as an example of increasing abstraction in program development
-
-1.  File paths as literal strings
-2.  File paths as string patterns
-3.  File paths as abstract Path objects
-
-## Use a `for` loop to process files given a list of their names
-
-``` python
-file_list = ['data/gapminder_gdp_africa.csv', 'data/gapminder_gdp_asia.csv']
-for filename in file_list:
-    data = pd.read_csv(filename, index_col='country')
-    print(filename, data.min())
-```
-
-## Use glob.glob to find sets of files whose names match a pattern
-
-``` python
-import glob
-print('all csv files in data directory:', glob.glob('data/*.csv'))
-```
-
-In Unix, the term "globbing" means "matching a set of files with a
-pattern". The most common patterns are:
-
--   \`\*\` meaning "match zero or more characters"
--   \`?\` meaning "match exactly one character"
-
-## Use glob and for to process batches of files
-
-``` python
-for filename in glob.glob('data/gapminder_*.csv'):
-    data = pd.read_csv(filename)
-    print(filename, data['gdpPercap_1952'].min())
-```
-
-## Use pathlib to write code that works across operating systems (optional)
-
-``` python
-from pathlib import Path
-
-relative_path = Path("data")
-print("Absolute path:", relative_path.absolute()) # This is autogenerated, even if "data" doesn't exist
-
-if relative_path.exists():
-    for filename in relative_path.glob('gapminder_*.csv'):
-        if filename.is_file():
-            data = pd.read_csv(filename)
-            print(filename, data['gdpPercap_1952'].min())
-```
-
--   Note the careful testing at each level of the code
-
-## CHALLENGE: Comparing data (optional) (rewrite)
-
-Write a program that reads in the regional data sets and plots the
-average GDP per capita for each region over time in a single chart.
-
-Solution:
-
-``` python
-import glob
-import pandas as pd
-import matplotlib.pyplot as plt
-fig, ax = plt.subplots(1,1)
-for filename in glob.glob('data/gapminder_gdp*.csv'):
-    dataframe = pd.read_csv(filename)
-    # extract <region> from the filename, expected to be in the format 'data/gapminder_gdp_<region>.csv'.
-    # we will split the string using the split method and `_` as our separator,
-    # retrieve the last string in the list that split returns (`<region>.csv`),
-    # and then remove the `.csv` extension from that string.
-    region = filename.split('_')[-1][:-4]
-    dataframe.mean().plot(ax=ax, label=region)
-plt.legend()
-plt.show()
-```
-
-# Writing Functions
+# (encapsulate cleaning functions) Writing Functions
 
 ## Break programs down into functions to make them easier to understand
 
@@ -2983,108 +3220,14 @@ with conn:
 -   Defensive programming
 -   Debugging and Testing
 
-# Scientific Computing Libraries
-
-## Downstream libraries
-
-1.  Seaborn: Pythonic graphs built on Matplotlib
-2.  Statsmodels: Statistical models and formulae built on Scipy.stats
-    <https://www.statsmodels.org/stable/index.html>
-3.  Scikit-Learn: Machine learning tools built on NumPy, SciPy, and
-    Matplotlib <https://scikit-learn.org/stable/>
-4.  ...and many more: <https://www.scipy.org/topical-software.html>
-
-## Standard library vs. outside modules
-
-1.  Install with conda package manager
-2.  Install with pip
-
-## SciPy project
-
-1.  NumPy: matrix algebra
-2.  Pandas: data filtering and transformation; factors
-3.  Matplotlib: graphs
-4.  Scipy.stats: probability distributions, basic tests
-    <https://docs.scipy.org/doc/scipy/reference/stats.html>
-
-## Statistics
-
-### Libraries
-
-1.  statistics Basic summary statistics. Part of the Python standard
-    library.
-2.  scipy.stats Descriptive statistics and distributions:
-    <https://docs.scipy.org/doc/scipy/reference/stats.html>
-3.  statsmodels Statistical models and tests. Incorporates scipy.stats.
-    <https://www.statsmodels.org/stable/index.html>
-
-### Regression example
-
-#### Sample file
-
-Download \"surveys.csv\" from
-<https://figshare.com/articles/Portal_Project_Teaching_Database/1314459>
-Direct download link: <https://ndownloader.figshare.com/files/10717177>
-
-#### Import data
-
-``` python
-data = pd.read_csv('surveys.csv')
-
-# Check for NaN
-print("Valid weights:", data['weight'].count())
-print("NaN weights:", data['weight'].isna().sum())
-print("Valid lengths:", data['hindfoot_length'].count())
-print("NaN lengths:", data['hindfoot_length'].isna().sum())
-```
-
-#### Fit OLS regression model
-
-``` python
-from statsmodels.formula.api import ols
-
-model = ols("weight ~ hindfoot_length", data, missing='drop').fit()
-print(model.summary())
-```
-
-#### Generic parameters for all models
-
-``` python
-import statsmodels
-
-help(statsmodels.base.model.Model)
-```
-
-## Machine learning with Scikit-Learn
-
-<https://scikit-learn.org/stable/>
-
-### Which estimator?
-
-<https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html>
-<https://scikit-learn.org/stable/_static/ml_map.png>
-
-### Editorial comments about ML
-
-1.  We already have statistics, so do the reading
-2.  Talk to a domain expert
-3.  Beware parameter mining
-4.  Treat all software as beta software
-
-## Command-Line Programs
-
-Batch processing from command line, .py files, and editors
-
-``` bash
-python my_program.py
-```
-
 # Credits
 
 -   Plotting and Programming in Python (Pandas-oriented):
     <http://swcarpentry.github.io/python-novice-gapminder/>
 -   Programming with Python (NumPy-oriented):
     <https://swcarpentry.github.io/python-novice-inflammation/index.html>
+-   Python for Ecology:
+    <https://datacarpentry.org/python-ecology-lesson/>
 -   Humanities Python Tour (file and text processing):
     <https://github.com/elliewix/humanities-python-tour/blob/master/Two-Hour-Beginner-Tour.ipynb>
 -   Introduction to Cultural Analytics & Python:
@@ -3100,6 +3243,7 @@ python my_program.py
     <https://pandas.pydata.org/pandas-docs/stable/>
 -   Pandas user guide:
     <https://pandas.pydata.org/docs/user_guide/index.html>
+-   SciPy stats: <https://docs.scipy.org/doc/scipy/reference/stats.html>
 -   Statistics in Python tutorial:
     <https://scipy-lectures.org/packages/statistics/>
 -   Statsmodels library: <https://www.statsmodels.org/stable/index.html>
@@ -3114,8 +3258,6 @@ python my_program.py
     <http://blog.behnel.de/posts/cython-pybind11-cffi-which-tool-to-choose.html>
 
 # Data Sources
-
-## Additional data files
 
 1.  Gapminder data:
     <http://swcarpentry.github.io/python-novice-gapminder/files/python-novice-gapminder-data.zip>
