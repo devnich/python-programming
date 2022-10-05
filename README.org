@@ -57,12 +57,12 @@
 
 4. Many keyboard shortcuts are available; see https://gist.github.com/discdiver/9e00618756d120a8c9fa344ac1c375ac
 
-5. Jupyter Lab undestands (some) terminal commands
+5. (Optional) Jupyter Lab undestands (some) terminal commands
    #+BEGIN_SRC bash
    ls
    #+END_SRC
 
-6. Jupyter Lab (IPython, actually) has "magic" commands that start with ~%~ (line) or ~%%~ (cell)
+6. (Optional) Jupyter Lab (IPython, actually) has "magic" commands that start with ~%~ (line) or ~%%~ (cell)
    #+BEGIN_SRC python
    # Print current items in memory
    %dirs
@@ -76,6 +76,9 @@
    # Cell magic: Time cell execution
    %%time
    #+END_SRC
+
+   - The magic command must be in the *first line* of the cell (no comments)
+   - Some commands are not available on Windows (e.g. ~%%bash~)
 
 * Variables and Assignment
 ** Use variables to store values
@@ -132,7 +135,8 @@ Order of operations matters!
 first = 1
 second = 5 * first
 first = 2
-print('first is', first, 'and second is', second)
+print('first:', first)
+print('second:', second)
 #+END_SRC
 
 * Data Types and Type Conversion
@@ -201,9 +205,13 @@ Most data is text and numbers, but there are many other types.
    print(type(text))
    #+END_SRC
 
-4. This can work for more complex data types as well, e.g. Pandas data frames and Numpy arrays.
+4. What's going on under the hood?
+   1. ~int~, ~float~, and ~str~ are types. More precisely, they are /classes/.
+   2. ~int()~, ~float()~, and ~str()~ are functions that create new /instances/ of their respective classes. The argument to the creation function (e.g., ~'2'~) is the raw material for creating the new instance.
 
-** Challenge: Explain what each operator does
+5. This can work for more complex data types as well, e.g. Pandas data frames and Numpy arrays.
+
+** *Challenge*: Explain what each operator does
 #+BEGIN_SRC python
 # Floor
 print('5 // 3:', 5 // 3)
@@ -236,21 +244,7 @@ print()
 print('after')
 #+END_SRC
 
-** Every function returns something
-1. Collect the results of a function in a new variable. This is one of the ways we build complex programs.
-   #+BEGIN_SRC python
-   result = len("hello")
-   print(result)
-   #+END_SRC
-
-2. (Optional) Some function only have "side effects"; they return ~None~
-   #+BEGIN_SRC python
-   result = print("hello")
-   print(result)
-   print(type(result))
-   #+END_SRC
-
-** Functions can have optional parameters
+** Functions can have optional arguments
 #+BEGIN_SRC python
 # By default, we round to the nearest integer
 round(3.712)
@@ -273,6 +267,26 @@ round(3.712, 1)
    #+BEGIN_SRC python
    # You can optionally specify the number of significant digits
    round(4.712823, ndigits=2)
+   #+END_SRC
+
+** Every function returns something
+1. Collect the results of a function in a new variable. This is one of the ways we build complex programs.
+   #+BEGIN_SRC python
+   # You can optionally specify the number of significant digits
+   rounded_num = round(4.712823, ndigits=2)
+   print(rounded_num)
+   #+END_SRC
+
+   #+BEGIN_SRC python
+   result = len("hello")
+   print(result)
+   #+END_SRC
+
+2. (Optional) Some function only have "side effects"; they return ~None~
+   #+BEGIN_SRC python
+   result = print("hello")
+   print(result)
+   print(type(result))
    #+END_SRC
 
 ** (Optional) Functions will typically generalize in sensible ways
@@ -307,7 +321,15 @@ round(3.712, 1)
    my_string.upper().isupper()
    #+END_SRC
 
-3. You can view an object's attributes (i.e. methods and fields) using ~help()~ or ~dir()~. Some attributes are "private"; you're not supposed to use these directly.
+3. (Optional) Strings are immutable. This will be covered later, but may come up here. If it comes up here, this is a good example:
+   #+BEGIN_SRC python
+   print(my_string.upper())
+   print(my_string)
+   upper_string = my_string.upper()
+   print(upper_string)
+   #+END_SRC
+
+4. You can view an object's attributes (i.e. methods and fields) using ~help()~ or ~dir()~. Some attributes are "private"; you're not supposed to use these directly.
    #+BEGIN_SRC python
    # More verbose help
    help(str)
@@ -318,7 +340,7 @@ round(3.712, 1)
    dir(my_string)
    #+END_SRC
 
-4. The built-in string methods can be very useful for cleaning up data
+5. The built-in string methods can be very useful for cleaning up data
    #+BEGIN_SRC python
    bad_string_1 = "  Hello world!   "
    bad_string_2 = "|...goodbye cruel world|"
@@ -337,7 +359,7 @@ round(3.712, 1)
 
 2. Python reports a runtime error when something goes wrong while a program is executing
 
-** (Optional) Challenge: What happens when?
+** *(Optional) Beginner Challenge*: What happens when?
 Explain in simple terms the order of operations in the following program: when does the addition happen, when does the subtraction happen, when is each function called, etc. What is the final value of radiance?
 
 #+BEGIN_SRC python
@@ -368,7 +390,7 @@ help(math)                      # user friendly
 dir(math)                       # brief reminder, not user friendly
 #+END_SRC
 
-** Import shortcuts
+** (Optional) Import shortcuts
 1. Import specific items from a library module. You want to be careful with this. It's safer to keep the namespace.
    #+BEGIN_SRC python
    from math import cos, pi
@@ -406,8 +428,8 @@ print("Fifth item:" , pressure[4])
 ** You can get a subset of the list by slicing it
 1. You slice a list from the start position up to, but not including, the stop position
    #+BEGIN_SRC python
-   print("First 3 items:", pressure[0:3])
-   print("3rd through 5th:", pressure[2:5])
+   print(pressure[0:3])
+   print(pressure[2:5])
    #+END_SRC
 
 2. You can omit the start position if you're starting at the beginning...
@@ -416,7 +438,7 @@ print("Fifth item:" , pressure[4])
    print("First 5 items, but shorter:", pressure[:5])
    #+END_SRC
 
-3. ...and you can omit the end position if you're going to the end
+3. ...and you /must/ omit the end position if you're going to the end (otherwise it's up to, but not including, the end!)
    #+BEGIN_SRC python
    # This is useful if you don't know how long the list is
    print("Everything but the first 3 items:", pressure[3:])
@@ -446,20 +468,20 @@ cf. https://stackoverflow.com/a/11364711
    #+END_SRC
 
 ** Some other properties of indexes
-1. Indexing beyond the end of the collection is an error
-   #+BEGIN_SRC python
-   pressure[20]
-   #+END_SRC
-
-2. You can count backwards from the end with negative integers
+1. You can count backwards from the end with negative integers
    #+BEGIN_SRC python
     print("Last item:", pressure[-1])
+   #+END_SRC
+
+2. Indexing beyond the end of the collection is an error
+   #+BEGIN_SRC python
+   pressure[20]
    #+END_SRC
 
 ** Lists are mutable
 1. You can replace a value at a specific index location
    #+BEGIN_SRC python
-   pressuressure[0] = 0.999
+   pressure[0] = 0.999
    print(pressure)
    #+END_SRC
 
@@ -583,29 +605,31 @@ len('carbon')
    #+END_SRC
 
 ** Building strings with ~.join()~
-#+BEGIN_SRC python
-date_list = ["3", "17", "2007"]
-date = "/".join(date_list)
-print(date)
-#+END_SRC
+1. Use ~.join()~ to concatenate strings
+   #+BEGIN_SRC python
+   date_list = ["3", "17", "2007"]
+   date = "/".join(date_list)
+   print(date)
+   #+END_SRC
 
-** (Optional) Challenge: From Strings to Lists and Back
+2. This is going to be useful for building CSV files
+   #+BEGIN_SRC python
+   date_list = ["3", "17", "2007"]
+   date = ",".join(date_list)
+   print(date)
+   #+END_SRC
+
+** *(Optional) Beginner Challenge*: From Strings to Lists and Back
 1. Given this Python code...
    #+BEGIN_SRC python
    print('string to list:', list('tin'))
    print('list to string:', ''.join(['g', 'o', 'l', 'd']))
    #+END_SRC
 
-2. ...and this output:
-   #+BEGIN_EXAMPLE
-   string to list: ['t', 'i', 'n']
-   list to string: gold
-   #+END_EXAMPLE
+2. What does ~list('some string')~ do?
+3. What does ~'-'.join(['x', 'y', 'z'])~ generate?
 
-3. What does ~list('some string')~ do?
-4. What does ~'-'.join(['x', 'y', 'z'])~ generate?
-
-** (Optional) Challenge: Locating the right module
+** *Challenge*: Locating the right module
 You want to select a random character from a string:
 #+BEGIN_SRC python
 bases = 'ACTTGCTTGAC'
@@ -695,7 +719,7 @@ location = {'latitude': [37.28306, 'N'],
 print(location['longitude'][0])
 #+END_SRC
 
-** Challenge: Convert a list to a dictionary
+** *(Optional) Advanced Challenge*: Convert a list to a dictionary
 How can you convert our list of names and ages into a dictionary? Hint: You will need to populate the dictionary with a list of keys and a list of values.
 
 #+BEGIN_SRC python
@@ -911,7 +935,7 @@ data.columns = data.columns.str.strip("gdpPercap_")
 print(data.columns)
 #+END_SRC
 
-** Use list slicing notation to get subsets of the data frame
+** TODO Move singleUse list slicing notation to get subsets of the data frame
 1. Select multiple columns or rows using ~.loc~ and a named slice. This generalizes the concept of a slice to include labeled indexes:
    #+BEGIN_SRC python
    # This returns a DataFrame
