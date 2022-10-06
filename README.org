@@ -758,12 +758,15 @@ ages_dict = dict(zip(ages[::2], ages[1::2]))
 
    # Create an array of random numbers
    rand = np.random.rand(3, 4)
-
    print(rand)
+   #+END_SRC
+
+2. Arrays are indexed like lists
+   #+BEGIN_SRC python
    print(rand[0,0])
    #+END_SRC
 
-2. Arrays are fast but inflexible - the entire array must be of a single type.
+3. Arrays are fast but inflexible - the entire array must be of a single type.
 
 * A very brief introduction to Pandas
 1. Pandas is a library for working with spreadsheet-like data ("DataFrames")
@@ -838,7 +841,7 @@ print(data)
    data.describe()
    #+END_SRC
 
-3. Look at the first few rows
+3. (Optional) Look at the first few rows
    #+BEGIN_SRC python
    data.head(1)
    #+END_SRC
@@ -862,7 +865,8 @@ A "field" is a variable that belongs to an object.
 
 4. Use ~DataFrame.T~ to transpose a DataFrame. This doesn't copy or modify the data, it just changes the caller's view of it.
    #+BEGIN_SRC python
-   data.T
+   print(data.T)
+   print(data.T.shape)
    #+END_SRC
 
 ** (Optional) Pandas introduces some new types
@@ -880,31 +884,19 @@ type(data.columns)
 - You can convert data between NumPy arrays, Series, and DataFrames
 - You can read data into any of the data structures from files or from standard Python containers
 
-** (Optional) Challenge
+** *(Optional) Beginner Challenge*
 1. Read the data in ~gapminder_gdp_americas.csv~ into a variable called ~americas~ and display its summary statistics.
 2. After reading the data for the Americas, use ~help(americas.head)~ and ~help(americas.tail)~ to find out what ~DataFrame.head~ and ~DataFrame.tail~ do.
    1. How can you display the first three rows of this data?
    2. How can you display the last three columns of this data? (Hint: You may need to change your view of the data).
 3. As well as the ~read_csv~ function for reading data from a file, Pandas provides a ~to_csv~ function to write DataFrames to files. Applying what you’ve learned about reading from files, write one of your DataFrames to a file called ~processed.csv~. You can use ~help~ to get information on how to use ~to_csv~.
 
-*** Solution 1
+*** Solution
 #+BEGIN_SRC python
 americas = pd.read_csv('data/gapminder_gdp_americas.csv', index_col='country')
 americas.describe()
-#+END_SRC
-
-*** Solution 2.1
-#+BEGIN_SRC python
 americas.head(3)
-#+END_SRC
-
-*** Solution 2.2
-#+BEGIN_SRC python
 americas.T.tail(3)
-#+END_SRC
-
-*** Solution 4
-#+BEGIN_SRC python
 americas.to_csv('processed.csv')
 #+END_SRC
 
@@ -935,25 +927,25 @@ data.columns = data.columns.str.strip("gdpPercap_")
 print(data.columns)
 #+END_SRC
 
-** TODO Move singleUse list slicing notation to get subsets of the data frame
-1. Select multiple columns or rows using ~.loc~ and a named slice. This generalizes the concept of a slice to include labeled indexes:
+** Use list slicing notation to get subsets of the data frame
+1. Select multiple columns or rows using ~.loc~ and a named slice. This generalizes the concept of a slice to include labeled indexes.
    #+BEGIN_SRC python
    # This returns a DataFrame
    data.loc['Italy':'Poland', '1962':'1972']
    #+END_SRC
 
-2. Use ~:~ on its own to mean all columns or all rows. This is Python’s usual slicing notation, which allows you to treat DataFrames as multi-dimensional lists. Note that Pandas automatically converts the 1-dimensional row into a Series; we will discuss how to get around this in the next section.
+2. Use ~:~ on its own to mean all columns or all rows. This is Python’s usual slicing notation, which allows you to treat data frames as multi-dimensional lists.
    #+BEGIN_SRC python
-   # This returns a Series
-   data.loc["Albania", :]
+   # This returns a DataFrame
+   data.loc['Italy':'Poland', :]
    #+END_SRC
 
-3. If you want specific rows or columns, pass in a list:
+3. (Optional) If you want specific rows or columns, pass in a list
    #+BEGIN_SRC python
    data.loc[['Italy','Poland'], :]
    #+END_SRC
 
-4. ~.iloc~ follows list index conventions ("up to, but not including)", but ~.loc~ does the intuitive right thing ("A through B"):
+4. ~.iloc~ follows list index conventions ("up to, but not including)", but ~.loc~ does the intuitive right thing ("A through B")
       #+BEGIN_SRC python
       index_subset = data.iloc[0:2, 0:2]
       label_subset = data.loc["Albania":"Belgium", "1952":"1962"]
@@ -966,41 +958,36 @@ print(data.columns)
    #+BEGIN_SRC python
    subset = data.loc['Italy':'Poland', '1962':'1972']
 
-   print(subset.describe)
+   print(subset.describe())
    print(subset.max())
    #+END_SRC
 
-6. (Optional) You can extract individual rows as Series, then concatenate them into a new DataFrame
-   #+BEGIN_SRC python
-   # Get each row as a Series
-   italy = data.loc["Italy", :]
-   poland = data.loc["Poland", :]
+** (Optional) Treat the data frame as an object and select values using flexible methods
+Pandas always drills down to the most parsimonious representation. On one hand, this is convenient; on the other, it violates the Pythonic expectation for strong types.
 
-   # Omitting axis argument (or axis=0) concatenates the 2 series end-to-end
-   # axis=1 creates a 2D data frame
-   # Transpose recovers original orientation
-   # Column labels come from Series index
-   # Row labels come from Series name
-   pd.concat([italy, poland], axis=1).T
-   #+END_SRC
+| Shape of data selection | Pandas return type |
+|-------------------------+--------------------|
+|                      2D | DataFrame          |
+|                      1D | Series             |
+|                      0D | single value       |
 
-** Treat the data frame as an object and select values using flexible methods
-1. ~.filter()~ is a general-purpose, flexible method
+1. ~.filter()~ always returns the same type as the original item, whereas ~.loc~ and ~.iloc~ might return a data frame or a series.
    #+BEGIN_SRC python
-   help(data.filter)
-   data.filter(like="20)", axis="columns")
-   #+END_SRC
-
-2. ~.filter()~ always returns the same type as the original item, whereas ~.loc~ and ~.iloc~ might return a data frame or a series.
-   #+BEGIN_SRC python
-   italy = data.filter(like="200", axis="columns").filter(items=["Italy"], axis="index")
+   italy = data.filter(items=["Italy"], axis="index")
    print(italy)
    print(type(italy))
    #+END_SRC
 
-* Filtering data
+2. ~.filter()~ is a general-purpose, flexible method
+   #+BEGIN_SRC python
+   help(data.filter)
+   data.filter(like="200", axis="columns")
+   data.filter(like="200", axis="columns").filter(items=["Italy"], axis="index")
+   #+END_SRC
+
+* Filtering (i.e. masking) data
 ** Use comparisons to select data based on value
-1. Show which data frame elements match a criterion
+1. Show which data frame elements match a criterion.
    #+BEGIN_SRC python
    # Which GDPs are greater than 10,000?
    subset > 10000
@@ -1012,45 +999,60 @@ print(data.columns)
    print(fs)
    #+END_SRC
 
+   1. ~subset > 10000~ returns a data frame of True/False values
+   2. ~subset.where()~ filters its contents based on that True/False data frame
+   3. This section is more properly called "Masking Data," because it involves operations for overlaying a data frame's values without changing the data frame's shape. We don't drop anything from the data frame, we just replace it with ~NaN~.
+
 3. (Optional) Use the criterion match to filter the data frame's contents. This uses index notation:
    #+BEGIN_SRC python
    subset[subset > 10000]
    #+END_SRC
 
+** You can filter using any method that returns a data frame
+#+BEGIN_SRC python
+# GDP for all countries greater than the median
+subset.where(subset > subset.median())
+#+END_SRC
+
 ** Use method chaining to create final output without creating intermediate variables
 #+BEGIN_SRC python
-# The rank() method turns numerical scores into ranks, e.g.:
+# The .rank() method turns numerical scores into ranks
 subset.rank()
+#+END_SRC
 
-# Do this for countries above the median
-data.where(data > data.median()).rank()
+#+BEGIN_SRC python
+# GDP ranking for all countries greater than the median
+subset.where(subset > subset.median()).rank()
 #+END_SRC
 
 ** Methods we're not going to cover
-~.query()~
+~.query()~ is a flexible, general-purpose way of filtering data frames.
 
 * Working with missing data
 ** By default, most numerical operations ignore missing data
 Examples include min, max, mean, std, etc.
 1. Missing values ignored by default
    #+BEGIN_SRC python
-   # Column means
+   print("Column means")
    print(fs.mean())
 
-   # Row means
+   print("Row means")
    print(fs.mean(axis=1))
    #+END_SRC
 
 2. Force inclusions with the ~skipna~ argument
    #+BEGIN_SRC python
+   print("Column means")
    print(fs.mean(skipna=False))
+
+   print("Row means")
    print(fs.mean(axis=1, skipna=False))
    #+END_SRC
 
 ** Check for missing values
-1. Show which items are missing
+1. Show which items are missing. "NA" includes ~NaN~ and ~None~. It doesn't include empty strings or ~numpy.inf~.
    #+BEGIN_SRC python
-   # Show which items are NaN
+   # Show which items are NA
    fs.isna()
    #+END_SRC
 
@@ -1068,29 +1070,47 @@ Examples include min, max, mean, std, etc.
 
 3. Are any values missing?
    #+BEGIN_SRC python
-   fs.isna().any(None)
+   fs.isna().any(axis=None)
    #+END_SRC
 
 4. (Optional) Are all of the values missing?
    #+BEGIN_SRC python
-   fs.isna().all(None)
+   fs.isna().all(axis=None)
    #+END_SRC
 
 ** Replace missing values
 1. Replace with a fixed value
    #+BEGIN_SRC python
-   fs_fixed = fs.fillna(0)
+   fs_fixed = fs.fillna(99)
+   print(fs_fixed)
    #+END_SRC
 
-2. (Optional) Interpolate missing values
+2. (Optional) Impute missing values. Read the docs, this may or may not be sufficient for your needs.
    #+BEGIN_SRC python
-   fs_inferred = fs.interpolate()
+   fs_imputed = fs.interpolate()
    #+END_SRC
 
 ** Drop missing values
+Drop all rows with missing values
 #+BEGIN_SRC python
 fs_drop = fs.dropna()
 #+END_SRC
+
+** *Challenge: Filter and trim with a boolean vector*
+A DataFrame is a dictionary of Series columns. With this in mind, experiment with the following code and try to explain what each line is doing. What operation is it performing, and what is being returned?
+
+Feel free to use ~print()~, ~help()~, ~type()~, etc as you investigate.
+
+#+BEGIN_SRC python
+fs["1962"]
+fs["1962"].notna()
+fs[fs["1962"].notna()]
+#+END_SRC
+
+*** Solution
+1. Line 1 returns the column as a Series vector
+2. Line 2 returns a boolean Series vector (True/False)
+3. Line 3 performs /boolean indexing/ on the DataFrame using the Series vector. It only returns the rows that are True (i.e. it performs true filtering).
 
 * Sorting and grouping
 ** Motivating example: Calculate the wealth Z-score for each country
@@ -1158,21 +1178,53 @@ print(df3.shape)
    print(species.shape)
    #+END_SRC
 
-2. Join tables on common column. The inner join only includes rows where both tables match on the key column.
+2. Join tables on common column. The "left" join is a strategy for augmenting the first table (surveys) with information from the second table (species).
    #+BEGIN_SRC python
-   df_join = surveys.merge(species, on="species_id")
+   df_join = surveys.merge(species, on="species_id", how="left")
    print(df_join.head())
    print(df_join.shape)
    #+END_SRC
 
-3. Get the subset of species that match a criterion, and join on that subset.
+3. The resulting table loses its index because ~surveys.record_id~ is not being used in the join. To keep ~record_id~ as the index for the final table, we need to retain it as an explicit column.
+   #+BEGIN_SRC python
+   # Don't set record_id as index during initial import
+   surveys = pd.read_csv('data/surveys.csv')
+   df_join = surveys.merge(species, on="species_id", how="left").set_index("record_id")
+
+   df_join.index
+   #+END_SRC
+
+4. Get the subset of species that match a criterion, and join on that subset. The "inner" join only includes rows where both tables match on the key column; it's a strategy for filtering the first table by the second table.
    #+BEGIN_SRC python
    # Get the taxa column, masking the rows based on which values match "Bird"
    birds = species[species["taxa"] == "Bird"]
-   df_birds = surveys.join(birds, on="species_id")
+   df_birds = surveys.join(birds, on="species_id").set_index("record_id")
 
-   print(joined_birds.head())
-   print(joined_birds.shape)
+   print(df_birds.head())
+   print(df_birds.shape)
+   #+END_SRC
+
+* (Optional) Adding rows to DataFrames
+A row is a view onto the /nth/ item of each of the column Series. Appending rows is a performance bottleneck because it requires a separate append operation for each Series. You should concatenate data frames instead.s
+
+1. Create a single row as a data frame and concatenate it.
+   #+BEGIN_SRC python
+   row = pd.DataFrame({"1962": 5000, "1967": 5000, "1972": 5000}, index=["Latveria"])
+   pd.concat([subset, row])
+   #+END_SRC
+
+2. If you have individual rows as Series, ~pd.concat()~ will produce a data frame.
+   #+BEGIN_SRC python
+   # Get each row as a Series
+   italy = data.loc["Italy", :]
+   poland = data.loc["Poland", :]
+
+   # Omitting axis argument (or axis=0) concatenates the 2 series end-to-end
+   # axis=1 creates a 2D data frame
+   # Transpose recovers original orientation
+   # Column labels come from Series index
+   # Row labels come from Series name
+   pd.concat([italy, poland], axis=1).T
    #+END_SRC
 
 * Scientific Computing Libraries
@@ -1219,17 +1271,6 @@ https://scikit-learn.org/stable/_static/ml_map.png
 1. pipe
 2. map/applymap/apply (in general you should prefer vectorized functions)
 
-* (Optional) Adding rows to DataFrames
-A row is a view onto the /nth/ item of each of the column Series. Appending rows is a performance bottleneck because it requires a separate append operation for each Series. Where possible, concatenate DataFrames instead.( cf. https://twitter.com/ryxcommar/status/1339752918648545281)
-
-#+BEGIN_SRC python
-# Concatenate multiple DataFrames vertically
-pd.concat([df1, df2, df3])
-
-# Generic append requires labels to get data into correct rows
-df.append({'a': 3, 'b': 4}, ignore_index=True)
-#+END_SRC
-
 * (Optional) Pandas method chaining in the wild
 https://gist.githubusercontent.com/adiamaan92/d8ebee8937d271452def2a7314993b2f/raw/ce9fbb5013d94accf0779a25e182c4be77678bd0/wine_mc_example.py
 #+BEGIN_SRC python
@@ -1242,42 +1283,42 @@ wine.rename(columns={"color_intensity": "ci"})
 #+END_SRC
 
 * (Optional) Introspecting on the DataFrame object
-#+BEGIN_SRC python
-# DataFrames have a huge number of fields and methods, so dir() is not very useful
-print(dir(data))
-#+END_SRC
+1. DataFrames have a huge number of fields and methods, so dir() is not very useful
+   #+BEGIN_SRC python
+   print(dir(data))
+   #+END_SRC
 
-#+BEGIN_SRC python
-# Create a new list that filters out internal attributes
-df_public = [item for item in dir(data) if not item.startswith('_')]
-print(df_public)
-#+END_SRC
+2. Create a new list that filters out internal attributes
+   #+BEGIN_SRC python
+   df_joinpublic = [item for item in dir(data) if not item.startswith('_')]
+   print(df_public)
+   #+END_SRC
 
-#+BEGIN_SRC python
-# Pretty-print the new list; extremely optional
-import pprint
+3. (Optional) Pretty-print the new list
+   #+BEGIN_SRC python
+   importort pprint
 
-pp = pprint.PrettyPrinter(width=100, compact=True, indent=2)
-pp.pprint(df_public)
-#+END_SRC
+   pp = pprint.PrettyPrinter(width=100, compact=True, indent=2)
+   pp.pprint(df_public)
+   #+END_SRC
 
-Objects have fields (i.e. data/variables) and methods (i.e. functions/procedures). The difference between a method and a function is that methods are attached to objects, whereas functions are free-floating ("first-class citizens"). Methods and functions are "callable":
-#+BEGIN_SRC python
-# Generate a list of public methods and a list of public fields. We do this
-# by testing each attribute to determine whether it is "callable".
-# NB: Because Python allows you to override any attribute at runtime,
-# testing with `callable` is not always reliable.
+4. Objects have fields (i.e. data/variables) and methods (i.e. functions/procedures). The difference between a method and a function is that methods are attached to objects, whereas functions are free-floating ("first-class citizens"). Methods and functions are "callable":
+   #+BEGIN_SRC python
+   # GeneratorExitenerate a list of public methods and a list of public fields. We do this
+   # by testing each attribute to determine whether it is "callable".
+   # NB: Because Python allows you to override any attribute at runtime,
+   # testing with `callable` is not always reliable.
 
-# List of methods (callable attributes)
-df_methods = [item for item in dir(data) if not item.startswith('_')
-              and callable(getattr(data, item))]
-# List of fields (non-callable attributes)
-df_attr = [item for item in dir(data) if not item.startswith('_')
-           and not callable(getattr(data, item))]
+   # List of methods (callable attributes)
+   df_methods = [item for item in dir(data) if not item.startswith('_')
+                 and callable(getattr(data, item))]
+   # List of fields (non-callable attributes)
+   df_attr = [item for item in dir(data) if not item.startswith('_')
+              and not callable(getattr(data, item))]
 
-pp.pprint(df_methods)
-pp.pprint(df_attr)
-#+END_SRC
+   pp.pprint(df_methods)
+   pp.pprint(df_attr)
+   #+END_SRC
 
 * (Carpentries version) Group By: split-apply-combine
 1. Split data according to criterion, do numeric transformations, then recombine.
