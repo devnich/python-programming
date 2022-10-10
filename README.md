@@ -309,8 +309,6 @@
         (optional)](#compound-relations-using-and-or-and-parentheses-optional)
 -   [(Optional) Variable Scope](#optional-variable-scope)
 -   [(Optional) Programming Style](#optional-programming-style)
--   [**WEEK 4: (future update) Visualization with Matplotlib and
-    Seaborn**](#week-4-future-update-visualization-with-matplotlib-and-seaborn)
 -   [**Special Topics**](#special-topics)
 -   [Working with unstructured files](#working-with-unstructured-files)
     -   [Open the file with a context
@@ -327,6 +325,7 @@
         time](#read-a-file-one-line-at-a-time)
     -   [Use a SQLite database](#use-a-sqlite-database)
 -   [Other optional topics](#other-optional-topics)
+-   [**Endnotes**](#endnotes)
 -   [Credits](#credits)
 -   [References](#references)
 -   [Data Sources](#data-sources)
@@ -2870,8 +2869,6 @@ for i in range(5):
 
 # (Optional) Programming Style
 
-# **WEEK 4: (future update) Visualization with Matplotlib and Seaborn**
-
 # **Special Topics**
 
 # Working with unstructured files
@@ -3116,6 +3113,8 @@ with conn:
 -   List comprehensions
 -   Defensive programming
 -   Debugging and Testing
+
+# **Endnotes**
 
 # Credits
 
