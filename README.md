@@ -194,36 +194,7 @@
     object](#optional-introspecting-on-the-dataframe-object)
 -   [(Carpentries version) Group By:
     split-apply-combine](#carpentries-version-group-by-split-apply-combine)
--   [**WEEK 3: Visualization with Matplotlib and
-    Seaborn**](#week-3-visualization-with-matplotlib-and-seaborn)
--   [Graphs](#graphs)
-    -   [Big 5 graphs](#big-5-graphs)
--   [Plotting with Matplotlib](#plotting-with-matplotlib)
-    -   [Create a basic plot](#create-a-basic-plot)
-    -   [Oceania basic plot](#oceania-basic-plot)
-    -   [Two kinds of plotting objects](#two-kinds-of-plotting-objects)
-    -   [Three ways of showing a figure
-        (optional)](#three-ways-of-showing-a-figure-optional)
-    -   [Line Plots](#line-plots)
-    -   [Explore your data with Pandas](#explore-your-data-with-pandas)
-    -   [Plot directly from Pandas
-        (optional)](#plot-directly-from-pandas-optional)
-    -   [Plotting multiple data sets](#plotting-multiple-data-sets)
--   [Seaborn: Pythonic, high-level pre-sets for
-    Matplotlib](#seaborn-pythonic-high-level-pre-sets-for-matplotlib)
-    -   [A simple plot](#a-simple-plot)
-    -   [Import the Iris data set](#import-the-iris-data-set)
-    -   [Scatter Plot](#scatter-plot)
-    -   [Bar Charts](#bar-charts)
-    -   [Histograms](#histograms)
-    -   [Box Plots and Swarm Plots](#box-plots-and-swarm-plots)
-    -   [Heat Map](#heat-map)
--   [Seaborn 0.11 new features:
-    https://seaborn.pydata.org/whatsnew.html](#seaborn-0.11-new-features-httpsseaborn.pydata.orgwhatsnew.html)
--   [Looping through datasets](#looping-through-datasets)
--   [Challenge: Comparing data
-    (rewrite)](#challenge-comparing-data-rewrite)
--   [**WEEK 4: Building Programs**](#week-4-building-programs)
+-   [**WEEK 3: Building Programs**](#week-3-building-programs)
 -   [Notebooks vs Python scripts](#notebooks-vs-python-scripts)
     -   [Differences between .ipynb and
         .py](#differences-between-.ipynb-and-.py)
@@ -264,13 +235,6 @@
         pattern](#use-glob.glob-to-find-sets-of-files-whose-names-match-a-pattern)
     -   [Use glob and a `for` loop to process batches of
         files](#use-glob-and-a-for-loop-to-process-batches-of-files)
--   [Generic file handling](#generic-file-handling)
-    -   [Open the file with a context
-        manager](#open-the-file-with-a-context-manager)
-    -   [A file is a collection of
-        lines](#a-file-is-a-collection-of-lines)
-    -   [Strings contain formatting
-        marks](#strings-contain-formatting-marks)
 -   [Conditionals](#conditionals)
     -   [Evaluating the truth of a
         statement](#evaluating-the-truth-of-a-statement)
@@ -290,6 +254,13 @@
     -   [(Optional) Use pathlib to write code that works across
         operating
         systems](#optional-use-pathlib-to-write-code-that-works-across-operating-systems)
+-   [Generic file handling](#generic-file-handling)
+    -   [Open the file with a context
+        manager](#open-the-file-with-a-context-manager)
+    -   [A file is a collection of
+        lines](#a-file-is-a-collection-of-lines)
+    -   [Strings contain formatting
+        marks](#strings-contain-formatting-marks)
 -   [Text processing](#text-processing)
     -   [Use string methods to determine which lines to
         keep](#use-string-methods-to-determine-which-lines-to-keep)
@@ -313,12 +284,12 @@
         definition](#arguments-in-call-are-matched-to-parameters-in-definition)
     -   [Functions may return a result to their caller using
         `return`](#functions-may-return-a-result-to-their-caller-using-return)
-    -   [**Challenge: Encapsulate text processing in a
-        function**](#challenge-encapsulate-text-processing-in-a-function)
-    -   [(Optional) Use functions to encapsulate large code
-        blocks](#optional-use-functions-to-encapsulate-large-code-blocks)
-    -   [A worked example: The Lorenz
-        attractor](#a-worked-example-the-lorenz-attractor)
+    -   [**Challenge (option 1): Encapsulate text processing in a
+        function**](#challenge-option-1-encapsulate-text-processing-in-a-function)
+    -   [**Challenge (option 2): Encapsulate data processing in a
+        function**](#challenge-option-2-encapsulate-data-processing-in-a-function)
+    -   [(Optional) A worked example: The Lorenz
+        attractor](#optional-a-worked-example-the-lorenz-attractor)
 -   [(Carpentries version)
     Conditionals](#carpentries-version-conditionals)
     -   [Use `if` statements to control whether or not a block of code
@@ -336,15 +307,11 @@
         variables](#use-conditionals-in-a-loop-to-evolve-the-values-of-variables)
     -   [Compound Relations Using `and`, `or`, and Parentheses
         (optional)](#compound-relations-using-and-or-and-parentheses-optional)
--   [Software Logistics](#software-logistics)
-    -   [Export to .py](#export-to-.py)
-    -   [Python from the command line](#python-from-the-command-line)
-    -   [Updating your Python
-        installation](#updating-your-python-installation)
-    -   [Version control](#version-control)
 -   [(Optional) Variable Scope](#optional-variable-scope)
 -   [(Optional) Programming Style](#optional-programming-style)
--   [**WEEK 5: Special Topics**](#week-5-special-topics)
+-   [**WEEK 4: (future update) Visualization with Matplotlib and
+    Seaborn**](#week-4-future-update-visualization-with-matplotlib-and-seaborn)
+-   [**Special Topics**](#special-topics)
 -   [Working with unstructured files](#working-with-unstructured-files)
     -   [Open the file with a context
         handler](#open-the-file-with-a-context-handler)
@@ -2062,507 +2029,7 @@ wine.rename(columns={"color_intensity": "ci"})
     data['normalized_wealth'] = wealth_score
     ```
 
-# **WEEK 3: Visualization with Matplotlib and Seaborn**
-
-# Graphs
-
-Fundamentally, graphs communicate two types of information:
-
-1.  Relationships or trends among data
-2.  The distribution of data
-
-## Big 5 graphs
-
-1.  Line plot
-2.  Scatter plot
-3.  Bar plot
-4.  Histogram
-5.  Box plot
-
-# Plotting with Matplotlib
-
-## Create a basic plot
-
-``` python
-import matplotlib.pyplot as plt
-fig, ax = plt.subplots()
-
-time = [0, 1, 2, 3]
-position = [0, 100, 200, 300]
-
-ax.plot(time, postion)
-
-fig
-```
-
-## Oceania basic plot
-
-## Two kinds of plotting objects
-
-``` python
-print(type(fig))
-print(type(ax))
-```
-
--   Figure objects handle display, printing, saving, etc.
--   Axes objects contain graph information
-
-## Three ways of showing a figure (optional)
-
-1.  Show figure inline (Jupyter Lab default)
-
-    ``` python
-    fig
-    ```
-
-2.  Show figure in a separate window (command line default)
-
-    ``` python
-    fig.show()
-    ```
-
-3.  Show figure in a separate window from Jupyter Lab. You may need to
-    specify a different \"backend\" parameter for `matplotlib.use()`
-    depending on your exact setup:
-    <https://matplotlib.org/stable/tutorials/introductory/usage.html#the-builtin-backends>
-
-    ``` python
-    import matplotlib
-
-    matplotlib.use('TkAgg')
-
-    fig.show()
-    ```
-
-## Line Plots
-
-1.  Create mock data
-
-    ``` python
-    import numpy as np
-
-    y = np.random.random(10) # outputs an array of 10 random numbers between 0 and 1
-    x = np.arange(1980,1990,1) # generates an ordered array of numbers from 1980 to 1989
-
-    # Check that x and y contain the same number of values
-    assert len(x) == len(y)
-
-    # Turn y into a percentage
-    y = y*100
-    ```
-
-2.  Create the basic plot
-
-    ``` python
-    fig, ax = plt.subplots()
-    ax.plot(x, y)
-    ```
-
-3.  Show available styles (What is the local equivalent of this global
-    command?)
-
-    ``` python
-    # What are the global styles?
-    plt.style.available
-    ```
-
-    ``` python
-    # Set a global figure style
-    plt.style.use("dark_background")
-
-    # The style is only applied to new figures, not pre-existing figures
-    fig
-    ```
-
-    ``` python
-    # Re-creating the figure applies the new style
-    fig, ax = plt.subplots()
-    ax.plot(x, y)
-    ```
-
-4.  Add figure information In principle, nearly every element on a
-    Matplotlib figure is independently modifiable.
-
-    ``` python
-    # modify figure size, axes and fonts
-    fig, ax = plt.subplots(figsize=(8,6)) #(width, height) inches
-    ax.plot(x, y, color='darkorange', linewidth=2, marker='o')
-
-    # add title and axes label, adjust font size and style
-
-    ax.set_title("Percent Change in Stock X", fontsize=22, fontweight='bold')
-    ax.set_xlabel(" Years ", fontsize=20, fontweight='bold')
-    ax.set_ylabel(" % change ", fontsize=20, fontweight='bold')
-
-    # adjust tick labels
-    ax.tick_params(axis='both', which='major', labelsize=18)
-
-    # add a grid
-    ax.grid(True)
-    ```
-
-5.  What is an object? Objects encapsulate behaviors
-
-    -   Lists, dictionaries, and DataFrames are collections of data
-    -   Objects are collections of data and functions
-
-6.  Matplotlib object syntax
-
-    -   The `object.set_field(value)` usage is taken from Java, which
-        was popular in 2003 when Matplotlib was developing its
-        object-oriented syntax
-    -   You get values back out with `object.get_field(value)`
-    -   The Pythonic way to set a value would be `object.field = value`.
-        However, the Matplotlib getters and setters do a lot of internal
-        bookkeeping, so if you try to set field values directly you will
-        get errors. For example, compare `ax.get_ylabel()` with
-        `ax.yaxis.label`.
-    -   Read \"The Lifecycle of a Plot\":
-        <https://matplotlib.org/stable/tutorials/introductory/lifecycle.html>
-    -   Read \"Why you hate Matplotlib\":
-        <https://ryxcommar.com/2020/04/11/why-you-hate-matplotlib/>
-
-7.  Save your figure
-
-    ``` python
-    fig.savefig("mygraph_dark.png", dpi=300, bbox_inches='tight')
-    ```
-
-## Explore your data with Pandas
-
-1.  Import data
-
-    ``` python
-    import pandas as pd
-
-    data = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
-    ```
-
-2.  Transform column headers into an ordinal scale
-
-    1.  Original column names are object (i.e. string) data
-
-        ``` python
-        data.columns
-        ```
-
-    2.  Pull out integer portion of strings
-
-        ``` python
-        years = data.columns.str.strip('gdpPercap_')
-        years
-        ```
-
-    3.  Convert the years columns into integer years and replace
-        DataFrame column headers
-
-        ``` python
-        data.columns = years.astype(int)
-        data.columns
-        ```
-
-3.  Plot directly with Pandas
-
-    ``` python
-    data.loc['Austria'].plot()
-    ```
-
-## Plot directly from Pandas (optional)
-
-1.  The basic plot syntax
-
-    ``` python
-    ax = data.loc['Austria'].plot()
-    fig = ax.get_figure()
-    fig
-    ```
-
-2.  Decorate your Pandas plot
-
-    ``` python
-    ax = data.loc['Austria'].plot(figsize=(8,6), color='darkgreen', linewidth=2, marker='*')
-    ax.set_title("GDP of Austria", fontsize=22, fontweight='bold')
-    ax.set_xlabel("Years",fontsize=20, fontweight='bold' )
-    ax.set_ylabel("GDP",fontsize=20, fontweight='bold' )
-
-    fig = ax.get_figure()
-    fig
-    ```
-
-3.  The equivalent Matplotlib plot (optional)
-
-    ``` python
-    # extract the x and y values from dataframe
-    x_years = data.columns
-    y_gdp = data.loc['Austria']
-
-    # Create the plot
-    fig, ax = plt.subplots(figsize=(8,6))
-    ax.plot(x_years, y_gdp, color='darkgreen', linewidth=2, marker='x')
-    # etc.
-    ```
-
-## Plotting multiple data sets
-
-### Extract values from the DataFrame
-
-``` python
-x_years = data.columns
-y_austria = data.loc['Austria']
-y_bulgaria = data.loc['Bulgaria']
-```
-
-### Create the plot object
-
-``` python
-# Create the plot
-fig, ax = plt.subplots(figsize=(8,6))
-ax.plot(x_years, y_austria, label='Austria', color='darkgreen', linewidth=2, marker='x')
-ax.plot(x_years, y_bulgaria, label='Bulgaria', color='maroon', linewidth=2, marker='o')
-
-# Decorate the plot
-ax.legend(fontsize=16, loc='upper center') # Uses labels
-ax.set_title("GDP of Austria vs Bulgaria", fontsize=22, fontweight='bold')
-ax.set_xlabel("Years",fontsize=20, fontweight='bold' )
-ax.set_ylabel("GDP",fontsize=20, fontweight='bold' )
-```
-
-### There are many kinds of plots
-
-``` python
-plt.style.use('ggplot')
-
-# Create a scatter plot
-fig, ax = plt.subplots(figsize=(8,6))
-ax.scatter(y_austria, y_bulgaria, color='blue', linewidth=2, marker='o')
-
-# Decorate the plot
-ax.set_title("GDP of Austria vs Bulgaria", fontsize=22, fontweight='bold')
-ax.set_xlabel("GDP of Austria",fontsize=20, fontweight='bold' )
-ax.set_ylabel("GDP of Bulgaria",fontsize=20, fontweight='bold' )
-```
-
-### Overlaying multiple plots on the same figure with Pandas (optional)
-
-This is super unintuitive.
-
-``` python
-# Create an Axes object with the Austria data
-ax = data.loc['Austria'].plot(figsize=(8,6), color='darkgreen', linewidth=2, marker='*')
-print("Austria graph", id(ax))
-
-# Overlay the Bulgaria data on the same Axes object
-ax = data.loc['Bulgaria'].plot(color='maroon', linewidth=2, marker='o')
-print("Bulgaria graph", id(ax))
-```
-
-# Seaborn: Pythonic, high-level pre-sets for Matplotlib
-
-## A simple plot
-
-``` python
-# Import the Seaborn library
-import seaborn as sns
-ax = sns.lineplot(data=data.T, legend=False)
-```
-
--   Doing more with this data set requires transforming the data from
-    wide form to long form; see
-    <https://seaborn.pydata.org/tutorial/data_structure.html>
-
-## Import the Iris data set
-
-<https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/0e7a9b0a5d22642a06d3d5b9bcbad9890c8ee534/iris.csv>
-
-``` python
-iris = pd.read_csv("data/iris.csv")
-iris.head()
-```
-
-## Scatter Plot
-
-``` python
-# Reset the style
-plt.style.use("dark_background")
-plt.rcParams["axes.grid"] = False
-
-# Create the plot
-ax = sns.scatterplot(data=iris, x='sepal_length',y='petal_length')
-```
-
-### Change plotting theme
-
-``` python
-# Make everything visible at a distance
-sns.set_context('poster')
-
-# Color by species
-ax = sns.scatterplot(data=iris, x='sepal_length', y='petal_length', hue='species', palette='colorblind')
-
-# Set the figure size
-fig = ax.get_figure()
-fig.set_size_inches(8,6)
-```
-
-### Add styling to data points
-
-``` python
-# Color by species
-ax = sns.scatterplot(data=iris, x='sepal_length', y='petal_length', hue='species', palette='colorblind', style='species')
-
-# Set the figure size
-fig = ax.get_figure()
-fig.set_size_inches(8,6)
-```
-
-### Prettify column names (optional)
-
-``` python
-words = [' '.join(i) for i in iris.columns.str.split('_')]
-iris.columns = words
-```
-
-### Bubble Plot
-
-``` python
-# Color by species, size by petal width
-ax = sns.scatterplot(data=iris, x='sepal_length', y='petal_length',
-                     hue='species', palette='colorblind', size='petal_width')
-
-# (horizontal direction, vertical alignment) of legend
-ax.legend(bbox_to_anchor=(1, 1))
-
-# Set the figure size
-fig = ax.get_figure()
-fig.set_size_inches(8,6)
-```
-
-### Regression Plot (optional)
-
-``` python
-# Color by species, size by petal width
-ax = sns.regplot(data=iris, x='sepal_length', y='petal_length', scatter=True,
-                 scatter_kws={'color':'white'})
-```
-
-## Bar Charts
-
-### Count Plot counts the records in each category
-
-``` python
-ax = sns.countplot(data=iris, x='species', palette='colorblind')
-```
-
-### Bar Plot
-
-Default summary statistic is mean, and default error bars are 95%
-confidence interval.
-
-``` python
-ax = sns.barplot(data=iris, x='species', y='sepal_width', palette='colorblind')
-```
-
-### Bar Plot with custom parameters
-
-``` python
-# Error bars show standard deviation
-ax = sns.barplot(data=iris, x='species', y='sepal_width', ci='sd', edgecolor='black')
-```
-
-``` python
-# Estimator shows category sum
-ax = sns.barplot(data=iris, x='species', y='sepal_width', ci='sd', estimator=np.sum, edgecolor='black')
-```
-
-## Histograms
-
-### Histogram of overall data set
-
-``` python
-ax = sns.histplot(data=iris, x='petal_length', kde=True)
-```
-
--   KDE: If True, compute a kernel density estimate to smooth the
-    distribution and show on the plot as (one or more) line(s).
--   There seems a bimodal distribution of petal length. What factors
-    underly this distribution?
-
-### Histogram of data decomposed by category
-
-``` python
-ax = sns.histplot(data=iris, x='petal_length', hue='species', palette='Set2')
-```
-
-### Selecting number of bins
-
-``` python
-# This generates 3 subplots (ncols=3) on the same figure
-fig, axes = plt.subplots(figsize=(12,4), nrows=1, ncols=3)
-sns.histplot(data=iris,x='petal_length', bins=5, ax=axes[0], color='#f5a142') #  #f5a142 is a hex color
-sns.histplot(data=iris,x='petal_length', bins=10, ax=axes[1], color='maroon')
-sns.histplot(data=iris,x='petal_length', bins=15, ax=axes[2], color='darkmagenta')
-```
-
-## Box Plots and Swarm Plots
-
-### Basic box plot
-
-``` python
-ax = sns.boxplot(data=iris, x='species', y='petal_length')
-```
-
-### Overlap swarm plot
-
-``` python
-ax = sns.boxplot(data=iris, x='species', y='petal_length')
-sns.swarmplot(data=iris, x='species', y='petal_length', ax=ax, color='black')
-```
-
-### Swarm plot only
-
-``` python
-ax = sns.swarmplot(data=iris,x='species', y='petal_length', hue='species', palette='Set1')
-ax.legend(loc='upper left', fontsize=16)
-ax.tick_params(axis='x', labelrotation = 45)
-```
-
-## Heat Map
-
-# Seaborn 0.11 new features: <https://seaborn.pydata.org/whatsnew.html>
-
-# Looping through datasets
-
-``` python
-# Saving datasets with new-style string formatting
-for i in datasets_list:
-   plt.savefig(f'{i}.png',....)
-```
-
-# Challenge: Comparing data (rewrite)
-
-Write a program that reads in the regional data sets and plots the
-average GDP per capita for each region over time in a single chart.
-
-Solution:
-
-``` python
-import glob
-import pandas as pd
-import matplotlib.pyplot as plt
-fig, ax = plt.subplots(1,1)
-for filename in glob.glob('data/gapminder_gdp*.csv'):
-    dataframe = pd.read_csv(filename)
-    # extract <region> from the filename, expected to be in the format 'data/gapminder_gdp_<region>.csv'.
-    # we will split the string using the split method and `_` as our separator,
-    # retrieve the last string in the list that split returns (`<region>.csv`),
-    # and then remove the `.csv` extension from that string.
-    region = filename.split('_')[-1][:-4]
-    dataframe.mean().plot(ax=ax, label=region)
-plt.legend()
-plt.show()
-```
-
-# **WEEK 4: Building Programs**
+# **WEEK 3: Building Programs**
 
 # Notebooks vs Python scripts
 
@@ -2814,50 +2281,6 @@ all_data = pd.concat(data_frames)
 print(all_data.shape)
 ```
 
-# Generic file handling
-
-Pandas understands specific file types, but what if you need to work
-with a generic file?
-
-## Open the file with a context manager
-
-``` python
-with open("data/bouldercreek_09_2013.txt", "r") as infile:
-    lines = infile.readlines()
-```
-
--   The context manager closes the file when you\'re done reading it
--   `"bouldercreek_09_2013.txt"` is the name of the file
--   `infile` is a variable that refers to the file on disk
-
-## A file is a collection of lines
-
-`.readlines()` produces the file contents as a list of lines; each line
-is a string.
-
-``` python
-print(len(text))
-print(type(text))
-
-# View the first 10 lines
-print(text[:10])
-```
-
-## Strings contain formatting marks
-
-Compare the following:
-
-``` python
-# This displays the nicely-formatted document
-print(lines[0])
-```
-
-``` python
-# This shows the true nature of the string; you can see newlines (/n),
-# tabs (/t), and other hidden characters
-lines[0]
-```
-
 # Conditionals
 
 ## Evaluating the truth of a statement
@@ -2881,7 +2304,10 @@ lines[0]
     print(7 in primes)
     ```
 
-3.  Truth of a collection
+3.  Truth of a collection Note that `any()` and `all()` evaluate each
+    item using `.__bool__()` or `.__len()__`, which tells you whether an
+    item is \"truthy\" or \"falsey\" (i.e. interpreted as being true or
+    false).
 
     ``` python
     my_list = [2.75, "green", 0]
@@ -2889,6 +2315,18 @@ lines[0]
     print(any(my_list))
     print(all(my_list))
     ```
+
+4.  (Optional) Understanding \"truthy\" and \"falsey\" values in Python
+    (cf. <https://stackoverflow.com/a/53198991>) Every value in Python,
+    regardless of type, is interpreted as being `True` except for the
+    following values (which are interpreted as `False`). \"Truthy\"
+    values satisfy `if` or `while` statements; \"Falsey\" values do not.
+
+    1.  Constants defined to be false: `None` and `False`.
+    2.  Zero of any numeric type: `0`, `0.0`, `0j`, `Decimal(0)`,
+        `Fraction(0, 1)`
+    3.  Empty sequences and collections: `''`, `()`, `[]`, `{}`,
+        `set()`, `range(0)`
 
 ## Use `if` statements to control whether or not a block of code is executed
 
@@ -3025,6 +2463,50 @@ for i in range(5):
                 print(data.head(1))
     ```
 
+# Generic file handling
+
+Pandas understands specific file types, but what if you need to work
+with a generic file?
+
+## Open the file with a context manager
+
+``` python
+with open("data/bouldercreek_09_2013.txt", "r") as infile:
+    lines = infile.readlines()
+```
+
+-   The context manager closes the file when you\'re done reading it
+-   `"bouldercreek_09_2013.txt"` is the name of the file
+-   `infile` is a variable that refers to the file on disk
+
+## A file is a collection of lines
+
+`.readlines()` produces the file contents as a list of lines; each line
+is a string.
+
+``` python
+print(len(text))
+print(type(text))
+
+# View the first 10 lines
+print(text[:10])
+```
+
+## Strings contain formatting marks
+
+Compare the following:
+
+``` python
+# This displays the nicely-formatted document
+print(lines[0])
+```
+
+``` python
+# This shows the true nature of the string; you can see newlines (/n),
+# tabs (/t), and other hidden characters
+lines[0]
+```
+
 # Text processing
 
 ## Use string methods to determine which lines to keep
@@ -3032,11 +2514,6 @@ for i in range(5):
 1.  The file contains front matter that we can discard
 
     ``` python
-    infile_name = "data/bouldercreek_09_2013.txt"
-
-    with open(infile_name, "r") as infile:
-        lines = file_in.readlines()
-
     tabular_lines = []
     for line in lines:
         if not line.startswith("#"):
@@ -3209,12 +2686,23 @@ print_greeting()
     2.  Docstring provides function help. Use triple quotes if you need
         the docstring to span multiple lines.
 
-## **Challenge: Encapsulate text processing in a function**
+## **Challenge (option 1): Encapsulate text processing in a function**
 
 Write a function that takes `line` as an input and returns the
 information required by `writer.writerow()`.
 
-## (Optional) Use functions to encapsulate large code blocks
+## **Challenge (option 2): Encapsulate data processing in a function**
+
+Write a function that encapsulates the data normalization from the
+Pandas workshop into a function. The function should:
+
+1.  Take a data frame as its input
+2.  Calculate the mean Z score for each country
+3.  Divide countries into \"wealthy\" and \"non-wealthy\" categories
+4.  Add this information to the data frame as new columns
+5.  Return the modified data frame
+
+### Solution
 
 ``` python
 import pandas as pd
@@ -3250,7 +2738,7 @@ for filename in glob.glob('data/gapminder_*.csv'):
     data.to_csv(newfile)
 ```
 
-## A worked example: The Lorenz attractor
+## (Optional) A worked example: The Lorenz attractor
 
 <https://matplotlib.org/stable/gallery/mplot3d/lorenz_attractor.html>
 
@@ -3378,23 +2866,13 @@ for i in range(5):
 -   Aside: For a more natural way of working with many lists, look at
     `zip()`
 
-# Software Logistics
-
-## Export to .py
-
-run in e.g. Spyder
-
-## Python from the command line
-
-## Updating your Python installation
-
-## Version control
-
 # (Optional) Variable Scope
 
 # (Optional) Programming Style
 
-# **WEEK 5: Special Topics**
+# **WEEK 4: (future update) Visualization with Matplotlib and Seaborn**
+
+# **Special Topics**
 
 # Working with unstructured files
 
@@ -3656,25 +3134,30 @@ with conn:
 # References
 
 -   Complete tutorial: <https://docs.python.org/3/tutorial/index.html>
--   String formatting: <https://pyformat.info/>
 -   Python standard library: <https://docs.python.org/3/library/>
 -   Pandas documentation:
     <https://pandas.pydata.org/pandas-docs/stable/>
 -   Pandas user guide:
     <https://pandas.pydata.org/docs/user_guide/index.html>
--   SciPy stats: <https://docs.scipy.org/doc/scipy/reference/stats.html>
+-   String formatting: <https://pyformat.info/>
+-   True and False in Python:
+    <https://docs.python.org/3/library/stdtypes.html#truth-value-testing>
+-   SciPy stats library:
+    <https://docs.scipy.org/doc/scipy/reference/stats.html>
 -   Statistics in Python tutorial:
     <https://scipy-lectures.org/packages/statistics/>
 -   Statsmodels library: <https://www.statsmodels.org/stable/index.html>
--   Seaborn gallery of examples:
-    <https://seaborn.pydata.org/examples/index.html>
 -   Matplotlib gallery of examples:
     <https://matplotlib.org/gallery/index.html>
+-   Seaborn gallery of examples:
+    <https://seaborn.pydata.org/examples/index.html>
 -   IPython magic commands:
     <https://ipython.readthedocs.io/en/stable/interactive/magics.html>
 -   A somewhat-biased comparison of tools for integrating Python with
     C/C++:
     <http://blog.behnel.de/posts/cython-pybind11-cffi-which-tool-to-choose.html>
+-   How to choose a code editor:
+    <https://github.com/elliewix/Ways-Of-Installing-Python/blob/master/ways-of-installing.md#why-do-you-need-a-specific-tool>
 
 # Data Sources
 
