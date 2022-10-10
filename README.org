@@ -2015,7 +2015,7 @@ for i in range(5):
 
 * (Optional) Variable Scope
 * (Optional) Programming Style
-* *WEEK 4: (future update) Visualization with Matplotlib and Seaborn*
+* COMMENT *WEEK 4: Visualization with Matplotlib and Seaborn*
 * COMMENT Graphs
 Fundamentally, graphs communicate two types of information:
 1. Relationships or trends among data
@@ -2413,8 +2413,7 @@ ax.tick_params(axis='x', labelrotation = 45)
 * COMMENT Challenge: Comparing data (rewrite)
 Write a program that reads in the regional data sets and plots the average GDP per capita for each region over time in a single chart.
 
-Solution:
-
+** Solution:
 #+BEGIN_SRC python
 import glob
 import pandas as pd
@@ -2641,6 +2640,7 @@ with conn:
 - Defensive programming
 - Debugging and Testing
 
+* *Endnotes*
 * Credits
 - Plotting and Programming in Python (Pandas-oriented): http://swcarpentry.github.io/python-novice-gapminder/
 - Programming with Python (NumPy-oriented): https://swcarpentry.github.io/python-novice-inflammation/index.html
