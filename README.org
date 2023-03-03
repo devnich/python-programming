@@ -2317,8 +2317,14 @@ Let's make a poster!
    sns.set_context('poster')
 
    # Color by species
-   ax = sns.scatterplot(data=iris, x='sepal_length', y='petal_length', hue='species', palette='colorblind', size='petal_width')
+   ax = sns.scatterplot(data=iris, x='sepal_length', y='petal_length', hue='species',
+                        palette='colorblind', size='petal_width')
+
+   # Place legend
+   ax.legend(bbox_to_anchor=(2,1))
    #+END_SRC
+
+   - Read more about ~loc~ vs. ~bbox_to_anchor~ in the legend documentation: https://matplotlib.org/stable/api/legend_api.html
 
 4. The Seaborn plot uses Matplotlib under the hood
    #+BEGIN_SRC python
