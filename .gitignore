@@ -13,3 +13,6 @@ tmp.md
 
 # Archives
 *.zip
+
+# Generated files
+*.png

@@ -1,334 +1,422 @@
--   [**WEEK 1: Fundamentals**](#week-1-fundamentals)
--   [Orientation](#orientation)
+-   [**WEEK 1:
+    Fundamentals**](#week-1-fundamentals){#toc-week-1-fundamentals}
+-   [Orientation](#orientation){#toc-orientation}
     -   [What programming language should I
-        use?](#what-programming-language-should-i-use)
+        use?](#what-programming-language-should-i-use){#toc-what-programming-language-should-i-use}
     -   [Python is pretty good at lots of
-        things](#python-is-pretty-good-at-lots-of-things)
+        things](#python-is-pretty-good-at-lots-of-things){#toc-python-is-pretty-good-at-lots-of-things}
     -   [Literate programming and
-        notebooks](#literate-programming-and-notebooks)
--   [Jupyter commands](#jupyter-commands)
-    -   [How to start Jupyter Lab](#how-to-start-jupyter-lab)
-    -   [Navigation](#navigation)
-    -   [Writing code](#writing-code)
--   [Variables and Assignment](#variables-and-assignment)
-    -   [Use variables to store values](#use-variables-to-store-values)
-    -   [Rules for naming things](#rules-for-naming-things)
-    -   [Use `print()` to display values](#use-print-to-display-values)
+        notebooks](#literate-programming-and-notebooks){#toc-literate-programming-and-notebooks}
+-   [Jupyter commands](#jupyter-commands){#toc-jupyter-commands}
+    -   [How to start Jupyter
+        Lab](#how-to-start-jupyter-lab){#toc-how-to-start-jupyter-lab}
+    -   [Navigation](#navigation){#toc-navigation}
+    -   [Writing code](#writing-code){#toc-writing-code}
+-   [Variables and
+    Assignment](#variables-and-assignment){#toc-variables-and-assignment}
+    -   [Use variables to store
+        values](#use-variables-to-store-values){#toc-use-variables-to-store-values}
+    -   [Rules for naming
+        things](#rules-for-naming-things){#toc-rules-for-naming-things}
+    -   [Use `print()` to display
+        values](#use-print-to-display-values){#toc-use-print-to-display-values}
     -   [Jupyter Lab will always echo the last value in a
-        cell](#jupyter-lab-will-always-echo-the-last-value-in-a-cell)
+        cell](#jupyter-lab-will-always-echo-the-last-value-in-a-cell){#toc-jupyter-lab-will-always-echo-the-last-value-in-a-cell}
     -   [(Optional) Variables must be created before they are
-        used](#optional-variables-must-be-created-before-they-are-used)
+        used](#optional-variables-must-be-created-before-they-are-used){#toc-optional-variables-must-be-created-before-they-are-used}
     -   [Variables can be used in
-        calculations](#variables-can-be-used-in-calculations)
+        calculations](#variables-can-be-used-in-calculations){#toc-variables-can-be-used-in-calculations}
     -   [Variables only change value when something is assigned to
-        them](#variables-only-change-value-when-something-is-assigned-to-them)
--   [Data Types and Type Conversion](#data-types-and-type-conversion)
-    -   [Every value has a type](#every-value-has-a-type)
+        them](#variables-only-change-value-when-something-is-assigned-to-them){#toc-variables-only-change-value-when-something-is-assigned-to-them}
+-   [Data Types and Type
+    Conversion](#data-types-and-type-conversion){#toc-data-types-and-type-conversion}
+    -   [Every value has a
+        type](#every-value-has-a-type){#toc-every-value-has-a-type}
     -   [The type determine what operations you can perform with a given
-        value](#the-type-determine-what-operations-you-can-perform-with-a-given-value)
+        value](#the-type-determine-what-operations-you-can-perform-with-a-given-value){#toc-the-type-determine-what-operations-you-can-perform-with-a-given-value}
     -   [Use the built-in function `type()` to find the type of a
-        value](#use-the-built-in-function-type-to-find-the-type-of-a-value)
+        value](#use-the-built-in-function-type-to-find-the-type-of-a-value){#toc-use-the-built-in-function-type-to-find-the-type-of-a-value}
     -   [You can explicitly convert data to a different
-        type](#you-can-explicitly-convert-data-to-a-different-type)
+        type](#you-can-explicitly-convert-data-to-a-different-type){#toc-you-can-explicitly-convert-data-to-a-different-type}
     -   [**Challenge**: Explain what each operator
-        does](#challenge-explain-what-each-operator-does)
--   [Built-in Functions and Help](#built-in-functions-and-help)
+        does](#challenge-explain-what-each-operator-does){#toc-challenge-explain-what-each-operator-does}
+-   [Built-in Functions and
+    Help](#built-in-functions-and-help){#toc-built-in-functions-and-help}
     -   [How do we find out what\'s
-        possible?](#how-do-we-find-out-whats-possible)
+        possible?](#how-do-we-find-out-whats-possible){#toc-how-do-we-find-out-whats-possible}
     -   [(Optional) Use comments to add documentation to
-        programs](#optional-use-comments-to-add-documentation-to-programs)
+        programs](#optional-use-comments-to-add-documentation-to-programs){#toc-optional-use-comments-to-add-documentation-to-programs}
     -   [A function may take zero or more
-        arguments](#a-function-may-take-zero-or-more-arguments)
+        arguments](#a-function-may-take-zero-or-more-arguments){#toc-a-function-may-take-zero-or-more-arguments}
     -   [Functions can have optional
-        arguments](#functions-can-have-optional-arguments)
+        arguments](#functions-can-have-optional-arguments){#toc-functions-can-have-optional-arguments}
     -   [Use the built-in function `help()` to get help for a
-        function](#use-the-built-in-function-help-to-get-help-for-a-function)
+        function](#use-the-built-in-function-help-to-get-help-for-a-function){#toc-use-the-built-in-function-help-to-get-help-for-a-function}
     -   [Every function returns
-        something](#every-function-returns-something)
+        something](#every-function-returns-something){#toc-every-function-returns-something}
     -   [(Optional) Functions will typically generalize in sensible
-        ways](#optional-functions-will-typically-generalize-in-sensible-ways)
+        ways](#optional-functions-will-typically-generalize-in-sensible-ways){#toc-optional-functions-will-typically-generalize-in-sensible-ways}
     -   [*Methods* are functions that belong to
-        objects](#methods-are-functions-that-belong-to-objects)
+        objects](#methods-are-functions-that-belong-to-objects){#toc-methods-are-functions-that-belong-to-objects}
     -   [(Optional) Python produces informative error
-        messages](#optional-python-produces-informative-error-messages)
+        messages](#optional-python-produces-informative-error-messages){#toc-optional-python-produces-informative-error-messages}
     -   [**(Optional) Beginner Challenge**: What happens
-        when?](#optional-beginner-challenge-what-happens-when)
--   [Libraries](#libraries)
+        when?](#optional-beginner-challenge-what-happens-when){#toc-optional-beginner-challenge-what-happens-when}
+-   [Libraries](#libraries){#toc-libraries}
     -   [Most of the power of a programming language is in its
-        libraries](#most-of-the-power-of-a-programming-language-is-in-its-libraries)
+        libraries](#most-of-the-power-of-a-programming-language-is-in-its-libraries){#toc-most-of-the-power-of-a-programming-language-is-in-its-libraries}
     -   [A program must `import` a library module before using
-        it](#a-program-must-import-a-library-module-before-using-it)
+        it](#a-program-must-import-a-library-module-before-using-it){#toc-a-program-must-import-a-library-module-before-using-it}
     -   [Use `help()` to learn about the contents of a library
-        module](#use-help-to-learn-about-the-contents-of-a-library-module)
-    -   [(Optional) Import shortcuts](#optional-import-shortcuts)
+        module](#use-help-to-learn-about-the-contents-of-a-library-module){#toc-use-help-to-learn-about-the-contents-of-a-library-module}
+    -   [(Optional) Import
+        shortcuts](#optional-import-shortcuts){#toc-optional-import-shortcuts}
     -   [Python has opinions about how to write your
-        programs](#python-has-opinions-about-how-to-write-your-programs)
--   [Lists](#lists)
+        programs](#python-has-opinions-about-how-to-write-your-programs){#toc-python-has-opinions-about-how-to-write-your-programs}
+-   [Lists](#lists){#toc-lists}
     -   [A list stores many values in a single
-        structure](#a-list-stores-many-values-in-a-single-structure)
+        structure](#a-list-stores-many-values-in-a-single-structure){#toc-a-list-stores-many-values-in-a-single-structure}
     -   [Lists are indexed by position, counting from
-        0](#lists-are-indexed-by-position-counting-from-0)
+        0](#lists-are-indexed-by-position-counting-from-0){#toc-lists-are-indexed-by-position-counting-from-0}
     -   [You can get a subset of the list by slicing
-        it](#you-can-get-a-subset-of-the-list-by-slicing-it)
-    -   [Why are lists indexed from 0?](#why-are-lists-indexed-from-0)
+        it](#you-can-get-a-subset-of-the-list-by-slicing-it){#toc-you-can-get-a-subset-of-the-list-by-slicing-it}
+    -   [Why are lists indexed from
+        0?](#why-are-lists-indexed-from-0){#toc-why-are-lists-indexed-from-0}
     -   [Some other properties of
-        indexes](#some-other-properties-of-indexes)
-    -   [Lists are mutable](#lists-are-mutable)
+        indexes](#some-other-properties-of-indexes){#toc-some-other-properties-of-indexes}
+    -   [Lists are mutable](#lists-are-mutable){#toc-lists-are-mutable}
     -   [Many functions take collections as
-        arguments](#many-functions-take-collections-as-arguments)
+        arguments](#many-functions-take-collections-as-arguments){#toc-many-functions-take-collections-as-arguments}
     -   [(Optional) Removing items from a
-        list](#optional-removing-items-from-a-list)
-    -   [Lists can contain anything](#lists-can-contain-anything)
--   [Strings are (kind of) like lists](#strings-are-kind-of-like-lists)
+        list](#optional-removing-items-from-a-list){#toc-optional-removing-items-from-a-list}
+    -   [Lists can contain
+        anything](#lists-can-contain-anything){#toc-lists-can-contain-anything}
+-   [Strings are (kind of) like
+    lists](#strings-are-kind-of-like-lists){#toc-strings-are-kind-of-like-lists}
     -   [Strings are indexed like
-        lists](#strings-are-indexed-like-lists)
+        lists](#strings-are-indexed-like-lists){#toc-strings-are-indexed-like-lists}
     -   [(Optional) Strings have a
-        length](#optional-strings-have-a-length)
-    -   [But! Strings are immutable](#but-strings-are-immutable)
-    -   [Building strings with `.join()`](#building-strings-with-.join)
+        length](#optional-strings-have-a-length){#toc-optional-strings-have-a-length}
+    -   [But! Strings are
+        immutable](#but-strings-are-immutable){#toc-but-strings-are-immutable}
+    -   [Building strings with
+        `.join()`](#building-strings-with-.join){#toc-building-strings-with-.join}
     -   [**(Optional) Beginner Challenge**: From Strings to Lists and
-        Back](#optional-beginner-challenge-from-strings-to-lists-and-back)
+        Back](#optional-beginner-challenge-from-strings-to-lists-and-back){#toc-optional-beginner-challenge-from-strings-to-lists-and-back}
     -   [**Challenge**: Locating the right
-        module](#challenge-locating-the-right-module)
--   [Dictionaries](#dictionaries)
+        module](#challenge-locating-the-right-module){#toc-challenge-locating-the-right-module}
+-   [Dictionaries](#dictionaries){#toc-dictionaries}
     -   [Dictionaries are sets of key/value pairs. Instead of being
         indexed by position, they are indexed by
-        key.](#dictionaries-are-sets-of-keyvalue-pairs.-instead-of-being-indexed-by-position-they-are-indexed-by-key.)
+        key.](#dictionaries-are-sets-of-keyvalue-pairs.-instead-of-being-indexed-by-position-they-are-indexed-by-key.){#toc-dictionaries-are-sets-of-keyvalue-pairs.-instead-of-being-indexed-by-position-they-are-indexed-by-key.}
     -   [Update dictionaries by assigning a key/value
-        pair](#update-dictionaries-by-assigning-a-keyvalue-pair)
+        pair](#update-dictionaries-by-assigning-a-keyvalue-pair){#toc-update-dictionaries-by-assigning-a-keyvalue-pair}
     -   [(Optional) Check whether the dictionary contains an
-        item](#optional-check-whether-the-dictionary-contains-an-item)
+        item](#optional-check-whether-the-dictionary-contains-an-item){#toc-optional-check-whether-the-dictionary-contains-an-item}
     -   [(Optional) Delete an item using `del` or
-        `pop()`](#optional-delete-an-item-using-del-or-pop)
+        `pop()`](#optional-delete-an-item-using-del-or-pop){#toc-optional-delete-an-item-using-del-or-pop}
     -   [Dictionaries are the natural way to store tree-structured
-        data](#dictionaries-are-the-natural-way-to-store-tree-structured-data)
+        data](#dictionaries-are-the-natural-way-to-store-tree-structured-data){#toc-dictionaries-are-the-natural-way-to-store-tree-structured-data}
     -   [**(Optional) Advanced Challenge**: Convert a list to a
-        dictionary](#optional-advanced-challenge-convert-a-list-to-a-dictionary)
--   [(Optional) Other containers](#optional-other-containers)
+        dictionary](#optional-advanced-challenge-convert-a-list-to-a-dictionary){#toc-optional-advanced-challenge-convert-a-list-to-a-dictionary}
+-   [(Optional) Other
+    containers](#optional-other-containers){#toc-optional-other-containers}
 -   [**WEEK 2: Data manipulation with
-    Pandas**](#week-2-data-manipulation-with-pandas)
--   [(Optional) Review collections](#optional-review-collections)
-    -   [Lists and dictionaries](#lists-and-dictionaries)
-    -   [Strings](#strings)
+    Pandas**](#week-2-data-manipulation-with-pandas){#toc-week-2-data-manipulation-with-pandas}
+-   [(Optional) Review
+    collections](#optional-review-collections){#toc-optional-review-collections}
+    -   [Lists and
+        dictionaries](#lists-and-dictionaries){#toc-lists-and-dictionaries}
+    -   [Strings](#strings){#toc-strings}
 -   [A very brief introduction to
-    NumPy](#a-very-brief-introduction-to-numpy)
+    NumPy](#a-very-brief-introduction-to-numpy){#toc-a-very-brief-introduction-to-numpy}
 -   [A very brief introduction to
-    Pandas](#a-very-brief-introduction-to-pandas)
--   [(Optional) Where are we?](#optional-where-are-we)
+    Pandas](#a-very-brief-introduction-to-pandas){#toc-a-very-brief-introduction-to-pandas}
+-   [(Optional) Where are
+    we?](#optional-where-are-we){#toc-optional-where-are-we}
     -   [Python provides functions for working with the file
-        system.](#python-provides-functions-for-working-with-the-file-system.)
+        system.](#python-provides-functions-for-working-with-the-file-system.){#toc-python-provides-functions-for-working-with-the-file-system.}
     -   [These provide a rich Python alternative to shell
-        functions](#these-provide-a-rich-python-alternative-to-shell-functions)
+        functions](#these-provide-a-rich-python-alternative-to-shell-functions){#toc-these-provide-a-rich-python-alternative-to-shell-functions}
 -   [Reading tabular data into data
-    frames](#reading-tabular-data-into-data-frames)
+    frames](#reading-tabular-data-into-data-frames){#toc-reading-tabular-data-into-data-frames}
     -   [Import tabular data using the Pandas
-        library](#import-tabular-data-using-the-pandas-library)
+        library](#import-tabular-data-using-the-pandas-library){#toc-import-tabular-data-using-the-pandas-library}
     -   [Use `index_col` to use a column's values as row
-        indices](#use-index_col-to-use-a-columns-values-as-row-indices)
+        indices](#use-index_col-to-use-a-columns-values-as-row-indices){#toc-use-index_col-to-use-a-columns-values-as-row-indices}
     -   [Pandas help files are dense; you should prefer the online
-        documentation](#pandas-help-files-are-dense-you-should-prefer-the-online-documentation)
+        documentation](#pandas-help-files-are-dense-you-should-prefer-the-online-documentation){#toc-pandas-help-files-are-dense-you-should-prefer-the-online-documentation}
 -   [Data frames are objects that can tell you about their
-    contents](#data-frames-are-objects-that-can-tell-you-about-their-contents)
+    contents](#data-frames-are-objects-that-can-tell-you-about-their-contents){#toc-data-frames-are-objects-that-can-tell-you-about-their-contents}
     -   [Data frames have methods (i.e. functions) that perform
         operations using the data frame\'s contents as
-        input](#data-frames-have-methods-i.e.-functions-that-perform-operations-using-the-data-frames-contents-as-input)
+        input](#data-frames-have-methods-i.e.-functions-that-perform-operations-using-the-data-frames-contents-as-input){#toc-data-frames-have-methods-i.e.-functions-that-perform-operations-using-the-data-frames-contents-as-input}
     -   [Data frames have fields (i.e. variables) that hold additional
-        information](#data-frames-have-fields-i.e.-variables-that-hold-additional-information)
+        information](#data-frames-have-fields-i.e.-variables-that-hold-additional-information){#toc-data-frames-have-fields-i.e.-variables-that-hold-additional-information}
     -   [(Optional) Pandas introduces some new
-        types](#optional-pandas-introduces-some-new-types)
+        types](#optional-pandas-introduces-some-new-types){#toc-optional-pandas-introduces-some-new-types}
     -   [**(Optional) Beginner
-        Challenge**](#optional-beginner-challenge)
--   [Subsetting Data](#subsetting-data)
+        Challenge**](#optional-beginner-challenge){#toc-optional-beginner-challenge}
+-   [Subsetting Data](#subsetting-data){#toc-subsetting-data}
     -   [Treat the data frame as a matrix and select values by
-        position](#treat-the-data-frame-as-a-matrix-and-select-values-by-position)
+        position](#treat-the-data-frame-as-a-matrix-and-select-values-by-position){#toc-treat-the-data-frame-as-a-matrix-and-select-values-by-position}
     -   [Treat the data frame as a table and select values by
-        label](#treat-the-data-frame-as-a-table-and-select-values-by-label)
+        label](#treat-the-data-frame-as-a-table-and-select-values-by-label){#toc-treat-the-data-frame-as-a-table-and-select-values-by-label}
     -   [Shorten the column names using vectorized string
-        methods](#shorten-the-column-names-using-vectorized-string-methods)
+        methods](#shorten-the-column-names-using-vectorized-string-methods){#toc-shorten-the-column-names-using-vectorized-string-methods}
     -   [Use list slicing notation to get subsets of the data
-        frame](#use-list-slicing-notation-to-get-subsets-of-the-data-frame)
+        frame](#use-list-slicing-notation-to-get-subsets-of-the-data-frame){#toc-use-list-slicing-notation-to-get-subsets-of-the-data-frame}
     -   [(Optional) Treat the data frame as an object and select values
         using flexible
-        methods](#optional-treat-the-data-frame-as-an-object-and-select-values-using-flexible-methods)
--   [Filtering (i.e. masking) data](#filtering-i.e.-masking-data)
+        methods](#optional-treat-the-data-frame-as-an-object-and-select-values-using-flexible-methods){#toc-optional-treat-the-data-frame-as-an-object-and-select-values-using-flexible-methods}
+-   [Filtering (i.e. masking)
+    data](#filtering-i.e.-masking-data){#toc-filtering-i.e.-masking-data}
     -   [Use comparisons to select data based on
-        value](#use-comparisons-to-select-data-based-on-value)
+        value](#use-comparisons-to-select-data-based-on-value){#toc-use-comparisons-to-select-data-based-on-value}
     -   [You can filter using any method that returns a data
-        frame](#you-can-filter-using-any-method-that-returns-a-data-frame)
+        frame](#you-can-filter-using-any-method-that-returns-a-data-frame){#toc-you-can-filter-using-any-method-that-returns-a-data-frame}
     -   [Use method chaining to create final output without creating
         intermediate
-        variables](#use-method-chaining-to-create-final-output-without-creating-intermediate-variables)
+        variables](#use-method-chaining-to-create-final-output-without-creating-intermediate-variables){#toc-use-method-chaining-to-create-final-output-without-creating-intermediate-variables}
     -   [Methods we\'re not going to
-        cover](#methods-were-not-going-to-cover)
--   [Working with missing data](#working-with-missing-data)
+        cover](#methods-were-not-going-to-cover){#toc-methods-were-not-going-to-cover}
+-   [Working with missing
+    data](#working-with-missing-data){#toc-working-with-missing-data}
     -   [By default, most numerical operations ignore missing
-        data](#by-default-most-numerical-operations-ignore-missing-data)
-    -   [Check for missing values](#check-for-missing-values)
-    -   [Replace missing values](#replace-missing-values)
-    -   [Drop missing values](#drop-missing-values)
+        data](#by-default-most-numerical-operations-ignore-missing-data){#toc-by-default-most-numerical-operations-ignore-missing-data}
+    -   [Check for missing
+        values](#check-for-missing-values){#toc-check-for-missing-values}
+    -   [Replace missing
+        values](#replace-missing-values){#toc-replace-missing-values}
+    -   [Drop missing
+        values](#drop-missing-values){#toc-drop-missing-values}
     -   [**Challenge: Filter and trim with a boolean
-        vector**](#challenge-filter-and-trim-with-a-boolean-vector)
--   [Sorting and grouping](#sorting-and-grouping)
+        vector**](#challenge-filter-and-trim-with-a-boolean-vector){#toc-challenge-filter-and-trim-with-a-boolean-vector}
+-   [Sorting and
+    grouping](#sorting-and-grouping){#toc-sorting-and-grouping}
     -   [Motivating example: Calculate the wealth Z-score for each
-        country](#motivating-example-calculate-the-wealth-z-score-for-each-country)
+        country](#motivating-example-calculate-the-wealth-z-score-for-each-country){#toc-motivating-example-calculate-the-wealth-z-score-for-each-country}
     -   [Append new columns to the data frame containing our summary
-        statistics](#append-new-columns-to-the-data-frame-containing-our-summary-statistics)
-    -   [Sort and group by new columns](#sort-and-group-by-new-columns)
--   [Write output](#write-output)
+        statistics](#append-new-columns-to-the-data-frame-containing-our-summary-statistics){#toc-append-new-columns-to-the-data-frame-containing-our-summary-statistics}
+    -   [Sort and group by new
+        columns](#sort-and-group-by-new-columns){#toc-sort-and-group-by-new-columns}
+-   [Write output](#write-output){#toc-write-output}
 -   [Working with multiple tables (in an SQL-like
-    manner)](#working-with-multiple-tables-in-an-sql-like-manner)
-    -   [Concatenating data frames](#concatenating-data-frames)
-    -   [Joining data frames](#joining-data-frames)
+    manner)](#working-with-multiple-tables-in-an-sql-like-manner){#toc-working-with-multiple-tables-in-an-sql-like-manner}
+    -   [Concatenating data
+        frames](#concatenating-data-frames){#toc-concatenating-data-frames}
+    -   [Joining data
+        frames](#joining-data-frames){#toc-joining-data-frames}
 -   [(Optional) Adding rows to
-    DataFrames](#optional-adding-rows-to-dataframes)
--   [Scientific Computing Libraries](#scientific-computing-libraries)
+    DataFrames](#optional-adding-rows-to-dataframes){#toc-optional-adding-rows-to-dataframes}
+-   [Scientific Computing
+    Libraries](#scientific-computing-libraries){#toc-scientific-computing-libraries}
     -   [(Optional) Statsmodels regression
-        example](#optional-statsmodels-regression-example)
+        example](#optional-statsmodels-regression-example){#toc-optional-statsmodels-regression-example}
     -   [(Optional) Getting started with machine learning
-        estimators](#optional-getting-started-with-machine-learning-estimators)
+        estimators](#optional-getting-started-with-machine-learning-estimators){#toc-optional-getting-started-with-machine-learning-estimators}
 -   [(Optional) Things we didn\'t talk
-    about](#optional-things-we-didnt-talk-about)
+    about](#optional-things-we-didnt-talk-about){#toc-optional-things-we-didnt-talk-about}
 -   [(Optional) Pandas method chaining in the
-    wild](#optional-pandas-method-chaining-in-the-wild)
+    wild](#optional-pandas-method-chaining-in-the-wild){#toc-optional-pandas-method-chaining-in-the-wild}
 -   [(Optional) Introspecting on the DataFrame
-    object](#optional-introspecting-on-the-dataframe-object)
+    object](#optional-introspecting-on-the-dataframe-object){#toc-optional-introspecting-on-the-dataframe-object}
 -   [(Carpentries version) Group By:
-    split-apply-combine](#carpentries-version-group-by-split-apply-combine)
--   [**WEEK 3: Building Programs**](#week-3-building-programs)
--   [Notebooks vs Python scripts](#notebooks-vs-python-scripts)
+    split-apply-combine](#carpentries-version-group-by-split-apply-combine){#toc-carpentries-version-group-by-split-apply-combine}
+-   [**WEEK 3: Building
+    Programs**](#week-3-building-programs){#toc-week-3-building-programs}
+-   [Notebooks vs Python
+    scripts](#notebooks-vs-python-scripts){#toc-notebooks-vs-python-scripts}
     -   [Differences between .ipynb and
-        .py](#differences-between-.ipynb-and-.py)
+        .py](#differences-between-.ipynb-and-.py){#toc-differences-between-.ipynb-and-.py}
     -   [Workflow differences between notebooks and
-        scripts](#workflow-differences-between-notebooks-and-scripts)
--   [Python from the terminal](#python-from-the-terminal)
--   [For Loops](#for-loops)
+        scripts](#workflow-differences-between-notebooks-and-scripts){#toc-workflow-differences-between-notebooks-and-scripts}
+-   [Python from the
+    terminal](#python-from-the-terminal){#toc-python-from-the-terminal}
+-   [For Loops](#for-loops){#toc-for-loops}
     -   [A `for` loop executes commands once for each value in a
-        collection](#a-for-loop-executes-commands-once-for-each-value-in-a-collection)
+        collection](#a-for-loop-executes-commands-once-for-each-value-in-a-collection){#toc-a-for-loop-executes-commands-once-for-each-value-in-a-collection}
     -   [The first line of the `for` loop must end with a colon, and the
         body must be
-        indented](#the-first-line-of-the-for-loop-must-end-with-a-colon-and-the-body-must-be-indented)
+        indented](#the-first-line-of-the-for-loop-must-end-with-a-colon-and-the-body-must-be-indented){#toc-the-first-line-of-the-for-loop-must-end-with-a-colon-and-the-body-must-be-indented}
     -   [Loop variables can be called
-        anything](#loop-variables-can-be-called-anything)
+        anything](#loop-variables-can-be-called-anything){#toc-loop-variables-can-be-called-anything}
     -   [The body of a loop can contain many
-        statements](#the-body-of-a-loop-can-contain-many-statements)
+        statements](#the-body-of-a-loop-can-contain-many-statements){#toc-the-body-of-a-loop-can-contain-many-statements}
     -   [(Optional) Use `range()` to iterate over a sequence of
-        numbers](#optional-use-range-to-iterate-over-a-sequence-of-numbers)
+        numbers](#optional-use-range-to-iterate-over-a-sequence-of-numbers){#toc-optional-use-range-to-iterate-over-a-sequence-of-numbers}
     -   [(Optional) Use `enumerate()` to iterate over a sequence of
         items and their
-        positions](#optional-use-enumerate-to-iterate-over-a-sequence-of-items-and-their-positions)
+        positions](#optional-use-enumerate-to-iterate-over-a-sequence-of-items-and-their-positions){#toc-optional-use-enumerate-to-iterate-over-a-sequence-of-items-and-their-positions}
     -   [Common pattern 1: Accumulate a running
-        total](#common-pattern-1-accumulate-a-running-total)
+        total](#common-pattern-1-accumulate-a-running-total){#toc-common-pattern-1-accumulate-a-running-total}
     -   [Common pattern 2: Create a new collection from an existing
-        collection](#common-pattern-2-create-a-new-collection-from-an-existing-collection)
+        collection](#common-pattern-2-create-a-new-collection-from-an-existing-collection){#toc-common-pattern-2-create-a-new-collection-from-an-existing-collection}
     -   [(Optional) Dictionary
-        iteration](#optional-dictionary-iteration)
+        iteration](#optional-dictionary-iteration){#toc-optional-dictionary-iteration}
     -   [(Optional) How do you know if an object is
-        iterable?](#optional-how-do-you-know-if-an-object-is-iterable)
+        iterable?](#optional-how-do-you-know-if-an-object-is-iterable){#toc-optional-how-do-you-know-if-an-object-is-iterable}
     -   [Don\'t use `for` loops with DataFrames or Numpy
-        matrices](#dont-use-for-loops-with-dataframes-or-numpy-matrices)
--   [Looping Over Data Sets](#looping-over-data-sets)
+        matrices](#dont-use-for-loops-with-dataframes-or-numpy-matrices){#toc-dont-use-for-loops-with-dataframes-or-numpy-matrices}
+-   [Looping Over Data
+    Sets](#looping-over-data-sets){#toc-looping-over-data-sets}
     -   [File paths as an example of increasing abstraction in program
-        development](#file-paths-as-an-example-of-increasing-abstraction-in-program-development)
+        development](#file-paths-as-an-example-of-increasing-abstraction-in-program-development){#toc-file-paths-as-an-example-of-increasing-abstraction-in-program-development}
     -   [Use a `for` loop to process files given a list of their
-        names](#use-a-for-loop-to-process-files-given-a-list-of-their-names)
+        names](#use-a-for-loop-to-process-files-given-a-list-of-their-names){#toc-use-a-for-loop-to-process-files-given-a-list-of-their-names}
     -   [Use glob.glob to find sets of files whose names match a
-        pattern](#use-glob.glob-to-find-sets-of-files-whose-names-match-a-pattern)
+        pattern](#use-glob.glob-to-find-sets-of-files-whose-names-match-a-pattern){#toc-use-glob.glob-to-find-sets-of-files-whose-names-match-a-pattern}
     -   [Use glob and a `for` loop to process batches of
-        files](#use-glob-and-a-for-loop-to-process-batches-of-files)
--   [Conditionals](#conditionals)
+        files](#use-glob-and-a-for-loop-to-process-batches-of-files){#toc-use-glob-and-a-for-loop-to-process-batches-of-files}
+-   [Conditionals](#conditionals){#toc-conditionals}
     -   [Evaluating the truth of a
-        statement](#evaluating-the-truth-of-a-statement)
+        statement](#evaluating-the-truth-of-a-statement){#toc-evaluating-the-truth-of-a-statement}
     -   [Use `if` statements to control whether or not a block of code
         is
-        executed](#use-if-statements-to-control-whether-or-not-a-block-of-code-is-executed)
+        executed](#use-if-statements-to-control-whether-or-not-a-block-of-code-is-executed){#toc-use-if-statements-to-control-whether-or-not-a-block-of-code-is-executed}
     -   [Use else to execute a block of code when an if condition is not
-        true](#use-else-to-execute-a-block-of-code-when-an-if-condition-is-not-true)
+        true](#use-else-to-execute-a-block-of-code-when-an-if-condition-is-not-true){#toc-use-else-to-execute-a-block-of-code-when-an-if-condition-is-not-true}
     -   [Use `elif` to specify additional
-        tests](#use-elif-to-specify-additional-tests)
+        tests](#use-elif-to-specify-additional-tests){#toc-use-elif-to-specify-additional-tests}
     -   [(Optional) Conditionals are often used inside
-        loops](#optional-conditionals-are-often-used-inside-loops)
+        loops](#optional-conditionals-are-often-used-inside-loops){#toc-optional-conditionals-are-often-used-inside-loops}
     -   [(Optional) Conditions are tested once, in
-        order](#optional-conditions-are-tested-once-in-order)
+        order](#optional-conditions-are-tested-once-in-order){#toc-optional-conditions-are-tested-once-in-order}
     -   [(Optional) Compound Relations Using `and`, `or`, and
-        Parentheses](#optional-compound-relations-using-and-or-and-parentheses)
+        Parentheses](#optional-compound-relations-using-and-or-and-parentheses){#toc-optional-compound-relations-using-and-or-and-parentheses}
     -   [(Optional) Use pathlib to write code that works across
         operating
-        systems](#optional-use-pathlib-to-write-code-that-works-across-operating-systems)
--   [Generic file handling](#generic-file-handling)
+        systems](#optional-use-pathlib-to-write-code-that-works-across-operating-systems){#toc-optional-use-pathlib-to-write-code-that-works-across-operating-systems}
+-   [Generic file
+    handling](#generic-file-handling){#toc-generic-file-handling}
     -   [Open the file with a context
-        manager](#open-the-file-with-a-context-manager)
+        manager](#open-the-file-with-a-context-manager){#toc-open-the-file-with-a-context-manager}
     -   [A file is a collection of
-        lines](#a-file-is-a-collection-of-lines)
+        lines](#a-file-is-a-collection-of-lines){#toc-a-file-is-a-collection-of-lines}
     -   [Strings contain formatting
-        marks](#strings-contain-formatting-marks)
--   [Text processing](#text-processing)
+        marks](#strings-contain-formatting-marks){#toc-strings-contain-formatting-marks}
+-   [Text processing](#text-processing){#toc-text-processing}
     -   [Use string methods to determine which lines to
-        keep](#use-string-methods-to-determine-which-lines-to-keep)
+        keep](#use-string-methods-to-determine-which-lines-to-keep){#toc-use-string-methods-to-determine-which-lines-to-keep}
     -   [Open an output file for
-        writing](#open-an-output-file-for-writing)
+        writing](#open-an-output-file-for-writing){#toc-open-an-output-file-for-writing}
     -   [Format output as a comma-delimited text
-        file](#format-output-as-a-comma-delimited-text-file)
+        file](#format-output-as-a-comma-delimited-text-file){#toc-format-output-as-a-comma-delimited-text-file}
     -   [(Optional) Avoid memory limitations by processing the input
         file one line at a
-        time](#optional-avoid-memory-limitations-by-processing-the-input-file-one-line-at-a-time)
-    -   [(Optional) Notes](#optional-notes)
--   [Writing Functions](#writing-functions)
+        time](#optional-avoid-memory-limitations-by-processing-the-input-file-one-line-at-a-time){#toc-optional-avoid-memory-limitations-by-processing-the-input-file-one-line-at-a-time}
+    -   [(Optional) Notes](#optional-notes){#toc-optional-notes}
+-   [Writing Functions](#writing-functions){#toc-writing-functions}
     -   [Break programs down into functions to make them easier to
-        understand](#break-programs-down-into-functions-to-make-them-easier-to-understand)
+        understand](#break-programs-down-into-functions-to-make-them-easier-to-understand){#toc-break-programs-down-into-functions-to-make-them-easier-to-understand}
     -   [Define a function using `def` with a name, parameters, and a
         block of
-        code](#define-a-function-using-def-with-a-name-parameters-and-a-block-of-code)
+        code](#define-a-function-using-def-with-a-name-parameters-and-a-block-of-code){#toc-define-a-function-using-def-with-a-name-parameters-and-a-block-of-code}
     -   [Defining a function does not run
-        it](#defining-a-function-does-not-run-it)
+        it](#defining-a-function-does-not-run-it){#toc-defining-a-function-does-not-run-it}
     -   [Arguments in call are matched to parameters in
-        definition](#arguments-in-call-are-matched-to-parameters-in-definition)
+        definition](#arguments-in-call-are-matched-to-parameters-in-definition){#toc-arguments-in-call-are-matched-to-parameters-in-definition}
     -   [Functions may return a result to their caller using
-        `return`](#functions-may-return-a-result-to-their-caller-using-return)
+        `return`](#functions-may-return-a-result-to-their-caller-using-return){#toc-functions-may-return-a-result-to-their-caller-using-return}
     -   [**Challenge (option 1): Encapsulate text processing in a
-        function**](#challenge-option-1-encapsulate-text-processing-in-a-function)
+        function**](#challenge-option-1-encapsulate-text-processing-in-a-function){#toc-challenge-option-1-encapsulate-text-processing-in-a-function}
     -   [**Challenge (option 2): Encapsulate data processing in a
-        function**](#challenge-option-2-encapsulate-data-processing-in-a-function)
+        function**](#challenge-option-2-encapsulate-data-processing-in-a-function){#toc-challenge-option-2-encapsulate-data-processing-in-a-function}
     -   [(Optional) A worked example: The Lorenz
-        attractor](#optional-a-worked-example-the-lorenz-attractor)
+        attractor](#optional-a-worked-example-the-lorenz-attractor){#toc-optional-a-worked-example-the-lorenz-attractor}
 -   [(Carpentries version)
-    Conditionals](#carpentries-version-conditionals)
+    Conditionals](#carpentries-version-conditionals){#toc-carpentries-version-conditionals}
     -   [Use `if` statements to control whether or not a block of code
         is
-        executed](#use-if-statements-to-control-whether-or-not-a-block-of-code-is-executed-1)
+        executed](#use-if-statements-to-control-whether-or-not-a-block-of-code-is-executed-1){#toc-use-if-statements-to-control-whether-or-not-a-block-of-code-is-executed-1}
     -   [Conditionals are often used inside
-        loops](#conditionals-are-often-used-inside-loops)
+        loops](#conditionals-are-often-used-inside-loops){#toc-conditionals-are-often-used-inside-loops}
     -   [Use else to execute a block of code when an if condition is not
-        true](#use-else-to-execute-a-block-of-code-when-an-if-condition-is-not-true-1)
+        true](#use-else-to-execute-a-block-of-code-when-an-if-condition-is-not-true-1){#toc-use-else-to-execute-a-block-of-code-when-an-if-condition-is-not-true-1}
     -   [Use `elif` to specify additional
-        tests](#use-elif-to-specify-additional-tests-1)
+        tests](#use-elif-to-specify-additional-tests-1){#toc-use-elif-to-specify-additional-tests-1}
     -   [Conditions are tested once, in
-        order](#conditions-are-tested-once-in-order)
+        order](#conditions-are-tested-once-in-order){#toc-conditions-are-tested-once-in-order}
     -   [Use conditionals in a loop to "evolve" the values of
-        variables](#use-conditionals-in-a-loop-to-evolve-the-values-of-variables)
+        variables](#use-conditionals-in-a-loop-to-evolve-the-values-of-variables){#toc-use-conditionals-in-a-loop-to-evolve-the-values-of-variables}
     -   [Compound Relations Using `and`, `or`, and Parentheses
-        (optional)](#compound-relations-using-and-or-and-parentheses-optional)
--   [(Optional) Variable Scope](#optional-variable-scope)
--   [(Optional) Programming Style](#optional-programming-style)
--   [**Special Topics**](#special-topics)
--   [Working with unstructured files](#working-with-unstructured-files)
+        (optional)](#compound-relations-using-and-or-and-parentheses-optional){#toc-compound-relations-using-and-or-and-parentheses-optional}
+-   [(Optional) Variable
+    Scope](#optional-variable-scope){#toc-optional-variable-scope}
+-   [(Optional) Programming
+    Style](#optional-programming-style){#toc-optional-programming-style}
+-   [**WEEK 4: Visualization with Matplotlib and
+    Seaborn**](#week-4-visualization-with-matplotlib-and-seaborn){#toc-week-4-visualization-with-matplotlib-and-seaborn}
+-   [Orientation](#orientation-1){#toc-orientation-1}
+    -   [Briefly revisit week
+        1](#briefly-revisit-week-1){#toc-briefly-revisit-week-1}
+    -   [A brief history of plotting in
+        Matplotlib](#a-brief-history-of-plotting-in-matplotlib){#toc-a-brief-history-of-plotting-in-matplotlib}
+-   [Plotting with
+    Matplotlib](#plotting-with-matplotlib){#toc-plotting-with-matplotlib}
+    -   [The basic plot](#the-basic-plot){#toc-the-basic-plot}
+    -   [Two kinds of plotting
+        objects](#two-kinds-of-plotting-objects){#toc-two-kinds-of-plotting-objects}
+    -   [(Optional) Three ways of showing a
+        figure](#optional-three-ways-of-showing-a-figure){#toc-optional-three-ways-of-showing-a-figure}
+    -   [The lifecycle of a custom
+        plot](#the-lifecycle-of-a-custom-plot){#toc-the-lifecycle-of-a-custom-plot}
+    -   [Plotting multiple data
+        sets](#plotting-multiple-data-sets){#toc-plotting-multiple-data-sets}
+    -   [(Optional) Plot directly from
+        Pandas](#optional-plot-directly-from-pandas){#toc-optional-plot-directly-from-pandas}
+-   [Visualization
+    Strategy](#visualization-strategy){#toc-visualization-strategy}
+    -   [There are many kinds of
+        plots](#there-are-many-kinds-of-plots){#toc-there-are-many-kinds-of-plots}
+    -   [Read the docs](#read-the-docs){#toc-read-the-docs}
+    -   [Workflow strategy](#workflow-strategy){#toc-workflow-strategy}
+-   [Fast visualization and theming with
+    Seaborn](#fast-visualization-and-theming-with-seaborn){#toc-fast-visualization-and-theming-with-seaborn}
+    -   [Seaborn is a nice way to look at your
+        data](#seaborn-is-a-nice-way-to-look-at-your-data){#toc-seaborn-is-a-nice-way-to-look-at-your-data}
+    -   [Using preset
+        styles](#using-preset-styles){#toc-using-preset-styles}
+    -   [(Optional) There are many styling
+        options](#optional-there-are-many-styling-options){#toc-optional-there-are-many-styling-options}
+    -   [(Optional) Bar
+        Charts](#optional-bar-charts){#toc-optional-bar-charts}
+    -   [(Optional)
+        Histograms](#optional-histograms){#toc-optional-histograms}
+    -   [(Optional) Box Plots and Swarm
+        Plots](#optional-box-plots-and-swarm-plots){#toc-optional-box-plots-and-swarm-plots}
+-   [(Optional) How Matplotlib
+    works](#optional-how-matplotlib-works){#toc-optional-how-matplotlib-works}
+    -   [Understanding
+        Matplotlib](#understanding-matplotlib){#toc-understanding-matplotlib}
+    -   [Matplotlib object
+        syntax](#matplotlib-object-syntax){#toc-matplotlib-object-syntax}
+-   [**Special Topics**](#special-topics){#toc-special-topics}
+-   [Working with unstructured
+    files](#working-with-unstructured-files){#toc-working-with-unstructured-files}
     -   [Open the file with a context
-        handler](#open-the-file-with-a-context-handler)
+        handler](#open-the-file-with-a-context-handler){#toc-open-the-file-with-a-context-handler}
     -   [Strings contain formatting
-        marks](#strings-contain-formatting-marks-1)
-    -   [Many ways of handling a file](#many-ways-of-handling-a-file)
+        marks](#strings-contain-formatting-marks-1){#toc-strings-contain-formatting-marks-1}
+    -   [Many ways of handling a
+        file](#many-ways-of-handling-a-file){#toc-many-ways-of-handling-a-file}
     -   [Working with unstructured file
-        data](#working-with-unstructured-file-data)
--   [Exception handling](#exception-handling)
--   [Performance and profiling](#performance-and-profiling)
--   [Reducing memory usage](#reducing-memory-usage)
+        data](#working-with-unstructured-file-data){#toc-working-with-unstructured-file-data}
+-   [Exception handling](#exception-handling){#toc-exception-handling}
+-   [Performance and
+    profiling](#performance-and-profiling){#toc-performance-and-profiling}
+-   [Reducing memory
+    usage](#reducing-memory-usage){#toc-reducing-memory-usage}
     -   [Read a file one line at a
-        time](#read-a-file-one-line-at-a-time)
-    -   [Use a SQLite database](#use-a-sqlite-database)
--   [Other optional topics](#other-optional-topics)
--   [**Endnotes**](#endnotes)
--   [Credits](#credits)
--   [References](#references)
--   [Data Sources](#data-sources)
+        time](#read-a-file-one-line-at-a-time){#toc-read-a-file-one-line-at-a-time}
+    -   [Use a SQLite
+        database](#use-a-sqlite-database){#toc-use-a-sqlite-database}
+-   [Other optional
+    topics](#other-optional-topics){#toc-other-optional-topics}
+-   [**Endnotes**](#endnotes){#toc-endnotes}
+-   [Credits](#credits){#toc-credits}
+-   [References](#references){#toc-references}
+-   [Data Sources](#data-sources){#toc-data-sources}
 
 # **WEEK 1: Fundamentals**
 
@@ -2868,6 +2956,510 @@ for i in range(5):
 # (Optional) Variable Scope
 
 # (Optional) Programming Style
+
+# **WEEK 4: Visualization with Matplotlib and Seaborn**
+
+# Orientation
+
+## Briefly revisit week 1
+
+1.  Python orientation
+2.  Jupyter orientation
+
+## A brief history of plotting in Matplotlib
+
+1.  Multiple interfaces
+2.  Local graphs and global settings
+3.  Matplotlib is the substrate for higher-level libraries
+4.  Drawing things is verbose in any language
+
+# Plotting with Matplotlib
+
+## The basic plot
+
+``` python
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots()
+
+time = [0, 1, 2, 3]
+position = [0, 100, 200, 300]
+
+ax.plot(time, postion)
+```
+
+## Two kinds of plotting objects
+
+``` python
+type(fig)
+```
+
+``` python
+print(type(fig))
+print(type(ax))
+```
+
+-   Figure objects handle display, printing, saving, etc.
+-   Axes objects contain graph information
+
+## (Optional) Three ways of showing a figure
+
+1.  Show figure inline (Jupyter Lab default)
+
+    ``` python
+    fig
+    ```
+
+2.  Show figure in a separate window (command line default)
+
+    ``` python
+    fig.show()
+    ```
+
+3.  Show figure in a separate window from Jupyter Lab. You may need to
+    specify a different \"backend\" parameter for `matplotlib.use()`
+    depending on your exact setup:
+    <https://matplotlib.org/stable/tutorials/introductory/usage.html#the-builtin-backends>
+
+    ``` python
+    import matplotlib
+
+    matplotlib.use('TkAgg')
+
+    fig.show()
+    ```
+
+## The lifecycle of a custom plot
+
+1.  Create mock data
+
+    ``` python
+    import numpy as np
+
+    y = np.random.random(10) # outputs an array of 10 random numbers between 0 and 1
+    x = np.arange(1980,1990,1) # generates an ordered array of numbers from 1980 to 1989
+
+    # Check that x and y contain the same number of values
+    assert len(x) == len(y)
+    ```
+
+2.  Inspect our data
+
+    ``` python
+    print("x:", x)
+    print("y:", y)
+    ```
+
+3.  Create the basic plot
+
+    ``` python
+    # Convert y axis into a percentage
+    y = y * 100
+
+    # Draw plot
+    fig, ax = plt.subplots()
+    ax.plot(x, y)
+    ```
+
+4.  Show available styles
+
+    ``` python
+    # What are the global styles?
+    plt.style.available
+    ```
+
+    ``` python
+    # Set a global figure style
+    plt.style.use("dark_background")
+
+    # The style is only applied to new figures, not pre-existing figures
+    fig
+    ```
+
+    ``` python
+    # Re-creating the figure applies the new style
+    fig, ax = plt.subplots()
+    ax.plot(x, y)
+    ```
+
+5.  Customize the graph In principle, nearly every element on a
+    Matplotlib figure is independently modifiable.
+
+    ``` python
+    # Set figure size
+    fig, ax = plt.subplots(figsize=(8,6))
+
+    # Set line attributes
+    ax.plot(x, y, color='darkorange', linewidth=2, marker='o')
+
+    # Add title and labels
+    ax.set_title("Percent Change in Stock X", fontsize=22, fontweight='bold')
+    ax.set_xlabel(" Years ", fontsize=20, fontweight='bold')
+    ax.set_ylabel(" % change ", fontsize=20, fontweight='bold')
+
+    # Adjust the tick labels
+    ax.tick_params(axis='both', which='major', labelsize=18)
+
+    # Add a grid
+    ax.grid(True)
+    ```
+
+6.  Save your figure
+
+    ``` python
+    fig.savefig("mygraph_dark.png", dpi=300)
+    ```
+
+## Plotting multiple data sets
+
+In this example, plot GDP over time for multiple countries.
+
+1.  Import data
+
+    ``` python
+    import pandas as pd
+    data = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
+    ```
+
+    ``` python
+    # Inspect our data
+    data.head(3)
+    ```
+
+2.  Transform column headers into an ordinal scale
+
+    1.  (Optional) Original column names are object (i.e. string) data
+
+        ``` python
+        data.columns
+        ```
+
+    2.  Strip off non-numeric portion of each column title
+
+        ``` python
+        years = data.columns.str.strip('gdpPercap_')
+        years
+        ```
+
+    3.  Convert years strings into integers and replace original data
+        frame column headers
+
+        ``` python
+        data.columns = years.astype(int)
+        ```
+
+3.  Extract rows from the DataFrame
+
+    ``` python
+    x_years = data.columns
+    y_austria = data.loc['Austria']
+    y_bulgaria = data.loc['Bulgaria']
+    ```
+
+4.  Create the plot object
+
+    ``` python
+    # Change global background back to default
+    plt.style.use("default")
+
+    # Create GDP figure
+    fig, ax = plt.subplots(figsize=(8,6))
+
+    # Create GDP plot
+    ax.plot(x_years, y_austria, label='Austria', color='darkgreen', linewidth=2, marker='x')
+    ax.plot(x_years, y_bulgaria, label='Bulgaria', color='maroon', linewidth=2, marker='o')
+
+    # Decorate the plot
+    ax.legend(fontsize=16, loc='upper center') #automatically uses labels
+    ax.set_title("GDP of Austria vs Bulgaria", fontsize=22, fontweight='bold')
+    ax.set_xlabel("Years", fontsize=20, fontweight='bold')
+    ax.set_ylabel("GDP", fontsize=20, fontweight='bold')
+    ```
+
+## (Optional) Plot directly from Pandas
+
+Don\'t do this.
+
+1.  The basic plot syntax
+
+    ``` python
+    ax = data.loc['Austria'].plot()
+    fig = ax.get_figure()
+    fig
+    ```
+
+2.  Decorate your Pandas plot
+
+    ``` python
+    ax = data.loc['Austria'].plot(figsize=(8,6), color='darkgreen', linewidth=2, marker='*')
+    ax.set_title("GDP of Austria", fontsize=22, fontweight='bold')
+    ax.set_xlabel("Years",fontsize=20, fontweight='bold' )
+    ax.set_ylabel("GDP",fontsize=20, fontweight='bold' )
+
+    fig = ax.get_figure()
+    fig
+    ```
+
+3.  Overlaying multiple plots on the same figure with Pandas. This is
+    super unintuitive.
+
+    ``` python
+    # Create an Axes object with the Austria data
+    ax = data.loc['Austria'].plot(figsize=(8,6), color='darkgreen', linewidth=2, marker='*')
+    print("Austria graph", id(ax))
+
+    # Overlay the Bulgaria data on the same Axes object
+    ax = data.loc['Bulgaria'].plot(color='maroon', linewidth=2, marker='o')
+    print("Bulgaria graph", id(ax))
+    ```
+
+4.  The equivalent Matplotlib plot (optional)
+
+    ``` python
+    # extract the x and y values from dataframe
+    x_years = data.columns
+    y_gdp = data.loc['Austria']
+
+    # Create the plot
+    fig, ax = plt.subplots(figsize=(8,6))
+    ax.plot(x_years, y_gdp, color='darkgreen', linewidth=2, marker='x')
+    # etc.
+    ```
+
+# Visualization Strategy
+
+## There are many kinds of plots
+
+``` python
+## Visualize the same data using a scatterplot
+plt.style.use('ggplot')
+
+# Create a scatter plot
+fig, ax = plt.subplots(figsize=(8,6))
+ax.scatter(y_austria, y_bulgaria, color='blue', linewidth=2, marker='o')
+
+# Decorate the plot
+ax.set_title("GDP of Austria vs Bulgaria", fontsize=22, fontweight='bold')
+ax.set_xlabel("GDP of Austria",fontsize=20, fontweight='bold' )
+ax.set_ylabel("GDP of Bulgaria",fontsize=20, fontweight='bold' )
+```
+
+## Read the docs
+
+1.  Matplotlib gallery:
+    <https://matplotlib.org/stable/gallery/index.html>
+    1.  \"Plotting categorical variables\" example of multiple subplots
+    2.  Download code examples
+    3.  .py vs .ipynb
+2.  Matplotlib tutorials:
+    <https://matplotlib.org/stable/tutorials/index.html>
+3.  Seaborn gallery: <https://seaborn.pydata.org/examples/index.html>
+4.  Seaborn tutorials: <https://seaborn.pydata.org/tutorial.html>
+
+## Workflow strategy
+
+1.  Get in the ball park
+2.  Look at lots of data
+3.  Try lots of presets
+4.  Customize judiciously
+5.  Build collection of interactive and publication code snippets
+
+# Fast visualization and theming with Seaborn
+
+Seaborn is a set of high-level pre-sets for Matplotlib.
+
+## Seaborn is a nice way to look at your data
+
+``` python
+# Import the Seaborn library
+import seaborn as sns
+
+ax = sns.lineplot(data=data.T, legend=False, dashes=False)
+```
+
+-   Doing more with this data set requires transforming the data from
+    wide form to long form; see
+    <https://seaborn.pydata.org/tutorial/data_structure.html>
+
+## Using preset styles
+
+Let\'s make a poster!
+
+1.  Import Iris data set
+    <https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/0e7a9b0a5d22642a06d3d5b9bcbad9890c8ee534/iris.csv>
+
+    ``` python
+    iris = pd.read_csv("../data/iris.csv")
+    iris.head()
+    ```
+
+2.  Create a basic scatter plot
+
+    ``` python
+    ax = sns.scatterplot(data=iris, x='sepal_length',y='petal_length')
+    ```
+
+3.  Change plotting theme
+
+    ``` python
+    plt.style.use("dark_background")
+
+    # Fix grid if necessary
+    #plt.rcParams["axes.grid"] = False
+
+    # Make everything visible at a distance
+    sns.set_context('poster')
+
+    # Color by species
+    ax = sns.scatterplot(data=iris, x='sepal_length', y='petal_length', hue='species', palette='colorblind', size='petal_width')
+    ```
+
+4.  The Seaborn plot uses Matplotlib under the hood
+
+    ``` python
+    # Set the figure size
+    fig = ax.get_figure()
+    fig.set_size_inches(8,6)
+
+    fig
+    ```
+
+## (Optional) There are many styling options
+
+1.  Add styling to individual points
+
+    ``` python
+    ax = sns.scatterplot(data=iris, x='sepal_length', y='petal_length', hue='species', palette='colorblind', style='species')
+    ```
+
+2.  Prettify column names
+
+    ``` python
+    words = [' '.join(i) for i in iris.columns.str.split('_')]
+    iris.columns = words
+    ```
+
+3.  Make a regression plot
+
+    ``` python
+    # Color by species, size by petal width
+    ax = sns.regplot(data=iris, x='sepal_length', y='petal_length', scatter=True,
+                     scatter_kws={'color':'white'})
+    ```
+
+## (Optional) Bar Charts
+
+1.  Bar Plot
+
+    ``` python
+    ax = sns.barplot(data=iris, x='species', y='sepal_width', palette='colorblind')
+    ```
+
+    -   Default summary statistic is mean, and default error bars are
+        95% confidence interval.
+
+2.  Add custom parameters
+
+    ``` python
+    # Error bars show standard deviation
+    ax = sns.barplot(data=iris, x='species', y='sepal_width', ci='sd', edgecolor='black')
+    ```
+
+3.  (Optional) count plot counts the records in each category
+
+    ``` python
+    ax = sns.countplot(data=iris, x='species', palette='colorblind')
+    ```
+
+## (Optional) Histograms
+
+1.  Histogram of overall data set
+
+    ``` python
+    ax = sns.histplot(data=iris, x='petal_length', kde=True)
+    ```
+
+    -   KDE: If True, compute a kernel density estimate to smooth the
+        distribution and show on the plot as (one or more) line(s).
+    -   There seems a bimodal distribution of petal length. What factors
+        underly this distribution?
+
+2.  Histogram of data decomposed by category
+
+    ``` python
+    ax = sns.histplot(data=iris, x='petal_length', hue='species', palette='Set2')
+    ```
+
+3.  Create multiple subplots to compare binning strategies
+
+    ``` python
+    # This generates 3 subplots (ncols=3) on the same figure
+    fig, axes = plt.subplots(figsize=(12,4), nrows=1, ncols=3)
+
+    # Note that we can use Seaborn to draw on our Matplotlib figure
+    sns.histplot(data=iris,x='petal_length', bins=5, ax=axes[0], color='#f5a142')
+    sns.histplot(data=iris,x='petal_length', bins=10, ax=axes[1], color='maroon')
+    sns.histplot(data=iris,x='petal_length', bins=15, ax=axes[2], color='darkmagenta')
+    ```
+
+## (Optional) Box Plots and Swarm Plots
+
+1.  Box plot
+
+    ``` python
+    ax = sns.boxplot(data=iris, x='species', y='petal_length')
+    ```
+
+2.  Swarm plot
+
+    ``` python
+    ax = sns.swarmplot(data=iris,x='species', y='petal_length', hue='species', palette='Set1')
+    ax.legend(loc='upper left', fontsize=16)
+    ax.tick_params(axis='x', labelrotation = 45)
+    ```
+
+    This gives us a format warning.
+
+3.  Strip plot
+
+    ``` python
+    ax = sns.swarmplot(data=iris,x='species', y='petal_length', hue='species', palette='Set1')
+    ax.legend(loc='upper left', fontsize=16)
+    ax.tick_params(axis='x', labelrotation = 45)
+    ```
+
+4.  Overlapping plots
+
+    ``` python
+    ax = sns.boxplot(data=iris, x='species', y='petal_length')
+    sns.stripplot(data=iris, x='species', y='petal_length', ax=ax, palette='Set1')
+    ```
+
+# (Optional) How Matplotlib works
+
+## Understanding Matplotlib
+
+1.  Everything is an Artist (object)
+2.  Multiple levels of specificity
+    -   `plt` vs `axes`
+    -   rcParams vs temporary stylings
+3.  Simplified high-level interfaces, aka \"syntactic sugar\"
+    -   `legend()` vs get legend handles and patches
+
+## Matplotlib object syntax
+
+-   The `object.set_field(value)` usage is taken from Java, which was
+    popular in 2003 when Matplotlib was developing its object-oriented
+    syntax
+-   You get values back out with `object.get_field(value)`
+-   The Pythonic way to set a value would be `object.field = value`.
+    However, the Matplotlib getters and setters do a lot of internal
+    bookkeeping, so if you try to set field values directly you will get
+    errors. For example, compare `ax.get_ylabel()` with
+    `ax.yaxis.label`.
+-   Read \"The Lifecycle of a Plot\":
+    <https://matplotlib.org/stable/tutorials/introductory/lifecycle.html>
+-   Read \"Why you hate Matplotlib\":
+    <https://ryxcommar.com/2020/04/11/why-you-hate-matplotlib/>
 
 # **Special Topics**
 
