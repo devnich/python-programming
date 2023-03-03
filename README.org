@@ -2719,6 +2719,7 @@ pandoc README.org -o tmp.md
 *** Generate Github Markdown with table of contents
 #+BEGIN_SRC bash
 pandoc -f markdown --toc --toc-depth=2 -s tmp.md -o README.md
+pandoc -f markdown -t gfm --toc --toc-depth=2 --wrap=none -s tmp.md -o README.md
 #+END_SRC
 
 *** Find and replace code block markers in final document

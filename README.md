@@ -1,422 +1,220 @@
--   [**WEEK 1:
-    Fundamentals**](#week-1-fundamentals){#toc-week-1-fundamentals}
--   [Orientation](#orientation){#toc-orientation}
-    -   [What programming language should I
-        use?](#what-programming-language-should-i-use){#toc-what-programming-language-should-i-use}
-    -   [Python is pretty good at lots of
-        things](#python-is-pretty-good-at-lots-of-things){#toc-python-is-pretty-good-at-lots-of-things}
-    -   [Literate programming and
-        notebooks](#literate-programming-and-notebooks){#toc-literate-programming-and-notebooks}
--   [Jupyter commands](#jupyter-commands){#toc-jupyter-commands}
-    -   [How to start Jupyter
-        Lab](#how-to-start-jupyter-lab){#toc-how-to-start-jupyter-lab}
-    -   [Navigation](#navigation){#toc-navigation}
-    -   [Writing code](#writing-code){#toc-writing-code}
--   [Variables and
-    Assignment](#variables-and-assignment){#toc-variables-and-assignment}
-    -   [Use variables to store
-        values](#use-variables-to-store-values){#toc-use-variables-to-store-values}
-    -   [Rules for naming
-        things](#rules-for-naming-things){#toc-rules-for-naming-things}
-    -   [Use `print()` to display
-        values](#use-print-to-display-values){#toc-use-print-to-display-values}
-    -   [Jupyter Lab will always echo the last value in a
-        cell](#jupyter-lab-will-always-echo-the-last-value-in-a-cell){#toc-jupyter-lab-will-always-echo-the-last-value-in-a-cell}
-    -   [(Optional) Variables must be created before they are
-        used](#optional-variables-must-be-created-before-they-are-used){#toc-optional-variables-must-be-created-before-they-are-used}
-    -   [Variables can be used in
-        calculations](#variables-can-be-used-in-calculations){#toc-variables-can-be-used-in-calculations}
-    -   [Variables only change value when something is assigned to
-        them](#variables-only-change-value-when-something-is-assigned-to-them){#toc-variables-only-change-value-when-something-is-assigned-to-them}
--   [Data Types and Type
-    Conversion](#data-types-and-type-conversion){#toc-data-types-and-type-conversion}
-    -   [Every value has a
-        type](#every-value-has-a-type){#toc-every-value-has-a-type}
-    -   [The type determine what operations you can perform with a given
-        value](#the-type-determine-what-operations-you-can-perform-with-a-given-value){#toc-the-type-determine-what-operations-you-can-perform-with-a-given-value}
-    -   [Use the built-in function `type()` to find the type of a
-        value](#use-the-built-in-function-type-to-find-the-type-of-a-value){#toc-use-the-built-in-function-type-to-find-the-type-of-a-value}
-    -   [You can explicitly convert data to a different
-        type](#you-can-explicitly-convert-data-to-a-different-type){#toc-you-can-explicitly-convert-data-to-a-different-type}
-    -   [**Challenge**: Explain what each operator
-        does](#challenge-explain-what-each-operator-does){#toc-challenge-explain-what-each-operator-does}
--   [Built-in Functions and
-    Help](#built-in-functions-and-help){#toc-built-in-functions-and-help}
-    -   [How do we find out what\'s
-        possible?](#how-do-we-find-out-whats-possible){#toc-how-do-we-find-out-whats-possible}
-    -   [(Optional) Use comments to add documentation to
-        programs](#optional-use-comments-to-add-documentation-to-programs){#toc-optional-use-comments-to-add-documentation-to-programs}
-    -   [A function may take zero or more
-        arguments](#a-function-may-take-zero-or-more-arguments){#toc-a-function-may-take-zero-or-more-arguments}
-    -   [Functions can have optional
-        arguments](#functions-can-have-optional-arguments){#toc-functions-can-have-optional-arguments}
-    -   [Use the built-in function `help()` to get help for a
-        function](#use-the-built-in-function-help-to-get-help-for-a-function){#toc-use-the-built-in-function-help-to-get-help-for-a-function}
-    -   [Every function returns
-        something](#every-function-returns-something){#toc-every-function-returns-something}
-    -   [(Optional) Functions will typically generalize in sensible
-        ways](#optional-functions-will-typically-generalize-in-sensible-ways){#toc-optional-functions-will-typically-generalize-in-sensible-ways}
-    -   [*Methods* are functions that belong to
-        objects](#methods-are-functions-that-belong-to-objects){#toc-methods-are-functions-that-belong-to-objects}
-    -   [(Optional) Python produces informative error
-        messages](#optional-python-produces-informative-error-messages){#toc-optional-python-produces-informative-error-messages}
-    -   [**(Optional) Beginner Challenge**: What happens
-        when?](#optional-beginner-challenge-what-happens-when){#toc-optional-beginner-challenge-what-happens-when}
--   [Libraries](#libraries){#toc-libraries}
-    -   [Most of the power of a programming language is in its
-        libraries](#most-of-the-power-of-a-programming-language-is-in-its-libraries){#toc-most-of-the-power-of-a-programming-language-is-in-its-libraries}
-    -   [A program must `import` a library module before using
-        it](#a-program-must-import-a-library-module-before-using-it){#toc-a-program-must-import-a-library-module-before-using-it}
-    -   [Use `help()` to learn about the contents of a library
-        module](#use-help-to-learn-about-the-contents-of-a-library-module){#toc-use-help-to-learn-about-the-contents-of-a-library-module}
-    -   [(Optional) Import
-        shortcuts](#optional-import-shortcuts){#toc-optional-import-shortcuts}
-    -   [Python has opinions about how to write your
-        programs](#python-has-opinions-about-how-to-write-your-programs){#toc-python-has-opinions-about-how-to-write-your-programs}
--   [Lists](#lists){#toc-lists}
-    -   [A list stores many values in a single
-        structure](#a-list-stores-many-values-in-a-single-structure){#toc-a-list-stores-many-values-in-a-single-structure}
-    -   [Lists are indexed by position, counting from
-        0](#lists-are-indexed-by-position-counting-from-0){#toc-lists-are-indexed-by-position-counting-from-0}
-    -   [You can get a subset of the list by slicing
-        it](#you-can-get-a-subset-of-the-list-by-slicing-it){#toc-you-can-get-a-subset-of-the-list-by-slicing-it}
-    -   [Why are lists indexed from
-        0?](#why-are-lists-indexed-from-0){#toc-why-are-lists-indexed-from-0}
-    -   [Some other properties of
-        indexes](#some-other-properties-of-indexes){#toc-some-other-properties-of-indexes}
-    -   [Lists are mutable](#lists-are-mutable){#toc-lists-are-mutable}
-    -   [Many functions take collections as
-        arguments](#many-functions-take-collections-as-arguments){#toc-many-functions-take-collections-as-arguments}
-    -   [(Optional) Removing items from a
-        list](#optional-removing-items-from-a-list){#toc-optional-removing-items-from-a-list}
-    -   [Lists can contain
-        anything](#lists-can-contain-anything){#toc-lists-can-contain-anything}
--   [Strings are (kind of) like
-    lists](#strings-are-kind-of-like-lists){#toc-strings-are-kind-of-like-lists}
-    -   [Strings are indexed like
-        lists](#strings-are-indexed-like-lists){#toc-strings-are-indexed-like-lists}
-    -   [(Optional) Strings have a
-        length](#optional-strings-have-a-length){#toc-optional-strings-have-a-length}
-    -   [But! Strings are
-        immutable](#but-strings-are-immutable){#toc-but-strings-are-immutable}
-    -   [Building strings with
-        `.join()`](#building-strings-with-.join){#toc-building-strings-with-.join}
-    -   [**(Optional) Beginner Challenge**: From Strings to Lists and
-        Back](#optional-beginner-challenge-from-strings-to-lists-and-back){#toc-optional-beginner-challenge-from-strings-to-lists-and-back}
-    -   [**Challenge**: Locating the right
-        module](#challenge-locating-the-right-module){#toc-challenge-locating-the-right-module}
--   [Dictionaries](#dictionaries){#toc-dictionaries}
-    -   [Dictionaries are sets of key/value pairs. Instead of being
-        indexed by position, they are indexed by
-        key.](#dictionaries-are-sets-of-keyvalue-pairs.-instead-of-being-indexed-by-position-they-are-indexed-by-key.){#toc-dictionaries-are-sets-of-keyvalue-pairs.-instead-of-being-indexed-by-position-they-are-indexed-by-key.}
-    -   [Update dictionaries by assigning a key/value
-        pair](#update-dictionaries-by-assigning-a-keyvalue-pair){#toc-update-dictionaries-by-assigning-a-keyvalue-pair}
-    -   [(Optional) Check whether the dictionary contains an
-        item](#optional-check-whether-the-dictionary-contains-an-item){#toc-optional-check-whether-the-dictionary-contains-an-item}
-    -   [(Optional) Delete an item using `del` or
-        `pop()`](#optional-delete-an-item-using-del-or-pop){#toc-optional-delete-an-item-using-del-or-pop}
-    -   [Dictionaries are the natural way to store tree-structured
-        data](#dictionaries-are-the-natural-way-to-store-tree-structured-data){#toc-dictionaries-are-the-natural-way-to-store-tree-structured-data}
-    -   [**(Optional) Advanced Challenge**: Convert a list to a
-        dictionary](#optional-advanced-challenge-convert-a-list-to-a-dictionary){#toc-optional-advanced-challenge-convert-a-list-to-a-dictionary}
--   [(Optional) Other
-    containers](#optional-other-containers){#toc-optional-other-containers}
--   [**WEEK 2: Data manipulation with
-    Pandas**](#week-2-data-manipulation-with-pandas){#toc-week-2-data-manipulation-with-pandas}
--   [(Optional) Review
-    collections](#optional-review-collections){#toc-optional-review-collections}
-    -   [Lists and
-        dictionaries](#lists-and-dictionaries){#toc-lists-and-dictionaries}
-    -   [Strings](#strings){#toc-strings}
--   [A very brief introduction to
-    NumPy](#a-very-brief-introduction-to-numpy){#toc-a-very-brief-introduction-to-numpy}
--   [A very brief introduction to
-    Pandas](#a-very-brief-introduction-to-pandas){#toc-a-very-brief-introduction-to-pandas}
--   [(Optional) Where are
-    we?](#optional-where-are-we){#toc-optional-where-are-we}
-    -   [Python provides functions for working with the file
-        system.](#python-provides-functions-for-working-with-the-file-system.){#toc-python-provides-functions-for-working-with-the-file-system.}
-    -   [These provide a rich Python alternative to shell
-        functions](#these-provide-a-rich-python-alternative-to-shell-functions){#toc-these-provide-a-rich-python-alternative-to-shell-functions}
--   [Reading tabular data into data
-    frames](#reading-tabular-data-into-data-frames){#toc-reading-tabular-data-into-data-frames}
-    -   [Import tabular data using the Pandas
-        library](#import-tabular-data-using-the-pandas-library){#toc-import-tabular-data-using-the-pandas-library}
-    -   [Use `index_col` to use a column's values as row
-        indices](#use-index_col-to-use-a-columns-values-as-row-indices){#toc-use-index_col-to-use-a-columns-values-as-row-indices}
-    -   [Pandas help files are dense; you should prefer the online
-        documentation](#pandas-help-files-are-dense-you-should-prefer-the-online-documentation){#toc-pandas-help-files-are-dense-you-should-prefer-the-online-documentation}
--   [Data frames are objects that can tell you about their
-    contents](#data-frames-are-objects-that-can-tell-you-about-their-contents){#toc-data-frames-are-objects-that-can-tell-you-about-their-contents}
-    -   [Data frames have methods (i.e. functions) that perform
-        operations using the data frame\'s contents as
-        input](#data-frames-have-methods-i.e.-functions-that-perform-operations-using-the-data-frames-contents-as-input){#toc-data-frames-have-methods-i.e.-functions-that-perform-operations-using-the-data-frames-contents-as-input}
-    -   [Data frames have fields (i.e. variables) that hold additional
-        information](#data-frames-have-fields-i.e.-variables-that-hold-additional-information){#toc-data-frames-have-fields-i.e.-variables-that-hold-additional-information}
-    -   [(Optional) Pandas introduces some new
-        types](#optional-pandas-introduces-some-new-types){#toc-optional-pandas-introduces-some-new-types}
-    -   [**(Optional) Beginner
-        Challenge**](#optional-beginner-challenge){#toc-optional-beginner-challenge}
--   [Subsetting Data](#subsetting-data){#toc-subsetting-data}
-    -   [Treat the data frame as a matrix and select values by
-        position](#treat-the-data-frame-as-a-matrix-and-select-values-by-position){#toc-treat-the-data-frame-as-a-matrix-and-select-values-by-position}
-    -   [Treat the data frame as a table and select values by
-        label](#treat-the-data-frame-as-a-table-and-select-values-by-label){#toc-treat-the-data-frame-as-a-table-and-select-values-by-label}
-    -   [Shorten the column names using vectorized string
-        methods](#shorten-the-column-names-using-vectorized-string-methods){#toc-shorten-the-column-names-using-vectorized-string-methods}
-    -   [Use list slicing notation to get subsets of the data
-        frame](#use-list-slicing-notation-to-get-subsets-of-the-data-frame){#toc-use-list-slicing-notation-to-get-subsets-of-the-data-frame}
-    -   [(Optional) Treat the data frame as an object and select values
-        using flexible
-        methods](#optional-treat-the-data-frame-as-an-object-and-select-values-using-flexible-methods){#toc-optional-treat-the-data-frame-as-an-object-and-select-values-using-flexible-methods}
--   [Filtering (i.e. masking)
-    data](#filtering-i.e.-masking-data){#toc-filtering-i.e.-masking-data}
-    -   [Use comparisons to select data based on
-        value](#use-comparisons-to-select-data-based-on-value){#toc-use-comparisons-to-select-data-based-on-value}
-    -   [You can filter using any method that returns a data
-        frame](#you-can-filter-using-any-method-that-returns-a-data-frame){#toc-you-can-filter-using-any-method-that-returns-a-data-frame}
-    -   [Use method chaining to create final output without creating
-        intermediate
-        variables](#use-method-chaining-to-create-final-output-without-creating-intermediate-variables){#toc-use-method-chaining-to-create-final-output-without-creating-intermediate-variables}
-    -   [Methods we\'re not going to
-        cover](#methods-were-not-going-to-cover){#toc-methods-were-not-going-to-cover}
--   [Working with missing
-    data](#working-with-missing-data){#toc-working-with-missing-data}
-    -   [By default, most numerical operations ignore missing
-        data](#by-default-most-numerical-operations-ignore-missing-data){#toc-by-default-most-numerical-operations-ignore-missing-data}
-    -   [Check for missing
-        values](#check-for-missing-values){#toc-check-for-missing-values}
-    -   [Replace missing
-        values](#replace-missing-values){#toc-replace-missing-values}
-    -   [Drop missing
-        values](#drop-missing-values){#toc-drop-missing-values}
-    -   [**Challenge: Filter and trim with a boolean
-        vector**](#challenge-filter-and-trim-with-a-boolean-vector){#toc-challenge-filter-and-trim-with-a-boolean-vector}
--   [Sorting and
-    grouping](#sorting-and-grouping){#toc-sorting-and-grouping}
-    -   [Motivating example: Calculate the wealth Z-score for each
-        country](#motivating-example-calculate-the-wealth-z-score-for-each-country){#toc-motivating-example-calculate-the-wealth-z-score-for-each-country}
-    -   [Append new columns to the data frame containing our summary
-        statistics](#append-new-columns-to-the-data-frame-containing-our-summary-statistics){#toc-append-new-columns-to-the-data-frame-containing-our-summary-statistics}
-    -   [Sort and group by new
-        columns](#sort-and-group-by-new-columns){#toc-sort-and-group-by-new-columns}
--   [Write output](#write-output){#toc-write-output}
--   [Working with multiple tables (in an SQL-like
-    manner)](#working-with-multiple-tables-in-an-sql-like-manner){#toc-working-with-multiple-tables-in-an-sql-like-manner}
-    -   [Concatenating data
-        frames](#concatenating-data-frames){#toc-concatenating-data-frames}
-    -   [Joining data
-        frames](#joining-data-frames){#toc-joining-data-frames}
--   [(Optional) Adding rows to
-    DataFrames](#optional-adding-rows-to-dataframes){#toc-optional-adding-rows-to-dataframes}
--   [Scientific Computing
-    Libraries](#scientific-computing-libraries){#toc-scientific-computing-libraries}
-    -   [(Optional) Statsmodels regression
-        example](#optional-statsmodels-regression-example){#toc-optional-statsmodels-regression-example}
-    -   [(Optional) Getting started with machine learning
-        estimators](#optional-getting-started-with-machine-learning-estimators){#toc-optional-getting-started-with-machine-learning-estimators}
--   [(Optional) Things we didn\'t talk
-    about](#optional-things-we-didnt-talk-about){#toc-optional-things-we-didnt-talk-about}
--   [(Optional) Pandas method chaining in the
-    wild](#optional-pandas-method-chaining-in-the-wild){#toc-optional-pandas-method-chaining-in-the-wild}
--   [(Optional) Introspecting on the DataFrame
-    object](#optional-introspecting-on-the-dataframe-object){#toc-optional-introspecting-on-the-dataframe-object}
--   [(Carpentries version) Group By:
-    split-apply-combine](#carpentries-version-group-by-split-apply-combine){#toc-carpentries-version-group-by-split-apply-combine}
--   [**WEEK 3: Building
-    Programs**](#week-3-building-programs){#toc-week-3-building-programs}
--   [Notebooks vs Python
-    scripts](#notebooks-vs-python-scripts){#toc-notebooks-vs-python-scripts}
-    -   [Differences between .ipynb and
-        .py](#differences-between-.ipynb-and-.py){#toc-differences-between-.ipynb-and-.py}
-    -   [Workflow differences between notebooks and
-        scripts](#workflow-differences-between-notebooks-and-scripts){#toc-workflow-differences-between-notebooks-and-scripts}
--   [Python from the
-    terminal](#python-from-the-terminal){#toc-python-from-the-terminal}
--   [For Loops](#for-loops){#toc-for-loops}
-    -   [A `for` loop executes commands once for each value in a
-        collection](#a-for-loop-executes-commands-once-for-each-value-in-a-collection){#toc-a-for-loop-executes-commands-once-for-each-value-in-a-collection}
-    -   [The first line of the `for` loop must end with a colon, and the
-        body must be
-        indented](#the-first-line-of-the-for-loop-must-end-with-a-colon-and-the-body-must-be-indented){#toc-the-first-line-of-the-for-loop-must-end-with-a-colon-and-the-body-must-be-indented}
-    -   [Loop variables can be called
-        anything](#loop-variables-can-be-called-anything){#toc-loop-variables-can-be-called-anything}
-    -   [The body of a loop can contain many
-        statements](#the-body-of-a-loop-can-contain-many-statements){#toc-the-body-of-a-loop-can-contain-many-statements}
-    -   [(Optional) Use `range()` to iterate over a sequence of
-        numbers](#optional-use-range-to-iterate-over-a-sequence-of-numbers){#toc-optional-use-range-to-iterate-over-a-sequence-of-numbers}
-    -   [(Optional) Use `enumerate()` to iterate over a sequence of
-        items and their
-        positions](#optional-use-enumerate-to-iterate-over-a-sequence-of-items-and-their-positions){#toc-optional-use-enumerate-to-iterate-over-a-sequence-of-items-and-their-positions}
-    -   [Common pattern 1: Accumulate a running
-        total](#common-pattern-1-accumulate-a-running-total){#toc-common-pattern-1-accumulate-a-running-total}
-    -   [Common pattern 2: Create a new collection from an existing
-        collection](#common-pattern-2-create-a-new-collection-from-an-existing-collection){#toc-common-pattern-2-create-a-new-collection-from-an-existing-collection}
-    -   [(Optional) Dictionary
-        iteration](#optional-dictionary-iteration){#toc-optional-dictionary-iteration}
-    -   [(Optional) How do you know if an object is
-        iterable?](#optional-how-do-you-know-if-an-object-is-iterable){#toc-optional-how-do-you-know-if-an-object-is-iterable}
-    -   [Don\'t use `for` loops with DataFrames or Numpy
-        matrices](#dont-use-for-loops-with-dataframes-or-numpy-matrices){#toc-dont-use-for-loops-with-dataframes-or-numpy-matrices}
--   [Looping Over Data
-    Sets](#looping-over-data-sets){#toc-looping-over-data-sets}
-    -   [File paths as an example of increasing abstraction in program
-        development](#file-paths-as-an-example-of-increasing-abstraction-in-program-development){#toc-file-paths-as-an-example-of-increasing-abstraction-in-program-development}
-    -   [Use a `for` loop to process files given a list of their
-        names](#use-a-for-loop-to-process-files-given-a-list-of-their-names){#toc-use-a-for-loop-to-process-files-given-a-list-of-their-names}
-    -   [Use glob.glob to find sets of files whose names match a
-        pattern](#use-glob.glob-to-find-sets-of-files-whose-names-match-a-pattern){#toc-use-glob.glob-to-find-sets-of-files-whose-names-match-a-pattern}
-    -   [Use glob and a `for` loop to process batches of
-        files](#use-glob-and-a-for-loop-to-process-batches-of-files){#toc-use-glob-and-a-for-loop-to-process-batches-of-files}
--   [Conditionals](#conditionals){#toc-conditionals}
-    -   [Evaluating the truth of a
-        statement](#evaluating-the-truth-of-a-statement){#toc-evaluating-the-truth-of-a-statement}
-    -   [Use `if` statements to control whether or not a block of code
-        is
-        executed](#use-if-statements-to-control-whether-or-not-a-block-of-code-is-executed){#toc-use-if-statements-to-control-whether-or-not-a-block-of-code-is-executed}
-    -   [Use else to execute a block of code when an if condition is not
-        true](#use-else-to-execute-a-block-of-code-when-an-if-condition-is-not-true){#toc-use-else-to-execute-a-block-of-code-when-an-if-condition-is-not-true}
-    -   [Use `elif` to specify additional
-        tests](#use-elif-to-specify-additional-tests){#toc-use-elif-to-specify-additional-tests}
-    -   [(Optional) Conditionals are often used inside
-        loops](#optional-conditionals-are-often-used-inside-loops){#toc-optional-conditionals-are-often-used-inside-loops}
-    -   [(Optional) Conditions are tested once, in
-        order](#optional-conditions-are-tested-once-in-order){#toc-optional-conditions-are-tested-once-in-order}
-    -   [(Optional) Compound Relations Using `and`, `or`, and
-        Parentheses](#optional-compound-relations-using-and-or-and-parentheses){#toc-optional-compound-relations-using-and-or-and-parentheses}
-    -   [(Optional) Use pathlib to write code that works across
-        operating
-        systems](#optional-use-pathlib-to-write-code-that-works-across-operating-systems){#toc-optional-use-pathlib-to-write-code-that-works-across-operating-systems}
--   [Generic file
-    handling](#generic-file-handling){#toc-generic-file-handling}
-    -   [Open the file with a context
-        manager](#open-the-file-with-a-context-manager){#toc-open-the-file-with-a-context-manager}
-    -   [A file is a collection of
-        lines](#a-file-is-a-collection-of-lines){#toc-a-file-is-a-collection-of-lines}
-    -   [Strings contain formatting
-        marks](#strings-contain-formatting-marks){#toc-strings-contain-formatting-marks}
--   [Text processing](#text-processing){#toc-text-processing}
-    -   [Use string methods to determine which lines to
-        keep](#use-string-methods-to-determine-which-lines-to-keep){#toc-use-string-methods-to-determine-which-lines-to-keep}
-    -   [Open an output file for
-        writing](#open-an-output-file-for-writing){#toc-open-an-output-file-for-writing}
-    -   [Format output as a comma-delimited text
-        file](#format-output-as-a-comma-delimited-text-file){#toc-format-output-as-a-comma-delimited-text-file}
-    -   [(Optional) Avoid memory limitations by processing the input
-        file one line at a
-        time](#optional-avoid-memory-limitations-by-processing-the-input-file-one-line-at-a-time){#toc-optional-avoid-memory-limitations-by-processing-the-input-file-one-line-at-a-time}
-    -   [(Optional) Notes](#optional-notes){#toc-optional-notes}
--   [Writing Functions](#writing-functions){#toc-writing-functions}
-    -   [Break programs down into functions to make them easier to
-        understand](#break-programs-down-into-functions-to-make-them-easier-to-understand){#toc-break-programs-down-into-functions-to-make-them-easier-to-understand}
-    -   [Define a function using `def` with a name, parameters, and a
-        block of
-        code](#define-a-function-using-def-with-a-name-parameters-and-a-block-of-code){#toc-define-a-function-using-def-with-a-name-parameters-and-a-block-of-code}
-    -   [Defining a function does not run
-        it](#defining-a-function-does-not-run-it){#toc-defining-a-function-does-not-run-it}
-    -   [Arguments in call are matched to parameters in
-        definition](#arguments-in-call-are-matched-to-parameters-in-definition){#toc-arguments-in-call-are-matched-to-parameters-in-definition}
-    -   [Functions may return a result to their caller using
-        `return`](#functions-may-return-a-result-to-their-caller-using-return){#toc-functions-may-return-a-result-to-their-caller-using-return}
-    -   [**Challenge (option 1): Encapsulate text processing in a
-        function**](#challenge-option-1-encapsulate-text-processing-in-a-function){#toc-challenge-option-1-encapsulate-text-processing-in-a-function}
-    -   [**Challenge (option 2): Encapsulate data processing in a
-        function**](#challenge-option-2-encapsulate-data-processing-in-a-function){#toc-challenge-option-2-encapsulate-data-processing-in-a-function}
-    -   [(Optional) A worked example: The Lorenz
-        attractor](#optional-a-worked-example-the-lorenz-attractor){#toc-optional-a-worked-example-the-lorenz-attractor}
--   [(Carpentries version)
-    Conditionals](#carpentries-version-conditionals){#toc-carpentries-version-conditionals}
-    -   [Use `if` statements to control whether or not a block of code
-        is
-        executed](#use-if-statements-to-control-whether-or-not-a-block-of-code-is-executed-1){#toc-use-if-statements-to-control-whether-or-not-a-block-of-code-is-executed-1}
-    -   [Conditionals are often used inside
-        loops](#conditionals-are-often-used-inside-loops){#toc-conditionals-are-often-used-inside-loops}
-    -   [Use else to execute a block of code when an if condition is not
-        true](#use-else-to-execute-a-block-of-code-when-an-if-condition-is-not-true-1){#toc-use-else-to-execute-a-block-of-code-when-an-if-condition-is-not-true-1}
-    -   [Use `elif` to specify additional
-        tests](#use-elif-to-specify-additional-tests-1){#toc-use-elif-to-specify-additional-tests-1}
-    -   [Conditions are tested once, in
-        order](#conditions-are-tested-once-in-order){#toc-conditions-are-tested-once-in-order}
-    -   [Use conditionals in a loop to "evolve" the values of
-        variables](#use-conditionals-in-a-loop-to-evolve-the-values-of-variables){#toc-use-conditionals-in-a-loop-to-evolve-the-values-of-variables}
-    -   [Compound Relations Using `and`, `or`, and Parentheses
-        (optional)](#compound-relations-using-and-or-and-parentheses-optional){#toc-compound-relations-using-and-or-and-parentheses-optional}
--   [(Optional) Variable
-    Scope](#optional-variable-scope){#toc-optional-variable-scope}
--   [(Optional) Programming
-    Style](#optional-programming-style){#toc-optional-programming-style}
--   [**WEEK 4: Visualization with Matplotlib and
-    Seaborn**](#week-4-visualization-with-matplotlib-and-seaborn){#toc-week-4-visualization-with-matplotlib-and-seaborn}
--   [Orientation](#orientation-1){#toc-orientation-1}
-    -   [Briefly revisit week
-        1](#briefly-revisit-week-1){#toc-briefly-revisit-week-1}
-    -   [A brief history of plotting in
-        Matplotlib](#a-brief-history-of-plotting-in-matplotlib){#toc-a-brief-history-of-plotting-in-matplotlib}
--   [Plotting with
-    Matplotlib](#plotting-with-matplotlib){#toc-plotting-with-matplotlib}
-    -   [The basic plot](#the-basic-plot){#toc-the-basic-plot}
-    -   [Two kinds of plotting
-        objects](#two-kinds-of-plotting-objects){#toc-two-kinds-of-plotting-objects}
-    -   [(Optional) Three ways of showing a
-        figure](#optional-three-ways-of-showing-a-figure){#toc-optional-three-ways-of-showing-a-figure}
-    -   [The lifecycle of a custom
-        plot](#the-lifecycle-of-a-custom-plot){#toc-the-lifecycle-of-a-custom-plot}
-    -   [Plotting multiple data
-        sets](#plotting-multiple-data-sets){#toc-plotting-multiple-data-sets}
-    -   [(Optional) Plot directly from
-        Pandas](#optional-plot-directly-from-pandas){#toc-optional-plot-directly-from-pandas}
--   [Visualization
-    Strategy](#visualization-strategy){#toc-visualization-strategy}
-    -   [There are many kinds of
-        plots](#there-are-many-kinds-of-plots){#toc-there-are-many-kinds-of-plots}
-    -   [Read the docs](#read-the-docs){#toc-read-the-docs}
-    -   [Workflow strategy](#workflow-strategy){#toc-workflow-strategy}
--   [Fast visualization and theming with
-    Seaborn](#fast-visualization-and-theming-with-seaborn){#toc-fast-visualization-and-theming-with-seaborn}
-    -   [Seaborn is a nice way to look at your
-        data](#seaborn-is-a-nice-way-to-look-at-your-data){#toc-seaborn-is-a-nice-way-to-look-at-your-data}
-    -   [Using preset
-        styles](#using-preset-styles){#toc-using-preset-styles}
-    -   [(Optional) There are many styling
-        options](#optional-there-are-many-styling-options){#toc-optional-there-are-many-styling-options}
-    -   [(Optional) Bar
-        Charts](#optional-bar-charts){#toc-optional-bar-charts}
-    -   [(Optional)
-        Histograms](#optional-histograms){#toc-optional-histograms}
-    -   [(Optional) Box Plots and Swarm
-        Plots](#optional-box-plots-and-swarm-plots){#toc-optional-box-plots-and-swarm-plots}
--   [(Optional) How Matplotlib
-    works](#optional-how-matplotlib-works){#toc-optional-how-matplotlib-works}
-    -   [Understanding
-        Matplotlib](#understanding-matplotlib){#toc-understanding-matplotlib}
-    -   [Matplotlib object
-        syntax](#matplotlib-object-syntax){#toc-matplotlib-object-syntax}
--   [**Special Topics**](#special-topics){#toc-special-topics}
--   [Working with unstructured
-    files](#working-with-unstructured-files){#toc-working-with-unstructured-files}
-    -   [Open the file with a context
-        handler](#open-the-file-with-a-context-handler){#toc-open-the-file-with-a-context-handler}
-    -   [Strings contain formatting
-        marks](#strings-contain-formatting-marks-1){#toc-strings-contain-formatting-marks-1}
-    -   [Many ways of handling a
-        file](#many-ways-of-handling-a-file){#toc-many-ways-of-handling-a-file}
-    -   [Working with unstructured file
-        data](#working-with-unstructured-file-data){#toc-working-with-unstructured-file-data}
--   [Exception handling](#exception-handling){#toc-exception-handling}
--   [Performance and
-    profiling](#performance-and-profiling){#toc-performance-and-profiling}
--   [Reducing memory
-    usage](#reducing-memory-usage){#toc-reducing-memory-usage}
-    -   [Read a file one line at a
-        time](#read-a-file-one-line-at-a-time){#toc-read-a-file-one-line-at-a-time}
-    -   [Use a SQLite
-        database](#use-a-sqlite-database){#toc-use-a-sqlite-database}
--   [Other optional
-    topics](#other-optional-topics){#toc-other-optional-topics}
--   [**Endnotes**](#endnotes){#toc-endnotes}
--   [Credits](#credits){#toc-credits}
--   [References](#references){#toc-references}
--   [Data Sources](#data-sources){#toc-data-sources}
+- <a href="#week-1-fundamentals" id="toc-week-1-fundamentals"><strong>WEEK 1: Fundamentals</strong></a>
+- <a href="#orientation" id="toc-orientation">Orientation</a>
+  - <a href="#what-programming-language-should-i-use" id="toc-what-programming-language-should-i-use">What programming language should I use?</a>
+  - <a href="#python-is-pretty-good-at-lots-of-things" id="toc-python-is-pretty-good-at-lots-of-things">Python is pretty good at lots of things</a>
+  - <a href="#literate-programming-and-notebooks" id="toc-literate-programming-and-notebooks">Literate programming and notebooks</a>
+- <a href="#jupyter-commands" id="toc-jupyter-commands">Jupyter commands</a>
+  - <a href="#how-to-start-jupyter-lab" id="toc-how-to-start-jupyter-lab">How to start Jupyter Lab</a>
+  - <a href="#navigation" id="toc-navigation">Navigation</a>
+  - <a href="#writing-code" id="toc-writing-code">Writing code</a>
+- <a href="#variables-and-assignment" id="toc-variables-and-assignment">Variables and Assignment</a>
+  - <a href="#use-variables-to-store-values" id="toc-use-variables-to-store-values">Use variables to store values</a>
+  - <a href="#rules-for-naming-things" id="toc-rules-for-naming-things">Rules for naming things</a>
+  - <a href="#use-print-to-display-values" id="toc-use-print-to-display-values">Use <code>print()</code> to display values</a>
+  - <a href="#jupyter-lab-will-always-echo-the-last-value-in-a-cell" id="toc-jupyter-lab-will-always-echo-the-last-value-in-a-cell">Jupyter Lab will always echo the last value in a cell</a>
+  - <a href="#optional-variables-must-be-created-before-they-are-used" id="toc-optional-variables-must-be-created-before-they-are-used">(Optional) Variables must be created before they are used</a>
+  - <a href="#variables-can-be-used-in-calculations" id="toc-variables-can-be-used-in-calculations">Variables can be used in calculations</a>
+  - <a href="#variables-only-change-value-when-something-is-assigned-to-them" id="toc-variables-only-change-value-when-something-is-assigned-to-them">Variables only change value when something is assigned to them</a>
+- <a href="#data-types-and-type-conversion" id="toc-data-types-and-type-conversion">Data Types and Type Conversion</a>
+  - <a href="#every-value-has-a-type" id="toc-every-value-has-a-type">Every value has a type</a>
+  - <a href="#the-type-determine-what-operations-you-can-perform-with-a-given-value" id="toc-the-type-determine-what-operations-you-can-perform-with-a-given-value">The type determine what operations you can perform with a given value</a>
+  - <a href="#use-the-built-in-function-type-to-find-the-type-of-a-value" id="toc-use-the-built-in-function-type-to-find-the-type-of-a-value">Use the built-in function <code>type()</code> to find the type of a value</a>
+  - <a href="#you-can-explicitly-convert-data-to-a-different-type" id="toc-you-can-explicitly-convert-data-to-a-different-type">You can explicitly convert data to a different type</a>
+  - <a href="#challenge-explain-what-each-operator-does" id="toc-challenge-explain-what-each-operator-does"><strong>Challenge</strong>: Explain what each operator does</a>
+- <a href="#built-in-functions-and-help" id="toc-built-in-functions-and-help">Built-in Functions and Help</a>
+  - <a href="#how-do-we-find-out-whats-possible" id="toc-how-do-we-find-out-whats-possible">How do we find out what's possible?</a>
+  - <a href="#optional-use-comments-to-add-documentation-to-programs" id="toc-optional-use-comments-to-add-documentation-to-programs">(Optional) Use comments to add documentation to programs</a>
+  - <a href="#a-function-may-take-zero-or-more-arguments" id="toc-a-function-may-take-zero-or-more-arguments">A function may take zero or more arguments</a>
+  - <a href="#functions-can-have-optional-arguments" id="toc-functions-can-have-optional-arguments">Functions can have optional arguments</a>
+  - <a href="#use-the-built-in-function-help-to-get-help-for-a-function" id="toc-use-the-built-in-function-help-to-get-help-for-a-function">Use the built-in function <code>help()</code> to get help for a function</a>
+  - <a href="#every-function-returns-something" id="toc-every-function-returns-something">Every function returns something</a>
+  - <a href="#optional-functions-will-typically-generalize-in-sensible-ways" id="toc-optional-functions-will-typically-generalize-in-sensible-ways">(Optional) Functions will typically generalize in sensible ways</a>
+  - <a href="#methods-are-functions-that-belong-to-objects" id="toc-methods-are-functions-that-belong-to-objects"><em>Methods</em> are functions that belong to objects</a>
+  - <a href="#optional-python-produces-informative-error-messages" id="toc-optional-python-produces-informative-error-messages">(Optional) Python produces informative error messages</a>
+  - <a href="#optional-beginner-challenge-what-happens-when" id="toc-optional-beginner-challenge-what-happens-when"><strong>(Optional) Beginner Challenge</strong>: What happens when?</a>
+- <a href="#libraries" id="toc-libraries">Libraries</a>
+  - <a href="#most-of-the-power-of-a-programming-language-is-in-its-libraries" id="toc-most-of-the-power-of-a-programming-language-is-in-its-libraries">Most of the power of a programming language is in its libraries</a>
+  - <a href="#a-program-must-import-a-library-module-before-using-it" id="toc-a-program-must-import-a-library-module-before-using-it">A program must <code>import</code> a library module before using it</a>
+  - <a href="#use-help-to-learn-about-the-contents-of-a-library-module" id="toc-use-help-to-learn-about-the-contents-of-a-library-module">Use <code>help()</code> to learn about the contents of a library module</a>
+  - <a href="#optional-import-shortcuts" id="toc-optional-import-shortcuts">(Optional) Import shortcuts</a>
+  - <a href="#python-has-opinions-about-how-to-write-your-programs" id="toc-python-has-opinions-about-how-to-write-your-programs">Python has opinions about how to write your programs</a>
+- <a href="#lists" id="toc-lists">Lists</a>
+  - <a href="#a-list-stores-many-values-in-a-single-structure" id="toc-a-list-stores-many-values-in-a-single-structure">A list stores many values in a single structure</a>
+  - <a href="#lists-are-indexed-by-position-counting-from-0" id="toc-lists-are-indexed-by-position-counting-from-0">Lists are indexed by position, counting from 0</a>
+  - <a href="#you-can-get-a-subset-of-the-list-by-slicing-it" id="toc-you-can-get-a-subset-of-the-list-by-slicing-it">You can get a subset of the list by slicing it</a>
+  - <a href="#why-are-lists-indexed-from-0" id="toc-why-are-lists-indexed-from-0">Why are lists indexed from 0?</a>
+  - <a href="#some-other-properties-of-indexes" id="toc-some-other-properties-of-indexes">Some other properties of indexes</a>
+  - <a href="#lists-are-mutable" id="toc-lists-are-mutable">Lists are mutable</a>
+  - <a href="#many-functions-take-collections-as-arguments" id="toc-many-functions-take-collections-as-arguments">Many functions take collections as arguments</a>
+  - <a href="#optional-removing-items-from-a-list" id="toc-optional-removing-items-from-a-list">(Optional) Removing items from a list</a>
+  - <a href="#lists-can-contain-anything" id="toc-lists-can-contain-anything">Lists can contain anything</a>
+- <a href="#strings-are-kind-of-like-lists" id="toc-strings-are-kind-of-like-lists">Strings are (kind of) like lists</a>
+  - <a href="#strings-are-indexed-like-lists" id="toc-strings-are-indexed-like-lists">Strings are indexed like lists</a>
+  - <a href="#optional-strings-have-a-length" id="toc-optional-strings-have-a-length">(Optional) Strings have a length</a>
+  - <a href="#but-strings-are-immutable" id="toc-but-strings-are-immutable">But! Strings are immutable</a>
+  - <a href="#building-strings-with-.join" id="toc-building-strings-with-.join">Building strings with <code>.join()</code></a>
+  - <a href="#optional-beginner-challenge-from-strings-to-lists-and-back" id="toc-optional-beginner-challenge-from-strings-to-lists-and-back"><strong>(Optional) Beginner Challenge</strong>: From Strings to Lists and Back</a>
+  - <a href="#challenge-locating-the-right-module" id="toc-challenge-locating-the-right-module"><strong>Challenge</strong>: Locating the right module</a>
+- <a href="#dictionaries" id="toc-dictionaries">Dictionaries</a>
+  - <a href="#dictionaries-are-sets-of-keyvalue-pairs.-instead-of-being-indexed-by-position-they-are-indexed-by-key." id="toc-dictionaries-are-sets-of-keyvalue-pairs.-instead-of-being-indexed-by-position-they-are-indexed-by-key.">Dictionaries are sets of key/value pairs. Instead of being indexed by position, they are indexed by key.</a>
+  - <a href="#update-dictionaries-by-assigning-a-keyvalue-pair" id="toc-update-dictionaries-by-assigning-a-keyvalue-pair">Update dictionaries by assigning a key/value pair</a>
+  - <a href="#optional-check-whether-the-dictionary-contains-an-item" id="toc-optional-check-whether-the-dictionary-contains-an-item">(Optional) Check whether the dictionary contains an item</a>
+  - <a href="#optional-delete-an-item-using-del-or-pop" id="toc-optional-delete-an-item-using-del-or-pop">(Optional) Delete an item using <code>del</code> or <code>pop()</code></a>
+  - <a href="#dictionaries-are-the-natural-way-to-store-tree-structured-data" id="toc-dictionaries-are-the-natural-way-to-store-tree-structured-data">Dictionaries are the natural way to store tree-structured data</a>
+  - <a href="#optional-advanced-challenge-convert-a-list-to-a-dictionary" id="toc-optional-advanced-challenge-convert-a-list-to-a-dictionary"><strong>(Optional) Advanced Challenge</strong>: Convert a list to a dictionary</a>
+- <a href="#optional-other-containers" id="toc-optional-other-containers">(Optional) Other containers</a>
+- <a href="#week-2-data-manipulation-with-pandas" id="toc-week-2-data-manipulation-with-pandas"><strong>WEEK 2: Data manipulation with Pandas</strong></a>
+- <a href="#optional-review-collections" id="toc-optional-review-collections">(Optional) Review collections</a>
+  - <a href="#lists-and-dictionaries" id="toc-lists-and-dictionaries">Lists and dictionaries</a>
+  - <a href="#strings" id="toc-strings">Strings</a>
+- <a href="#a-very-brief-introduction-to-numpy" id="toc-a-very-brief-introduction-to-numpy">A very brief introduction to NumPy</a>
+- <a href="#a-very-brief-introduction-to-pandas" id="toc-a-very-brief-introduction-to-pandas">A very brief introduction to Pandas</a>
+- <a href="#optional-where-are-we" id="toc-optional-where-are-we">(Optional) Where are we?</a>
+  - <a href="#python-provides-functions-for-working-with-the-file-system." id="toc-python-provides-functions-for-working-with-the-file-system.">Python provides functions for working with the file system.</a>
+  - <a href="#these-provide-a-rich-python-alternative-to-shell-functions" id="toc-these-provide-a-rich-python-alternative-to-shell-functions">These provide a rich Python alternative to shell functions</a>
+- <a href="#reading-tabular-data-into-data-frames" id="toc-reading-tabular-data-into-data-frames">Reading tabular data into data frames</a>
+  - <a href="#import-tabular-data-using-the-pandas-library" id="toc-import-tabular-data-using-the-pandas-library">Import tabular data using the Pandas library</a>
+  - <a href="#use-index_col-to-use-a-columns-values-as-row-indices" id="toc-use-index_col-to-use-a-columns-values-as-row-indices">Use <code>index_col</code> to use a column’s values as row indices</a>
+  - <a href="#pandas-help-files-are-dense-you-should-prefer-the-online-documentation" id="toc-pandas-help-files-are-dense-you-should-prefer-the-online-documentation">Pandas help files are dense; you should prefer the online documentation</a>
+- <a href="#data-frames-are-objects-that-can-tell-you-about-their-contents" id="toc-data-frames-are-objects-that-can-tell-you-about-their-contents">Data frames are objects that can tell you about their contents</a>
+  - <a href="#data-frames-have-methods-i.e.-functions-that-perform-operations-using-the-data-frames-contents-as-input" id="toc-data-frames-have-methods-i.e.-functions-that-perform-operations-using-the-data-frames-contents-as-input">Data frames have methods (i.e. functions) that perform operations using the data frame's contents as input</a>
+  - <a href="#data-frames-have-fields-i.e.-variables-that-hold-additional-information" id="toc-data-frames-have-fields-i.e.-variables-that-hold-additional-information">Data frames have fields (i.e. variables) that hold additional information</a>
+  - <a href="#optional-pandas-introduces-some-new-types" id="toc-optional-pandas-introduces-some-new-types">(Optional) Pandas introduces some new types</a>
+  - <a href="#optional-beginner-challenge" id="toc-optional-beginner-challenge"><strong>(Optional) Beginner Challenge</strong></a>
+- <a href="#subsetting-data" id="toc-subsetting-data">Subsetting Data</a>
+  - <a href="#treat-the-data-frame-as-a-matrix-and-select-values-by-position" id="toc-treat-the-data-frame-as-a-matrix-and-select-values-by-position">Treat the data frame as a matrix and select values by position</a>
+  - <a href="#treat-the-data-frame-as-a-table-and-select-values-by-label" id="toc-treat-the-data-frame-as-a-table-and-select-values-by-label">Treat the data frame as a table and select values by label</a>
+  - <a href="#shorten-the-column-names-using-vectorized-string-methods" id="toc-shorten-the-column-names-using-vectorized-string-methods">Shorten the column names using vectorized string methods</a>
+  - <a href="#use-list-slicing-notation-to-get-subsets-of-the-data-frame" id="toc-use-list-slicing-notation-to-get-subsets-of-the-data-frame">Use list slicing notation to get subsets of the data frame</a>
+  - <a href="#optional-treat-the-data-frame-as-an-object-and-select-values-using-flexible-methods" id="toc-optional-treat-the-data-frame-as-an-object-and-select-values-using-flexible-methods">(Optional) Treat the data frame as an object and select values using flexible methods</a>
+- <a href="#filtering-i.e.-masking-data" id="toc-filtering-i.e.-masking-data">Filtering (i.e. masking) data</a>
+  - <a href="#use-comparisons-to-select-data-based-on-value" id="toc-use-comparisons-to-select-data-based-on-value">Use comparisons to select data based on value</a>
+  - <a href="#you-can-filter-using-any-method-that-returns-a-data-frame" id="toc-you-can-filter-using-any-method-that-returns-a-data-frame">You can filter using any method that returns a data frame</a>
+  - <a href="#use-method-chaining-to-create-final-output-without-creating-intermediate-variables" id="toc-use-method-chaining-to-create-final-output-without-creating-intermediate-variables">Use method chaining to create final output without creating intermediate variables</a>
+  - <a href="#methods-were-not-going-to-cover" id="toc-methods-were-not-going-to-cover">Methods we're not going to cover</a>
+- <a href="#working-with-missing-data" id="toc-working-with-missing-data">Working with missing data</a>
+  - <a href="#by-default-most-numerical-operations-ignore-missing-data" id="toc-by-default-most-numerical-operations-ignore-missing-data">By default, most numerical operations ignore missing data</a>
+  - <a href="#check-for-missing-values" id="toc-check-for-missing-values">Check for missing values</a>
+  - <a href="#replace-missing-values" id="toc-replace-missing-values">Replace missing values</a>
+  - <a href="#drop-missing-values" id="toc-drop-missing-values">Drop missing values</a>
+  - <a href="#challenge-filter-and-trim-with-a-boolean-vector" id="toc-challenge-filter-and-trim-with-a-boolean-vector"><strong>Challenge: Filter and trim with a boolean vector</strong></a>
+- <a href="#sorting-and-grouping" id="toc-sorting-and-grouping">Sorting and grouping</a>
+  - <a href="#motivating-example-calculate-the-wealth-z-score-for-each-country" id="toc-motivating-example-calculate-the-wealth-z-score-for-each-country">Motivating example: Calculate the wealth Z-score for each country</a>
+  - <a href="#append-new-columns-to-the-data-frame-containing-our-summary-statistics" id="toc-append-new-columns-to-the-data-frame-containing-our-summary-statistics">Append new columns to the data frame containing our summary statistics</a>
+  - <a href="#sort-and-group-by-new-columns" id="toc-sort-and-group-by-new-columns">Sort and group by new columns</a>
+- <a href="#write-output" id="toc-write-output">Write output</a>
+- <a href="#working-with-multiple-tables-in-an-sql-like-manner" id="toc-working-with-multiple-tables-in-an-sql-like-manner">Working with multiple tables (in an SQL-like manner)</a>
+  - <a href="#concatenating-data-frames" id="toc-concatenating-data-frames">Concatenating data frames</a>
+  - <a href="#joining-data-frames" id="toc-joining-data-frames">Joining data frames</a>
+- <a href="#optional-adding-rows-to-dataframes" id="toc-optional-adding-rows-to-dataframes">(Optional) Adding rows to DataFrames</a>
+- <a href="#scientific-computing-libraries" id="toc-scientific-computing-libraries">Scientific Computing Libraries</a>
+  - <a href="#optional-statsmodels-regression-example" id="toc-optional-statsmodels-regression-example">(Optional) Statsmodels regression example</a>
+  - <a href="#optional-getting-started-with-machine-learning-estimators" id="toc-optional-getting-started-with-machine-learning-estimators">(Optional) Getting started with machine learning estimators</a>
+- <a href="#optional-things-we-didnt-talk-about" id="toc-optional-things-we-didnt-talk-about">(Optional) Things we didn't talk about</a>
+- <a href="#optional-pandas-method-chaining-in-the-wild" id="toc-optional-pandas-method-chaining-in-the-wild">(Optional) Pandas method chaining in the wild</a>
+- <a href="#optional-introspecting-on-the-dataframe-object" id="toc-optional-introspecting-on-the-dataframe-object">(Optional) Introspecting on the DataFrame object</a>
+- <a href="#carpentries-version-group-by-split-apply-combine" id="toc-carpentries-version-group-by-split-apply-combine">(Carpentries version) Group By: split-apply-combine</a>
+- <a href="#week-3-building-programs" id="toc-week-3-building-programs"><strong>WEEK 3: Building Programs</strong></a>
+- <a href="#notebooks-vs-python-scripts" id="toc-notebooks-vs-python-scripts">Notebooks vs Python scripts</a>
+  - <a href="#differences-between-.ipynb-and-.py" id="toc-differences-between-.ipynb-and-.py">Differences between .ipynb and .py</a>
+  - <a href="#workflow-differences-between-notebooks-and-scripts" id="toc-workflow-differences-between-notebooks-and-scripts">Workflow differences between notebooks and scripts</a>
+- <a href="#python-from-the-terminal" id="toc-python-from-the-terminal">Python from the terminal</a>
+- <a href="#for-loops" id="toc-for-loops">For Loops</a>
+  - <a href="#a-for-loop-executes-commands-once-for-each-value-in-a-collection" id="toc-a-for-loop-executes-commands-once-for-each-value-in-a-collection">A <code>for</code> loop executes commands once for each value in a collection</a>
+  - <a href="#the-first-line-of-the-for-loop-must-end-with-a-colon-and-the-body-must-be-indented" id="toc-the-first-line-of-the-for-loop-must-end-with-a-colon-and-the-body-must-be-indented">The first line of the <code>for</code> loop must end with a colon, and the body must be indented</a>
+  - <a href="#loop-variables-can-be-called-anything" id="toc-loop-variables-can-be-called-anything">Loop variables can be called anything</a>
+  - <a href="#the-body-of-a-loop-can-contain-many-statements" id="toc-the-body-of-a-loop-can-contain-many-statements">The body of a loop can contain many statements</a>
+  - <a href="#optional-use-range-to-iterate-over-a-sequence-of-numbers" id="toc-optional-use-range-to-iterate-over-a-sequence-of-numbers">(Optional) Use <code>range()</code> to iterate over a sequence of numbers</a>
+  - <a href="#optional-use-enumerate-to-iterate-over-a-sequence-of-items-and-their-positions" id="toc-optional-use-enumerate-to-iterate-over-a-sequence-of-items-and-their-positions">(Optional) Use <code>enumerate()</code> to iterate over a sequence of items and their positions</a>
+  - <a href="#common-pattern-1-accumulate-a-running-total" id="toc-common-pattern-1-accumulate-a-running-total">Common pattern 1: Accumulate a running total</a>
+  - <a href="#common-pattern-2-create-a-new-collection-from-an-existing-collection" id="toc-common-pattern-2-create-a-new-collection-from-an-existing-collection">Common pattern 2: Create a new collection from an existing collection</a>
+  - <a href="#optional-dictionary-iteration" id="toc-optional-dictionary-iteration">(Optional) Dictionary iteration</a>
+  - <a href="#optional-how-do-you-know-if-an-object-is-iterable" id="toc-optional-how-do-you-know-if-an-object-is-iterable">(Optional) How do you know if an object is iterable?</a>
+  - <a href="#dont-use-for-loops-with-dataframes-or-numpy-matrices" id="toc-dont-use-for-loops-with-dataframes-or-numpy-matrices">Don't use <code>for</code> loops with DataFrames or Numpy matrices</a>
+- <a href="#looping-over-data-sets" id="toc-looping-over-data-sets">Looping Over Data Sets</a>
+  - <a href="#file-paths-as-an-example-of-increasing-abstraction-in-program-development" id="toc-file-paths-as-an-example-of-increasing-abstraction-in-program-development">File paths as an example of increasing abstraction in program development</a>
+  - <a href="#use-a-for-loop-to-process-files-given-a-list-of-their-names" id="toc-use-a-for-loop-to-process-files-given-a-list-of-their-names">Use a <code>for</code> loop to process files given a list of their names</a>
+  - <a href="#use-glob.glob-to-find-sets-of-files-whose-names-match-a-pattern" id="toc-use-glob.glob-to-find-sets-of-files-whose-names-match-a-pattern">Use glob.glob to find sets of files whose names match a pattern</a>
+  - <a href="#use-glob-and-a-for-loop-to-process-batches-of-files" id="toc-use-glob-and-a-for-loop-to-process-batches-of-files">Use glob and a <code>for</code> loop to process batches of files</a>
+- <a href="#conditionals" id="toc-conditionals">Conditionals</a>
+  - <a href="#evaluating-the-truth-of-a-statement" id="toc-evaluating-the-truth-of-a-statement">Evaluating the truth of a statement</a>
+  - <a href="#use-if-statements-to-control-whether-or-not-a-block-of-code-is-executed" id="toc-use-if-statements-to-control-whether-or-not-a-block-of-code-is-executed">Use <code>if</code> statements to control whether or not a block of code is executed</a>
+  - <a href="#use-else-to-execute-a-block-of-code-when-an-if-condition-is-not-true" id="toc-use-else-to-execute-a-block-of-code-when-an-if-condition-is-not-true">Use else to execute a block of code when an if condition is not true</a>
+  - <a href="#use-elif-to-specify-additional-tests" id="toc-use-elif-to-specify-additional-tests">Use <code>elif</code> to specify additional tests</a>
+  - <a href="#optional-conditionals-are-often-used-inside-loops" id="toc-optional-conditionals-are-often-used-inside-loops">(Optional) Conditionals are often used inside loops</a>
+  - <a href="#optional-conditions-are-tested-once-in-order" id="toc-optional-conditions-are-tested-once-in-order">(Optional) Conditions are tested once, in order</a>
+  - <a href="#optional-compound-relations-using-and-or-and-parentheses" id="toc-optional-compound-relations-using-and-or-and-parentheses">(Optional) Compound Relations Using <code>and</code>, <code>or</code>, and Parentheses</a>
+  - <a href="#optional-use-pathlib-to-write-code-that-works-across-operating-systems" id="toc-optional-use-pathlib-to-write-code-that-works-across-operating-systems">(Optional) Use pathlib to write code that works across operating systems</a>
+- <a href="#generic-file-handling" id="toc-generic-file-handling">Generic file handling</a>
+  - <a href="#open-the-file-with-a-context-manager" id="toc-open-the-file-with-a-context-manager">Open the file with a context manager</a>
+  - <a href="#a-file-is-a-collection-of-lines" id="toc-a-file-is-a-collection-of-lines">A file is a collection of lines</a>
+  - <a href="#strings-contain-formatting-marks" id="toc-strings-contain-formatting-marks">Strings contain formatting marks</a>
+- <a href="#text-processing" id="toc-text-processing">Text processing</a>
+  - <a href="#use-string-methods-to-determine-which-lines-to-keep" id="toc-use-string-methods-to-determine-which-lines-to-keep">Use string methods to determine which lines to keep</a>
+  - <a href="#open-an-output-file-for-writing" id="toc-open-an-output-file-for-writing">Open an output file for writing</a>
+  - <a href="#format-output-as-a-comma-delimited-text-file" id="toc-format-output-as-a-comma-delimited-text-file">Format output as a comma-delimited text file</a>
+  - <a href="#optional-avoid-memory-limitations-by-processing-the-input-file-one-line-at-a-time" id="toc-optional-avoid-memory-limitations-by-processing-the-input-file-one-line-at-a-time">(Optional) Avoid memory limitations by processing the input file one line at a time</a>
+  - <a href="#optional-notes" id="toc-optional-notes">(Optional) Notes</a>
+- <a href="#writing-functions" id="toc-writing-functions">Writing Functions</a>
+  - <a href="#break-programs-down-into-functions-to-make-them-easier-to-understand" id="toc-break-programs-down-into-functions-to-make-them-easier-to-understand">Break programs down into functions to make them easier to understand</a>
+  - <a href="#define-a-function-using-def-with-a-name-parameters-and-a-block-of-code" id="toc-define-a-function-using-def-with-a-name-parameters-and-a-block-of-code">Define a function using <code>def</code> with a name, parameters, and a block of code</a>
+  - <a href="#defining-a-function-does-not-run-it" id="toc-defining-a-function-does-not-run-it">Defining a function does not run it</a>
+  - <a href="#arguments-in-call-are-matched-to-parameters-in-definition" id="toc-arguments-in-call-are-matched-to-parameters-in-definition">Arguments in call are matched to parameters in definition</a>
+  - <a href="#functions-may-return-a-result-to-their-caller-using-return" id="toc-functions-may-return-a-result-to-their-caller-using-return">Functions may return a result to their caller using <code>return</code></a>
+  - <a href="#challenge-option-1-encapsulate-text-processing-in-a-function" id="toc-challenge-option-1-encapsulate-text-processing-in-a-function"><strong>Challenge (option 1): Encapsulate text processing in a function</strong></a>
+  - <a href="#challenge-option-2-encapsulate-data-processing-in-a-function" id="toc-challenge-option-2-encapsulate-data-processing-in-a-function"><strong>Challenge (option 2): Encapsulate data processing in a function</strong></a>
+  - <a href="#optional-a-worked-example-the-lorenz-attractor" id="toc-optional-a-worked-example-the-lorenz-attractor">(Optional) A worked example: The Lorenz attractor</a>
+- <a href="#carpentries-version-conditionals" id="toc-carpentries-version-conditionals">(Carpentries version) Conditionals</a>
+  - <a href="#use-if-statements-to-control-whether-or-not-a-block-of-code-is-executed-1" id="toc-use-if-statements-to-control-whether-or-not-a-block-of-code-is-executed-1">Use <code>if</code> statements to control whether or not a block of code is executed</a>
+  - <a href="#conditionals-are-often-used-inside-loops" id="toc-conditionals-are-often-used-inside-loops">Conditionals are often used inside loops</a>
+  - <a href="#use-else-to-execute-a-block-of-code-when-an-if-condition-is-not-true-1" id="toc-use-else-to-execute-a-block-of-code-when-an-if-condition-is-not-true-1">Use else to execute a block of code when an if condition is not true</a>
+  - <a href="#use-elif-to-specify-additional-tests-1" id="toc-use-elif-to-specify-additional-tests-1">Use <code>elif</code> to specify additional tests</a>
+  - <a href="#conditions-are-tested-once-in-order" id="toc-conditions-are-tested-once-in-order">Conditions are tested once, in order</a>
+  - <a href="#use-conditionals-in-a-loop-to-evolve-the-values-of-variables" id="toc-use-conditionals-in-a-loop-to-evolve-the-values-of-variables">Use conditionals in a loop to “evolve” the values of variables</a>
+  - <a href="#compound-relations-using-and-or-and-parentheses-optional" id="toc-compound-relations-using-and-or-and-parentheses-optional">Compound Relations Using <code>and</code>, <code>or</code>, and Parentheses (optional)</a>
+- <a href="#optional-variable-scope" id="toc-optional-variable-scope">(Optional) Variable Scope</a>
+- <a href="#optional-programming-style" id="toc-optional-programming-style">(Optional) Programming Style</a>
+- <a href="#week-4-visualization-with-matplotlib-and-seaborn" id="toc-week-4-visualization-with-matplotlib-and-seaborn"><strong>WEEK 4: Visualization with Matplotlib and Seaborn</strong></a>
+- <a href="#orientation-1" id="toc-orientation-1">Orientation</a>
+  - <a href="#briefly-revisit-week-1" id="toc-briefly-revisit-week-1">Briefly revisit week 1</a>
+  - <a href="#a-brief-history-of-plotting-in-matplotlib" id="toc-a-brief-history-of-plotting-in-matplotlib">A brief history of plotting in Matplotlib</a>
+- <a href="#plotting-with-matplotlib" id="toc-plotting-with-matplotlib">Plotting with Matplotlib</a>
+  - <a href="#the-basic-plot" id="toc-the-basic-plot">The basic plot</a>
+  - <a href="#two-kinds-of-plotting-objects" id="toc-two-kinds-of-plotting-objects">Two kinds of plotting objects</a>
+  - <a href="#optional-three-ways-of-showing-a-figure" id="toc-optional-three-ways-of-showing-a-figure">(Optional) Three ways of showing a figure</a>
+  - <a href="#the-lifecycle-of-a-custom-plot" id="toc-the-lifecycle-of-a-custom-plot">The lifecycle of a custom plot</a>
+  - <a href="#plotting-multiple-data-sets" id="toc-plotting-multiple-data-sets">Plotting multiple data sets</a>
+  - <a href="#optional-plot-directly-from-pandas" id="toc-optional-plot-directly-from-pandas">(Optional) Plot directly from Pandas</a>
+- <a href="#visualization-strategy" id="toc-visualization-strategy">Visualization Strategy</a>
+  - <a href="#there-are-many-kinds-of-plots" id="toc-there-are-many-kinds-of-plots">There are many kinds of plots</a>
+  - <a href="#read-the-docs" id="toc-read-the-docs">Read the docs</a>
+  - <a href="#workflow-strategy" id="toc-workflow-strategy">Workflow strategy</a>
+- <a href="#fast-visualization-and-theming-with-seaborn" id="toc-fast-visualization-and-theming-with-seaborn">Fast visualization and theming with Seaborn</a>
+  - <a href="#seaborn-is-a-nice-way-to-look-at-your-data" id="toc-seaborn-is-a-nice-way-to-look-at-your-data">Seaborn is a nice way to look at your data</a>
+  - <a href="#using-preset-styles" id="toc-using-preset-styles">Using preset styles</a>
+  - <a href="#optional-there-are-many-styling-options" id="toc-optional-there-are-many-styling-options">(Optional) There are many styling options</a>
+  - <a href="#optional-bar-charts" id="toc-optional-bar-charts">(Optional) Bar Charts</a>
+  - <a href="#optional-histograms" id="toc-optional-histograms">(Optional) Histograms</a>
+  - <a href="#optional-box-plots-and-swarm-plots" id="toc-optional-box-plots-and-swarm-plots">(Optional) Box Plots and Swarm Plots</a>
+- <a href="#optional-how-matplotlib-works" id="toc-optional-how-matplotlib-works">(Optional) How Matplotlib works</a>
+  - <a href="#understanding-matplotlib" id="toc-understanding-matplotlib">Understanding Matplotlib</a>
+  - <a href="#matplotlib-object-syntax" id="toc-matplotlib-object-syntax">Matplotlib object syntax</a>
+- <a href="#special-topics" id="toc-special-topics"><strong>Special Topics</strong></a>
+- <a href="#working-with-unstructured-files" id="toc-working-with-unstructured-files">Working with unstructured files</a>
+  - <a href="#open-the-file-with-a-context-handler" id="toc-open-the-file-with-a-context-handler">Open the file with a context handler</a>
+  - <a href="#strings-contain-formatting-marks-1" id="toc-strings-contain-formatting-marks-1">Strings contain formatting marks</a>
+  - <a href="#many-ways-of-handling-a-file" id="toc-many-ways-of-handling-a-file">Many ways of handling a file</a>
+  - <a href="#working-with-unstructured-file-data" id="toc-working-with-unstructured-file-data">Working with unstructured file data</a>
+- <a href="#exception-handling" id="toc-exception-handling">Exception handling</a>
+- <a href="#performance-and-profiling" id="toc-performance-and-profiling">Performance and profiling</a>
+- <a href="#reducing-memory-usage" id="toc-reducing-memory-usage">Reducing memory usage</a>
+  - <a href="#read-a-file-one-line-at-a-time" id="toc-read-a-file-one-line-at-a-time">Read a file one line at a time</a>
+  - <a href="#use-a-sqlite-database" id="toc-use-a-sqlite-database">Use a SQLite database</a>
+- <a href="#other-optional-topics" id="toc-other-optional-topics">Other optional topics</a>
+- <a href="#endnotes" id="toc-endnotes"><strong>Endnotes</strong></a>
+- <a href="#credits" id="toc-credits">Credits</a>
+- <a href="#references" id="toc-references">References</a>
+- <a href="#data-sources" id="toc-data-sources">Data Sources</a>
 
 # **WEEK 1: Fundamentals**
 
@@ -424,26 +222,22 @@
 
 ## What programming language should I use?
 
-1.  Use the language that your friends use (so you can ask them for
-    help)
-2.  Use a language that has a community of practice for your desired use
-    case (you can find documentation, bug reports, sample code, etc.)
-3.  Use a language that is \"best\" by some technical definition
+1.  Use the language that your friends use (so you can ask them for help)
+2.  Use a language that has a community of practice for your desired use case (you can find documentation, bug reports, sample code, etc.)
+3.  Use a language that is "best" by some technical definition
 
 ## Python is pretty good at lots of things
 
--   \"Glue\" language intended to replace shell and Perl
--   Concise, readable, good for rapid prototyping
--   Access to linear algebra libraries in FORTRAN/C → user-friendly
-    numeric computing
+- "Glue" language intended to replace shell and Perl
+- Concise, readable, good for rapid prototyping
+- Access to linear algebra libraries in FORTRAN/C → user-friendly numeric computing
 
 ## Literate programming and notebooks
 
--   Blend code, documentation, and visualization
--   Good for trying things, demos
--   Bad for massive or long-running processes
--   You can export notebooks as .py files when they outgrow the notebook
-    format
+- Blend code, documentation, and visualization
+- Good for trying things, demos
+- Bad for massive or long-running processes
+- You can export notebooks as .py files when they outgrow the notebook format
 
 # Jupyter commands
 
@@ -463,9 +257,9 @@
 
 ## Navigation
 
--   Navigate to where you want to be before creating new notebook
--   Rename your notebook to something informative
--   Use drag-and-drop interface to move .ipynb file to new location
+- Navigate to where you want to be before creating new notebook
+- Rename your notebook to something informative
+- Use drag-and-drop interface to move .ipynb file to new location
 
 ## Writing code
 
@@ -484,8 +278,7 @@
 
 3.  Cells can be formatted as Code or Markdown
 
-4.  Many keyboard shortcuts are available; see
-    <https://gist.github.com/discdiver/9e00618756d120a8c9fa344ac1c375ac>
+4.  Many keyboard shortcuts are available; see <https://gist.github.com/discdiver/9e00618756d120a8c9fa344ac1c375ac>
 
 5.  (Optional) Jupyter Lab undestands (some) terminal commands
 
@@ -493,8 +286,7 @@
     ls
     ```
 
-6.  (Optional) Jupyter Lab (IPython, actually) has \"magic\" commands
-    that start with `%` (line) or `%%` (cell)
+6.  (Optional) Jupyter Lab (IPython, actually) has "magic" commands that start with `%` (line) or `%%` (cell)
 
     ``` python
     # Print current items in memory
@@ -510,9 +302,8 @@
     %%time
     ```
 
-    -   The magic command must be in the **first line** of the cell (no
-        comments)
-    -   Some commands are not available on Windows (e.g. `%%bash`)
+    - The magic command must be in the **first line** of the cell (no comments)
+    - Some commands are not available on Windows (e.g. `%%bash`)
 
 # Variables and Assignment
 
@@ -537,11 +328,10 @@ age = 42
 print(first_name, 'is', age, 'years old')
 ```
 
--   Functions are verbs
--   Functions end in `()`
--   Functions take arguments (i.e. they do stuff with the values that
-    you give them)
--   `print()` useful for tracking progress, debugging
+- Functions are verbs
+- Functions end in `()`
+- Functions take arguments (i.e. they do stuff with the values that you give them)
+- `print()` useful for tracking progress, debugging
 
 ## Jupyter Lab will always echo the last value in a cell
 
@@ -601,16 +391,14 @@ Most data is text and numbers, but there are many other types.
 
 ## The type determine what operations you can perform with a given value
 
-1.  Example 1: Subtraction makes sense for some kinds of data but not
-    others
+1.  Example 1: Subtraction makes sense for some kinds of data but not others
 
     ``` python
     print(5 - 3)
     print('hello' - 'h')
     ```
 
-2.  Example 2: Some things have length and some don\'t Note that we can
-    put functions inside other functions!
+2.  Example 2: Some things have length and some don't Note that we can put functions inside other functions!
 
     ``` python
     print(len('hello'))
@@ -633,9 +421,7 @@ Most data is text and numbers, but there are many other types.
     type(fitness)
     ```
 
-3.  Python is strongly-typed: It will (mostly) refuse to convert things
-    automatically. The exception is mathematical operations with
-    integers and floats.
+3.  Python is strongly-typed: It will (mostly) refuse to convert things automatically. The exception is mathematical operations with integers and floats.
 
     ``` python
     int_sum = 3 + 4
@@ -647,21 +433,20 @@ Most data is text and numbers, but there are many other types.
 
 ## You can explicitly convert data to a different type
 
-1.  Can\'t do math with text
+1.  Can't do math with text
 
     ``` python
     1 + '2'
     ```
 
-2.  If you have string data, you can explicitly convert it to numeric
-    data...
+2.  If you have string data, you can explicitly convert it to numeric data…
 
     ``` python
     print(1 + float('2'))
     print(1 + int('2'))
     ```
 
-3.  ...and vice-versa
+3.  …and vice-versa
 
     ``` python
     text = str(3)
@@ -670,17 +455,12 @@ Most data is text and numbers, but there are many other types.
     print(type(text))
     ```
 
-4.  What\'s going on under the hood?
+4.  What's going on under the hood?
 
-    1.  `int`, `float`, and `str` are types. More precisely, they are
-        *classes*.
-    2.  `int()`, `float()`, and `str()` are functions that create new
-        *instances* of their respective classes. The argument to the
-        creation function (e.g., `'2'`) is the raw material for creating
-        the new instance.
+    1.  `int`, `float`, and `str` are types. More precisely, they are *classes*.
+    2.  `int()`, `float()`, and `str()` are functions that create new *instances* of their respective classes. The argument to the creation function (e.g., `'2'`) is the raw material for creating the new instance.
 
-5.  This can work for more complex data types as well, e.g. Pandas data
-    frames and Numpy arrays.
+5.  This can work for more complex data types as well, e.g. Pandas data frames and Numpy arrays.
 
 ## **Challenge**: Explain what each operator does
 
@@ -697,18 +477,16 @@ print('5 % 3:', 5 % 3)
 
 # Built-in Functions and Help
 
-## How do we find out what\'s possible?
+## How do we find out what's possible?
 
--   Python.org tutorial
--   Standard library reference (we will discuss libraries in the next
-    section)
--   References section of this document
--   Stack Overflow
+- Python.org tutorial
+- Standard library reference (we will discuss libraries in the next section)
+- References section of this document
+- Stack Overflow
 
 ## (Optional) Use comments to add documentation to programs
 
-Leave notes for Future You about what you\'ve learned and how your code
-works.
+Leave notes for Future You about what you've learned and how your code works.
 
 ``` python
 # This line isn't executed by Python
@@ -743,11 +521,10 @@ round(3.712, 1)
     help(round)
     ```
 
-    -   1 mandatory argument
-    -   1 optional argument with a default value: `ndigits=None`
+    - 1 mandatory argument
+    - 1 optional argument with a default value: `ndigits=None`
 
-2.  You can proved arguments implicitly by order, or explicitly in any
-    order
+2.  You can proved arguments implicitly by order, or explicitly in any order
 
     ``` python
     # You can optionally specify the number of significant digits
@@ -756,8 +533,7 @@ round(3.712, 1)
 
 ## Every function returns something
 
-1.  Collect the results of a function in a new variable. This is one of
-    the ways we build complex programs.
+1.  Collect the results of a function in a new variable. This is one of the ways we build complex programs.
 
     ``` python
     # You can optionally specify the number of significant digits
@@ -770,8 +546,7 @@ round(3.712, 1)
     print(result)
     ```
 
-2.  (Optional) Some function only have \"side effects\"; they return
-    `None`
+2.  (Optional) Some function only have "side effects"; they return `None`
 
     ``` python
     result = print("hello")
@@ -781,15 +556,14 @@ round(3.712, 1)
 
 ## (Optional) Functions will typically generalize in sensible ways
 
-1.  `max()` and `min()` do the intuitively correct thing with numerical
-    and text data
+1.  `max()` and `min()` do the intuitively correct thing with numerical and text data
 
     ``` python
     print(max(1, 2, 3))
     print(min('a', 'A', '0'))       # sort order is 0-9, A-Z, a-z
     ```
 
-2.  Mixed numbers and text aren\'t meaningfully comparable
+2.  Mixed numbers and text aren't meaningfully comparable
 
     ``` python
     max(1, 'a')
@@ -797,8 +571,7 @@ round(3.712, 1)
 
 ## *Methods* are functions that belong to objects
 
-1.  An object packages data together with functions that operate on that
-    data. This is a very common organizational strategy in Python.
+1.  An object packages data together with functions that operate on that data. This is a very common organizational strategy in Python.
 
     ``` python
     my_string = 'Hello world!'
@@ -819,8 +592,7 @@ round(3.712, 1)
     my_string.upper().isupper()
     ```
 
-3.  (Optional) Strings are immutable. This will be covered later, but
-    may come up here. If it comes up here, this is a good example:
+3.  (Optional) Strings are immutable. This will be covered later, but may come up here. If it comes up here, this is a good example:
 
     ``` python
     print(my_string.upper())
@@ -829,9 +601,7 @@ round(3.712, 1)
     print(upper_string)
     ```
 
-4.  You can view an object\'s attributes (i.e. methods and fields) using
-    `help()` or `dir()`. Some attributes are \"private\"; you\'re not
-    supposed to use these directly.
+4.  You can view an object's attributes (i.e. methods and fields) using `help()` or `dir()`. Some attributes are "private"; you're not supposed to use these directly.
 
     ``` python
     # More verbose help
@@ -855,8 +625,7 @@ round(3.712, 1)
 
 ## (Optional) Python produces informative error messages
 
-1.  Python reports a syntax error when it can't understand the source of
-    a program
+1.  Python reports a syntax error when it can’t understand the source of a program
 
     ``` python
     name = 'Bob
@@ -864,15 +633,11 @@ round(3.712, 1)
     print("Hello world"
     ```
 
-2.  Python reports a runtime error when something goes wrong while a
-    program is executing
+2.  Python reports a runtime error when something goes wrong while a program is executing
 
 ## **(Optional) Beginner Challenge**: What happens when?
 
-Explain in simple terms the order of operations in the following
-program: when does the addition happen, when does the subtraction
-happen, when is each function called, etc. What is the final value of
-radiance?
+Explain in simple terms the order of operations in the following program: when does the addition happen, when does the subtraction happen, when is each function called, etc. What is the final value of radiance?
 
 ``` python
 radiance = 1.0
@@ -894,8 +659,8 @@ print(math.pi)
 print(math.cos(math.pi))
 ```
 
--   Refer to things from the module as `module-name.thing-name`
--   Python uses \".\" to mean \"part of\" or \"belongs to\".
+- Refer to things from the module as `module-name.thing-name`
+- Python uses "." to mean "part of" or "belongs to".
 
 ## Use `help()` to learn about the contents of a library module
 
@@ -909,8 +674,7 @@ dir(math)                       # brief reminder, not user friendly
 
 ## (Optional) Import shortcuts
 
-1.  Import specific items from a library module. You want to be careful
-    with this. It\'s safer to keep the namespace.
+1.  Import specific items from a library module. You want to be careful with this. It's safer to keep the namespace.
 
     ``` python
     from math import cos, pi
@@ -934,8 +698,7 @@ import this
 
 # Lists
 
-Lists are the central data structure in Python; we will explain many
-things by making analogies to lists.
+Lists are the central data structure in Python; we will explain many things by making analogies to lists.
 
 ## A list stores many values in a single structure
 
@@ -954,32 +717,28 @@ print("Fifth item:" , pressure[4])
 
 ## You can get a subset of the list by slicing it
 
-1.  You slice a list from the start position up to, but not including,
-    the stop position
+1.  You slice a list from the start position up to, but not including, the stop position
 
     ``` python
     print(pressure[0:3])
     print(pressure[2:5])
     ```
 
-2.  You can omit the start position if you\'re starting at the
-    beginning...
+2.  You can omit the start position if you're starting at the beginning…
 
     ``` python
     print("First 5 items:", pressure[0:5])
     print("First 5 items, but shorter:", pressure[:5])
     ```
 
-3.  ...and you *must* omit the end position if you\'re going to the end
-    (otherwise it\'s up to, but not including, the end!)
+3.  …and you *must* omit the end position if you're going to the end (otherwise it's up to, but not including, the end!)
 
     ``` python
     # This is useful if you don't know how long the list is
     print("Everything but the first 3 items:", pressure[3:])
     ```
 
-4.  You can add an optional step interval (every 2nd item, every 3rd
-    item, etc.)
+4.  You can add an optional step interval (every 2nd item, every 3rd item, etc.)
 
     ``` python
     print("First 5 items, every other item:", pressure[0:5:2])
@@ -990,8 +749,7 @@ print("Fifth item:" , pressure[4])
 
 cf. <https://stackoverflow.com/a/11364711>
 
-1.  Slice endpoints are compliments In both cases, the number you see
-    represents what you want to do.
+1.  Slice endpoints are compliments In both cases, the number you see represents what you want to do.
 
     ``` python
     # Get the first two items
@@ -1001,8 +759,7 @@ cf. <https://stackoverflow.com/a/11364711>
     print(pressure[2:])
     ```
 
-2.  For non-negative indices, the length of a slice is the difference of
-    the indices
+2.  For non-negative indices, the length of a slice is the difference of the indices
 
     ``` python
     len(pressure[1:3]) == 2
@@ -1077,8 +834,7 @@ print(mean_p)
     print(primes)
     ```
 
-2.  Use `pop()` to remove the last item and assign it to a variable.
-    This is useful for destructive iteration.
+2.  Use `pop()` to remove the last item and assign it to a variable. This is useful for destructive iteration.
 
     ``` python
     p = primes.pop()
@@ -1152,7 +908,7 @@ len('carbon')
 
 ## But! Strings are immutable
 
-1.  Can\'t change a string in place
+1.  Can't change a string in place
 
     ``` python
     element[0] = 'C'
@@ -1190,7 +946,7 @@ len('carbon')
 
 ## **(Optional) Beginner Challenge**: From Strings to Lists and Back
 
-1.  Given this Python code...
+1.  Given this Python code…
 
     ``` python
     print('string to list:', list('tin'))
@@ -1209,19 +965,13 @@ You want to select a random character from a string:
 bases = 'ACTTGCTTGAC'
 ```
 
-1.  Which standard library module could help you?
-    <https://docs.python.org/3/library/>
-2.  Which function would you select from that module? Are there
-    alternatives?
+1.  Which standard library module could help you? <https://docs.python.org/3/library/>
+2.  Which function would you select from that module? Are there alternatives?
 3.  Try to write a program that uses the function.
 
 ### Solutions:
 
-1.  You could try the `random` module. The string has 11 characters,
-    each having a positional index from 0 to 10. You could use either
-    `random.randrange` or `random.randint` functions to get a random
-    integer between 0 and 10, and then pick out the character at that
-    position:
+1.  You could try the `random` module. The string has 11 characters, each having a positional index from 0 to 10. You could use either `random.randrange` or `random.randint` functions to get a random integer between 0 and 10, and then pick out the character at that position:
 
     ``` python
     from random import randrange
@@ -1230,7 +980,7 @@ bases = 'ACTTGCTTGAC'
     print(bases[random_index])
     ```
 
-    ...or more compactly:
+    …or more compactly:
 
     ``` python
     from random import randrange
@@ -1238,8 +988,7 @@ bases = 'ACTTGCTTGAC'
     print(bases[randrange(len(bases))])
     ```
 
-2.  Perhaps you found the `random.sample()` function. It allows for
-    slightly less typing:
+2.  Perhaps you found the `random.sample()` function. It allows for slightly less typing:
 
     ``` python
     from random import sample
@@ -1284,8 +1033,7 @@ wave_fc["Girma"]
     "Girma" in wave_fc
     ```
 
-2.  Does a value already exist (you generally don\'t want to do this;
-    keys are unique but values are not)?
+2.  Does a value already exist (you generally don't want to do this; keys are unique but values are not)?
 
     ``` python
     4 in wave_fc.values()
@@ -1316,9 +1064,7 @@ print(location['longitude'][0])
 
 ## **(Optional) Advanced Challenge**: Convert a list to a dictionary
 
-How can you convert our list of names and ages into a dictionary? Hint:
-You will need to populate the dictionary with a list of keys and a list
-of values.
+How can you convert our list of names and ages into a dictionary? Hint: You will need to populate the dictionary with a list of keys and a list of values.
 
 ``` python
 # Starting data
@@ -1373,18 +1119,14 @@ ages_dict = dict(zip(ages[::2], ages[1::2]))
     print(rand[0,0])
     ```
 
-3.  Arrays are fast but inflexible - the entire array must be of a
-    single type.
+3.  Arrays are fast but inflexible - the entire array must be of a single type.
 
 # A very brief introduction to Pandas
 
-1.  Pandas is a library for working with spreadsheet-like data
-    (\"DataFrames\")
+1.  Pandas is a library for working with spreadsheet-like data ("DataFrames")
 2.  A DataFrame is a collection (dict) of Series columns
-3.  Each Series is a 1-dimensional NumPy array with optional row labels
-    (dict-like, similar to R vectors)
-4.  Therefore, each series inherits many of the abilities (linear
-    algebra) and limitations (single data type) of NumPy
+3.  Each Series is a 1-dimensional NumPy array with optional row labels (dict-like, similar to R vectors)
+4.  Therefore, each series inherits many of the abilities (linear algebra) and limitations (single data type) of NumPy
 
 # (Optional) Where are we?
 
@@ -1430,36 +1172,30 @@ print(data)
 data
 ```
 
--   File and directory names are strings
--   You can use relative or absolute file paths
+- File and directory names are strings
+- You can use relative or absolute file paths
 
-## Use `index_col` to use a column's values as row indices
+## Use `index_col` to use a column’s values as row indices
 
-Rows are indexed by number by default (0, 1, 2,....). For convenience,
-we want to index by country:
+Rows are indexed by number by default (0, 1, 2,….). For convenience, we want to index by country:
 
 ``` python
 data = pd.read_csv('data/gapminder_gdp_oceania.csv', index_col='country')
 print(data)
 ```
 
--   By default, rows are indexed by position, like lists.
--   Setting the `index_col` parameter lets us index rows by label, like
-    dictionaries. For this to work, the index column needs to have
-    unique values for every row.
--   You can verify the contents of the CSV by double-clicking on the
-    file in Jupyter Lab
+- By default, rows are indexed by position, like lists.
+- Setting the `index_col` parameter lets us index rows by label, like dictionaries. For this to work, the index column needs to have unique values for every row.
+- You can verify the contents of the CSV by double-clicking on the file in Jupyter Lab
 
 ## Pandas help files are dense; you should prefer the online documentation
 
-1.  Main documentation link:
-    <https://pandas.pydata.org/docs/user_guide/index.html>
-2.  Pandas can read many different data formats:
-    <https://pandas.pydata.org/docs/user_guide/io.html>
+1.  Main documentation link: <https://pandas.pydata.org/docs/user_guide/index.html>
+2.  Pandas can read many different data formats: <https://pandas.pydata.org/docs/user_guide/io.html>
 
 # Data frames are objects that can tell you about their contents
 
-## Data frames have methods (i.e. functions) that perform operations using the data frame\'s contents as input
+## Data frames have methods (i.e. functions) that perform operations using the data frame's contents as input
 
 1.  Use `.info()` to find out more about a data frame
 
@@ -1481,7 +1217,7 @@ print(data)
 
 ## Data frames have fields (i.e. variables) that hold additional information
 
-A \"field\" is a variable that belongs to an object.
+A "field" is a variable that belongs to an object.
 
 1.  The `.index` field stores the row Index (list of row labels)
 
@@ -1501,8 +1237,7 @@ A \"field\" is a variable that belongs to an object.
     print(data.shape)
     ```
 
-4.  Use `DataFrame.T` to transpose a DataFrame. This doesn\'t copy or
-    modify the data, it just changes the caller\'s view of it.
+4.  Use `DataFrame.T` to transpose a DataFrame. This doesn't copy or modify the data, it just changes the caller's view of it.
 
     ``` python
     print(data.T)
@@ -1523,25 +1258,16 @@ type(data['gdpPercap_1952'])
 type(data.columns)
 ```
 
--   You can convert data between NumPy arrays, Series, and DataFrames
--   You can read data into any of the data structures from files or from
-    standard Python containers
+- You can convert data between NumPy arrays, Series, and DataFrames
+- You can read data into any of the data structures from files or from standard Python containers
 
 ## **(Optional) Beginner Challenge**
 
-1.  Read the data in `gapminder_gdp_americas.csv` into a variable called
-    `americas` and display its summary statistics.
-2.  After reading the data for the Americas, use `help(americas.head)`
-    and `help(americas.tail)` to find out what `DataFrame.head` and
-    `DataFrame.tail` do.
+1.  Read the data in `gapminder_gdp_americas.csv` into a variable called `americas` and display its summary statistics.
+2.  After reading the data for the Americas, use `help(americas.head)` and `help(americas.tail)` to find out what `DataFrame.head` and `DataFrame.tail` do.
     1.  How can you display the first three rows of this data?
-    2.  How can you display the last three columns of this data? (Hint:
-        You may need to change your view of the data).
-3.  As well as the `read_csv` function for reading data from a file,
-    Pandas provides a `to_csv` function to write DataFrames to files.
-    Applying what you've learned about reading from files, write one of
-    your DataFrames to a file called `processed.csv`. You can use `help`
-    to get information on how to use `to_csv`.
+    2.  How can you display the last three columns of this data? (Hint: You may need to change your view of the data).
+3.  As well as the `read_csv` function for reading data from a file, Pandas provides a `to_csv` function to write DataFrames to files. Applying what you’ve learned about reading from files, write one of your DataFrames to a file called `processed.csv`. You can use `help` to get information on how to use `to_csv`.
 
 ### Solution
 
@@ -1557,8 +1283,7 @@ americas.to_csv('processed.csv')
 
 ## Treat the data frame as a matrix and select values by position
 
-Use `DataFrame.iloc[..., ...]` to select values by their (entry)
-position. The `i` in `iloc` stands for \"index\".
+Use `DataFrame.iloc[..., ...]` to select values by their (entry) position. The `i` in `iloc` stands for "index".
 
 ``` python
 import pandas as pd
@@ -1590,17 +1315,14 @@ print(data.columns)
 
 ## Use list slicing notation to get subsets of the data frame
 
-1.  Select multiple columns or rows using `.loc` and a named slice. This
-    generalizes the concept of a slice to include labeled indexes.
+1.  Select multiple columns or rows using `.loc` and a named slice. This generalizes the concept of a slice to include labeled indexes.
 
     ``` python
     # This returns a DataFrame
     data.loc['Italy':'Poland', '1962':'1972']
     ```
 
-2.  Use `:` on its own to mean all columns or all rows. This is Python's
-    usual slicing notation, which allows you to treat data frames as
-    multi-dimensional lists.
+2.  Use `:` on its own to mean all columns or all rows. This is Python’s usual slicing notation, which allows you to treat data frames as multi-dimensional lists.
 
     ``` python
     # This returns a DataFrame
@@ -1613,9 +1335,7 @@ print(data.columns)
     data.loc[['Italy','Poland'], :]
     ```
 
-4.  `.iloc` follows list index conventions (\"up to, but not
-    including)\", but `.loc` does the intuitive right thing (\"A through
-    B\")
+4.  `.iloc` follows list index conventions ("up to, but not including)", but `.loc` does the intuitive right thing ("A through B")
 
     ``` python
     index_subset = data.iloc[0:2, 0:2]
@@ -1636,18 +1356,15 @@ print(data.columns)
 
 ## (Optional) Treat the data frame as an object and select values using flexible methods
 
-Pandas always drills down to the most parsimonious representation. On
-one hand, this is convenient; on the other, it violates the Pythonic
-expectation for strong types.
+Pandas always drills down to the most parsimonious representation. On one hand, this is convenient; on the other, it violates the Pythonic expectation for strong types.
 
-  Shape of data selection   Pandas return type
-  ------------------------- --------------------
-  2D                        DataFrame
-  1D                        Series
-  0D                        single value
+| Shape of data selection | Pandas return type |
+|:------------------------|:-------------------|
+| 2D                      | DataFrame          |
+| 1D                      | Series             |
+| 0D                      | single value       |
 
-1.  `.filter()` always returns the same type as the original item,
-    whereas `.loc` and `.iloc` might return a data frame or a series.
+1.  `.filter()` always returns the same type as the original item, whereas `.loc` and `.iloc` might return a data frame or a series.
 
     ``` python
     italy = data.filter(items=["Italy"], axis="index")
@@ -1682,15 +1399,10 @@ expectation for strong types.
     ```
 
     1.  `subset > 10000` returns a data frame of True/False values
-    2.  `subset.where()` filters its contents based on that True/False
-        data frame
-    3.  This section is more properly called \"Masking Data,\" because
-        it involves operations for overlaying a data frame\'s values
-        without changing the data frame\'s shape. We don\'t drop
-        anything from the data frame, we just replace it with `NaN`.
+    2.  `subset.where()` filters its contents based on that True/False data frame
+    3.  This section is more properly called "Masking Data," because it involves operations for overlaying a data frame's values without changing the data frame's shape. We don't drop anything from the data frame, we just replace it with `NaN`.
 
-3.  (Optional) Use the criterion match to filter the data frame\'s
-    contents. This uses index notation:
+3.  (Optional) Use the criterion match to filter the data frame's contents. This uses index notation:
 
     ``` python
     subset[subset > 10000]
@@ -1715,7 +1427,7 @@ subset.rank()
 subset.where(subset > subset.median()).rank()
 ```
 
-## Methods we\'re not going to cover
+## Methods we're not going to cover
 
 `.query()` is a flexible, general-purpose way of filtering data frames.
 
@@ -1747,8 +1459,7 @@ Examples include min, max, mean, std, etc.
 
 ## Check for missing values
 
-1.  Show which items are missing. \"NA\" includes `NaN` and `None`. It
-    doesn\'t include empty strings or `numpy.inf`.
+1.  Show which items are missing. "NA" includes `NaN` and `None`. It doesn't include empty strings or `numpy.inf`.
 
     ``` python
     # Show which items are NA
@@ -1789,8 +1500,7 @@ Examples include min, max, mean, std, etc.
     print(fs_fixed)
     ```
 
-2.  (Optional) Impute missing values. Read the docs, this may or may not
-    be sufficient for your needs.
+2.  (Optional) Impute missing values. Read the docs, this may or may not be sufficient for your needs.
 
     ``` python
     fs_imputed = fs.interpolate()
@@ -1806,9 +1516,7 @@ fs_drop = fs.dropna()
 
 ## **Challenge: Filter and trim with a boolean vector**
 
-A DataFrame is a dictionary of Series columns. With this in mind,
-experiment with the following code and try to explain what each line is
-doing. What operation is it performing, and what is being returned?
+A DataFrame is a dictionary of Series columns. With this in mind, experiment with the following code and try to explain what each line is doing. What operation is it performing, and what is being returned?
 
 Feel free to use `print()`, `help()`, `type()`, etc as you investigate.
 
@@ -1822,9 +1530,7 @@ fs[fs["1962"].notna()]
 
 1.  Line 1 returns the column as a Series vector
 2.  Line 2 returns a boolean Series vector (True/False)
-3.  Line 3 performs *boolean indexing* on the DataFrame using the Series
-    vector. It only returns the rows that are True (i.e. it performs
-    true filtering).
+3.  Line 3 performs *boolean indexing* on the DataFrame using the Series vector. It only returns the rows that are True (i.e. it performs true filtering).
 
 # Sorting and grouping
 
@@ -1867,8 +1573,7 @@ data.groupby("wealthy").describe()
 
 # Write output
 
-Capture the results of your filter in a new file, rather than
-overwriting your original data.
+Capture the results of your filter in a new file, rather than overwriting your original data.
 
 ``` python
 # Save to a new CSV, preserving your original data
@@ -1904,9 +1609,7 @@ print(df3.shape)
     print(species.shape)
     ```
 
-2.  Join tables on common column. The \"left\" join is a strategy for
-    augmenting the first table (surveys) with information from the
-    second table (species).
+2.  Join tables on common column. The "left" join is a strategy for augmenting the first table (surveys) with information from the second table (species).
 
     ``` python
     df_join = surveys.merge(species, on="species_id", how="left")
@@ -1914,9 +1617,7 @@ print(df3.shape)
     print(df_join.shape)
     ```
 
-3.  The resulting table loses its index because `surveys.record_id` is
-    not being used in the join. To keep `record_id` as the index for the
-    final table, we need to retain it as an explicit column.
+3.  The resulting table loses its index because `surveys.record_id` is not being used in the join. To keep `record_id` as the index for the final table, we need to retain it as an explicit column.
 
     ``` python
     # Don't set record_id as index during initial import
@@ -1926,10 +1627,7 @@ print(df3.shape)
     df_join.index
     ```
 
-4.  Get the subset of species that match a criterion, and join on that
-    subset. The \"inner\" join only includes rows where both tables
-    match on the key column; it\'s a strategy for filtering the first
-    table by the second table.
+4.  Get the subset of species that match a criterion, and join on that subset. The "inner" join only includes rows where both tables match on the key column; it's a strategy for filtering the first table by the second table.
 
     ``` python
     # Get the taxa column, masking the rows based on which values match "Bird"
@@ -1942,10 +1640,7 @@ print(df3.shape)
 
 # (Optional) Adding rows to DataFrames
 
-A row is a view onto the *nth* item of each of the column Series.
-Appending rows is a performance bottleneck because it requires a
-separate append operation for each Series. You should concatenate data
-frames instead.s
+A row is a view onto the *nth* item of each of the column Series. Appending rows is a performance bottleneck because it requires a separate append operation for each Series. You should concatenate data frames instead.s
 
 1.  Create a single row as a data frame and concatenate it.
 
@@ -1954,8 +1649,7 @@ frames instead.s
     pd.concat([subset, row])
     ```
 
-2.  If you have individual rows as Series, `pd.concat()` will produce a
-    data frame.
+2.  If you have individual rows as Series, `pd.concat()` will produce a data frame.
 
     ``` python
     # Get each row as a Series
@@ -2013,14 +1707,12 @@ frames instead.s
 
 ## (Optional) Getting started with machine learning estimators
 
-<https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html>
-<https://scikit-learn.org/stable/_static/ml_map.png>
+<https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html> <https://scikit-learn.org/stable/_static/ml_map.png>
 
-# (Optional) Things we didn\'t talk about
+# (Optional) Things we didn't talk about
 
 1.  pipe
-2.  map/applymap/apply (in general you should prefer vectorized
-    functions)
+2.  map/applymap/apply (in general you should prefer vectorized functions)
 
 # (Optional) Pandas method chaining in the wild
 
@@ -2037,8 +1729,7 @@ wine.rename(columns={"color_intensity": "ci"})
 
 # (Optional) Introspecting on the DataFrame object
 
-1.  DataFrames have a huge number of fields and methods, so dir() is not
-    very useful
+1.  DataFrames have a huge number of fields and methods, so dir() is not very useful
 
     ``` python
     print(dir(data))
@@ -2060,11 +1751,7 @@ wine.rename(columns={"color_intensity": "ci"})
     pp.pprint(df_public)
     ```
 
-4.  Objects have fields (i.e. data/variables) and methods (i.e.
-    functions/procedures). The difference between a method and a
-    function is that methods are attached to objects, whereas functions
-    are free-floating (\"first-class citizens\"). Methods and functions
-    are \"callable\":
+4.  Objects have fields (i.e. data/variables) and methods (i.e. functions/procedures). The difference between a method and a function is that methods are attached to objects, whereas functions are free-floating ("first-class citizens"). Methods and functions are "callable":
 
     ``` python
     # GeneratorExitenerate a list of public methods and a list of public fields. We do this
@@ -2085,8 +1772,7 @@ wine.rename(columns={"color_intensity": "ci"})
 
 # (Carpentries version) Group By: split-apply-combine
 
-1.  Split data according to criterion, do numeric transformations, then
-    recombine.
+1.  Split data according to criterion, do numeric transformations, then recombine.
 
     ``` python
     # Get all GDPs greater than the mean
@@ -2100,8 +1786,7 @@ wine.rename(columns={"color_intensity": "ci"})
     wealth_score
     ```
 
-2.  A DataFrame is a spreadsheet, but it is also a dictionary of
-    columns.
+2.  A DataFrame is a spreadsheet, but it is also a dictionary of columns.
 
     ``` python
     data['gdpPercap_1962']
@@ -2128,9 +1813,7 @@ wine.rename(columns={"color_intensity": "ci"})
 
 ## Workflow differences between notebooks and scripts
 
-Broadly, a trade-off between managing big code bases and making it easy
-to experiment. See:
-<https://github.com/elliewix/Ways-Of-Installing-Python/blob/master/ways-of-installing.md#why-do-you-need-a-specific-tool>
+Broadly, a trade-off between managing big code bases and making it easy to experiment. See: <https://github.com/elliewix/Ways-Of-Installing-Python/blob/master/ways-of-installing.md#why-do-you-need-a-specific-tool>
 
 1.  Interactive testing and debugging
 2.  Graphics integration
@@ -2156,31 +1839,26 @@ to experiment. See:
     python hello.py
     ```
 
-3.  (Optional) Python programs can accept command line arguments as
-    inputs
+3.  (Optional) Python programs can accept command line arguments as inputs
 
-    1.  List of command line inputs: `sys.argv`
-        (<https://docs.python.org/3/library/sys.html#sys.argv>)
-    2.  Utility for working with arguments: `argparse`
-        (<https://docs.python.org/3/library/argparse.html>)
+    1.  List of command line inputs: `sys.argv` (<https://docs.python.org/3/library/sys.html#sys.argv>)
+    2.  Utility for working with arguments: `argparse` (<https://docs.python.org/3/library/argparse.html>)
 
 # For Loops
 
 ## A `for` loop executes commands once for each value in a collection
 
-\"For each thing in this group, do these operations\"
+"For each thing in this group, do these operations"
 
 ``` python
 for number in [2, 3, 5]:
     print(number)
 ```
 
--   A for loop is made up of a collection, a loop variable, and a body
--   The collection, **\[2, 3, 5\]**, is what the loop is being run on.
--   The body, **print(number)**, specifies what to do for each value in
-    the collection.
--   The loop variable, **number**, is what changes for each iteration of
-    the loop (i.e. the "current thing")
+- A for loop is made up of a collection, a loop variable, and a body
+- The collection, **\[2, 3, 5\]**, is what the loop is being run on.
+- The body, **print(number)**, specifies what to do for each value in the collection.
+- The loop variable, **number**, is what changes for each iteration of the loop (i.e. the “current thing”)
 
 ## The first line of the `for` loop must end with a colon, and the body must be indented
 
@@ -2220,8 +1898,8 @@ for number in range(0, 3):
     print(number)
 ```
 
--   range() produces numbers on demand (a \"generator\" function)
--   useful for tracking progress
+- range() produces numbers on demand (a "generator" function)
+- useful for tracking progress
 
 ## (Optional) Use `enumerate()` to iterate over a sequence of items and their positions
 
@@ -2232,9 +1910,7 @@ for number, p in enumerate(primes):
 
 ## Common pattern 1: Accumulate a running total
 
-Initialize an accumulator variable to zero, the empty string, or the
-empty list; then iteratively update the variable with values from a
-collection.
+Initialize an accumulator variable to zero, the empty string, or the empty list; then iteratively update the variable with values from a collection.
 
 ``` python
 total = 0
@@ -2302,10 +1978,9 @@ print(prime_exponents)
     hasattr(5, "__iter__")
     ```
 
-## Don\'t use `for` loops with DataFrames or Numpy matrices
+## Don't use `for` loops with DataFrames or Numpy matrices
 
-There is almost always a faster vectorized function that does what you
-want.
+There is almost always a faster vectorized function that does what you want.
 
 # Looping Over Data Sets
 
@@ -2336,13 +2011,10 @@ for filename in file_list:
     glob.glob('data/*.csv')
     ```
 
-2.  In Unix, the term "globbing" means "matching a set of files with a
-    pattern". It uses shell expansion rules, **not** regular
-    expressions, so there\'s an upper limit to how flexible it can be.
-    The most common patterns are:
+2.  In Unix, the term “globbing” means “matching a set of files with a pattern”. It uses shell expansion rules, **not** regular expressions, so there's an upper limit to how flexible it can be. The most common patterns are:
 
-    -   \`\*\` meaning "match zero or more characters"
-    -   \`?\` meaning "match exactly one character"
+    - \`\*\` meaning “match zero or more characters”
+    - \`?\` meaning “match exactly one character”
 
 3.  Get a list of all the Gapminder CSV files
 
@@ -2350,7 +2022,7 @@ for filename in file_list:
     glob.glob('data/gapminder_*.csv')
     ```
 
-4.  Exclude the \"all\" CSV file
+4.  Exclude the "all" CSV file
 
     ``` python
     glob.glob('data/gapminder_[!all]*.csv')
@@ -2391,10 +2063,7 @@ print(all_data.shape)
     print(7 in primes)
     ```
 
-3.  Truth of a collection Note that `any()` and `all()` evaluate each
-    item using `.__bool__()` or `.__len()__`, which tells you whether an
-    item is \"truthy\" or \"falsey\" (i.e. interpreted as being true or
-    false).
+3.  Truth of a collection Note that `any()` and `all()` evaluate each item using `.__bool__()` or `.__len()__`, which tells you whether an item is "truthy" or "falsey" (i.e. interpreted as being true or false).
 
     ``` python
     my_list = [2.75, "green", 0]
@@ -2403,22 +2072,15 @@ print(all_data.shape)
     print(all(my_list))
     ```
 
-4.  (Optional) Understanding \"truthy\" and \"falsey\" values in Python
-    (cf. <https://stackoverflow.com/a/53198991>) Every value in Python,
-    regardless of type, is interpreted as being `True` except for the
-    following values (which are interpreted as `False`). \"Truthy\"
-    values satisfy `if` or `while` statements; \"Falsey\" values do not.
+4.  (Optional) Understanding "truthy" and "falsey" values in Python (cf. <https://stackoverflow.com/a/53198991>) Every value in Python, regardless of type, is interpreted as being `True` except for the following values (which are interpreted as `False`). "Truthy" values satisfy `if` or `while` statements; "Falsey" values do not.
 
     1.  Constants defined to be false: `None` and `False`.
-    2.  Zero of any numeric type: `0`, `0.0`, `0j`, `Decimal(0)`,
-        `Fraction(0, 1)`
-    3.  Empty sequences and collections: `''`, `()`, `[]`, `{}`,
-        `set()`, `range(0)`
+    2.  Zero of any numeric type: `0`, `0.0`, `0j`, `Decimal(0)`, `Fraction(0, 1)`
+    3.  Empty sequences and collections: `''`, `()`, `[]`, `{}`, `set()`, `range(0)`
 
 ## Use `if` statements to control whether or not a block of code is executed
 
-An `if` statement (more properly called a conditional statement)
-controls whether some block of code is executed or not.
+An `if` statement (more properly called a conditional statement) controls whether some block of code is executed or not.
 
 ``` python
 mass = 3.5
@@ -2434,14 +2096,12 @@ if mass > 3.0:
 
 Structure is similar to a `for` statement:
 
--   First line opens with `if` and ends with a colon
--   Body containing one or more statements is indented (usually by 4
-    spaces)
+- First line opens with `if` and ends with a colon
+- Body containing one or more statements is indented (usually by 4 spaces)
 
 ## Use else to execute a block of code when an if condition is not true
 
-`else` can be used following an `if`. This allows us to specify an
-alternative to execute when the if branch isn't taken.
+`else` can be used following an `if`. This allows us to specify an alternative to execute when the if branch isn’t taken.
 
 ``` python
 if m > 3.0:
@@ -2452,8 +2112,7 @@ else:
 
 ## Use `elif` to specify additional tests
 
-May want to provide several alternative choices, each with its own test;
-use `elif` (short for "else if") and a condition to specify these.
+May want to provide several alternative choices, each with its own test; use `elif` (short for “else if”) and a condition to specify these.
 
 ``` python
 if m > 9.0:
@@ -2464,13 +2123,12 @@ else:
     print(m, 'is small')
 ```
 
--   Always associated with an `if`.
--   Must come before the `else` (which is the "catch all").
+- Always associated with an `if`.
+- Must come before the `else` (which is the “catch all”).
 
 ## (Optional) Conditionals are often used inside loops
 
-Not much point using a conditional when we know the value (as above),
-but useful when we have a collection to process.
+Not much point using a conditional when we know the value (as above), but useful when we have a collection to process.
 
 ``` python
 masses = [3.54, 2.07, 9.22, 1.86, 1.71]
@@ -2485,8 +2143,7 @@ for m in masses:
 
 ## (Optional) Conditions are tested once, in order
 
-Python steps through the branches of the conditional in order, testing
-each in turn. Order matters! The following is wrong:
+Python steps through the branches of the conditional in order, testing each in turn. Order matters! The following is wrong:
 
 ``` python
 grade = 85
@@ -2500,9 +2157,7 @@ elif grade >= 90:
 
 ## (Optional) Compound Relations Using `and`, `or`, and Parentheses
 
-Often, you want some combination of things to be true. You can combine
-relations within a conditional using `and` and `or`. Continuing the
-example above, suppose you have:
+Often, you want some combination of things to be true. You can combine relations within a conditional using `and` and `or`. Continuing the example above, suppose you have:
 
 ``` python
 mass     = [ 3.54,  2.07,  9.22,  1.86,  1.71]
@@ -2520,9 +2175,8 @@ for i in range(5):
         print("Whoa!  Something is up with the data.  Check it")
 ```
 
--   Use () to group subsets of conditions
--   Aside: For a more natural way of working with many lists, look at
-    `zip()`
+- Use () to group subsets of conditions
+- Aside: For a more natural way of working with many lists, look at `zip()`
 
 ## (Optional) Use pathlib to write code that works across operating systems
 
@@ -2537,8 +2191,7 @@ for i in range(5):
     print("Absolute path:", relative_path.absolute())
     ```
 
-2.  The file objects have methods that provide much better information
-    about files and directories.
+2.  The file objects have methods that provide much better information about files and directories.
 
     ``` python
     #Note the careful testing at each level of the code.
@@ -2552,8 +2205,7 @@ for i in range(5):
 
 # Generic file handling
 
-Pandas understands specific file types, but what if you need to work
-with a generic file?
+Pandas understands specific file types, but what if you need to work with a generic file?
 
 ## Open the file with a context manager
 
@@ -2562,14 +2214,13 @@ with open("data/bouldercreek_09_2013.txt", "r") as infile:
     lines = infile.readlines()
 ```
 
--   The context manager closes the file when you\'re done reading it
--   `"bouldercreek_09_2013.txt"` is the name of the file
--   `infile` is a variable that refers to the file on disk
+- The context manager closes the file when you're done reading it
+- `"bouldercreek_09_2013.txt"` is the name of the file
+- `infile` is a variable that refers to the file on disk
 
 ## A file is a collection of lines
 
-`.readlines()` produces the file contents as a list of lines; each line
-is a string.
+`.readlines()` produces the file contents as a list of lines; each line is a string.
 
 ``` python
 print(len(text))
@@ -2607,9 +2258,7 @@ lines[0]
             tabular_lines.append(line)
     ```
 
-2.  Now the first line is tab-separated data. Note that the print
-    statement *prints* the tabs instead of showing us the `\t`
-    character.
+2.  Now the first line is tab-separated data. Note that the print statement *prints* the tabs instead of showing us the `\t` character.
 
     ``` python
     tabular_lines[0]
@@ -2640,8 +2289,7 @@ with open(outfile_name, "w") as outfile:
     split_line
     ```
 
-3.  Use a special-purpose library to create a correctly-formatted CSV
-    file
+3.  Use a special-purpose library to create a correctly-formatted CSV file
 
     ``` python
     import csv
@@ -2654,9 +2302,7 @@ with open(outfile_name, "w") as outfile:
             writer.writerow(csv_line)
     ```
 
-4.  You can initialize `csv.reader` and `csv.writer` with different
-    \"dialects\" or with custom delimiters and quotechars; see
-    <https://docs.python.org/3/library/csv.html>
+4.  You can initialize `csv.reader` and `csv.writer` with different "dialects" or with custom delimiters and quotechars; see <https://docs.python.org/3/library/csv.html>
 
 ## (Optional) Avoid memory limitations by processing the input file one line at a time
 
@@ -2673,8 +2319,7 @@ with open(infile_name, "r") as infile, open(outfile_name, "w") as outfile:
 
 ## (Optional) Notes
 
-1.  Pandas has utilities for reading fixed-width files:
-    <https://pandas.pydata.org/docs/reference/api/pandas.read_fwf.html>
+1.  Pandas has utilities for reading fixed-width files: <https://pandas.pydata.org/docs/reference/api/pandas.read_fwf.html>
 
 2.  Saving datasets with new-style string formatting
 
@@ -2687,14 +2332,12 @@ with open(infile_name, "r") as infile, open(outfile_name, "w") as outfile:
 
 ## Break programs down into functions to make them easier to understand
 
--   Human beings can only keep a few items in working memory at a time.
--   Understand larger/more complicated ideas by understanding and
-    combining pieces
--   Functions serve the same purpose in programs:
-    1.  Encapsulate complexity so that we can treat it as a single
-        "thing"
-    2.  Removes complexity from remaining code, making it easier to test
-    3.  Enables re-use: Write one time, use many times
+- Human beings can only keep a few items in working memory at a time.
+- Understand larger/more complicated ideas by understanding and combining pieces
+- Functions serve the same purpose in programs:
+  1.  Encapsulate complexity so that we can treat it as a single “thing”
+  2.  Removes complexity from remaining code, making it easier to test
+  3.  Enables re-use: Write one time, use many times
 
 ## Define a function using `def` with a name, parameters, and a block of code
 
@@ -2703,12 +2346,10 @@ def print_greeting():
     print('Hello!')
 ```
 
--   Begin the definition of a new function with `def`, followed by the
-    name of the function.
--   Must obey the same rules as variable names.
--   Parameters in parentheses; empty parentheses if the function doesn't
-    take any inputs.
--   Indent function body
+- Begin the definition of a new function with `def`, followed by the name of the function.
+- Must obey the same rules as variable names.
+- Parameters in parentheses; empty parentheses if the function doesn’t take any inputs.
+- Indent function body
 
 ## Defining a function does not run it
 
@@ -2716,8 +2357,8 @@ def print_greeting():
 print_greeting()
 ```
 
--   Like assigning a value to a variable
--   Must call the function to execute the code it contains.
+- Like assigning a value to a variable
+- Must call the function to execute the code it contains.
 
 ## Arguments in call are matched to parameters in definition
 
@@ -2739,9 +2380,7 @@ print_greeting()
 
 ## Functions may return a result to their caller using `return`
 
-1.  Use `return ...` to give a value back to the caller. `return` ends
-    the function\'s execution and *returns* you to the code that
-    originally called the function.
+1.  Use `return ...` to give a value back to the caller. `return` ends the function's execution and *returns* you to the code that originally called the function.
 
     ``` python
     def average(values):
@@ -2766,26 +2405,22 @@ print_greeting()
 
 3.  Notes:
 
-    1.  `return` can occur anywhere in the function, but functions are
-        easier to understand if return occurs:
+    1.  `return` can occur anywhere in the function, but functions are easier to understand if return occurs:
         1.  At the start to handle special cases
         2.  At the very end, with a final result
-    2.  Docstring provides function help. Use triple quotes if you need
-        the docstring to span multiple lines.
+    2.  Docstring provides function help. Use triple quotes if you need the docstring to span multiple lines.
 
 ## **Challenge (option 1): Encapsulate text processing in a function**
 
-Write a function that takes `line` as an input and returns the
-information required by `writer.writerow()`.
+Write a function that takes `line` as an input and returns the information required by `writer.writerow()`.
 
 ## **Challenge (option 2): Encapsulate data processing in a function**
 
-Write a function that encapsulates the data normalization from the
-Pandas workshop into a function. The function should:
+Write a function that encapsulates the data normalization from the Pandas workshop into a function. The function should:
 
 1.  Take a data frame as its input
 2.  Calculate the mean Z score for each country
-3.  Divide countries into \"wealthy\" and \"non-wealthy\" categories
+3.  Divide countries into "wealthy" and "non-wealthy" categories
 4.  Add this information to the data frame as new columns
 5.  Return the modified data frame
 
@@ -2833,8 +2468,7 @@ for filename in glob.glob('data/gapminder_*.csv'):
 
 ## Use `if` statements to control whether or not a block of code is executed
 
-An `if` statement (more properly called a conditional statement)
-controls whether some block of code is executed or not.
+An `if` statement (more properly called a conditional statement) controls whether some block of code is executed or not.
 
 ``` python
 mass = 3.54
@@ -2848,14 +2482,12 @@ if mass > 3.0:
 
 Structure is similar to a `for` statement:
 
--   First line opens with `if` and ends with a colon
--   Body containing one or more statements is indented (usually by 4
-    spaces)
+- First line opens with `if` and ends with a colon
+- Body containing one or more statements is indented (usually by 4 spaces)
 
 ## Conditionals are often used inside loops
 
-Not much point using a conditional when we know the value (as above),
-but useful when we have a collection to process.
+Not much point using a conditional when we know the value (as above), but useful when we have a collection to process.
 
 ``` python
 masses = [3.54, 2.07, 9.22, 1.86, 1.71]
@@ -2866,8 +2498,7 @@ for m in masses:
 
 ## Use else to execute a block of code when an if condition is not true
 
-`else` can be used following an `if`. This allows us to specify an
-alternative to execute when the if branch isn't taken.
+`else` can be used following an `if`. This allows us to specify an alternative to execute when the if branch isn’t taken.
 
 ``` python
 masses = [3.54, 2.07, 9.22, 1.86, 1.71]
@@ -2880,8 +2511,7 @@ for m in masses:
 
 ## Use `elif` to specify additional tests
 
-May want to provide several alternative choices, each with its own test;
-use `elif` (short for "else if") and a condition to specify these.
+May want to provide several alternative choices, each with its own test; use `elif` (short for “else if”) and a condition to specify these.
 
 ``` python
 masses = [3.54, 2.07, 9.22, 1.86, 1.71]
@@ -2894,13 +2524,12 @@ for m in masses:
         print(m, 'is small')
 ```
 
--   Always associated with an `if`.
--   Must come before the `else` (which is the "catch all").
+- Always associated with an `if`.
+- Must come before the `else` (which is the “catch all”).
 
 ## Conditions are tested once, in order
 
-Python steps through the branches of the conditional in order, testing
-each in turn. Order matters! The following is wrong:
+Python steps through the branches of the conditional in order, testing each in turn. Order matters! The following is wrong:
 
 ``` python
 grade = 85
@@ -2912,7 +2541,7 @@ elif grade >= 90:
     print('grade is A')
 ```
 
-## Use conditionals in a loop to "evolve" the values of variables
+## Use conditionals in a loop to “evolve” the values of variables
 
 ``` python
 velocity = 10.0
@@ -2925,13 +2554,11 @@ for i in range(5): # execute the loop 5 times
 print('final velocity:', velocity)
 ```
 
--   This is how dynamical systems simulations work
+- This is how dynamical systems simulations work
 
 ## Compound Relations Using `and`, `or`, and Parentheses (optional)
 
-Often, you want some combination of things to be true. You can combine
-relations within a conditional using `and` and `or`. Continuing the
-example above, suppose you have:
+Often, you want some combination of things to be true. You can combine relations within a conditional using `and` and `or`. Continuing the example above, suppose you have:
 
 ``` python
 mass     = [ 3.54,  2.07,  9.22,  1.86,  1.71]
@@ -2949,9 +2576,8 @@ for i in range(5):
         print("Whoa!  Something is up with the data.  Check it")
 ```
 
--   Use () to group subsets of conditions
--   Aside: For a more natural way of working with many lists, look at
-    `zip()`
+- Use () to group subsets of conditions
+- Aside: For a more natural way of working with many lists, look at `zip()`
 
 # (Optional) Variable Scope
 
@@ -2998,8 +2624,8 @@ print(type(fig))
 print(type(ax))
 ```
 
--   Figure objects handle display, printing, saving, etc.
--   Axes objects contain graph information
+- Figure objects handle display, printing, saving, etc.
+- Axes objects contain graph information
 
 ## (Optional) Three ways of showing a figure
 
@@ -3015,10 +2641,7 @@ print(type(ax))
     fig.show()
     ```
 
-3.  Show figure in a separate window from Jupyter Lab. You may need to
-    specify a different \"backend\" parameter for `matplotlib.use()`
-    depending on your exact setup:
-    <https://matplotlib.org/stable/tutorials/introductory/usage.html#the-builtin-backends>
+3.  Show figure in a separate window from Jupyter Lab. You may need to specify a different "backend" parameter for `matplotlib.use()` depending on your exact setup: <https://matplotlib.org/stable/tutorials/introductory/usage.html#the-builtin-backends>
 
     ``` python
     import matplotlib
@@ -3081,8 +2704,7 @@ print(type(ax))
     ax.plot(x, y)
     ```
 
-5.  Customize the graph In principle, nearly every element on a
-    Matplotlib figure is independently modifiable.
+5.  Customize the graph In principle, nearly every element on a Matplotlib figure is independently modifiable.
 
     ``` python
     # Set figure size
@@ -3140,8 +2762,7 @@ In this example, plot GDP over time for multiple countries.
         years
         ```
 
-    3.  Convert years strings into integers and replace original data
-        frame column headers
+    3.  Convert years strings into integers and replace original data frame column headers
 
         ``` python
         data.columns = years.astype(int)
@@ -3177,7 +2798,7 @@ In this example, plot GDP over time for multiple countries.
 
 ## (Optional) Plot directly from Pandas
 
-Don\'t do this.
+Don't do this.
 
 1.  The basic plot syntax
 
@@ -3199,8 +2820,7 @@ Don\'t do this.
     fig
     ```
 
-3.  Overlaying multiple plots on the same figure with Pandas. This is
-    super unintuitive.
+3.  Overlaying multiple plots on the same figure with Pandas. This is super unintuitive.
 
     ``` python
     # Create an Axes object with the Austria data
@@ -3245,13 +2865,11 @@ ax.set_ylabel("GDP of Bulgaria",fontsize=20, fontweight='bold' )
 
 ## Read the docs
 
-1.  Matplotlib gallery:
-    <https://matplotlib.org/stable/gallery/index.html>
-    1.  \"Plotting categorical variables\" example of multiple subplots
+1.  Matplotlib gallery: <https://matplotlib.org/stable/gallery/index.html>
+    1.  "Plotting categorical variables" example of multiple subplots
     2.  Download code examples
     3.  .py vs .ipynb
-2.  Matplotlib tutorials:
-    <https://matplotlib.org/stable/tutorials/index.html>
+2.  Matplotlib tutorials: <https://matplotlib.org/stable/tutorials/index.html>
 3.  Seaborn gallery: <https://seaborn.pydata.org/examples/index.html>
 4.  Seaborn tutorials: <https://seaborn.pydata.org/tutorial.html>
 
@@ -3276,16 +2894,13 @@ import seaborn as sns
 ax = sns.lineplot(data=data.T, legend=False, dashes=False)
 ```
 
--   Doing more with this data set requires transforming the data from
-    wide form to long form; see
-    <https://seaborn.pydata.org/tutorial/data_structure.html>
+- Doing more with this data set requires transforming the data from wide form to long form; see <https://seaborn.pydata.org/tutorial/data_structure.html>
 
 ## Using preset styles
 
-Let\'s make a poster!
+Let's make a poster!
 
-1.  Import Iris data set
-    <https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/0e7a9b0a5d22642a06d3d5b9bcbad9890c8ee534/iris.csv>
+1.  Import Iris data set <https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/0e7a9b0a5d22642a06d3d5b9bcbad9890c8ee534/iris.csv>
 
     ``` python
     iris = pd.read_csv("../data/iris.csv")
@@ -3354,8 +2969,7 @@ Let\'s make a poster!
     ax = sns.barplot(data=iris, x='species', y='sepal_width', palette='colorblind')
     ```
 
-    -   Default summary statistic is mean, and default error bars are
-        95% confidence interval.
+    - Default summary statistic is mean, and default error bars are 95% confidence interval.
 
 2.  Add custom parameters
 
@@ -3378,10 +2992,8 @@ Let\'s make a poster!
     ax = sns.histplot(data=iris, x='petal_length', kde=True)
     ```
 
-    -   KDE: If True, compute a kernel density estimate to smooth the
-        distribution and show on the plot as (one or more) line(s).
-    -   There seems a bimodal distribution of petal length. What factors
-        underly this distribution?
+    - KDE: If True, compute a kernel density estimate to smooth the distribution and show on the plot as (one or more) line(s).
+    - There seems a bimodal distribution of petal length. What factors underly this distribution?
 
 2.  Histogram of data decomposed by category
 
@@ -3440,26 +3052,18 @@ Let\'s make a poster!
 
 1.  Everything is an Artist (object)
 2.  Multiple levels of specificity
-    -   `plt` vs `axes`
-    -   rcParams vs temporary stylings
-3.  Simplified high-level interfaces, aka \"syntactic sugar\"
-    -   `legend()` vs get legend handles and patches
+    - `plt` vs `axes`
+    - rcParams vs temporary stylings
+3.  Simplified high-level interfaces, aka "syntactic sugar"
+    - `legend()` vs get legend handles and patches
 
 ## Matplotlib object syntax
 
--   The `object.set_field(value)` usage is taken from Java, which was
-    popular in 2003 when Matplotlib was developing its object-oriented
-    syntax
--   You get values back out with `object.get_field(value)`
--   The Pythonic way to set a value would be `object.field = value`.
-    However, the Matplotlib getters and setters do a lot of internal
-    bookkeeping, so if you try to set field values directly you will get
-    errors. For example, compare `ax.get_ylabel()` with
-    `ax.yaxis.label`.
--   Read \"The Lifecycle of a Plot\":
-    <https://matplotlib.org/stable/tutorials/introductory/lifecycle.html>
--   Read \"Why you hate Matplotlib\":
-    <https://ryxcommar.com/2020/04/11/why-you-hate-matplotlib/>
+- The `object.set_field(value)` usage is taken from Java, which was popular in 2003 when Matplotlib was developing its object-oriented syntax
+- You get values back out with `object.get_field(value)`
+- The Pythonic way to set a value would be `object.field = value`. However, the Matplotlib getters and setters do a lot of internal bookkeeping, so if you try to set field values directly you will get errors. For example, compare `ax.get_ylabel()` with `ax.yaxis.label`.
+- Read "The Lifecycle of a Plot": <https://matplotlib.org/stable/tutorials/introductory/lifecycle.html>
+- Read "Why you hate Matplotlib": <https://ryxcommar.com/2020/04/11/why-you-hate-matplotlib/>
 
 # **Special Topics**
 
@@ -3524,12 +3128,9 @@ text[:10]
 
 ### Query: Are all the letters in the manifest actually there?
 
-1.  check if all the letters reported in the manifest appear in the
-    actual file
+1.  check if all the letters reported in the manifest appear in the actual file
 2.  check if all the letters in the file are reported in the manifest
-3.  Therefore, construct two variables: (1) A list of every location
-    line from the manifest, and (2) a list of every location line within
-    the file proper
+3.  Therefore, construct two variables: (1) A list of every location line from the manifest, and (2) a list of every location line within the file proper
 
 ### Get the manifest by visual inspection
 
@@ -3586,8 +3187,7 @@ for line in letters[:25]:
         print('---', stripped_line)
 ```
 
--   Before automate everything, we run the code with lots of `print()`
-    statements so that we can see what\'s happening
+- Before automate everything, we run the code with lots of `print()` statements so that we can see what's happening
 
 ### Collect the positive results
 
@@ -3611,14 +3211,11 @@ print('Letters:', len(letter_locations))
 ### Follow-up questions
 
 1.  Which items are in one list but not the other?
-2.  Are there other structural regularities you could use to parse the
-    data? (Note that in the letters, sometimes there are multiple
-    letters under a single box header)
+2.  Are there other structural regularities you could use to parse the data? (Note that in the letters, sometimes there are multiple letters under a single box header)
 
 # Exception handling
 
-Explicitly handle common errors, rather than waiting for your code to
-blow up.
+Explicitly handle common errors, rather than waiting for your code to blow up.
 
 ``` python
 def average(values):
@@ -3649,8 +3246,7 @@ print(average(4))
 print(average([]))
 ```
 
--   Use judiciously, and be as specific as possible. When in doubt,
-    allow your code to blow up rather than silently commit errors.
+- Use judiciously, and be as specific as possible. When in doubt, allow your code to blow up rather than silently commit errors.
 
 # Performance and profiling
 
@@ -3701,62 +3297,42 @@ with conn:
 
 # Other optional topics
 
--   Checking performance
--   List comprehensions
--   Defensive programming
--   Debugging and Testing
+- Checking performance
+- List comprehensions
+- Defensive programming
+- Debugging and Testing
 
 # **Endnotes**
 
 # Credits
 
--   Plotting and Programming in Python (Pandas-oriented):
-    <http://swcarpentry.github.io/python-novice-gapminder/>
--   Programming with Python (NumPy-oriented):
-    <https://swcarpentry.github.io/python-novice-inflammation/index.html>
--   Python for Ecology:
-    <https://datacarpentry.org/python-ecology-lesson/>
--   Humanities Python Tour (file and text processing):
-    <https://github.com/elliewix/humanities-python-tour/blob/master/Two-Hour-Beginner-Tour.ipynb>
--   Introduction to Cultural Analytics & Python:
-    <https://melaniewalsh.github.io/Intro-Cultural-Analytics/welcome.html>
--   Rhondene Wint: Matplotlib and Seaborn notes
+- Plotting and Programming in Python (Pandas-oriented): <http://swcarpentry.github.io/python-novice-gapminder/>
+- Programming with Python (NumPy-oriented): <https://swcarpentry.github.io/python-novice-inflammation/index.html>
+- Python for Ecology: <https://datacarpentry.org/python-ecology-lesson/>
+- Humanities Python Tour (file and text processing): <https://github.com/elliewix/humanities-python-tour/blob/master/Two-Hour-Beginner-Tour.ipynb>
+- Introduction to Cultural Analytics & Python: <https://melaniewalsh.github.io/Intro-Cultural-Analytics/welcome.html>
+- Rhondene Wint: Matplotlib and Seaborn notes
 
 # References
 
--   Complete tutorial: <https://docs.python.org/3/tutorial/index.html>
--   Python standard library: <https://docs.python.org/3/library/>
--   Pandas documentation:
-    <https://pandas.pydata.org/pandas-docs/stable/>
--   Pandas user guide:
-    <https://pandas.pydata.org/docs/user_guide/index.html>
--   String formatting: <https://pyformat.info/>
--   True and False in Python:
-    <https://docs.python.org/3/library/stdtypes.html#truth-value-testing>
--   SciPy stats library:
-    <https://docs.scipy.org/doc/scipy/reference/stats.html>
--   Statistics in Python tutorial:
-    <https://scipy-lectures.org/packages/statistics/>
--   Statsmodels library: <https://www.statsmodels.org/stable/index.html>
--   Matplotlib gallery of examples:
-    <https://matplotlib.org/gallery/index.html>
--   Seaborn gallery of examples:
-    <https://seaborn.pydata.org/examples/index.html>
--   IPython magic commands:
-    <https://ipython.readthedocs.io/en/stable/interactive/magics.html>
--   A somewhat-biased comparison of tools for integrating Python with
-    C/C++:
-    <http://blog.behnel.de/posts/cython-pybind11-cffi-which-tool-to-choose.html>
--   How to choose a code editor:
-    <https://github.com/elliewix/Ways-Of-Installing-Python/blob/master/ways-of-installing.md#why-do-you-need-a-specific-tool>
+- Complete tutorial: <https://docs.python.org/3/tutorial/index.html>
+- Python standard library: <https://docs.python.org/3/library/>
+- Pandas documentation: <https://pandas.pydata.org/pandas-docs/stable/>
+- Pandas user guide: <https://pandas.pydata.org/docs/user_guide/index.html>
+- String formatting: <https://pyformat.info/>
+- True and False in Python: <https://docs.python.org/3/library/stdtypes.html#truth-value-testing>
+- SciPy stats library: <https://docs.scipy.org/doc/scipy/reference/stats.html>
+- Statistics in Python tutorial: <https://scipy-lectures.org/packages/statistics/>
+- Statsmodels library: <https://www.statsmodels.org/stable/index.html>
+- Matplotlib gallery of examples: <https://matplotlib.org/gallery/index.html>
+- Seaborn gallery of examples: <https://seaborn.pydata.org/examples/index.html>
+- IPython magic commands: <https://ipython.readthedocs.io/en/stable/interactive/magics.html>
+- A somewhat-biased comparison of tools for integrating Python with C/C++: <http://blog.behnel.de/posts/cython-pybind11-cffi-which-tool-to-choose.html>
+- How to choose a code editor: <https://github.com/elliewix/Ways-Of-Installing-Python/blob/master/ways-of-installing.md#why-do-you-need-a-specific-tool>
 
 # Data Sources
 
-1.  Gapminder data:
-    <http://swcarpentry.github.io/python-novice-gapminder/files/python-novice-gapminder-data.zip>
-2.  Ecology data (field surveys):
-    <https://datacarpentry.org/python-ecology-lesson/data/portal-teachingdb-master.zip>
-3.  Social Science data (SAFI):
-    <https://datacarpentry.org/socialsci-workshop/data/>
-4.  Humanities data (Pettigrew letters):
-    <http://dx.doi.org/10.5334/data.1335350291>
+1.  Gapminder data: <http://swcarpentry.github.io/python-novice-gapminder/files/python-novice-gapminder-data.zip>
+2.  Ecology data (field surveys): <https://datacarpentry.org/python-ecology-lesson/data/portal-teachingdb-master.zip>
+3.  Social Science data (SAFI): <https://datacarpentry.org/socialsci-workshop/data/>
+4.  Humanities data (Pettigrew letters): <http://dx.doi.org/10.5334/data.1335350291>
