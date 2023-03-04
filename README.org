@@ -5,7 +5,7 @@
 #+TITLE: Programming in Python
 #+AUTHOR: Derek Devnich
 
-* Week 1: Fundamentals
+* Fundamentals (Week 1)
 ** Orientation
 *** What programming language should I use?
 1. Use the language that your friends use (so you can ask them for help)
@@ -739,7 +739,7 @@ ages_dict = dict(zip(ages[::2], ages[1::2]))
 1. Tuples
 2. Sets
 
-* Week2: Data manipulation with Pandas
+* Data manipulation with Pandas (Week 2)
 ** (Optional) Review collections
 *** Lists and dictionaries
 1. Reference item by index/key
@@ -1347,7 +1347,7 @@ wine.rename(columns={"color_intensity": "ci"})
    data['normalized_wealth'] = wealth_score
    #+END_SRC
 
-* Week 3: Building Programs
+* Building Programs (Week 3)
 ** Notebooks vs Python scripts
 *** Differences between .ipynb and .py
 1. Export notebook to .py file
@@ -2016,7 +2016,7 @@ for i in range(5):
 ** (Optional) Variable Scope
 ** (Optional) Programming Style
 
-* Week 4: Visualization with Matplotlib and Seaborn
+* Visualization with Matplotlib and Seaborn (Week 4)
 ** Orientation
 *** Briefly revisit week 1
 1. Python orientation
@@ -2700,7 +2700,9 @@ with conn:
 - Statistics in Python tutorial: https://scipy-lectures.org/packages/statistics/
 - Statsmodels library: https://www.statsmodels.org/stable/index.html
 - Matplotlib gallery of examples: https://matplotlib.org/gallery/index.html
+- Matplotlib tutorials: https://matplotlib.org/stable/tutorials/index.html
 - Seaborn gallery of examples: https://seaborn.pydata.org/examples/index.html
+- Seaborn tutorials: https://seaborn.pydata.org/tutorial.html
 - IPython magic commands: https://ipython.readthedocs.io/en/stable/interactive/magics.html
 - A somewhat-biased comparison of tools for integrating Python with C/C++: http://blog.behnel.de/posts/cython-pybind11-cffi-which-tool-to-choose.html
 - How to choose a code editor: https://github.com/elliewix/Ways-Of-Installing-Python/blob/master/ways-of-installing.md#why-do-you-need-a-specific-tool
@@ -2712,53 +2714,49 @@ with conn:
 4. Humanities data (Pettigrew letters): http://dx.doi.org/10.5334/data.1335350291
 
 * COMMENT How to export this document to other formats
-** Export to Markdown using Pandoc
+** Export to Github-flavored Markdown using Pandoc
 Do this if you want code syntax highlighting and a table of contents on Github.
-*** Generate generic Markdown file
-#+BEGIN_SRC bash
-pandoc README.org -o tmp.md
-pandoc -N -s README.org -o tmp.html
-pandoc tmp.html -o tmp.md
-#+END_SRC
-
-*** Edit generic Markdown file to remove illegal front matter
-1. Org directives
-2. Anything that isn't part of the document structure (e.g. TODO items)
-
-*** Generate Github Markdown with table of contents
-#+BEGIN_SRC bash
-pandoc -f markdown --toc --toc-depth=2 -s tmp.md -o README.md
-pandoc -f markdown -t gfm --toc --toc-depth=2 --wrap=none -s tmp.md -o README.md
-pandoc -f markdown -t gfm --toc --toc-depth=2 --wrap=none -N -s tmp.md -o README.md
-pandoc -f markdown -t gfm-raw_html --toc --toc-depth=2 --wrap=none -s tmp.md -o README.md
-pandoc -f html -t gfm-raw_html --toc --toc-depth=2 --wrap=none -s tmp.html -o README.md
-#+END_SRC
 
 #+BEGIN_SRC bash
 pandoc -f org -t gfm --toc --toc-depth=2 --wrap=none -N -s README.org -o README.md
 #+END_SRC
 
-*** Find and replace code block markers in final document
-#+BEGIN_EXAMPLE
-M-x qrr " {.python}" "python"
-M-x qrr " {.bash}" "bash"
-M-x qrr " example " fundamental
-#+END_EXAMPLE
+** INFO (Deprecated) Export to Markdown using Pandoc
+1. Generate generic Markdown file
+   #+BEGIN_SRC bash
+   pandoc README.org -o tmp.md
+   #+END_SRC
 
-** Export to Markdown using Emacs Org mode
+2. Edit generic Markdown file to remove illegal front matter
+   1. Org directives
+   2. Anything that isn't part of the document structure (e.g. TODO items)
+
+3. Generate Github Markdown with table of contents
+   #+BEGIN_SRC bash
+   pandoc -f markdown -t gfm --toc --toc-depth=2 --wrap=none -s tmp.md -o README.md
+   #+END_SRC
+
+4. Find and replace code block markers in final document
+   #+BEGIN_EXAMPLE
+   M-x qrr " {.python}" "python"
+   M-x qrr " {.bash}" "bash"
+   M-x qrr " example " fundamental
+   #+END_EXAMPLE
+
+** INFO Export to Markdown using Emacs Org mode
 Do this if you want a table of contents on Github.
 #+BEGIN_EXAMPLE
 M-x org-md-export-to-markdown
 #+END_EXAMPLE
 
-** Export to Open Office using Emacs Org mode
+** INFO Export to Open Office using Emacs Org mode
 #+BEGIN_EXAMPLE
 M-x org-odt-export-to-odt
 #+END_EXAMPLE
 
-** Export to Microsoft Word using Pandoc
+** INFO Export to Microsoft Word using Pandoc
 #+BEGIN_SRC bash
 # The --reference-doc flag is optional; it provides fine-grained control
 # over the appearance of the output document
-pandoc README.org -t markdown | pandoc --no-highlight --reference-doc=/Users/gilgamesh/Google Drive/Templates/custom-reference.docx -o README.docx
+pandoc README.org -t markdown | pandoc --no-highlight --reference-doc=custom-reference.docx -o README.docx
 #+END_SRC

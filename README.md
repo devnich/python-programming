@@ -3,7 +3,7 @@ author: Derek Devnich
 title: Programming in Python
 ---
 
-- <a href="#week-1-fundamentals" id="toc-week-1-fundamentals"><span class="toc-section-number">1</span> Week 1: Fundamentals</a>
+- <a href="#fundamentals-week-1" id="toc-fundamentals-week-1"><span class="toc-section-number">1</span> Fundamentals (Week 1)</a>
   - <a href="#orientation" id="toc-orientation"><span class="toc-section-number">1.1</span> Orientation</a>
   - <a href="#jupyter-commands" id="toc-jupyter-commands"><span class="toc-section-number">1.2</span> Jupyter commands</a>
   - <a href="#variables-and-assignment" id="toc-variables-and-assignment"><span class="toc-section-number">1.3</span> Variables and Assignment</a>
@@ -14,7 +14,7 @@ title: Programming in Python
   - <a href="#strings-are-kind-of-like-lists" id="toc-strings-are-kind-of-like-lists"><span class="toc-section-number">1.8</span> Strings are (kind of) like lists</a>
   - <a href="#dictionaries" id="toc-dictionaries"><span class="toc-section-number">1.9</span> Dictionaries</a>
   - <a href="#optional-other-containers" id="toc-optional-other-containers"><span class="toc-section-number">1.10</span> (Optional) Other containers</a>
-- <a href="#week2-data-manipulation-with-pandas" id="toc-week2-data-manipulation-with-pandas"><span class="toc-section-number">2</span> Week2: Data manipulation with Pandas</a>
+- <a href="#data-manipulation-with-pandas-week-2" id="toc-data-manipulation-with-pandas-week-2"><span class="toc-section-number">2</span> Data manipulation with Pandas (Week 2)</a>
   - <a href="#optional-review-collections" id="toc-optional-review-collections"><span class="toc-section-number">2.1</span> (Optional) Review collections</a>
   - <a href="#a-very-brief-introduction-to-numpy" id="toc-a-very-brief-introduction-to-numpy"><span class="toc-section-number">2.2</span> A very brief introduction to NumPy</a>
   - <a href="#a-very-brief-introduction-to-pandas" id="toc-a-very-brief-introduction-to-pandas"><span class="toc-section-number">2.3</span> A very brief introduction to Pandas</a>
@@ -33,7 +33,7 @@ title: Programming in Python
   - <a href="#optional-pandas-method-chaining-in-the-wild" id="toc-optional-pandas-method-chaining-in-the-wild"><span class="toc-section-number">2.16</span> (Optional) Pandas method chaining in the wild</a>
   - <a href="#optional-introspecting-on-the-dataframe-object" id="toc-optional-introspecting-on-the-dataframe-object"><span class="toc-section-number">2.17</span> (Optional) Introspecting on the DataFrame object</a>
   - <a href="#carpentries-version-group-by-split-apply-combine" id="toc-carpentries-version-group-by-split-apply-combine"><span class="toc-section-number">2.18</span> (Carpentries version) Group By: split-apply-combine</a>
-- <a href="#week-3-building-programs" id="toc-week-3-building-programs"><span class="toc-section-number">3</span> Week 3: Building Programs</a>
+- <a href="#building-programs-week-3" id="toc-building-programs-week-3"><span class="toc-section-number">3</span> Building Programs (Week 3)</a>
   - <a href="#notebooks-vs-python-scripts" id="toc-notebooks-vs-python-scripts"><span class="toc-section-number">3.1</span> Notebooks vs Python scripts</a>
   - <a href="#python-from-the-terminal" id="toc-python-from-the-terminal"><span class="toc-section-number">3.2</span> Python from the terminal</a>
   - <a href="#for-loops" id="toc-for-loops"><span class="toc-section-number">3.3</span> For Loops</a>
@@ -45,7 +45,7 @@ title: Programming in Python
   - <a href="#carpentries-version-conditionals" id="toc-carpentries-version-conditionals"><span class="toc-section-number">3.9</span> (Carpentries version) Conditionals</a>
   - <a href="#optional-variable-scope" id="toc-optional-variable-scope"><span class="toc-section-number">3.10</span> (Optional) Variable Scope</a>
   - <a href="#optional-programming-style" id="toc-optional-programming-style"><span class="toc-section-number">3.11</span> (Optional) Programming Style</a>
-- <a href="#week-4-visualization-with-matplotlib-and-seaborn" id="toc-week-4-visualization-with-matplotlib-and-seaborn"><span class="toc-section-number">4</span> Week 4: Visualization with Matplotlib and Seaborn</a>
+- <a href="#visualization-with-matplotlib-and-seaborn-week-4" id="toc-visualization-with-matplotlib-and-seaborn-week-4"><span class="toc-section-number">4</span> Visualization with Matplotlib and Seaborn (Week 4)</a>
   - <a href="#orientation-1" id="toc-orientation-1"><span class="toc-section-number">4.1</span> Orientation</a>
   - <a href="#plotting-with-matplotlib" id="toc-plotting-with-matplotlib"><span class="toc-section-number">4.2</span> Plotting with Matplotlib</a>
   - <a href="#visualization-strategy" id="toc-visualization-strategy"><span class="toc-section-number">4.3</span> Visualization Strategy</a>
@@ -62,7 +62,7 @@ title: Programming in Python
   - <a href="#references" id="toc-references"><span class="toc-section-number">6.2</span> References</a>
   - <a href="#data-sources" id="toc-data-sources"><span class="toc-section-number">6.3</span> Data Sources</a>
 
-# Week 1: Fundamentals
+# Fundamentals (Week 1)
 
 ## Orientation
 
@@ -931,7 +931,7 @@ ages_dict = dict(zip(ages[::2], ages[1::2]))
 1.  Tuples
 2.  Sets
 
-# Week2: Data manipulation with Pandas
+# Data manipulation with Pandas (Week 2)
 
 ## (Optional) Review collections
 
@@ -1647,7 +1647,7 @@ wine.rename(columns={"color_intensity": "ci"})
     data['normalized_wealth'] = wealth_score
     ```
 
-# Week 3: Building Programs
+# Building Programs (Week 3)
 
 ## Notebooks vs Python scripts
 
@@ -2429,7 +2429,7 @@ for i in range(5):
 
 ## (Optional) Programming Style
 
-# Week 4: Visualization with Matplotlib and Seaborn
+# Visualization with Matplotlib and Seaborn (Week 4)
 
 ## Orientation
 
@@ -3177,7 +3177,9 @@ with conn:
 - Statistics in Python tutorial: <https://scipy-lectures.org/packages/statistics/>
 - Statsmodels library: <https://www.statsmodels.org/stable/index.html>
 - Matplotlib gallery of examples: <https://matplotlib.org/gallery/index.html>
+- Matplotlib tutorials: <https://matplotlib.org/stable/tutorials/index.html>
 - Seaborn gallery of examples: <https://seaborn.pydata.org/examples/index.html>
+- Seaborn tutorials: <https://seaborn.pydata.org/tutorial.html>
 - IPython magic commands: <https://ipython.readthedocs.io/en/stable/interactive/magics.html>
 - A somewhat-biased comparison of tools for integrating Python with C/C++: <http://blog.behnel.de/posts/cython-pybind11-cffi-which-tool-to-choose.html>
 - How to choose a code editor: <https://github.com/elliewix/Ways-Of-Installing-Python/blob/master/ways-of-installing.md#why-do-you-need-a-specific-tool>
