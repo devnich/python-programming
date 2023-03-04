@@ -1,8 +1,3 @@
----
-author: Derek Devnich
-title: Programming in Python
----
-
 - <a href="#fundamentals-week-1" id="toc-fundamentals-week-1"><span class="toc-section-number">1</span> Fundamentals (Week 1)</a>
   - <a href="#orientation" id="toc-orientation"><span class="toc-section-number">1.1</span> Orientation</a>
   - <a href="#jupyter-commands" id="toc-jupyter-commands"><span class="toc-section-number">1.2</span> Jupyter commands</a>
