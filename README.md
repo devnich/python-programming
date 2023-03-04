@@ -1,61 +1,66 @@
-- <a href="#week-1-fundamentals" id="toc-week-1-fundamentals">Week 1: Fundamentals</a>
-  - <a href="#orientation" id="toc-orientation">Orientation</a>
-  - <a href="#jupyter-commands" id="toc-jupyter-commands">Jupyter commands</a>
-  - <a href="#variables-and-assignment" id="toc-variables-and-assignment">Variables and Assignment</a>
-  - <a href="#data-types-and-type-conversion" id="toc-data-types-and-type-conversion">Data Types and Type Conversion</a>
-  - <a href="#built-in-functions-and-help" id="toc-built-in-functions-and-help">Built-in Functions and Help</a>
-  - <a href="#libraries" id="toc-libraries">Libraries</a>
-  - <a href="#lists" id="toc-lists">Lists</a>
-  - <a href="#strings-are-kind-of-like-lists" id="toc-strings-are-kind-of-like-lists">Strings are (kind of) like lists</a>
-  - <a href="#dictionaries" id="toc-dictionaries">Dictionaries</a>
-  - <a href="#optional-other-containers" id="toc-optional-other-containers">(Optional) Other containers</a>
-- <a href="#week2-data-manipulation-with-pandas" id="toc-week2-data-manipulation-with-pandas">Week2: Data manipulation with Pandas</a>
-  - <a href="#optional-review-collections" id="toc-optional-review-collections">(Optional) Review collections</a>
-  - <a href="#a-very-brief-introduction-to-numpy" id="toc-a-very-brief-introduction-to-numpy">A very brief introduction to NumPy</a>
-  - <a href="#a-very-brief-introduction-to-pandas" id="toc-a-very-brief-introduction-to-pandas">A very brief introduction to Pandas</a>
-  - <a href="#optional-where-are-we" id="toc-optional-where-are-we">(Optional) Where are we?</a>
-  - <a href="#reading-tabular-data-into-data-frames" id="toc-reading-tabular-data-into-data-frames">Reading tabular data into data frames</a>
-  - <a href="#data-frames-are-objects-that-can-tell-you-about-their-contents" id="toc-data-frames-are-objects-that-can-tell-you-about-their-contents">Data frames are objects that can tell you about their contents</a>
-  - <a href="#subsetting-data" id="toc-subsetting-data">Subsetting Data</a>
-  - <a href="#filtering-i.e.-masking-data" id="toc-filtering-i.e.-masking-data">Filtering (i.e. masking) data</a>
-  - <a href="#working-with-missing-data" id="toc-working-with-missing-data">Working with missing data</a>
-  - <a href="#sorting-and-grouping" id="toc-sorting-and-grouping">Sorting and grouping</a>
-  - <a href="#write-output" id="toc-write-output">Write output</a>
-  - <a href="#working-with-multiple-tables-in-an-sql-like-manner" id="toc-working-with-multiple-tables-in-an-sql-like-manner">Working with multiple tables (in an SQL-like manner)</a>
-  - <a href="#optional-adding-rows-to-dataframes" id="toc-optional-adding-rows-to-dataframes">(Optional) Adding rows to DataFrames</a>
-  - <a href="#scientific-computing-libraries" id="toc-scientific-computing-libraries">Scientific Computing Libraries</a>
-  - <a href="#optional-things-we-didnt-talk-about" id="toc-optional-things-we-didnt-talk-about">(Optional) Things we didn't talk about</a>
-  - <a href="#optional-pandas-method-chaining-in-the-wild" id="toc-optional-pandas-method-chaining-in-the-wild">(Optional) Pandas method chaining in the wild</a>
-  - <a href="#optional-introspecting-on-the-dataframe-object" id="toc-optional-introspecting-on-the-dataframe-object">(Optional) Introspecting on the DataFrame object</a>
-  - <a href="#carpentries-version-group-by-split-apply-combine" id="toc-carpentries-version-group-by-split-apply-combine">(Carpentries version) Group By: split-apply-combine</a>
-- <a href="#week-3-building-programs" id="toc-week-3-building-programs">Week 3: Building Programs</a>
-  - <a href="#notebooks-vs-python-scripts" id="toc-notebooks-vs-python-scripts">Notebooks vs Python scripts</a>
-  - <a href="#python-from-the-terminal" id="toc-python-from-the-terminal">Python from the terminal</a>
-  - <a href="#for-loops" id="toc-for-loops">For Loops</a>
-  - <a href="#looping-over-data-sets" id="toc-looping-over-data-sets">Looping Over Data Sets</a>
-  - <a href="#conditionals" id="toc-conditionals">Conditionals</a>
-  - <a href="#generic-file-handling" id="toc-generic-file-handling">Generic file handling</a>
-  - <a href="#text-processing" id="toc-text-processing">Text processing</a>
-  - <a href="#writing-functions" id="toc-writing-functions">Writing Functions</a>
-  - <a href="#carpentries-version-conditionals" id="toc-carpentries-version-conditionals">(Carpentries version) Conditionals</a>
-  - <a href="#optional-variable-scope" id="toc-optional-variable-scope">(Optional) Variable Scope</a>
-  - <a href="#optional-programming-style" id="toc-optional-programming-style">(Optional) Programming Style</a>
-- <a href="#week-4-visualization-with-matplotlib-and-seaborn" id="toc-week-4-visualization-with-matplotlib-and-seaborn">Week 4: Visualization with Matplotlib and Seaborn</a>
-  - <a href="#orientation-1" id="toc-orientation-1">Orientation</a>
-  - <a href="#plotting-with-matplotlib" id="toc-plotting-with-matplotlib">Plotting with Matplotlib</a>
-  - <a href="#visualization-strategy" id="toc-visualization-strategy">Visualization Strategy</a>
-  - <a href="#fast-visualization-and-theming-with-seaborn" id="toc-fast-visualization-and-theming-with-seaborn">Fast visualization and theming with Seaborn</a>
-  - <a href="#optional-how-matplotlib-works" id="toc-optional-how-matplotlib-works">(Optional) How Matplotlib works</a>
-- <a href="#special-topics" id="toc-special-topics">Special Topics</a>
-  - <a href="#working-with-unstructured-files" id="toc-working-with-unstructured-files">Working with unstructured files</a>
-  - <a href="#exception-handling" id="toc-exception-handling">Exception handling</a>
-  - <a href="#performance-and-profiling" id="toc-performance-and-profiling">Performance and profiling</a>
-  - <a href="#reducing-memory-usage" id="toc-reducing-memory-usage">Reducing memory usage</a>
-  - <a href="#other-optional-topics" id="toc-other-optional-topics">Other optional topics</a>
-- <a href="#endnotes" id="toc-endnotes">Endnotes</a>
-  - <a href="#credits" id="toc-credits">Credits</a>
-  - <a href="#references" id="toc-references">References</a>
-  - <a href="#data-sources" id="toc-data-sources">Data Sources</a>
+---
+author: Derek Devnich
+title: Programming in Python
+---
+
+- <a href="#week-1-fundamentals" id="toc-week-1-fundamentals"><span class="toc-section-number">1</span> Week 1: Fundamentals</a>
+  - <a href="#orientation" id="toc-orientation"><span class="toc-section-number">1.1</span> Orientation</a>
+  - <a href="#jupyter-commands" id="toc-jupyter-commands"><span class="toc-section-number">1.2</span> Jupyter commands</a>
+  - <a href="#variables-and-assignment" id="toc-variables-and-assignment"><span class="toc-section-number">1.3</span> Variables and Assignment</a>
+  - <a href="#data-types-and-type-conversion" id="toc-data-types-and-type-conversion"><span class="toc-section-number">1.4</span> Data Types and Type Conversion</a>
+  - <a href="#built-in-functions-and-help" id="toc-built-in-functions-and-help"><span class="toc-section-number">1.5</span> Built-in Functions and Help</a>
+  - <a href="#libraries" id="toc-libraries"><span class="toc-section-number">1.6</span> Libraries</a>
+  - <a href="#lists" id="toc-lists"><span class="toc-section-number">1.7</span> Lists</a>
+  - <a href="#strings-are-kind-of-like-lists" id="toc-strings-are-kind-of-like-lists"><span class="toc-section-number">1.8</span> Strings are (kind of) like lists</a>
+  - <a href="#dictionaries" id="toc-dictionaries"><span class="toc-section-number">1.9</span> Dictionaries</a>
+  - <a href="#optional-other-containers" id="toc-optional-other-containers"><span class="toc-section-number">1.10</span> (Optional) Other containers</a>
+- <a href="#week2-data-manipulation-with-pandas" id="toc-week2-data-manipulation-with-pandas"><span class="toc-section-number">2</span> Week2: Data manipulation with Pandas</a>
+  - <a href="#optional-review-collections" id="toc-optional-review-collections"><span class="toc-section-number">2.1</span> (Optional) Review collections</a>
+  - <a href="#a-very-brief-introduction-to-numpy" id="toc-a-very-brief-introduction-to-numpy"><span class="toc-section-number">2.2</span> A very brief introduction to NumPy</a>
+  - <a href="#a-very-brief-introduction-to-pandas" id="toc-a-very-brief-introduction-to-pandas"><span class="toc-section-number">2.3</span> A very brief introduction to Pandas</a>
+  - <a href="#optional-where-are-we" id="toc-optional-where-are-we"><span class="toc-section-number">2.4</span> (Optional) Where are we?</a>
+  - <a href="#reading-tabular-data-into-data-frames" id="toc-reading-tabular-data-into-data-frames"><span class="toc-section-number">2.5</span> Reading tabular data into data frames</a>
+  - <a href="#data-frames-are-objects-that-can-tell-you-about-their-contents" id="toc-data-frames-are-objects-that-can-tell-you-about-their-contents"><span class="toc-section-number">2.6</span> Data frames are objects that can tell you about their contents</a>
+  - <a href="#subsetting-data" id="toc-subsetting-data"><span class="toc-section-number">2.7</span> Subsetting Data</a>
+  - <a href="#filtering-i.e.-masking-data" id="toc-filtering-i.e.-masking-data"><span class="toc-section-number">2.8</span> Filtering (i.e. masking) data</a>
+  - <a href="#working-with-missing-data" id="toc-working-with-missing-data"><span class="toc-section-number">2.9</span> Working with missing data</a>
+  - <a href="#sorting-and-grouping" id="toc-sorting-and-grouping"><span class="toc-section-number">2.10</span> Sorting and grouping</a>
+  - <a href="#write-output" id="toc-write-output"><span class="toc-section-number">2.11</span> Write output</a>
+  - <a href="#working-with-multiple-tables-in-an-sql-like-manner" id="toc-working-with-multiple-tables-in-an-sql-like-manner"><span class="toc-section-number">2.12</span> Working with multiple tables (in an SQL-like manner)</a>
+  - <a href="#optional-adding-rows-to-dataframes" id="toc-optional-adding-rows-to-dataframes"><span class="toc-section-number">2.13</span> (Optional) Adding rows to DataFrames</a>
+  - <a href="#scientific-computing-libraries" id="toc-scientific-computing-libraries"><span class="toc-section-number">2.14</span> Scientific Computing Libraries</a>
+  - <a href="#optional-things-we-didnt-talk-about" id="toc-optional-things-we-didnt-talk-about"><span class="toc-section-number">2.15</span> (Optional) Things we didn't talk about</a>
+  - <a href="#optional-pandas-method-chaining-in-the-wild" id="toc-optional-pandas-method-chaining-in-the-wild"><span class="toc-section-number">2.16</span> (Optional) Pandas method chaining in the wild</a>
+  - <a href="#optional-introspecting-on-the-dataframe-object" id="toc-optional-introspecting-on-the-dataframe-object"><span class="toc-section-number">2.17</span> (Optional) Introspecting on the DataFrame object</a>
+  - <a href="#carpentries-version-group-by-split-apply-combine" id="toc-carpentries-version-group-by-split-apply-combine"><span class="toc-section-number">2.18</span> (Carpentries version) Group By: split-apply-combine</a>
+- <a href="#week-3-building-programs" id="toc-week-3-building-programs"><span class="toc-section-number">3</span> Week 3: Building Programs</a>
+  - <a href="#notebooks-vs-python-scripts" id="toc-notebooks-vs-python-scripts"><span class="toc-section-number">3.1</span> Notebooks vs Python scripts</a>
+  - <a href="#python-from-the-terminal" id="toc-python-from-the-terminal"><span class="toc-section-number">3.2</span> Python from the terminal</a>
+  - <a href="#for-loops" id="toc-for-loops"><span class="toc-section-number">3.3</span> For Loops</a>
+  - <a href="#looping-over-data-sets" id="toc-looping-over-data-sets"><span class="toc-section-number">3.4</span> Looping Over Data Sets</a>
+  - <a href="#conditionals" id="toc-conditionals"><span class="toc-section-number">3.5</span> Conditionals</a>
+  - <a href="#generic-file-handling" id="toc-generic-file-handling"><span class="toc-section-number">3.6</span> Generic file handling</a>
+  - <a href="#text-processing" id="toc-text-processing"><span class="toc-section-number">3.7</span> Text processing</a>
+  - <a href="#writing-functions" id="toc-writing-functions"><span class="toc-section-number">3.8</span> Writing Functions</a>
+  - <a href="#carpentries-version-conditionals" id="toc-carpentries-version-conditionals"><span class="toc-section-number">3.9</span> (Carpentries version) Conditionals</a>
+  - <a href="#optional-variable-scope" id="toc-optional-variable-scope"><span class="toc-section-number">3.10</span> (Optional) Variable Scope</a>
+  - <a href="#optional-programming-style" id="toc-optional-programming-style"><span class="toc-section-number">3.11</span> (Optional) Programming Style</a>
+- <a href="#week-4-visualization-with-matplotlib-and-seaborn" id="toc-week-4-visualization-with-matplotlib-and-seaborn"><span class="toc-section-number">4</span> Week 4: Visualization with Matplotlib and Seaborn</a>
+  - <a href="#orientation-1" id="toc-orientation-1"><span class="toc-section-number">4.1</span> Orientation</a>
+  - <a href="#plotting-with-matplotlib" id="toc-plotting-with-matplotlib"><span class="toc-section-number">4.2</span> Plotting with Matplotlib</a>
+  - <a href="#visualization-strategy" id="toc-visualization-strategy"><span class="toc-section-number">4.3</span> Visualization Strategy</a>
+  - <a href="#fast-visualization-and-theming-with-seaborn" id="toc-fast-visualization-and-theming-with-seaborn"><span class="toc-section-number">4.4</span> Fast visualization and theming with Seaborn</a>
+  - <a href="#optional-how-matplotlib-works" id="toc-optional-how-matplotlib-works"><span class="toc-section-number">4.5</span> (Optional) How Matplotlib works</a>
+- <a href="#special-topics" id="toc-special-topics"><span class="toc-section-number">5</span> Special Topics</a>
+  - <a href="#working-with-unstructured-files" id="toc-working-with-unstructured-files"><span class="toc-section-number">5.1</span> Working with unstructured files</a>
+  - <a href="#exception-handling" id="toc-exception-handling"><span class="toc-section-number">5.2</span> Exception handling</a>
+  - <a href="#performance-and-profiling" id="toc-performance-and-profiling"><span class="toc-section-number">5.3</span> Performance and profiling</a>
+  - <a href="#reducing-memory-usage" id="toc-reducing-memory-usage"><span class="toc-section-number">5.4</span> Reducing memory usage</a>
+  - <a href="#other-optional-topics" id="toc-other-optional-topics"><span class="toc-section-number">5.5</span> Other optional topics</a>
+- <a href="#endnotes" id="toc-endnotes"><span class="toc-section-number">6</span> Endnotes</a>
+  - <a href="#credits" id="toc-credits"><span class="toc-section-number">6.1</span> Credits</a>
+  - <a href="#references" id="toc-references"><span class="toc-section-number">6.2</span> References</a>
+  - <a href="#data-sources" id="toc-data-sources"><span class="toc-section-number">6.3</span> Data Sources</a>
 
 # Week 1: Fundamentals
 
@@ -144,7 +149,7 @@
     ```
 
     - The magic command must be in the **first line** of the cell (no comments)
-    - Some commands are not available on Windows (e.g. `%%bash`)
+    - Some commands are not available on Windows (e.g. `%%bash`)
 
 ## Variables and Assignment
 
@@ -171,7 +176,7 @@ print(first_name, 'is', age, 'years old')
 
 - Functions are verbs
 - Functions end in `()`
-- Functions take arguments (i.e. they do stuff with the values that you give them)
+- Functions take arguments (i.e. they do stuff with the values that you give them)
 - `print()` useful for tracking progress, debugging
 
 ### Jupyter Lab will always echo the last value in a cell
@@ -301,7 +306,7 @@ Most data is text and numbers, but there are many other types.
     1.  `int`, `float`, and `str` are types. More precisely, they are *classes*.
     2.  `int()`, `float()`, and `str()` are functions that create new *instances* of their respective classes. The argument to the creation function (e.g., `'2'`) is the raw material for creating the new instance.
 
-5.  This can work for more complex data types as well, e.g. Pandas data frames and Numpy arrays.
+5.  This can work for more complex data types as well, e.g. Pandas data frames and Numpy arrays.
 
 ### **Challenge**: Explain what each operator does
 
@@ -442,7 +447,7 @@ round(3.712, 1)
     print(upper_string)
     ```
 
-4.  You can view an object's attributes (i.e. methods and fields) using `help()` or `dir()`. Some attributes are "private"; you're not supposed to use these directly.
+4.  You can view an object's attributes (i.e. methods and fields) using `help()` or `dir()`. Some attributes are "private"; you're not supposed to use these directly.
 
     ``` python
     # More verbose help
@@ -588,7 +593,7 @@ print("Fifth item:" , pressure[4])
 
 ### Why are lists indexed from 0?
 
-cf. <https://stackoverflow.com/a/11364711>
+cf. <https://stackoverflow.com/a/11364711>
 
 1.  Slice endpoints are compliments In both cases, the number you see represents what you want to do.
 
@@ -1036,7 +1041,7 @@ print(data)
 
 ## Data frames are objects that can tell you about their contents
 
-### Data frames have methods (i.e. functions) that perform operations using the data frame's contents as input
+### Data frames have methods (i.e. functions) that perform operations using the data frame's contents as input
 
 1.  Use `.info()` to find out more about a data frame
 
@@ -1056,7 +1061,7 @@ print(data)
     data.head(1)
     ```
 
-### Data frames have fields (i.e. variables) that hold additional information
+### Data frames have fields (i.e. variables) that hold additional information
 
 A "field" is a variable that belongs to an object.
 
@@ -1200,7 +1205,7 @@ print(data.columns)
 Pandas always drills down to the most parsimonious representation. On one hand, this is convenient; on the other, it violates the Pythonic expectation for strong types.
 
 | Shape of data selection | Pandas return type |
-|:------------------------|:-------------------|
+|-------------------------|--------------------|
 | 2D                      | DataFrame          |
 | 1D                      | Series             |
 | 0D                      | single value       |
@@ -1221,7 +1226,7 @@ Pandas always drills down to the most parsimonious representation. On one hand, 
     data.filter(like="200", axis="columns").filter(items=["Italy"], axis="index")
     ```
 
-## Filtering (i.e. masking) data
+## Filtering (i.e. masking) data
 
 ### Use comparisons to select data based on value
 
@@ -1371,7 +1376,7 @@ fs[fs["1962"].notna()]
 
 1.  Line 1 returns the column as a Series vector
 2.  Line 2 returns a boolean Series vector (True/False)
-3.  Line 3 performs *boolean indexing* on the DataFrame using the Series vector. It only returns the rows that are True (i.e. it performs true filtering).
+3.  Line 3 performs *boolean indexing* on the DataFrame using the Series vector. It only returns the rows that are True (i.e. it performs true filtering).
 
 ## Sorting and grouping
 
@@ -1592,7 +1597,7 @@ wine.rename(columns={"color_intensity": "ci"})
     pp.pprint(df_public)
     ```
 
-4.  Objects have fields (i.e. data/variables) and methods (i.e. functions/procedures). The difference between a method and a function is that methods are attached to objects, whereas functions are free-floating ("first-class citizens"). Methods and functions are "callable":
+4.  Objects have fields (i.e. data/variables) and methods (i.e. functions/procedures). The difference between a method and a function is that methods are attached to objects, whereas functions are free-floating ("first-class citizens"). Methods and functions are "callable":
 
     ``` python
     # GeneratorExitenerate a list of public methods and a list of public fields. We do this
@@ -1699,7 +1704,7 @@ for number in [2, 3, 5]:
 - A for loop is made up of a collection, a loop variable, and a body
 - The collection, **\[2, 3, 5\]**, is what the loop is being run on.
 - The body, **print(number)**, specifies what to do for each value in the collection.
-- The loop variable, **number**, is what changes for each iteration of the loop (i.e. the “current thing”)
+- The loop variable, **number**, is what changes for each iteration of the loop (i.e. the “current thing”)
 
 ### The first line of the `for` loop must end with a colon, and the body must be indented
 
@@ -1904,7 +1909,7 @@ print(all_data.shape)
     print(7 in primes)
     ```
 
-3.  Truth of a collection Note that `any()` and `all()` evaluate each item using `.__bool__()` or `.__len()__`, which tells you whether an item is "truthy" or "falsey" (i.e. interpreted as being true or false).
+3.  Truth of a collection Note that `any()` and `all()` evaluate each item using `.__bool__()` or `.__len()__`, which tells you whether an item is "truthy" or "falsey" (i.e. interpreted as being true or false).
 
     ``` python
     my_list = [2.75, "green", 0]
@@ -1913,7 +1918,7 @@ print(all_data.shape)
     print(all(my_list))
     ```
 
-4.  (Optional) Understanding "truthy" and "falsey" values in Python (cf. <https://stackoverflow.com/a/53198991>) Every value in Python, regardless of type, is interpreted as being `True` except for the following values (which are interpreted as `False`). "Truthy" values satisfy `if` or `while` statements; "Falsey" values do not.
+4.  (Optional) Understanding "truthy" and "falsey" values in Python (cf. <https://stackoverflow.com/a/53198991>) Every value in Python, regardless of type, is interpreted as being `True` except for the following values (which are interpreted as `False`). "Truthy" values satisfy `if` or `while` statements; "Falsey" values do not.
 
     1.  Constants defined to be false: `None` and `False`.
     2.  Zero of any numeric type: `0`, `0.0`, `0j`, `Decimal(0)`, `Fraction(0, 1)`
@@ -2590,7 +2595,7 @@ In this example, plot GDP over time for multiple countries.
 
 2.  Transform column headers into an ordinal scale
 
-    1.  (Optional) Original column names are object (i.e. string) data
+    1.  (Optional) Original column names are object (i.e. string) data
 
         ``` python
         data.columns
@@ -2773,7 +2778,7 @@ Let's make a poster!
     ax.legend(bbox_to_anchor=(2,1))
     ```
 
-    - Read more about `loc` vs. `bbox_to_anchor` in the legend documentation: <https://matplotlib.org/stable/api/legend_api.html>
+    - Read more about `loc` vs. `bbox_to_anchor` in the legend documentation: <https://matplotlib.org/stable/api/legend_api.html>
 
 4.  The Seaborn plot uses Matplotlib under the hood
 

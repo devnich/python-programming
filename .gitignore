@@ -4,6 +4,7 @@
 *.~lock.*
 *.orig
 tmp.md
+*.html
 
 # System files
 .DS_Store
