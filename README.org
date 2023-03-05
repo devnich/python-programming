@@ -1,6 +1,6 @@
 #+STARTUP: fold indent
 #+OPTIONS: tex:t toc:2 H:6 ^:{}
-#+ODT_STYLES_FILE: "/Users/gilgamesh/Google Drive/Templates/styles.xml"
+#+ODT_STYLES_FILE: "/directory/path/styles.xml"
 
 #+TITLE: Programming in Python
 #+AUTHOR: Derek Devnich
@@ -2717,9 +2717,18 @@ with conn:
 ** Export to Github-flavored Markdown using Pandoc
 Do this if you want code syntax highlighting and a table of contents on Github.
 
-#+BEGIN_SRC bash
-pandoc -f org -t gfm --toc --toc-depth=2 --wrap=none -N -s README.org -o README.md
-#+END_SRC
+1. Generate Markdown file
+   #+BEGIN_SRC bash
+   pandoc -f org -t gfm --toc --toc-depth=2 --wrap=none -N -s README.org -o README.md
+   #+END_SRC
+
+2. Delete anything above the Table of Contents, e.g.:
+   #+BEGIN_EXAMPLE
+   -------------------------
+     Programming in Python
+     Derek Devnich
+   -------------------------
+   #+END_EXAMPLE
 
 ** INFO (Deprecated) Export to Markdown using Pandoc
 1. Generate generic Markdown file
