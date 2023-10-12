@@ -16,6 +16,7 @@
 - "Glue" language intended to replace shell and Perl
 - Concise, readable, good for rapid prototyping
 - Access to linear algebra libraries in FORTRAN/C → user-friendly numeric computing
+- General purpose, not just an academic language; we will spend more time on some of the general purpose aspects.
 
 *** Literate programming and notebooks
 - Blend code, documentation, and visualization
@@ -129,12 +130,14 @@ age = age + 3
 print(age)
 #+END_SRC
 
-*** Variables only change value when something is assigned to them
+*** *Challenge:* Variables only change value when something is assigned to them
 Order of operations matters!
 #+BEGIN_SRC python
 first = 1
 second = 5 * first
 first = 2
+
+# What will this print?
 print('first:', first)
 print('second:', second)
 #+END_SRC
@@ -286,7 +289,7 @@ round(3.712, 1)
    #+BEGIN_SRC python
    result = print("hello")
    print(result)
-   print(type(result))
+   # print(type(result))
    #+END_SRC
 
 *** (Optional) Functions will typically generalize in sensible ways
@@ -299,54 +302,6 @@ round(3.712, 1)
 2. Mixed numbers and text aren't meaningfully comparable
    #+BEGIN_SRC python
    max(1, 'a')
-   #+END_SRC
-
-*** /Methods/ are functions that belong to objects
-1. An object packages data together with functions that operate on that data. This is a very common organizational strategy in Python.
-   #+BEGIN_SRC python
-   my_string = 'Hello world!'
-
-   # Call the swapcase method on the my_string object
-   print(my_string.swapcase())
-   #+END_SRC
-
-2. You can chain methods into processing pipelines
-   #+BEGIN_SRC python
-   print(my_string.isupper())          # Check whether all letters are uppercase
-   print(my_string.upper())            # Capitalize all the letters
-   #+END_SRC
-
-   #+BEGIN_SRC python
-   # The output of upper() is as string; you can use more string methods on it
-   my_string.upper().isupper()
-   #+END_SRC
-
-3. (Optional) Strings are immutable. This will be covered later, but may come up here. If it comes up here, this is a good example:
-   #+BEGIN_SRC python
-   print(my_string.upper())
-   print(my_string)
-   upper_string = my_string.upper()
-   print(upper_string)
-   #+END_SRC
-
-4. You can view an object's attributes (i.e. methods and fields) using ~help()~ or ~dir()~. Some attributes are "private"; you're not supposed to use these directly.
-   #+BEGIN_SRC python
-   # More verbose help
-   help(str)
-   #+END_SRC
-
-   #+BEGIN_SRC python
-   # The short, short version
-   dir(my_string)
-   #+END_SRC
-
-5. The built-in string methods can be very useful for cleaning up data
-   #+BEGIN_SRC python
-   bad_string_1 = "  Hello world!   "
-   bad_string_2 = "|...goodbye cruel world|"
-
-   print(bad_string_1.strip(),
-         bad_string_2.strip("|"))
    #+END_SRC
 
 *** (Optional) Python produces informative error messages
@@ -412,125 +367,122 @@ import this
 
 ** Lists
 Lists are the central data structure in Python; we will explain many things by making analogies to lists.
+*** COMMENT Sample list
+#+BEGIN_SRC python
+fruits = ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew"]
+#+END_SRC
+
 *** A list stores many values in a single structure
 #+BEGIN_SRC python
-pressure = [0.17, 0.23, 0.54, 0.38, 0.76, 0.43]
-print(pressure)
-print(len(pressure))
+fruits = ["apple", "banana", "cherry", "date", "elderberry", "fig"]
+print(fruits)
+print(len(fruits))
 #+END_SRC
 
 *** Lists are indexed by position, counting from 0
 #+BEGIN_SRC python
-print("First item:", pressure[0])
-print("Fifth item:" , pressure[4])
+print("First item:", fruits[0])
+print("Fifth item:", fruits[4])
 #+END_SRC
 
 *** You can get a subset of the list by slicing it
 1. You slice a list from the start position up to, but not including, the stop position
    #+BEGIN_SRC python
-   print(pressure[0:3])
-   print(pressure[2:5])
+   print(fruits[0:3])
+   print(fruits[2:5])
    #+END_SRC
 
 2. You can omit the start position if you're starting at the beginning...
    #+BEGIN_SRC python
-   print("First 5 items:", pressure[0:5])
-   print("First 5 items, but shorter:", pressure[:5])
+   # Two ways to get the first 5 items
+   print(fruits[0:5])
+   print(fruits[:5])
    #+END_SRC
 
-3. ...and you /must/ omit the end position if you're going to the end (otherwise it's up to, but not including, the end!)
+3. ...and you /must/ omit the end position if you're going to the end (otherwise it's up to, but not including, the end!). This is useful if you don't know how long the list is:
    #+BEGIN_SRC python
-   # This is useful if you don't know how long the list is
-   print("Everything but the first 3 items:", pressure[3:])
+   # Everything but the first 3 items
+   print(fruits[3:])
    #+END_SRC
 
 4. You can add an optional step interval (every 2nd item, every 3rd item, etc.)
    #+BEGIN_SRC python
-   print("First 5 items, every other item:", pressure[0:5:2])
-   print("Every third item:", pressure[::3])
+   print("First 5 items, every other item:", fruits[0:5:2])
+   print("Every third item:", fruits[::3])
    #+END_SRC
 
-*** Why are lists indexed from 0?
+*** (Optional) Why are lists indexed from 0?
 cf. https://stackoverflow.com/a/11364711
 1. Slice endpoints are compliments
    In both cases, the number you see represents what you want to do.
    #+BEGIN_SRC python
    # Get the first two items
-   print(pressure[:2])
+   print(fruits[:2])
 
    # Get everything except the first two items
-   print(pressure[2:])
+   print(fruits[2:])
    #+END_SRC
 
 2. For non-negative indices, the length of a slice is the difference of the indices
    #+BEGIN_SRC python
-   len(pressure[1:3]) == 2
+   len(fruits[1:3]) == 2
    #+END_SRC
 
-*** Some other properties of indexes
+*** *Challenge*: Some other properties of indexes
+Try these statements. What are they doing? Can you explain the differences in their behavior?
+#+BEGIN_SRC python
+print(fruits[-1])
+print(fruits[20])
+print(fruits[-3:])
+#+END_SRC
+
+**** Answer
 1. You can count backwards from the end with negative integers
-   #+BEGIN_SRC python
-    print("Last item:", pressure[-1])
-   #+END_SRC
-
 2. Indexing beyond the end of the collection is an error
-   #+BEGIN_SRC python
-   pressure[20]
-   #+END_SRC
 
 *** Lists are mutable
 1. You can replace a value at a specific index location
    #+BEGIN_SRC python
-   pressure[0] = 0.999
-   print(pressure)
+   fruits[0] = "apricot"
+   print(fruits)
    #+END_SRC
 
-2. Add an item to list with ~append()~. This is a /method/ of the list.
+2. Add an item to list with ~append()~. This is a /method/ of the list (more on this later!).
    #+BEGIN_SRC python
-   primes = [2, 3, 5]
-   print(primes)
-   primes.append(7)
-   print(primes)
+   fruits.append("grape")
+   print(fruits)
    #+END_SRC
 
 3. Add the items from one list to another with ~extend()~
    #+BEGIN_SRC python
-   teen_primes = [11, 13, 17, 19]
+   more_fruits = ["honeydew", "imbe", "jackfruit"]
 
-   # Add all of the elements of teen_primes to primes
-   primes.extend(teen_primes)
-   print(primes)
-   #+END_SRC
-
-4. (Optional) Slice endpoints are compliments, take 2
-   #+BEGIN_SRC python
-   new_pressure = pressure[:2]
-   new_pressure.extend(pressure[2:])
-
-   print(new_pressure == pressure)
+   # Add all of the elements of more_fruits to fruits
+   fruits.extend(more_fruits)
+   print(fruits)
    #+END_SRC
 
 *** Many functions take collections as arguments
 #+BEGIN_SRC python
-mean_p = sum(pressure)/len(pressure)
-print(mean_p)
+receiving_yards = [450, 370, 870, 150]
+mean_yards = sum(receiving_yards)/len(receiving_yards)
+print(mean_yards)
 #+END_SRC
 
 *** (Optional) Removing items from a list
 1. Use ~del~ to remove an item at an index location
    #+BEGIN_SRC python
-   primes = [2, 3, 5, 7, 9]
-   print(primes)
-   del primes[4]
-   print(primes)
+   print(more_fruits)
+   del more_fruits[1]
+   print(more_fruits)
    #+END_SRC
 
 2. Use ~pop()~ to remove the last item and assign it to a variable. This is useful for destructive iteration.
    #+BEGIN_SRC python
-   p = primes.pop()
+   f = fruits.pop()
 
-   print('Last prime in list', p)
-   print(primes)
+   print('Last fruit in list:', f)
+   print(fruits)
    #+END_SRC
 
 *** Lists can contain anything
@@ -550,7 +502,7 @@ print(mean_p)
 
 2. You can put lists inside other lists
    #+BEGIN_SRC python
-   ages.append(primes)
+   ages.append(more_fruits)
 
    # List in our list
    print(ages)
@@ -559,52 +511,180 @@ print(mean_p)
    print(ages[-1])
 
    # Get an item from that list
-   print(ages[-1][2])
+   print(ages[-1][0])
    #+END_SRC
 
-** Strings are (kind of) like lists
-*** Strings are indexed like lists
-1. Use an index to get a single character from a string
-   #+BEGIN_SRC python
-   element = 'carbon'
-   element[0]
-   #+END_SRC
-
-2. Use a slice to get a substring
-   #+BEGIN_SRC python
-   element[0:3]
-   #+END_SRC
-
-3. Counting backwards
-   #+BEGIN_SRC python
-   element[-1]
-   #+END_SRC
-
-4. Et cetera
-
-*** (Optional) Strings have a length
+*** *(Optional) Challenge*: Reversing a list
+Create a new list that contains all of the items from ~fruits~ in the reverse order.
+**** Solution
 #+BEGIN_SRC python
-len('carbon')
+rev_fruits = fruits[len(fruits)-1::-1]
+print(rev_fruits)
 #+END_SRC
+
+** For Loops
+*** A ~for~ loop executes commands once for each value in a collection
+"For each thing in this group, do these operations"
+#+BEGIN_SRC python
+for fruit in fruits:
+    print(fruit)
+#+END_SRC
+
+- A for loop is made up of a collection, a loop variable, and a body
+- The collection, *fruits*, is what the loop is being run on.
+- The loop variable, *fruit*, is what changes for each iteration of the loop (i.e. the “current thing”)
+- The body, *print(fruit)*, specifies what to do for each value in the collection.
+
+*** The first line of the ~for~ loop must end with a colon, and the body must be indented
+Whitespace is syntactically meaningful in Python!
+#+BEGIN_SRC python
+for fruit in fruits:
+print(fruit)
+#+END_SRC
+
+*** Loop variables can be called anything
+#+BEGIN_SRC python
+for bob in fruits:
+    print(bob)
+#+END_SRC
+
+*** The body of a loop can contain many statements
+#+BEGIN_SRC python
+primes = [2, 3, 5]
+for p in primes:
+    squared = p ** 2
+    cubed = p ** 3
+    print(p, squared, cubed)
+#+END_SRC
+
+*** (Optional) Use ~range()~ to iterate over a sequence of numbers
+#+BEGIN_SRC python
+for number in range(0, 3):
+    print(number)
+#+END_SRC
+
+- range() produces numbers on demand (a "generator" function)
+- useful for tracking progress
+
+*** Create a new collection from an existing collection
+We will learn how to vectorize this when we get to Numpy and Pandas
+#+BEGIN_SRC python
+prime_exponents = []
+for p in primes:
+   prime_exponents.append(p**2)
+
+print(prime_exponents)
+#+END_SRC
+
+*** *Challenge*: Accumulation
+Get the total length of all the words in the ~fruits~ list.
+**** Solution
+#+BEGIN_SRC python
+total = 0
+for f in fruits:
+    total = total + len(f)
+
+print(total)
+#+END_SRC
+
+*** (Optional) Use ~enumerate()~ to iterate over a sequence of items and their positions
+#+BEGIN_SRC python
+for number, fruit in enumerate(fruits):
+    print(number, ":", fruit)
+#+END_SRC
+
+*** (Optional) Accumulate a running total
+Initialize an accumulator variable to zero, the empty string, or the empty list; then iteratively update the variable with values from a collection.
+#+BEGIN_SRC python
+total = 0
+for number in range(7):
+   total = total + number
+print(total)
+#+END_SRC
+
+*** (Optional) How do you know if an object is iterable?
+1. Lists, dictionaries, and strings are iterable
+   #+BEGIN_SRC python
+   hasattr(location, "__iter__")
+   #+END_SRC
+
+2. Integers are not iterable
+   #+BEGIN_SRC python
+   hasattr(5, "__iter__")
+   #+END_SRC
+
+*** Don't use ~for~ loops with DataFrames or Numpy matrices
+There is almost always a faster vectorized function that does what you want.
+
+** Strings and methods
+*** Strings are (kind of) like lists
+1. Strings are indexed like lists
+   #+BEGIN_SRC python
+   # Use an index to get a single character from a string
+   fruit = "gooseberry"
+   print(fruit[0])
+   print(fruit[0:3])
+   print(fruit[-1])
+   #+END_SRC
+
+2. Strings have length
+   #+BEGIN_SRC python
+   len(fruit)
+   #+END_SRC
 
 *** But! Strings are immutable
 1. Can't change a string in place
    #+BEGIN_SRC python
-   element[0] = 'C'
+   fruit[0] = 'G'
    #+END_SRC
 
-2. String methods create a new string
+2. Solution: String methods create a new string
    #+BEGIN_SRC python
-   print(element.capitalize())
-   print(element)
+   fruit_title = fruit.capitalize()
+   print(fruit_title)
+   #+END_SRC
+
+*** Methods are functions that belong to objects
+1. An object packages data together with functions that operate on that data. This is a very common organizational strategy in Python.
+   #+BEGIN_SRC python
+   sentence = "Hello world!"
+
+   # Call the swapcase method on the my_string object
+   print(sentence.swapcase())
+   #+END_SRC
+
+2. You can chain methods into processing pipelines
+   #+BEGIN_SRC python
+   print(sentence.isupper())          # Check whether all letters are uppercase
+   print(sentence.upper())            # Capitalize all the letters
    #+END_SRC
 
    #+BEGIN_SRC python
-   carbon_title = element.capitalize()
-   print(carbon_title)
+   # The output of upper() is as string; you can use more string methods on it
+   sentence.upper().isupper()
    #+END_SRC
 
-*** Building strings with ~.join()~
+3. You can view an object's attributes (i.e. methods and fields) using ~help()~ or ~dir()~. Some attributes are "private"; you're not supposed to use these directly.
+   #+BEGIN_SRC python
+   # More verbose help
+   help(str)
+   #+END_SRC
+
+   #+BEGIN_SRC python
+   # The short, short version
+   dir(my_string)
+   #+END_SRC
+
+*** Use the built-in string methods to clean up data
+   #+BEGIN_SRC python
+   bad_string_1 = "  Hello world!   "
+   bad_string_2 = "|...goodbye cruel world|"
+
+   print(bad_string_1.strip(),
+         bad_string_2.strip("|"))
+   #+END_SRC
+
+*** Building longer strings with ~.join()~
 1. Use ~.join()~ to concatenate strings
    #+BEGIN_SRC python
    date_list = ["3", "17", "2007"]
@@ -619,6 +699,30 @@ len('carbon')
    print(date)
    #+END_SRC
 
+*** *Challenge*: Putting it all together
+You want to iterate through the ~fruits~ list in a random order. For each randomly-selected fruit, capitalize the fruit and print it.
+1. Which standard library module could help you? https://docs.python.org/3/library/
+2. Which function would you select from that module? Are there alternatives?
+3. Try to write a program that uses the function.
+
+**** Solution 1 (shuffle)
+#+BEGIN_SRC python
+import random
+
+random.shuffle(fruits)
+
+for f in fruits:
+    print(f.title())
+#+END_SRC
+
+**** Solution 2 (sample)
+#+BEGIN_SRC python
+random_fruits = random.sample(fruits, len(fruits))
+
+for f in random_fruits:
+    print(f.title())
+#+END_SRC
+
 *** *(Optional) Beginner Challenge*: From Strings to Lists and Back
 1. Given this Python code...
    #+BEGIN_SRC python
@@ -629,7 +733,7 @@ len('carbon')
 2. What does ~list('some string')~ do?
 3. What does ~'-'.join(['x', 'y', 'z'])~ generate?
 
-*** *Challenge*: Locating the right module
+*** *(Optional) Challenge*: Locating the right module
 You want to select a random character from a string:
 #+BEGIN_SRC python
 bases = 'ACTTGCTTGAC'
@@ -664,50 +768,50 @@ bases = 'ACTTGCTTGAC'
    print(sample(bases, 1)[0])
    #+END_SRC
 
-** Dictionaries
+** (Optional) Dictionaries
 *** Dictionaries are sets of key/value pairs. Instead of being indexed by position, they are indexed by key.
 #+BEGIN_SRC python
-wave_fc = {"Girma": 4,
-           "Sheridan": 3,
-           "Morgan": 13}
+ages = {'Derek': 42,
+        'Bill': 24,
+        'Susan': 37}
 
-# Returns 4
-wave_fc["Girma"]
+ages["Derek"]
 #+END_SRC
 
 *** Update dictionaries by assigning a key/value pair
 1. Update a pre-existing key with a new value
    #+BEGIN_SRC python
-   wave_fc["Sheridan"] = 1
+   ages["Derek"] = 44
 
-   print(wave_fc)
+   print(ages)
    #+END_SRC
 
 2. Add a new key/value pair
    #+BEGIN_SRC python
-   wave_fc["Shaw"] = 11
+   ages["Beth"] = 19
+   print(ages)
    #+END_SRC
 
 *** (Optional) Check whether the dictionary contains an item
 1. Does a key already exist?
    #+BEGIN_SRC python
-   "Girma" in wave_fc
+   "Derek" in ages
    #+END_SRC
 
 2. Does a value already exist (you generally don't want to do this; keys are unique but values are not)?
    #+BEGIN_SRC python
-   4 in wave_fc.values()
+   24 in ages.values()
    #+END_SRC
 
 *** (Optional) Delete an item using ~del~ or ~pop()~
 #+BEGIN_SRC python
-print("Original dictionary", wave_fc)
-del wave_fc["Morgan"]
-print("1st deletion", wave_fc)
+print("Original dictionary", ages)
+del ages["Derek"]
+print("1st deletion", ages)
 
-girma_num = wave_fc.pop("Girma")
-print("2nd deletion", wave_fc)
-print("Returned value", girma_num)
+susan_age = wave_fc.pop("Susan")
+print("2nd deletion", ages)
+print("Returned value", susan_age)
 #+END_SRC
 
 *** Dictionaries are the natural way to store tree-structured data
@@ -718,6 +822,30 @@ location = {'latitude': [37.28306, 'N'],
 
 print(location['longitude'][0])
 #+END_SRC
+
+*** Dictionary iteration
+1. Iterate over key: value pairs
+   #+BEGIN_SRC python
+   for key, val in ages.items():
+       print(key, ":", val)
+   #+END_SRC
+
+2. You can iterate over keys and values separately
+   #+BEGIN_SRC python
+   # Iterate over keys; you can also explicitly call .keys()
+   for key in ages:
+       print(key)
+
+   # Iterate over values
+   for val in ages.values():
+       print(val)
+   #+END_SRC
+
+3. Iteration can be useful for unpacking complex dictionaries
+   #+BEGIN_SRC python
+   for key, val in location.items():
+       print(key, 'is', val[0], val[1])
+   #+END_SRC
 
 *** *(Optional) Advanced Challenge*: Convert a list to a dictionary
 How can you convert our list of names and ages into a dictionary? Hint: You will need to populate the dictionary with a list of keys and a list of values.
@@ -740,6 +868,8 @@ ages_dict = dict(zip(ages[::2], ages[1::2]))
 2. Sets
 
 * Data manipulation with Pandas (Week 2)
+** TODO Add Numpy calculation
+** TODO Run an analysis package
 ** (Optional) Review collections
 *** Lists and dictionaries
 1. Reference item by index/key
@@ -1205,7 +1335,7 @@ print(df3.shape)
    #+END_SRC
 
 ** (Optional) Adding rows to DataFrames
-A row is a view onto the /nth/ item of each of the column Series. Appending rows is a performance bottleneck because it requires a separate append operation for each Series. You should concatenate data frames instead.s
+A row is a view onto the /nth/ item of each of the column Series. Appending rows is a performance bottleneck because it requires a separate append operation for each Series. You should concatenate data frames instead.
 
 1. Create a single row as a data frame and concatenate it.
    #+BEGIN_SRC python
@@ -1381,125 +1511,6 @@ Broadly, a trade-off between managing big code bases and making it easy to exper
    1. List of command line inputs: ~sys.argv~ (https://docs.python.org/3/library/sys.html#sys.argv)
    2. Utility for working with arguments: ~argparse~ (https://docs.python.org/3/library/argparse.html)
 
-** For Loops
-*** A ~for~ loop executes commands once for each value in a collection
-"For each thing in this group, do these operations"
-#+BEGIN_SRC python
-for number in [2, 3, 5]:
-    print(number)
-#+END_SRC
-
-- A for loop is made up of a collection, a loop variable, and a body
-- The collection, *[2, 3, 5]*, is what the loop is being run on.
-- The body, *print(number)*, specifies what to do for each value in the collection.
-- The loop variable, *number*, is what changes for each iteration of the loop (i.e. the “current thing”)
-
-*** The first line of the ~for~ loop must end with a colon, and the body must be indented
-Whitespace is syntactically meaningful!
-
-#+BEGIN_SRC python
-for number in [2, 3, 5]:
-print(number)
-#+END_SRC
-
-#+BEGIN_SRC python
-firstName = "Jon"
-lastName = "Smith"
-#+END_SRC
-
-*** Loop variables can be called anything
-#+BEGIN_SRC python
-for bob in [2, 3, 5]:
-    print(bob)
-#+END_SRC
-
-*** The body of a loop can contain many statements
-#+BEGIN_SRC python
-primes = [2, 3, 5]
-for p in primes:
-    squared = p ** 2
-    cubed = p ** 3
-    print(p, squared, cubed)
-#+END_SRC
-
-*** (Optional) Use ~range()~ to iterate over a sequence of numbers
-#+BEGIN_SRC python
-for number in range(0, 3):
-    print(number)
-#+END_SRC
-
-- range() produces numbers on demand (a "generator" function)
-- useful for tracking progress
-
-*** (Optional) Use ~enumerate()~ to iterate over a sequence of items and their positions
-#+BEGIN_SRC python
-for number, p in enumerate(primes):
-    print(number, ":", p)
-#+END_SRC
-
-*** Common pattern 1: Accumulate a running total
-Initialize an accumulator variable to zero, the empty string, or the empty list; then iteratively update the variable with values from a collection.
-#+BEGIN_SRC python
-total = 0
-for number in range(7):
-   total = total + number
-print(total)
-#+END_SRC
-
-*** Common pattern 2: Create a new collection from an existing collection
-#+BEGIN_SRC python
-prime_exponents = []
-for p in primes:
-   prime_exponents.append(p**2)
-
-print(prime_exponents)
-#+END_SRC
-
-*** (Optional) Dictionary iteration
-1. Iterate over key: value pairs
-   #+BEGIN_SRC python
-   ages = {'Derek': 42,
-           'Bill': 24,
-           'Susan': 37}
-
-   for key, val in ages.items():
-       print(key, val)
-   #+END_SRC
-
-2. You can iterate over keys and values separately
-   #+BEGIN_SRC python
-   # Iterate over keys; you can also explicitly call .keys()
-   for key in ages:
-       print(key)
-
-   # Iterate over values
-   for val in ages.values():
-       print(val)
-   #+END_SRC
-
-3. Iteration can be useful for unpacking complex dictionaries
-   #+BEGIN_SRC python
-   localsation = {'latitude': [37.28306, 'N'],
-               'longitude': [-120.50778, 'W']}
-
-   for key, val in location.items():
-       print(key, 'is', val[0], val[1])
-   #+END_SRC
-
-*** (Optional) How do you know if an object is iterable?
-1. Lists, dictionaries, and strings are iterable
-   #+BEGIN_SRC python
-   hasattr(location, "__iter__")
-   #+END_SRC
-
-2. Integers are not iterable
-   #+BEGIN_SRC python
-   hasattr(5, "__iter__")
-   #+END_SRC
-
-*** Don't use ~for~ loops with DataFrames or Numpy matrices
-There is almost always a faster vectorized function that does what you want.
-
 ** Looping Over Data Sets
 *** File paths as an example of increasing abstraction in program development
 1. File paths as literal strings
@@ -1638,6 +1649,7 @@ for m in masses:
         print(m, 'is small')
 #+END_SRC
 
+*** TODO Use enumeration to print occasional status messages for long-running processes
 *** (Optional) Conditions are tested once, in order
 Python steps through the branches of the conditional in order, testing each in turn. Order matters! The following is wrong:
 #+BEGIN_SRC python
@@ -1727,6 +1739,8 @@ lines[0]
 #+END_SRC
 
 ** Text processing
+
+*** TODO add tokenize example?
 *** Use string methods to determine which lines to keep
 1. The file contains front matter that we can discard
    #+BEGIN_SRC python
@@ -2688,6 +2702,7 @@ with conn:
 - Humanities Python Tour (file and text processing): https://github.com/elliewix/humanities-python-tour/blob/master/Two-Hour-Beginner-Tour.ipynb
 - Introduction to Cultural Analytics & Python: https://melaniewalsh.github.io/Intro-Cultural-Analytics/welcome.html
 - Rhondene Wint: Matplotlib and Seaborn notes
+- Fruit Alphabet: https://en.wikibooks.org/wiki/Wikijunior:Fruit_Alphabet
 
 ** References
 - Complete tutorial: https://docs.python.org/3/tutorial/index.html
