@@ -6,40 +6,42 @@
   - <a href="#built-in-functions-and-help" id="toc-built-in-functions-and-help"><span class="toc-section-number">1.5</span> Built-in Functions and Help</a>
   - <a href="#libraries" id="toc-libraries"><span class="toc-section-number">1.6</span> Libraries</a>
   - <a href="#lists" id="toc-lists"><span class="toc-section-number">1.7</span> Lists</a>
-  - <a href="#strings-are-kind-of-like-lists" id="toc-strings-are-kind-of-like-lists"><span class="toc-section-number">1.8</span> Strings are (kind of) like lists</a>
-  - <a href="#dictionaries" id="toc-dictionaries"><span class="toc-section-number">1.9</span> Dictionaries</a>
-  - <a href="#optional-other-containers" id="toc-optional-other-containers"><span class="toc-section-number">1.10</span> (Optional) Other containers</a>
+  - <a href="#for-loops" id="toc-for-loops"><span class="toc-section-number">1.8</span> For Loops</a>
+  - <a href="#strings-and-methods" id="toc-strings-and-methods"><span class="toc-section-number">1.9</span> Strings and methods</a>
+  - <a href="#optional-dictionaries" id="toc-optional-dictionaries"><span class="toc-section-number">1.10</span> (Optional) Dictionaries</a>
+  - <a href="#optional-other-containers" id="toc-optional-other-containers"><span class="toc-section-number">1.11</span> (Optional) Other containers</a>
 - <a href="#data-manipulation-with-pandas-week-2" id="toc-data-manipulation-with-pandas-week-2"><span class="toc-section-number">2</span> Data manipulation with Pandas (Week 2)</a>
-  - <a href="#optional-review-collections" id="toc-optional-review-collections"><span class="toc-section-number">2.1</span> (Optional) Review collections</a>
-  - <a href="#a-very-brief-introduction-to-numpy" id="toc-a-very-brief-introduction-to-numpy"><span class="toc-section-number">2.2</span> A very brief introduction to NumPy</a>
-  - <a href="#a-very-brief-introduction-to-pandas" id="toc-a-very-brief-introduction-to-pandas"><span class="toc-section-number">2.3</span> A very brief introduction to Pandas</a>
-  - <a href="#optional-where-are-we" id="toc-optional-where-are-we"><span class="toc-section-number">2.4</span> (Optional) Where are we?</a>
-  - <a href="#reading-tabular-data-into-data-frames" id="toc-reading-tabular-data-into-data-frames"><span class="toc-section-number">2.5</span> Reading tabular data into data frames</a>
-  - <a href="#data-frames-are-objects-that-can-tell-you-about-their-contents" id="toc-data-frames-are-objects-that-can-tell-you-about-their-contents"><span class="toc-section-number">2.6</span> Data frames are objects that can tell you about their contents</a>
-  - <a href="#subsetting-data" id="toc-subsetting-data"><span class="toc-section-number">2.7</span> Subsetting Data</a>
-  - <a href="#filtering-i.e.-masking-data" id="toc-filtering-i.e.-masking-data"><span class="toc-section-number">2.8</span> Filtering (i.e. masking) data</a>
-  - <a href="#working-with-missing-data" id="toc-working-with-missing-data"><span class="toc-section-number">2.9</span> Working with missing data</a>
-  - <a href="#sorting-and-grouping" id="toc-sorting-and-grouping"><span class="toc-section-number">2.10</span> Sorting and grouping</a>
-  - <a href="#write-output" id="toc-write-output"><span class="toc-section-number">2.11</span> Write output</a>
-  - <a href="#working-with-multiple-tables-in-an-sql-like-manner" id="toc-working-with-multiple-tables-in-an-sql-like-manner"><span class="toc-section-number">2.12</span> Working with multiple tables (in an SQL-like manner)</a>
-  - <a href="#optional-adding-rows-to-dataframes" id="toc-optional-adding-rows-to-dataframes"><span class="toc-section-number">2.13</span> (Optional) Adding rows to DataFrames</a>
-  - <a href="#scientific-computing-libraries" id="toc-scientific-computing-libraries"><span class="toc-section-number">2.14</span> Scientific Computing Libraries</a>
-  - <a href="#optional-things-we-didnt-talk-about" id="toc-optional-things-we-didnt-talk-about"><span class="toc-section-number">2.15</span> (Optional) Things we didn't talk about</a>
-  - <a href="#optional-pandas-method-chaining-in-the-wild" id="toc-optional-pandas-method-chaining-in-the-wild"><span class="toc-section-number">2.16</span> (Optional) Pandas method chaining in the wild</a>
-  - <a href="#optional-introspecting-on-the-dataframe-object" id="toc-optional-introspecting-on-the-dataframe-object"><span class="toc-section-number">2.17</span> (Optional) Introspecting on the DataFrame object</a>
-  - <a href="#carpentries-version-group-by-split-apply-combine" id="toc-carpentries-version-group-by-split-apply-combine"><span class="toc-section-number">2.18</span> (Carpentries version) Group By: split-apply-combine</a>
+  - <a href="#add-numpy-calculation" id="toc-add-numpy-calculation"><span class="toc-section-number">2.1</span> <span class="todo TODO">TODO</span> Add Numpy calculation</a>
+  - <a href="#run-an-analysis-package" id="toc-run-an-analysis-package"><span class="toc-section-number">2.2</span> <span class="todo TODO">TODO</span> Run an analysis package</a>
+  - <a href="#optional-review-collections" id="toc-optional-review-collections"><span class="toc-section-number">2.3</span> (Optional) Review collections</a>
+  - <a href="#a-very-brief-introduction-to-numpy" id="toc-a-very-brief-introduction-to-numpy"><span class="toc-section-number">2.4</span> A very brief introduction to NumPy</a>
+  - <a href="#a-very-brief-introduction-to-pandas" id="toc-a-very-brief-introduction-to-pandas"><span class="toc-section-number">2.5</span> A very brief introduction to Pandas</a>
+  - <a href="#optional-where-are-we" id="toc-optional-where-are-we"><span class="toc-section-number">2.6</span> (Optional) Where are we?</a>
+  - <a href="#reading-tabular-data-into-data-frames" id="toc-reading-tabular-data-into-data-frames"><span class="toc-section-number">2.7</span> Reading tabular data into data frames</a>
+  - <a href="#data-frames-are-objects-that-can-tell-you-about-their-contents" id="toc-data-frames-are-objects-that-can-tell-you-about-their-contents"><span class="toc-section-number">2.8</span> Data frames are objects that can tell you about their contents</a>
+  - <a href="#subsetting-data" id="toc-subsetting-data"><span class="toc-section-number">2.9</span> Subsetting Data</a>
+  - <a href="#filtering-i.e.-masking-data" id="toc-filtering-i.e.-masking-data"><span class="toc-section-number">2.10</span> Filtering (i.e. masking) data</a>
+  - <a href="#working-with-missing-data" id="toc-working-with-missing-data"><span class="toc-section-number">2.11</span> Working with missing data</a>
+  - <a href="#sorting-and-grouping" id="toc-sorting-and-grouping"><span class="toc-section-number">2.12</span> Sorting and grouping</a>
+  - <a href="#write-output" id="toc-write-output"><span class="toc-section-number">2.13</span> Write output</a>
+  - <a href="#working-with-multiple-tables-in-an-sql-like-manner" id="toc-working-with-multiple-tables-in-an-sql-like-manner"><span class="toc-section-number">2.14</span> Working with multiple tables (in an SQL-like manner)</a>
+  - <a href="#optional-adding-rows-to-dataframes" id="toc-optional-adding-rows-to-dataframes"><span class="toc-section-number">2.15</span> (Optional) Adding rows to DataFrames</a>
+  - <a href="#scientific-computing-libraries" id="toc-scientific-computing-libraries"><span class="toc-section-number">2.16</span> Scientific Computing Libraries</a>
+  - <a href="#optional-things-we-didnt-talk-about" id="toc-optional-things-we-didnt-talk-about"><span class="toc-section-number">2.17</span> (Optional) Things we didn't talk about</a>
+  - <a href="#optional-pandas-method-chaining-in-the-wild" id="toc-optional-pandas-method-chaining-in-the-wild"><span class="toc-section-number">2.18</span> (Optional) Pandas method chaining in the wild</a>
+  - <a href="#optional-introspecting-on-the-dataframe-object" id="toc-optional-introspecting-on-the-dataframe-object"><span class="toc-section-number">2.19</span> (Optional) Introspecting on the DataFrame object</a>
+  - <a href="#carpentries-version-group-by-split-apply-combine" id="toc-carpentries-version-group-by-split-apply-combine"><span class="toc-section-number">2.20</span> (Carpentries version) Group By: split-apply-combine</a>
 - <a href="#building-programs-week-3" id="toc-building-programs-week-3"><span class="toc-section-number">3</span> Building Programs (Week 3)</a>
   - <a href="#notebooks-vs-python-scripts" id="toc-notebooks-vs-python-scripts"><span class="toc-section-number">3.1</span> Notebooks vs Python scripts</a>
   - <a href="#python-from-the-terminal" id="toc-python-from-the-terminal"><span class="toc-section-number">3.2</span> Python from the terminal</a>
-  - <a href="#for-loops" id="toc-for-loops"><span class="toc-section-number">3.3</span> For Loops</a>
-  - <a href="#looping-over-data-sets" id="toc-looping-over-data-sets"><span class="toc-section-number">3.4</span> Looping Over Data Sets</a>
-  - <a href="#conditionals" id="toc-conditionals"><span class="toc-section-number">3.5</span> Conditionals</a>
-  - <a href="#generic-file-handling" id="toc-generic-file-handling"><span class="toc-section-number">3.6</span> Generic file handling</a>
-  - <a href="#text-processing" id="toc-text-processing"><span class="toc-section-number">3.7</span> Text processing</a>
-  - <a href="#writing-functions" id="toc-writing-functions"><span class="toc-section-number">3.8</span> Writing Functions</a>
-  - <a href="#carpentries-version-conditionals" id="toc-carpentries-version-conditionals"><span class="toc-section-number">3.9</span> (Carpentries version) Conditionals</a>
-  - <a href="#optional-variable-scope" id="toc-optional-variable-scope"><span class="toc-section-number">3.10</span> (Optional) Variable Scope</a>
-  - <a href="#optional-programming-style" id="toc-optional-programming-style"><span class="toc-section-number">3.11</span> (Optional) Programming Style</a>
+  - <a href="#looping-over-data-sets" id="toc-looping-over-data-sets"><span class="toc-section-number">3.3</span> Looping Over Data Sets</a>
+  - <a href="#conditionals" id="toc-conditionals"><span class="toc-section-number">3.4</span> Conditionals</a>
+  - <a href="#generic-file-handling" id="toc-generic-file-handling"><span class="toc-section-number">3.5</span> Generic file handling</a>
+  - <a href="#text-processing" id="toc-text-processing"><span class="toc-section-number">3.6</span> Text processing</a>
+  - <a href="#writing-functions" id="toc-writing-functions"><span class="toc-section-number">3.7</span> Writing Functions</a>
+  - <a href="#carpentries-version-conditionals" id="toc-carpentries-version-conditionals"><span class="toc-section-number">3.8</span> (Carpentries version) Conditionals</a>
+  - <a href="#optional-variable-scope" id="toc-optional-variable-scope"><span class="toc-section-number">3.9</span> (Optional) Variable Scope</a>
+  - <a href="#optional-programming-style" id="toc-optional-programming-style"><span class="toc-section-number">3.10</span> (Optional) Programming Style</a>
 - <a href="#visualization-with-matplotlib-and-seaborn-week-4" id="toc-visualization-with-matplotlib-and-seaborn-week-4"><span class="toc-section-number">4</span> Visualization with Matplotlib and Seaborn (Week 4)</a>
   - <a href="#orientation-1" id="toc-orientation-1"><span class="toc-section-number">4.1</span> Orientation</a>
   - <a href="#plotting-with-matplotlib" id="toc-plotting-with-matplotlib"><span class="toc-section-number">4.2</span> Plotting with Matplotlib</a>
@@ -72,6 +74,7 @@
 - "Glue" language intended to replace shell and Perl
 - Concise, readable, good for rapid prototyping
 - Access to linear algebra libraries in FORTRAN/C → user-friendly numeric computing
+- General purpose, not just an academic language; we will spend more time on some of the general purpose aspects.
 
 ### Literate programming and notebooks
 
@@ -205,7 +208,7 @@ age = age + 3
 print(age)
 ```
 
-### Variables only change value when something is assigned to them
+### **Challenge:** Variables only change value when something is assigned to them
 
 Order of operations matters!
 
@@ -213,6 +216,8 @@ Order of operations matters!
 first = 1
 second = 5 * first
 first = 2
+
+# What will this print?
 print('first:', first)
 print('second:', second)
 ```
@@ -392,7 +397,7 @@ round(3.712, 1)
     ``` python
     result = print("hello")
     print(result)
-    print(type(result))
+    # print(type(result))
     ```
 
 ### (Optional) Functions will typically generalize in sensible ways
@@ -408,60 +413,6 @@ round(3.712, 1)
 
     ``` python
     max(1, 'a')
-    ```
-
-### *Methods* are functions that belong to objects
-
-1.  An object packages data together with functions that operate on that data. This is a very common organizational strategy in Python.
-
-    ``` python
-    my_string = 'Hello world!'
-
-    # Call the swapcase method on the my_string object
-    print(my_string.swapcase())
-    ```
-
-2.  You can chain methods into processing pipelines
-
-    ``` python
-    print(my_string.isupper())          # Check whether all letters are uppercase
-    print(my_string.upper())            # Capitalize all the letters
-    ```
-
-    ``` python
-    # The output of upper() is as string; you can use more string methods on it
-    my_string.upper().isupper()
-    ```
-
-3.  (Optional) Strings are immutable. This will be covered later, but may come up here. If it comes up here, this is a good example:
-
-    ``` python
-    print(my_string.upper())
-    print(my_string)
-    upper_string = my_string.upper()
-    print(upper_string)
-    ```
-
-4.  You can view an object's attributes (i.e. methods and fields) using `help()` or `dir()`. Some attributes are "private"; you're not supposed to use these directly.
-
-    ``` python
-    # More verbose help
-    help(str)
-    ```
-
-    ``` python
-    # The short, short version
-    dir(my_string)
-    ```
-
-5.  The built-in string methods can be very useful for cleaning up data
-
-    ``` python
-    bad_string_1 = "  Hello world!   "
-    bad_string_2 = "|...goodbye cruel world|"
-
-    print(bad_string_1.strip(),
-          bad_string_2.strip("|"))
     ```
 
 ### (Optional) Python produces informative error messages
@@ -544,16 +495,16 @@ Lists are the central data structure in Python; we will explain many things by m
 ### A list stores many values in a single structure
 
 ``` python
-pressure = [0.17, 0.23, 0.54, 0.38, 0.76, 0.43]
-print(pressure)
-print(len(pressure))
+fruits = ["apple", "banana", "cherry", "date", "elderberry", "fig"]
+print(fruits)
+print(len(fruits))
 ```
 
 ### Lists are indexed by position, counting from 0
 
 ``` python
-print("First item:", pressure[0])
-print("Fifth item:" , pressure[4])
+print("First item:", fruits[0])
+print("Fifth item:", fruits[4])
 ```
 
 ### You can get a subset of the list by slicing it
@@ -561,32 +512,33 @@ print("Fifth item:" , pressure[4])
 1.  You slice a list from the start position up to, but not including, the stop position
 
     ``` python
-    print(pressure[0:3])
-    print(pressure[2:5])
+    print(fruits[0:3])
+    print(fruits[2:5])
     ```
 
 2.  You can omit the start position if you're starting at the beginning…
 
     ``` python
-    print("First 5 items:", pressure[0:5])
-    print("First 5 items, but shorter:", pressure[:5])
+    # Two ways to get the first 5 items
+    print(fruits[0:5])
+    print(fruits[:5])
     ```
 
-3.  …and you *must* omit the end position if you're going to the end (otherwise it's up to, but not including, the end!)
+3.  …and you *must* omit the end position if you're going to the end (otherwise it's up to, but not including, the end!). This is useful if you don't know how long the list is:
 
     ``` python
-    # This is useful if you don't know how long the list is
-    print("Everything but the first 3 items:", pressure[3:])
+    # Everything but the first 3 items
+    print(fruits[3:])
     ```
 
 4.  You can add an optional step interval (every 2nd item, every 3rd item, etc.)
 
     ``` python
-    print("First 5 items, every other item:", pressure[0:5:2])
-    print("Every third item:", pressure[::3])
+    print("First 5 items, every other item:", fruits[0:5:2])
+    print("Every third item:", fruits[::3])
     ```
 
-### Why are lists indexed from 0?
+### (Optional) Why are lists indexed from 0?
 
 cf. <https://stackoverflow.com/a/11364711>
 
@@ -594,74 +546,65 @@ cf. <https://stackoverflow.com/a/11364711>
 
     ``` python
     # Get the first two items
-    print(pressure[:2])
+    print(fruits[:2])
 
     # Get everything except the first two items
-    print(pressure[2:])
+    print(fruits[2:])
     ```
 
 2.  For non-negative indices, the length of a slice is the difference of the indices
 
     ``` python
-    len(pressure[1:3]) == 2
+    len(fruits[1:3]) == 2
     ```
 
-### Some other properties of indexes
+### **Challenge**: Some other properties of indexes
+
+Try these statements. What are they doing? Can you explain the differences in their behavior?
+
+``` python
+print(fruits[-1])
+print(fruits[20])
+print(fruits[-3:])
+```
+
+#### Answer
 
 1.  You can count backwards from the end with negative integers
-
-    ``` python
-    print("Last item:", pressure[-1])
-    ```
-
 2.  Indexing beyond the end of the collection is an error
-
-    ``` python
-    pressure[20]
-    ```
 
 ### Lists are mutable
 
 1.  You can replace a value at a specific index location
 
     ``` python
-    pressure[0] = 0.999
-    print(pressure)
+    fruits[0] = "apricot"
+    print(fruits)
     ```
 
-2.  Add an item to list with `append()`. This is a *method* of the list.
+2.  Add an item to list with `append()`. This is a *method* of the list (more on this later!).
 
     ``` python
-    primes = [2, 3, 5]
-    print(primes)
-    primes.append(7)
-    print(primes)
+    fruits.append("grape")
+    print(fruits)
     ```
 
 3.  Add the items from one list to another with `extend()`
 
     ``` python
-    teen_primes = [11, 13, 17, 19]
+    more_fruits = ["honeydew", "imbe", "jackfruit"]
 
-    # Add all of the elements of teen_primes to primes
-    primes.extend(teen_primes)
-    print(primes)
-    ```
-
-4.  (Optional) Slice endpoints are compliments, take 2
-
-    ``` python
-    new_pressure = pressure[:2]
-    new_pressure.extend(pressure[2:])
-
-    print(new_pressure == pressure)
+    # Add all of the elements of more_fruits to fruits
+    fruits.extend(more_fruits)
+    print(fruits)
     ```
 
 ### Many functions take collections as arguments
 
 ``` python
-mean_p = sum(pressure)/len(pressure)
-print(mean_p)
+receiving_yards = [450, 370, 870, 150]
+mean_yards = sum(receiving_yards)/len(receiving_yards)
+print(mean_yards)
 ```
 
 ### (Optional) Removing items from a list
@@ -669,19 +612,18 @@ print(mean_p)
 1.  Use `del` to remove an item at an index location
 
     ``` python
-    primes = [2, 3, 5, 7, 9]
-    print(primes)
-    del primes[4]
-    print(primes)
+    print(more_fruits)
+    del more_fruits[1]
+    print(more_fruits)
     ```
 
 2.  Use `pop()` to remove the last item and assign it to a variable. This is useful for destructive iteration.
 
     ``` python
-    p = primes.pop()
+    f = fruits.pop()
 
-    print('Last prime in list', p)
-    print(primes)
+    print('Last fruit in list:', f)
+    print(fruits)
     ```
 
 ### Lists can contain anything
@@ -704,7 +646,7 @@ print(mean_p)
 2.  You can put lists inside other lists
 
     ``` python
-    ages.append(primes)
+    ages.append(more_fruits)
 
     # List in our list
     print(ages)
@@ -713,61 +655,215 @@ print(mean_p)
     print(ages[-1])
 
     # Get an item from that list
-    print(ages[-1][2])
+    print(ages[-1][0])
     ```
 
-## Strings are (kind of) like lists
+### **(Optional) Challenge**: Reversing a list
 
-### Strings are indexed like lists
+Create a new list that contains all of the items from `fruits` in the reverse order.
 
-1.  Use an index to get a single character from a string
-
-    ``` python
-    element = 'carbon'
-    element[0]
-    ```
-
-2.  Use a slice to get a substring
-
-    ``` python
-    element[0:3]
-    ```
-
-3.  Counting backwards
-
-    ``` python
-    element[-1]
-    ```
-
-4.  Et cetera
-
-### (Optional) Strings have a length
+#### Solution
 
 ``` python
-len('carbon')
+rev_fruits = fruits[len(fruits)-1::-1]
+print(rev_fruits)
 ```
+
+## For Loops
+
+### A `for` loop executes commands once for each value in a collection
+
+"For each thing in this group, do these operations"
+
+``` python
+for fruit in fruits:
+    print(fruit)
+```
+
+- A for loop is made up of a collection, a loop variable, and a body
+- The collection, **fruits**, is what the loop is being run on.
+- The loop variable, **fruit**, is what changes for each iteration of the loop (i.e. the “current thing”)
+- The body, **print(fruit)**, specifies what to do for each value in the collection.
+
+### The first line of the `for` loop must end with a colon, and the body must be indented
+
+Whitespace is syntactically meaningful in Python!
+
+``` python
+for fruit in fruits:
+print(fruit)
+```
+
+### Loop variables can be called anything
+
+``` python
+for bob in fruits:
+    print(bob)
+```
+
+### The body of a loop can contain many statements
+
+``` python
+primes = [2, 3, 5]
+for p in primes:
+    squared = p ** 2
+    cubed = p ** 3
+    print(p, squared, cubed)
+```
+
+### (Optional) Use `range()` to iterate over a sequence of numbers
+
+``` python
+for number in range(0, 3):
+    print(number)
+```
+
+- range() produces numbers on demand (a "generator" function)
+- useful for tracking progress
+
+### Create a new collection from an existing collection
+
+We will learn how to vectorize this when we get to Numpy and Pandas
+
+``` python
+prime_exponents = []
+for p in primes:
+   prime_exponents.append(p**2)
+
+print(prime_exponents)
+```
+
+### **Challenge**: Accumulation
+
+Get the total length of all the words in the `fruits` list.
+
+#### Solution
+
+``` python
+total = 0
+for f in fruits:
+    total = total + len(f)
+
+print(total)
+```
+
+### (Optional) Use `enumerate()` to iterate over a sequence of items and their positions
+
+``` python
+for number, fruit in enumerate(fruits):
+    print(number, ":", fruit)
+```
+
+### (Optional) Accumulate a running total
+
+Initialize an accumulator variable to zero, the empty string, or the empty list; then iteratively update the variable with values from a collection.
+
+``` python
+total = 0
+for number in range(7):
+   total = total + number
+print(total)
+```
+
+### (Optional) How do you know if an object is iterable?
+
+1.  Lists, dictionaries, and strings are iterable
+
+    ``` python
+    hasattr(location, "__iter__")
+    ```
+
+2.  Integers are not iterable
+
+    ``` python
+    hasattr(5, "__iter__")
+    ```
+
+### Don't use `for` loops with DataFrames or Numpy matrices
+
+There is almost always a faster vectorized function that does what you want.
+
+## Strings and methods
+
+### Strings are (kind of) like lists
+
+1.  Strings are indexed like lists
+
+    ``` python
+    # Use an index to get a single character from a string
+    fruit = "gooseberry"
+    print(fruit[0])
+    print(fruit[0:3])
+    print(fruit[-1])
+    ```
+
+2.  Strings have length
+
+    ``` python
+    len(fruit)
+    ```
 
 ### But! Strings are immutable
 
 1.  Can't change a string in place
 
     ``` python
-    element[0] = 'C'
+    fruit[0] = 'G'
     ```
 
-2.  String methods create a new string
+2.  Solution: String methods create a new string
 
     ``` python
-    print(element.capitalize())
-    print(element)
+    fruit_title = fruit.capitalize()
+    print(fruit_title)
+    ```
+
+### Methods are functions that belong to objects
+
+1.  An object packages data together with functions that operate on that data. This is a very common organizational strategy in Python.
+
+    ``` python
+    sentence = "Hello world!"
+
+    # Call the swapcase method on the my_string object
+    print(sentence.swapcase())
+    ```
+
+2.  You can chain methods into processing pipelines
+
+    ``` python
+    print(sentence.isupper())          # Check whether all letters are uppercase
+    print(sentence.upper())            # Capitalize all the letters
     ```
 
     ``` python
-    carbon_title = element.capitalize()
-    print(carbon_title)
+    # The output of upper() is as string; you can use more string methods on it
+    sentence.upper().isupper()
     ```
 
-### Building strings with `.join()`
+3.  You can view an object's attributes (i.e. methods and fields) using `help()` or `dir()`. Some attributes are "private"; you're not supposed to use these directly.
+
+    ``` python
+    # More verbose help
+    help(str)
+    ```
+
+    ``` python
+    # The short, short version
+    dir(my_string)
+    ```
+
+### Use the built-in string methods to clean up data
+
+``` python
+bad_string_1 = "  Hello world!   "
+bad_string_2 = "|...goodbye cruel world|"
+
+print(bad_string_1.strip(),
+      bad_string_2.strip("|"))
+```
+
+### Building longer strings with `.join()`
 
 1.  Use `.join()` to concatenate strings
 
@@ -785,6 +881,34 @@ len('carbon')
     print(date)
     ```
 
+### **Challenge**: Putting it all together
+
+You want to iterate through the `fruits` list in a random order. For each randomly-selected fruit, capitalize the fruit and print it.
+
+1.  Which standard library module could help you? <https://docs.python.org/3/library/>
+2.  Which function would you select from that module? Are there alternatives?
+3.  Try to write a program that uses the function.
+
+#### Solution 1 (shuffle)
+
+``` python
+import random
+
+random.shuffle(fruits)
+
+for f in fruits:
+    print(f.title())
+```
+
+#### Solution 2 (sample)
+
+``` python
+random_fruits = random.sample(fruits, len(fruits))
+
+for f in random_fruits:
+    print(f.title())
+```
+
 ### **(Optional) Beginner Challenge**: From Strings to Lists and Back
 
 1.  Given this Python code…
@@ -798,7 +922,7 @@ len('carbon')
 
 3.  What does `'-'.join(['x', 'y', 'z'])` generate?
 
-### **Challenge**: Locating the right module
+### **(Optional) Challenge**: Locating the right module
 
 You want to select a random character from a string:
 
@@ -837,17 +961,16 @@ bases = 'ACTTGCTTGAC'
     print(sample(bases, 1)[0])
     ```
 
-## Dictionaries
+## (Optional) Dictionaries
 
 ### Dictionaries are sets of key/value pairs. Instead of being indexed by position, they are indexed by key.
 
 ``` python
-wave_fc = {"Girma": 4,
-           "Sheridan": 3,
-           "Morgan": 13}
+ages = {'Derek': 42,
+        'Bill': 24,
+        'Susan': 37}
 
-# Returns 4
-wave_fc["Girma"]
+ages["Derek"]
 ```
 
 ### Update dictionaries by assigning a key/value pair
@@ -855,15 +978,16 @@ wave_fc["Girma"]
 1.  Update a pre-existing key with a new value
 
     ``` python
-    wave_fc["Sheridan"] = 1
+    ages["Derek"] = 44
 
-    print(wave_fc)
+    print(ages)
     ```
 
 2.  Add a new key/value pair
 
     ``` python
-    wave_fc["Shaw"] = 11
+    ages["Beth"] = 19
+    print(ages)
     ```
 
 ### (Optional) Check whether the dictionary contains an item
@@ -871,25 +995,25 @@ wave_fc["Girma"]
 1.  Does a key already exist?
 
     ``` python
-    "Girma" in wave_fc
+    "Derek" in ages
     ```
 
 2.  Does a value already exist (you generally don't want to do this; keys are unique but values are not)?
 
     ``` python
-    4 in wave_fc.values()
+    24 in ages.values()
     ```
 
 ### (Optional) Delete an item using `del` or `pop()`
 
 ``` python
-print("Original dictionary", wave_fc)
-del wave_fc["Morgan"]
-print("1st deletion", wave_fc)
+print("Original dictionary", ages)
+del ages["Derek"]
+print("1st deletion", ages)
 
-girma_num = wave_fc.pop("Girma")
-print("2nd deletion", wave_fc)
-print("Returned value", girma_num)
+susan_age = wave_fc.pop("Susan")
+print("2nd deletion", ages)
+print("Returned value", susan_age)
 ```
 
 ### Dictionaries are the natural way to store tree-structured data
@@ -902,6 +1026,34 @@ location = {'latitude': [37.28306, 'N'],
 
 print(location['longitude'][0])
 ```
+
+### Dictionary iteration
+
+1.  Iterate over key: value pairs
+
+    ``` python
+    for key, val in ages.items():
+        print(key, ":", val)
+    ```
+
+2.  You can iterate over keys and values separately
+
+    ``` python
+    # Iterate over keys; you can also explicitly call .keys()
+    for key in ages:
+        print(key)
+
+    # Iterate over values
+    for val in ages.values():
+        print(val)
+    ```
+
+3.  Iteration can be useful for unpacking complex dictionaries
+
+    ``` python
+    for key, val in location.items():
+        print(key, 'is', val[0], val[1])
+    ```
 
 ### **(Optional) Advanced Challenge**: Convert a list to a dictionary
 
@@ -927,6 +1079,10 @@ ages_dict = dict(zip(ages[::2], ages[1::2]))
 2.  Sets
 
 # Data manipulation with Pandas (Week 2)
+
+## <span class="todo TODO">TODO</span> Add Numpy calculation
+
+## <span class="todo TODO">TODO</span> Run an analysis package
 
 ## (Optional) Review collections
 
@@ -1481,7 +1637,7 @@ print(df3.shape)
 
 ## (Optional) Adding rows to DataFrames
 
-A row is a view onto the *nth* item of each of the column Series. Appending rows is a performance bottleneck because it requires a separate append operation for each Series. You should concatenate data frames instead.s
+A row is a view onto the *nth* item of each of the column Series. Appending rows is a performance bottleneck because it requires a separate append operation for each Series. You should concatenate data frames instead.
 
 1.  Create a single row as a data frame and concatenate it.
 
@@ -1685,144 +1841,6 @@ Broadly, a trade-off between managing big code bases and making it easy to exper
     1.  List of command line inputs: `sys.argv` (<https://docs.python.org/3/library/sys.html#sys.argv>)
     2.  Utility for working with arguments: `argparse` (<https://docs.python.org/3/library/argparse.html>)
 
-## For Loops
-
-### A `for` loop executes commands once for each value in a collection
-
-"For each thing in this group, do these operations"
-
-``` python
-for number in [2, 3, 5]:
-    print(number)
-```
-
-- A for loop is made up of a collection, a loop variable, and a body
-- The collection, **\[2, 3, 5\]**, is what the loop is being run on.
-- The body, **print(number)**, specifies what to do for each value in the collection.
-- The loop variable, **number**, is what changes for each iteration of the loop (i.e. the “current thing”)
-
-### The first line of the `for` loop must end with a colon, and the body must be indented
-
-Whitespace is syntactically meaningful!
-
-``` python
-for number in [2, 3, 5]:
-print(number)
-```
-
-``` python
-firstName = "Jon"
-lastName = "Smith"
-```
-
-### Loop variables can be called anything
-
-``` python
-for bob in [2, 3, 5]:
-    print(bob)
-```
-
-### The body of a loop can contain many statements
-
-``` python
-primes = [2, 3, 5]
-for p in primes:
-    squared = p ** 2
-    cubed = p ** 3
-    print(p, squared, cubed)
-```
-
-### (Optional) Use `range()` to iterate over a sequence of numbers
-
-``` python
-for number in range(0, 3):
-    print(number)
-```
-
-- range() produces numbers on demand (a "generator" function)
-- useful for tracking progress
-
-### (Optional) Use `enumerate()` to iterate over a sequence of items and their positions
-
-``` python
-for number, p in enumerate(primes):
-    print(number, ":", p)
-```
-
-### Common pattern 1: Accumulate a running total
-
-Initialize an accumulator variable to zero, the empty string, or the empty list; then iteratively update the variable with values from a collection.
-
-``` python
-total = 0
-for number in range(7):
-   total = total + number
-print(total)
-```
-
-### Common pattern 2: Create a new collection from an existing collection
-
-``` python
-prime_exponents = []
-for p in primes:
-   prime_exponents.append(p**2)
-
-print(prime_exponents)
-```
-
-### (Optional) Dictionary iteration
-
-1.  Iterate over key: value pairs
-
-    ``` python
-    ages = {'Derek': 42,
-            'Bill': 24,
-            'Susan': 37}
-
-    for key, val in ages.items():
-        print(key, val)
-    ```
-
-2.  You can iterate over keys and values separately
-
-    ``` python
-    # Iterate over keys; you can also explicitly call .keys()
-    for key in ages:
-        print(key)
-
-    # Iterate over values
-    for val in ages.values():
-        print(val)
-    ```
-
-3.  Iteration can be useful for unpacking complex dictionaries
-
-    ``` python
-    localsation = {'latitude': [37.28306, 'N'],
-                'longitude': [-120.50778, 'W']}
-
-    for key, val in location.items():
-        print(key, 'is', val[0], val[1])
-    ```
-
-### (Optional) How do you know if an object is iterable?
-
-1.  Lists, dictionaries, and strings are iterable
-
-    ``` python
-    hasattr(location, "__iter__")
-    ```
-
-2.  Integers are not iterable
-
-    ``` python
-    hasattr(5, "__iter__")
-    ```
-
-### Don't use `for` loops with DataFrames or Numpy matrices
-
-There is almost always a faster vectorized function that does what you want.
-
 ## Looping Over Data Sets
 
 ### File paths as an example of increasing abstraction in program development
@@ -1982,6 +2000,8 @@ for m in masses:
         print(m, 'is small')
 ```
 
+### <span class="todo TODO">TODO</span> Use enumeration to print occasional status messages for long-running processes
+
 ### (Optional) Conditions are tested once, in order
 
 Python steps through the branches of the conditional in order, testing each in turn. Order matters! The following is wrong:
@@ -2087,6 +2107,8 @@ lines[0]
 ```
 
 ## Text processing
+
+### <span class="todo TODO">TODO</span> add tokenize example?
 
 ### Use string methods to determine which lines to keep
 
@@ -3159,6 +3181,7 @@ with conn:
 - Humanities Python Tour (file and text processing): <https://github.com/elliewix/humanities-python-tour/blob/master/Two-Hour-Beginner-Tour.ipynb>
 - Introduction to Cultural Analytics & Python: <https://melaniewalsh.github.io/Intro-Cultural-Analytics/welcome.html>
 - Rhondene Wint: Matplotlib and Seaborn notes
+- Fruit Alphabet: <https://en.wikibooks.org/wiki/Wikijunior:Fruit_Alphabet>
 
 ## References
 
