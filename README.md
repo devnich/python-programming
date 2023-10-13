@@ -534,8 +534,11 @@ print("Fifth item:", fruits[4])
 4.  You can add an optional step interval (every 2nd item, every 3rd item, etc.)
 
     ``` python
-    print("First 5 items, every other item:", fruits[0:5:2])
-    print("Every third item:", fruits[::3])
+    # First 5 items, every other item
+    print(fruits[0:5:2])
+
+    # Every third item
+    print(fruits[::3])
     ```
 
 ### (Optional) Why are lists indexed from 0?
@@ -568,7 +571,7 @@ print(fruits[20])
 print(fruits[-3:])
 ```
 
-#### Answer
+#### Solution
 
 1.  You can count backwards from the end with negative integers
 2.  Indexing beyond the end of the collection is an error
@@ -711,16 +714,6 @@ for p in primes:
     print(p, squared, cubed)
 ```
 
-### (Optional) Use `range()` to iterate over a sequence of numbers
-
-``` python
-for number in range(0, 3):
-    print(number)
-```
-
-- range() produces numbers on demand (a "generator" function)
-- useful for tracking progress
-
 ### Create a new collection from an existing collection
 
 We will learn how to vectorize this when we get to Numpy and Pandas
@@ -747,22 +740,21 @@ for f in fruits:
 print(total)
 ```
 
+### (Optional) Use `range()` to iterate over a sequence of numbers
+
+``` python
+for number in range(0, 3):
+    print(number)
+```
+
+- range() produces numbers on demand (a "generator" function)
+- useful for tracking progress
+
 ### (Optional) Use `enumerate()` to iterate over a sequence of items and their positions
 
 ``` python
 for number, fruit in enumerate(fruits):
     print(number, ":", fruit)
-```
-
-### (Optional) Accumulate a running total
-
-Initialize an accumulator variable to zero, the empty string, or the empty list; then iteratively update the variable with values from a collection.
-
-``` python
-total = 0
-for number in range(7):
-   total = total + number
-print(total)
 ```
 
 ### (Optional) How do you know if an object is iterable?
@@ -921,45 +913,6 @@ for f in random_fruits:
 2.  What does `list('some string')` do?
 
 3.  What does `'-'.join(['x', 'y', 'z'])` generate?
-
-### **(Optional) Challenge**: Locating the right module
-
-You want to select a random character from a string:
-
-``` python
-bases = 'ACTTGCTTGAC'
-```
-
-1.  Which standard library module could help you? <https://docs.python.org/3/library/>
-2.  Which function would you select from that module? Are there alternatives?
-3.  Try to write a program that uses the function.
-
-#### Solutions:
-
-1.  You could try the `random` module. The string has 11 characters, each having a positional index from 0 to 10. You could use either `random.randrange` or `random.randint` functions to get a random integer between 0 and 10, and then pick out the character at that position:
-
-    ``` python
-    from random import randrange
-
-    random_index = randrange(len(bases))
-    print(bases[random_index])
-    ```
-
-    …or more compactly:
-
-    ``` python
-    from random import randrange
-
-    print(bases[randrange(len(bases))])
-    ```
-
-2.  Perhaps you found the `random.sample()` function. It allows for slightly less typing:
-
-    ``` python
-    from random import sample
-
-    print(sample(bases, 1)[0])
-    ```
 
 ## (Optional) Dictionaries
 
