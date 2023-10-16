@@ -11,26 +11,24 @@
   - <a href="#optional-dictionaries" id="toc-optional-dictionaries"><span class="toc-section-number">1.10</span> (Optional) Dictionaries</a>
   - <a href="#optional-other-containers" id="toc-optional-other-containers"><span class="toc-section-number">1.11</span> (Optional) Other containers</a>
 - <a href="#data-manipulation-with-pandas-week-2" id="toc-data-manipulation-with-pandas-week-2"><span class="toc-section-number">2</span> Data manipulation with Pandas (Week 2)</a>
-  - <a href="#add-numpy-calculation" id="toc-add-numpy-calculation"><span class="toc-section-number">2.1</span> <span class="todo TODO">TODO</span> Add Numpy calculation</a>
-  - <a href="#run-an-analysis-package" id="toc-run-an-analysis-package"><span class="toc-section-number">2.2</span> <span class="todo TODO">TODO</span> Run an analysis package</a>
-  - <a href="#optional-review-collections" id="toc-optional-review-collections"><span class="toc-section-number">2.3</span> (Optional) Review collections</a>
-  - <a href="#a-very-brief-introduction-to-numpy" id="toc-a-very-brief-introduction-to-numpy"><span class="toc-section-number">2.4</span> A very brief introduction to NumPy</a>
-  - <a href="#a-very-brief-introduction-to-pandas" id="toc-a-very-brief-introduction-to-pandas"><span class="toc-section-number">2.5</span> A very brief introduction to Pandas</a>
-  - <a href="#optional-where-are-we" id="toc-optional-where-are-we"><span class="toc-section-number">2.6</span> (Optional) Where are we?</a>
-  - <a href="#reading-tabular-data-into-data-frames" id="toc-reading-tabular-data-into-data-frames"><span class="toc-section-number">2.7</span> Reading tabular data into data frames</a>
-  - <a href="#data-frames-are-objects-that-can-tell-you-about-their-contents" id="toc-data-frames-are-objects-that-can-tell-you-about-their-contents"><span class="toc-section-number">2.8</span> Data frames are objects that can tell you about their contents</a>
-  - <a href="#subsetting-data" id="toc-subsetting-data"><span class="toc-section-number">2.9</span> Subsetting Data</a>
-  - <a href="#filtering-i.e.-masking-data" id="toc-filtering-i.e.-masking-data"><span class="toc-section-number">2.10</span> Filtering (i.e. masking) data</a>
-  - <a href="#working-with-missing-data" id="toc-working-with-missing-data"><span class="toc-section-number">2.11</span> Working with missing data</a>
-  - <a href="#sorting-and-grouping" id="toc-sorting-and-grouping"><span class="toc-section-number">2.12</span> Sorting and grouping</a>
-  - <a href="#write-output" id="toc-write-output"><span class="toc-section-number">2.13</span> Write output</a>
-  - <a href="#working-with-multiple-tables-in-an-sql-like-manner" id="toc-working-with-multiple-tables-in-an-sql-like-manner"><span class="toc-section-number">2.14</span> Working with multiple tables (in an SQL-like manner)</a>
-  - <a href="#optional-adding-rows-to-dataframes" id="toc-optional-adding-rows-to-dataframes"><span class="toc-section-number">2.15</span> (Optional) Adding rows to DataFrames</a>
-  - <a href="#scientific-computing-libraries" id="toc-scientific-computing-libraries"><span class="toc-section-number">2.16</span> Scientific Computing Libraries</a>
-  - <a href="#optional-things-we-didnt-talk-about" id="toc-optional-things-we-didnt-talk-about"><span class="toc-section-number">2.17</span> (Optional) Things we didn't talk about</a>
-  - <a href="#optional-pandas-method-chaining-in-the-wild" id="toc-optional-pandas-method-chaining-in-the-wild"><span class="toc-section-number">2.18</span> (Optional) Pandas method chaining in the wild</a>
-  - <a href="#optional-introspecting-on-the-dataframe-object" id="toc-optional-introspecting-on-the-dataframe-object"><span class="toc-section-number">2.19</span> (Optional) Introspecting on the DataFrame object</a>
-  - <a href="#carpentries-version-group-by-split-apply-combine" id="toc-carpentries-version-group-by-split-apply-combine"><span class="toc-section-number">2.20</span> (Carpentries version) Group By: split-apply-combine</a>
+  - <a href="#optional-review-collections" id="toc-optional-review-collections"><span class="toc-section-number">2.1</span> (Optional) Review collections</a>
+  - <a href="#a-very-brief-introduction-to-numpy" id="toc-a-very-brief-introduction-to-numpy"><span class="toc-section-number">2.2</span> A very brief introduction to NumPy</a>
+  - <a href="#a-very-brief-introduction-to-pandas" id="toc-a-very-brief-introduction-to-pandas"><span class="toc-section-number">2.3</span> A very brief introduction to Pandas</a>
+  - <a href="#optional-where-are-we" id="toc-optional-where-are-we"><span class="toc-section-number">2.4</span> (Optional) Where are we?</a>
+  - <a href="#reading-tabular-data-into-data-frames" id="toc-reading-tabular-data-into-data-frames"><span class="toc-section-number">2.5</span> Reading tabular data into data frames</a>
+  - <a href="#data-frames-are-objects-that-can-tell-you-about-their-contents" id="toc-data-frames-are-objects-that-can-tell-you-about-their-contents"><span class="toc-section-number">2.6</span> Data frames are objects that can tell you about their contents</a>
+  - <a href="#subsetting-data" id="toc-subsetting-data"><span class="toc-section-number">2.7</span> Subsetting Data</a>
+  - <a href="#filtering-i.e.-masking-data" id="toc-filtering-i.e.-masking-data"><span class="toc-section-number">2.8</span> Filtering (i.e. masking) data</a>
+  - <a href="#working-with-missing-data" id="toc-working-with-missing-data"><span class="toc-section-number">2.9</span> Working with missing data</a>
+  - <a href="#sorting-and-grouping" id="toc-sorting-and-grouping"><span class="toc-section-number">2.10</span> Sorting and grouping</a>
+  - <a href="#write-output" id="toc-write-output"><span class="toc-section-number">2.11</span> Write output</a>
+  - <a href="#working-with-multiple-tables-in-an-sql-like-manner" id="toc-working-with-multiple-tables-in-an-sql-like-manner"><span class="toc-section-number">2.12</span> Working with multiple tables (in an SQL-like manner)</a>
+  - <a href="#optional-adding-rows-to-dataframes" id="toc-optional-adding-rows-to-dataframes"><span class="toc-section-number">2.13</span> (Optional) Adding rows to DataFrames</a>
+  - <a href="#scientific-computing-libraries" id="toc-scientific-computing-libraries"><span class="toc-section-number">2.14</span> Scientific Computing Libraries</a>
+  - <a href="#optional-things-we-didnt-talk-about" id="toc-optional-things-we-didnt-talk-about"><span class="toc-section-number">2.15</span> (Optional) Things we didn't talk about</a>
+  - <a href="#optional-pandas-method-chaining-in-the-wild" id="toc-optional-pandas-method-chaining-in-the-wild"><span class="toc-section-number">2.16</span> (Optional) Pandas method chaining in the wild</a>
+  - <a href="#optional-introspecting-on-the-dataframe-object" id="toc-optional-introspecting-on-the-dataframe-object"><span class="toc-section-number">2.17</span> (Optional) Introspecting on the DataFrame object</a>
+  - <a href="#carpentries-version-group-by-split-apply-combine" id="toc-carpentries-version-group-by-split-apply-combine"><span class="toc-section-number">2.18</span> (Carpentries version) Group By: split-apply-combine</a>
 - <a href="#building-programs-week-3" id="toc-building-programs-week-3"><span class="toc-section-number">3</span> Building Programs (Week 3)</a>
   - <a href="#notebooks-vs-python-scripts" id="toc-notebooks-vs-python-scripts"><span class="toc-section-number">3.1</span> Notebooks vs Python scripts</a>
   - <a href="#python-from-the-terminal" id="toc-python-from-the-terminal"><span class="toc-section-number">3.2</span> Python from the terminal</a>
@@ -1032,10 +1030,6 @@ ages_dict = dict(zip(ages[::2], ages[1::2]))
 2.  Sets
 
 # Data manipulation with Pandas (Week 2)
-
-## <span class="todo TODO">TODO</span> Add Numpy calculation
-
-## <span class="todo TODO">TODO</span> Run an analysis package
 
 ## (Optional) Review collections
 
@@ -3138,8 +3132,9 @@ with conn:
 
 ## References
 
-- Complete tutorial: <https://docs.python.org/3/tutorial/index.html>
+- Complete Python tutorial: <https://docs.python.org/3/tutorial/index.html>
 - Python standard library: <https://docs.python.org/3/library/>
+- Writing documentation in Markdown: <https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax>
 - Pandas documentation: <https://pandas.pydata.org/pandas-docs/stable/>
 - Pandas user guide: <https://pandas.pydata.org/docs/user_guide/index.html>
 - String formatting: <https://pyformat.info/>

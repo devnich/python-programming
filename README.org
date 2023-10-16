@@ -827,8 +827,8 @@ ages_dict = dict(zip(ages[::2], ages[1::2]))
 2. Sets
 
 * Data manipulation with Pandas (Week 2)
-** TODO Add Numpy calculation
-** TODO Run an analysis package
+** COMMENT TODO Add Numpy calculation
+** COMMENT TODO Run an analysis package
 ** (Optional) Review collections
 *** Lists and dictionaries
 1. Reference item by index/key
@@ -1437,6 +1437,7 @@ wine.rename(columns={"color_intensity": "ci"})
    #+END_SRC
 
 * Building Programs (Week 3)
+** COMMENT TODO Add modulus example to loop
 ** Notebooks vs Python scripts
 *** Differences between .ipynb and .py
 1. Export notebook to .py file
@@ -2664,8 +2665,9 @@ with conn:
 - Fruit Alphabet: https://en.wikibooks.org/wiki/Wikijunior:Fruit_Alphabet
 
 ** References
-- Complete tutorial: https://docs.python.org/3/tutorial/index.html
+- Complete Python tutorial: https://docs.python.org/3/tutorial/index.html
 - Python standard library: https://docs.python.org/3/library/
+- Writing documentation in Markdown: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
 - Pandas documentation: https://pandas.pydata.org/pandas-docs/stable/
 - Pandas user guide: https://pandas.pydata.org/docs/user_guide/index.html
 - String formatting: https://pyformat.info/
