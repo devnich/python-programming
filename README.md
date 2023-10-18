@@ -13,22 +13,23 @@
 - <a href="#data-manipulation-with-pandas-week-2" id="toc-data-manipulation-with-pandas-week-2"><span class="toc-section-number">2</span> Data manipulation with Pandas (Week 2)</a>
   - <a href="#optional-review-collections" id="toc-optional-review-collections"><span class="toc-section-number">2.1</span> (Optional) Review collections</a>
   - <a href="#a-very-brief-introduction-to-numpy" id="toc-a-very-brief-introduction-to-numpy"><span class="toc-section-number">2.2</span> A very brief introduction to NumPy</a>
-  - <a href="#a-very-brief-introduction-to-pandas" id="toc-a-very-brief-introduction-to-pandas"><span class="toc-section-number">2.3</span> A very brief introduction to Pandas</a>
-  - <a href="#optional-where-are-we" id="toc-optional-where-are-we"><span class="toc-section-number">2.4</span> (Optional) Where are we?</a>
-  - <a href="#reading-tabular-data-into-data-frames" id="toc-reading-tabular-data-into-data-frames"><span class="toc-section-number">2.5</span> Reading tabular data into data frames</a>
-  - <a href="#data-frames-are-objects-that-can-tell-you-about-their-contents" id="toc-data-frames-are-objects-that-can-tell-you-about-their-contents"><span class="toc-section-number">2.6</span> Data frames are objects that can tell you about their contents</a>
-  - <a href="#subsetting-data" id="toc-subsetting-data"><span class="toc-section-number">2.7</span> Subsetting Data</a>
-  - <a href="#filtering-i.e.-masking-data" id="toc-filtering-i.e.-masking-data"><span class="toc-section-number">2.8</span> Filtering (i.e. masking) data</a>
-  - <a href="#working-with-missing-data" id="toc-working-with-missing-data"><span class="toc-section-number">2.9</span> Working with missing data</a>
-  - <a href="#sorting-and-grouping" id="toc-sorting-and-grouping"><span class="toc-section-number">2.10</span> Sorting and grouping</a>
-  - <a href="#write-output" id="toc-write-output"><span class="toc-section-number">2.11</span> Write output</a>
-  - <a href="#working-with-multiple-tables-in-an-sql-like-manner" id="toc-working-with-multiple-tables-in-an-sql-like-manner"><span class="toc-section-number">2.12</span> Working with multiple tables (in an SQL-like manner)</a>
-  - <a href="#optional-adding-rows-to-dataframes" id="toc-optional-adding-rows-to-dataframes"><span class="toc-section-number">2.13</span> (Optional) Adding rows to DataFrames</a>
-  - <a href="#scientific-computing-libraries" id="toc-scientific-computing-libraries"><span class="toc-section-number">2.14</span> Scientific Computing Libraries</a>
-  - <a href="#optional-things-we-didnt-talk-about" id="toc-optional-things-we-didnt-talk-about"><span class="toc-section-number">2.15</span> (Optional) Things we didn't talk about</a>
-  - <a href="#optional-pandas-method-chaining-in-the-wild" id="toc-optional-pandas-method-chaining-in-the-wild"><span class="toc-section-number">2.16</span> (Optional) Pandas method chaining in the wild</a>
-  - <a href="#optional-introspecting-on-the-dataframe-object" id="toc-optional-introspecting-on-the-dataframe-object"><span class="toc-section-number">2.17</span> (Optional) Introspecting on the DataFrame object</a>
-  - <a href="#carpentries-version-group-by-split-apply-combine" id="toc-carpentries-version-group-by-split-apply-combine"><span class="toc-section-number">2.18</span> (Carpentries version) Group By: split-apply-combine</a>
+  - <a href="#optional-linear-algebra-with-numpy" id="toc-optional-linear-algebra-with-numpy"><span class="toc-section-number">2.3</span> (Optional) Linear algebra with NumPy</a>
+  - <a href="#a-very-brief-introduction-to-pandas" id="toc-a-very-brief-introduction-to-pandas"><span class="toc-section-number">2.4</span> A very brief introduction to Pandas</a>
+  - <a href="#optional-where-are-we" id="toc-optional-where-are-we"><span class="toc-section-number">2.5</span> (Optional) Where are we?</a>
+  - <a href="#reading-tabular-data-into-data-frames" id="toc-reading-tabular-data-into-data-frames"><span class="toc-section-number">2.6</span> Reading tabular data into data frames</a>
+  - <a href="#data-frames-are-objects-that-can-tell-you-about-their-contents" id="toc-data-frames-are-objects-that-can-tell-you-about-their-contents"><span class="toc-section-number">2.7</span> Data frames are objects that can tell you about their contents</a>
+  - <a href="#subsetting-data" id="toc-subsetting-data"><span class="toc-section-number">2.8</span> Subsetting Data</a>
+  - <a href="#filtering-i.e.-masking-data-on-contents" id="toc-filtering-i.e.-masking-data-on-contents"><span class="toc-section-number">2.9</span> Filtering (i.e. masking) data on contents</a>
+  - <a href="#working-with-missing-data" id="toc-working-with-missing-data"><span class="toc-section-number">2.10</span> Working with missing data</a>
+  - <a href="#sorting-and-grouping" id="toc-sorting-and-grouping"><span class="toc-section-number">2.11</span> Sorting and grouping</a>
+  - <a href="#write-output" id="toc-write-output"><span class="toc-section-number">2.12</span> Write output</a>
+  - <a href="#working-with-multiple-tables" id="toc-working-with-multiple-tables"><span class="toc-section-number">2.13</span> Working with multiple tables</a>
+  - <a href="#optional-adding-rows-to-dataframes" id="toc-optional-adding-rows-to-dataframes"><span class="toc-section-number">2.14</span> (Optional) Adding rows to DataFrames</a>
+  - <a href="#optional-scientific-computing-libraries" id="toc-optional-scientific-computing-libraries"><span class="toc-section-number">2.15</span> (Optional) Scientific Computing Libraries</a>
+  - <a href="#optional-things-we-didnt-talk-about" id="toc-optional-things-we-didnt-talk-about"><span class="toc-section-number">2.16</span> (Optional) Things we didn't talk about</a>
+  - <a href="#optional-pandas-method-chaining-in-the-wild" id="toc-optional-pandas-method-chaining-in-the-wild"><span class="toc-section-number">2.17</span> (Optional) Pandas method chaining in the wild</a>
+  - <a href="#optional-introspecting-on-the-dataframe-object" id="toc-optional-introspecting-on-the-dataframe-object"><span class="toc-section-number">2.18</span> (Optional) Introspecting on the DataFrame object</a>
+  - <a href="#carpentries-version-group-by-split-apply-combine" id="toc-carpentries-version-group-by-split-apply-combine"><span class="toc-section-number">2.19</span> (Carpentries version) Group By: split-apply-combine</a>
 - <a href="#building-programs-week-3" id="toc-building-programs-week-3"><span class="toc-section-number">3</span> Building Programs (Week 3)</a>
   - <a href="#notebooks-vs-python-scripts" id="toc-notebooks-vs-python-scripts"><span class="toc-section-number">3.1</span> Notebooks vs Python scripts</a>
   - <a href="#python-from-the-terminal" id="toc-python-from-the-terminal"><span class="toc-section-number">3.2</span> Python from the terminal</a>
@@ -122,7 +123,7 @@
 
 4.  Many keyboard shortcuts are available; see <https://gist.github.com/discdiver/9e00618756d120a8c9fa344ac1c375ac>
 
-5.  (Optional) Jupyter Lab undestands (some) terminal commands
+5.  (Optional) Jupyter Lab understands (some) terminal commands
 
     ``` bash
     ls
@@ -1047,6 +1048,8 @@ ages_dict = dict(zip(ages[::2], ages[1::2]))
 
 ## A very brief introduction to NumPy
 
+Introductory documentation: <https://numpy.org/doc/stable/user/quickstart.html>
+
 1.  NumPy is the linear algebra library for Python
 
     ``` python
@@ -1063,7 +1066,67 @@ ages_dict = dict(zip(ages[::2], ages[1::2]))
     print(rand[0,0])
     ```
 
-3.  Arrays are fast but inflexible - the entire array must be of a single type.
+3.  Arrays have attributes
+
+    ``` python
+    print(rand.shape)
+    print(rand.size)
+    print(rand.ndim)
+    ```
+
+4.  Arrays are fast but inflexible - the entire array must be of a single type.
+
+## (Optional) Linear algebra with NumPy
+
+``` python
+x = np.arange(10)
+y = np.arange(10)
+
+print(x)
+print(y)
+```
+
+1.  Operations are element-wise by default
+
+    ``` python
+    print(x * y)
+    ```
+
+2.  Matrix-wise operations (e.g. dot product) use NumPy functions
+
+    ``` python
+    # Use a special operator if it exists
+    print(x @ y)
+
+    # Otherwise, use a numpy function
+    print(np.dot(x, y))
+    ```
+
+3.  (Optional) Matlab gotcha: 1-D arrays have no transpose
+
+    ``` python
+    print(x)
+    print(x.T)
+    print(x.reshape(-1,1))
+    ```
+
+### **Challenge**: Matrix operations
+
+1.  Create a 3x3 matrix containing the numbers 0-8. Hint: Consult the NumPy Quickstart documentation here: <https://numpy.org/doc/stable/user/quickstart.html>
+2.  Multiply the matrix by itself (element-wise).
+3.  Multiply the matrix by its transpose.
+4.  Divide the matrix by itself. What happens?
+
+#### Solutions
+
+``` python
+# Use method chaining to link actions together
+x = np.arange(9).reshape(3,3)
+
+print(x * x)
+print(x * x.T)
+print(x / x)
+```
 
 ## A very brief introduction to Pandas
 
@@ -1205,7 +1268,7 @@ type(data.columns)
 - You can convert data between NumPy arrays, Series, and DataFrames
 - You can read data into any of the data structures from files or from standard Python containers
 
-### **(Optional) Beginner Challenge**
+### **Beginner Challenge**
 
 1.  Read the data in `gapminder_gdp_americas.csv` into a variable called `americas` and display its summary statistics.
 2.  After reading the data for the Americas, use `help(americas.head)` and `help(americas.tail)` to find out what `DataFrame.head` and `DataFrame.tail` do.
@@ -1298,15 +1361,28 @@ print(data.columns)
     print(subset.max())
     ```
 
-### (Optional) Treat the data frame as an object and select values using flexible methods
+### **Challenge**: Collection types
 
-Pandas always drills down to the most parsimonious representation. On one hand, this is convenient; on the other, it violates the Pythonic expectation for strong types.
+1.  Calculate `subset.max()` and assign the result to a variable. What kind of thing is it? What are its properties?
+2.  What is the maximum value of the new variable? Can you determine this without creating an intermediate variable?
 
-| Shape of data selection | Pandas return type |
-|-------------------------|--------------------|
-| 2D                      | DataFrame          |
-| 1D                      | Series             |
-| 0D                      | single value       |
+#### Solution
+
+1.  Pandas always drills down to the most parsimonious representation. On one hand, this is convenient; on the other, it violates the Pythonic expectation for strong types.
+
+    | Shape of data selection | Pandas return type |
+    |-------------------------|--------------------|
+    | 2D                      | DataFrame          |
+    | 1D                      | Series             |
+    | 0D                      | single value       |
+
+2.  Use method chaining
+
+    ``` python
+    print(subset.max().max())
+    ```
+
+### (Optional) Filter on label properties
 
 1.  `.filter()` always returns the same type as the original item, whereas `.loc` and `.iloc` might return a data frame or a series.
 
@@ -1324,7 +1400,7 @@ Pandas always drills down to the most parsimonious representation. On one hand, 
     data.filter(like="200", axis="columns").filter(items=["Italy"], axis="index")
     ```
 
-## Filtering (i.e. masking) data
+## Filtering (i.e. masking) data on contents
 
 ### Use comparisons to select data based on value
 
@@ -1335,28 +1411,31 @@ Pandas always drills down to the most parsimonious representation. On one hand, 
     subset > 10000
     ```
 
-2.  Use `.where()` method to find elements that match the criterion:
+2.  Use the criterion match to filter the data frame's contents. This uses index notation:
+
+    ``` python
+    fs = subset[subset > 10000]
+    print(fs)
+    ```
+
+    1.  `subset > 10000` returns a data frame of True/False values
+    2.  `subset[subset > 10000]` filters its contents based on that True/False data frame
+    3.  This section is more properly called "Masking Data," because it involves operations for overlaying a data frame's values without changing the data frame's shape. We don't drop anything from the data frame, we just replace it with `NaN`.
+
+3.  (Optional) Use `.where()` method to find elements that match the criterion:
 
     ``` python
     fs = subset.where(subset > 10000)
     print(fs)
     ```
 
-    1.  `subset > 10000` returns a data frame of True/False values
-    2.  `subset.where()` filters its contents based on that True/False data frame
-    3.  This section is more properly called "Masking Data," because it involves operations for overlaying a data frame's values without changing the data frame's shape. We don't drop anything from the data frame, we just replace it with `NaN`.
-
-3.  (Optional) Use the criterion match to filter the data frame's contents. This uses index notation:
-
-    ``` python
-    subset[subset > 10000]
-    ```
-
 ### You can filter using any method that returns a data frame
 
 ``` python
 # GDP for all countries greater than the median
-subset.where(subset > subset.median())
+subset[subset > subset.median()]
+
+# OR: subset.where(subset > subset.median())
 ```
 
 ### Use method chaining to create final output without creating intermediate variables
@@ -1368,12 +1447,10 @@ subset.rank()
 
 ``` python
 # GDP ranking for all countries greater than the median
-subset.where(subset > subset.median()).rank()
+subset[subset > subset.median()].rank()
+
+# OR: subset.where(subset > subset.median()).rank()
 ```
-
-### Methods we're not going to cover
-
-`.query()` is a flexible, general-purpose way of filtering data frames.
 
 ## Working with missing data
 
@@ -1444,7 +1521,14 @@ Examples include min, max, mean, std, etc.
     print(fs_fixed)
     ```
 
-2.  (Optional) Impute missing values. Read the docs, this may or may not be sufficient for your needs.
+2.  Replace values that don't meet a criterion with an alternate value
+
+    ``` python
+    subset_fixed = subset.where(subset > 10000, 99)
+    print(subset_fixed)
+    ```
+
+3.  (Optional) Impute missing values. Read the docs, this may or may not be sufficient for your needs.
 
     ``` python
     fs_imputed = fs.interpolate()
@@ -1527,7 +1611,7 @@ data.to_csv('gapminder_gdp_europe_normed.csv')
 #data.to_csv('gapminder_gdp_europe_normed.csv', index=False)
 ```
 
-## Working with multiple tables (in an SQL-like manner)
+## Working with multiple tables
 
 ### Concatenating data frames
 
@@ -1544,7 +1628,7 @@ df3 = pd.concat([df1, df2])
 print(df3.shape)
 ```
 
-### Joining data frames
+### (Optional) Joining data frames (in an SQL-like manner)
 
 1.  Import species data
 
@@ -1608,7 +1692,9 @@ A row is a view onto the *nth* item of each of the column Series. Appending rows
     pd.concat([italy, poland], axis=1).T
     ```
 
-## Scientific Computing Libraries
+## (Optional) Scientific Computing Libraries
+
+### Libraries
 
 1.  SciPy projects
     1.  Numpy: Linear algebra
@@ -1618,12 +1704,58 @@ A row is a view onto the *nth* item of each of the column Series. Appending rows
 3.  Scikit-Learn: Machine learning tools built on NumPy
 4.  Tensorflow/PyTorch: Deep learning and other voodoo
 
+### The basics of Scikit-Learn
+
+Scikit-Learn documentation: <https://scikit-learn.org/stable/>
+
+1.  Motivating example: Ordinary least squares regression
+
+    ``` python
+    from sklearn import linear_model
+    from sklearn.metrics import mean_squared_error, r2_score
+
+    # Create some random data
+    x = np.random.rand(10)
+    y = np.random.rand(10)
+
+    # Fit a linear model
+    reg = linear_model.LinearRegression()
+    reg.fit(x.reshape(-1,1), y)
+    print("Regression slope:", reg.coef_)
+    ```
+
+2.  Estimate model fit
+
+    ``` python
+    # Generate prediction data. This should properly be generated from hold-out X data.
+    y_prediction = reg.predict(x.reshape(-1,1))
+
+    mse = mean_squared_error(y, y_prediction)
+    r2 = r2_score(y, y_prediction)
+
+    print("Mean squared error:", "{:.3f}".format(mse))
+    print("R squared:", "{:.3f}".format(r2))
+    ```
+
+3.  Inspect our prediction
+
+    ``` python
+    import matplotlib.pyplot as plt
+
+    fig, ax = plt.subplots()
+    ax.scatter(x, y, color="black")
+    ax.plot(x, y_prediction, color="blue")
+
+    # `fig` in Jupyter Lab
+    fig.show()
+    ```
+
 ### (Optional) Statsmodels regression example
 
 1.  Import data
 
     ``` python
-    dataa = pd.read_csv('surveys.csv')
+    data = pd.read_csv('surveys.csv')
 
     # Check for NaN
     print("Valid weights:", data['weight'].count())
@@ -1644,14 +1776,10 @@ A row is a view onto the *nth* item of each of the column Series. Appending rows
 3.  Generic parameters for all models
 
     ``` python
-    importort statsmodels
+    import statsmodels
 
     help(statsmodels.base.model.Model)
     ```
-
-### (Optional) Getting started with machine learning estimators
-
-<https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html> <https://scikit-learn.org/stable/_static/ml_map.png>
 
 ## (Optional) Things we didn't talk about
 
@@ -2055,8 +2183,6 @@ lines[0]
 
 ## Text processing
 
-### <span class="todo TODO">TODO</span> add tokenize example?
-
 ### Use string methods to determine which lines to keep
 
 1.  The file contains front matter that we can discard
@@ -2420,7 +2546,7 @@ fig, ax = plt.subplots()
 time = [0, 1, 2, 3]
 position = [0, 100, 200, 300]
 
-ax.plot(time, postion)
+ax.plot(time, position)
 ```
 
 ### Two kinds of plotting objects
@@ -3132,23 +3258,35 @@ with conn:
 
 ## References
 
-- Complete Python tutorial: <https://docs.python.org/3/tutorial/index.html>
+### Standard Python
+
+- Python tutorial: <https://docs.python.org/3/tutorial/index.html>
 - Python standard library: <https://docs.python.org/3/library/>
-- Writing documentation in Markdown: <https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax>
-- Pandas documentation: <https://pandas.pydata.org/pandas-docs/stable/>
-- Pandas user guide: <https://pandas.pydata.org/docs/user_guide/index.html>
 - String formatting: <https://pyformat.info/>
 - True and False in Python: <https://docs.python.org/3/library/stdtypes.html#truth-value-testing>
+
+### Scientific Computing Libraries
+
+- NumPy documentation: <https://numpy.org/doc/stable/user/index.html>
+- Pandas documentation: <https://pandas.pydata.org/pandas-docs/stable/>
+- Pandas user guide: <https://pandas.pydata.org/docs/user_guide/index.html>
+- Scikit-Learn documentation: <https://scikit-learn.org/stable/>
 - SciPy stats library: <https://docs.scipy.org/doc/scipy/reference/stats.html>
 - Statistics in Python tutorial: <https://scipy-lectures.org/packages/statistics/>
 - Statsmodels library: <https://www.statsmodels.org/stable/index.html>
+
+### Data Visualization Libraries
+
 - Matplotlib gallery of examples: <https://matplotlib.org/gallery/index.html>
 - Matplotlib tutorials: <https://matplotlib.org/stable/tutorials/index.html>
 - Seaborn gallery of examples: <https://seaborn.pydata.org/examples/index.html>
 - Seaborn tutorials: <https://seaborn.pydata.org/tutorial.html>
-- IPython magic commands: <https://ipython.readthedocs.io/en/stable/interactive/magics.html>
-- A somewhat-biased comparison of tools for integrating Python with C/C++: <http://blog.behnel.de/posts/cython-pybind11-cffi-which-tool-to-choose.html>
+
+### Marginalia
+
 - How to choose a code editor: <https://github.com/elliewix/Ways-Of-Installing-Python/blob/master/ways-of-installing.md#why-do-you-need-a-specific-tool>
+- IPython magic commands: <https://ipython.readthedocs.io/en/stable/interactive/magics.html>
+- Writing documentation in Markdown: <https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax>
 
 ## Data Sources
 

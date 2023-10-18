@@ -58,7 +58,7 @@
 
 4. Many keyboard shortcuts are available; see https://gist.github.com/discdiver/9e00618756d120a8c9fa344ac1c375ac
 
-5. (Optional) Jupyter Lab undestands (some) terminal commands
+5. (Optional) Jupyter Lab understands (some) terminal commands
    #+BEGIN_SRC bash
    ls
    #+END_SRC
@@ -827,8 +827,6 @@ ages_dict = dict(zip(ages[::2], ages[1::2]))
 2. Sets
 
 * Data manipulation with Pandas (Week 2)
-** COMMENT TODO Add Numpy calculation
-** COMMENT TODO Run an analysis package
 ** (Optional) Review collections
 *** Lists and dictionaries
 1. Reference item by index/key
@@ -841,6 +839,8 @@ ages_dict = dict(zip(ages[::2], ages[1::2]))
 3. ~'/'.join()~ is a very useful method
 
 ** A very brief introduction to NumPy
+Introductory documentation: https://numpy.org/doc/stable/user/quickstart.html
+
 1. NumPy is the linear algebra library for Python
    #+BEGIN_SRC python
    import numpy as np
@@ -855,7 +855,60 @@ ages_dict = dict(zip(ages[::2], ages[1::2]))
    print(rand[0,0])
    #+END_SRC
 
-3. Arrays are fast but inflexible - the entire array must be of a single type.
+3. Arrays have attributes
+   #+BEGIN_SRC python
+   print(rand.shape)
+   print(rand.size)
+   print(rand.ndim)
+   #+END_SRC
+
+4. Arrays are fast but inflexible - the entire array must be of a single type.
+
+** (Optional) Linear algebra with NumPy
+#+BEGIN_SRC python
+x = np.arange(10)
+y = np.arange(10)
+
+print(x)
+print(y)
+#+END_SRC
+
+1. Operations are element-wise by default
+   #+BEGIN_SRC python
+   print(x * y)
+   #+END_SRC
+
+2. Matrix-wise operations (e.g. dot product) use NumPy functions
+   #+BEGIN_SRC python
+   # Use a special operator if it exists
+   print(x @ y)
+
+   # Otherwise, use a numpy function
+   print(np.dot(x, y))
+   #+END_SRC
+
+3. (Optional) Matlab gotcha: 1-D arrays have no transpose
+   #+BEGIN_SRC python
+   print(x)
+   print(x.T)
+   print(x.reshape(-1,1))
+   #+END_SRC
+
+*** *Challenge*: Matrix operations
+1. Create a 3x3 matrix containing the numbers 0-8. Hint: Consult the NumPy Quickstart documentation here: https://numpy.org/doc/stable/user/quickstart.html
+2. Multiply the matrix by itself (element-wise).
+3. Multiply the matrix by its transpose.
+4. Divide the matrix by itself. What happens?
+
+**** Solutions
+#+BEGIN_SRC python
+# Use method chaining to link actions together
+x = np.arange(9).reshape(3,3)
+
+print(x * x)
+print(x * x.T)
+print(x / x)
+#+END_SRC
 
 ** A very brief introduction to Pandas
 1. Pandas is a library for working with spreadsheet-like data ("DataFrames")
@@ -973,7 +1026,7 @@ type(data.columns)
 - You can convert data between NumPy arrays, Series, and DataFrames
 - You can read data into any of the data structures from files or from standard Python containers
 
-*** *(Optional) Beginner Challenge*
+*** *Beginner Challenge*
 1. Read the data in ~gapminder_gdp_americas.csv~ into a variable called ~americas~ and display its summary statistics.
 2. After reading the data for the Americas, use ~help(americas.head)~ and ~help(americas.tail)~ to find out what ~DataFrame.head~ and ~DataFrame.tail~ do.
    1. How can you display the first three rows of this data?
@@ -1035,13 +1088,13 @@ print(data.columns)
    #+END_SRC
 
 4. ~.iloc~ follows list index conventions ("up to, but not including)", but ~.loc~ does the intuitive right thing ("A through B")
-      #+BEGIN_SRC python
-      index_subset = data.iloc[0:2, 0:2]
-      label_subset = data.loc["Albania":"Belgium", "1952":"1962"]
+   #+BEGIN_SRC python
+   index_subset = data.iloc[0:2, 0:2]
+   label_subset = data.loc["Albania":"Belgium", "1952":"1962"]
 
-      print(index_subset)
-      print(label_subset)
-      #+END_SRC
+   print(index_subset)
+   print(label_subset)
+   #+END_SRC
 
 5. Result of slicing can be used in further operations
    #+BEGIN_SRC python
@@ -1051,15 +1104,25 @@ print(data.columns)
    print(subset.max())
    #+END_SRC
 
-*** (Optional) Treat the data frame as an object and select values using flexible methods
-Pandas always drills down to the most parsimonious representation. On one hand, this is convenient; on the other, it violates the Pythonic expectation for strong types.
+*** *Challenge*: Collection types
+1. Calculate ~subset.max()~ and assign the result to a variable. What kind of thing is it? What are its properties?
+2. What is the maximum value of the new variable? Can you determine this without creating an intermediate variable?
 
-| Shape of data selection | Pandas return type |
-|-------------------------+--------------------|
-|                      2D | DataFrame          |
-|                      1D | Series             |
-|                      0D | single value       |
+**** Solution
+1. Pandas always drills down to the most parsimonious representation. On one hand, this is convenient; on the other, it violates the Pythonic expectation for strong types.
 
+   | Shape of data selection | Pandas return type |
+   |-------------------------+--------------------|
+   |                      2D | DataFrame          |
+   |                      1D | Series             |
+   |                      0D | single value       |
+
+2. Use method chaining
+   #+BEGIN_SRC python
+   print(subset.max().max())
+   #+END_SRC
+
+*** (Optional) Filter on label properties
 1. ~.filter()~ always returns the same type as the original item, whereas ~.loc~ and ~.iloc~ might return a data frame or a series.
    #+BEGIN_SRC python
    italy = data.filter(items=["Italy"], axis="index")
@@ -1074,7 +1137,7 @@ Pandas always drills down to the most parsimonious representation. On one hand, 
    data.filter(like="200", axis="columns").filter(items=["Italy"], axis="index")
    #+END_SRC
 
-** Filtering (i.e. masking) data
+** Filtering  (i.e. masking) data on contents
 *** Use comparisons to select data based on value
 1. Show which data frame elements match a criterion.
    #+BEGIN_SRC python
@@ -1082,25 +1145,28 @@ Pandas always drills down to the most parsimonious representation. On one hand, 
    subset > 10000
    #+END_SRC
 
-2. Use ~.where()~ method to find elements that match the criterion:
+2. Use the criterion match to filter the data frame's contents. This uses index notation:
+   #+BEGIN_SRC python
+   fs = subset[subset > 10000]
+   print(fs)
+   #+END_SRC
+
+   1. ~subset > 10000~ returns a data frame of True/False values
+   2. ~subset[subset > 10000]~ filters its contents based on that True/False data frame
+   3. This section is more properly called "Masking Data," because it involves operations for overlaying a data frame's values without changing the data frame's shape. We don't drop anything from the data frame, we just replace it with ~NaN~.
+
+3. (Optional) Use ~.where()~ method to find elements that match the criterion:
    #+BEGIN_SRC python
    fs = subset.where(subset > 10000)
    print(fs)
    #+END_SRC
 
-   1. ~subset > 10000~ returns a data frame of True/False values
-   2. ~subset.where()~ filters its contents based on that True/False data frame
-   3. This section is more properly called "Masking Data," because it involves operations for overlaying a data frame's values without changing the data frame's shape. We don't drop anything from the data frame, we just replace it with ~NaN~.
-
-3. (Optional) Use the criterion match to filter the data frame's contents. This uses index notation:
-   #+BEGIN_SRC python
-   subset[subset > 10000]
-   #+END_SRC
-
 *** You can filter using any method that returns a data frame
 #+BEGIN_SRC python
 # GDP for all countries greater than the median
-subset.where(subset > subset.median())
+subset[subset > subset.median()]
+
+# OR: subset.where(subset > subset.median())
 #+END_SRC
 
 *** Use method chaining to create final output without creating intermediate variables
@@ -1111,11 +1177,10 @@ subset.rank()
 
 #+BEGIN_SRC python
 # GDP ranking for all countries greater than the median
-subset.where(subset > subset.median()).rank()
-#+END_SRC
+subset[subset > subset.median()].rank()
 
-*** Methods we're not going to cover
-~.query()~ is a flexible, general-purpose way of filtering data frames.
+# OR: subset.where(subset > subset.median()).rank()
+#+END_SRC
 
 ** Working with missing data
 *** By default, most numerical operations ignore missing data
@@ -1174,7 +1239,13 @@ Examples include min, max, mean, std, etc.
    print(fs_fixed)
    #+END_SRC
 
-2. (Optional) Impute missing values. Read the docs, this may or may not be sufficient for your needs.
+2. Replace values that don't meet a criterion with an alternate value
+   #+BEGIN_SRC python
+   subset_fixed = subset.where(subset > 10000, 99)
+   print(subset_fixed)
+   #+END_SRC
+
+3. (Optional) Impute missing values. Read the docs, this may or may not be sufficient for your needs.
    #+BEGIN_SRC python
    fs_imputed = fs.interpolate()
    #+END_SRC
@@ -1245,7 +1316,7 @@ data.to_csv('gapminder_gdp_europe_normed.csv')
 #data.to_csv('gapminder_gdp_europe_normed.csv', index=False)
 #+END_SRC
 
-** Working with multiple tables (in an SQL-like manner)
+** Working with multiple tables
 *** Concatenating data frames
 #+BEGIN_SRC python
 surveys = pd.read_csv('data/surveys.csv', index_col="record_id")
@@ -1260,7 +1331,7 @@ df3 = pd.concat([df1, df2])
 print(df3.shape)
 #+END_SRC
 
-*** Joining data frames
+*** (Optional) Joining data frames (in an SQL-like manner)
 1. Import species data
    #+BEGIN_SRC python
    species = pd.read_csv('data/species.csv', index_col="species_id")
@@ -1316,7 +1387,8 @@ A row is a view onto the /nth/ item of each of the column Series. Appending rows
    pd.concat([italy, poland], axis=1).T
    #+END_SRC
 
-** Scientific Computing Libraries
+** (Optional) Scientific Computing Libraries
+*** Libraries
 1. SciPy projects
    1. Numpy: Linear algebra
    2. Pandas
@@ -1325,10 +1397,52 @@ A row is a view onto the /nth/ item of each of the column Series. Appending rows
 3. Scikit-Learn: Machine learning tools built on NumPy
 4. Tensorflow/PyTorch: Deep learning and other voodoo
 
+*** The basics of Scikit-Learn
+Scikit-Learn documentation: https://scikit-learn.org/stable/
+
+1. Motivating example: Ordinary least squares regression
+   #+BEGIN_SRC python
+   from sklearn import linear_model
+   from sklearn.metrics import mean_squared_error, r2_score
+
+   # Create some random data
+   x = np.random.rand(10)
+   y = np.random.rand(10)
+
+   # Fit a linear model
+   reg = linear_model.LinearRegression()
+   reg.fit(x.reshape(-1,1), y)
+   print("Regression slope:", reg.coef_)
+   #+END_SRC
+
+2. Estimate model fit
+   #+BEGIN_SRC python
+   # Generate prediction data. This should properly be generated from hold-out X data.
+   y_prediction = reg.predict(x.reshape(-1,1))
+
+   mse = mean_squared_error(y, y_prediction)
+   r2 = r2_score(y, y_prediction)
+
+   print("Mean squared error:", "{:.3f}".format(mse))
+   print("R squared:", "{:.3f}".format(r2))
+   #+END_SRC
+
+3. Inspect our prediction
+   #+BEGIN_SRC python
+   import matplotlib.pyplot as plt
+
+   fig, ax = plt.subplots()
+   ax.scatter(x, y, color="black")
+   ax.plot(x, y_prediction, color="blue")
+
+   # `fig` in Jupyter Lab
+   fig.show()
+   #+END_SRC
+
 *** (Optional) Statsmodels regression example
 1. Import data
    #+Begin_SRC python
-   dataa = pd.read_csv('surveys.csv')
+   data = pd.read_csv('surveys.csv')
 
    # Check for NaN
    print("Valid weights:", data['weight'].count())
@@ -1347,14 +1461,10 @@ A row is a view onto the /nth/ item of each of the column Series. Appending rows
 
 3. Generic parameters for all models
    #+BEGIN_SRC python
-   importort statsmodels
+   import statsmodels
 
    help(statsmodels.base.model.Model)
    #+END_SRC
-
-*** (Optional) Getting started with machine learning estimators
-https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html
-https://scikit-learn.org/stable/_static/ml_map.png
 
 ** (Optional) Things we didn't talk about
 1. pipe
@@ -1699,8 +1809,7 @@ lines[0]
 #+END_SRC
 
 ** Text processing
-
-*** TODO add tokenize example?
+*** COMMENT TODO add tokenize example?
 *** Use string methods to determine which lines to keep
 1. The file contains front matter that we can discard
    #+BEGIN_SRC python
@@ -2011,7 +2120,7 @@ fig, ax = plt.subplots()
 time = [0, 1, 2, 3]
 position = [0, 100, 200, 300]
 
-ax.plot(time, postion)
+ax.plot(time, position)
 #+END_SRC
 
 *** Two kinds of plotting objects
@@ -2665,23 +2774,28 @@ with conn:
 - Fruit Alphabet: https://en.wikibooks.org/wiki/Wikijunior:Fruit_Alphabet
 
 ** References
-- Complete Python tutorial: https://docs.python.org/3/tutorial/index.html
+*** Standard Python
+- Python tutorial: https://docs.python.org/3/tutorial/index.html
 - Python standard library: https://docs.python.org/3/library/
-- Writing documentation in Markdown: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
-- Pandas documentation: https://pandas.pydata.org/pandas-docs/stable/
-- Pandas user guide: https://pandas.pydata.org/docs/user_guide/index.html
 - String formatting: https://pyformat.info/
 - True and False in Python: https://docs.python.org/3/library/stdtypes.html#truth-value-testing
+*** Scientific Computing Libraries
+- NumPy documentation: https://numpy.org/doc/stable/user/index.html
+- Pandas documentation: https://pandas.pydata.org/pandas-docs/stable/
+- Pandas user guide: https://pandas.pydata.org/docs/user_guide/index.html
+- Scikit-Learn documentation: https://scikit-learn.org/stable/
 - SciPy stats library: https://docs.scipy.org/doc/scipy/reference/stats.html
 - Statistics in Python tutorial: https://scipy-lectures.org/packages/statistics/
 - Statsmodels library: https://www.statsmodels.org/stable/index.html
+*** Data Visualization Libraries
 - Matplotlib gallery of examples: https://matplotlib.org/gallery/index.html
 - Matplotlib tutorials: https://matplotlib.org/stable/tutorials/index.html
 - Seaborn gallery of examples: https://seaborn.pydata.org/examples/index.html
 - Seaborn tutorials: https://seaborn.pydata.org/tutorial.html
-- IPython magic commands: https://ipython.readthedocs.io/en/stable/interactive/magics.html
-- A somewhat-biased comparison of tools for integrating Python with C/C++: http://blog.behnel.de/posts/cython-pybind11-cffi-which-tool-to-choose.html
+*** Marginalia
 - How to choose a code editor: https://github.com/elliewix/Ways-Of-Installing-Python/blob/master/ways-of-installing.md#why-do-you-need-a-specific-tool
+- IPython magic commands: https://ipython.readthedocs.io/en/stable/interactive/magics.html
+- Writing documentation in Markdown: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
 
 ** Data Sources
 1. Gapminder data: http://swcarpentry.github.io/python-novice-gapminder/files/python-novice-gapminder-data.zip
