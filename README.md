@@ -24,12 +24,13 @@
   - <a href="#sorting-and-grouping" id="toc-sorting-and-grouping"><span class="toc-section-number">2.11</span> Sorting and grouping</a>
   - <a href="#write-output" id="toc-write-output"><span class="toc-section-number">2.12</span> Write output</a>
   - <a href="#working-with-multiple-tables" id="toc-working-with-multiple-tables"><span class="toc-section-number">2.13</span> Working with multiple tables</a>
-  - <a href="#optional-adding-rows-to-dataframes" id="toc-optional-adding-rows-to-dataframes"><span class="toc-section-number">2.14</span> (Optional) Adding rows to DataFrames</a>
-  - <a href="#optional-scientific-computing-libraries" id="toc-optional-scientific-computing-libraries"><span class="toc-section-number">2.15</span> (Optional) Scientific Computing Libraries</a>
-  - <a href="#optional-things-we-didnt-talk-about" id="toc-optional-things-we-didnt-talk-about"><span class="toc-section-number">2.16</span> (Optional) Things we didn't talk about</a>
-  - <a href="#optional-pandas-method-chaining-in-the-wild" id="toc-optional-pandas-method-chaining-in-the-wild"><span class="toc-section-number">2.17</span> (Optional) Pandas method chaining in the wild</a>
-  - <a href="#optional-introspecting-on-the-dataframe-object" id="toc-optional-introspecting-on-the-dataframe-object"><span class="toc-section-number">2.18</span> (Optional) Introspecting on the DataFrame object</a>
-  - <a href="#carpentries-version-group-by-split-apply-combine" id="toc-carpentries-version-group-by-split-apply-combine"><span class="toc-section-number">2.19</span> (Carpentries version) Group By: split-apply-combine</a>
+  - <a href="#optional-text-processing-in-pandas" id="toc-optional-text-processing-in-pandas"><span class="toc-section-number">2.14</span> (Optional) Text processing in Pandas</a>
+  - <a href="#optional-adding-rows-to-dataframes" id="toc-optional-adding-rows-to-dataframes"><span class="toc-section-number">2.15</span> (Optional) Adding rows to DataFrames</a>
+  - <a href="#optional-scientific-computing-libraries" id="toc-optional-scientific-computing-libraries"><span class="toc-section-number">2.16</span> (Optional) Scientific Computing Libraries</a>
+  - <a href="#optional-things-we-didnt-talk-about" id="toc-optional-things-we-didnt-talk-about"><span class="toc-section-number">2.17</span> (Optional) Things we didn't talk about</a>
+  - <a href="#optional-pandas-method-chaining-in-the-wild" id="toc-optional-pandas-method-chaining-in-the-wild"><span class="toc-section-number">2.18</span> (Optional) Pandas method chaining in the wild</a>
+  - <a href="#optional-introspecting-on-the-dataframe-object" id="toc-optional-introspecting-on-the-dataframe-object"><span class="toc-section-number">2.19</span> (Optional) Introspecting on the DataFrame object</a>
+  - <a href="#carpentries-version-group-by-split-apply-combine" id="toc-carpentries-version-group-by-split-apply-combine"><span class="toc-section-number">2.20</span> (Carpentries version) Group By: split-apply-combine</a>
 - <a href="#building-programs-week-3" id="toc-building-programs-week-3"><span class="toc-section-number">3</span> Building Programs (Week 3)</a>
   - <a href="#notebooks-vs-python-scripts" id="toc-notebooks-vs-python-scripts"><span class="toc-section-number">3.1</span> Notebooks vs Python scripts</a>
   - <a href="#python-from-the-terminal" id="toc-python-from-the-terminal"><span class="toc-section-number">3.2</span> Python from the terminal</a>
@@ -1664,6 +1665,59 @@ print(df3.shape)
 
     print(df_birds.head())
     print(df_birds.shape)
+    ```
+
+## (Optional) Text processing in Pandas
+
+cf. <https://pandas.pydata.org/docs/user_guide/text.html>
+
+1.  Import tabular data that contains strings
+
+    ``` python
+    species = pd.read_csv('data/species.csv', index_col='species_id')
+
+    # You can explicitly set all of the columns to type string
+    # species = pd.read_csv('data/species.csv', index_col='species_id', dtype='string')
+
+    # ...or specify the type of individual columns
+    # species = pd.read_csv('data/species.csv', index_col='species_id',
+    #                       dtype = {"genus": "string",
+    #                                "species": "string",
+    #                                "taxa": "string"})
+
+    print(species.head())
+    print(species.info())
+    print(species.describe())
+    ```
+
+2.  A Pandas Series has string methods that operate on the entire Series at once
+
+    ``` python
+    # Two ways of getting an individual column
+    print(type(species.genus))
+    print(type(species["genus"]))
+
+    # Inspect the available string methods
+    print(dir(species["genus"].str))
+    ```
+
+3.  Use string methods for filtering
+
+    ``` python
+    # Which species are in the taxa "Bird"?
+    print(species["taxa"].str.startswith("Bird"))
+
+    # Filter the dataset to only look at Birds
+    print(species[species["taxa"].str.startswith("Bird")])
+    ```
+
+4.  Use string methods to transform and combine data
+
+    ``` python
+    binomial_name = species["genus"].str.cat(species["species"].str.title(), " ")
+    species["binomial"] = binomial_name
+
+    print(species.head())
     ```
 
 ## (Optional) Adding rows to DataFrames

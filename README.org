@@ -1364,6 +1364,54 @@ print(df3.shape)
    print(df_birds.shape)
    #+END_SRC
 
+** (Optional) Text processing in Pandas
+cf. https://pandas.pydata.org/docs/user_guide/text.html
+
+1. Import tabular data that contains strings
+   #+BEGIN_SRC python
+   species = pd.read_csv('data/species.csv', index_col='species_id')
+
+   # You can explicitly set all of the columns to type string
+   # species = pd.read_csv('data/species.csv', index_col='species_id', dtype='string')
+
+   # ...or specify the type of individual columns
+   # species = pd.read_csv('data/species.csv', index_col='species_id',
+   #                       dtype = {"genus": "string",
+   #                                "species": "string",
+   #                                "taxa": "string"})
+
+   print(species.head())
+   print(species.info())
+   print(species.describe())
+   #+END_SRC
+
+2. A Pandas Series has string methods that operate on the entire Series at once
+   #+BEGIN_SRC python
+   # Two ways of getting an individual column
+   print(type(species.genus))
+   print(type(species["genus"]))
+
+   # Inspect the available string methods
+   print(dir(species["genus"].str))
+   #+END_SRC
+
+3. Use string methods for filtering
+   #+BEGIN_SRC python
+   # Which species are in the taxa "Bird"?
+   print(species["taxa"].str.startswith("Bird"))
+
+   # Filter the dataset to only look at Birds
+   print(species[species["taxa"].str.startswith("Bird")])
+   #+END_SRC
+
+4. Use string methods to transform and combine data
+   #+BEGIN_SRC python
+   binomial_name = species["genus"].str.cat(species["species"].str.title(), " ")
+   species["binomial"] = binomial_name
+
+   print(species.head())
+   #+END_SRC
+
 ** (Optional) Adding rows to DataFrames
 A row is a view onto the /nth/ item of each of the column Series. Appending rows is a performance bottleneck because it requires a separate append operation for each Series. You should concatenate data frames instead.
 
