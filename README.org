@@ -846,20 +846,20 @@ Introductory documentation: https://numpy.org/doc/stable/user/quickstart.html
    import numpy as np
 
    # Create an array of random numbers
-   rand = np.random.rand(3, 4)
-   print(rand)
+   m_rand = np.random.rand(3, 4)
+   print(m_rand)
    #+END_SRC
 
 2. Arrays are indexed like lists
    #+BEGIN_SRC python
-   print(rand[0,0])
+   print(m_rand[0,0])
    #+END_SRC
 
 3. Arrays have attributes
    #+BEGIN_SRC python
-   print(rand.shape)
-   print(rand.size)
-   print(rand.ndim)
+   print(m_rand.shape)
+   print(m_rand.size)
+   print(m_rand.ndim)
    #+END_SRC
 
 4. Arrays are fast but inflexible - the entire array must be of a single type.
@@ -1102,6 +1102,12 @@ print(data.columns)
 
    print(subset.describe())
    print(subset.max())
+   #+END_SRC
+
+6. Insert new values using ~.at~ (for label indexing) or ~.iat~ (for numerical indexing)
+   #+BEGIN_SRC python
+   subset.at["Italy", "1962"] = 2000
+   print(subset)
    #+END_SRC
 
 *** *Challenge*: Collection types
@@ -1451,43 +1457,57 @@ Scikit-Learn documentation: https://scikit-learn.org/stable/
 1. Motivating example: Ordinary least squares regression
    #+BEGIN_SRC python
    from sklearn import linear_model
-   from sklearn.metrics import mean_squared_error, r2_score
 
    # Create some random data
-   x = np.random.rand(10)
-   y = np.random.rand(10)
+   x_train = np.random.rand(20)
+   y = np.random.rand(20)
 
    # Fit a linear model
    reg = linear_model.LinearRegression()
-   reg.fit(x.reshape(-1,1), y)
+   reg.fit(x_train.reshape(-1,1), y)
    print("Regression slope:", reg.coef_)
    #+END_SRC
 
 2. Estimate model fit
    #+BEGIN_SRC python
-   # Generate prediction data. This should properly be generated from hold-out X data.
-   y_prediction = reg.predict(x.reshape(-1,1))
+   from sklearn.metrics import r2_score
 
+   # Test model fit with new data
+   x_test = np.random.rand(20)
+   y_prediction = reg.predict(x_test.reshape(-1,1))
+
+   # Get model stats
    mse = mean_squared_error(y, y_prediction)
    r2 = r2_score(y, y_prediction)
 
-   print("Mean squared error:", "{:.3f}".format(mse))
    print("R squared:", "{:.3f}".format(r2))
    #+END_SRC
 
-3. Inspect our prediction
+3. (Optional) Inspect our prediction
    #+BEGIN_SRC python
    import matplotlib.pyplot as plt
 
    fig, ax = plt.subplots()
-   ax.scatter(x, y, color="black")
-   ax.plot(x, y_prediction, color="blue")
+   ax.scatter(x_train, y, color="black")
+   ax.plot(x_test, y_prediction, color="blue")
 
    # `fig` in Jupyter Lab
    fig.show()
    #+END_SRC
 
-*** (Optional) Statsmodels regression example
+4. (Optional) Compare with Statsmodels
+   #+BEGIN_SRC python
+   # Load modules and data
+   import statsmodels.api as sm
+
+   # Fit and summarize OLS model (center data to get accurate model fit
+   mod = sm.OLS(y - y.mean(), x_train - x_train.mean())
+   res = mod.fit()
+
+   print(res.summary())
+   #+END_SRC
+
+*** (Optional) Statsmodels regression example with applied data
 1. Import data
    #+Begin_SRC python
    data = pd.read_csv('surveys.csv')
@@ -1595,7 +1615,6 @@ wine.rename(columns={"color_intensity": "ci"})
    #+END_SRC
 
 * Building Programs (Week 3)
-** COMMENT TODO Add modulus example to loop
 ** Notebooks vs Python scripts
 *** Differences between .ipynb and .py
 1. Export notebook to .py file
@@ -1609,7 +1628,7 @@ Broadly, a trade-off between managing big code bases and making it easy to exper
 3. Version control
 4. Remote scripts
 
-** Python from the terminal
+** (Optional) Python from the terminal
 1. Python is an interactive interpreter (REPL)
    #+BEGIN_SRC bash
    python
@@ -1754,7 +1773,99 @@ else:
 - Always associated with an ~if~.
 - Must come before the ~else~ (which is the “catch all”).
 
-*** (Optional) Conditionals are often used inside loops
+*** Conditions are tested once, in order
+Python steps through the branches of the conditional in order, testing each in turn. Order matters! The following is wrong:
+#+BEGIN_SRC python
+grade = 85
+if grade >= 70:
+    print('grade is C')
+elif grade >= 80:
+    print('grade is B')
+elif grade >= 90:
+    print('grade is A')
+#+END_SRC
+
+*** Compound Relations Using ~and~, ~or~, and Parentheses
+Often, you want some combination of things to be true. You can combine relations within a conditional using ~and~ and ~or~. Continuing the example above, suppose you have:
+#+BEGIN_SRC python
+mass     = [ 3.54,  2.07,  9.22,  1.86,  1.71]
+velocity = [10.00, 20.00, 30.00, 25.00, 20.00]
+
+for m, v in zip(mass, velocity):
+    if m > 5 and v > 20:
+        print("Fast heavy object.  Duck!")
+    elif m > 2 and m <= 5 and v <= 20:
+        print("Normal traffic")
+    elif m <= 2 and v <= 20:
+        print("Slow light object.  Ignore it")
+    else:
+        print("Whoa!  Something is up with the data.  Check it")
+#+END_SRC
+- Use () to group subsets of conditions
+- Aside: For a more natural way of working with many lists, look at ~zip()~
+
+*** Use the modulus to print occasional status messages
+Conditionals are often used inside loops.
+
+#+BEGIN_SRC python
+data_frames = []
+for count, filename in enumerate(glob.glob('data/gapminder_[!all]*.csv')):
+    # Print every other filename
+    if count % 2 == 0:
+        print(count, filename)
+    data = pd.read_csv(filename)
+    data_frames.append(data)
+
+all_data = pd.concat(data_frames)
+print(all_data.shape)
+#+END_SRC
+
+*** *Challenge*: Process small files
+Iterate through all of the CSV files in the data directory. Print the file name and file length for any file that is less than 30 lines long.
+
+**** Solution
+#+BEGIN_SRC python
+for filename in glob.glob('data/*.csv'):
+    data = pd.read_csv(filename)
+    if len(data) < 30:
+        print(filename, len(data))
+#+END_SRC
+
+*** (Optional) Use pathlib to write code that works across operating systems
+1. Pathlib provides cross-platform path objects
+   #+BEGIN_SRC python
+   from pathlib import Path
+
+   # Create Path objects
+   raw_path = Path("data")
+   processed_path = Path("data/processed")
+
+   print("Relative path:", raw_path)
+   print("Absolute path:", raw_path.absolute())
+   #+END_SRC
+
+2. The file objects have methods that provide much better information about files and directories.
+   #+BEGIN_SRC python
+   #Note the careful testing at each level of the code.
+   data_frames = []
+
+   if relative_path.exists():
+       for filename in raw_path.glob('gapminder_[!all]*.csv'):
+           if filename.is_file():
+               data = pd.read_csv(filename)
+               print(filename)
+               data_frames.append(data)
+
+   all_data = pd.concat(data_frames)
+
+   # Check for destination folder and create if it doesn't exist
+   if not processed_path.exists():
+       processed_path.mkdir()
+
+   all_data.to_csv(processed_path.joinpath("combined_data.csv"))
+   #+END_SRC
+
+*** COMMENT (Old) Conditionals are often used inside loops
 Not much point using a conditional when we know the value (as above), but useful when we have a collection to process.
 #+BEGIN_SRC python
 masses = [3.54, 2.07, 9.22, 1.86, 1.71]
@@ -1767,62 +1878,7 @@ for m in masses:
         print(m, 'is small')
 #+END_SRC
 
-*** TODO Use enumeration to print occasional status messages for long-running processes
-*** (Optional) Conditions are tested once, in order
-Python steps through the branches of the conditional in order, testing each in turn. Order matters! The following is wrong:
-#+BEGIN_SRC python
-grade = 85
-if grade >= 70:
-    print('grade is C')
-elif grade >= 80:
-    print('grade is B')
-elif grade >= 90:
-    print('grade is A')
-#+END_SRC
-
-*** (Optional) Compound Relations Using ~and~, ~or~, and Parentheses
-Often, you want some combination of things to be true. You can combine relations within a conditional using ~and~ and ~or~. Continuing the example above, suppose you have:
-#+BEGIN_SRC python
-mass     = [ 3.54,  2.07,  9.22,  1.86,  1.71]
-velocity = [10.00, 20.00, 30.00, 25.00, 20.00]
-
-i = 0
-for i in range(5):
-    if mass[i] > 5 and velocity[i] > 20:
-        print("Fast heavy object.  Duck!")
-    elif mass[i] > 2 and mass[i] <= 5 and velocity[i] <= 20:
-        print("Normal traffic")
-    elif mass[i] <= 2 and velocity[i] <= 20:
-        print("Slow light object.  Ignore it")
-    else:
-        print("Whoa!  Something is up with the data.  Check it")
-#+END_SRC
-- Use () to group subsets of conditions
-- Aside: For a more natural way of working with many lists, look at ~zip()~
-
-*** (Optional) Use pathlib to write code that works across operating systems
-1. Pathlib provides cross-platform path objects
-   #+BEGIN_SRC python
-   from pathlib import Path
-
-   relative_path = Path("data")   # data subdirectory
-   # relative_path = Path()       # current directory
-   print("Relative path:", relative_path)
-   print("Absolute path:", relative_path.absolute())
-   #+END_SRC
-
-2. The file objects have methods that provide much better information about files and directories.
-   #+BEGIN_SRC python
-   #Note the careful testing at each level of the code.
-   if relative_path.exists():
-       for filename in relative_path.glob('gapminder_*.csv'):
-           if filename.is_file():
-               data = pd.read_csv(filename)
-               print(filename)
-               print(data.head(1))
-   #+END_SRC
-
-** Generic file handling
+** (Optional) Generic file handling
 Pandas understands specific file types, but what if you need to work with a generic file?
 *** Open the file with a context manager
 #+BEGIN_SRC python
@@ -1856,8 +1912,7 @@ print(lines[0])
 lines[0]
 #+END_SRC
 
-** Text processing
-*** COMMENT TODO add tokenize example?
+** (Optional) Text processing and data cleanup
 *** Use string methods to determine which lines to keep
 1. The file contains front matter that we can discard
    #+BEGIN_SRC python
@@ -1998,22 +2053,17 @@ print_greeting()
       2. At the very end, with a final result
    2. Docstring provides function help. Use triple quotes if you need the docstring to span multiple lines.
 
-*** *Challenge (option 1): Encapsulate text processing in a function*
+*** *Challenge (text processing)*: Encapsulate text processing in a function
 Write a function that takes ~line~ as an input and returns the information required by ~writer.writerow()~.
 
-*** *Challenge (option 2): Encapsulate data processing in a function*
-Write a function that encapsulates the data normalization from the Pandas workshop into a function. The function should:
-1. Take a data frame as its input
-2. Calculate the mean Z score for each country
-3. Divide countries into "wealthy" and "non-wealthy" categories
-4. Add this information to the data frame as new columns
-5. Return the modified data frame
+*** *Challenge (data normalization)*: Encapsulate Z score calculations in a function
+1. Write a function that encapsulates the Z-score calculations from the Pandas workshop into a function. The function should return two Series:
+   1. The mean Z score for each country over time
+   2. A categorical variable that identifies countries as "wealthy" or "non-wealthy"
+2. Use the function to inspect one of the Gapminder continental datasets.
 
 **** Solution
 #+BEGIN_SRC python
-import pandas as pd
-import glob
-
 def norm_data(data):
     """Add a Z score column to each data set."""
 
@@ -2026,17 +2076,28 @@ def norm_data(data):
     # Group countries into "wealthy" (z > 0) and "not wealthy" (z <= 0)
     z_bool = mean_z > 0
 
-    # Append to DataFrame
-    data["mean_z"] = mean_z
-    data["wealthy"] = z_bool
+    return mean_z, z_bool
 
+data = pd.read_csv("data/gapminder_gdp_europe.csv", index_col = "country")
+mean_z, z_bool = norm_data(data)
+
+# If you need to drop the contintent column
+# mean_z, z_bool = norm_data(data.drop("continent", axis=1))
+#+END_SRC
+
+**** (Optional) Use the function to process all files
+#+BEGIN_SRC python
 for filename in glob.glob('data/gapminder_*.csv'):
     # Print a status message
     print("Current file:", filename)
 
     # Read the data into a DataFrame and modify it
-    data = pd.read_csv(filename)
-    norm_data(data)
+    data = pd.read_csv(filename, index_col = "country")
+    mean_z, z_bool = norm_data(data)
+
+    # Append to DataFrame
+    data["mean_z"] = mean_z
+    data["wealthy"] = z_bool
 
     # Generate an output file name
     parts = filename.split(".csv")

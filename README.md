@@ -33,11 +33,11 @@
   - <a href="#carpentries-version-group-by-split-apply-combine" id="toc-carpentries-version-group-by-split-apply-combine"><span class="toc-section-number">2.20</span> (Carpentries version) Group By: split-apply-combine</a>
 - <a href="#building-programs-week-3" id="toc-building-programs-week-3"><span class="toc-section-number">3</span> Building Programs (Week 3)</a>
   - <a href="#notebooks-vs-python-scripts" id="toc-notebooks-vs-python-scripts"><span class="toc-section-number">3.1</span> Notebooks vs Python scripts</a>
-  - <a href="#python-from-the-terminal" id="toc-python-from-the-terminal"><span class="toc-section-number">3.2</span> Python from the terminal</a>
+  - <a href="#optional-python-from-the-terminal" id="toc-optional-python-from-the-terminal"><span class="toc-section-number">3.2</span> (Optional) Python from the terminal</a>
   - <a href="#looping-over-data-sets" id="toc-looping-over-data-sets"><span class="toc-section-number">3.3</span> Looping Over Data Sets</a>
   - <a href="#conditionals" id="toc-conditionals"><span class="toc-section-number">3.4</span> Conditionals</a>
-  - <a href="#generic-file-handling" id="toc-generic-file-handling"><span class="toc-section-number">3.5</span> Generic file handling</a>
-  - <a href="#text-processing" id="toc-text-processing"><span class="toc-section-number">3.6</span> Text processing</a>
+  - <a href="#optional-generic-file-handling" id="toc-optional-generic-file-handling"><span class="toc-section-number">3.5</span> (Optional) Generic file handling</a>
+  - <a href="#optional-text-processing-and-data-cleanup" id="toc-optional-text-processing-and-data-cleanup"><span class="toc-section-number">3.6</span> (Optional) Text processing and data cleanup</a>
   - <a href="#writing-functions" id="toc-writing-functions"><span class="toc-section-number">3.7</span> Writing Functions</a>
   - <a href="#carpentries-version-conditionals" id="toc-carpentries-version-conditionals"><span class="toc-section-number">3.8</span> (Carpentries version) Conditionals</a>
   - <a href="#optional-variable-scope" id="toc-optional-variable-scope"><span class="toc-section-number">3.9</span> (Optional) Variable Scope</a>
@@ -1057,22 +1057,22 @@ Introductory documentation: <https://numpy.org/doc/stable/user/quickstart.html>
     import numpy as np
 
     # Create an array of random numbers
-    rand = np.random.rand(3, 4)
-    print(rand)
+    m_rand = np.random.rand(3, 4)
+    print(m_rand)
     ```
 
 2.  Arrays are indexed like lists
 
     ``` python
-    print(rand[0,0])
+    print(m_rand[0,0])
     ```
 
 3.  Arrays have attributes
 
     ``` python
-    print(rand.shape)
-    print(rand.size)
-    print(rand.ndim)
+    print(m_rand.shape)
+    print(m_rand.size)
+    print(m_rand.ndim)
     ```
 
 4.  Arrays are fast but inflexible - the entire array must be of a single type.
@@ -1360,6 +1360,13 @@ print(data.columns)
 
     print(subset.describe())
     print(subset.max())
+    ```
+
+6.  Insert new values using `.at` (for label indexing) or `.iat` (for numerical indexing)
+
+    ``` python
+    subset.at["Italy", "1962"] = 2000
+    print(subset)
     ```
 
 ### **Challenge**: Collection types
@@ -1766,45 +1773,60 @@ Scikit-Learn documentation: <https://scikit-learn.org/stable/>
 
     ``` python
     from sklearn import linear_model
-    from sklearn.metrics import mean_squared_error, r2_score
 
     # Create some random data
-    x = np.random.rand(10)
-    y = np.random.rand(10)
+    x_train = np.random.rand(20)
+    y = np.random.rand(20)
 
     # Fit a linear model
     reg = linear_model.LinearRegression()
-    reg.fit(x.reshape(-1,1), y)
+    reg.fit(x_train.reshape(-1,1), y)
     print("Regression slope:", reg.coef_)
     ```
 
 2.  Estimate model fit
 
     ``` python
-    # Generate prediction data. This should properly be generated from hold-out X data.
-    y_prediction = reg.predict(x.reshape(-1,1))
+    from sklearn.metrics import r2_score
 
+    # Test model fit with new data
+    x_test = np.random.rand(20)
+    y_prediction = reg.predict(x_test.reshape(-1,1))
+
+    # Get model stats
     mse = mean_squared_error(y, y_prediction)
     r2 = r2_score(y, y_prediction)
 
-    print("Mean squared error:", "{:.3f}".format(mse))
     print("R squared:", "{:.3f}".format(r2))
     ```
 
-3.  Inspect our prediction
+3.  (Optional) Inspect our prediction
 
     ``` python
     import matplotlib.pyplot as plt
 
     fig, ax = plt.subplots()
-    ax.scatter(x, y, color="black")
-    ax.plot(x, y_prediction, color="blue")
+    ax.scatter(x_train, y, color="black")
+    ax.plot(x_test, y_prediction, color="blue")
 
     # `fig` in Jupyter Lab
     fig.show()
     ```
 
-### (Optional) Statsmodels regression example
+4.  (Optional) Compare with Statsmodels
+
+    ``` python
+    # Load modules and data
+    import statsmodels.api as sm
+
+    # Fit and summarize OLS model (center data to get accurate model fit
+    mod = sm.OLS(y - y.mean(), x_train - x_train.mean())
+    res = mod.fit()
+
+    print(res.summary())
+    ```
+
+### (Optional) Statsmodels regression example with applied data
 
 1.  Import data
 
@@ -1946,7 +1968,7 @@ Broadly, a trade-off between managing big code bases and making it easy to exper
 3.  Version control
 4.  Remote scripts
 
-## Python from the terminal
+## (Optional) Python from the terminal
 
 1.  Python is an interactive interpreter (REPL)
 
@@ -2114,24 +2136,7 @@ else:
 - Always associated with an `if`.
 - Must come before the `else` (which is the “catch all”).
 
-### (Optional) Conditionals are often used inside loops
-
-Not much point using a conditional when we know the value (as above), but useful when we have a collection to process.
-
-``` python
-masses = [3.54, 2.07, 9.22, 1.86, 1.71]
-for m in masses:
-    if m > 9.0:
-        print(m, 'is HUGE')
-    elif m > 3.0:
-        print(m, 'is large')
-    else:
-        print(m, 'is small')
-```
-
-### <span class="todo TODO">TODO</span> Use enumeration to print occasional status messages for long-running processes
-
-### (Optional) Conditions are tested once, in order
+### Conditions are tested once, in order
 
 Python steps through the branches of the conditional in order, testing each in turn. Order matters! The following is wrong:
 
@@ -2145,7 +2150,7 @@ elif grade >= 90:
     print('grade is A')
 ```
 
-### (Optional) Compound Relations Using `and`, `or`, and Parentheses
+### Compound Relations Using `and`, `or`, and Parentheses
 
 Often, you want some combination of things to be true. You can combine relations within a conditional using `and` and `or`. Continuing the example above, suppose you have:
 
@@ -2153,13 +2158,12 @@ Often, you want some combination of things to be true. You can combine relations
 mass     = [ 3.54,  2.07,  9.22,  1.86,  1.71]
 velocity = [10.00, 20.00, 30.00, 25.00, 20.00]
 
-i = 0
-for i in range(5):
-    if mass[i] > 5 and velocity[i] > 20:
+for m, v in zip(mass, velocity):
+    if m > 5 and v > 20:
         print("Fast heavy object.  Duck!")
-    elif mass[i] > 2 and mass[i] <= 5 and velocity[i] <= 20:
+    elif m > 2 and m <= 5 and v <= 20:
         print("Normal traffic")
-    elif mass[i] <= 2 and velocity[i] <= 20:
+    elif m <= 2 and v <= 20:
         print("Slow light object.  Ignore it")
     else:
         print("Whoa!  Something is up with the data.  Check it")
@@ -2168,6 +2172,36 @@ for i in range(5):
 - Use () to group subsets of conditions
 - Aside: For a more natural way of working with many lists, look at `zip()`
 
+### Use the modulus to print occasional status messages
+
+Conditionals are often used inside loops.
+
+``` python
+data_frames = []
+for count, filename in enumerate(glob.glob('data/gapminder_[!all]*.csv')):
+    # Print every other filename
+    if count % 2 == 0:
+        print(count, filename)
+    data = pd.read_csv(filename)
+    data_frames.append(data)
+
+all_data = pd.concat(data_frames)
+print(all_data.shape)
+```
+
+### **Challenge**: Process small files
+
+Iterate through all of the CSV files in the data directory. Print the file name and file length for any file that is less than 30 lines long.
+
+#### Solution
+
+``` python
+for filename in glob.glob('data/*.csv'):
+    data = pd.read_csv(filename)
+    if len(data) < 30:
+        print(filename, len(data))
+```
+
 ### (Optional) Use pathlib to write code that works across operating systems
 
 1.  Pathlib provides cross-platform path objects
@@ -2175,25 +2209,37 @@ for i in range(5):
     ``` python
     from pathlib import Path
 
-    relative_path = Path("data")   # data subdirectory
-    # relative_path = Path()       # current directory
-    print("Relative path:", relative_path)
-    print("Absolute path:", relative_path.absolute())
+    # Create Path objects
+    raw_path = Path("data")
+    processed_path = Path("data/processed")
+
+    print("Relative path:", raw_path)
+    print("Absolute path:", raw_path.absolute())
     ```
 
 2.  The file objects have methods that provide much better information about files and directories.
 
     ``` python
     #Note the careful testing at each level of the code.
+    data_frames = []
+
     if relative_path.exists():
-        for filename in relative_path.glob('gapminder_*.csv'):
+        for filename in raw_path.glob('gapminder_[!all]*.csv'):
             if filename.is_file():
                 data = pd.read_csv(filename)
                 print(filename)
-                print(data.head(1))
+                data_frames.append(data)
+
+    all_data = pd.concat(data_frames)
+
+    # Check for destination folder and create if it doesn't exist
+    if not processed_path.exists():
+        processed_path.mkdir()
+
+    all_data.to_csv(processed_path.joinpath("combined_data.csv"))
     ```
 
-## Generic file handling
+## (Optional) Generic file handling
 
 Pandas understands specific file types, but what if you need to work with a generic file?
 
@@ -2235,7 +2281,7 @@ print(lines[0])
 lines[0]
 ```
 
-## Text processing
+## (Optional) Text processing and data cleanup
 
 ### Use string methods to determine which lines to keep
 
@@ -2400,26 +2446,20 @@ print_greeting()
         2.  At the very end, with a final result
     2.  Docstring provides function help. Use triple quotes if you need the docstring to span multiple lines.
 
-### **Challenge (option 1): Encapsulate text processing in a function**
+### **Challenge (text processing)**: Encapsulate text processing in a function
 
 Write a function that takes `line` as an input and returns the information required by `writer.writerow()`.
 
-### **Challenge (option 2): Encapsulate data processing in a function**
+### **Challenge (data normalization)**: Encapsulate Z score calculations in a function
 
-Write a function that encapsulates the data normalization from the Pandas workshop into a function. The function should:
-
-1.  Take a data frame as its input
-2.  Calculate the mean Z score for each country
-3.  Divide countries into "wealthy" and "non-wealthy" categories
-4.  Add this information to the data frame as new columns
-5.  Return the modified data frame
+1.  Write a function that encapsulates the Z-score calculations from the Pandas workshop into a function. The function should return two Series:
+    1.  The mean Z score for each country over time
+    2.  A categorical variable that identifies countries as "wealthy" or "non-wealthy"
+2.  Use the function to inspect one of the Gapminder continental datasets.
 
 #### Solution
 
 ``` python
-import pandas as pd
-import glob
-
 def norm_data(data):
     """Add a Z score column to each data set."""
 
@@ -2432,17 +2472,29 @@ def norm_data(data):
     # Group countries into "wealthy" (z > 0) and "not wealthy" (z <= 0)
     z_bool = mean_z > 0
 
-    # Append to DataFrame
-    data["mean_z"] = mean_z
-    data["wealthy"] = z_bool
+    return mean_z, z_bool
 
+data = pd.read_csv("data/gapminder_gdp_europe.csv", index_col = "country")
+mean_z, z_bool = norm_data(data)
+
+# If you need to drop the contintent column
+# mean_z, z_bool = norm_data(data.drop("continent", axis=1))
+```
+
+#### (Optional) Use the function to process all files
+
+``` python
 for filename in glob.glob('data/gapminder_*.csv'):
     # Print a status message
     print("Current file:", filename)
 
     # Read the data into a DataFrame and modify it
-    data = pd.read_csv(filename)
-    norm_data(data)
+    data = pd.read_csv(filename, index_col = "country")
+    mean_z, z_bool = norm_data(data)
+
+    # Append to DataFrame
+    data["mean_z"] = mean_z
+    data["wealthy"] = z_bool
 
     # Generate an output file name
     parts = filename.split(".csv")
