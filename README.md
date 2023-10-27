@@ -40,8 +40,6 @@
   - <a href="#optional-text-processing-and-data-cleanup" id="toc-optional-text-processing-and-data-cleanup"><span class="toc-section-number">3.6</span> (Optional) Text processing and data cleanup</a>
   - <a href="#writing-functions" id="toc-writing-functions"><span class="toc-section-number">3.7</span> Writing Functions</a>
   - <a href="#carpentries-version-conditionals" id="toc-carpentries-version-conditionals"><span class="toc-section-number">3.8</span> (Carpentries version) Conditionals</a>
-  - <a href="#optional-variable-scope" id="toc-optional-variable-scope"><span class="toc-section-number">3.9</span> (Optional) Variable Scope</a>
-  - <a href="#optional-programming-style" id="toc-optional-programming-style"><span class="toc-section-number">3.10</span> (Optional) Programming Style</a>
 - <a href="#visualization-with-matplotlib-and-seaborn-week-4" id="toc-visualization-with-matplotlib-and-seaborn-week-4"><span class="toc-section-number">4</span> Visualization with Matplotlib and Seaborn (Week 4)</a>
   - <a href="#orientation-1" id="toc-orientation-1"><span class="toc-section-number">4.1</span> Orientation</a>
   - <a href="#plotting-with-matplotlib" id="toc-plotting-with-matplotlib"><span class="toc-section-number">4.2</span> Plotting with Matplotlib</a>
@@ -2620,10 +2618,6 @@ for i in range(5):
 
 - Use () to group subsets of conditions
 - Aside: For a more natural way of working with many lists, look at `zip()`
-
-## (Optional) Variable Scope
-
-## (Optional) Programming Style
 
 # Visualization with Matplotlib and Seaborn (Week 4)
 

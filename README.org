@@ -2205,8 +2205,8 @@ for i in range(5):
 - Use () to group subsets of conditions
 - Aside: For a more natural way of working with many lists, look at ~zip()~
 
-** (Optional) Variable Scope
-** (Optional) Programming Style
+** COMMENT (Optional) Variable Scope
+** COMMENT (Optional) Programming Style
 
 * Visualization with Matplotlib and Seaborn (Week 4)
 ** Orientation
@@ -2662,7 +2662,6 @@ for filename in glob.glob('data/gapminder_gdp*.csv'):
 plt.legend()
 plt.show()
 #+END_SRC
-
 * Special Topics
 ** Working with unstructured files
 *** Open the file with a context handler
