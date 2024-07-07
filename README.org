@@ -5,6 +5,21 @@
 #+TITLE: Programming in Python
 #+AUTHOR: Derek Devnich
 
+* COMMENT Notes
+NB: Order is good, because Python users need to understand objects to use matplotlib
+
+1. More check-ins and independent problems.
+2. Cover numerical computing stuff (numpy)
+3. Showcase SQL-like (dplyr-like) operations in Pandas, skipping some of the clunky basics if possible. Use R for Ecology examples
+4. Realistic program control
+   - Use more data-ish examples with program flow (e.g., conditionals can check contents of data frames)
+   - APIs/web/requests
+   - Maybe exceptions/testing?
+
+** Graphing
+1. Save matplotlib/seaborn graph with legend off to side
+2. Investigate plotly
+
 * Fundamentals (Week 1)
 ** Orientation
 *** What programming language should I use?
@@ -167,19 +182,39 @@ Most data is text and numbers, but there are many other types.
    #+END_SRC
 
 *** Use the built-in function ~type()~ to find the type of a value
-1. Two types of number
+1. Variables point to values
    #+BEGIN_SRC python
-   print(type(53))
-   print(type(3.12))
+   print(type(53), type(age))
    #+END_SRC
 
-2. You can check the type of a variable
+2. There are many types
    #+BEGIN_SRC python
-   fitness = 'average'
-   type(fitness)
+   print(type(3.12), type("hello"), type(True), type([]))
    #+END_SRC
 
-3. Python is strongly-typed: It will (mostly) refuse to convert things automatically. The exception is mathematical operations with integers and floats.
+*** (Optional) Python is strongly-typed.
+1. It will (mostly) refuse to convert things automatically. You can explicitly convert data to a different type.
+
+2. Can't do math with text
+   #+BEGIN_SRC python
+   1 + '2'
+   #+END_SRC
+
+3. If you have string data, you can explicitly convert it to numeric data...
+   #+BEGIN_SRC python
+   print(1 + float('2'))
+   print(1 + int('2'))
+   #+END_SRC
+
+4. ...and vice-versa
+   #+BEGIN_SRC python
+   text = str(3)
+
+   print(text)
+   print(type(text))
+   #+END_SRC
+
+5. The exception is mathematical operations with integers and floats.
    #+BEGIN_SRC python
    int_sum = 3 + 4
    mixed_sum = 3 + 4.0
@@ -188,31 +223,11 @@ Most data is text and numbers, but there are many other types.
    print(type(mixed_sum))
    #+END_SRC
 
-*** You can explicitly convert data to a different type
-1. Can't do math with text
-   #+BEGIN_SRC python
-   1 + '2'
-   #+END_SRC
-
-2. If you have string data, you can explicitly convert it to numeric data...
-   #+BEGIN_SRC python
-   print(1 + float('2'))
-   print(1 + int('2'))
-   #+END_SRC
-
-3. ...and vice-versa
-   #+BEGIN_SRC python
-   text = str(3)
-
-   print(text)
-   print(type(text))
-   #+END_SRC
-
-4. What's going on under the hood?
+6. What's going on under the hood?
    1. ~int~, ~float~, and ~str~ are types. More precisely, they are /classes/.
    2. ~int()~, ~float()~, and ~str()~ are functions that create new /instances/ of their respective classes. The argument to the creation function (e.g., ~'2'~) is the raw material for creating the new instance.
 
-5. This can work for more complex data types as well, e.g. Pandas data frames and Numpy arrays.
+7. This can work for more complex data types as well, e.g. Pandas data frames and Numpy arrays.
 
 *** *Challenge*: Explain what each operator does
 #+BEGIN_SRC python
@@ -227,19 +242,6 @@ print('5 % 3:', 5 % 3)
 #+END_SRC
 
 ** Built-in Functions and Help
-*** How do we find out what's possible?
-- Python.org tutorial
-- Standard library reference (we will discuss libraries in the next section)
-- References section of this document
-- Stack Overflow
-
-*** (Optional) Use comments to add documentation to programs
-Leave notes for Future You about what you've learned and how your code works.
-#+BEGIN_SRC python
-# This line isn't executed by Python
-print("This cell has many comments")   # The rest of this line isn't executed either
-#+END_SRC
-
 *** A function may take zero or more arguments
 #+BEGIN_SRC python
 print('before')
@@ -270,6 +272,18 @@ round(3.712, 1)
    #+BEGIN_SRC python
    # You can optionally specify the number of significant digits
    round(4.712823, ndigits=2)
+   #+END_SRC
+
+3. Getting more help
+   - Python.org tutorial
+   - Standard library reference (we will discuss libraries in the next section)
+   - References section of this document
+   - Stack Overflow
+
+4. Use comments to add documentation to your own programs
+   #+BEGIN_SRC python
+   # This line isn't executed by Python
+   print("This cell has many comments")   # The rest of this line isn't executed either
    #+END_SRC
 
 *** Every function returns something
@@ -314,8 +328,8 @@ round(3.712, 1)
 
 2. Python reports a runtime error when something goes wrong while a program is executing
 
-*** *(Optional) Beginner Challenge*: What happens when?
-Explain in simple terms the order of operations in the following program: when does the addition happen, when does the subtraction happen, when is each function called, etc. What is the final value of radiance?
+*** *Beginner Challenge*: What happens when?
+Explain in simple terms the order of operations in the following program: when does the addition happen, when does the subtraction happen, when is each function called, etc. Extra credit: What is the final value of radiance?
 
 #+BEGIN_SRC python
 radiance = 1.0
@@ -381,8 +395,11 @@ print(len(fruits))
 
 *** Lists are indexed by position, counting from 0
 #+BEGIN_SRC python
-print("First item:", fruits[0])
-print("Fifth item:", fruits[4])
+# First item
+print(fruits[0])
+
+# Fifth item
+print(fruits[4])
 #+END_SRC
 
 *** You can get a subset of the list by slicing it
@@ -434,9 +451,9 @@ cf. https://stackoverflow.com/a/11364711
 *** *Challenge*: Some other properties of indexes
 Try these statements. What are they doing? Can you explain the differences in their behavior?
 #+BEGIN_SRC python
-print(fruits[-1])
-print(fruits[20])
-print(fruits[-3:])
+fruits[-1]
+fruits[20]
+fruits[-3:]
 #+END_SRC
 
 **** Solution
@@ -467,6 +484,7 @@ print(fruits[-3:])
 
 *** Many functions take collections as arguments
 #+BEGIN_SRC python
+# Assessing the overall productivity of our wide receivers
 receiving_yards = [450, 370, 870, 150]
 mean_yards = sum(receiving_yards)/len(receiving_yards)
 print(mean_yards)
@@ -489,10 +507,13 @@ print(mean_yards)
    #+END_SRC
 
 *** Lists can contain anything
-1. You can mix data types
+1. You can put anything in a list
    #+BEGIN_SRC python
    ages = ['Derek', 42, 'Bill', 24, 'Susan', 37]
+   #+END_SRC
 
+2. (Optional) You /could/ use this to manage complex data, but you shouldn't
+   #+BEGIN_SRC python
    # Get first pair
    print(ages[0:2])
 
@@ -503,7 +524,7 @@ print(mean_yards)
    print(ages[1::2])
    #+END_SRC
 
-2. You can put lists inside other lists
+3. You can put lists inside other lists
    #+BEGIN_SRC python
    ages.append(more_fruits)
 
@@ -526,6 +547,8 @@ print(rev_fruits)
 #+END_SRC
 
 ** For Loops
+Usually you don't need to find list items by index. What you actually want to do is go through each item in the list and use it for something.
+
 *** A ~for~ loop executes commands once for each value in a collection
 "For each thing in this group, do these operations"
 #+BEGIN_SRC python
@@ -538,8 +561,7 @@ for fruit in fruits:
 - The loop variable, *fruit*, is what changes for each iteration of the loop (i.e. the “current thing”)
 - The body, *print(fruit)*, specifies what to do for each value in the collection.
 
-*** The first line of the ~for~ loop must end with a colon, and the body must be indented
-Whitespace is syntactically meaningful in Python!
+*** Whitespace is syntactically meaningful in Python!
 #+BEGIN_SRC python
 for fruit in fruits:
 print(fruit)
@@ -572,7 +594,7 @@ print(prime_exponents)
 
 *** *Challenge*: Accumulation
 Get the total length of all the words in the ~fruits~ list.
-**** Solution
+**** Solution 1
 #+BEGIN_SRC python
 total = 0
 for f in fruits:
@@ -581,34 +603,48 @@ for f in fruits:
 print(total)
 #+END_SRC
 
-*** (Optional) Use ~range()~ to iterate over a sequence of numbers
+**** Solution 2
 #+BEGIN_SRC python
-for number in range(0, 3):
-    print(number)
+lengths = []
+for f in fruits:
+    lengths.append(len(f))
+
+print(sum(lengths))
 #+END_SRC
 
-- range() produces numbers on demand (a "generator" function)
-- useful for tracking progress
-
-*** (Optional) Use ~enumerate()~ to iterate over a sequence of items and their positions
+**** Solution 3
 #+BEGIN_SRC python
-for number, fruit in enumerate(fruits):
-    print(number, ":", fruit)
+sum(len(f) for f in fruits)
 #+END_SRC
 
-*** (Optional) How do you know if an object is iterable?
-1. Lists, dictionaries, and strings are iterable
+*** (Optional) Helpful tools for iteration
+1. Use ~range()~ to iterate over a sequence of numbers
    #+BEGIN_SRC python
-   hasattr(location, "__iter__")
+   for number in range(0, 3):
+       print(number)
    #+END_SRC
 
-2. Integers are not iterable
+   - range() produces numbers on demand (a "generator" function)
+   - useful for tracking progress
+
+2. Use ~enumerate()~ to iterate over a sequence of items and their positions
    #+BEGIN_SRC python
+   for number, fruit in enumerate(fruits):
+       print(number, ":", fruit)
+   #+END_SRC
+
+3. Use functional programming idioms
+   - Comprehensions: generator, list, dictionary
+   - itertools library
+
+4. Test to see if an object is iterable
+   #+BEGIN_SRC python
+   # Lists, dictionaries, and strings are iterable
+   hasattr(location, "__iter__")
+
+   #Integers are not iterable
    hasattr(5, "__iter__")
    #+END_SRC
-
-*** Don't use ~for~ loops with DataFrames or Numpy matrices
-There is almost always a faster vectorized function that does what you want.
 
 ** Strings and methods
 *** Strings are (kind of) like lists
@@ -618,7 +654,6 @@ There is almost always a faster vectorized function that does what you want.
    fruit = "gooseberry"
    print(fruit[0])
    print(fruit[0:3])
-   print(fruit[-1])
    #+END_SRC
 
 2. Strings have length
@@ -638,7 +673,18 @@ There is almost always a faster vectorized function that does what you want.
    print(fruit_title)
    #+END_SRC
 
-*** Methods are functions that belong to objects
+*** Use the built-in string methods to clean up data
+   #+BEGIN_SRC python
+   bad_str1 = "  Hello world!   "
+   bad_str2 = "|...goodbye cruel world|"
+
+   good_str1 = bad_str1.strip()
+   good_str2 = bad_str2.strip("|")
+
+   print(good_str1, "\n", good_str2)
+   #+END_SRC
+
+*** (Optional) Methods are functions that belong to objects
 1. An object packages data together with functions that operate on that data. This is a very common organizational strategy in Python.
    #+BEGIN_SRC python
    sentence = "Hello world!"
@@ -669,16 +715,8 @@ There is almost always a faster vectorized function that does what you want.
    dir(my_string)
    #+END_SRC
 
-*** Use the built-in string methods to clean up data
-   #+BEGIN_SRC python
-   bad_string_1 = "  Hello world!   "
-   bad_string_2 = "|...goodbye cruel world|"
-
-   print(bad_string_1.strip(),
-         bad_string_2.strip("|"))
-   #+END_SRC
-
-*** Building longer strings with ~.join()~
+*** COMMENT (Optional) Building longer strings with ~.join()~
+This is replicated in the functions section
 1. Use ~.join()~ to concatenate strings
    #+BEGIN_SRC python
    date_list = ["3", "17", "2007"]
@@ -693,7 +731,7 @@ There is almost always a faster vectorized function that does what you want.
    print(date)
    #+END_SRC
 
-*** *Challenge*: Putting it all together
+*** *(Optional) Challenge*: Putting it all together
 You want to iterate through the ~fruits~ list in a random order. For each randomly-selected fruit, capitalize the fruit and print it.
 1. Which standard library module could help you? https://docs.python.org/3/library/
 2. Which function would you select from that module? Are there alternatives?
@@ -727,7 +765,7 @@ for f in random_fruits:
 2. What does ~list('some string')~ do?
 3. What does ~'-'.join(['x', 'y', 'z'])~ generate?
 
-** (Optional) Dictionaries
+** Dictionaries
 *** Dictionaries are sets of key/value pairs. Instead of being indexed by position, they are indexed by key.
 #+BEGIN_SRC python
 ages = {'Derek': 42,
@@ -751,13 +789,13 @@ ages["Derek"]
    print(ages)
    #+END_SRC
 
-*** (Optional) Check whether the dictionary contains an item
+*** Check whether the dictionary contains an item
 1. Does a key already exist?
    #+BEGIN_SRC python
    "Derek" in ages
    #+END_SRC
 
-2. Does a value already exist (you generally don't want to do this; keys are unique but values are not)?
+2. (Optional) Does a value already exist (you generally don't want to do this; keys are unique but values are not)?
    #+BEGIN_SRC python
    24 in ages.values()
    #+END_SRC
@@ -768,7 +806,7 @@ print("Original dictionary", ages)
 del ages["Derek"]
 print("1st deletion", ages)
 
-susan_age = wave_fc.pop("Susan")
+susan_age = ages.pop("Susan")
 print("2nd deletion", ages)
 print("Returned value", susan_age)
 #+END_SRC
@@ -789,7 +827,7 @@ print(location['longitude'][0])
        print(key, ":", val)
    #+END_SRC
 
-2. You can iterate over keys and values separately
+2. (Optional) You can iterate over keys and values separately
    #+BEGIN_SRC python
    # Iterate over keys; you can also explicitly call .keys()
    for key in ages:
@@ -800,11 +838,33 @@ print(location['longitude'][0])
        print(val)
    #+END_SRC
 
-3. Iteration can be useful for unpacking complex dictionaries
+3. (Optional) Iteration can be useful for unpacking complex dictionaries
    #+BEGIN_SRC python
    for key, val in location.items():
        print(key, 'is', val[0], val[1])
    #+END_SRC
+
+*** *Challenge: Generate a dictionary*
+1. You have the following key/value pairs:
+   #+BEGIN_SRC python
+   'Derek' 42
+   'Bill' 24
+   'Susan' 37
+   #+END_SRC
+
+2. Create a dictionary that contains all of them. You may find the following useful:
+   #+BEGIN_SRC python
+   help(dict)
+   help(zip)
+   #+END_SRC
+
+**** Solution 1 of many
+#+BEGIN_SRC python
+names = ["Derek", "Bill", "Susan"]
+ages = [42, 24, 37]
+
+ages_dict = dict(zip(names, ages))
+#+END_SRC
 
 *** *(Optional) Advanced Challenge*: Convert a list to a dictionary
 How can you convert our list of names and ages into a dictionary? Hint: You will need to populate the dictionary with a list of keys and a list of values.
@@ -827,6 +887,8 @@ ages_dict = dict(zip(ages[::2], ages[1::2]))
 2. Sets
 
 * Data manipulation with Pandas (Week 2)
+*** Don't use ~for~ loops with DataFrames or Numpy matrices
+There is almost always a faster vectorized function that does what you want.
 ** (Optional) Review collections
 *** Lists and dictionaries
 1. Reference item by index/key
@@ -1697,6 +1759,17 @@ all_data = pd.concat(data_frames)
 print(all_data.shape)
 #+END_SRC
 
+#+BEGIN_SRC python
+data_frames = []
+for filename in glob.glob('data/gapminder_gdp_*.csv'):
+    if not filename.endswith("normed.csv"):
+        data = pd.read_csv(filename)
+        data_frames.append(data)
+
+all_data = pd.concat(data_frames)
+print(all_data.shape)
+#+END_SRC
+
 ** Conditionals
 *** Evaluating the truth of a statement
 1. Value of a variable
@@ -2068,7 +2141,7 @@ def norm_data(data):
     """Add a Z score column to each data set."""
 
     # Calculate z scores for all elements
-    z = (data - data.mean())/data.std()
+    z = (data - data.mean(axis=None))/data.std()
 
     # Get the mean z score for each country
     mean_z = z.mean(axis=1)
