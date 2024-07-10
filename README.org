@@ -9,9 +9,10 @@
 NB: Order is good, because Python users need to understand objects to use matplotlib
 
 1. More check-ins and independent problems.
-2. Cover numerical computing stuff (numpy)
-3. Showcase SQL-like (dplyr-like) operations in Pandas, skipping some of the clunky basics if possible. Use R for Ecology examples
-4. Realistic program control
+2. Showcase SQL-like (dplyr-like) operations in Pandas, skipping some of the clunky basics if possible. Use R for Ecology examples
+   - Use different datasets?
+   - Use ecology datasets for program flow control?
+3. Realistic program control
    - Use more data-ish examples with program flow (e.g., conditionals can check contents of data frames)
    - APIs/web/requests
    - Maybe exceptions/testing?
@@ -887,8 +888,6 @@ ages_dict = dict(zip(ages[::2], ages[1::2]))
 2. Sets
 
 * Data manipulation with Pandas (Week 2)
-*** Don't use ~for~ loops with DataFrames or Numpy matrices
-There is almost always a faster vectorized function that does what you want.
 ** (Optional) Review collections
 *** Lists and dictionaries
 1. Reference item by index/key
@@ -926,10 +925,12 @@ Introductory documentation: https://numpy.org/doc/stable/user/quickstart.html
 
 4. Arrays are fast but inflexible - the entire array must be of a single type.
 
-** (Optional) Linear algebra with NumPy
+*** Linear algebra with NumPy
+Don't use ~for~ loops with DataFrames or Numpy matrices. There is almost always a faster vectorized function that does what you want.
+
 #+BEGIN_SRC python
-x = np.arange(10)
-y = np.arange(10)
+x = np.arange(9)
+y = np.arange(9)
 
 print(x)
 print(y)
@@ -949,7 +950,17 @@ print(y)
    print(np.dot(x, y))
    #+END_SRC
 
-3. (Optional) Matlab gotcha: 1-D arrays have no transpose
+3. You can rearrange the same array into different configurations
+   #+BEGIN_SRC python
+   # Use method chaining to link actions together
+   x1 = x.reshape(3,3)
+   x2 = x.reshape(9,1)
+
+   print(x1)
+   print(x2)
+   #+END_SRC
+
+4. (Optional) Matlab gotcha: 1-D arrays have no transpose
    #+BEGIN_SRC python
    print(x)
    print(x.T)
@@ -2964,10 +2975,10 @@ with conn:
 - NumPy documentation: https://numpy.org/doc/stable/user/index.html
 - Pandas documentation: https://pandas.pydata.org/pandas-docs/stable/
 - Pandas user guide: https://pandas.pydata.org/docs/user_guide/index.html
-- Scikit-Learn documentation: https://scikit-learn.org/stable/
-- SciPy stats library: https://docs.scipy.org/doc/scipy/reference/stats.html
-- Statistics in Python tutorial: https://scipy-lectures.org/packages/statistics/
+- SciPy user guide: https://docs.scipy.org/doc/scipy/tutorial/index.html
 - Statsmodels library: https://www.statsmodels.org/stable/index.html
+- Scikit-Learn documentation: https://scikit-learn.org/stable/
+- Statistics in Python tutorial: https://scipy-lectures.org/packages/statistics/
 *** Data Visualization Libraries
 - Matplotlib gallery of examples: https://matplotlib.org/gallery/index.html
 - Matplotlib tutorials: https://matplotlib.org/stable/tutorials/index.html

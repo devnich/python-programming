@@ -8,29 +8,28 @@
   - <a href="#lists" id="toc-lists"><span class="toc-section-number">1.7</span> Lists</a>
   - <a href="#for-loops" id="toc-for-loops"><span class="toc-section-number">1.8</span> For Loops</a>
   - <a href="#strings-and-methods" id="toc-strings-and-methods"><span class="toc-section-number">1.9</span> Strings and methods</a>
-  - <a href="#optional-dictionaries" id="toc-optional-dictionaries"><span class="toc-section-number">1.10</span> (Optional) Dictionaries</a>
+  - <a href="#dictionaries" id="toc-dictionaries"><span class="toc-section-number">1.10</span> Dictionaries</a>
   - <a href="#optional-other-containers" id="toc-optional-other-containers"><span class="toc-section-number">1.11</span> (Optional) Other containers</a>
 - <a href="#data-manipulation-with-pandas-week-2" id="toc-data-manipulation-with-pandas-week-2"><span class="toc-section-number">2</span> Data manipulation with Pandas (Week 2)</a>
   - <a href="#optional-review-collections" id="toc-optional-review-collections"><span class="toc-section-number">2.1</span> (Optional) Review collections</a>
   - <a href="#a-very-brief-introduction-to-numpy" id="toc-a-very-brief-introduction-to-numpy"><span class="toc-section-number">2.2</span> A very brief introduction to NumPy</a>
-  - <a href="#optional-linear-algebra-with-numpy" id="toc-optional-linear-algebra-with-numpy"><span class="toc-section-number">2.3</span> (Optional) Linear algebra with NumPy</a>
-  - <a href="#a-very-brief-introduction-to-pandas" id="toc-a-very-brief-introduction-to-pandas"><span class="toc-section-number">2.4</span> A very brief introduction to Pandas</a>
-  - <a href="#optional-where-are-we" id="toc-optional-where-are-we"><span class="toc-section-number">2.5</span> (Optional) Where are we?</a>
-  - <a href="#reading-tabular-data-into-data-frames" id="toc-reading-tabular-data-into-data-frames"><span class="toc-section-number">2.6</span> Reading tabular data into data frames</a>
-  - <a href="#data-frames-are-objects-that-can-tell-you-about-their-contents" id="toc-data-frames-are-objects-that-can-tell-you-about-their-contents"><span class="toc-section-number">2.7</span> Data frames are objects that can tell you about their contents</a>
-  - <a href="#subsetting-data" id="toc-subsetting-data"><span class="toc-section-number">2.8</span> Subsetting Data</a>
-  - <a href="#filtering-i.e.-masking-data-on-contents" id="toc-filtering-i.e.-masking-data-on-contents"><span class="toc-section-number">2.9</span> Filtering (i.e. masking) data on contents</a>
-  - <a href="#working-with-missing-data" id="toc-working-with-missing-data"><span class="toc-section-number">2.10</span> Working with missing data</a>
-  - <a href="#sorting-and-grouping" id="toc-sorting-and-grouping"><span class="toc-section-number">2.11</span> Sorting and grouping</a>
-  - <a href="#write-output" id="toc-write-output"><span class="toc-section-number">2.12</span> Write output</a>
-  - <a href="#working-with-multiple-tables" id="toc-working-with-multiple-tables"><span class="toc-section-number">2.13</span> Working with multiple tables</a>
-  - <a href="#optional-text-processing-in-pandas" id="toc-optional-text-processing-in-pandas"><span class="toc-section-number">2.14</span> (Optional) Text processing in Pandas</a>
-  - <a href="#optional-adding-rows-to-dataframes" id="toc-optional-adding-rows-to-dataframes"><span class="toc-section-number">2.15</span> (Optional) Adding rows to DataFrames</a>
-  - <a href="#optional-scientific-computing-libraries" id="toc-optional-scientific-computing-libraries"><span class="toc-section-number">2.16</span> (Optional) Scientific Computing Libraries</a>
-  - <a href="#optional-things-we-didnt-talk-about" id="toc-optional-things-we-didnt-talk-about"><span class="toc-section-number">2.17</span> (Optional) Things we didn't talk about</a>
-  - <a href="#optional-pandas-method-chaining-in-the-wild" id="toc-optional-pandas-method-chaining-in-the-wild"><span class="toc-section-number">2.18</span> (Optional) Pandas method chaining in the wild</a>
-  - <a href="#optional-introspecting-on-the-dataframe-object" id="toc-optional-introspecting-on-the-dataframe-object"><span class="toc-section-number">2.19</span> (Optional) Introspecting on the DataFrame object</a>
-  - <a href="#carpentries-version-group-by-split-apply-combine" id="toc-carpentries-version-group-by-split-apply-combine"><span class="toc-section-number">2.20</span> (Carpentries version) Group By: split-apply-combine</a>
+  - <a href="#a-very-brief-introduction-to-pandas" id="toc-a-very-brief-introduction-to-pandas"><span class="toc-section-number">2.3</span> A very brief introduction to Pandas</a>
+  - <a href="#optional-where-are-we" id="toc-optional-where-are-we"><span class="toc-section-number">2.4</span> (Optional) Where are we?</a>
+  - <a href="#reading-tabular-data-into-data-frames" id="toc-reading-tabular-data-into-data-frames"><span class="toc-section-number">2.5</span> Reading tabular data into data frames</a>
+  - <a href="#data-frames-are-objects-that-can-tell-you-about-their-contents" id="toc-data-frames-are-objects-that-can-tell-you-about-their-contents"><span class="toc-section-number">2.6</span> Data frames are objects that can tell you about their contents</a>
+  - <a href="#subsetting-data" id="toc-subsetting-data"><span class="toc-section-number">2.7</span> Subsetting Data</a>
+  - <a href="#filtering-i.e.-masking-data-on-contents" id="toc-filtering-i.e.-masking-data-on-contents"><span class="toc-section-number">2.8</span> Filtering (i.e. masking) data on contents</a>
+  - <a href="#working-with-missing-data" id="toc-working-with-missing-data"><span class="toc-section-number">2.9</span> Working with missing data</a>
+  - <a href="#sorting-and-grouping" id="toc-sorting-and-grouping"><span class="toc-section-number">2.10</span> Sorting and grouping</a>
+  - <a href="#write-output" id="toc-write-output"><span class="toc-section-number">2.11</span> Write output</a>
+  - <a href="#working-with-multiple-tables" id="toc-working-with-multiple-tables"><span class="toc-section-number">2.12</span> Working with multiple tables</a>
+  - <a href="#optional-text-processing-in-pandas" id="toc-optional-text-processing-in-pandas"><span class="toc-section-number">2.13</span> (Optional) Text processing in Pandas</a>
+  - <a href="#optional-adding-rows-to-dataframes" id="toc-optional-adding-rows-to-dataframes"><span class="toc-section-number">2.14</span> (Optional) Adding rows to DataFrames</a>
+  - <a href="#optional-scientific-computing-libraries" id="toc-optional-scientific-computing-libraries"><span class="toc-section-number">2.15</span> (Optional) Scientific Computing Libraries</a>
+  - <a href="#optional-things-we-didnt-talk-about" id="toc-optional-things-we-didnt-talk-about"><span class="toc-section-number">2.16</span> (Optional) Things we didn't talk about</a>
+  - <a href="#optional-pandas-method-chaining-in-the-wild" id="toc-optional-pandas-method-chaining-in-the-wild"><span class="toc-section-number">2.17</span> (Optional) Pandas method chaining in the wild</a>
+  - <a href="#optional-introspecting-on-the-dataframe-object" id="toc-optional-introspecting-on-the-dataframe-object"><span class="toc-section-number">2.18</span> (Optional) Introspecting on the DataFrame object</a>
+  - <a href="#carpentries-version-group-by-split-apply-combine" id="toc-carpentries-version-group-by-split-apply-combine"><span class="toc-section-number">2.19</span> (Carpentries version) Group By: split-apply-combine</a>
 - <a href="#building-programs-week-3" id="toc-building-programs-week-3"><span class="toc-section-number">3</span> Building Programs (Week 3)</a>
   - <a href="#notebooks-vs-python-scripts" id="toc-notebooks-vs-python-scripts"><span class="toc-section-number">3.1</span> Notebooks vs Python scripts</a>
   - <a href="#optional-python-from-the-terminal" id="toc-optional-python-from-the-terminal"><span class="toc-section-number">3.2</span> (Optional) Python from the terminal</a>
@@ -251,21 +250,45 @@ Most data is text and numbers, but there are many other types.
 
 ### Use the built-in function `type()` to find the type of a value
 
-1.  Two types of number
+1.  Variables point to values
 
     ``` python
-    print(type(53))
-    print(type(3.12))
+    print(type(53), type(age))
     ```
 
-2.  You can check the type of a variable
+2.  There are many types
 
     ``` python
-    fitness = 'average'
-    type(fitness)
+    print(type(3.12), type("hello"), type(True), type([]))
     ```
 
-3.  Python is strongly-typed: It will (mostly) refuse to convert things automatically. The exception is mathematical operations with integers and floats.
+### (Optional) Python is strongly-typed.
+
+1.  It will (mostly) refuse to convert things automatically. You can explicitly convert data to a different type.
+
+2.  Can't do math with text
+
+    ``` python
+    1 + '2'
+    ```
+
+3.  If you have string data, you can explicitly convert it to numeric data…
+
+    ``` python
+    print(1 + float('2'))
+    print(1 + int('2'))
+    ```
+
+4.  …and vice-versa
+
+    ``` python
+    text = str(3)
+
+    print(text)
+    print(type(text))
+    ```
+
+5.  The exception is mathematical operations with integers and floats.
 
     ``` python
     int_sum = 3 + 4
@@ -275,36 +298,12 @@ Most data is text and numbers, but there are many other types.
     print(type(mixed_sum))
     ```
 
-### You can explicitly convert data to a different type
-
-1.  Can't do math with text
-
-    ``` python
-    1 + '2'
-    ```
-
-2.  If you have string data, you can explicitly convert it to numeric data…
-
-    ``` python
-    print(1 + float('2'))
-    print(1 + int('2'))
-    ```
-
-3.  …and vice-versa
-
-    ``` python
-    text = str(3)
-
-    print(text)
-    print(type(text))
-    ```
-
-4.  What's going on under the hood?
+6.  What's going on under the hood?
 
     1.  `int`, `float`, and `str` are types. More precisely, they are *classes*.
     2.  `int()`, `float()`, and `str()` are functions that create new *instances* of their respective classes. The argument to the creation function (e.g., `'2'`) is the raw material for creating the new instance.
 
-5.  This can work for more complex data types as well, e.g. Pandas data frames and Numpy arrays.
+7.  This can work for more complex data types as well, e.g. Pandas data frames and Numpy arrays.
 
 ### **Challenge**: Explain what each operator does
 
@@ -320,22 +319,6 @@ print('5 % 3:', 5 % 3)
 ```
 
 ## Built-in Functions and Help
-
-### How do we find out what's possible?
-
-- Python.org tutorial
-- Standard library reference (we will discuss libraries in the next section)
-- References section of this document
-- Stack Overflow
-
-### (Optional) Use comments to add documentation to programs
-
-Leave notes for Future You about what you've learned and how your code works.
-
-``` python
-# This line isn't executed by Python
-print("This cell has many comments")   # The rest of this line isn't executed either
-```
 
 ### A function may take zero or more arguments
 
@@ -373,6 +356,20 @@ round(3.712, 1)
     ``` python
     # You can optionally specify the number of significant digits
     round(4.712823, ndigits=2)
+    ```
+
+3.  Getting more help
+
+    - Python.org tutorial
+    - Standard library reference (we will discuss libraries in the next section)
+    - References section of this document
+    - Stack Overflow
+
+4.  Use comments to add documentation to your own programs
+
+    ``` python
+    # This line isn't executed by Python
+    print("This cell has many comments")   # The rest of this line isn't executed either
     ```
 
 ### Every function returns something
@@ -425,9 +422,9 @@ round(3.712, 1)
 
 2.  Python reports a runtime error when something goes wrong while a program is executing
 
-### **(Optional) Beginner Challenge**: What happens when?
+### **Beginner Challenge**: What happens when?
 
-Explain in simple terms the order of operations in the following program: when does the addition happen, when does the subtraction happen, when is each function called, etc. What is the final value of radiance?
+Explain in simple terms the order of operations in the following program: when does the addition happen, when does the subtraction happen, when is each function called, etc. Extra credit: What is the final value of radiance?
 
 ``` python
 radiance = 1.0
@@ -501,8 +498,11 @@ print(len(fruits))
 ### Lists are indexed by position, counting from 0
 
 ``` python
-print("First item:", fruits[0])
-print("Fifth item:", fruits[4])
+# First item
+print(fruits[0])
+
+# Fifth item
+print(fruits[4])
 ```
 
 ### You can get a subset of the list by slicing it
@@ -564,9 +564,9 @@ cf. <https://stackoverflow.com/a/11364711>
 Try these statements. What are they doing? Can you explain the differences in their behavior?
 
 ``` python
-print(fruits[-1])
-print(fruits[20])
-print(fruits[-3:])
+fruits[-1]
+fruits[20]
+fruits[-3:]
 ```
 
 #### Solution
@@ -603,6 +603,7 @@ print(fruits[-3:])
 ### Many functions take collections as arguments
 
 ``` python
+# Assessing the overall productivity of our wide receivers
 receiving_yards = [450, 370, 870, 150]
 mean_yards = sum(receiving_yards)/len(receiving_yards)
 print(mean_yards)
@@ -629,11 +630,15 @@ print(mean_yards)
 
 ### Lists can contain anything
 
-1.  You can mix data types
+1.  You can put anything in a list
 
     ``` python
     ages = ['Derek', 42, 'Bill', 24, 'Susan', 37]
+    ```
 
+2.  (Optional) You *could* use this to manage complex data, but you shouldn't
+
+    ``` python
     # Get first pair
     print(ages[0:2])
 
@@ -644,7 +649,7 @@ print(mean_yards)
     print(ages[1::2])
     ```
 
-2.  You can put lists inside other lists
+3.  You can put lists inside other lists
 
     ``` python
     ages.append(more_fruits)
@@ -672,6 +677,8 @@ print(rev_fruits)
 
 ## For Loops
 
+Usually you don't need to find list items by index. What you actually want to do is go through each item in the list and use it for something.
+
 ### A `for` loop executes commands once for each value in a collection
 
 "For each thing in this group, do these operations"
@@ -686,9 +693,7 @@ for fruit in fruits:
 - The loop variable, **fruit**, is what changes for each iteration of the loop (i.e. the “current thing”)
 - The body, **print(fruit)**, specifies what to do for each value in the collection.
 
-### The first line of the `for` loop must end with a colon, and the body must be indented
-
-Whitespace is syntactically meaningful in Python!
+### Whitespace is syntactically meaningful in Python!
 
 ``` python
 for fruit in fruits:
@@ -728,7 +733,7 @@ print(prime_exponents)
 
 Get the total length of all the words in the `fruits` list.
 
-#### Solution
+#### Solution 1
 
 ``` python
 total = 0
@@ -738,40 +743,55 @@ for f in fruits:
 print(total)
 ```
 
-### (Optional) Use `range()` to iterate over a sequence of numbers
+#### Solution 2
 
 ``` python
-for number in range(0, 3):
-    print(number)
+lengths = []
+for f in fruits:
+    lengths.append(len(f))
+
+print(sum(lengths))
 ```
 
-- range() produces numbers on demand (a "generator" function)
-- useful for tracking progress
-
-### (Optional) Use `enumerate()` to iterate over a sequence of items and their positions
+#### Solution 3
 
 ``` python
-for number, fruit in enumerate(fruits):
-    print(number, ":", fruit)
+sum(len(f) for f in fruits)
 ```
 
-### (Optional) How do you know if an object is iterable?
+### (Optional) Helpful tools for iteration
 
-1.  Lists, dictionaries, and strings are iterable
+1.  Use `range()` to iterate over a sequence of numbers
 
     ``` python
-    hasattr(location, "__iter__")
+    for number in range(0, 3):
+        print(number)
     ```
 
-2.  Integers are not iterable
+    - range() produces numbers on demand (a "generator" function)
+    - useful for tracking progress
+
+2.  Use `enumerate()` to iterate over a sequence of items and their positions
 
     ``` python
+    for number, fruit in enumerate(fruits):
+        print(number, ":", fruit)
+    ```
+
+3.  Use functional programming idioms
+
+    - Comprehensions: generator, list, dictionary
+    - itertools library
+
+4.  Test to see if an object is iterable
+
+    ``` python
+    # Lists, dictionaries, and strings are iterable
+    hasattr(location, "__iter__")
+
+    #Integers are not iterable
     hasattr(5, "__iter__")
     ```
-
-### Don't use `for` loops with DataFrames or Numpy matrices
-
-There is almost always a faster vectorized function that does what you want.
 
 ## Strings and methods
 
@@ -784,7 +804,6 @@ There is almost always a faster vectorized function that does what you want.
     fruit = "gooseberry"
     print(fruit[0])
     print(fruit[0:3])
-    print(fruit[-1])
     ```
 
 2.  Strings have length
@@ -808,7 +827,19 @@ There is almost always a faster vectorized function that does what you want.
     print(fruit_title)
     ```
 
-### Methods are functions that belong to objects
+### Use the built-in string methods to clean up data
+
+``` python
+bad_str1 = "  Hello world!   "
+bad_str2 = "|...goodbye cruel world|"
+
+good_str1 = bad_str1.strip()
+good_str2 = bad_str2.strip("|")
+
+print(good_str1, "\n", good_str2)
+```
+
+### (Optional) Methods are functions that belong to objects
 
 1.  An object packages data together with functions that operate on that data. This is a very common organizational strategy in Python.
 
@@ -843,35 +874,7 @@ There is almost always a faster vectorized function that does what you want.
     dir(my_string)
     ```
 
-### Use the built-in string methods to clean up data
-
-``` python
-bad_string_1 = "  Hello world!   "
-bad_string_2 = "|...goodbye cruel world|"
-
-print(bad_string_1.strip(),
-      bad_string_2.strip("|"))
-```
-
-### Building longer strings with `.join()`
-
-1.  Use `.join()` to concatenate strings
-
-    ``` python
-    date_list = ["3", "17", "2007"]
-    date = "/".join(date_list)
-    print(date)
-    ```
-
-2.  This is going to be useful for building CSV files
-
-    ``` python
-    date_list = ["3", "17", "2007"]
-    date = ",".join(date_list)
-    print(date)
-    ```
-
-### **Challenge**: Putting it all together
+### **(Optional) Challenge**: Putting it all together
 
 You want to iterate through the `fruits` list in a random order. For each randomly-selected fruit, capitalize the fruit and print it.
 
@@ -912,7 +915,7 @@ for f in random_fruits:
 
 3.  What does `'-'.join(['x', 'y', 'z'])` generate?
 
-## (Optional) Dictionaries
+## Dictionaries
 
 ### Dictionaries are sets of key/value pairs. Instead of being indexed by position, they are indexed by key.
 
@@ -941,7 +944,7 @@ ages["Derek"]
     print(ages)
     ```
 
-### (Optional) Check whether the dictionary contains an item
+### Check whether the dictionary contains an item
 
 1.  Does a key already exist?
 
@@ -949,7 +952,7 @@ ages["Derek"]
     "Derek" in ages
     ```
 
-2.  Does a value already exist (you generally don't want to do this; keys are unique but values are not)?
+2.  (Optional) Does a value already exist (you generally don't want to do this; keys are unique but values are not)?
 
     ``` python
     24 in ages.values()
@@ -962,7 +965,7 @@ print("Original dictionary", ages)
 del ages["Derek"]
 print("1st deletion", ages)
 
-susan_age = wave_fc.pop("Susan")
+susan_age = ages.pop("Susan")
 print("2nd deletion", ages)
 print("Returned value", susan_age)
 ```
@@ -987,7 +990,7 @@ print(location['longitude'][0])
         print(key, ":", val)
     ```
 
-2.  You can iterate over keys and values separately
+2.  (Optional) You can iterate over keys and values separately
 
     ``` python
     # Iterate over keys; you can also explicitly call .keys()
@@ -999,12 +1002,38 @@ print(location['longitude'][0])
         print(val)
     ```
 
-3.  Iteration can be useful for unpacking complex dictionaries
+3.  (Optional) Iteration can be useful for unpacking complex dictionaries
 
     ``` python
     for key, val in location.items():
         print(key, 'is', val[0], val[1])
     ```
+
+### **Challenge: Generate a dictionary**
+
+1.  You have the following key/value pairs:
+
+    ``` python
+    'Derek' 42
+    'Bill' 24
+    'Susan' 37
+    ```
+
+2.  Create a dictionary that contains all of them. You may find the following useful:
+
+    ``` python
+    help(dict)
+    help(zip)
+    ```
+
+#### Solution 1 of many
+
+``` python
+names = ["Derek", "Bill", "Susan"]
+ages = [42, 24, 37]
+
+ages_dict = dict(zip(names, ages))
+```
 
 ### **(Optional) Advanced Challenge**: Convert a list to a dictionary
 
@@ -1075,11 +1104,13 @@ Introductory documentation: <https://numpy.org/doc/stable/user/quickstart.html>
 
 4.  Arrays are fast but inflexible - the entire array must be of a single type.
 
-## (Optional) Linear algebra with NumPy
+### Linear algebra with NumPy
+
+Don't use `for` loops with DataFrames or Numpy matrices. There is almost always a faster vectorized function that does what you want.
 
 ``` python
-x = np.arange(10)
-y = np.arange(10)
+x = np.arange(9)
+y = np.arange(9)
 
 print(x)
 print(y)
@@ -1101,7 +1132,18 @@ print(y)
     print(np.dot(x, y))
     ```
 
-3.  (Optional) Matlab gotcha: 1-D arrays have no transpose
+3.  You can rearrange the same array into different configurations
+
+    ``` python
+    # Use method chaining to link actions together
+    x1 = x.reshape(3,3)
+    x2 = x.reshape(9,1)
+
+    print(x1)
+    print(x2)
+    ```
+
+4.  (Optional) Matlab gotcha: 1-D arrays have no transpose
 
     ``` python
     print(x)
@@ -2048,6 +2090,17 @@ all_data = pd.concat(data_frames)
 print(all_data.shape)
 ```
 
+``` python
+data_frames = []
+for filename in glob.glob('data/gapminder_gdp_*.csv'):
+    if not filename.endswith("normed.csv"):
+        data = pd.read_csv(filename)
+        data_frames.append(data)
+
+all_data = pd.concat(data_frames)
+print(all_data.shape)
+```
+
 ## Conditionals
 
 ### Evaluating the truth of a statement
@@ -2462,7 +2515,7 @@ def norm_data(data):
     """Add a Z score column to each data set."""
 
     # Calculate z scores for all elements
-    z = (data - data.mean())/data.std()
+    z = (data - data.mean(axis=None))/data.std()
 
     # Get the mean z score for each country
     mean_z = z.mean(axis=1)
@@ -3370,10 +3423,10 @@ with conn:
 - NumPy documentation: <https://numpy.org/doc/stable/user/index.html>
 - Pandas documentation: <https://pandas.pydata.org/pandas-docs/stable/>
 - Pandas user guide: <https://pandas.pydata.org/docs/user_guide/index.html>
-- Scikit-Learn documentation: <https://scikit-learn.org/stable/>
-- SciPy stats library: <https://docs.scipy.org/doc/scipy/reference/stats.html>
-- Statistics in Python tutorial: <https://scipy-lectures.org/packages/statistics/>
+- SciPy user guide: <https://docs.scipy.org/doc/scipy/tutorial/index.html>
 - Statsmodels library: <https://www.statsmodels.org/stable/index.html>
+- Scikit-Learn documentation: <https://scikit-learn.org/stable/>
+- Statistics in Python tutorial: <https://scipy-lectures.org/packages/statistics/>
 
 ### Data Visualization Libraries
 
