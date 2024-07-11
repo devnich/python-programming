@@ -1309,7 +1309,7 @@ type(data.columns)
 - You can convert data between NumPy arrays, Series, and DataFrames
 - You can read data into any of the data structures from files or from standard Python containers
 
-### **Beginner Challenge**
+### **(Optional) Beginner Challenge**
 
 1.  Read the data in `gapminder_gdp_americas.csv` into a variable called `americas` and display its summary statistics.
 2.  After reading the data for the Americas, use `help(americas.head)` and `help(americas.tail)` to find out what `DataFrame.head` and `DataFrame.tail` do.
@@ -1334,7 +1334,7 @@ americas.to_csv('processed.csv')
 Use `DataFrame.iloc[..., ...]` to select values by their (entry) position. The `i` in `iloc` stands for "index".
 
 ``` python
-import pandas as pd
+#import pandas as pd
 data = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
 
 data.iloc[0,0]
@@ -1353,13 +1353,30 @@ This is most common way to get data
 
 ### Shorten the column names using vectorized string methods
 
-``` python
-print(data.columns)
+1.  Standard Python has string methods
 
-# The columns index can update all of its values in a single operation
-data.columns = data.columns.str.strip("gdpPercap_")
-print(data.columns)
-```
+    ``` python
+    big_hello = "hello".title()
+    print(big_hello)
+
+    help("hello".title)
+    print(dir("hello"))
+    ```
+
+2.  Pandas data frames are complex objects
+
+    ``` python
+    print(data.columns)
+    print(dir(data.columns.str))
+    ```
+
+3.  Use built-in methods to transform the entire data frame
+
+    ``` python
+    # The columns index can update all of its values in a single operation
+    data.columns = data.columns.str.strip("gdpPercap_")
+    print(data.columns)
+    ```
 
 ### Use list slicing notation to get subsets of the data frame
 
@@ -1383,7 +1400,7 @@ print(data.columns)
     data.loc[['Italy','Poland'], :]
     ```
 
-4.  `.iloc` follows list index conventions ("up to, but not including)", but `.loc` does the intuitive right thing ("A through B")
+4.  (Optional) `.iloc` follows list index conventions ("up to, but not including)", but `.loc` does the intuitive right thing ("A through B")
 
     ``` python
     index_subset = data.iloc[0:2, 0:2]
@@ -1402,7 +1419,7 @@ print(data.columns)
     print(subset.max())
     ```
 
-6.  Insert new values using `.at` (for label indexing) or `.iat` (for numerical indexing)
+6.  (Optional) Insert new values using `.at` (for label indexing) or `.iat` (for numerical indexing)
 
     ``` python
     subset.at["Italy", "1962"] = 2000
@@ -1428,6 +1445,9 @@ print(data.columns)
 
     ``` python
     print(subset.max().max())
+
+    # Alternatively
+    print(subset.max(axis=None))
     ```
 
 ### (Optional) Filter on label properties
@@ -1462,42 +1482,46 @@ print(data.columns)
 2.  Use the criterion match to filter the data frame's contents. This uses index notation:
 
     ``` python
-    fs = subset[subset > 10000]
-    print(fs)
+    df = subset[subset > 10000]
+    print(df)
     ```
 
     1.  `subset > 10000` returns a data frame of True/False values
-    2.  `subset[subset > 10000]` filters its contents based on that True/False data frame
+    2.  `subset[subset > 10000]` filters its contents based on that True/False data frame. All `True` values are returned, element-wise.
     3.  This section is more properly called "Masking Data," because it involves operations for overlaying a data frame's values without changing the data frame's shape. We don't drop anything from the data frame, we just replace it with `NaN`.
 
 3.  (Optional) Use `.where()` method to find elements that match the criterion:
 
     ``` python
-    fs = subset.where(subset > 10000)
-    print(fs)
+    df = subset.where(subset > 10000)
+    print(df)
     ```
 
 ### You can filter using any method that returns a data frame
 
-``` python
-# GDP for all countries greater than the median
-subset[subset > subset.median()]
+For example, get the GDP for all countries greater than the median.
 
-# OR: subset.where(subset > subset.median())
+``` python
+# Get the overall median
+subset.median()          # Returns Series
+subset.median(axis=None) # Returns single valuey
+
+# Which data points are above the median
+subset > subset.median(axis=None)
+
+# Return the masked data set
+subset[subset > subset.median(axis=None)]
 ```
 
 ### Use method chaining to create final output without creating intermediate variables
 
 ``` python
 # The .rank() method turns numerical scores into ranks
-subset.rank()
-```
+data.rank()
 
-``` python
-# GDP ranking for all countries greater than the median
-subset[subset > subset.median()].rank()
-
-# OR: subset.where(subset > subset.median()).rank()
+# Get mean rank over time and sort the output
+mean_rank = data.rank().mean(axis=1).sort_values()
+print(mean_rank)
 ```
 
 ## Working with missing data
@@ -1510,20 +1534,20 @@ Examples include min, max, mean, std, etc.
 
     ``` python
     print("Column means")
-    print(fs.mean())
+    print(df.mean())
 
     print("Row means")
-    print(fs.mean(axis=1))
+    print(df.mean(axis=1))
     ```
 
 2.  Force inclusions with the `skipna` argument
 
     ``` python
     print("Column means")
-    print(fs.mean(skipna=False))
+    print(df.mean(skipna=False))
 
     print("Row means")
-    print(fs.mean(axis=1, skipna=False))
+    print(df.mean(axis=1, skipna=False))
     ```
 
 ### Check for missing values
@@ -1532,32 +1556,32 @@ Examples include min, max, mean, std, etc.
 
     ``` python
     # Show which items are NA
-    fs.isna()
+    df.isna()
     ```
 
 2.  Count missing values
 
     ``` python
     # Missing by row
-    print(fs.isna().sum())
+    print(df.isna().sum())
 
     # Missing by column
-    print(fs.isna().sum(axis=1))
+    print(df.isna().sum(axis=1))
 
     # Aggregate sum
-    fs.isna().sum().sum()
+    df.isna().sum().sum()
     ```
 
 3.  Are any values missing?
 
     ``` python
-    fs.isna().any(axis=None)
+    df.isna().any(axis=None)
     ```
 
 4.  (Optional) Are all of the values missing?
 
     ``` python
-    fs.isna().all(axis=None)
+    df.isna().all(axis=None)
     ```
 
 ### Replace missing values
@@ -1565,8 +1589,8 @@ Examples include min, max, mean, std, etc.
 1.  Replace with a fixed value
 
     ``` python
-    fs_fixed = fs.fillna(99)
-    print(fs_fixed)
+    df_fixed = df.fillna(99)
+    print(df_fixed)
     ```
 
 2.  Replace values that don't meet a criterion with an alternate value
@@ -1579,7 +1603,7 @@ Examples include min, max, mean, std, etc.
 3.  (Optional) Impute missing values. Read the docs, this may or may not be sufficient for your needs.
 
     ``` python
-    fs_imputed = fs.interpolate()
+    df_imputed = df.interpolate()
     ```
 
 ### Drop missing values
@@ -1587,19 +1611,43 @@ Examples include min, max, mean, std, etc.
 Drop all rows with missing values
 
 ``` python
-fs_drop = fs.dropna()
+df_drop = df.dropna()
 ```
 
-### **Challenge: Filter and trim with a boolean vector**
+### **Challenge: The perils of missing data**
+
+1.  Create an array of random numbers matching the `data` data frame
+
+    ``` python
+    random_filter = np.random.rand(30, 12) * data.max(axis=None)
+    ```
+
+2.  Create a new data frame that filters out all numbers lower than the random numbers
+
+3.  Interpolate new values for the missing values in the new data frame. How accurate do you think they are?
+
+#### Solution
+
+``` python
+new_data = data[data > random_filter]
+
+# Data is not missing randomly
+print(new_data)
+
+new_data.interpolate()
+new_data.interpolate().mean(axis=None)
+```
+
+### **(Optional) Challenge: Filter and trim with a boolean vector**
 
 A DataFrame is a dictionary of Series columns. With this in mind, experiment with the following code and try to explain what each line is doing. What operation is it performing, and what is being returned?
 
 Feel free to use `print()`, `help()`, `type()`, etc as you investigate.
 
 ``` python
-fs["1962"]
-fs["1962"].notna()
-fs[fs["1962"].notna()]
+df["1962"]
+df["1962"].notna()
+df[df["1962"].notna()]
 ```
 
 #### Solution
@@ -1614,7 +1662,10 @@ fs[fs["1962"].notna()]
 
 ``` python
 # Calculate z scores for all elements
-z = (data - data.mean())/data.std()
+# z = (data - data.mean(axis=None))/data.std()
+# As of July 2024, pandas dataframe.std(axis=None) doesn't work. We are dropping down to
+# Numpy to use the .std() method on the underlying values array.
+z = (data - data.mean(axis=None))/data.values.std(ddof=1)
 
 # Get the mean z score for each country (i.e. across all columns)
 mean_z = z.mean(axis=1)
