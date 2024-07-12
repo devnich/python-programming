@@ -46,11 +46,12 @@
   - <a href="#fast-visualization-and-theming-with-seaborn" id="toc-fast-visualization-and-theming-with-seaborn"><span class="toc-section-number">4.4</span> Fast visualization and theming with Seaborn</a>
   - <a href="#optional-how-matplotlib-works" id="toc-optional-how-matplotlib-works"><span class="toc-section-number">4.5</span> (Optional) How Matplotlib works</a>
 - <a href="#special-topics" id="toc-special-topics"><span class="toc-section-number">5</span> Special Topics</a>
-  - <a href="#working-with-unstructured-files" id="toc-working-with-unstructured-files"><span class="toc-section-number">5.1</span> Working with unstructured files</a>
-  - <a href="#exception-handling" id="toc-exception-handling"><span class="toc-section-number">5.2</span> Exception handling</a>
-  - <a href="#performance-and-profiling" id="toc-performance-and-profiling"><span class="toc-section-number">5.3</span> Performance and profiling</a>
-  - <a href="#reducing-memory-usage" id="toc-reducing-memory-usage"><span class="toc-section-number">5.4</span> Reducing memory usage</a>
-  - <a href="#other-optional-topics" id="toc-other-optional-topics"><span class="toc-section-number">5.5</span> Other optional topics</a>
+  - <a href="#environments" id="toc-environments"><span class="toc-section-number">5.1</span> Environments</a>
+  - <a href="#working-with-unstructured-files" id="toc-working-with-unstructured-files"><span class="toc-section-number">5.2</span> Working with unstructured files</a>
+  - <a href="#exception-handling" id="toc-exception-handling"><span class="toc-section-number">5.3</span> Exception handling</a>
+  - <a href="#performance-and-profiling" id="toc-performance-and-profiling"><span class="toc-section-number">5.4</span> Performance and profiling</a>
+  - <a href="#reducing-memory-usage" id="toc-reducing-memory-usage"><span class="toc-section-number">5.5</span> Reducing memory usage</a>
+  - <a href="#other-optional-topics" id="toc-other-optional-topics"><span class="toc-section-number">5.6</span> Other optional topics</a>
 - <a href="#endnotes" id="toc-endnotes"><span class="toc-section-number">6</span> Endnotes</a>
   - <a href="#credits" id="toc-credits"><span class="toc-section-number">6.1</span> Credits</a>
   - <a href="#references" id="toc-references"><span class="toc-section-number">6.2</span> References</a>
@@ -1614,7 +1615,7 @@ Drop all rows with missing values
 df_drop = df.dropna()
 ```
 
-### **Challenge: The perils of missing data**
+### **Hard Challenge**: The perils of missing data
 
 1.  Create an array of random numbers matching the `data` data frame
 
@@ -1638,7 +1639,7 @@ new_data.interpolate()
 new_data.interpolate().mean(axis=None)
 ```
 
-### **(Optional) Challenge: Filter and trim with a boolean vector**
+### **(Optional) Challenge**: Filter and trim with a boolean vector
 
 A DataFrame is a dictionary of Series columns. With this in mind, experiment with the following code and try to explain what each line is doing. What operation is it performing, and what is being returned?
 
@@ -2117,13 +2118,19 @@ for filename in file_list:
     - \`\*\` meaning “match zero or more characters”
     - \`?\` meaning “match exactly one character”
 
-3.  Get a list of all the Gapminder CSV files
+3.  (Optional) Get a list of all CSV or TSV files
 
     ``` python
-    glob.glob('data/gapminder_*.csv')
+    glob.glob('data/*.?sv')
     ```
 
-4.  Exclude the "all" CSV file
+4.  Get a list of all the Gapminder CSV files
+
+    ``` python
+    glob.glob('data/gapminder_gdp_*.csv')
+    ```
+
+5.  (Optional) Exclude the "all" CSV file
 
     ``` python
     glob.glob('data/gapminder_[!all]*.csv')
@@ -2133,20 +2140,10 @@ for filename in file_list:
 
 ``` python
 data_frames = []
-for filename in glob.glob('data/gapminder_[!all]*.csv'):
+for filename in glob.glob('data/gapminder_gdp_*.csv'):
+    print(filename)
     data = pd.read_csv(filename)
     data_frames.append(data)
-
-all_data = pd.concat(data_frames)
-print(all_data.shape)
-```
-
-``` python
-data_frames = []
-for filename in glob.glob('data/gapminder_gdp_*.csv'):
-    if not filename.endswith("normed.csv"):
-        data = pd.read_csv(filename)
-        data_frames.append(data)
 
 all_data = pd.concat(data_frames)
 print(all_data.shape)
@@ -2156,7 +2153,15 @@ print(all_data.shape)
 
 ### Evaluating the truth of a statement
 
-1.  Value of a variable
+1.  Does a file end in `"all.csv"`?
+
+    ``` python
+    for filename in glob.glob('data/gapminder*.csv'):
+       print("Current file:", filename)
+       print(filename.endswith("all.csv")
+    ```
+
+2.  Value of a variable
 
     ``` python
     mass = 3
@@ -2166,7 +2171,7 @@ print(all_data.shape)
     print(mass < 4)
     ```
 
-2.  Membership in a collection
+3.  Membership in a collection
 
     ``` python
     primes = [2, 3, 5]
@@ -2175,7 +2180,22 @@ print(all_data.shape)
     print(7 in primes)
     ```
 
-3.  Truth of a collection Note that `any()` and `all()` evaluate each item using `.__bool__()` or `.__len()__`, which tells you whether an item is "truthy" or "falsey" (i.e. interpreted as being true or false).
+4.  Missing values
+
+    ``` python
+    # Recreate data frame with missing data if necessary
+    data = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
+    subset = data.loc['Italy':'Poland', '1962':'1972']
+    df = subset[subset > 10000]
+
+    # Which values are missing?
+    print(df.isna())
+
+    # Are any values missing?
+    print(df.isna().any(axis=None))
+    ```
+
+5.  (Optional) Truth of a collection Note that `any()` and `all()` evaluate each item using `.__bool__()` or `.__len()__`, which tells you whether an item is "truthy" or "falsey" (i.e. interpreted as being true or false).
 
     ``` python
     my_list = [2.75, "green", 0]
@@ -2184,7 +2204,7 @@ print(all_data.shape)
     print(all(my_list))
     ```
 
-4.  (Optional) Understanding "truthy" and "falsey" values in Python (cf. <https://stackoverflow.com/a/53198991>) Every value in Python, regardless of type, is interpreted as being `True` except for the following values (which are interpreted as `False`). "Truthy" values satisfy `if` or `while` statements; "Falsey" values do not.
+6.  (Optional) Understanding "truthy" and "falsey" values in Python (cf. <https://stackoverflow.com/a/53198991>) Every value in Python, regardless of type, is interpreted as being `True` except for the following values (which are interpreted as `False`). "Truthy" values satisfy `if` or `while` statements; "Falsey" values do not.
 
     1.  Constants defined to be false: `None` and `False`.
     2.  Zero of any numeric type: `0`, `0.0`, `0j`, `Decimal(0)`, `Fraction(0, 1)`
@@ -2192,34 +2212,94 @@ print(all_data.shape)
 
 ### Use `if` statements to control whether or not a block of code is executed
 
-An `if` statement (more properly called a conditional statement) controls whether some block of code is executed or not.
+1.  An `if` statement (more properly called a conditional statement) controls whether some block of code is executed or not.
 
-``` python
-mass = 3.5
-if mass > 3.0:
-    print(mass, 'is large')
-```
+    ``` python
+    mass = 3.5
+    if mass > 3.0:
+        print(mass, 'is large')
+    ```
 
-``` python
-mass = 2.0
-if mass > 3.0:
-    print (mass, 'is large')
-```
+    ``` python
+    mass = 2.0
+    if mass > 3.0:
+        print (mass, 'is large')
+    ```
 
-Structure is similar to a `for` statement:
+2.  Structure is similar to a `for` statement:
 
-- First line opens with `if` and ends with a colon
-- Body containing one or more statements is indented (usually by 4 spaces)
+    - First line opens with `if` and ends with a colon
+    - Body containing one or more statements is indented (usually by 4 spaces)
+
+3.  Use conditionals to decide which files to process
+
+    ``` python
+    data_frames = []
+    for filename in glob.glob('data/gapminder*.csv'):
+        print("Current file:", filename)
+         if not filename.endswith("all.csv"):
+            print("Passes test:", filename)
+            data = pd.read_csv(filename)
+            data_frames.append(data)
+
+    all_data = pd.concat(data_frames)
+    print(all_data.shape)
+    ```
 
 ### Use else to execute a block of code when an if condition is not true
 
-`else` can be used following an `if`. This allows us to specify an alternative to execute when the if branch isn’t taken.
+1.  `else` can be used following an `if`. This allows us to specify an alternative to execute when the if branch isn’t taken.
+
+    ``` python
+    if m > 3.0:
+        print(m, 'is large')
+    else:
+        print(m, 'is small')
+    ```
+
+2.  This lets you explicitly handle the base case
+
+    ``` python
+    data_frames = []
+    for filename in glob.glob('data/gapminder*.csv'):
+        if filename.endswith("all.csv"):
+            print("I don't want any of that")
+        else:
+            print("Passes test:", filename)
+            data = pd.read_csv(filename)
+            data_frames.append(data)
+
+    all_data = pd.concat(data_frames)
+    print(all_data.shape)
+    ```
+
+### **Challenge**: Process small files
+
+Iterate through all of the CSV files in the data directory. Print the name and length (number of lines) of any file that is less than 30 lines long.
+
+#### Solution
+
+Note that the data frame will report the number of data rows, which doesn't include the column headers (the actual file has a leading row with the header names).
 
 ``` python
-if m > 3.0:
-    print(m, 'is large')
-else:
-    print(m, 'is small')
+for filename in glob.glob('data/*.csv'):
+    data = pd.read_csv(filename)
+    if len(data) < 30:
+        print(filename, len(data))
+```
+
+### **Challenge:** Find the European data
+
+Iterate through all of the CSV files in the data directory. Print the file name that includes "europe", then print the column names for the file.
+
+#### Solution
+
+``` python
+for filename in glob.glob('data/*.csv'):
+    if "europe" in filename.lower():
+        print(filename)
+        data = pd.read_csv(filename)
+        print(data.columns)
 ```
 
 ### Use `elif` to specify additional tests
@@ -2228,7 +2308,7 @@ May want to provide several alternative choices, each with its own test; use `el
 
 ``` python
 if m > 9.0:
-    print(m, 'is HUGE')
+    print(m, 'is huge')
 elif m > 3.0:
     print(m, 'is large')
 else:
@@ -2238,7 +2318,7 @@ else:
 - Always associated with an `if`.
 - Must come before the `else` (which is the “catch all”).
 
-### Conditions are tested once, in order
+### (Optional) Conditions are tested once, in order
 
 Python steps through the branches of the conditional in order, testing each in turn. Order matters! The following is wrong:
 
@@ -2254,54 +2334,33 @@ elif grade >= 90:
 
 ### Compound Relations Using `and`, `or`, and Parentheses
 
-Often, you want some combination of things to be true. You can combine relations within a conditional using `and` and `or`. Continuing the example above, suppose you have:
+Often, you want some combination of things to be true. You can combine relations within a conditional using `and` and `or`.
 
 ``` python
-mass     = [ 3.54,  2.07,  9.22,  1.86,  1.71]
-velocity = [10.00, 20.00, 30.00, 25.00, 20.00]
+mass = [1, 2, 3, 4, 5]
+velocity = [5, 4, 3, 2, 5]
 
 for m, v in zip(mass, velocity):
-    if m > 5 and v > 20:
-        print("Fast heavy object.  Duck!")
-    elif m > 2 and m <= 5 and v <= 20:
-        print("Normal traffic")
-    elif m <= 2 and v <= 20:
-        print("Slow light object.  Ignore it")
+    if m <= 3 and v <= 3:
+        print("Small and slow")
+    elif m <= 3 and v > 3:
+        print("Small and fast")
+    elif m > 3 and v <= 3:
+        print("Large and slow")
     else:
-        print("Whoa!  Something is up with the data.  Check it")
+        print("Check data")
 ```
 
 - Use () to group subsets of conditions
 - Aside: For a more natural way of working with many lists, look at `zip()`
 
-### Use the modulus to print occasional status messages
-
-Conditionals are often used inside loops.
+### (Optional) Use the modulus to print occasional status messages
 
 ``` python
-data_frames = []
-for count, filename in enumerate(glob.glob('data/gapminder_[!all]*.csv')):
+for count, filename in enumerate(glob.glob('data/gapminder_*.csv')):
     # Print every other filename
     if count % 2 == 0:
         print(count, filename)
-    data = pd.read_csv(filename)
-    data_frames.append(data)
-
-all_data = pd.concat(data_frames)
-print(all_data.shape)
-```
-
-### **Challenge**: Process small files
-
-Iterate through all of the CSV files in the data directory. Print the file name and file length for any file that is less than 30 lines long.
-
-#### Solution
-
-``` python
-for filename in glob.glob('data/*.csv'):
-    data = pd.read_csv(filename)
-    if len(data) < 30:
-        print(filename, len(data))
 ```
 
 ### (Optional) Use pathlib to write code that works across operating systems
@@ -2315,8 +2374,8 @@ for filename in glob.glob('data/*.csv'):
     raw_path = Path("data")
     processed_path = Path("data/processed")
 
-    print("Relative path:", raw_path)
-    print("Absolute path:", raw_path.absolute())
+    print("Relative path:", processed_path)
+    print("Absolute path:", processed_path.absolute())
     ```
 
 2.  The file objects have methods that provide much better information about files and directories.
@@ -2325,8 +2384,8 @@ for filename in glob.glob('data/*.csv'):
     #Note the careful testing at each level of the code.
     data_frames = []
 
-    if relative_path.exists():
-        for filename in raw_path.glob('gapminder_[!all]*.csv'):
+    if raw_path.exists():
+        for filename in raw_path.glob('gapminder_gdp_*.csv'):
             if filename.is_file():
                 data = pd.read_csv(filename)
                 print(filename)
@@ -2548,36 +2607,43 @@ print_greeting()
         2.  At the very end, with a final result
     2.  Docstring provides function help. Use triple quotes if you need the docstring to span multiple lines.
 
-### **Challenge (text processing)**: Encapsulate text processing in a function
+### **(Optional) challenge**: Encapsulate text processing in a function
 
 Write a function that takes `line` as an input and returns the information required by `writer.writerow()`.
 
 ### **Challenge (data normalization)**: Encapsulate Z score calculations in a function
 
-1.  Write a function that encapsulates the Z-score calculations from the Pandas workshop into a function. The function should return two Series:
-    1.  The mean Z score for each country over time
-    2.  A categorical variable that identifies countries as "wealthy" or "non-wealthy"
-2.  Use the function to inspect one of the Gapminder continental datasets.
+Write a function that encapsulates the Z-score calculations from the Pandas workshop. Your function needs to do the following:
+
+1.  Read a CSV file into a data frame
+2.  Calculate the Z score for each item
+3.  Calculate the mean Z score for each country
+4.  Append the mean Z scores as a new column
+5.  Return the data frame
 
 #### Solution
 
 ``` python
-def norm_data(data):
-    """Add a Z score column to each data set."""
+def norm_data(filename):
+    """Add a Z score column to a data frame."""
 
-    # Calculate z scores for all elements
-    z = (data - data.mean(axis=None))/data.std()
+    df = pd.read_csv(filename, index_col = "country")
+
+    # If you need to drop the continent column
+    if "continent" in df.columns:
+        df.drop("continent", axis=1)
+
+    # Calculate individual Z scores
+    z = (data - data.mean(axis=None))/data.values.std(ddof=1)
 
     # Get the mean z score for each country
     mean_z = z.mean(axis=1)
 
-    # Group countries into "wealthy" (z > 0) and "not wealthy" (z <= 0)
-    z_bool = mean_z > 0
+    df["mean_z"] = mean_z
 
-    return mean_z, z_bool
+    return df
 
-data = pd.read_csv("data/gapminder_gdp_europe.csv", index_col = "country")
-mean_z, z_bool = norm_data(data)
+df = norm_data("data/gapminder_gdp_europe.csv")
 
 # If you need to drop the contintent column
 # mean_z, z_bool = norm_data(data.drop("continent", axis=1))
@@ -3212,6 +3278,8 @@ Let's make a poster!
 - Read "Why you hate Matplotlib": <https://ryxcommar.com/2020/04/11/why-you-hate-matplotlib/>
 
 # Special Topics
+
+## Environments
 
 ## Working with unstructured files
 
