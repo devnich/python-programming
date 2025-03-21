@@ -6,6 +6,90 @@
 #+AUTHOR: Derek Devnich
 
 * COMMENT Notes
+** Post-workshop notes
+1. Put the first command on the board for people that come in late.
+2. Talk about environments after functions.
+3. Update the z-score example to use numpy calculations instead of pandas calculations. There was a versioning issue. Several people in the room were running 1.2.x or 1.4.x instead of 2.x.x.
+4. Send out documentation for anaconda environments and activating
+
+** Info from John Gallagher
+NB: This drops down to NumPy for the entire sequence, obviating any Pandas issues
+
+Just wanted to share the code snippet you asked for:
+
+#+BEGIN_SRC python
+def zScoreCalc (filename, index_colum_name = None):
+    # reads csv file into df
+    data = pd.read_csv(filename, index_col = index_colum_name)
+    # work with the numeric data only
+    cell_values = data.select_dtypes('number')
+    # calculates zscore for each item
+    zscore = (cell_values - cell_values.values.mean())/cell_values.values.std()
+    # calculates mean z score for each country and appends mean zscore as new column
+    data['zmean'] = cell_values.T.mean()
+    # returns the data frame
+    return data
+#+END_SRC
+
+Here I used the .select_dtypes() method in Pandas.  The documentation can be found here: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.select_dtypes.html
+
+I've really appreciated your teaching style and flexibility in class.
+
+** TODO Institutional Effectiveness training
+*** Derek's notes
+1. Long to wide
+2. Data cleanup
+3. Joins
+4. Database access
+5. Quick graphs with seaborn plus fiddling with matplotlib
+6. Tour of statistical libraries
+7. Formatted strings for reports?
+
+*** Corinne's notes
+1. +Installation:+
+   - +Python - https://www.python.org/+
+   - +Anaconda - https://www.anaconda.com/+
+2. +Notebooks:+
+   - +Jupyter+
+3. Commonly used functions
+   1. Loading libraries (examples):
+      1. import pandas as pd
+      2. import numpy as np
+      3. other stats libraries to load and when (advanced stats, etc)
+   2. Loading a dataset
+      1. Local data
+         1. Load specific variables, filter rows based on condition...
+         2. Joins -- outer joins, left/right joins
+         3. Long vs wide data
+      2. Database Query -- querying a view (Oracle, Snowflake)
+   3. Basic data recoding/labeling
+      1. Creating bins, labels
+      2. String data
+   4. Descriptive Statistics / exploratory data analysis
+      1. Describe() /shows quick summary stats/
+      2. Crosstabs- basic X by Y table (e.g. class level by gender)
+      3. Others
+   5. Charts *(Add UCM colors to customize)*
+      1. Scatterplot
+      2. Histogram
+      3. Line
+      4. Columns
+   6. Basic Inferential Statistics
+      1. Correlations
+      2. Chi Square
+      3. T Test
+      4. Anova
+   7. Advanced Stats (what libraries to use; where to find documentation)
+      1. Logistic regression
+      2. Decision trees
+      3. Machine learning -- cluster analyses, advanced logistic regressions, random forests
+4. Resources: (+ others)
+   1. [[https://docs.python.org/3.12/tutorial/index.html]]
+   2. [[https://learning.anaconda.cloud/]]
+   3. [[https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf]]
+   4. https://pandas.pydata.org/pandas-docs/stable/reference/index.html
+
+** Initial notes
 NB: Order is good, because Python users need to understand objects to use matplotlib
 
 1. More check-ins and independent problems.
@@ -20,6 +104,7 @@ NB: Order is good, because Python users need to understand objects to use matplo
 ** Graphing
 1. Save matplotlib/seaborn graph with legend off to side
 2. Investigate plotly
+3. Templates for matplotlib work-along workshop
 
 * Fundamentals (Week 1)
 ** Orientation
