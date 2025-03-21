@@ -11,6 +11,7 @@ tmp.md
 
 # Jupyter environmental variables
 .ipynb_checkpoints/
+irds/
 
 # Archives
 *.zip

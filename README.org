@@ -483,7 +483,7 @@ fruits[-3:]
    print(fruits)
    #+END_SRC
 
-*** Many functions take collections as arguments
+*** (Optional) Many functions take collections as arguments
 #+BEGIN_SRC python
 # Assessing the overall productivity of our wide receivers
 receiving_yards = [450, 370, 870, 150]
@@ -616,6 +616,11 @@ print(sum(lengths))
 **** Solution 3
 #+BEGIN_SRC python
 sum(len(f) for f in fruits)
+#+END_SRC
+
+**** Solution 4
+#+BEGIN_SRC python
+len("".join(fruits))
 #+END_SRC
 
 *** (Optional) Helpful tools for iteration
@@ -1487,6 +1492,11 @@ print(df3.shape)
    print(df_birds.head())
    print(df_birds.shape)
    #+END_SRC
+
+*** (Optional) Importing data from databases
+#+BEGIN_SRC python
+
+#+END_SRC
 
 ** (Optional) Text processing in Pandas
 cf. https://pandas.pydata.org/docs/user_guide/text.html
@@ -2531,7 +2541,7 @@ print(type(ax))
    fig.savefig("mygraph_dark.png", dpi=300)
    #+END_SRC
 
-*** Plotting multiple data sets
+*** (Optional) Plotting multiple data sets
 In this example, plot GDP over time for multiple countries.
 
 1. Import data
@@ -2586,6 +2596,9 @@ In this example, plot GDP over time for multiple countries.
    ax.set_title("GDP of Austria vs Bulgaria", fontsize=22, fontweight='bold')
    ax.set_xlabel("Years", fontsize=20, fontweight='bold')
    ax.set_ylabel("GDP", fontsize=20, fontweight='bold')
+
+   # Fix the display of years in scientific notation
+   ax.xaxis.get_major_formatter().set_useOffset(False)
    #+END_SRC
 
 *** (Optional) Plot directly from Pandas
@@ -2632,21 +2645,6 @@ Don't do this.
    #+END_SRC
 
 ** Visualization Strategy
-*** There are many kinds of plots
-#+BEGIN_SRC python
-## Visualize the same data using a scatterplot
-plt.style.use('ggplot')
-
-# Create a scatter plot
-fig, ax = plt.subplots(figsize=(8,6))
-ax.scatter(y_austria, y_bulgaria, color='blue', linewidth=2, marker='o')
-
-# Decorate the plot
-ax.set_title("GDP of Austria vs Bulgaria", fontsize=22, fontweight='bold')
-ax.set_xlabel("GDP of Austria",fontsize=20, fontweight='bold' )
-ax.set_ylabel("GDP of Bulgaria",fontsize=20, fontweight='bold' )
-#+END_SRC
-
 *** Read the docs
 1. Matplotlib gallery: https://matplotlib.org/stable/gallery/index.html
    1. "Plotting categorical variables" example of multiple subplots
@@ -2663,10 +2661,25 @@ ax.set_ylabel("GDP of Bulgaria",fontsize=20, fontweight='bold' )
 4. Customize judiciously
 5. Build collection of interactive and publication code snippets
 
+*** (Optional) There are many kinds of plots
+#+BEGIN_SRC python
+## Visualize the same data using a scatterplot
+plt.style.use('ggplot')
+
+# Create a scatter plot
+fig, ax = plt.subplots(figsize=(8,6))
+ax.scatter(y_austria, y_bulgaria, color='blue', linewidth=2, marker='o')
+
+# Decorate the plot
+ax.set_title("GDP of Austria vs Bulgaria", fontsize=22, fontweight='bold')
+ax.set_xlabel("GDP of Austria",fontsize=20, fontweight='bold' )
+ax.set_ylabel("GDP of Bulgaria",fontsize=20, fontweight='bold' )
+#+END_SRC
+
 ** Fast visualization and theming with Seaborn
 Seaborn is a set of high-level pre-sets for Matplotlib.
 
-*** Seaborn is a nice way to look at your data
+*** (Optional) Seaborn is a nice way to look at your data
 #+BEGIN_SRC python
 # Import the Seaborn library
 import seaborn as sns
@@ -2676,7 +2689,7 @@ ax = sns.lineplot(data=data.T, legend=False, dashes=False)
 
 - Doing more with this data set requires transforming the data from wide form to long form; see https://seaborn.pydata.org/tutorial/data_structure.html
 
-*** Using preset styles
+*** Seaborn makes it easy to use preset styles
 Let's make a poster!
 
 1. Import Iris data set https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/0e7a9b0a5d22642a06d3d5b9bcbad9890c8ee534/iris.csv
@@ -2693,7 +2706,7 @@ Let's make a poster!
 
 3. Change plotting theme
    #+BEGIN_SRC python
-   plt.style.use("dark_background")
+   # plt.style.use("dark_background")
 
    # Fix grid if necessary
    #plt.rcParams["axes.grid"] = False
@@ -2720,6 +2733,151 @@ Let's make a poster!
    fig
    #+END_SRC
 
+*** Box Plots and Swarm Plots
+1. Box plot
+   #+BEGIN_SRC python
+   plt.style.use("default")
+   ax = sns.boxplot(data=iris, x='species', y='petal_length')
+   #+END_SRC
+
+2. Swarm plot
+   #+BEGIN_SRC python
+   ax = sns.swarmplot(data=iris,x='species', y='petal_length', hue='species', palette='Set1')
+   ax.legend(loc='upper left', fontsize=16)
+   ax.tick_params(axis='x', labelrotation = 45)
+   #+END_SRC
+
+   This gives us a format warning.
+
+3. Strip plot
+   #+BEGIN_SRC python
+   ax = sns.stripplot(data=iris,x='species', y='petal_length', hue='species', palette='Set1')
+   ax.legend(loc='upper left', fontsize=16)
+   ax.tick_params(axis='x', labelrotation = 45)
+   #+END_SRC
+
+4. Overlapping plots
+   #+BEGIN_SRC python
+   ax = sns.boxplot(data=iris, x='species', y='petal_length')
+   sns.stripplot(data=iris, x='species', y='petal_length', ax=ax, palette='Set1', hue='species')
+   #+END_SRC
+
+*** Palmer Archipeligo Penguin Data
+#+BEGIN_SRC python
+penguins = sns.load_dataset("penguins")
+penguin
+#+END_SRC
+
+*** Grouped bar plot
+#+BEGIN_SRC python
+# Clear previous chart settings
+#plt.clf()
+
+sns.set_theme(style="whitegrid")
+
+# Draw a nested barplot by species and sex
+fig2 = sns.catplot(
+    data=penguins, kind="bar",
+    x="species", y="body_mass_g", hue="sex",
+    palette="dark", alpha=.6, height=6,
+    errorbar='sd'
+    #ci='sd'  # This is deprecated in newer versions of Seaborn
+)
+
+fig2.despine(left=True)
+fig2.set_axis_labels("", "Body mass (g)")
+fig2.legend.set_title("")
+
+# Re-display:
+#fig2.figure
+#+END_SRC
+
+*** (Optional) Scatterplot with categorical variables
+#+BEGIN_SRC python
+plt.clf()
+sns.set_theme(style="whitegrid", palette="muted")
+
+# Draw a categorical scatterplot to show each observation
+fig3 = sns.swarmplot(data=penguins, x="body_mass_g", y="sex", hue="species")
+fig3.set(ylabel="")
+
+#fig3.figure
+#+END_SRC
+
+*** Multiple linear regression
+#+BEGIN_SRC python
+plt.clf()
+sns.set_theme()
+
+# Plot bill length and bill depth by species
+fig4 = sns.lmplot(
+    data=penguins,
+    x="bill_length_mm", y="bill_depth_mm", hue="species",
+    height=5
+)
+
+# Use more informative axis labels than are provided by default
+fig4.set_axis_labels("Snoot length (mm)", "Snoot depth (mm)")
+
+#fig4.figure
+#+END_SRC
+
+*** Scatterplot Matrix
+#+BEGIN_SRC python
+plt.clf()
+sns.set_theme(style="ticks")
+
+fig5 = sns.pairplot(penguins, hue="species")
+
+#fig5.figure
+
+# Save our figure
+fig5.savefig("scatterplot_matrix.png", dpi=300)
+#+END_SRC
+
+*** Histograms showing variation within each species
+#+BEGIN_SRC python
+plt.clf()
+sns.set_theme(style="darkgrid")
+
+fig6 = sns.displot(
+    penguins, x="bill_length_mm", col="species",
+    binwidth=3, height=3, facet_kws=dict(margin_titles=True),
+)
+
+#fig6.figure
+#+END_SRC
+
+*** Joint kernel density estimate
+#+BEGIN_SRC python
+#
+# (i.e. smoothed histograms)
+plt.clf()
+sns.set_theme(style="ticks")
+
+# Show the joint distribution using kernel density estimation
+fig7 = sns.jointplot(
+    data=penguins,
+    x="bill_length_mm", y="bill_depth_mm", hue="species",
+    kind="kde",
+)
+
+#fig7.figure
+#+END_SRC
+
+*** Paired density and scatterplot matrix
+#+BEGIN_SRC python
+plt.clf()
+sns.set_theme(style="white")
+
+
+fig8 = sns.PairGrid(penguins, diag_sharey=False)
+fig8.map_upper(sns.scatterplot, s=15)
+fig8.map_lower(sns.kdeplot)
+fig8.map_diag(sns.kdeplot, lw=2)
+
+#fig8.figure
+#+END_SRC
 *** (Optional) There are many styling options
 1. Add styling to individual points
    #+BEGIN_SRC python
@@ -2781,34 +2939,6 @@ Let's make a poster!
    sns.histplot(data=iris,x='petal_length', bins=5, ax=axes[0], color='#f5a142')
    sns.histplot(data=iris,x='petal_length', bins=10, ax=axes[1], color='maroon')
    sns.histplot(data=iris,x='petal_length', bins=15, ax=axes[2], color='darkmagenta')
-   #+END_SRC
-
-*** (Optional) Box Plots and Swarm Plots
-1. Box plot
-   #+BEGIN_SRC python
-   ax = sns.boxplot(data=iris, x='species', y='petal_length')
-   #+END_SRC
-
-2. Swarm plot
-   #+BEGIN_SRC python
-   ax = sns.swarmplot(data=iris,x='species', y='petal_length', hue='species', palette='Set1')
-   ax.legend(loc='upper left', fontsize=16)
-   ax.tick_params(axis='x', labelrotation = 45)
-   #+END_SRC
-
-   This gives us a format warning.
-
-3. Strip plot
-   #+BEGIN_SRC python
-   ax = sns.swarmplot(data=iris,x='species', y='petal_length', hue='species', palette='Set1')
-   ax.legend(loc='upper left', fontsize=16)
-   ax.tick_params(axis='x', labelrotation = 45)
-   #+END_SRC
-
-4. Overlapping plots
-   #+BEGIN_SRC python
-   ax = sns.boxplot(data=iris, x='species', y='petal_length')
-   sns.stripplot(data=iris, x='species', y='petal_length', ax=ax, palette='Set1')
    #+END_SRC
 
 ** (Optional) How Matplotlib works

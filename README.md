@@ -1,61 +1,61 @@
-- <a href="#fundamentals-week-1" id="toc-fundamentals-week-1"><span class="toc-section-number">1</span> Fundamentals (Week 1)</a>
-  - <a href="#orientation" id="toc-orientation"><span class="toc-section-number">1.1</span> Orientation</a>
-  - <a href="#jupyter-commands" id="toc-jupyter-commands"><span class="toc-section-number">1.2</span> Jupyter commands</a>
-  - <a href="#variables-and-assignment" id="toc-variables-and-assignment"><span class="toc-section-number">1.3</span> Variables and Assignment</a>
-  - <a href="#data-types-and-type-conversion" id="toc-data-types-and-type-conversion"><span class="toc-section-number">1.4</span> Data Types and Type Conversion</a>
-  - <a href="#built-in-functions-and-help" id="toc-built-in-functions-and-help"><span class="toc-section-number">1.5</span> Built-in Functions and Help</a>
-  - <a href="#libraries" id="toc-libraries"><span class="toc-section-number">1.6</span> Libraries</a>
-  - <a href="#lists" id="toc-lists"><span class="toc-section-number">1.7</span> Lists</a>
-  - <a href="#for-loops" id="toc-for-loops"><span class="toc-section-number">1.8</span> For Loops</a>
-  - <a href="#strings-and-methods" id="toc-strings-and-methods"><span class="toc-section-number">1.9</span> Strings and methods</a>
-  - <a href="#dictionaries" id="toc-dictionaries"><span class="toc-section-number">1.10</span> Dictionaries</a>
-  - <a href="#optional-other-containers" id="toc-optional-other-containers"><span class="toc-section-number">1.11</span> (Optional) Other containers</a>
-- <a href="#data-manipulation-with-pandas-week-2" id="toc-data-manipulation-with-pandas-week-2"><span class="toc-section-number">2</span> Data manipulation with Pandas (Week 2)</a>
-  - <a href="#optional-review-collections" id="toc-optional-review-collections"><span class="toc-section-number">2.1</span> (Optional) Review collections</a>
-  - <a href="#a-very-brief-introduction-to-numpy" id="toc-a-very-brief-introduction-to-numpy"><span class="toc-section-number">2.2</span> A very brief introduction to NumPy</a>
-  - <a href="#a-very-brief-introduction-to-pandas" id="toc-a-very-brief-introduction-to-pandas"><span class="toc-section-number">2.3</span> A very brief introduction to Pandas</a>
-  - <a href="#optional-where-are-we" id="toc-optional-where-are-we"><span class="toc-section-number">2.4</span> (Optional) Where are we?</a>
-  - <a href="#reading-tabular-data-into-data-frames" id="toc-reading-tabular-data-into-data-frames"><span class="toc-section-number">2.5</span> Reading tabular data into data frames</a>
-  - <a href="#data-frames-are-objects-that-can-tell-you-about-their-contents" id="toc-data-frames-are-objects-that-can-tell-you-about-their-contents"><span class="toc-section-number">2.6</span> Data frames are objects that can tell you about their contents</a>
-  - <a href="#subsetting-data" id="toc-subsetting-data"><span class="toc-section-number">2.7</span> Subsetting Data</a>
-  - <a href="#filtering-i.e.-masking-data-on-contents" id="toc-filtering-i.e.-masking-data-on-contents"><span class="toc-section-number">2.8</span> Filtering (i.e. masking) data on contents</a>
-  - <a href="#working-with-missing-data" id="toc-working-with-missing-data"><span class="toc-section-number">2.9</span> Working with missing data</a>
-  - <a href="#sorting-and-grouping" id="toc-sorting-and-grouping"><span class="toc-section-number">2.10</span> Sorting and grouping</a>
-  - <a href="#write-output" id="toc-write-output"><span class="toc-section-number">2.11</span> Write output</a>
-  - <a href="#working-with-multiple-tables" id="toc-working-with-multiple-tables"><span class="toc-section-number">2.12</span> Working with multiple tables</a>
-  - <a href="#optional-text-processing-in-pandas" id="toc-optional-text-processing-in-pandas"><span class="toc-section-number">2.13</span> (Optional) Text processing in Pandas</a>
-  - <a href="#optional-adding-rows-to-dataframes" id="toc-optional-adding-rows-to-dataframes"><span class="toc-section-number">2.14</span> (Optional) Adding rows to DataFrames</a>
-  - <a href="#optional-scientific-computing-libraries" id="toc-optional-scientific-computing-libraries"><span class="toc-section-number">2.15</span> (Optional) Scientific Computing Libraries</a>
-  - <a href="#optional-things-we-didnt-talk-about" id="toc-optional-things-we-didnt-talk-about"><span class="toc-section-number">2.16</span> (Optional) Things we didn't talk about</a>
-  - <a href="#optional-pandas-method-chaining-in-the-wild" id="toc-optional-pandas-method-chaining-in-the-wild"><span class="toc-section-number">2.17</span> (Optional) Pandas method chaining in the wild</a>
-  - <a href="#optional-introspecting-on-the-dataframe-object" id="toc-optional-introspecting-on-the-dataframe-object"><span class="toc-section-number">2.18</span> (Optional) Introspecting on the DataFrame object</a>
-  - <a href="#carpentries-version-group-by-split-apply-combine" id="toc-carpentries-version-group-by-split-apply-combine"><span class="toc-section-number">2.19</span> (Carpentries version) Group By: split-apply-combine</a>
-- <a href="#building-programs-week-3" id="toc-building-programs-week-3"><span class="toc-section-number">3</span> Building Programs (Week 3)</a>
-  - <a href="#notebooks-vs-python-scripts" id="toc-notebooks-vs-python-scripts"><span class="toc-section-number">3.1</span> Notebooks vs Python scripts</a>
-  - <a href="#optional-python-from-the-terminal" id="toc-optional-python-from-the-terminal"><span class="toc-section-number">3.2</span> (Optional) Python from the terminal</a>
-  - <a href="#looping-over-data-sets" id="toc-looping-over-data-sets"><span class="toc-section-number">3.3</span> Looping Over Data Sets</a>
-  - <a href="#conditionals" id="toc-conditionals"><span class="toc-section-number">3.4</span> Conditionals</a>
-  - <a href="#optional-generic-file-handling" id="toc-optional-generic-file-handling"><span class="toc-section-number">3.5</span> (Optional) Generic file handling</a>
-  - <a href="#optional-text-processing-and-data-cleanup" id="toc-optional-text-processing-and-data-cleanup"><span class="toc-section-number">3.6</span> (Optional) Text processing and data cleanup</a>
-  - <a href="#writing-functions" id="toc-writing-functions"><span class="toc-section-number">3.7</span> Writing Functions</a>
-  - <a href="#carpentries-version-conditionals" id="toc-carpentries-version-conditionals"><span class="toc-section-number">3.8</span> (Carpentries version) Conditionals</a>
-- <a href="#visualization-with-matplotlib-and-seaborn-week-4" id="toc-visualization-with-matplotlib-and-seaborn-week-4"><span class="toc-section-number">4</span> Visualization with Matplotlib and Seaborn (Week 4)</a>
-  - <a href="#orientation-1" id="toc-orientation-1"><span class="toc-section-number">4.1</span> Orientation</a>
-  - <a href="#plotting-with-matplotlib" id="toc-plotting-with-matplotlib"><span class="toc-section-number">4.2</span> Plotting with Matplotlib</a>
-  - <a href="#visualization-strategy" id="toc-visualization-strategy"><span class="toc-section-number">4.3</span> Visualization Strategy</a>
-  - <a href="#fast-visualization-and-theming-with-seaborn" id="toc-fast-visualization-and-theming-with-seaborn"><span class="toc-section-number">4.4</span> Fast visualization and theming with Seaborn</a>
-  - <a href="#optional-how-matplotlib-works" id="toc-optional-how-matplotlib-works"><span class="toc-section-number">4.5</span> (Optional) How Matplotlib works</a>
-- <a href="#special-topics" id="toc-special-topics"><span class="toc-section-number">5</span> Special Topics</a>
-  - <a href="#environments" id="toc-environments"><span class="toc-section-number">5.1</span> Environments</a>
-  - <a href="#working-with-unstructured-files" id="toc-working-with-unstructured-files"><span class="toc-section-number">5.2</span> Working with unstructured files</a>
-  - <a href="#exception-handling" id="toc-exception-handling"><span class="toc-section-number">5.3</span> Exception handling</a>
-  - <a href="#performance-and-profiling" id="toc-performance-and-profiling"><span class="toc-section-number">5.4</span> Performance and profiling</a>
-  - <a href="#reducing-memory-usage" id="toc-reducing-memory-usage"><span class="toc-section-number">5.5</span> Reducing memory usage</a>
-  - <a href="#other-optional-topics" id="toc-other-optional-topics"><span class="toc-section-number">5.6</span> Other optional topics</a>
-- <a href="#endnotes" id="toc-endnotes"><span class="toc-section-number">6</span> Endnotes</a>
-  - <a href="#credits" id="toc-credits"><span class="toc-section-number">6.1</span> Credits</a>
-  - <a href="#references" id="toc-references"><span class="toc-section-number">6.2</span> References</a>
-  - <a href="#data-sources" id="toc-data-sources"><span class="toc-section-number">6.3</span> Data Sources</a>
+- [<span class="toc-section-number">1</span> Fundamentals (Week 1)](#fundamentals-week-1)
+  - [<span class="toc-section-number">1.1</span> Orientation](#orientation)
+  - [<span class="toc-section-number">1.2</span> Jupyter commands](#jupyter-commands)
+  - [<span class="toc-section-number">1.3</span> Variables and Assignment](#variables-and-assignment)
+  - [<span class="toc-section-number">1.4</span> Data Types and Type Conversion](#data-types-and-type-conversion)
+  - [<span class="toc-section-number">1.5</span> Built-in Functions and Help](#built-in-functions-and-help)
+  - [<span class="toc-section-number">1.6</span> Libraries](#libraries)
+  - [<span class="toc-section-number">1.7</span> Lists](#lists)
+  - [<span class="toc-section-number">1.8</span> For Loops](#for-loops)
+  - [<span class="toc-section-number">1.9</span> Strings and methods](#strings-and-methods)
+  - [<span class="toc-section-number">1.10</span> Dictionaries](#dictionaries)
+  - [<span class="toc-section-number">1.11</span> (Optional) Other containers](#optional-other-containers)
+- [<span class="toc-section-number">2</span> Data manipulation with Pandas (Week 2)](#data-manipulation-with-pandas-week-2)
+  - [<span class="toc-section-number">2.1</span> (Optional) Review collections](#optional-review-collections)
+  - [<span class="toc-section-number">2.2</span> A very brief introduction to NumPy](#a-very-brief-introduction-to-numpy)
+  - [<span class="toc-section-number">2.3</span> A very brief introduction to Pandas](#a-very-brief-introduction-to-pandas)
+  - [<span class="toc-section-number">2.4</span> (Optional) Where are we?](#optional-where-are-we)
+  - [<span class="toc-section-number">2.5</span> Reading tabular data into data frames](#reading-tabular-data-into-data-frames)
+  - [<span class="toc-section-number">2.6</span> Data frames are objects that can tell you about their contents](#data-frames-are-objects-that-can-tell-you-about-their-contents)
+  - [<span class="toc-section-number">2.7</span> Subsetting Data](#subsetting-data)
+  - [<span class="toc-section-number">2.8</span> Filtering (i.e. masking) data on contents](#filtering-i.e.-masking-data-on-contents)
+  - [<span class="toc-section-number">2.9</span> Working with missing data](#working-with-missing-data)
+  - [<span class="toc-section-number">2.10</span> Sorting and grouping](#sorting-and-grouping)
+  - [<span class="toc-section-number">2.11</span> Write output](#write-output)
+  - [<span class="toc-section-number">2.12</span> Working with multiple tables](#working-with-multiple-tables)
+  - [<span class="toc-section-number">2.13</span> (Optional) Text processing in Pandas](#optional-text-processing-in-pandas)
+  - [<span class="toc-section-number">2.14</span> (Optional) Adding rows to DataFrames](#optional-adding-rows-to-dataframes)
+  - [<span class="toc-section-number">2.15</span> (Optional) Scientific Computing Libraries](#optional-scientific-computing-libraries)
+  - [<span class="toc-section-number">2.16</span> (Optional) Things we didn't talk about](#optional-things-we-didnt-talk-about)
+  - [<span class="toc-section-number">2.17</span> (Optional) Pandas method chaining in the wild](#optional-pandas-method-chaining-in-the-wild)
+  - [<span class="toc-section-number">2.18</span> (Optional) Introspecting on the DataFrame object](#optional-introspecting-on-the-dataframe-object)
+  - [<span class="toc-section-number">2.19</span> (Carpentries version) Group By: split-apply-combine](#carpentries-version-group-by-split-apply-combine)
+- [<span class="toc-section-number">3</span> Building Programs (Week 3)](#building-programs-week-3)
+  - [<span class="toc-section-number">3.1</span> Notebooks vs Python scripts](#notebooks-vs-python-scripts)
+  - [<span class="toc-section-number">3.2</span> (Optional) Python from the terminal](#optional-python-from-the-terminal)
+  - [<span class="toc-section-number">3.3</span> Looping Over Data Sets](#looping-over-data-sets)
+  - [<span class="toc-section-number">3.4</span> Conditionals](#conditionals)
+  - [<span class="toc-section-number">3.5</span> (Optional) Generic file handling](#optional-generic-file-handling)
+  - [<span class="toc-section-number">3.6</span> (Optional) Text processing and data cleanup](#optional-text-processing-and-data-cleanup)
+  - [<span class="toc-section-number">3.7</span> Writing Functions](#writing-functions)
+  - [<span class="toc-section-number">3.8</span> (Carpentries version) Conditionals](#carpentries-version-conditionals)
+- [<span class="toc-section-number">4</span> Visualization with Matplotlib and Seaborn (Week 4)](#visualization-with-matplotlib-and-seaborn-week-4)
+  - [<span class="toc-section-number">4.1</span> Orientation](#orientation-1)
+  - [<span class="toc-section-number">4.2</span> Plotting with Matplotlib](#plotting-with-matplotlib)
+  - [<span class="toc-section-number">4.3</span> Visualization Strategy](#visualization-strategy)
+  - [<span class="toc-section-number">4.4</span> Fast visualization and theming with Seaborn](#fast-visualization-and-theming-with-seaborn)
+  - [<span class="toc-section-number">4.5</span> (Optional) How Matplotlib works](#optional-how-matplotlib-works)
+- [<span class="toc-section-number">5</span> Special Topics](#special-topics)
+  - [<span class="toc-section-number">5.1</span> Environments](#environments)
+  - [<span class="toc-section-number">5.2</span> Working with unstructured files](#working-with-unstructured-files)
+  - [<span class="toc-section-number">5.3</span> Exception handling](#exception-handling)
+  - [<span class="toc-section-number">5.4</span> Performance and profiling](#performance-and-profiling)
+  - [<span class="toc-section-number">5.5</span> Reducing memory usage](#reducing-memory-usage)
+  - [<span class="toc-section-number">5.6</span> Other optional topics](#other-optional-topics)
+- [<span class="toc-section-number">6</span> Endnotes](#endnotes)
+  - [<span class="toc-section-number">6.1</span> Credits](#credits)
+  - [<span class="toc-section-number">6.2</span> References](#references)
+  - [<span class="toc-section-number">6.3</span> Data Sources](#data-sources)
 
 # Fundamentals (Week 1)
 
@@ -601,7 +601,7 @@ fruits[-3:]
     print(fruits)
     ```
 
-### Many functions take collections as arguments
+### (Optional) Many functions take collections as arguments
 
 ``` python
 # Assessing the overall productivity of our wide receivers
@@ -758,6 +758,12 @@ print(sum(lengths))
 
 ``` python
 sum(len(f) for f in fruits)
+```
+
+#### Solution 4
+
+``` python
+len("".join(fruits))
 ```
 
 ### (Optional) Helpful tools for iteration
@@ -1765,6 +1771,12 @@ print(df3.shape)
     print(df_birds.head())
     print(df_birds.shape)
     ```
+
+### (Optional) Importing data from databases
+
+``` python
+
+```
 
 ## (Optional) Text processing in Pandas
 
@@ -2937,7 +2949,7 @@ print(type(ax))
     fig.savefig("mygraph_dark.png", dpi=300)
     ```
 
-### Plotting multiple data sets
+### (Optional) Plotting multiple data sets
 
 In this example, plot GDP over time for multiple countries.
 
@@ -3000,6 +3012,9 @@ In this example, plot GDP over time for multiple countries.
     ax.set_title("GDP of Austria vs Bulgaria", fontsize=22, fontweight='bold')
     ax.set_xlabel("Years", fontsize=20, fontweight='bold')
     ax.set_ylabel("GDP", fontsize=20, fontweight='bold')
+
+    # Fix the display of years in scientific notation
+    ax.xaxis.get_major_formatter().set_useOffset(False)
     ```
 
 ### (Optional) Plot directly from Pandas
@@ -3053,22 +3068,6 @@ Don't do this.
 
 ## Visualization Strategy
 
-### There are many kinds of plots
-
-``` python
-## Visualize the same data using a scatterplot
-plt.style.use('ggplot')
-
-# Create a scatter plot
-fig, ax = plt.subplots(figsize=(8,6))
-ax.scatter(y_austria, y_bulgaria, color='blue', linewidth=2, marker='o')
-
-# Decorate the plot
-ax.set_title("GDP of Austria vs Bulgaria", fontsize=22, fontweight='bold')
-ax.set_xlabel("GDP of Austria",fontsize=20, fontweight='bold' )
-ax.set_ylabel("GDP of Bulgaria",fontsize=20, fontweight='bold' )
-```
-
 ### Read the docs
 
 1.  Matplotlib gallery: <https://matplotlib.org/stable/gallery/index.html>
@@ -3087,11 +3086,27 @@ ax.set_ylabel("GDP of Bulgaria",fontsize=20, fontweight='bold' )
 4.  Customize judiciously
 5.  Build collection of interactive and publication code snippets
 
+### (Optional) There are many kinds of plots
+
+``` python
+## Visualize the same data using a scatterplot
+plt.style.use('ggplot')
+
+# Create a scatter plot
+fig, ax = plt.subplots(figsize=(8,6))
+ax.scatter(y_austria, y_bulgaria, color='blue', linewidth=2, marker='o')
+
+# Decorate the plot
+ax.set_title("GDP of Austria vs Bulgaria", fontsize=22, fontweight='bold')
+ax.set_xlabel("GDP of Austria",fontsize=20, fontweight='bold' )
+ax.set_ylabel("GDP of Bulgaria",fontsize=20, fontweight='bold' )
+```
+
 ## Fast visualization and theming with Seaborn
 
 Seaborn is a set of high-level pre-sets for Matplotlib.
 
-### Seaborn is a nice way to look at your data
+### (Optional) Seaborn is a nice way to look at your data
 
 ``` python
 # Import the Seaborn library
@@ -3102,7 +3117,7 @@ ax = sns.lineplot(data=data.T, legend=False, dashes=False)
 
 - Doing more with this data set requires transforming the data from wide form to long form; see <https://seaborn.pydata.org/tutorial/data_structure.html>
 
-### Using preset styles
+### Seaborn makes it easy to use preset styles
 
 Let's make a poster!
 
@@ -3122,7 +3137,7 @@ Let's make a poster!
 3.  Change plotting theme
 
     ``` python
-    plt.style.use("dark_background")
+    # plt.style.use("dark_background")
 
     # Fix grid if necessary
     #plt.rcParams["axes.grid"] = False
@@ -3149,6 +3164,165 @@ Let's make a poster!
 
     fig
     ```
+
+### Box Plots and Swarm Plots
+
+1.  Box plot
+
+    ``` python
+    plt.style.use("default")
+    ax = sns.boxplot(data=iris, x='species', y='petal_length')
+    ```
+
+2.  Swarm plot
+
+    ``` python
+    ax = sns.swarmplot(data=iris,x='species', y='petal_length', hue='species', palette='Set1')
+    ax.legend(loc='upper left', fontsize=16)
+    ax.tick_params(axis='x', labelrotation = 45)
+    ```
+
+    This gives us a format warning.
+
+3.  Strip plot
+
+    ``` python
+    ax = sns.stripplot(data=iris,x='species', y='petal_length', hue='species', palette='Set1')
+    ax.legend(loc='upper left', fontsize=16)
+    ax.tick_params(axis='x', labelrotation = 45)
+    ```
+
+4.  Overlapping plots
+
+    ``` python
+    ax = sns.boxplot(data=iris, x='species', y='petal_length')
+    sns.stripplot(data=iris, x='species', y='petal_length', ax=ax, palette='Set1', hue='species')
+    ```
+
+### Palmer Archipeligo Penguin Data
+
+``` python
+penguins = sns.load_dataset("penguins")
+penguin
+```
+
+### Grouped bar plot
+
+``` python
+# Clear previous chart settings
+#plt.clf()
+
+sns.set_theme(style="whitegrid")
+
+# Draw a nested barplot by species and sex
+fig2 = sns.catplot(
+    data=penguins, kind="bar",
+    x="species", y="body_mass_g", hue="sex",
+    palette="dark", alpha=.6, height=6,
+    errorbar='sd'
+    #ci='sd'  # This is deprecated in newer versions of Seaborn
+)
+
+fig2.despine(left=True)
+fig2.set_axis_labels("", "Body mass (g)")
+fig2.legend.set_title("")
+
+# Re-display:
+#fig2.figure
+```
+
+### (Optional) Scatterplot with categorical variables
+
+``` python
+plt.clf()
+sns.set_theme(style="whitegrid", palette="muted")
+
+# Draw a categorical scatterplot to show each observation
+fig3 = sns.swarmplot(data=penguins, x="body_mass_g", y="sex", hue="species")
+fig3.set(ylabel="")
+
+#fig3.figure
+```
+
+### Multiple linear regression
+
+``` python
+plt.clf()
+sns.set_theme()
+
+# Plot bill length and bill depth by species
+fig4 = sns.lmplot(
+    data=penguins,
+    x="bill_length_mm", y="bill_depth_mm", hue="species",
+    height=5
+)
+
+# Use more informative axis labels than are provided by default
+fig4.set_axis_labels("Snoot length (mm)", "Snoot depth (mm)")
+
+#fig4.figure
+```
+
+### Scatterplot Matrix
+
+``` python
+plt.clf()
+sns.set_theme(style="ticks")
+
+fig5 = sns.pairplot(penguins, hue="species")
+
+#fig5.figure
+
+# Save our figure
+fig5.savefig("scatterplot_matrix.png", dpi=300)
+```
+
+### Histograms showing variation within each species
+
+``` python
+plt.clf()
+sns.set_theme(style="darkgrid")
+
+fig6 = sns.displot(
+    penguins, x="bill_length_mm", col="species",
+    binwidth=3, height=3, facet_kws=dict(margin_titles=True),
+)
+
+#fig6.figure
+```
+
+### Joint kernel density estimate
+
+``` python
+#
+# (i.e. smoothed histograms)
+plt.clf()
+sns.set_theme(style="ticks")
+
+# Show the joint distribution using kernel density estimation
+fig7 = sns.jointplot(
+    data=penguins,
+    x="bill_length_mm", y="bill_depth_mm", hue="species",
+    kind="kde",
+)
+
+#fig7.figure
+```
+
+### Paired density and scatterplot matrix
+
+``` python
+plt.clf()
+sns.set_theme(style="white")
+
+
+fig8 = sns.PairGrid(penguins, diag_sharey=False)
+fig8.map_upper(sns.scatterplot, s=15)
+fig8.map_lower(sns.kdeplot)
+fig8.map_diag(sns.kdeplot, lw=2)
+
+#fig8.figure
+```
 
 ### (Optional) There are many styling options
 
@@ -3223,39 +3397,6 @@ Let's make a poster!
     sns.histplot(data=iris,x='petal_length', bins=5, ax=axes[0], color='#f5a142')
     sns.histplot(data=iris,x='petal_length', bins=10, ax=axes[1], color='maroon')
     sns.histplot(data=iris,x='petal_length', bins=15, ax=axes[2], color='darkmagenta')
-    ```
-
-### (Optional) Box Plots and Swarm Plots
-
-1.  Box plot
-
-    ``` python
-    ax = sns.boxplot(data=iris, x='species', y='petal_length')
-    ```
-
-2.  Swarm plot
-
-    ``` python
-    ax = sns.swarmplot(data=iris,x='species', y='petal_length', hue='species', palette='Set1')
-    ax.legend(loc='upper left', fontsize=16)
-    ax.tick_params(axis='x', labelrotation = 45)
-    ```
-
-    This gives us a format warning.
-
-3.  Strip plot
-
-    ``` python
-    ax = sns.swarmplot(data=iris,x='species', y='petal_length', hue='species', palette='Set1')
-    ax.legend(loc='upper left', fontsize=16)
-    ax.tick_params(axis='x', labelrotation = 45)
-    ```
-
-4.  Overlapping plots
-
-    ``` python
-    ax = sns.boxplot(data=iris, x='species', y='petal_length')
-    sns.stripplot(data=iris, x='species', y='petal_length', ax=ax, palette='Set1')
     ```
 
 ## (Optional) How Matplotlib works
