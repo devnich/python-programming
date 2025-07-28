@@ -414,7 +414,7 @@ round(3.712, 1)
 
 2. Python reports a runtime error when something goes wrong while a program is executing
 
-*** *Beginner Challenge*: What happens when?
+*** *(Optional) Beginner Challenge*: What happens when?
 Explain in simple terms the order of operations in the following program: when does the addition happen, when does the subtraction happen, when is each function called, etc. Extra credit: What is the final value of radiance?
 
 #+BEGIN_SRC python
@@ -776,26 +776,7 @@ len("".join(fruits))
    #+END_SRC
 
 *** (Optional) Methods are functions that belong to objects
-1. An object packages data together with functions that operate on that data. This is a very common organizational strategy in Python.
-   #+BEGIN_SRC python
-   sentence = "Hello world!"
-
-   # Call the swapcase method on the my_string object
-   print(sentence.swapcase())
-   #+END_SRC
-
-2. You can chain methods into processing pipelines
-   #+BEGIN_SRC python
-   print(sentence.isupper())          # Check whether all letters are uppercase
-   print(sentence.upper())            # Capitalize all the letters
-   #+END_SRC
-
-   #+BEGIN_SRC python
-   # The output of upper() is as string; you can use more string methods on it
-   sentence.upper().isupper()
-   #+END_SRC
-
-3. You can view an object's attributes (i.e. methods and fields) using ~help()~ or ~dir()~. Some attributes are "private"; you're not supposed to use these directly.
+1. You can view an object's attributes (i.e. methods and fields) using ~help()~ or ~dir()~. Some attributes are "private"; you're not supposed to use these directly.
    #+BEGIN_SRC python
    # More verbose help
    help(str)
@@ -804,6 +785,25 @@ len("".join(fruits))
    #+BEGIN_SRC python
    # The short, short version
    dir(my_string)
+   #+END_SRC
+
+2. An object packages data together with functions that operate on that data. This is a very common organizational strategy in Python.
+   #+BEGIN_SRC python
+   sentence = "Hello world!"
+
+   # Call the swapcase method on the my_string object
+   print(sentence.swapcase())
+   #+END_SRC
+
+3. You can chain methods into processing pipelines
+   #+BEGIN_SRC python
+   print(sentence.isupper())          # Check whether all letters are uppercase
+   print(sentence.upper())            # Capitalize all the letters
+   #+END_SRC
+
+   #+BEGIN_SRC python
+   # The output of upper() is as string; you can use more string methods on it
+   sentence.upper().isupper()
    #+END_SRC
 
 *** COMMENT (Optional) Building longer strings with ~.join()~
@@ -822,7 +822,7 @@ This is replicated in the functions section
    print(date)
    #+END_SRC
 
-*** *(Optional) Challenge*: Putting it all together
+*** *Challenge*: Putting it all together
 You want to iterate through the ~fruits~ list in a random order. For each randomly-selected fruit, capitalize the fruit and print it.
 1. Which standard library module could help you? https://docs.python.org/3/library/
 2. Which function would you select from that module? Are there alternatives?

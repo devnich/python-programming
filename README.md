@@ -423,7 +423,7 @@ round(3.712, 1)
 
 2.  Python reports a runtime error when something goes wrong while a program is executing
 
-### **Beginner Challenge**: What happens when?
+### **(Optional) Beginner Challenge**: What happens when?
 
 Explain in simple terms the order of operations in the following program: when does the addition happen, when does the subtraction happen, when is each function called, etc. Extra credit: What is the final value of radiance?
 
@@ -848,28 +848,7 @@ print(good_str1, "\n", good_str2)
 
 ### (Optional) Methods are functions that belong to objects
 
-1.  An object packages data together with functions that operate on that data. This is a very common organizational strategy in Python.
-
-    ``` python
-    sentence = "Hello world!"
-
-    # Call the swapcase method on the my_string object
-    print(sentence.swapcase())
-    ```
-
-2.  You can chain methods into processing pipelines
-
-    ``` python
-    print(sentence.isupper())          # Check whether all letters are uppercase
-    print(sentence.upper())            # Capitalize all the letters
-    ```
-
-    ``` python
-    # The output of upper() is as string; you can use more string methods on it
-    sentence.upper().isupper()
-    ```
-
-3.  You can view an object's attributes (i.e. methods and fields) using `help()` or `dir()`. Some attributes are "private"; you're not supposed to use these directly.
+1.  You can view an object's attributes (i.e. methods and fields) using `help()` or `dir()`. Some attributes are "private"; you're not supposed to use these directly.
 
     ``` python
     # More verbose help
@@ -881,7 +860,28 @@ print(good_str1, "\n", good_str2)
     dir(my_string)
     ```
 
-### **(Optional) Challenge**: Putting it all together
+2.  An object packages data together with functions that operate on that data. This is a very common organizational strategy in Python.
+
+    ``` python
+    sentence = "Hello world!"
+
+    # Call the swapcase method on the my_string object
+    print(sentence.swapcase())
+    ```
+
+3.  You can chain methods into processing pipelines
+
+    ``` python
+    print(sentence.isupper())          # Check whether all letters are uppercase
+    print(sentence.upper())            # Capitalize all the letters
+    ```
+
+    ``` python
+    # The output of upper() is as string; you can use more string methods on it
+    sentence.upper().isupper()
+    ```
+
+### **Challenge**: Putting it all together
 
 You want to iterate through the `fruits` list in a random order. For each randomly-selected fruit, capitalize the fruit and print it.
 
