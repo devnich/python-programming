@@ -12,33 +12,32 @@
   - [<span class="toc-section-number">1.11</span> (Optional) Other containers](#optional-other-containers)
 - [<span class="toc-section-number">2</span> Data manipulation with Pandas (Week 2)](#data-manipulation-with-pandas-week-2)
   - [<span class="toc-section-number">2.1</span> (Optional) Review collections](#optional-review-collections)
-  - [<span class="toc-section-number">2.2</span> A very brief introduction to NumPy](#a-very-brief-introduction-to-numpy)
-  - [<span class="toc-section-number">2.3</span> A very brief introduction to Pandas](#a-very-brief-introduction-to-pandas)
-  - [<span class="toc-section-number">2.4</span> (Optional) Where are we?](#optional-where-are-we)
-  - [<span class="toc-section-number">2.5</span> Reading tabular data into data frames](#reading-tabular-data-into-data-frames)
-  - [<span class="toc-section-number">2.6</span> Data frames are objects that can tell you about their contents](#data-frames-are-objects-that-can-tell-you-about-their-contents)
-  - [<span class="toc-section-number">2.7</span> Subsetting Data](#subsetting-data)
-  - [<span class="toc-section-number">2.8</span> Filtering (i.e. masking) data on contents](#filtering-i.e.-masking-data-on-contents)
-  - [<span class="toc-section-number">2.9</span> Working with missing data](#working-with-missing-data)
-  - [<span class="toc-section-number">2.10</span> Sorting and grouping](#sorting-and-grouping)
+  - [<span class="toc-section-number">2.2</span> (Optional) Check Numpy and Pandas versions](#optional-check-numpy-and-pandas-versions)
+  - [<span class="toc-section-number">2.3</span> A very brief introduction to NumPy](#a-very-brief-introduction-to-numpy)
+  - [<span class="toc-section-number">2.4</span> A very brief introduction to Pandas](#a-very-brief-introduction-to-pandas)
+  - [<span class="toc-section-number">2.5</span> (Optional) Where are we?](#optional-where-are-we)
+  - [<span class="toc-section-number">2.6</span> Reading tabular data into data frames](#reading-tabular-data-into-data-frames)
+  - [<span class="toc-section-number">2.7</span> Data frames are objects that can tell you about their contents](#data-frames-are-objects-that-can-tell-you-about-their-contents)
+  - [<span class="toc-section-number">2.8</span> Subsetting Data](#subsetting-data)
+  - [<span class="toc-section-number">2.9</span> Filtering (i.e. masking) data on contents](#filtering-i.e.-masking-data-on-contents)
+  - [<span class="toc-section-number">2.10</span> Grouping](#grouping)
   - [<span class="toc-section-number">2.11</span> Write output](#write-output)
-  - [<span class="toc-section-number">2.12</span> Working with multiple tables](#working-with-multiple-tables)
-  - [<span class="toc-section-number">2.13</span> (Optional) Text processing in Pandas](#optional-text-processing-in-pandas)
-  - [<span class="toc-section-number">2.14</span> (Optional) Adding rows to DataFrames](#optional-adding-rows-to-dataframes)
-  - [<span class="toc-section-number">2.15</span> (Optional) Scientific Computing Libraries](#optional-scientific-computing-libraries)
-  - [<span class="toc-section-number">2.16</span> (Optional) Things we didn't talk about](#optional-things-we-didnt-talk-about)
-  - [<span class="toc-section-number">2.17</span> (Optional) Pandas method chaining in the wild](#optional-pandas-method-chaining-in-the-wild)
+  - [<span class="toc-section-number">2.12</span> Working with missing data](#working-with-missing-data)
+  - [<span class="toc-section-number">2.13</span> Working with multiple tables](#working-with-multiple-tables)
+  - [<span class="toc-section-number">2.14</span> (Optional) Text processing in Pandas](#optional-text-processing-in-pandas)
+  - [<span class="toc-section-number">2.15</span> (Optional) Adding rows to DataFrames](#optional-adding-rows-to-dataframes)
+  - [<span class="toc-section-number">2.16</span> (Optional) Scientific Computing Libraries](#optional-scientific-computing-libraries)
+  - [<span class="toc-section-number">2.17</span> (Optional) Things we didn't talk about](#optional-things-we-didnt-talk-about)
   - [<span class="toc-section-number">2.18</span> (Optional) Introspecting on the DataFrame object](#optional-introspecting-on-the-dataframe-object)
-  - [<span class="toc-section-number">2.19</span> (Carpentries version) Group By: split-apply-combine](#carpentries-version-group-by-split-apply-combine)
 - [<span class="toc-section-number">3</span> Building Programs (Week 3)](#building-programs-week-3)
   - [<span class="toc-section-number">3.1</span> Notebooks vs Python scripts](#notebooks-vs-python-scripts)
   - [<span class="toc-section-number">3.2</span> (Optional) Python from the terminal](#optional-python-from-the-terminal)
   - [<span class="toc-section-number">3.3</span> Looping Over Data Sets](#looping-over-data-sets)
   - [<span class="toc-section-number">3.4</span> Conditionals](#conditionals)
-  - [<span class="toc-section-number">3.5</span> (Optional) Generic file handling](#optional-generic-file-handling)
-  - [<span class="toc-section-number">3.6</span> (Optional) Text processing and data cleanup](#optional-text-processing-and-data-cleanup)
-  - [<span class="toc-section-number">3.7</span> Writing Functions](#writing-functions)
-  - [<span class="toc-section-number">3.8</span> (Carpentries version) Conditionals](#carpentries-version-conditionals)
+  - [<span class="toc-section-number">3.5</span> Writing Functions](#writing-functions)
+  - [<span class="toc-section-number">3.6</span> (Optional) Use pathlib to write code that works across operating systems](#optional-use-pathlib-to-write-code-that-works-across-operating-systems)
+  - [<span class="toc-section-number">3.7</span> (Optional) Generic file handling](#optional-generic-file-handling)
+  - [<span class="toc-section-number">3.8</span> (Optional) Text processing and data cleanup](#optional-text-processing-and-data-cleanup)
 - [<span class="toc-section-number">4</span> Visualization with Matplotlib and Seaborn (Week 4)](#visualization-with-matplotlib-and-seaborn-week-4)
   - [<span class="toc-section-number">4.1</span> Orientation](#orientation-1)
   - [<span class="toc-section-number">4.2</span> Plotting with Matplotlib](#plotting-with-matplotlib)
@@ -1081,7 +1080,19 @@ ages_dict = dict(zip(ages[::2], ages[1::2]))
 2.  Immutable, so need to use string **methods**
 3.  `'/'.join()` is a very useful method
 
+## (Optional) Check Numpy and Pandas versions
+
+``` python
+import numpy
+import pandas
+from importlib.metadata import version
+print(version("pandas"))
+print(version("numpy"))
+```
+
 ## A very brief introduction to NumPy
+
+### NumPy arrays
 
 Introductory documentation: <https://numpy.org/doc/stable/user/quickstart.html>
 
@@ -1107,6 +1118,7 @@ Introductory documentation: <https://numpy.org/doc/stable/user/quickstart.html>
     print(m_rand.shape)
     print(m_rand.size)
     print(m_rand.ndim)
+    print(m_rand.T)
     ```
 
 4.  Arrays are fast but inflexible - the entire array must be of a single type.
@@ -1316,24 +1328,6 @@ type(data.columns)
 - You can convert data between NumPy arrays, Series, and DataFrames
 - You can read data into any of the data structures from files or from standard Python containers
 
-### **(Optional) Beginner Challenge**
-
-1.  Read the data in `gapminder_gdp_americas.csv` into a variable called `americas` and display its summary statistics.
-2.  After reading the data for the Americas, use `help(americas.head)` and `help(americas.tail)` to find out what `DataFrame.head` and `DataFrame.tail` do.
-    1.  How can you display the first three rows of this data?
-    2.  How can you display the last three columns of this data? (Hint: You may need to change your view of the data).
-3.  As well as the `read_csv` function for reading data from a file, Pandas provides a `to_csv` function to write DataFrames to files. Applying what you’ve learned about reading from files, write one of your DataFrames to a file called `processed.csv`. You can use `help` to get information on how to use `to_csv`.
-
-#### Solution
-
-``` python
-americas = pd.read_csv('data/gapminder_gdp_americas.csv', index_col='country')
-americas.describe()
-americas.head(3)
-americas.T.tail(3)
-americas.to_csv('processed.csv')
-```
-
 ## Subsetting Data
 
 ### Treat the data frame as a matrix and select values by position
@@ -1360,7 +1354,7 @@ This is most common way to get data
 
 ### Shorten the column names using vectorized string methods
 
-1.  Standard Python has string methods
+1.  (Optional review) Standard Python has string methods
 
     ``` python
     big_hello = "hello".title()
@@ -1401,7 +1395,7 @@ This is most common way to get data
     data.loc['Italy':'Poland', :]
     ```
 
-3.  (Optional) If you want specific rows or columns, pass in a list
+3.  If you want specific rows or columns, pass in a list
 
     ``` python
     data.loc[['Italy','Poland'], :]
@@ -1511,7 +1505,7 @@ For example, get the GDP for all countries greater than the median.
 ``` python
 # Get the overall median
 subset.median()          # Returns Series
-subset.median(axis=None) # Returns single valuey
+subset.median(axis=None) # Returns single value
 
 # Which data points are above the median
 subset > subset.median(axis=None)
@@ -1520,15 +1514,78 @@ subset > subset.median(axis=None)
 subset[subset > subset.median(axis=None)]
 ```
 
-### Use method chaining to create final output without creating intermediate variables
+### **Challenge**: Ranking countries
+
+1.  Get the mean GDP per capita for each country in `subset` (Hint: consult the Pandas documentation to figure out how to get the mean of the rows).
+2.  Extra credit: Sort the countries by their mean GDP per capita.
+3.  Extra credit 2x: Assign a numerical rank to each country based on its GDP per capita
+
+#### Solution
 
 ``` python
-# The .rank() method turns numerical scores into ranks
-data.rank()
+# Get the means
+subset.mean(axis=1)
 
-# Get mean rank over time and sort the output
-mean_rank = data.rank().mean(axis=1).sort_values()
-print(mean_rank)
+# Sort the means. We are illustrating method chaining.
+subset.mean(axis=1).sort_values()
+
+# Sort in descending and ranky
+subset.mean(axis=1).sort_values(ascending=False).rank()
+```
+
+## Grouping
+
+### Motivating example: Group countries by GDP
+
+``` python
+# Calculate mean GDP per cap for each country
+mean_gdp = data.mean(axis=1)
+
+# Calculate the median score
+median_score = mean_gdp.median()
+
+# Classify countries as high or low GDP
+high_gdp = mean_gdp > median_score
+
+print(mean_gdp)
+print(high_gdp)
+```
+
+### Append new columns to the data frame containing our summary statistics
+
+Data frames are dictionaries of Series:
+
+``` python
+data["mean_gdp"] = mean_gdp
+data["wealthy"] = high_gdp
+```
+
+### Sort and group by new columns
+
+1.  Group data by category and get group stats
+
+    ``` python
+    # Get descriptive statistics for the group
+    data.groupby("wealthy").mean()
+    data.groupby("wealthy").describe()
+    ```
+
+2.  (Optional) Sort data by new column
+
+    ``` python
+    data.sort_values(by="mean_gdp")
+    ```
+
+## Write output
+
+Capture the results of your filter in a new file, rather than overwriting your original data.
+
+``` python
+# Save to a new CSV, preserving your original data
+data.to_csv('gapminder_gdp_europe_grouped.csv')
+
+# If you don't want to preserve row names:
+data.to_csv('gapminder_gdp_europe_grouped.csv', index=False)
 ```
 
 ## Working with missing data
@@ -1591,28 +1648,6 @@ Examples include min, max, mean, std, etc.
     df.isna().all(axis=None)
     ```
 
-### Replace missing values
-
-1.  Replace with a fixed value
-
-    ``` python
-    df_fixed = df.fillna(99)
-    print(df_fixed)
-    ```
-
-2.  Replace values that don't meet a criterion with an alternate value
-
-    ``` python
-    subset_fixed = subset.where(subset > 10000, 99)
-    print(subset_fixed)
-    ```
-
-3.  (Optional) Impute missing values. Read the docs, this may or may not be sufficient for your needs.
-
-    ``` python
-    df_imputed = df.interpolate()
-    ```
-
 ### Drop missing values
 
 Drop all rows with missing values
@@ -1621,29 +1656,31 @@ Drop all rows with missing values
 df_drop = df.dropna()
 ```
 
-### **Hard Challenge**: The perils of missing data
+### (Optional) Replace missing values
 
-1.  Create an array of random numbers matching the `data` data frame
+1.  Replace with a fixed value
 
     ``` python
-    random_filter = np.random.rand(30, 12) * data.max(axis=None)
+    df_fixed = df.fillna(99)
+    print(df_fixed)
     ```
 
-2.  Create a new data frame that filters out all numbers lower than the random numbers
+2.  Replace specific values with `replace()`
 
-3.  Interpolate new values for the missing values in the new data frame. How accurate do you think they are?
+3.  Replace values that don't meet a criterion with an alternate value
 
-#### Solution
+    ``` python
+    subset_fixed = subset.where(subset > 10000, 99)
+    print(subset_fixed)
+    ```
 
-``` python
-new_data = data[data > random_filter]
+4.  Impute missing values. Read the docs, this may or may not be sufficient for your needs.
 
-# Data is not missing randomly
-print(new_data)
+    ``` python
+    df_imputed = df.interpolate()
+    ```
 
-new_data.interpolate()
-new_data.interpolate().mean(axis=None)
-```
+5.  Recode specific values as missing when importing data (e.g., using `read_csv()`) by passing in the \`na_values\` parameter.
 
 ### **(Optional) Challenge**: Filter and trim with a boolean vector
 
@@ -1662,60 +1699,6 @@ df[df["1962"].notna()]
 1.  Line 1 returns the column as a Series vector
 2.  Line 2 returns a boolean Series vector (True/False)
 3.  Line 3 performs *boolean indexing* on the DataFrame using the Series vector. It only returns the rows that are True (i.e. it performs true filtering).
-
-## Sorting and grouping
-
-### Motivating example: Calculate the wealth Z-score for each country
-
-``` python
-# Calculate z scores for all elements
-# z = (data - data.mean(axis=None))/data.std()
-# As of July 2024, pandas dataframe.std(axis=None) doesn't work. We are dropping down to
-# Numpy to use the .std() method on the underlying values array.
-z = (data - data.mean(axis=None))/data.values.std(ddof=1)
-
-# Get the mean z score for each country (i.e. across all columns)
-mean_z = z.mean(axis=1)
-
-# Group countries into "wealthy" (z > 0) and "not wealthy" (z <= 0)
-z_bool = mean_z > 0
-
-print(mean_z)
-print(z_bool)
-```
-
-### Append new columns to the data frame containing our summary statistics
-
-Data frames are dictionaries of Series:
-
-``` python
-data["mean_z"] = mean_z
-data["wealthy"] = z_bool
-```
-
-### Sort and group by new columns
-
-``` python
-data.sort_values(by="mean_z")
-```
-
-``` python
-# Get descriptive statistics for the group
-data.groupby("wealthy").mean()
-data.groupby("wealthy").describe()
-```
-
-## Write output
-
-Capture the results of your filter in a new file, rather than overwriting your original data.
-
-``` python
-# Save to a new CSV, preserving your original data
-data.to_csv('gapminder_gdp_europe_normed.csv')
-
-# If you don't want to preserve row names:
-#data.to_csv('gapminder_gdp_europe_normed.csv', index=False)
-```
 
 ## Working with multiple tables
 
@@ -1747,8 +1730,8 @@ print(df3.shape)
 
     ``` python
     df_join = surveys.merge(species, on="species_id", how="left")
-    print(df_join.head())
     print(df_join.shape)
+    print(df_join.head())
     ```
 
 3.  The resulting table loses its index because `surveys.record_id` is not being used in the join. To keep `record_id` as the index for the final table, we need to retain it as an explicit column.
@@ -1758,7 +1741,7 @@ print(df3.shape)
     surveys = pd.read_csv('data/surveys.csv')
     df_join = surveys.merge(species, on="species_id", how="left").set_index("record_id")
 
-    df_join.index
+    df_join.head()
     ```
 
 4.  Get the subset of species that match a criterion, and join on that subset. The "inner" join only includes rows where both tables match on the key column; it's a strategy for filtering the first table by the second table.
@@ -1766,17 +1749,23 @@ print(df3.shape)
     ``` python
     # Get the taxa column, masking the rows based on which values match "Bird"
     birds = species[species["taxa"] == "Bird"]
-    df_birds = surveys.join(birds, on="species_id").set_index("record_id")
 
-    print(df_birds.head())
-    print(df_birds.shape)
+    df_inner = surveys.merge(birds, on="species_id", how="inner").set_index("record_id")
+
+    print("Inner join")
+    print(df_inner.shape)
+    print(df_inner.head())
     ```
 
-### (Optional) Importing data from databases
+5.  Compare with the results of the left join
 
-``` python
+    ``` python
+    df_surveys_left = surveys.merge(birds, on="species_id", how="left").set_index("record_id")
 
-```
+    print("Surveys left join")
+    print(df_surveys_left.shape)
+    print(df_surveys_left.head())
+    ```
 
 ## (Optional) Text processing in Pandas
 
@@ -1966,19 +1955,6 @@ Scikit-Learn documentation: <https://scikit-learn.org/stable/>
 1.  pipe
 2.  map/applymap/apply (in general you should prefer vectorized functions)
 
-## (Optional) Pandas method chaining in the wild
-
-<https://gist.githubusercontent.com/adiamaan92/d8ebee8937d271452def2a7314993b2f/raw/ce9fbb5013d94accf0779a25e182c4be77678bd0/wine_mc_example.py>
-
-``` python
-wine.rename(columns={"color_intensity": "ci"})
-.assign(color_filter=lambda x: np.where((x.hue > 1) & (x.ci > 7), 1, 0))
-.query("alcohol > 14 and color_filter == 1")
-.sort_values("alcohol", ascending=False)
-.reset_index(drop=True)
-.loc[:, ["alcohol", "ci", "hue"]]
-```
-
 ## (Optional) Introspecting on the DataFrame object
 
 1.  DataFrames have a huge number of fields and methods, so dir() is not very useful
@@ -2020,37 +1996,6 @@ wine.rename(columns={"color_intensity": "ci"})
 
     pp.pprint(df_methods)
     pp.pprint(df_attr)
-    ```
-
-## (Carpentries version) Group By: split-apply-combine
-
-1.  Split data according to criterion, do numeric transformations, then recombine.
-
-    ``` python
-    # Get all GDPs greater than the mean
-    mask_higher = data > data.mean()
-
-    # Count the number of time periods in which each country exceeds the mean
-    higher_count = mask_higher.aggregate('sum', axis=1)
-
-    # Create a normalized wealth-over-time score
-    wealth_score = higher_count / len(data.columns)
-    wealth_score
-    ```
-
-2.  A DataFrame is a spreadsheet, but it is also a dictionary of columns.
-
-    ``` python
-    data['gdpPercap_1962']
-    ```
-
-3.  Add column to data frame
-
-    ``` python
-    # Warningealth Score is a series
-    type(wealth_score)
-
-    data['normalized_wealth'] = wealth_score
     ```
 
 # Building Programs (Week 3)
@@ -2157,23 +2102,22 @@ for filename in glob.glob('data/gapminder_gdp_*.csv'):
     data = pd.read_csv(filename)
     data_frames.append(data)
 
+# Concatenate all columns, adding missing data for columns that aren't shared
 all_data = pd.concat(data_frames)
 print(all_data.shape)
+print(all_data.columns)
+
+# Concatenate only matching columns
+common_data = pd.concat(data_frames, join="inner")
+print(common_data.shape)
+print(common_data.columns)
 ```
 
 ## Conditionals
 
 ### Evaluating the truth of a statement
 
-1.  Does a file end in `"all.csv"`?
-
-    ``` python
-    for filename in glob.glob('data/gapminder*.csv'):
-       print("Current file:", filename)
-       print(filename.endswith("all.csv")
-    ```
-
-2.  Value of a variable
+1.  Value of a variable
 
     ``` python
     mass = 3
@@ -2181,6 +2125,14 @@ print(all_data.shape)
     print(mass == 3)
     print(mass > 5)
     print(mass < 4)
+    ```
+
+2.  Does a file end in `"long.csv"`?
+
+    ``` python
+    for filename in glob.glob('data/gapminder*.csv'):
+       print("Current file:", filename)
+       print(filename.endswith("long.csv")
     ```
 
 3.  Membership in a collection
@@ -2195,16 +2147,13 @@ print(all_data.shape)
 4.  Missing values
 
     ``` python
-    # Recreate data frame with missing data if necessary
-    data = pd.read_csv('data/gapminder_gdp_europe.csv', index_col='country')
-    subset = data.loc['Italy':'Poland', '1962':'1972']
-    df = subset[subset > 10000]
-
-    # Which values are missing?
-    print(df.isna())
+    surveys = pd.read_csv('data/surveys.csv', index_col="record_id")
 
     # Are any values missing?
-    print(df.isna().any(axis=None))
+    surveys.isna().any(axis=None)
+
+    # Investigate missing values
+    surveys.isna().sum()
     ```
 
 5.  (Optional) Truth of a collection Note that `any()` and `all()` evaluate each item using `.__bool__()` or `.__len()__`, which tells you whether an item is "truthy" or "falsey" (i.e. interpreted as being true or false).
@@ -2246,16 +2195,9 @@ print(all_data.shape)
 3.  Use conditionals to decide which files to process
 
     ``` python
-    data_frames = []
     for filename in glob.glob('data/gapminder*.csv'):
-        print("Current file:", filename)
-         if not filename.endswith("all.csv"):
+        if not filename.endswith("long.csv"):
             print("Passes test:", filename)
-            data = pd.read_csv(filename)
-            data_frames.append(data)
-
-    all_data = pd.concat(data_frames)
-    print(all_data.shape)
     ```
 
 ### Use else to execute a block of code when an if condition is not true
@@ -2272,46 +2214,36 @@ print(all_data.shape)
 2.  This lets you explicitly handle the base case
 
     ``` python
-    data_frames = []
     for filename in glob.glob('data/gapminder*.csv'):
-        if filename.endswith("all.csv"):
+        if filename.endswith("long.csv"):
             print("I don't want any of that")
         else:
             print("Passes test:", filename)
-            data = pd.read_csv(filename)
-            data_frames.append(data)
-
-    all_data = pd.concat(data_frames)
-    print(all_data.shape)
     ```
 
-### **Challenge**: Process small files
+3.  Expand your reach with compound relations (and, or)
 
-Iterate through all of the CSV files in the data directory. Print the name and length (number of lines) of any file that is less than 30 lines long.
+    ``` python
+    for filename in glob.glob('data/gapminder*.csv'):
+        if filename.endswith("long.csv") or filename.endswith("wide.csv"):
+            print("I don't want any of that")
+        else:
+            print("Passes test:", filename)
+    ```
 
-#### Solution
+### **Challenge:** Checking for missing data
 
-Note that the data frame will report the number of data rows, which doesn't include the column headers (the actual file has a leading row with the header names).
-
-``` python
-for filename in glob.glob('data/*.csv'):
-    data = pd.read_csv(filename)
-    if len(data) < 30:
-        print(filename, len(data))
-```
-
-### **Challenge:** Find the European data
-
-Iterate through all of the CSV files in the data directory. Print the file name that includes "europe", then print the column names for the file.
+Iterate through all of the CSV files in the data directory. Determine whether the data set has missing data. If it has missing data, print the file name and the missing data counts for each variable.
 
 #### Solution
 
 ``` python
 for filename in glob.glob('data/*.csv'):
-    if "europe" in filename.lower():
+    df = pd.read_csv(filename)
+
+    if df.isna().any(axis=None):
         print(filename)
-        data = pd.read_csv(filename)
-        print(data.columns)
+        print(df.isna().sum())
 ```
 
 ### Use `elif` to specify additional tests
@@ -2330,9 +2262,9 @@ else:
 - Always associated with an `if`.
 - Must come before the `else` (which is the “catch all”).
 
-### (Optional) Conditions are tested once, in order
+### **(Optional) Challenge:** Conditions are tested once, in order
 
-Python steps through the branches of the conditional in order, testing each in turn. Order matters! The following is wrong:
+What does this code do? Is it correct? Why or why not?
 
 ``` python
 grade = 85
@@ -2343,6 +2275,10 @@ elif grade >= 80:
 elif grade >= 90:
     print('grade is A')
 ```
+
+#### Solution
+
+Python steps through the branches of the conditional in order, testing each in turn. Order matters!
 
 ### Compound Relations Using `and`, `or`, and Parentheses
 
@@ -2375,7 +2311,156 @@ for count, filename in enumerate(glob.glob('data/gapminder_*.csv')):
         print(count, filename)
 ```
 
-### (Optional) Use pathlib to write code that works across operating systems
+## Writing Functions
+
+### Break programs down into functions to make them easier to understand
+
+- Human beings can only keep a few items in working memory at a time.
+- Understand larger/more complicated ideas by understanding and combining pieces
+- Functions serve the same purpose in programs:
+  1.  Encapsulate complexity so that we can treat it as a single “thing”
+  2.  Removes complexity from remaining code, making it easier to test
+  3.  Enables re-use: Write one time, use many times
+
+### Define a function using `def` with a name, parameters, and a block of code
+
+``` python
+def print_greeting():
+    print('Hello!')
+```
+
+- Begin the definition of a new function with `def`, followed by the name of the function.
+- Must obey the same rules as variable names.
+- Parameters in parentheses; empty parentheses if the function doesn’t take any inputs.
+- Indent function body
+
+### Defining a function does not run it
+
+``` python
+print_greeting()
+```
+
+- Like assigning a value to a variable
+- Must call the function to execute the code it contains.
+
+### Arguments in call are matched to parameters in definition
+
+1.  Positional arguments
+
+    ``` python
+    def print_date(year, month, day):
+        joined = '/'.join([year, month, day])
+        print(joined)
+
+    print_date(1871, 3, 19)
+    ```
+
+2.  (Optional) Keyword arguments
+
+    ``` python
+    print_date(month=3, day=19, year=1871)
+    ```
+
+### Functions may return a result to their caller using `return`
+
+1.  Use `return ...` to give a value back to the caller. `return` ends the function's execution and *returns* you to the code that originally called the function.
+
+    ``` python
+    def average(values):
+        """Return average of values."""
+
+        return sum(values) / len(values)
+    ```
+
+    ``` python
+    a = average([1, 3, 4])
+    print(a)
+    ```
+
+2.  You should explicitly handle common problems:
+
+    ``` python
+    print(average([]))
+    ```
+
+    ``` python
+    def average(values):
+        """Return average of values, or None if no values are supplied."""
+
+        if len(values) == 0:
+            return None
+        else:
+            return sum(values) / len(values)
+    ```
+
+3.  Notes:
+
+    1.  `return` can occur anywhere in the function, but functions are easier to understand if return occurs:
+        1.  At the start to handle special cases
+        2.  At the very end, with a final result
+    2.  Docstring provides function help. Use triple quotes if you need the docstring to span multiple lines.
+
+### **(Optional) challenge**: Encapsulate text processing in a function
+
+Write a function that takes `line` as an input and returns the information required by `writer.writerow()`.
+
+### **Challenge:** Encapsulate GDP calculations in a function
+
+Write a function that calculates the mean GDP per capita for a Gapminder dataset. It should do the following:
+
+1.  Read a CSV file into a data frame
+2.  Calculate the mean GDP per capita for each country
+3.  Append the mean GDP scores as a new column
+4.  Return the data frame
+
+#### Solution
+
+NB: Test on "Americas" data to show the need for dropping the continent column.
+
+``` python
+def calc_mean_gdp(filename):
+    """Add a mean GDP column to a data frame."""
+
+    df = pd.read_csv(filename, index_col = "country")
+
+    # If you need to drop the continent column
+    if "continent" in df.columns:
+        df.drop("continent", axis=1)
+
+    # Get the mean GDP score for each country
+    mean_gdp = data.mean(axis=1)
+    df["mean_gdp"] = mean_gdp
+
+    return df
+
+df = calc_mean_gdp("data/gapminder_gdp_europe.csv")
+```
+
+### **(Optional) Challenge:** Use the function to process all files
+
+Process all of the continent files using your new function. Concatenate the files into a new data frame and save that data frame in a new CSV file.
+
+#### Solution
+
+``` python
+data_frames = []
+
+for filename in glob.glob('data/gapminder_*.csv'):
+    # Print a status message
+    print("Current file:", filename)
+
+    df = calc_mean_gdp(filename)
+    data_frames.append(df)
+
+all_data = pd.concat(data_frames)
+all_data.to_csv("gapminder_mean_all.csv", index=False)
+```
+
+### (Optional) A worked example: The Lorenz attractor
+
+<https://matplotlib.org/stable/gallery/mplot3d/lorenz_attractor.html>
+
+## (Optional) Use pathlib to write code that works across operating systems
 
 1.  Pathlib provides cross-platform path objects
 
@@ -2536,270 +2621,6 @@ with open(infile_name, "r") as infile, open(outfile_name, "w") as outfile:
     for i in datasets_list:
        do_something(f'{i}.png'
     ```
-
-## Writing Functions
-
-### Break programs down into functions to make them easier to understand
-
-- Human beings can only keep a few items in working memory at a time.
-- Understand larger/more complicated ideas by understanding and combining pieces
-- Functions serve the same purpose in programs:
-  1.  Encapsulate complexity so that we can treat it as a single “thing”
-  2.  Removes complexity from remaining code, making it easier to test
-  3.  Enables re-use: Write one time, use many times
-
-### Define a function using `def` with a name, parameters, and a block of code
-
-``` python
-def print_greeting():
-    print('Hello!')
-```
-
-- Begin the definition of a new function with `def`, followed by the name of the function.
-- Must obey the same rules as variable names.
-- Parameters in parentheses; empty parentheses if the function doesn’t take any inputs.
-- Indent function body
-
-### Defining a function does not run it
-
-``` python
-print_greeting()
-```
-
-- Like assigning a value to a variable
-- Must call the function to execute the code it contains.
-
-### Arguments in call are matched to parameters in definition
-
-1.  Positional arguments
-
-    ``` python
-    def print_date(year, month, day):
-        joined = '/'.join([year, month, day])
-        print(joined)
-
-    print_date(1871, 3, 19)
-    ```
-
-2.  (Optional) Keyword arguments
-
-    ``` python
-    print_date(month=3, day=19, year=1871)
-    ```
-
-### Functions may return a result to their caller using `return`
-
-1.  Use `return ...` to give a value back to the caller. `return` ends the function's execution and *returns* you to the code that originally called the function.
-
-    ``` python
-    def average(values):
-        """Return average of values, or None if no values are supplied."""
-
-        if len(values) == 0:
-            return None
-        else:
-            return sum(values) / len(values)
-    ```
-
-    ``` python
-    a = average([1, 3, 4])
-    print(a)
-    ```
-
-2.  You should explicitly handle common problems:
-
-    ``` python
-    print(average([]))
-    ```
-
-3.  Notes:
-
-    1.  `return` can occur anywhere in the function, but functions are easier to understand if return occurs:
-        1.  At the start to handle special cases
-        2.  At the very end, with a final result
-    2.  Docstring provides function help. Use triple quotes if you need the docstring to span multiple lines.
-
-### **(Optional) challenge**: Encapsulate text processing in a function
-
-Write a function that takes `line` as an input and returns the information required by `writer.writerow()`.
-
-### **Challenge (data normalization)**: Encapsulate Z score calculations in a function
-
-Write a function that encapsulates the Z-score calculations from the Pandas workshop. Your function needs to do the following:
-
-1.  Read a CSV file into a data frame
-2.  Calculate the Z score for each item
-3.  Calculate the mean Z score for each country
-4.  Append the mean Z scores as a new column
-5.  Return the data frame
-
-#### Solution
-
-``` python
-def norm_data(filename):
-    """Add a Z score column to a data frame."""
-
-    df = pd.read_csv(filename, index_col = "country")
-
-    # If you need to drop the continent column
-    if "continent" in df.columns:
-        df.drop("continent", axis=1)
-
-    # Calculate individual Z scores
-    z = (data - data.mean(axis=None))/data.values.std(ddof=1)
-
-    # Get the mean z score for each country
-    mean_z = z.mean(axis=1)
-
-    df["mean_z"] = mean_z
-
-    return df
-
-df = norm_data("data/gapminder_gdp_europe.csv")
-
-# If you need to drop the contintent column
-# mean_z, z_bool = norm_data(data.drop("continent", axis=1))
-```
-
-#### (Optional) Use the function to process all files
-
-``` python
-for filename in glob.glob('data/gapminder_*.csv'):
-    # Print a status message
-    print("Current file:", filename)
-
-    # Read the data into a DataFrame and modify it
-    data = pd.read_csv(filename, index_col = "country")
-    mean_z, z_bool = norm_data(data)
-
-    # Append to DataFrame
-    data["mean_z"] = mean_z
-    data["wealthy"] = z_bool
-
-    # Generate an output file name
-    parts = filename.split(".csv")
-    newfile = ''.join([parts[0], "_normed.csv"])
-    data.to_csv(newfile)
-```
-
-### (Optional) A worked example: The Lorenz attractor
-
-<https://matplotlib.org/stable/gallery/mplot3d/lorenz_attractor.html>
-
-## (Carpentries version) Conditionals
-
-### Use `if` statements to control whether or not a block of code is executed
-
-An `if` statement (more properly called a conditional statement) controls whether some block of code is executed or not.
-
-``` python
-mass = 3.54
-if mass > 3.0:
-    print(mass, 'is large')
-
-mass = 2.07
-if mass > 3.0:
-    print (mass, 'is large')
-```
-
-Structure is similar to a `for` statement:
-
-- First line opens with `if` and ends with a colon
-- Body containing one or more statements is indented (usually by 4 spaces)
-
-### Conditionals are often used inside loops
-
-Not much point using a conditional when we know the value (as above), but useful when we have a collection to process.
-
-``` python
-masses = [3.54, 2.07, 9.22, 1.86, 1.71]
-for m in masses:
-    if m > 3.0:
-        print(m, 'is large')
-```
-
-### Use else to execute a block of code when an if condition is not true
-
-`else` can be used following an `if`. This allows us to specify an alternative to execute when the if branch isn’t taken.
-
-``` python
-masses = [3.54, 2.07, 9.22, 1.86, 1.71]
-for m in masses:
-    if m > 3.0:
-        print(m, 'is large')
-    else:
-        print(m, 'is small')
-```
-
-### Use `elif` to specify additional tests
-
-May want to provide several alternative choices, each with its own test; use `elif` (short for “else if”) and a condition to specify these.
-
-``` python
-masses = [3.54, 2.07, 9.22, 1.86, 1.71]
-for m in masses:
-    if m > 9.0:
-        print(m, 'is HUGE')
-    elif m > 3.0:
-        print(m, 'is large')
-    else:
-        print(m, 'is small')
-```
-
-- Always associated with an `if`.
-- Must come before the `else` (which is the “catch all”).
-
-### Conditions are tested once, in order
-
-Python steps through the branches of the conditional in order, testing each in turn. Order matters! The following is wrong:
-
-``` python
-grade = 85
-if grade >= 70:
-    print('grade is C')
-elif grade >= 80:
-    print('grade is B')
-elif grade >= 90:
-    print('grade is A')
-```
-
-### Use conditionals in a loop to “evolve” the values of variables
-
-``` python
-velocity = 10.0
-for i in range(5): # execute the loop 5 times
-    print(i, ':', velocity)
-    if velocity > 20.0:
-        velocity = velocity - 5.0
-    else:
-        velocity = velocity + 10.0
-print('final velocity:', velocity)
-```
-
-- This is how dynamical systems simulations work
-
-### Compound Relations Using `and`, `or`, and Parentheses (optional)
-
-Often, you want some combination of things to be true. You can combine relations within a conditional using `and` and `or`. Continuing the example above, suppose you have:
-
-``` python
-mass     = [ 3.54,  2.07,  9.22,  1.86,  1.71]
-velocity = [10.00, 20.00, 30.00, 25.00, 20.00]
-
-i = 0
-for i in range(5):
-    if mass[i] > 5 and velocity[i] > 20:
-        print("Fast heavy object.  Duck!")
-    elif mass[i] > 2 and mass[i] <= 5 and velocity[i] <= 20:
-        print("Normal traffic")
-    elif mass[i] <= 2 and velocity[i] <= 20:
-        print("Slow light object.  Ignore it")
-    else:
-        print("Whoa!  Something is up with the data.  Check it")
-```
-
-- Use () to group subsets of conditions
-- Aside: For a more natural way of working with many lists, look at `zip()`
 
 # Visualization with Matplotlib and Seaborn (Week 4)
 
