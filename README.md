@@ -1,8 +1,3 @@
----
-author: Derek Devnich
-title: Programming in Python
----
-
 - [1. Fundamentals (Week 1)](#fundamentals-week-1)
   - [1.1. Orientation](#orientation)
   - [1.2. Jupyter commands](#jupyter-commands)

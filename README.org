@@ -3387,6 +3387,9 @@ Do this if you want code syntax highlighting and a table of contents on Github.
 1. Generate Markdown file
    #+BEGIN_SRC bash
    pandoc -f org -t gfm --toc --toc-depth=2 --wrap=none -N -s README.org -o README.md
+
+   # Add section headers
+   pandoc -f org -t gfm --toc --toc-depth=2 --wrap=none -s --lua-filter ./pandoc-section-number-filter.lua README.org -o README.md
    #+END_SRC
 
 2. Delete anything above the Table of Contents, e.g.:
