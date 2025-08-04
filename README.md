@@ -30,11 +30,11 @@
   - [<span class="toc-section-number">2.17</span> (Optional) Things we didn't talk about](#optional-things-we-didnt-talk-about)
   - [<span class="toc-section-number">2.18</span> (Optional) Introspecting on the DataFrame object](#optional-introspecting-on-the-dataframe-object)
 - [<span class="toc-section-number">3</span> Building Programs (Week 3)](#building-programs-week-3)
-  - [<span class="toc-section-number">3.1</span> Notebooks vs Python scripts](#notebooks-vs-python-scripts)
-  - [<span class="toc-section-number">3.2</span> (Optional) Python from the terminal](#optional-python-from-the-terminal)
-  - [<span class="toc-section-number">3.3</span> Looping Over Data Sets](#looping-over-data-sets)
-  - [<span class="toc-section-number">3.4</span> Conditionals](#conditionals)
-  - [<span class="toc-section-number">3.5</span> Writing Functions](#writing-functions)
+  - [<span class="toc-section-number">3.1</span> Looping Over Data Sets](#looping-over-data-sets)
+  - [<span class="toc-section-number">3.2</span> Conditionals](#conditionals)
+  - [<span class="toc-section-number">3.3</span> Writing Functions](#writing-functions)
+  - [<span class="toc-section-number">3.4</span> Notebooks vs Python scripts](#notebooks-vs-python-scripts)
+  - [<span class="toc-section-number">3.5</span> (Optional) Python from the terminal](#optional-python-from-the-terminal)
   - [<span class="toc-section-number">3.6</span> (Optional) Use pathlib to write code that works across operating systems](#optional-use-pathlib-to-write-code-that-works-across-operating-systems)
   - [<span class="toc-section-number">3.7</span> (Optional) Generic file handling](#optional-generic-file-handling)
   - [<span class="toc-section-number">3.8</span> (Optional) Text processing and data cleanup](#optional-text-processing-and-data-cleanup)
@@ -1580,13 +1580,17 @@ data["wealthy"] = high_gdp
 
 Capture the results of your filter in a new file, rather than overwriting your original data.
 
-``` python
-# Save to a new CSV, preserving your original data
-data.to_csv('gapminder_gdp_europe_grouped.csv')
+1.  Create a new subdirectory called "processed" using the editor's file interface.
 
-# If you don't want to preserve row names:
-data.to_csv('gapminder_gdp_europe_grouped.csv', index=False)
-```
+2.  Save your data as a CSV in the subdirectory
+
+    ``` python
+    # Save to a new CSV, preserving your original data
+    data.to_csv('gapminder_gdp_europe_grouped.csv')
+
+    # If you don't want to preserve row names:
+    data.to_csv('gapminder_gdp_europe_grouped.csv', index=False)
+    ```
 
 ## Working with missing data
 
@@ -2000,47 +2004,6 @@ Scikit-Learn documentation: <https://scikit-learn.org/stable/>
 
 # Building Programs (Week 3)
 
-## Notebooks vs Python scripts
-
-### Differences between .ipynb and .py
-
-1.  Export notebook to .py file
-2.  Move .py file into data directory
-3.  Compare files in TextEdit/Notepad
-
-### Workflow differences between notebooks and scripts
-
-Broadly, a trade-off between managing big code bases and making it easy to experiment. See: <https://github.com/elliewix/Ways-Of-Installing-Python/blob/master/ways-of-installing.md#why-do-you-need-a-specific-tool>
-
-1.  Interactive testing and debugging
-2.  Graphics integration
-3.  Version control
-4.  Remote scripts
-
-## (Optional) Python from the terminal
-
-1.  Python is an interactive interpreter (REPL)
-
-    ``` bash
-    python
-    ```
-
-2.  Python is a command line program
-
-    ``` python
-    # hello.py
-    print("Hello!")
-    ```
-
-    ``` bash
-    python hello.py
-    ```
-
-3.  (Optional) Python programs can accept command line arguments as inputs
-
-    1.  List of command line inputs: `sys.argv` (<https://docs.python.org/3/library/sys.html#sys.argv>)
-    2.  Utility for working with arguments: `argparse` (<https://docs.python.org/3/library/argparse.html>)
-
 ## Looping Over Data Sets
 
 ### File paths as an example of increasing abstraction in program development
@@ -2349,8 +2312,10 @@ print_greeting()
 
     ``` python
     def print_date(year, month, day):
-        joined = '/'.join([year, month, day])
-        print(joined)
+        """Print the formatted date. This works with strings or integers."""
+
+        formatted_date = f"{year}/{month}/{day}"
+        print(formatted_date)
 
     print_date(1871, 3, 19)
     ```
@@ -2459,6 +2424,47 @@ all_data.to_csv("gapminder_mean_all.csv", index=False)
 ### (Optional) A worked example: The Lorenz attractor
 
 <https://matplotlib.org/stable/gallery/mplot3d/lorenz_attractor.html>
+
+## Notebooks vs Python scripts
+
+### Differences between .ipynb and .py
+
+1.  Export notebook to .py file
+2.  Move .py file into data directory
+3.  Compare files in TextEdit/Notepad
+
+### Workflow differences between notebooks and scripts
+
+Broadly, a trade-off between managing big code bases and making it easy to experiment. See: <https://github.com/elliewix/Ways-Of-Installing-Python/blob/master/ways-of-installing.md#why-do-you-need-a-specific-tool>
+
+1.  Interactive testing and debugging
+2.  Graphics integration
+3.  Version control
+4.  Remote scripts
+
+## (Optional) Python from the terminal
+
+1.  Python is an interactive interpreter (REPL)
+
+    ``` bash
+    python
+    ```
+
+2.  Python is a command line program
+
+    ``` python
+    # hello.py
+    print("Hello!")
+    ```
+
+    ``` bash
+    python hello.py
+    ```
+
+3.  (Optional) Python programs can accept command line arguments as inputs
+
+    1.  List of command line inputs: `sys.argv` (<https://docs.python.org/3/library/sys.html#sys.argv>)
+    2.  Utility for working with arguments: `argparse` (<https://docs.python.org/3/library/argparse.html>)
 
 ## (Optional) Use pathlib to write code that works across operating systems
 

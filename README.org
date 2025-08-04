@@ -1447,13 +1447,15 @@ print(z_bool)
 
 ** Write output
 Capture the results of your filter in a new file, rather than overwriting your original data.
-#+BEGIN_SRC python
-# Save to a new CSV, preserving your original data
-data.to_csv('gapminder_gdp_europe_grouped.csv')
+1. Create a new subdirectory called "processed" using the editor's file interface.
+2. Save your data as a CSV in the subdirectory
+   #+BEGIN_SRC python
+   # Save to a new CSV, preserving your original data
+   data.to_csv('gapminder_gdp_europe_grouped.csv')
 
-# If you don't want to preserve row names:
-data.to_csv('gapminder_gdp_europe_grouped.csv', index=False)
-#+END_SRC
+   # If you don't want to preserve row names:
+   data.to_csv('gapminder_gdp_europe_grouped.csv', index=False)
+   #+END_SRC
 
 ** Working with missing data
 *** By default, most numerical operations ignore missing data
@@ -1879,39 +1881,6 @@ wine.rename(columns={"color_intensity": "ci"})
    #+END_SRC
 
 * Building Programs (Week 3)
-** Notebooks vs Python scripts
-*** Differences between .ipynb and .py
-1. Export notebook to .py file
-2. Move .py file into data directory
-3. Compare files in TextEdit/Notepad
-
-*** Workflow differences between notebooks and scripts
-Broadly, a trade-off between managing big code bases and making it easy to experiment. See: https://github.com/elliewix/Ways-Of-Installing-Python/blob/master/ways-of-installing.md#why-do-you-need-a-specific-tool
-1. Interactive testing and debugging
-2. Graphics integration
-3. Version control
-4. Remote scripts
-
-** (Optional) Python from the terminal
-1. Python is an interactive interpreter (REPL)
-   #+BEGIN_SRC bash
-   python
-   #+END_SRC
-
-2. Python is a command line program
-   #+BEGIN_SRC python
-   # hello.py
-   print("Hello!")
-   #+END_SRC
-
-   #+BEGIN_SRC bash
-   python hello.py
-   #+END_SRC
-
-3. (Optional) Python programs can accept command line arguments as inputs
-   1. List of command line inputs: ~sys.argv~ (https://docs.python.org/3/library/sys.html#sys.argv)
-   2. Utility for working with arguments: ~argparse~ (https://docs.python.org/3/library/argparse.html)
-
 ** Looping Over Data Sets
 *** File paths as an example of increasing abstraction in program development
 1. File paths as literal strings
@@ -2202,8 +2171,10 @@ print_greeting()
 1. Positional arguments
    #+BEGIN_SRC python
    def print_date(year, month, day):
-       joined = '/'.join([year, month, day])
-       print(joined)
+       """Print the formatted date. This works with strings or integers."""
+
+       formatted_date = f"{year}/{month}/{day}"
+       print(formatted_date)
 
    print_date(1871, 3, 19)
    #+END_SRC
@@ -2300,6 +2271,39 @@ all_data.to_csv("gapminder_mean_all.csv", index=False)
 
 *** (Optional) A worked example: The Lorenz attractor
 https://matplotlib.org/stable/gallery/mplot3d/lorenz_attractor.html
+
+** Notebooks vs Python scripts
+*** Differences between .ipynb and .py
+1. Export notebook to .py file
+2. Move .py file into data directory
+3. Compare files in TextEdit/Notepad
+
+*** Workflow differences between notebooks and scripts
+Broadly, a trade-off between managing big code bases and making it easy to experiment. See: https://github.com/elliewix/Ways-Of-Installing-Python/blob/master/ways-of-installing.md#why-do-you-need-a-specific-tool
+1. Interactive testing and debugging
+2. Graphics integration
+3. Version control
+4. Remote scripts
+
+** (Optional) Python from the terminal
+1. Python is an interactive interpreter (REPL)
+   #+BEGIN_SRC bash
+   python
+   #+END_SRC
+
+2. Python is a command line program
+   #+BEGIN_SRC python
+   # hello.py
+   print("Hello!")
+   #+END_SRC
+
+   #+BEGIN_SRC bash
+   python hello.py
+   #+END_SRC
+
+3. (Optional) Python programs can accept command line arguments as inputs
+   1. List of command line inputs: ~sys.argv~ (https://docs.python.org/3/library/sys.html#sys.argv)
+   2. Utility for working with arguments: ~argparse~ (https://docs.python.org/3/library/argparse.html)
 
 ** (Optional) Use pathlib to write code that works across operating systems
 1. Pathlib provides cross-platform path objects
@@ -3388,7 +3392,7 @@ Do this if you want code syntax highlighting and a table of contents on Github.
    #+BEGIN_SRC bash
    pandoc -f org -t gfm --toc --toc-depth=2 --wrap=none -N -s README.org -o README.md
 
-   # Add section headers
+   # Add section headers. These don't appear to work as links on the github.io website
    pandoc -f org -t gfm --toc --toc-depth=2 --wrap=none -s --lua-filter ./pandoc-section-number-filter.lua README.org -o README.md
    #+END_SRC
 
