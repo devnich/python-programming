@@ -308,11 +308,11 @@ Most data is text and numbers, but there are many other types.
 ### **Challenge**: Explain what each operator does
 
 ``` python
-# Floor
-print('5 // 3:', 5 // 3)
-
 # Floating point
 print('5 / 3:', 5 / 3)
+
+# Floor
+print('5 // 3:', 5 // 3)
 
 # Modulus (remainder)
 print('5 % 3:', 5 % 3)
