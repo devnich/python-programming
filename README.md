@@ -1748,7 +1748,29 @@ print(df3.shape)
     df_join.head()
     ```
 
-4.  Get the subset of species that match a criterion, and join on that subset. The "inner" join only includes rows where both tables match on the key column; it's a strategy for filtering the first table by the second table.
+4.  Aside: Method chaining formatting options
+
+    ``` python
+    # Python allows free line breaks inside parens
+    df_join = (surveys
+               .merge(species, on="species_id", how="left")
+               .set_index("record_id")
+               )
+    ```
+
+    ``` python
+    # Use parens as nested break points
+    df_join = surveys.merge(species, on="species_id", how="left"
+                            ).set_index("record_id")
+    ```
+
+    ``` python
+    # Explicit line continuation
+    df_join = surveys.merge(species, on="species_id", how="left") \
+                     .set_index("record_id")
+    ```
+
+5.  Get the subset of species that match a criterion, and join on that subset. The "inner" join only includes rows where both tables match on the key column; it's a strategy for filtering the first table by the second table.
 
     ``` python
     # Get the taxa column, masking the rows based on which values match "Bird"
@@ -1761,7 +1783,7 @@ print(df3.shape)
     print(df_inner.head())
     ```
 
-5.  Compare with the results of the left join
+6.  Compare with the results of the left join
 
     ``` python
     df_surveys_left = surveys.merge(birds, on="species_id", how="left").set_index("record_id")
