@@ -456,7 +456,11 @@ help(math)                      # user friendly
 ```
 
 ``` python
-dir(math)                       # brief reminder, not user friendly
+print(dir(math))                       # brief reminder, not user friendly
+```
+
+``` python
+help(math.factorial)
 ```
 
 ### (Optional) Import shortcuts
@@ -1102,23 +1106,23 @@ Introductory documentation: <https://numpy.org/doc/stable/user/quickstart.html>
     import numpy as np
 
     # Create an array of random numbers
-    m_rand = np.random.rand(3, 4)
-    print(m_rand)
+    mat = np.arange(12).reshape(3,4)
+    print(mat)
     ```
 
 2.  Arrays are indexed like lists
 
     ``` python
-    print(m_rand[0,0])
+    print(mat[0,0])
     ```
 
 3.  Arrays have attributes
 
     ``` python
-    print(m_rand.shape)
-    print(m_rand.size)
-    print(m_rand.ndim)
-    print(m_rand.T)
+    print(mat.shape)
+    print(mat.size)
+    print(mat.ndim)
+    print(mat.T)
     ```
 
 4.  Arrays are fast but inflexible - the entire array must be of a single type.
@@ -1151,18 +1155,7 @@ print(y)
     print(np.dot(x, y))
     ```
 
-3.  You can rearrange the same array into different configurations
-
-    ``` python
-    # Use method chaining to link actions together
-    x1 = x.reshape(3,3)
-    x2 = x.reshape(9,1)
-
-    print(x1)
-    print(x2)
-    ```
-
-4.  (Optional) Matlab gotcha: 1-D arrays have no transpose
+3.  (Optional) Matlab gotcha: 1-D arrays have no transpose
 
     ``` python
     print(x)
@@ -1398,7 +1391,7 @@ This is most common way to get data
 3.  If you want specific rows or columns, pass in a list
 
     ``` python
-    data.loc[['Italy','Poland'], :]
+    data.loc[['Italy','Poland'], ["1952","1962"]]
     ```
 
 4.  (Optional) `.iloc` follows list index conventions ("up to, but not including)", but `.loc` does the intuitive right thing ("A through B")
@@ -1450,6 +1443,25 @@ This is most common way to get data
     # Alternatively
     print(subset.max(axis=None))
     ```
+
+\*\*\*( Optional) Get x/y labels for the cell that matches a criterion
+
+``` python
+# Which values match the criterion?
+subset == subset.max().max()
+
+# Return value at position, code all other cells as NA
+val = subset[subset == subset.max().max()]
+
+# Drop rows where all values are NA, then drop columns where values are NA
+val.dropna(how="all").dropna(axis=1)
+
+# Putting it all together: Get index label and column label for last remaining cell
+names = val.dropna(how="all").dropna(axis=1)
+
+print(names.index[0])
+print(names.columns[0])
+```
 
 ### (Optional) Filter on label properties
 
@@ -1738,7 +1750,37 @@ print(df3.shape)
     print(df_join.head())
     ```
 
-3.  The resulting table loses its index because `surveys.record_id` is not being used in the join. To keep `record_id` as the index for the final table, we need to retain it as an explicit column.
+3.  Use the additional information in the joined data set to inform your analyses:
+
+    ``` python
+    # Get mean weight for each taxa group
+    df_join.groupby("taxa")["weight"].mean()
+    ```
+
+    ``` python
+    # Get group means for multiple variables
+    df_join.groupby("taxa")[["weight", "hindfoot_length"]].mean()
+    ```
+
+    ``` python
+    # Get nested group means
+    df_join.groupby(["taxa", "genus"])[["weight", "hindfoot_length"]].mean()
+    ```
+
+4.  Verify that weight data is missing for non-rodents. This works for `str` but not `obj`; if text data has been imported as `obj`, re-cast it to `str`.
+
+    ``` python
+    # Convert column to type "str" if necessary
+    df_join["taxa"] = df_join["taxa"].astype("str")
+
+    # Verify that there aren't any "weight" values for Birds
+    df_bird = df_join[df_join["taxa"].str.startswith("Bird")]
+
+    print(df_bird["weight"].isna().sum())
+    print(df_bird["weight"].isna().all())
+    ```
+
+5.  (Optional) The resulting table loses its index because `surveys.record_id` is not being used in the join. To keep `record_id` as the index for the final table, we need to retain it as an explicit column.
 
     ``` python
     # Don't set record_id as index during initial import
@@ -1748,7 +1790,7 @@ print(df3.shape)
     df_join.head()
     ```
 
-4.  Aside: Method chaining formatting options
+6.  Aside: Method chaining formatting options
 
     ``` python
     # Python allows free line breaks inside parens
@@ -1770,7 +1812,7 @@ print(df3.shape)
                      .set_index("record_id")
     ```
 
-5.  Get the subset of species that match a criterion, and join on that subset. The "inner" join only includes rows where both tables match on the key column; it's a strategy for filtering the first table by the second table.
+7.  Get the subset of species that match a criterion, and join on that subset. The "inner" join only includes rows where both tables match on the key column; it's a strategy for filtering the first table by the second table.
 
     ``` python
     # Get the taxa column, masking the rows based on which values match "Bird"
@@ -1783,7 +1825,7 @@ print(df3.shape)
     print(df_inner.head())
     ```
 
-6.  Compare with the results of the left join
+8.  Compare with the results of the left join
 
     ``` python
     df_surveys_left = surveys.merge(birds, on="species_id", how="left").set_index("record_id")
@@ -1827,7 +1869,7 @@ cf. <https://pandas.pydata.org/docs/user_guide/text.html>
     print(dir(species["genus"].str))
     ```
 
-3.  Use string methods for filtering
+3.  Use string methods for filtering. This works for `str` but not `obj`; if text data has been imported as `obj`, re-cast it to `str`.
 
     ``` python
     # Which species are in the taxa "Bird"?
@@ -2270,18 +2312,13 @@ Python steps through the branches of the conditional in order, testing each in t
 Often, you want some combination of things to be true. You can combine relations within a conditional using `and` and `or`.
 
 ``` python
-mass = [1, 2, 3, 4, 5]
-velocity = [5, 4, 3, 2, 5]
+mass = [1, 2, 3, 4]
+velocity = [4, 3, 2, 1]
 
 for m, v in zip(mass, velocity):
-    if m <= 3 and v <= 3:
-        print("Small and slow")
-    elif m <= 3 and v > 3:
-        print("Small and fast")
-    elif m > 3 and v <= 3:
-        print("Large and slow")
-    else:
-        print("Check data")
+    print(m, v)
+    if m < 2 or v > 2:
+        print("At least one of our critera is true")
 ```
 
 - Use () to group subsets of conditions
@@ -2333,24 +2370,37 @@ print_greeting()
 1.  Positional arguments
 
     ``` python
-    def print_date(year, month, day):
+    def format_date(year, month, day):
         """Print the formatted date. This works with strings or integers."""
 
         formatted_date = f"{year}/{month}/{day}"
         print(formatted_date)
 
-    print_date(1871, 3, 19)
+    format_date(1871, 3, 19)
     ```
 
 2.  (Optional) Keyword arguments
 
     ``` python
-    print_date(month=3, day=19, year=1871)
+    format_date(month=3, day=19, year=1871)
     ```
 
 ### Functions may return a result to their caller using `return`
 
 1.  Use `return ...` to give a value back to the caller. `return` ends the function's execution and *returns* you to the code that originally called the function.
+
+    ``` python
+    def format_date(year, month, day):
+        """Print the formatted date. This works with strings or integers."""
+
+        formatted_date = f"{year}/{month}/{day}"
+        return formatted_date
+
+    d = format_date(1871, 3, 19)
+    print(d)
+    ```
+
+2.  You should explicitly handle common problems. Start with a simple base function.
 
     ``` python
     def average(values):
@@ -2359,15 +2409,24 @@ print_greeting()
         return sum(values) / len(values)
     ```
 
+3.  Test your function on inputs that should work.
+
     ``` python
-    a = average([1, 3, 4])
+    a = average([1, 2, 3, 4])
     print(a)
     ```
 
-2.  You should explicitly handle common problems:
+4.  Test against edge cases and erroneous input.
 
     ``` python
-    print(average([]))
+    test1 = []
+    test2 = ["a", "b", "c", "d"]
+    ```
+
+5.  Revise based on test results.
+
+    ``` python
+    av1 = average(test1)
     ```
 
     ``` python
@@ -2380,7 +2439,25 @@ print_greeting()
             return sum(values) / len(values)
     ```
 
-3.  Notes:
+6.  You can choose to handle errors within the function, or by validating input ahead of time. Either choice is defensible, just be consistent.
+
+    ``` python
+    av2 = average(test2)
+    ```
+
+    ``` python
+    def average(values):
+        """Return average of values, or None if no values are supplied."""
+
+        if len(values) == 0:
+            return None
+        elif all([type(x) == int for x in values]):
+            return sum(values) / len(values)
+        else:
+            return None
+    ```
+
+7.  Notes:
 
     1.  `return` can occur anywhere in the function, but functions are easier to understand if return occurs:
         1.  At the start to handle special cases
