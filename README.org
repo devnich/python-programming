@@ -6,6 +6,17 @@
 #+AUTHOR: Derek Devnich
 
 * COMMENT Notes
+** Teaching notes from Fall 2026 UC Carpentry
+1. Terminal install is a problem
+   - Need easy backup
+2. Get data from Python?
+   - http fetch
+   - short url for zip
+3. Review SQL-like materials in Week 2
+4. Excel import: https://openpyxl.readthedocs.io/en/stable/
+5. https://python-graph-gallery.com
+6. https://github.com/trevismd/statannotations
+
 ** Drops down to NumPy for numeric calculations, obviating any Pandas issues
 #+BEGIN_SRC python
 def zScoreCalc (filename, index_colum_name = None):
@@ -1281,23 +1292,31 @@ This is most common way to get data
    print(subset.max(axis=None))
    #+END_SRC
 
-***( Optional) Get x/y labels for the cell that matches a criterion
-#+begin_src python
-# Which values match the criterion?
-subset == subset.max().max()
+*** (Optional) How to get the x and y labels for the cell that matches a criterion
+1. Doing it the hard way
+   #+begin_src python
+   # Which values match the criterion?
+   subset == subset.max().max()
 
-# Return value at position, code all other cells as NA
-val = subset[subset == subset.max().max()]
+   # Return value at position, code all other cells as NA
+   val = subset[subset == subset.max().max()]
 
-# Drop rows where all values are NA, then drop columns where values are NA
-val.dropna(how="all").dropna(axis=1)
+   # Drop rows where all values are NA, then drop columns where values are NA
+   val.dropna(how="all").dropna(axis=1)
 
-# Putting it all together: Get index label and column label for last remaining cell
-names = val.dropna(how="all").dropna(axis=1)
+   # Putting it all together: Get index label and column label for last remaining cell
+   names = val.dropna(how="all").dropna(axis=1)
 
-print(names.index[0])
-print(names.columns[0])
-#+end_src
+   print(names.index[0])
+   print(names.columns[0])
+   #+end_src
+
+2. Frequently there will be a built-in method that solves the same problem
+   #+begin_src python
+   df.idxmax()
+   df.unique()
+   df.nunique()
+   #+end_src
 
 *** (Optional) Filter on label properties
 1. ~.filter()~ always returns the same type as the original item, whereas ~.loc~ and ~.iloc~ might return a data frame or a series.

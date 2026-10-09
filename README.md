@@ -1444,24 +1444,34 @@ This is most common way to get data
     print(subset.max(axis=None))
     ```
 
-\*\*\*( Optional) Get x/y labels for the cell that matches a criterion
+### (Optional) How to get the x and y labels for the cell that matches a criterion
 
-``` python
-# Which values match the criterion?
-subset == subset.max().max()
+1.  Doing it the hard way
 
-# Return value at position, code all other cells as NA
-val = subset[subset == subset.max().max()]
+    ``` python
+    # Which values match the criterion?
+    subset == subset.max().max()
 
-# Drop rows where all values are NA, then drop columns where values are NA
-val.dropna(how="all").dropna(axis=1)
+    # Return value at position, code all other cells as NA
+    val = subset[subset == subset.max().max()]
 
-# Putting it all together: Get index label and column label for last remaining cell
-names = val.dropna(how="all").dropna(axis=1)
+    # Drop rows where all values are NA, then drop columns where values are NA
+    val.dropna(how="all").dropna(axis=1)
 
-print(names.index[0])
-print(names.columns[0])
-```
+    # Putting it all together: Get index label and column label for last remaining cell
+    names = val.dropna(how="all").dropna(axis=1)
+
+    print(names.index[0])
+    print(names.columns[0])
+    ```
+
+2.  Frequently there will be a built-in method that solves the same problem
+
+    ``` python
+    df.idxmax()
+    df.unique()
+    df.nunique()
+    ```
 
 ### (Optional) Filter on label properties
 
